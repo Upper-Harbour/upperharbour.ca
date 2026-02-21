@@ -170,7 +170,7 @@ def collect_web_search() -> list[dict]:
 
     for idx, query in enumerate(SEARCH_QUERIES):
         if idx > 0:
-            time.sleep(15)  # Avoid rate limiting on free tier
+            time.sleep(60)  # Wait full minute to reset rate limit window
         try:
             response = client.messages.create(
                 model="claude-sonnet-4-20250514",
