@@ -31,6 +31,7 @@ import os
 import json
 import hashlib
 import logging
+import time
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -112,7 +113,7 @@ EVENT_TYPES = ["enforcement", "acquisition", "legislation", "vendor", "procureme
 def collect_rss() -> list[dict]:
     """Pull items from all RSS feeds, filter by recency and relevance."""
     items = []
-    cutoff = datetime.now() - timedelta(hours=24)  # Last 24 hours
+    cutoff = datetime.now() - timedelta(hours=72)  # Last 72 hours
 
     for feed_config in RSS_FEEDS:
         try:
@@ -167,7 +168,9 @@ def collect_web_search() -> list[dict]:
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     items = []
 
-    for query in SEARCH_QUERIES:
+    for idx, query in enumerate(SEARCH_QUERIES):
+        if idx > 0:
+            time.sleep(15)  # Avoid rate limiting on free tier
         try:
             response = client.messages.create(
                 model="claude-sonnet-4-20250514",
@@ -259,6 +262,8 @@ def process_with_claude(items: list[dict]) -> list[dict]:
     # Process in batches of 10
     processed = []
     for i in range(0, len(items), 10):
+        if i > 0:
+            time.sleep(15)  # Avoid rate limiting
         batch = items[i:i+10]
 
         items_text = json.dumps([{
