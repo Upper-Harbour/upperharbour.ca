@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Sovereignty &amp; Compliance for Canadian Organizations | Upper Harbour</title>
+  <meta name="description" content="Understand where Canadian data sovereignty risks arise across SaaS platforms, vendors, and cross-border processing. Upper Harbour helps organizations map exposure and document compliance." />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Data Sovereignty & Compliance for Canadian Organizations | Upper Harbour" />
+  <meta property="og:description" content="Understand where Canadian data sovereignty risks arise across SaaS platforms and cross-border processing." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/sovereignty" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Data Sovereignty & Compliance | Upper Harbour" />
+  <meta name="twitter:description" content="Understand where Canadian data sovereignty risks arise across SaaS platforms and cross-border processing." />
+  <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --midnight: #0A1018; --navy: #0F1C2E; --teal: #3CB8B0;
+      --ice: #EAF0F4; --slate: #7A92A8; --gold: #C9A84C; --muted: #6B7B8D;
+      --border: rgba(234,240,244,0.07); --border-md: rgba(234,240,244,0.13);
+      --teal-dim: rgba(60,184,176,0.08); --teal-border: rgba(60,184,176,0.22);
+      --font: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--midnight); color: var(--ice); line-height: 1.6; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(10,16,24,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; }
+    .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
+    .nav-divider { width: 1px; height: 18px; background: var(--border-md); margin: 0 14px; }
+    .nav-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .nav-cta { font-size: 13px; font-weight: 700; color: var(--midnight); background: var(--teal); padding: 9px 20px; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: #47cec5; }
+
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 120px 48px 80px; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 65% 65% at 70% 30%, rgba(60,184,176,0.07) 0%, transparent 65%), radial-gradient(ellipse 50% 70% at 15% 75%, rgba(201,168,76,0.04) 0%, transparent 55%), var(--midnight); z-index: 0; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(234,240,244,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.02) 1px, transparent 1px); background-size: 64px 64px; }
+    .hero-inner { position: relative; z-index: 1; max-width: 1120px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.15s; }
+    .hero-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--teal); opacity: 0.5; }
+    .hero-h1 { font-size: clamp(40px, 6vw, 74px); font-weight: 800; color: var(--ice); line-height: 1.05; letter-spacing: -1.8px; margin-bottom: 24px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.3s; }
+    .hero-h1 em { font-style: italic; font-weight: 400; font-family: Georgia, serif; color: var(--gold); }
+    .hero-h1 .teal { color: var(--teal); font-style: normal; }
+    .hero-sub { font-size: 16px; color: var(--muted); line-height: 1.72; max-width: 500px; margin-bottom: 36px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.45s; }
+    .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.7s ease forwards 0.58s; }
+    .htag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border-md); padding: 5px 12px; border-radius: 3px; }
+
+    .hero-form { background: var(--navy); border: 1px solid var(--border-md); border-top: 3px solid var(--teal); border-radius: 0 0 8px 8px; padding: 32px; opacity: 0; animation: fadeUp 0.7s ease forwards 0.5s; }
+    .form-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+    .form-title { font-size: 20px; font-weight: 800; color: var(--ice); letter-spacing: -0.4px; margin-bottom: 6px; }
+    .form-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; line-height: 1.55; }
+    .f-field { display: block; width: 100%; font-family: var(--font); font-size: 14px; color: var(--ice); background: rgba(234,240,244,0.04); border: 1px solid var(--border-md); border-radius: 4px; padding: 11px 14px; margin-bottom: 10px; outline: none; transition: border-color 0.2s; }
+    .f-field:focus { border-color: var(--teal); }
+    .f-field::placeholder { color: var(--muted); }
+    .f-btn { width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--font); font-size: 13px; font-weight: 700; color: var(--midnight); background: var(--teal); border: none; border-radius: 4px; padding: 14px; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 4px; }
+    .f-btn:hover { background: #47cec5; transform: translateY(-1px); }
+    .f-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 10px; line-height: 1.5; }
+    .form-success { display: none; text-align: center; padding: 20px 0; }
+    .success-icon { font-size: 36px; margin-bottom: 10px; }
+    .success-title { font-size: 20px; font-weight: 800; color: var(--ice); margin-bottom: 6px; }
+    .success-sub { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 48px; }
+    .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+    .section-title { font-size: clamp(26px, 3.2vw, 44px); font-weight: 800; color: var(--ice); letter-spacing: -0.8px; line-height: 1.1; margin-bottom: 16px; }
+    .section-title em { font-style: italic; font-weight: 400; font-family: Georgia, serif; color: var(--gold); }
+    .section-body { font-size: 15px; color: var(--muted); line-height: 1.75; max-width: 580px; }
+
+    .context { padding: 110px 0; border-top: 1px solid var(--border); background: var(--navy); }
+    .context-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 56px; align-items: start; }
+    .context-statement { font-size: clamp(20px, 2.5vw, 28px); font-weight: 800; color: var(--ice); line-height: 1.25; letter-spacing: -0.5px; margin-bottom: 20px; }
+    .context-body { font-size: 15px; color: var(--muted); line-height: 1.75; }
+    .cloud-box { border: 1px solid var(--teal-border); background: var(--teal-dim); border-radius: 6px; padding: 28px; margin-bottom: 14px; }
+    .cloud-label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .cloud-quote { font-family: Georgia, serif; font-style: italic; font-size: 16px; color: var(--ice); line-height: 1.65; margin-bottom: 10px; }
+    .cloud-source { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .stat-callout { border: 1px solid var(--border-md); border-radius: 6px; padding: 22px 28px; background: rgba(234,240,244,0.02); }
+    .stat-callout-quote { font-family: Georgia, serif; font-style: italic; font-size: 15px; color: var(--ice); line-height: 1.6; margin-bottom: 8px; }
+    .stat-callout-src { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    .for-who { padding: 110px 0; border-top: 1px solid var(--border); }
+    .for-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 52px; }
+    .for-card { padding: 40px 32px; background: var(--navy); border-bottom: 2px solid transparent; transition: border-color 0.25s, background 0.25s; }
+    .for-card:hover { border-color: var(--teal); background: rgba(60,184,176,0.03); }
+    .for-icon { font-size: 28px; margin-bottom: 18px; }
+    .for-type { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+    .for-title { font-size: 20px; font-weight: 700; color: var(--ice); letter-spacing: -0.3px; margin-bottom: 12px; line-height: 1.2; }
+    .for-body { font-size: 14px; color: var(--muted); line-height: 1.75; }
+
+    .the-q { padding: 110px 0; background: var(--navy); border-top: 1px solid var(--border); text-align: center; }
+    .q-text { font-size: clamp(24px, 4vw, 52px); font-weight: 300; font-family: Georgia, serif; font-style: italic; color: var(--ice); max-width: 800px; margin: 0 auto 16px; line-height: 1.25; }
+    .q-bold { font-weight: 700; font-style: normal; color: var(--teal); font-family: var(--font); }
+    .q-sub { font-size: 16px; color: var(--muted); max-width: 500px; margin: 0 auto 60px; line-height: 1.7; }
+    .q-stats { display: flex; justify-content: center; gap: 72px; flex-wrap: wrap; }
+    .qstat { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+    .qstat-num { font-size: clamp(52px, 7vw, 80px); font-weight: 800; color: var(--teal); line-height: 1; letter-spacing: -2px; }
+    .qstat-label { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-align: center; max-width: 130px; }
+
+    .how { padding: 110px 0; border-top: 1px solid var(--border); }
+    .how-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 52px; }
+    .how-step { padding: 36px 28px; background: var(--navy); border-top: 2px solid var(--border); transition: border-color 0.25s; }
+    .how-step:hover { border-top-color: var(--teal); }
+    .how-num { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; color: var(--teal); opacity: 0.6; margin-bottom: 16px; }
+    .how-title { font-size: 18px; font-weight: 700; color: var(--ice); letter-spacing: -0.2px; margin-bottom: 10px; }
+    .how-body { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+    .outputs { padding: 110px 0; border-top: 1px solid var(--border); background: var(--midnight); }
+    .outputs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; margin-top: 52px; }
+    .output-item { padding: 36px 32px; background: var(--navy); border-left: 3px solid transparent; transition: border-color 0.25s; }
+    .output-item:hover { border-left-color: var(--teal); }
+    .output-num { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; color: var(--teal); opacity: 0.6; margin-bottom: 14px; }
+    .output-title { font-size: 17px; font-weight: 700; color: var(--ice); letter-spacing: -0.2px; margin-bottom: 10px; line-height: 1.25; }
+    .output-body { font-size: 13px; color: var(--muted); line-height: 1.75; }
+
+    .conversion { padding: 110px 0; border-top: 1px solid var(--border); background: var(--navy); }
+    .conversion-inner { max-width: 780px; margin: 0 auto; padding: 0 48px; }
+    .conversion-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    .conversion-title { font-size: clamp(28px, 3.5vw, 42px); font-weight: 800; color: var(--ice); letter-spacing: -0.8px; line-height: 1.1; margin-bottom: 20px; }
+    .conversion-body { font-size: 16px; color: var(--muted); line-height: 1.75; margin-bottom: 40px; max-width: 620px; }
+    .conversion-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .conv-btn-primary { font-family: var(--font); font-size: 14px; font-weight: 700; color: var(--midnight); background: var(--teal); border: none; border-radius: 4px; padding: 14px 28px; cursor: pointer; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .conv-btn-primary:hover { background: #47cec5; transform: translateY(-1px); }
+    .conv-btn-secondary { font-family: var(--font); font-size: 14px; font-weight: 600; color: var(--slate); background: transparent; border: 1px solid var(--border-md); border-radius: 4px; padding: 13px 24px; cursor: pointer; text-decoration: none; transition: border-color 0.2s, color 0.2s; display: inline-block; }
+    .conv-btn-secondary:hover { border-color: var(--teal); color: var(--teal); }
+    .conversion-note { font-size: 12px; color: var(--muted); margin-top: 20px; line-height: 1.6; }
+
+    .pilot { padding: 120px 0; background: var(--navy); border-top: 1px solid var(--border); }
+    .pilot-inner { max-width: 1120px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .pilot-label { font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    .pilot-title { font-size: clamp(32px, 4vw, 52px); font-weight: 800; color: var(--ice); letter-spacing: -1.2px; line-height: 1.1; margin-bottom: 18px; }
+    .pilot-title em { font-style: italic; font-weight: 400; font-family: Georgia, serif; color: var(--gold); }
+    .pilot-body { font-size: 15px; color: var(--muted); line-height: 1.75; margin-bottom: 32px; }
+    .pilot-includes { display: flex; flex-direction: column; gap: 12px; }
+    .p-include { display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: var(--ice); line-height: 1.5; }
+    .p-check { width: 20px; height: 20px; background: var(--teal-dim); border: 1px solid var(--teal-border); border-radius: 3px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; font-weight: 800; color: var(--teal); margin-top: 1px; }
+    .pilot-form-card { background: var(--midnight); border: 1px solid var(--border-md); border-top: 3px solid var(--teal); border-radius: 0 0 8px 8px; padding: 36px; }
+    .pf-title { font-size: 22px; font-weight: 800; color: var(--ice); letter-spacing: -0.4px; margin-bottom: 6px; }
+    .pf-sub { font-size: 13px; color: var(--muted); margin-bottom: 22px; }
+
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); background: var(--midnight); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
+    .footer-tagline { font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .footer-desc { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 250px; }
+    .footer-col-title { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: var(--slate); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--teal); }
+    .footer-bottom { max-width: 1120px; margin: 32px auto 0; padding: 20px 48px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-copy { font-size: 11px; color: var(--muted); }
+
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media(max-width:960px){
+      nav{padding:0 20px;} .nav-cta{font-size:11px;padding:8px 14px;white-space:nowrap;} .hero{padding:110px 20px 70px;} .hero-inner{grid-template-columns:1fr; gap:48px;}
+      .container{padding:0 20px;} .context-grid,.for-grid,.how-steps,.pilot-inner,.outputs-grid{grid-template-columns:1fr; gap:32px;}
+      .footer-inner{grid-template-columns:1fr; padding:0 20px;} .footer-bottom{padding:20px 20px 0; flex-direction:column;}
+      .q-stats{gap:36px;} .pilot-inner{padding:0 20px;} .conversion-inner{padding:0 20px;}
+      .conversion-actions{flex-direction:column; align-items:flex-start;}
+    }
+
+    /* ─── Artifact proof sections ─────────────────────────── */
+    .artifact-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .artifact-inner { max-width: 760px; margin: 0 auto; padding: 0 52px; text-align: center; }
+    .artifact-label { font-family: var(--font); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 20px; }
+    .artifact-frame { display: inline-block; border: 1px solid var(--border-md); border-radius: 6px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.28); max-width: 100%; }
+    .artifact-frame img { display: block; width: 100%; max-width: 620px; height: auto; }
+    .artifact-caption { font-family: var(--font); font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 16px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .artifact-link { font-family: var(--font); font-size: 12px; font-weight: 600; color: var(--teal); text-decoration: none; letter-spacing: 0.04em; margin-top: 10px; display: inline-block; border-bottom: 1px solid rgba(60,184,176,0.3); padding-bottom: 1px; transition: border-color 0.2s, color 0.2s; }
+    .artifact-link:hover { color: #47cec5; border-color: rgba(71,206,197,0.6); }
+    /* Framework embed in how section */
+    .how-artifact { margin-top: 48px; text-align: center; }
+    .how-artifact .artifact-frame img { max-width: 680px; }
+    .how-artifact .artifact-caption { margin-top: 14px; }
+    /* Output table in proof section */
+    .proof-artifact { margin-top: 52px; text-align: center; }
+    .proof-artifact .artifact-frame img { max-width: 680px; }
+    @media(max-width:640px) { .artifact-inner{padding:0 20px;} }
+    @media(max-width:480px){ .nav-upper,.nav-harbour{display:none;} }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="26" height="26" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+      <div class="nav-divider"></div>
+      <span class="nav-sub">Data Sovereignty</span>
+    </a>
+    <a href="#pilot" class="nav-cta">Join Free Pilot</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-eyebrow">Canadian Data Sovereignty · Free Pilot Open</div>
+        <h1 class="hero-h1">Your data is in<br/><em>someone else's</em><br/><span class="teal">jurisdiction.</span></h1>
+        <p class="hero-sub">Many organizations assume their data is protected because it is stored in Canada. In practice, jurisdiction is determined not just by where data sits, but by who operates the platforms, controls the software, and governs the legal entity behind it. As sovereignty expectations rise across procurement, security, and policy environments, organizations increasingly need a documented picture of where their data actually flows — and what jurisdictional obligations attach to it.</p>
+        <div class="hero-tags">
+          <span class="htag">CLOUD Act</span>
+          <span class="htag">PIPEDA</span>
+          <span class="htag">Data Residency</span>
+          <span class="htag">SaaS Intelligence</span>
+        </div>
+      </div>
+      <div class="hero-form">
+        <div class="form-eyebrow">Free Pilot — Limited Spots</div>
+        <div class="form-title">Get a documented picture of your exposure.</div>
+        <div class="form-sub">Join the free pilot. A structured sovereignty assessment, typically completed within a week.</div>
+        <div id="hfWrap">
+          <form onsubmit="handleSubmit(event,'hfWrap','hfSuccess','sovereignty-hero')">
+            <input class="f-field" type="text"  name="name"    placeholder="Your full name"    required />
+            <input class="f-field" type="email" name="email"   placeholder="Work email"         required />
+            <input class="f-field" type="text"  name="company" placeholder="Organization name"  required />
+            <input class="f-field" type="text"  name="role"    placeholder="Your role"          />
+            <button type="submit" class="f-btn">Join the Free Pilot →</button>
+          </form>
+          <p class="f-note">Free for qualifying Canadian organizations. No credit card.</p>
+          <p class="f-note">Pilot assessments are exploratory and designed to begin with minimal internal effort.</p>
+        </div>
+        <div id="hfSuccess" class="form-success">
+          <div class="success-icon">✓</div>
+          <div class="success-title">You're in.</div>
+          <div class="success-sub">Joshua will be in touch within 24 hours to kick off your pilot.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="context">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">The Reality</div>
+        <h2 class="section-title">Your data is stored in Canada.<br/>It's still reachable by the U.S. government.</h2>
+        <p class="section-body">This isn't a niche legal concern. It's structural — built into how most SaaS tools are architected, funded, and legally obligated.</p>
+      </div>
+      <div class="context-grid">
+        <div class="reveal">
+          <p class="context-statement">Most Canadian organizations have no idea how many of their SaaS vendors are U.S.-parent companies.</p>
+          <p class="context-body">A tool can be marketed as "Canadian" or "hosted in Canada" and still be subject to U.S. law if its parent company, investors, or key infrastructure are American. Legal jurisdiction travels with ownership — not the server location.</p>
+        </div>
+        <div class="reveal">
+          <div class="cloud-box">
+            <div class="cloud-label">U.S. Department of Justice — CLOUD Act White Paper</div>
+            <p class="cloud-quote">"U.S. law requires providers to disclose data that is responsive to legal process — regardless of where it is stored."</p>
+            <div class="cloud-source">This applies to your Canadian-hosted data too.</div>
+          </div>
+          <div class="stat-callout">
+            <p class="stat-callout-quote">"App-to-app integrations move 10× more data than users — and most organizations have limited structured visibility into those flows."</p>
+            <div class="stat-callout-src">Obsidian Security — SaaS-to-SaaS Integration Report</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="for-who">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">Who HarbourScan Is For</div>
+        <h2 class="section-title">Built for organizations where sovereignty <em>matters.</em></h2>
+      </div>
+      <div class="for-grid">
+        <div class="for-card reveal">
+          <div class="for-icon">🤖</div>
+          <div class="for-type">AI Startups</div>
+          <h3 class="for-title">Selling into government? Prove your stack.</h3>
+          <p class="for-body">Federal and provincial procurement increasingly requires demonstrable data sovereignty. HarbourScan gives you the documentation to answer due diligence questionnaires with confidence — and win deals your competitors can't.</p>
+        </div>
+        <div class="for-card reveal">
+          <div class="for-icon">🏢</div>
+          <div class="for-type">Enterprise</div>
+          <h3 class="for-title">Reduce your U.S. tech dependency.</h3>
+          <p class="for-body">Understand which tools in your stack are likely tied to U.S. jurisdiction — and how much data flows through them. HarbourScan provides the structured documentation your organization needs to evaluate sovereignty risks on its own terms, without prescribing specific vendors or platforms. Sovereignty considerations increasingly appear in procurement reviews, security assessments, and board-level risk discussions — HarbourScan gives you the documented basis to engage those conversations confidently.</p>
+        </div>
+        <div class="for-card reveal">
+          <div class="for-icon">⚖️</div>
+          <div class="for-type">CLOUD Act Exposure</div>
+          <h3 class="for-title">Map the invisible risk in your stack.</h3>
+          <p class="for-body">Integration layers move a large share of organizational data — across borders, through U.S.-parent vendors, and into foreign legal reach. HarbourScan maps observable SaaS tools, integrations, and vendor structures, supplemented by a short structured intake to complete the documentation record.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="the-q">
+    <div class="container">
+      <div class="reveal">
+        <p class="q-text">"Can you guarantee our data isn't exposed to a <span class="q-bold">foreign jurisdiction?"</span></p>
+        <p class="q-sub">This question is appearing in procurement reviews, board-level risk discussions, and security assessments across Canada — and most organizations cannot answer it with documented evidence. HarbourScan's sovereignty analysis uses the same structured framework as its compliance assessments, so the findings are consistent, repeatable, and ready to present wherever they're needed. HarbourScan does not recommend specific vendors or cloud platforms; it provides the structured documentation organizations need to evaluate sovereignty risks and procurement options on their own terms.</p>
+        <div class="q-stats">
+          <div class="qstat"><span class="qstat-num">10×</span><span class="qstat-label">More data moved by integrations than users</span></div>
+          <div class="qstat"><span class="qstat-num">~0</span><span class="qstat-label">Structured visibility most teams have into those flows</span></div>
+          <div class="qstat"><span class="qstat-num">100%</span><span class="qstat-label">Free pilot for qualifying organizations</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">How It Works</div>
+        <h2 class="section-title">From undocumented exposure to a structured sovereignty picture — <em>typically within days.</em></h2>
+      </div>
+      <div class="how-steps">
+        <div class="how-step reveal"><div class="how-num">01 —</div><h3 class="how-title">Environment mapping</h3><p class="how-body">We map your observable SaaS tools and app-to-app integrations through a structured intake process, building a complete inventory that forms the foundation for the assessment.</p></div>
+        <div class="how-step reveal"><div class="how-num">02 —</div><h3 class="how-title">Trace data flows</h3><p class="how-body">Identify where data is likely to travel across vendors and integration pathways, based on observable signals and structured intake inputs — documenting which vendors are subject to foreign legal jurisdiction and where contractual gaps exist.</p></div>
+        <div class="how-step reveal"><div class="how-num">03 —</div><h3 class="how-title">Sovereignty risk scoring</h3><p class="how-body">Each vendor in your stack receives a sovereignty risk score reflecting vendor jurisdiction, parent-entity exposure, integration pathways, and documentation readiness. HarbourScan does not prescribe infrastructure choices — it provides the documented picture organizations need to navigate emerging sovereignty expectations on their own terms.</p></div>
+        <div class="how-step reveal"><div class="how-num">04 —</div><h3 class="how-title">Prove and act</h3><p class="how-body">Audit-ready documentation for procurement, government clients, or your board — plus prioritized remediation guidance.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="outputs">
+    <div class="container">
+      <div class="reveal">
+        <div class="section-label">What HarbourScan Produces</div>
+        <h2 class="section-title">Structured documentation, ready to present.</h2>
+        <p class="section-body">Each assessment produces a consistent set of outputs aligned to Canadian accountability requirements — built to support procurement responses, board briefings, and security questionnaires.</p>
+      </div>
+      <div class="outputs-grid">
+        <div class="output-item reveal">
+          <div class="output-num">01 —</div>
+          <h3 class="output-title">Structured Sovereignty Assessment Report</h3>
+          <p class="output-body">A documented assessment of your organization's SaaS environment, identifying jurisdictional exposure by vendor, parent entity, and integration pathway — with findings organized by risk classification and supported by regulatory references.</p>
+        </div>
+        <div class="output-item reveal">
+          <div class="output-num">02 —</div>
+          <h3 class="output-title">Vendor Jurisdiction Register</h3>
+          <p class="output-body">A structured table listing each assessed vendor, their jurisdiction of incorporation, ultimate parent entity, CLOUD Act applicability, and contractual documentation status — formatted for use in procurement due diligence and internal governance records.</p>
+        </div>
+        <div class="output-item reveal">
+          <div class="output-num">03 —</div>
+          <h3 class="output-title">Integration Pathway Documentation</h3>
+          <p class="output-body">A map of identified app-to-app data flows, documenting which integration pathways cross jurisdictional boundaries, what data categories are in scope, and where contractual or documentation gaps exist.</p>
+        </div>
+        <div class="output-item reveal">
+          <div class="output-num">04 —</div>
+          <h3 class="output-title">Documentation Checklist</h3>
+          <p class="output-body">A prioritized checklist of documentation steps aligned to Canadian accountability requirements under PIPEDA and Law 25, including transfer impact assessments, data processing agreements, and governance policy updates — so organizations know exactly what to act on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="artifact-section" style="padding:60px 0;">
+    <div class="artifact-inner reveal">
+      <div class="artifact-label">Sample Output</div>
+      <div class="artifact-frame">
+        <img src="/assets/sovereignty-hero.png" alt="Example HarbourScan sovereignty assessment output" loading="lazy" />
+      </div>
+      <p class="artifact-caption">Example of the structured sovereignty documentation HarbourScan produces — vendor jurisdiction register, integration pathway analysis, and risk classification by tool.</p>
+      <a href="harbourscan_report_preview.pdf" target="_blank" rel="noopener" class="artifact-link">View sample assessment output ↗</a>
+    </div>
+  </section>
+
+  <section class="conversion" id="get-started">
+    <div class="conversion-inner">
+      <div class="reveal">
+        <div class="conversion-label">Early Access</div>
+        <h2 class="conversion-title">Request a sovereignty assessment.</h2>
+        <p class="conversion-body">HarbourScan produces a structured sovereignty assessment using observable data from your SaaS environment, vendor analysis, and a short structured intake process — typically completed within a week. The result is a documented picture of your jurisdictional exposure, organized by vendor, integration pathway, and risk classification, and ready to present in procurement reviews, security assessments, or board-level governance discussions.</p>
+        <p class="conversion-body" style="margin-top: -20px; margin-bottom: 40px;">HarbourScan is a documentation and decision-support tool — it does not recommend specific vendors or cloud platforms, but provides the structured evidence organizations need to evaluate their options with confidence. We are currently working with a limited number of Canadian organizations through our early-access pilot. If your organization is navigating sovereignty expectations in procurement, policy, or risk management, we'd welcome a conversation.</p>
+        <div class="conversion-actions">
+          <a href="#pilot" class="conv-btn-primary">Join the pilot cohort →</a>
+          <a href="/cdn-cgi/l/email-protection#3852574b50784d48485d4a50594a5a574d4a165b5755" class="conv-btn-secondary">Request an assessment</a>
+        </div>
+        <p class="conversion-note">Free for qualifying Canadian organizations during the pilot period. No obligation. Findings remain confidential to your organization.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pilot" id="pilot">
+    <div class="pilot-inner">
+      <div class="reveal">
+        <div class="pilot-label">Free Pilot Program</div>
+        <h2 class="pilot-title">A documented picture of where your data <em>actually</em> stands.</h2>
+        <p class="pilot-body">We are running a free pilot with a limited number of Canadian organizations. You receive a complete sovereignty assessment of your SaaS environment — at no cost. In return, you help us build the right product for the Canadian market.</p>
+        <div class="pilot-includes">
+          <div class="p-include"><div class="p-check">✓</div><span>SaaS environment mapping via structured intake process</span></div>
+          <div class="p-include"><div class="p-check">✓</div><span>Vendor jurisdiction and parent-entity classification</span></div>
+          <div class="p-include"><div class="p-check">✓</div><span>Integration pathway documentation and jurisdictional exposure analysis</span></div>
+          <div class="p-include"><div class="p-check">✓</div><span>Sovereignty risk scores by vendor — reflecting jurisdiction, parent entity, and documentation status</span></div>
+          <div class="p-include"><div class="p-check">✓</div><span>Structured assessment report and documentation checklist, ready for procurement or board use</span></div>
+          <div class="p-include"><div class="p-check">✓</div><span>Direct access to <a href="/founder.html" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.3)">Joshua</a> and the founding team</span></div>
+        </div>
+      </div>
+      <div class="pilot-form-card reveal">
+        <div class="pf-title">Apply for a free pilot</div>
+        <div class="pf-sub">Spots are limited. We'll confirm eligibility within 24 hours.</div>
+        <div id="pfWrap">
+          <form onsubmit="handleSubmit(event,'pfWrap','pfSuccess','sovereignty-pilot')">
+            <input class="f-field" type="text"  name="name"    placeholder="Full name"            required />
+            <input class="f-field" type="email" name="email"   placeholder="Work email"           required />
+            <input class="f-field" type="text"  name="org"     placeholder="Organization name"    required />
+            <input class="f-field" type="text"  name="role"    placeholder="Your role"            required />
+            <input class="f-field" type="text"  name="context" placeholder="Why does sovereignty matter to you? (optional)" />
+            <button type="submit" class="f-btn">Apply for Free Pilot →</button>
+          </form>
+          <p class="f-note">Free for qualifying Canadian organizations. No credit card required.</p>
+        </div>
+        <div id="pfSuccess" class="form-success">
+          <div class="success-icon">✓</div>
+          <div class="success-title">Application received.</div>
+          <div class="success-sub">Joshua will be in touch within 24 hours to confirm your spot and get started.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+            <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/>
+          </svg>
+          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span>
+        </div>
+        <p class="footer-desc">Compliance intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="/cdn-cgi/l/email-protection#ea80859982aa9f9a9a8f98828b9888859f98c4898587">Contact us</a></li>
+          <li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li>
+          <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Upper Harbour. All rights reserved. · Founder: <a href="/founder.html" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.4);transition:color 0.2s">Joshua van Es</a></span>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function handleSubmit(e, wrapId, successId, page) {
+      e.preventDefault();
+      const entries = Object.fromEntries(new FormData(e.target).entries());
+      const leads = JSON.parse(localStorage.getItem('harbourScanLeads') || '[]');
+      leads.push({ ...entries, page, ts: new Date().toISOString() });
+      localStorage.setItem('harbourScanLeads', JSON.stringify(leads));
+      document.getElementById(wrapId).style.display = 'none';
+      document.getElementById(successId).style.display = 'block';
+    }
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+</body>
+</html>

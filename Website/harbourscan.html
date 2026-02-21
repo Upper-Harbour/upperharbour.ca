@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HarbourScan — Sovereignty Assessment | Upper Harbour</title>
+  <meta name="description" content="Free guided sovereignty assessment for Canadian organizations. Map your SaaS stack's jurisdictional exposure under Law 25, PIPEDA, and provincial privacy law." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --midnight: #0A1018; --navy: #0F1C2E; --teal: #3CB8B0;
+      --ice: #EAF0F4; --slate: #7A92A8; --gold: #C9A84C; --muted: #6B7B8D;
+      --border: rgba(234,240,244,0.07); --border-md: rgba(234,240,244,0.13);
+      --teal-dim: rgba(60,184,176,0.08); --teal-border: rgba(60,184,176,0.22);
+      --red: #E06050; --red-dim: rgba(224,96,80,0.12); --red-border: rgba(224,96,80,0.3);
+      --gold-dim: rgba(201,168,76,0.12); --gold-border: rgba(201,168,76,0.3);
+      --font: 'Inter', -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--midnight); color: var(--ice); line-height: 1.6; overflow-x: hidden; }
+
+    /* ── Nav ──────────────────────────────────────────────────────── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(10,16,24,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; }
+    .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
+    .nav-divider { width: 1px; height: 18px; background: var(--border-md); margin: 0 14px; }
+    .nav-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    .nav-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); background: var(--teal-dim); border: 1px solid var(--teal-border); padding: 4px 10px; border-radius: 3px; }
+
+    /* ── App Shell ────────────────────────────────────────────────── */
+    .app { max-width: 880px; margin: 0 auto; padding: 100px 32px 80px; min-height: 100vh; }
+
+    /* ── Progress Bar ─────────────────────────────────────────────── */
+    .progress { display: flex; align-items: center; margin-bottom: 48px; }
+    .progress-step { display: flex; align-items: center; gap: 8px; cursor: default; }
+    .progress-num { width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; border: 2px solid var(--border-md); color: var(--muted); background: transparent; transition: all 0.35s; flex-shrink: 0; }
+    .progress-label { font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); transition: color 0.35s; white-space: nowrap; }
+    .progress-line { flex: 1; height: 1px; background: var(--border-md); margin: 0 10px; min-width: 12px; transition: background 0.35s; }
+    .progress-step.active .progress-num { border-color: var(--teal); color: var(--midnight); background: var(--teal); }
+    .progress-step.active .progress-label { color: var(--teal); }
+    .progress-step.done .progress-num { border-color: var(--teal); color: var(--teal); background: var(--teal-dim); font-size: 0; }
+    .progress-step.done .progress-label { color: var(--slate); }
+    .progress-step.done .progress-num::after { content: '✓'; font-size: 12px; }
+    .progress-line.done { background: var(--teal-border); }
+
+    /* ── Steps ────────────────────────────────────────────────────── */
+    .step { display: none; animation: stepIn 0.45s ease; }
+    .step.visible { display: block; }
+    @keyframes stepIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .step-eyebrow { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .step-title { font-size: clamp(26px, 3.5vw, 36px); font-weight: 800; color: var(--ice); line-height: 1.15; letter-spacing: -0.8px; margin-bottom: 10px; }
+    .step-title em { font-style: italic; font-weight: 400; font-family: Georgia, serif; color: var(--teal); }
+    .step-sub { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 36px; max-width: 600px; }
+
+    /* ── Form Fields ──────────────────────────────────────────────── */
+    .field { margin-bottom: 22px; }
+    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--slate); margin-bottom: 7px; }
+    .field-input, .field-select {
+      width: 100%; font-family: var(--font); font-size: 14px; color: var(--ice);
+      background: var(--navy); border: 1px solid var(--border-md); border-radius: 5px;
+      padding: 13px 16px; outline: none; transition: border-color 0.25s, box-shadow 0.25s;
+    }
+    .field-input:focus, .field-select:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(60,184,176,0.1); }
+    .field-input::placeholder { color: var(--muted); }
+    .field-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A92A8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+    .field-select option { background: var(--navy); color: var(--ice); }
+
+    /* ── Buttons ──────────────────────────────────────────────────── */
+    .btn { font-family: var(--font); font-size: 13px; font-weight: 700; border: none; border-radius: 5px; padding: 13px 28px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em; }
+    .btn-primary { background: var(--teal); color: var(--midnight); }
+    .btn-primary:hover { background: #47cec5; transform: translateY(-1px); }
+    .btn-secondary { background: transparent; color: var(--slate); border: 1px solid var(--border-md); }
+    .btn-secondary:hover { border-color: var(--slate); color: var(--ice); }
+    .btn-danger { background: var(--red-dim); color: var(--red); border: 1px solid var(--red-border); }
+    .btn-row { display: flex; gap: 12px; margin-top: 36px; }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    /* ── Stack Selector (Step 2) ──────────────────────────────────── */
+    .stack-search { position: relative; margin-bottom: 24px; }
+    .stack-search input { width: 100%; font-family: var(--font); font-size: 15px; color: var(--ice); background: var(--navy); border: 1px solid var(--border-md); border-radius: 6px; padding: 16px 20px 16px 44px; outline: none; transition: border-color 0.25s, box-shadow 0.25s; }
+    .stack-search input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(60,184,176,0.1); }
+    .stack-search input::placeholder { color: var(--muted); }
+    .stack-search svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+    .stack-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); border: 1px solid var(--border-md); border-top: none; border-radius: 0 0 6px 6px; max-height: 280px; overflow-y: auto; z-index: 10; display: none; }
+    .stack-dropdown.open { display: block; }
+    .stack-option { padding: 12px 20px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+    .stack-option:hover { background: rgba(60,184,176,0.06); }
+    .stack-option-name { font-size: 14px; font-weight: 600; color: var(--ice); }
+    .stack-option-meta { font-size: 11px; color: var(--muted); }
+    .stack-option .badge { font-size: 9px; }
+
+    .stack-tally { display: flex; gap: 24px; padding: 16px 20px; background: var(--navy); border: 1px solid var(--border-md); border-radius: 6px; margin-bottom: 24px; }
+    .tally-item { text-align: center; }
+    .tally-num { font-size: 28px; font-weight: 800; line-height: 1; }
+    .tally-num.t-total { color: var(--ice); }
+    .tally-num.t-exposed { color: var(--red); }
+    .tally-num.t-review { color: var(--gold); }
+    .tally-num.t-canadian { color: var(--teal); }
+    .tally-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 4px; }
+
+    .selected-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; min-height: 40px; }
+    .tool-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; padding: 6px 12px; border-radius: 4px; cursor: default; }
+    .tool-chip.risk-exposed { background: var(--red-dim); color: var(--red); border: 1px solid var(--red-border); }
+    .tool-chip.risk-review { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+    .tool-chip.risk-canadian { background: var(--teal-dim); color: var(--teal); border: 1px solid var(--teal-border); }
+    .tool-chip .remove { cursor: pointer; opacity: 0.6; font-size: 14px; line-height: 1; }
+    .tool-chip .remove:hover { opacity: 1; }
+
+    /* ── Questionnaire (Step 3) ───────────────────────────────────── */
+    .q-progress { font-size: 12px; color: var(--muted); margin-bottom: 20px; }
+    .q-progress span { color: var(--teal); font-weight: 700; }
+    .q-card { background: var(--navy); border: 1px solid var(--border-md); border-radius: 8px; padding: 32px; margin-bottom: 16px; }
+    .q-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+    .q-tool-name { font-size: 20px; font-weight: 800; color: var(--ice); }
+    .q-tool-jurisdiction { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .q-section { margin-bottom: 24px; }
+    .q-section-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--teal); margin-bottom: 12px; }
+    .q-section-help { font-size: 12px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+    .q-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .q-check { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border-radius: 5px; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
+    .q-check:hover { background: rgba(234,240,244,0.03); }
+    .q-check.selected { background: var(--teal-dim); border-color: var(--teal-border); }
+    .q-check input { display: none; }
+    .q-check-box { width: 18px; height: 18px; border: 2px solid var(--border-md); border-radius: 3px; flex-shrink: 0; margin-top: 1px; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+    .q-check.selected .q-check-box { border-color: var(--teal); background: var(--teal); }
+    .q-check.selected .q-check-box::after { content: '✓'; color: var(--midnight); font-size: 11px; font-weight: 800; }
+    .q-check-label { font-size: 13px; font-weight: 600; color: var(--ice); line-height: 1.3; }
+    .q-check-desc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .q-radio-group { display: flex; gap: 8px; flex-wrap: wrap; }
+    .q-radio { padding: 9px 16px; border: 1px solid var(--border-md); border-radius: 4px; font-size: 12px; font-weight: 600; color: var(--slate); cursor: pointer; transition: all 0.2s; }
+    .q-radio:hover { border-color: var(--slate); }
+    .q-radio.selected { border-color: var(--teal); background: var(--teal-dim); color: var(--teal); }
+
+    /* ── Dashboard (Step 4) ───────────────────────────────────────── */
+    .dash-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+    .dash-stat { background: var(--navy); border: 1px solid var(--border-md); border-radius: 6px; padding: 20px; text-align: center; }
+    .dash-stat-num { font-size: 36px; font-weight: 800; line-height: 1; }
+    .dash-stat-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-top: 6px; }
+
+    .gap-list { margin-bottom: 32px; }
+    .gap-item { display: flex; align-items: flex-start; gap: 14px; padding: 16px 20px; background: var(--navy); border: 1px solid var(--border-md); border-radius: 6px; margin-bottom: 8px; }
+    .gap-icon { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+    .gap-icon.critical { background: var(--red-dim); color: var(--red); border: 1px solid var(--red-border); }
+    .gap-icon.warning { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+    .gap-icon.info { background: var(--teal-dim); color: var(--teal); border: 1px solid var(--teal-border); }
+    .gap-title { font-size: 14px; font-weight: 700; color: var(--ice); }
+    .gap-desc { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+    .gap-tool { font-size: 11px; color: var(--slate); font-weight: 600; margin-top: 4px; }
+
+    .tool-register { width: 100%; border-collapse: collapse; margin-bottom: 32px; }
+    .tool-register th { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border-md); }
+    .tool-register td { font-size: 12px; color: var(--ice); padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .tool-register tr:hover td { background: rgba(60,184,176,0.03); }
+
+    .badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+    .badge-exposed { background: var(--red-dim); color: var(--red); border: 1px solid var(--red-border); }
+    .badge-review { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+    .badge-canadian { background: var(--teal-dim); color: var(--teal); border: 1px solid var(--teal-border); }
+    .badge-yes { background: var(--teal-dim); color: var(--teal); }
+    .badge-no { background: var(--red-dim); color: var(--red); }
+    .badge-unknown { background: rgba(122,146,168,0.12); color: var(--slate); }
+
+    /* ── Report (Step 5) ──────────────────────────────────────────── */
+    .report-actions { display: flex; gap: 12px; margin-bottom: 32px; }
+    .report-frame { background: #fff; color: #1a1a2e; border-radius: 8px; overflow: hidden; }
+    .report-inner { padding: 48px; }
+    .r-header { border-bottom: 2px solid #0A1018; padding-bottom: 24px; margin-bottom: 32px; }
+    .r-logo { font-size: 18px; font-weight: 800; color: #0A1018; margin-bottom: 4px; }
+    .r-logo span { font-weight: 400; color: #7A92A8; }
+    .r-title { font-size: 24px; font-weight: 800; color: #0A1018; margin-top: 16px; }
+    .r-meta { font-size: 12px; color: #6B7B8D; margin-top: 6px; }
+    .r-section { margin-bottom: 28px; }
+    .r-section-title { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #3CB8B0; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e0e0e0; }
+    .r-text { font-size: 13px; color: #333; line-height: 1.7; margin-bottom: 8px; }
+    .r-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-bottom: 16px; }
+    .r-table th { background: #f5f5f5; color: #333; font-weight: 700; text-align: left; padding: 8px 10px; border: 1px solid #ddd; text-transform: uppercase; letter-spacing: 0.04em; font-size: 10px; }
+    .r-table td { padding: 8px 10px; border: 1px solid #ddd; color: #333; vertical-align: top; }
+    .r-table tr:nth-child(even) td { background: #fafafa; }
+    .r-badge { display: inline-block; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 2px; text-transform: uppercase; }
+    .r-badge.exposed { background: #fde8e5; color: #c0392b; }
+    .r-badge.review { background: #fef9e7; color: #b7950b; }
+    .r-badge.canadian { background: #e8f8f5; color: #1abc9c; }
+    .r-gap { padding: 10px 14px; border-left: 3px solid; margin-bottom: 8px; font-size: 12px; }
+    .r-gap.critical { border-color: #e74c3c; background: #fdf2f2; }
+    .r-gap.warning { border-color: #f39c12; background: #fef9e7; }
+    .r-gap.info { border-color: #3CB8B0; background: #e8f8f5; }
+    .r-gap-title { font-weight: 700; color: #1a1a2e; }
+    .r-gap-desc { color: #555; margin-top: 3px; line-height: 1.5; }
+    .r-footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #ddd; font-size: 11px; color: #999; text-align: center; }
+
+    /* ── Scrollbar ────────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--midnight); }
+    ::-webkit-scrollbar-thumb { background: var(--border-md); border-radius: 3px; }
+
+    /* ── Mobile ───────────────────────────────────────────────────── */
+    @media(max-width:768px) {
+      nav { padding: 0 16px; }
+      .nav-sub { display: none; }
+      .nav-divider { display: none; }
+      .nav-badge { font-size: 9px; padding: 3px 8px; white-space: nowrap; }
+      .app { padding: 88px 16px 60px; }
+      .progress-label { display: none; }
+      .progress-line { min-width: 8px; }
+      .field-row { grid-template-columns: 1fr; }
+      .q-checks { grid-template-columns: 1fr; }
+      .dash-grid { grid-template-columns: 1fr; }
+      .report-inner { padding: 24px; }
+      .btn-row { flex-direction: column; }
+      .stack-tally { flex-wrap: wrap; gap: 16px; }
+      .tool-register { font-size: 11px; }
+    }
+
+    /* ── Print ────────────────────────────────────────────────────── */
+    @media print {
+      body { background: #fff; }
+      nav, .progress, .step-eyebrow, .step-sub, .btn-row, .report-actions, .app > .step:not(#step5) { display: none !important; }
+      .app { padding: 0; max-width: 100%; }
+      .step { display: block !important; }
+      .report-frame { box-shadow: none; border: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ── Nav ──────────────────────────────────────────────────────── -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+      <span class="nav-divider"></span>
+      <span class="nav-sub">HarbourScan</span>
+    </a>
+    <span class="nav-badge">Free Assessment</span>
+  </nav>
+
+  <div class="app">
+    <!-- ── Progress ────────────────────────────────────────────── -->
+    <div class="progress" id="progressBar">
+      <div class="progress-step active" data-step="1"><div class="progress-num">1</div><div class="progress-label">Profile</div></div>
+      <div class="progress-line" data-line="1"></div>
+      <div class="progress-step" data-step="2"><div class="progress-num">2</div><div class="progress-label">Stack</div></div>
+      <div class="progress-line" data-line="2"></div>
+      <div class="progress-step" data-step="3"><div class="progress-num">3</div><div class="progress-label">Data Flows</div></div>
+      <div class="progress-line" data-line="3"></div>
+      <div class="progress-step" data-step="4"><div class="progress-num">4</div><div class="progress-label">Review</div></div>
+      <div class="progress-line" data-line="4"></div>
+      <div class="progress-step" data-step="5"><div class="progress-num">5</div><div class="progress-label">Report</div></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- STEP 1: Organization Profile                              -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="step visible" id="step1">
+      <div class="step-eyebrow">Step 1 of 5</div>
+      <h1 class="step-title">Tell us about your <em>organization</em></h1>
+      <p class="step-sub">All inputs remain local to your browser. Nothing is stored or transmitted — your report is generated locally and downloaded directly.</p>
+
+      <div class="field">
+        <label class="field-label">Organization Name</label>
+        <input type="text" class="field-input" id="orgName" placeholder="e.g. Tremblay & Associates LLP" />
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">Province</label>
+          <select class="field-select" id="orgProvince">
+            <option value="">Select province…</option>
+            <option value="AB">Alberta</option>
+            <option value="BC">British Columbia</option>
+            <option value="MB">Manitoba</option>
+            <option value="NB">New Brunswick</option>
+            <option value="NL">Newfoundland and Labrador</option>
+            <option value="NS">Nova Scotia</option>
+            <option value="NT">Northwest Territories</option>
+            <option value="NU">Nunavut</option>
+            <option value="ON">Ontario</option>
+            <option value="PE">Prince Edward Island</option>
+            <option value="QC">Quebec</option>
+            <option value="SK">Saskatchewan</option>
+            <option value="YT">Yukon</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Industry</label>
+          <select class="field-select" id="orgIndustry">
+            <option value="">Select industry…</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">Approximate Headcount</label>
+          <select class="field-select" id="orgSize">
+            <option value="">Select…</option>
+            <option value="1-10">1–10 employees</option>
+            <option value="11-50">11–50 employees</option>
+            <option value="51-200">51–200 employees</option>
+            <option value="201-500">201–500 employees</option>
+            <option value="500+">500+ employees</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Privacy Officer Designated?</label>
+          <select class="field-select" id="orgDPO">
+            <option value="">Select…</option>
+            <option value="yes">Yes — someone is appointed</option>
+            <option value="ceo">No — defaults to CEO</option>
+            <option value="no">No — not yet addressed</option>
+            <option value="unsure">Not sure</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">Contact Name (for report)</label>
+          <input type="text" class="field-input" id="orgContact" placeholder="e.g. Marie Tremblay" />
+        </div>
+        <div class="field">
+          <label class="field-label">Contact Email</label>
+          <input type="email" class="field-input" id="orgEmail" placeholder="e.g. marie@tremblay.ca" />
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label class="field-label">Breach Incident Plan in Place?</label>
+          <select class="field-select" id="orgBreach">
+            <option value="">Select…</option>
+            <option value="yes">Yes — documented plan</option>
+            <option value="partial">Partially — informal process</option>
+            <option value="no">No</option>
+            <option value="unsure">Not sure</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field-label">Incident Register Maintained?</label>
+          <select class="field-select" id="orgIncidentLog">
+            <option value="">Select…</option>
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            <option value="unsure">Not sure</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="goToStep(2)">Continue to Stack Selection →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- STEP 2: Stack Selection                                   -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="step" id="step2">
+      <div class="step-eyebrow">Step 2 of 5</div>
+      <h1 class="step-title">Select your <em>tools</em></h1>
+      <p class="step-sub">Search for the SaaS tools your organization uses. We'll map each one to its parent jurisdiction. Add as many as apply.</p>
+
+      <div class="stack-tally" id="stackTally">
+        <div class="tally-item"><div class="tally-num t-total" id="tallyTotal">0</div><div class="tally-label">Selected</div></div>
+        <div class="tally-item"><div class="tally-num t-exposed" id="tallyExposed">0</div><div class="tally-label">Exposed</div></div>
+        <div class="tally-item"><div class="tally-num t-review" id="tallyReview">0</div><div class="tally-label">Review</div></div>
+        <div class="tally-item"><div class="tally-num t-canadian" id="tallyCanadian">0</div><div class="tally-label">Canadian</div></div>
+      </div>
+
+      <div class="stack-search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="stackInput" placeholder="Search tools — e.g. Slack, Clio, QuickBooks, Zoom…" autocomplete="off" />
+        <div class="stack-dropdown" id="stackDropdown"></div>
+      </div>
+
+      <div class="selected-tools" id="selectedTools"></div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goToStep(1)">← Back</button>
+        <button class="btn btn-primary" id="toStep3Btn" onclick="goToStep(3)" disabled>Continue to Data Flow Mapping →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- STEP 3: Data Flow Questionnaire                           -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="step" id="step3">
+      <div class="step-eyebrow">Step 3 of 5</div>
+      <h1 class="step-title">Map <em>data flows</em></h1>
+      <p class="step-sub">For each tool, tell us what personal information flows through it and what safeguards are in place. This builds your register of processing activities.</p>
+
+      <div class="q-progress" id="qProgress"></div>
+      <div id="qContainer"></div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" id="qBackBtn">← Previous Tool</button>
+        <button class="btn btn-primary" id="qNextBtn">Next Tool →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- STEP 4: Review & Risk Dashboard                           -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="step" id="step4">
+      <div class="step-eyebrow">Step 4 of 5</div>
+      <h1 class="step-title">Risk <em>dashboard</em></h1>
+      <p class="step-sub">Your jurisdictional exposure at a glance, with identified compliance gaps ranked by severity.</p>
+
+      <div class="dash-grid" id="dashStats"></div>
+      <h3 style="font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:16px;">Compliance Gaps</h3>
+      <div class="gap-list" id="gapList"></div>
+      <h3 style="font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:16px; margin-top:32px;">Tool Register</h3>
+      <div style="overflow-x:auto;">
+        <table class="tool-register" id="toolRegister">
+          <thead><tr><th>Tool</th><th>Parent</th><th>Jurisdiction</th><th>Risk</th><th>Data Categories</th><th>DPA</th><th>Residency</th></tr></thead>
+          <tbody id="registerBody"></tbody>
+        </table>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goToStep(3)">← Back to Data Flows</button>
+        <button class="btn btn-primary" onclick="goToStep(5)">Generate Report →</button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- STEP 5: Report                                            -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div class="step" id="step5">
+      <div class="step-eyebrow">Step 5 of 5</div>
+      <h1 class="step-title">Your <em>report</em></h1>
+      <p class="step-sub">Review your full sovereignty assessment below. Print it or save as PDF.</p>
+
+      <div class="report-actions">
+        <button class="btn btn-primary" onclick="window.print()">🖨 Print / Save as PDF</button>
+        <button class="btn btn-secondary" onclick="downloadHTML()">⬇ Download as HTML</button>
+      </div>
+
+      <div class="report-frame" id="reportFrame"></div>
+    </div>
+
+  </div><!-- /app -->
+
+  <!-- ── Data Files ──────────────────────────────────────────── -->
+  <script src="/assets/saas-db.js"></script>
+  <script src="/assets/regulatory-map.js"></script>
+  <script>
+  /* ══════════════════════════════════════════════════════════════
+     HARBOURSCAN — APPLICATION LOGIC
+     ══════════════════════════════════════════════════════════════ */
+
+  // ── Industry Profiles ─────────────────────────────────────────
+  const industryProfiles = [
+    {id:"legal", label:"Legal / Law Firm"},
+    {id:"healthcare", label:"Healthcare / Clinic"},
+    {id:"accounting", label:"Accounting / Tax"},
+    {id:"realestate", label:"Real Estate / Construction"},
+    {id:"finance", label:"Financial Services"},
+    {id:"education", label:"Education"},
+    {id:"government", label:"Government / Public Sector"},
+    {id:"technology", label:"Technology / SaaS"},
+    {id:"restaurant", label:"Restaurant / Hospitality"},
+    {id:"mining", label:"Mining / Resources"},
+    {id:"nonprofit", label:"Non-Profit / Charity"},
+    {id:"retail", label:"Retail / E-Commerce"},
+    {id:"media", label:"Media / Publishing"},
+    {id:"other", label:"Other"}
+  ];
+
+  // ── Regulatory Map ────────────────────────────────────────────
+  const regulatoryMap = {
+  AB:{province:"Alberta",laws:["PIPA","HIA (health)"],authority:"OIPC Alberta",breach:"Mandatory breach notification under PIPA."},
+  BC:{province:"British Columbia",laws:["PIPA BC","FIPPA (public)"],authority:"OIPC BC",breach:"Mandatory breach notification under PIPA BC."},
+  MB:{province:"Manitoba",laws:["PIPEDA","PHIA (health)"],authority:"Manitoba Ombudsman",breach:"PIPEDA mandatory breach notification."},
+  NB:{province:"New Brunswick",laws:["PIPEDA"],authority:"OIPC NB",breach:"PIPEDA mandatory breach notification."},
+  NL:{province:"Newfoundland & Labrador",laws:["PIPEDA","PHIA (health)"],authority:"OIPC NL",breach:"PIPEDA mandatory breach notification."},
+  NS:{province:"Nova Scotia",laws:["PIPEDA"],authority:"OIPC NS",breach:"PIPEDA mandatory breach notification."},
+  NT:{province:"Northwest Territories",laws:["PIPEDA"],authority:"IPC NWT",breach:"PIPEDA mandatory breach notification."},
+  NU:{province:"Nunavut",laws:["PIPEDA"],authority:"IPC Nunavut",breach:"PIPEDA mandatory breach notification."},
+  ON:{province:"Ontario",laws:["PIPEDA","PHIPA (health)","FIPPA (public)"],authority:"IPC Ontario",breach:"PIPEDA + PHIPA mandatory breach notification."},
+  PE:{province:"Prince Edward Island",laws:["PIPEDA"],authority:"IPC PEI",breach:"PIPEDA mandatory breach notification."},
+  QC:{province:"Quebec",laws:["Law 25","Access Act (public)"],authority:"Commission d'accès à l'information (CAI)",breach:"Mandatory notification to CAI. Penalties up to 4% global turnover or $25M."},
+  SK:{province:"Saskatchewan",laws:["PIPEDA","HIPA (health)"],authority:"OIPC Saskatchewan",breach:"PIPEDA mandatory breach notification."},
+  YT:{province:"Yukon",laws:["PIPEDA"],authority:"IPC Yukon",breach:"PIPEDA mandatory breach notification."}
+};
+
+  // ── SaaS Database ────────────────────────────────────────────
+  const saasDB=[
+  {name:"Slack",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Global",risk:"exposed"},
+  {name:"Microsoft Teams",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
+  {name:"Microsoft 365",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
+  {name:"Google Workspace",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
+  {name:"Zoom",parent:"Zoom Video Communications",hq:"San Jose, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US primary",risk:"exposed"},
+  {name:"Notion",parent:"Notion Labs Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US only",risk:"exposed"},
+  {name:"Asana",parent:"Asana Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Jira",parent:"Atlassian Corporation",hq:"Sydney, AU / Delaware",jurisdiction:"US/AU",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
+  {name:"Monday.com",parent:"monday.com Ltd.",hq:"Tel Aviv, Israel",jurisdiction:"Israel",cloudAct:false,dataResidency:"US/EU",risk:"review"},
+  {name:"Dropbox",parent:"Dropbox Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Box",parent:"Box Inc.",hq:"Redwood City, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
+  {name:"DocuSign",parent:"DocuSign Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
+  {name:"Salesforce",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
+  {name:"HubSpot",parent:"HubSpot Inc.",hq:"Cambridge, MA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU",risk:"exposed"},
+  {name:"Mailchimp",parent:"Intuit Inc.",hq:"Atlanta, GA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"AWS",parent:"Amazon.com Inc.",hq:"Seattle, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada region available",risk:"review"},
+  {name:"Microsoft Azure",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada region available",risk:"review"},
+  {name:"Google Cloud",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada region available",risk:"review"},
+  {name:"GitHub",parent:"Microsoft Corporation",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Figma",parent:"Adobe Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Canva",parent:"Canva Pty Ltd",hq:"Sydney, Australia",jurisdiction:"AU",cloudAct:false,dataResidency:"US/AU",risk:"review"},
+  {name:"Adobe Creative Cloud",parent:"Adobe Inc.",hq:"San Jose, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Stripe",parent:"Stripe Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"QuickBooks Online",parent:"Intuit Inc.",hq:"Mountain View, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Xero",parent:"Xero Ltd",hq:"Wellington, NZ",jurisdiction:"NZ",cloudAct:false,dataResidency:"US/NZ/AU",risk:"review"},
+  {name:"FreshBooks",parent:"2ndSite Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",risk:"canadian"},
+  {name:"Wave",parent:"H&R Block Inc.",hq:"Toronto, ON",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"review"},
+  {name:"BambooHR",parent:"BambooHR LLC",hq:"Lindon, UT",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Workday",parent:"Workday Inc.",hq:"Pleasanton, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
+  {name:"Gusto",parent:"Gusto Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"ADP",parent:"ADP Inc.",hq:"Roseland, NJ",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada",risk:"review"},
+  {name:"Rippling",parent:"Rippling Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Zendesk",parent:"Zendesk Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
+  {name:"Intercom",parent:"Intercom Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
+  {name:"Okta",parent:"Okta Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
+  {name:"1Password",parent:"AgileBits Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US/EU",risk:"canadian"},
+  {name:"CrowdStrike",parent:"CrowdStrike Holdings",hq:"Austin, TX",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
+  {name:"Snowflake",parent:"Snowflake Inc.",hq:"Bozeman, MT",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
+  {name:"OpenAI",parent:"OpenAI Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Anthropic",parent:"Anthropic PBC",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Shopify",parent:"Shopify Inc.",hq:"Ottawa, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",risk:"canadian"},
+  {name:"Clio",parent:"Themis Solutions Inc.",hq:"Burnaby, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US/EU",risk:"canadian"},
+  {name:"Hootsuite",parent:"Hootsuite Inc.",hq:"Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"US",risk:"review"},
+  {name:"Wealthsimple",parent:"Wealthsimple Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Cohere",parent:"Cohere Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada available",risk:"canadian"},
+  {name:"Humi",parent:"Humi Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"TELUS Health",parent:"TELUS Corporation",hq:"Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Jane App",parent:"Jane Software Inc.",hq:"North Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Plaid",parent:"Plaid Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Square",parent:"Block Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Toast",parent:"Toast Inc.",hq:"Boston, MA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Moneris",parent:"RBC / BMO (JV)",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Koho",parent:"Koho Financial Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"TouchBistro",parent:"TouchBistro Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"ServiceNow",parent:"ServiceNow Inc.",hq:"Santa Clara, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"exposed"},
+  {name:"SAP",parent:"SAP SE",hq:"Walldorf, Germany",jurisdiction:"EU",cloudAct:false,dataResidency:"EU/Global",risk:"review"},
+  {name:"Oracle ERP",parent:"Oracle Corporation",hq:"Austin, TX",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada",risk:"exposed"},
+  {name:"OpenText",parent:"Open Text Corporation",hq:"Waterloo, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/Global",risk:"canadian"},
+  {name:"Procore",parent:"Procore Technologies",hq:"Carpinteria, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Harvey AI",parent:"Harvey AI Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"NetDocuments",parent:"NetDocuments",hq:"Lehi, UT",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
+  {name:"DoorDash",parent:"DoorDash Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Uber Eats",parent:"Uber Technologies",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"PayPal",parent:"PayPal Holdings",hq:"San Jose, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Sage",parent:"Sage Group plc",hq:"Newcastle, UK",jurisdiction:"UK",cloudAct:false,dataResidency:"UK/US/Canada",risk:"review"},
+  {name:"Lightspeed Restaurant",parent:"Lightspeed Commerce",hq:"Montreal, QC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",risk:"canadian"},
+  {name:"Palantir",parent:"Palantir Technologies",hq:"Denver, CO",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Datadog",parent:"Datadog Inc.",hq:"New York, NY",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU",risk:"exposed"},
+  {name:"Grammarly",parent:"Grammarly Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
+  {name:"Benevity",parent:"Benevity Inc.",hq:"Calgary, AB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Coveo",parent:"Coveo Solutions Inc.",hq:"Quebec City, QC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Docebo",parent:"Docebo Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Helcim",parent:"Helcim Inc.",hq:"Calgary, AB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Neo Financial",parent:"Neo Financial Technologies",hq:"Calgary, AB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"TaxCycle",parent:"Trilogy Software",hq:"Winnipeg, MB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
+  {name:"Seequent Leapfrog",parent:"Bentley Systems",hq:"Exton, PA",jurisdiction:"US",cloudAct:true,dataResidency:"Various",risk:"exposed"},
+  {name:"Deswik",parent:"Sandvik AB",hq:"Stockholm, Sweden",jurisdiction:"Sweden",cloudAct:false,dataResidency:"Various",risk:"review"},
+  {name:"Microsoft Dynamics",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
+  {name:"Maptek Vulcan",parent:"Maptek Pty Ltd",hq:"Adelaide, AU",jurisdiction:"Australia",cloudAct:false,dataResidency:"Various",risk:"review"},
+];
+
+  // ── State ──────────────────────────────────────────────────────
+  const state = {
+    org: {},
+    selectedTools: [],   // array of saasDB entries
+    toolData: {},        // keyed by tool name → questionnaire answers
+    currentToolIndex: 0
+  };
+
+
+
+
+
+
+  // ── Init ───────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    // Populate industry dropdown
+    const indSel = document.getElementById('orgIndustry');
+    industryProfiles.forEach(p => {
+      const o = document.createElement('option');
+      o.value = p.id; o.textContent = p.label;
+      indSel.appendChild(o);
+    });
+
+    // Stack search
+    initStackSearch();
+
+    // Questionnaire nav
+    document.getElementById('qBackBtn').addEventListener('click', () => navQuestion(-1));
+    document.getElementById('qNextBtn').addEventListener('click', () => navQuestion(1));
+  });
+
+  // ── Navigation ─────────────────────────────────────────────────
+  function goToStep(n) {
+    // Collect data from current step if needed
+    if (n === 2) collectOrgProfile();
+    if (n === 3 && state.selectedTools.length === 0) return;
+    if (n === 3) { state.currentToolIndex = 0; renderQuestion(); }
+    if (n === 4) buildDashboard();
+    if (n === 5) buildReport();
+
+    // Show/hide steps
+    document.querySelectorAll('.step').forEach(s => s.classList.remove('visible'));
+    document.getElementById('step' + n).classList.add('visible');
+
+    // Update progress bar
+    document.querySelectorAll('.progress-step').forEach(s => {
+      const sn = parseInt(s.dataset.step);
+      s.classList.remove('active', 'done');
+      if (sn === n) s.classList.add('active');
+      else if (sn < n) s.classList.add('done');
+    });
+    document.querySelectorAll('.progress-line').forEach(l => {
+      const ln = parseInt(l.dataset.line);
+      l.classList.toggle('done', ln < n);
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function collectOrgProfile() {
+    state.org = {
+      name: document.getElementById('orgName').value || 'Unnamed Organization',
+      province: document.getElementById('orgProvince').value,
+      industry: document.getElementById('orgIndustry').value,
+      size: document.getElementById('orgSize').value,
+      dpo: document.getElementById('orgDPO').value,
+      contact: document.getElementById('orgContact').value,
+      email: document.getElementById('orgEmail').value,
+      breachPlan: document.getElementById('orgBreach').value,
+      incidentLog: document.getElementById('orgIncidentLog').value
+    };
+  }
+
+  // ── Stack Search (Step 2) ──────────────────────────────────────
+  function initStackSearch() {
+    const input = document.getElementById('stackInput');
+    const dropdown = document.getElementById('stackDropdown');
+    let debounce;
+
+    input.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        const q = input.value.trim().toLowerCase();
+        if (q.length < 1) { dropdown.classList.remove('open'); return; }
+
+        const matches = (typeof saasDB !== 'undefined' ? saasDB : [])
+          .filter(t => t.name.toLowerCase().includes(q) || t.parent.toLowerCase().includes(q))
+          .filter(t => !state.selectedTools.find(s => s.name === t.name))
+          .slice(0, 8);
+
+        if (matches.length === 0) {
+          dropdown.innerHTML = '<div style="padding:14px 20px;font-size:13px;color:var(--muted);">No matching tools found. You can still proceed with what you have.</div>';
+        } else {
+          dropdown.innerHTML = matches.map(t => `
+            <div class="stack-option" data-name="${t.name}">
+              <div>
+                <div class="stack-option-name">${t.name}</div>
+                <div class="stack-option-meta">${t.parent} · ${t.hq}</div>
+              </div>
+              <span class="badge badge-${t.risk}">${t.risk}</span>
+            </div>
+          `).join('');
+        }
+        dropdown.classList.add('open');
+
+        dropdown.querySelectorAll('.stack-option').forEach(opt => {
+          opt.addEventListener('click', () => {
+            const tool = (saasDB || []).find(t => t.name === opt.dataset.name);
+            if (tool) addTool(tool);
+            input.value = '';
+            dropdown.classList.remove('open');
+          });
+        });
+      }, 150);
+    });
+
+    input.addEventListener('blur', () => { setTimeout(() => dropdown.classList.remove('open'), 200); });
+    input.addEventListener('focus', () => { if (input.value.trim().length > 0) input.dispatchEvent(new Event('input')); });
+  }
+
+  function addTool(tool) {
+    if (state.selectedTools.find(t => t.name === tool.name)) return;
+    state.selectedTools.push(tool);
+    state.toolData[tool.name] = { categories: [], subjects: [], volume: '', residency: '', dpa: '', pia: '', automatedDecisions: '' };
+    renderSelectedTools();
+    updateTally();
+  }
+
+  function removeTool(name) {
+    state.selectedTools = state.selectedTools.filter(t => t.name !== name);
+    delete state.toolData[name];
+    renderSelectedTools();
+    updateTally();
+  }
+
+  function renderSelectedTools() {
+    const container = document.getElementById('selectedTools');
+    container.innerHTML = state.selectedTools.map((t, i) =>
+      `<div class="tool-chip risk-${t.risk}">
+        ${t.name}
+        <span class="remove" data-idx="${i}">&times;</span>
+      </div>`
+    ).join('');
+    // Attach handlers via data attributes instead of inline onclick
+    container.querySelectorAll('.remove').forEach(el => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.dataset.idx);
+        const name = state.selectedTools[idx]?.name;
+        if (name) removeTool(name);
+      });
+    });
+    document.getElementById('toStep3Btn').disabled = state.selectedTools.length === 0;
+  }
+
+  function updateTally() {
+    const tools = state.selectedTools;
+    document.getElementById('tallyTotal').textContent = tools.length;
+    document.getElementById('tallyExposed').textContent = tools.filter(t => t.risk === 'exposed').length;
+    document.getElementById('tallyReview').textContent = tools.filter(t => t.risk === 'review').length;
+    document.getElementById('tallyCanadian').textContent = tools.filter(t => t.risk === 'canadian').length;
+  }
+
+  // ── Questionnaire (Step 3) ─────────────────────────────────────
+  function renderQuestion() {
+    const idx = state.currentToolIndex;
+    const tool = state.selectedTools[idx];
+    if (!tool) return;
+    const data = state.toolData[tool.name];
+    const total = state.selectedTools.length;
+    const tn = tool.name.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+
+    document.getElementById('qProgress').innerHTML = `Tool <span>${idx + 1}</span> of <span>${total}</span>: <strong style="color:var(--ice)">${tool.name}</strong>`;
+
+    const isQuebec = state.org.province === 'QC';
+
+    document.getElementById('qContainer').innerHTML = `
+      <div class="q-card">
+        <div class="q-card-header">
+          <div>
+            <div class="q-tool-name">${tool.name}</div>
+            <div class="q-tool-jurisdiction">${tool.parent} · ${tool.jurisdiction} · ${tool.cloudAct ? 'CLOUD Act Exposed' : 'Not CLOUD Act'}</div>
+          </div>
+          <span class="badge badge-${tool.risk}">${tool.risk}</span>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-label">What personal information flows through this tool?</div>
+          <div class="q-section-help">Select all categories of personal information that are collected, used, stored, or transmitted via ${tool.name}.</div>
+          <div class="q-checks" id="qCategories">
+            ${dataCategories.map(c => `
+              <div class="q-check ${data.categories.includes(c.id) ? 'selected' : ''}" data-id="${c.id}" onclick="toggleCheck(this, '${tn}', 'categories')">
+                <input type="checkbox" ${data.categories.includes(c.id) ? 'checked' : ''} />
+                <div class="q-check-box"></div>
+                <div>
+                  <div class="q-check-label">${c.label}</div>
+                  <div class="q-check-desc">${c.description}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-label">Whose data?</div>
+          <div class="q-radio-group" id="qSubjects">
+            ${['Employees','Clients','Patients','Students','Public/Citizens','Minors','Other'].map(s => `
+              <div class="q-radio ${data.subjects.includes(s) ? 'selected' : ''}" onclick="toggleRadioMulti(this, '${tn}', 'subjects', '${s}')">${s}</div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-label">Approximate number of data subjects</div>
+          <div class="q-radio-group" id="qVolume">
+            ${['<100','100–1,000','1,000–10,000','10,000+'].map(v => `
+              <div class="q-radio ${data.volume === v ? 'selected' : ''}" onclick="setRadio(this, '${tn}', 'volume', '${v}')">${v}</div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="q-section">
+          <div class="q-section-label">Safeguards & Configuration</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <div>
+              <div class="field-label">Canadian data residency configured?</div>
+              <div class="q-radio-group" id="qResidency">
+                ${['Yes','No','Don\'t know','Not available'].map(v => `
+                  <div class="q-radio ${data.residency === v ? 'selected' : ''}" onclick="setRadio(this, '${tn}', 'residency', '${v}')">${v}</div>
+                `).join('')}
+              </div>
+            </div>
+            <div>
+              <div class="field-label">Data Processing Agreement (DPA) in place?</div>
+              <div class="q-radio-group" id="qDPA">
+                ${['Yes','No','Don\'t know'].map(v => `
+                  <div class="q-radio ${data.dpa === v ? 'selected' : ''}" onclick="setRadio(this, '${tn}', 'dpa', '${v}')">${v}</div>
+                `).join('')}
+              </div>
+            </div>
+            <div>
+              <div class="field-label">Privacy Impact Assessment done for this tool?</div>
+              <div class="q-radio-group" id="qPIA">
+                ${['Yes','No','Don\'t know'].map(v => `
+                  <div class="q-radio ${data.pia === v ? 'selected' : ''}" onclick="setRadio(this, '${tn}', 'pia', '${v}')">${v}</div>
+                `).join('')}
+              </div>
+            </div>
+            <div>
+              <div class="field-label">Automated decision-making about individuals?</div>
+              <div class="q-radio-group" id="qAutoDecisions">
+                ${['Yes','No','Don\'t know'].map(v => `
+                  <div class="q-radio ${data.automatedDecisions === v ? 'selected' : ''}" onclick="setRadio(this, '${tn}', 'automatedDecisions', '${v}')">${v}</div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Update nav buttons
+    document.getElementById('qBackBtn').textContent = idx === 0 ? '← Back to Stack' : '← Previous Tool';
+    document.getElementById('qBackBtn').onclick = () => idx === 0 ? goToStep(2) : navQuestion(-1);
+    document.getElementById('qNextBtn').textContent = idx === total - 1 ? 'Continue to Review →' : 'Next Tool →';
+    document.getElementById('qNextBtn').onclick = () => idx === total - 1 ? goToStep(4) : navQuestion(1);
+  }
+
+  function toggleCheck(el, toolName, field) {
+    const id = el.dataset.id;
+    const arr = state.toolData[toolName][field];
+    const idx = arr.indexOf(id);
+    if (idx > -1) arr.splice(idx, 1); else arr.push(id);
+    el.classList.toggle('selected');
+  }
+
+  function toggleRadioMulti(el, toolName, field, value) {
+    const arr = state.toolData[toolName][field];
+    const idx = arr.indexOf(value);
+    if (idx > -1) arr.splice(idx, 1); else arr.push(value);
+    el.classList.toggle('selected');
+  }
+
+  function setRadio(el, toolName, field, value) {
+    state.toolData[toolName][field] = value;
+    el.parentElement.querySelectorAll('.q-radio').forEach(r => r.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  function navQuestion(dir) {
+    state.currentToolIndex += dir;
+    state.currentToolIndex = Math.max(0, Math.min(state.currentToolIndex, state.selectedTools.length - 1));
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Dashboard (Step 4) ─────────────────────────────────────────
+  function buildDashboard() {
+    const tools = state.selectedTools;
+    const reg = regulatoryMap[state.org.province] || {};
+    const isQuebec = state.org.province === 'QC';
+
+    // Stats
+    const exposed = tools.filter(t => t.risk === 'exposed').length;
+    const crossBorder = tools.filter(t => t.jurisdiction !== 'Canada').length;
+    const sensitiveExposed = tools.filter(t => {
+      const d = state.toolData[t.name];
+      const hasSensitive = d.categories.some(c => {
+        const cat = dataCategories.find(dc => dc.id === c);
+        return cat && (cat.sensitivity === 'very_high' || cat.sensitivity === 'high');
+      });
+      return hasSensitive && t.risk === 'exposed';
+    }).length;
+
+    document.getElementById('dashStats').innerHTML = `
+      <div class="dash-stat"><div class="dash-stat-num" style="color:var(--ice)">${tools.length}</div><div class="dash-stat-label">Total Tools</div></div>
+      <div class="dash-stat"><div class="dash-stat-num" style="color:var(--red)">${exposed}</div><div class="dash-stat-label">Foreign Jurisdiction</div></div>
+      <div class="dash-stat"><div class="dash-stat-num" style="color:var(--gold)">${sensitiveExposed}</div><div class="dash-stat-label">Sensitive Data Exposed</div></div>
+    `;
+
+    // Gaps
+    const gaps = [];
+
+    // Governance gaps
+    if (state.org.dpo === 'no' || state.org.dpo === 'unsure') {
+      gaps.push({ severity: 'critical', title: 'No Privacy Officer designated', desc: isQuebec ? 'Law 25 requires a Privacy Officer. Without one, the CEO is the default and personally liable.' : 'PIPEDA best practice strongly recommends designating a Privacy Officer.', tools: '' });
+    }
+    if (state.org.breachPlan === 'no' || state.org.breachPlan === 'unsure') {
+      gaps.push({ severity: 'critical', title: 'No breach incident response plan', desc: isQuebec ? 'Law 25 requires reporting breaches presenting serious harm to the CAI. A documented plan is essential.' : 'PIPEDA requires breach reporting to the OPC. An incident plan is mandatory.', tools: '' });
+    }
+    if (state.org.incidentLog !== 'yes') {
+      gaps.push({ severity: 'warning', title: 'No incident register maintained', desc: isQuebec ? 'Law 25 requires maintaining an incident register for 5 years.' : 'PIPEDA requires organizations to keep records of all breaches.', tools: '' });
+    }
+
+    // Per-tool gaps
+    tools.forEach(t => {
+      const d = state.toolData[t.name];
+      const hasSensitive = d.categories.some(c => {
+        const cat = dataCategories.find(dc => dc.id === c);
+        return cat && (cat.sensitivity === 'very_high' || cat.sensitivity === 'high');
+      });
+      const isForeign = t.jurisdiction !== 'Canada';
+
+      if (isForeign && d.dpa !== 'Yes') {
+        gaps.push({ severity: 'critical', title: `Missing DPA: ${t.name}`, desc: `${t.name} is in ${t.jurisdiction}. ${isQuebec ? 'Law 25 requires a written agreement for all cross-border transfers.' : 'A DPA with cross-border safeguards is required under PIPEDA.'} No DPA is currently documented.`, tools: t.name });
+      }
+      if (isForeign && d.pia !== 'Yes' && isQuebec) {
+        gaps.push({ severity: 'critical', title: `Missing PIA/TIA: ${t.name}`, desc: `Law 25 mandates a Transfer Impact Assessment before any personal information leaves Quebec. ${t.name} (${t.jurisdiction}) requires a completed TIA.`, tools: t.name });
+      }
+      if (hasSensitive && isForeign && d.residency !== 'Yes') {
+        gaps.push({ severity: 'critical', title: `Sensitive data in foreign jurisdiction: ${t.name}`, desc: `High-sensitivity data (${d.categories.filter(c => { const cat = dataCategories.find(dc => dc.id === c); return cat && cat.sensitivity !== 'none' && cat.sensitivity !== 'moderate'; }).map(c => dataCategories.find(dc => dc.id === c)?.label).join(', ')}) flows through ${t.name} (${t.jurisdiction}) without Canadian data residency.`, tools: t.name });
+      }
+      if (t.cloudAct && hasSensitive) {
+        gaps.push({ severity: 'warning', title: `CLOUD Act exposure: ${t.name}`, desc: `${t.name}'s parent (${t.parent}) is subject to the US CLOUD Act. US authorities can compel disclosure of data regardless of where it is stored.`, tools: t.name });
+      }
+      if (d.automatedDecisions === 'Yes') {
+        gaps.push({ severity: 'warning', title: `Automated decision-making: ${t.name}`, desc: isQuebec ? 'Law 25 requires informing individuals when automated processing affects their rights, and providing the right to contest decisions.' : 'PIPEDA principles require transparency about automated decisions affecting individuals.', tools: t.name });
+      }
+    });
+
+    // Sort: critical first
+    const order = { critical: 0, warning: 1, info: 2 };
+    gaps.sort((a, b) => order[a.severity] - order[b.severity]);
+
+    document.getElementById('gapList').innerHTML = gaps.length === 0
+      ? '<div style="padding:20px;text-align:center;color:var(--muted);font-size:14px;">No compliance gaps identified. This is unusual — consider reviewing your responses.</div>'
+      : gaps.map(g => `
+        <div class="gap-item">
+          <div class="gap-icon ${g.severity}">${g.severity === 'critical' ? '!' : g.severity === 'warning' ? '⚠' : 'i'}</div>
+          <div>
+            <div class="gap-title">${g.title}</div>
+            <div class="gap-desc">${g.desc}</div>
+            ${g.tools ? `<div class="gap-tool">${g.tools}</div>` : ''}
+          </div>
+        </div>
+      `).join('');
+
+    // Register table
+    document.getElementById('registerBody').innerHTML = tools.map(t => {
+      const d = state.toolData[t.name];
+      const cats = d.categories.map(c => dataCategories.find(dc => dc.id === c)?.label || c).join(', ') || '—';
+      return `<tr>
+        <td><strong>${t.name}</strong></td>
+        <td>${t.parent}</td>
+        <td>${t.jurisdiction}</td>
+        <td><span class="badge badge-${t.risk}">${t.risk}</span></td>
+        <td>${cats}</td>
+        <td><span class="badge badge-${d.dpa === 'Yes' ? 'yes' : d.dpa === 'No' ? 'no' : 'unknown'}">${d.dpa || '?'}</span></td>
+        <td><span class="badge badge-${d.residency === 'Yes' ? 'yes' : d.residency === 'No' ? 'no' : 'unknown'}">${d.residency || '?'}</span></td>
+      </tr>`;
+    }).join('');
+
+    // Store gaps in state for report
+    state.gaps = gaps;
+  }
+
+  // ── Report (Step 5) ────────────────────────────────────────────
+  function buildReport() {
+    const o = state.org;
+    const tools = state.selectedTools;
+    const gaps = state.gaps || [];
+    const reg = regulatoryMap[o.province] || {};
+    const isQuebec = o.province === 'QC';
+    const now = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    const exposed = tools.filter(t => t.risk === 'exposed').length;
+    const canadian = tools.filter(t => t.risk === 'canadian').length;
+    const critical = gaps.filter(g => g.severity === 'critical').length;
+
+    document.getElementById('reportFrame').innerHTML = `
+      <div class="report-inner" id="reportContent">
+        <div class="r-header">
+          <div class="r-logo"><span>Upper </span>Harbour</div>
+          <div style="font-size:11px;color:#999;margin-top:2px;">Compliance Intelligence for Canadian Organizations</div>
+          <div class="r-title">HarbourScan Sovereignty Assessment</div>
+          <div class="r-meta">${o.name} · ${reg.province || o.province} · ${now}</div>
+          <div class="r-meta">Prepared for: ${o.contact || 'N/A'} (${o.email || 'N/A'})</div>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Executive Summary</div>
+          <p class="r-text">This assessment evaluated <strong>${tools.length}</strong> SaaS tools used by ${o.name}. Of these, <strong>${exposed}</strong> are operated by entities in foreign jurisdictions with potential cross-border data exposure, and <strong>${canadian}</strong> are Canadian-headquartered. The assessment identified <strong>${critical}</strong> critical compliance gap${critical !== 1 ? 's' : ''} and <strong>${gaps.length - critical}</strong> additional finding${gaps.length - critical !== 1 ? 's' : ''} requiring attention.</p>
+          ${isQuebec ? `<p class="r-text">As a Quebec-based organization, ${o.name} is subject to <strong>Law 25</strong> (Act to modernize legislative provisions as regards the protection of personal information), which requires Transfer Impact Assessments for each cross-border data transfer, written agreements with foreign service providers, and Privacy Impact Assessments for new or modified information systems. Maximum penalties reach $25M or 4% of worldwide turnover.</p>` : ''}
+          <p class="r-text">This is an indicative assessment based on self-reported information. A full HarbourScan engagement maps integration pathways, subprocessor chains, and contractual documentation in detail.</p>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Applicable Regulatory Framework</div>
+          ${reg.laws ? reg.laws.map(l => `<p class="r-text"><strong>${l.name}</strong> — ${l.fullName}. ${l.notes}</p>`).join('') : '<p class="r-text">Province not specified.</p>'}
+          ${reg.authority ? `<p class="r-text"><strong>Regulator:</strong> ${reg.authority.name} (${reg.authority.abbr})</p>` : ''}
+          ${reg.crossBorderRule ? `<p class="r-text"><strong>Cross-border transfer rule:</strong> ${reg.crossBorderRule}</p>` : ''}
+          ${reg.maxPenalty ? `<p class="r-text"><strong>Maximum penalty:</strong> ${reg.maxPenalty}</p>` : ''}
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Organization Profile</div>
+          <table class="r-table">
+            <tr><td style="width:200px;font-weight:700;">Organization</td><td>${o.name}</td></tr>
+            <tr><td style="font-weight:700;">Province</td><td>${reg.province || o.province}</td></tr>
+            <tr><td style="font-weight:700;">Industry</td><td>${industryProfiles.find(i => i.id === o.industry)?.label || o.industry || 'N/A'}</td></tr>
+            <tr><td style="font-weight:700;">Headcount</td><td>${o.size || 'N/A'}</td></tr>
+            <tr><td style="font-weight:700;">Privacy Officer</td><td>${o.dpo === 'yes' ? '✓ Designated' : o.dpo === 'ceo' ? '⚠ Defaults to CEO' : '✗ Not designated'}</td></tr>
+            <tr><td style="font-weight:700;">Breach Response Plan</td><td>${o.breachPlan === 'yes' ? '✓ Documented' : o.breachPlan === 'partial' ? '⚠ Informal' : '✗ None'}</td></tr>
+            <tr><td style="font-weight:700;">Incident Register</td><td>${o.incidentLog === 'yes' ? '✓ Maintained' : '✗ Not maintained'}</td></tr>
+          </table>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Compliance Gaps & Findings</div>
+          ${gaps.length === 0 ? '<p class="r-text">No compliance gaps identified.</p>' : gaps.map(g => `
+            <div class="r-gap ${g.severity}">
+              <div class="r-gap-title">${g.severity === 'critical' ? '🔴' : '🟡'} ${g.title}</div>
+              <div class="r-gap-desc">${g.desc}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Register of Processing Activities</div>
+          <table class="r-table">
+            <thead><tr><th>Tool</th><th>Parent Entity</th><th>Jurisdiction</th><th>CLOUD Act</th><th>Risk</th><th>Data Categories</th><th>Subjects</th><th>Volume</th><th>Residency</th><th>DPA</th><th>PIA</th></tr></thead>
+            <tbody>
+              ${tools.map(t => {
+                const d = state.toolData[t.name];
+                const cats = d.categories.map(c => dataCategories.find(dc => dc.id === c)?.label || c).join(', ') || '—';
+                return `<tr>
+                  <td><strong>${t.name}</strong></td>
+                  <td>${t.parent}</td>
+                  <td>${t.jurisdiction}</td>
+                  <td>${t.cloudAct ? 'Yes' : 'No'}</td>
+                  <td><span class="r-badge ${t.risk}">${t.risk}</span></td>
+                  <td>${cats}</td>
+                  <td>${d.subjects.join(', ') || '—'}</td>
+                  <td>${d.volume || '—'}</td>
+                  <td>${d.residency || '—'}</td>
+                  <td>${d.dpa || '—'}</td>
+                  <td>${d.pia || '—'}</td>
+                </tr>`;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        ${isQuebec ? `
+        <div class="r-section">
+          <div class="r-section-title">Transfer Impact Assessments Required</div>
+          <p class="r-text">Under Law 25, a Transfer Impact Assessment (TIA) must be completed <strong>before</strong> any personal information leaves Quebec. The following tools require a TIA:</p>
+          <table class="r-table">
+            <thead><tr><th>Tool</th><th>Jurisdiction</th><th>Data Sensitivity</th><th>TIA Status</th><th>Recommendation</th></tr></thead>
+            <tbody>
+              ${tools.filter(t => t.jurisdiction !== 'Canada').map(t => {
+                const d = state.toolData[t.name];
+                const maxSens = d.categories.reduce((max, c) => {
+                  const cat = dataCategories.find(dc => dc.id === c);
+                  const levels = { none: 0, moderate: 1, high: 2, very_high: 3 };
+                  return cat && levels[cat.sensitivity] > levels[max] ? cat.sensitivity : max;
+                }, 'none');
+                const sensLabel = { none: 'None', moderate: 'Moderate', high: 'High', very_high: 'Very High' }[maxSens];
+                return `<tr>
+                  <td><strong>${t.name}</strong></td>
+                  <td>${t.jurisdiction}</td>
+                  <td>${sensLabel}</td>
+                  <td>${d.pia === 'Yes' ? '✓ Complete' : '✗ Required'}</td>
+                  <td>${d.pia === 'Yes' ? 'Verify TIA scope covers Law 25 requirements' : 'Complete TIA before continued use. Assess adequacy of receiving jurisdiction\'s privacy framework.'}</td>
+                </tr>`;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+        ` : ''}
+
+        <div class="r-section">
+          <div class="r-section-title">Remediation Priorities</div>
+          <p class="r-text">Based on this assessment, the following actions are recommended in order of priority:</p>
+          <table class="r-table">
+            <thead><tr><th>#</th><th>Action</th><th>Priority</th></tr></thead>
+            <tbody>
+              ${generateRemediation().map((r, i) => `<tr><td>${i + 1}</td><td>${r.action}</td><td><span class="r-badge ${r.priority === 'Critical' ? 'exposed' : 'review'}">${r.priority}</span></td></tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="r-section">
+          <div class="r-section-title">Next Steps</div>
+          <p class="r-text">This HarbourScan self-assessment provides an indicative jurisdictional overview. For a complete compliance engagement, Upper Harbour conducts:</p>
+          <p class="r-text">• <strong>Full environment mapping</strong> — integration pathways, API connections, and data flow tracing across your complete stack</p>
+          <p class="r-text">• <strong>Subprocessor chain analysis</strong> — downstream dependencies (e.g. Slack → AWS, Clio → Stripe → Twilio) and their jurisdictional implications</p>
+          <p class="r-text">• <strong>Contractual review</strong> — DPA adequacy assessment, transfer clause compliance, and gap remediation</p>
+          <p class="r-text">• <strong>Complete PIA/TIA documentation</strong> — CAI-compliant Privacy Impact Assessments and Transfer Impact Assessments</p>
+          <p class="r-text">• <strong>Ongoing monitoring</strong> — vendor acquisition tracking, regulatory change alerts, and periodic reassessment</p>
+          <p class="r-text" style="margin-top:16px;">Contact Upper Harbour to discuss a full HarbourScan engagement: <strong>josh@upperharbour.com</strong></p>
+        </div>
+
+        <div class="r-footer">
+          <strong>Upper Harbour</strong> · Compliance Intelligence for Canadian Organizations<br/>
+          Generated ${now} · This assessment is indicative and does not constitute legal advice.
+        </div>
+      </div>
+    `;
+  }
+
+  function generateRemediation() {
+    const actions = [];
+    const o = state.org;
+    const isQuebec = o.province === 'QC';
+
+    if (o.dpo === 'no' || o.dpo === 'unsure') {
+      actions.push({ action: 'Designate a Privacy Officer and publish their contact details on your website.', priority: 'Critical' });
+    }
+    if (o.breachPlan === 'no' || o.breachPlan === 'unsure') {
+      actions.push({ action: 'Develop and document a breach incident response plan with reporting procedures to the ' + (isQuebec ? 'CAI' : 'OPC') + '.', priority: 'Critical' });
+    }
+    if (o.incidentLog !== 'yes') {
+      actions.push({ action: 'Establish an incident register and maintain records for at least 5 years.', priority: 'High' });
+    }
+
+    const missingDPA = state.selectedTools.filter(t => t.jurisdiction !== 'Canada' && state.toolData[t.name].dpa !== 'Yes');
+    if (missingDPA.length > 0) {
+      actions.push({ action: `Execute Data Processing Agreements with ${missingDPA.length} foreign-jurisdictioned vendor${missingDPA.length > 1 ? 's' : ''}: ${missingDPA.map(t => t.name).join(', ')}.`, priority: 'Critical' });
+    }
+
+    if (isQuebec) {
+      const missingTIA = state.selectedTools.filter(t => t.jurisdiction !== 'Canada' && state.toolData[t.name].pia !== 'Yes');
+      if (missingTIA.length > 0) {
+        actions.push({ action: `Complete Transfer Impact Assessments for ${missingTIA.length} cross-border tool${missingTIA.length > 1 ? 's' : ''} as required by Law 25.`, priority: 'Critical' });
+      }
+    }
+
+    const sensitiveExposed = state.selectedTools.filter(t => {
+      const d = state.toolData[t.name];
+      return t.risk === 'exposed' && d.categories.some(c => { const cat = dataCategories.find(dc => dc.id === c); return cat && (cat.sensitivity === 'very_high' || cat.sensitivity === 'high'); }) && d.residency !== 'Yes';
+    });
+    if (sensitiveExposed.length > 0) {
+      actions.push({ action: `Enable Canadian data residency or evaluate Canadian alternatives for: ${sensitiveExposed.map(t => t.name).join(', ')}.`, priority: 'Critical' });
+    }
+
+    const cloudActTools = state.selectedTools.filter(t => t.cloudAct);
+    if (cloudActTools.length > 0) {
+      actions.push({ action: `Review CLOUD Act exposure across ${cloudActTools.length} US-jurisdictioned tools. Ensure contractual safeguards address compelled disclosure scenarios.`, priority: 'High' });
+    }
+
+    actions.push({ action: 'Develop and publish internal privacy governance policies covering collection, use, retention, and destruction of personal information.', priority: 'High' });
+    actions.push({ action: 'Implement employee privacy awareness training program.', priority: 'High' });
+    actions.push({ action: 'Conduct full subprocessor chain analysis for all foreign-jurisdictioned tools.', priority: 'High' });
+
+    return actions;
+  }
+
+  // ── Download HTML ──────────────────────────────────────────────
+  function downloadHTML() {
+    const content = document.getElementById('reportContent').outerHTML;
+    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>HarbourScan Report — ${state.org.name}</title><style>
+      body{font-family:'Inter',sans-serif;margin:0;padding:0;background:#fff;color:#1a1a2e;}
+      .report-inner{max-width:900px;margin:0 auto;padding:48px;}
+      .r-header{border-bottom:2px solid #0A1018;padding-bottom:24px;margin-bottom:32px;}
+      .r-logo{font-size:18px;font-weight:800;color:#0A1018;margin-bottom:4px;} .r-logo span{font-weight:400;color:#7A92A8;}
+      .r-title{font-size:24px;font-weight:800;color:#0A1018;margin-top:16px;}
+      .r-meta{font-size:12px;color:#6B7B8D;margin-top:6px;}
+      .r-section{margin-bottom:28px;} .r-section-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#3CB8B0;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e0e0e0;}
+      .r-text{font-size:13px;color:#333;line-height:1.7;margin-bottom:8px;}
+      .r-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:16px;}
+      .r-table th{background:#f5f5f5;color:#333;font-weight:700;text-align:left;padding:8px 10px;border:1px solid #ddd;text-transform:uppercase;letter-spacing:0.04em;font-size:10px;}
+      .r-table td{padding:8px 10px;border:1px solid #ddd;color:#333;vertical-align:top;}
+      .r-table tr:nth-child(even) td{background:#fafafa;}
+      .r-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;text-transform:uppercase;}
+      .r-badge.exposed{background:#fde8e5;color:#c0392b;} .r-badge.review{background:#fef9e7;color:#b7950b;} .r-badge.canadian{background:#e8f8f5;color:#1abc9c;}
+      .r-gap{padding:10px 14px;border-left:3px solid;margin-bottom:8px;font-size:12px;}
+      .r-gap.critical{border-color:#e74c3c;background:#fdf2f2;} .r-gap.warning{border-color:#f39c12;background:#fef9e7;} .r-gap.info{border-color:#3CB8B0;background:#e8f8f5;}
+      .r-gap-title{font-weight:700;color:#1a1a2e;} .r-gap-desc{color:#555;margin-top:3px;line-height:1.5;}
+      .r-footer{margin-top:32px;padding-top:16px;border-top:1px solid #ddd;font-size:11px;color:#999;text-align:center;}
+    </style></head><body>${content}</body></html>`;
+
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `HarbourScan-Report-${state.org.name.replace(/[^a-zA-Z0-9]/g, '-')}-${new Date().toISOString().split('T')[0]}.html`;
+    a.click();
+  }
+
+  </script>
+</body>
+</html>
