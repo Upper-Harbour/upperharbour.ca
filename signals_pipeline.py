@@ -82,16 +82,11 @@ RSS_FEEDS = [
 
 # Web search queries (run via Claude API with web search tool)
 SEARCH_QUERIES = [
-    "CLOUD Act Canada data sovereignty 2026",
-    "Law 25 Quebec enforcement action",
-    "PIPEDA CPPA privacy reform Canada",
-    "Canadian SaaS company acquisition",
-    "Canada data residency announcement",
+    "Canada data sovereignty privacy law news",
+    "Law 25 Quebec PIPEDA enforcement",
+    "Canadian SaaS acquisition cloud act",
+    "Canada data residency SaaS vendor announcement",
     "government procurement data sovereignty Canada",
-    "transfer impact assessment Canada",
-    "Canadian privacy commissioner order",
-    "data localization Canada policy",
-    "SaaS vendor Canadian data centre",
 ]
 
 # Relevance keywords for filtering
@@ -173,7 +168,7 @@ def collect_web_search() -> list[dict]:
             time.sleep(60)  # Wait full minute to reset rate limit window
         try:
             response = client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model="claude-haiku-4-5-20251001",
                 max_tokens=2000,
                 tools=[{"type": "web_search_20250305", "name": "web_search"}],
                 messages=[{
@@ -276,7 +271,7 @@ def process_with_claude(items: list[dict]) -> list[dict]:
 
         try:
             response = client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model="claude-haiku-4-5-20251001",
                 max_tokens=4000,
                 messages=[{
                     "role": "user",
