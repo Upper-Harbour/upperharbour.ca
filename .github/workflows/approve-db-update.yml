@@ -1,0 +1,139 @@
+# .github/workflows/approve-db-update.yml
+# Manually triggered workflow to approve a database alert
+# and update saas-db.js with the new information
+name: Approve DB Update
+on:
+  workflow_dispatch:
+    inputs:
+      tool_name:
+        description: 'Tool name (exact match from saas-db.js)'
+        required: true
+        type: string
+      field:
+        description: 'Field to update'
+        required: true
+        type: choice
+        options:
+          - parent
+          - hq
+          - jurisdiction
+          - cloudAct
+          - dataResidency
+          - risk
+          - note
+      new_value:
+        description: 'New value for the field'
+        required: true
+        type: string
+      reason:
+        description: 'Reason for change (appears in commit message)'
+        required: true
+        type: string
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Update saas-db.js
+        run: |
+          python3 << 'PYEOF'
+          import json, re, sys
+
+          tool_name = "${{ github.event.inputs.tool_name }}"
+          field = "${{ github.event.inputs.field }}"
+          new_value = "${{ github.event.inputs.new_value }}"
+
+          # Read saas-db.js
+          with open("Website/assets/saas-db.js") as f:
+              content = f.read()
+
+          # Handle boolean for cloudAct
+          if field == "cloudAct":
+              js_value = "true" if new_value.lower() in ("true", "yes") else "false"
+          else:
+              js_value = json.dumps(new_value)
+
+          # Find the tool entry and update the field
+          # Pattern: name:"ToolName" ... field:oldValue
+          # We need to find the specific tool line and update the field within it
+
+          lines = content.split('\n')
+          updated = False
+          for i, line in enumerate(lines):
+              # Check if this line contains the tool
+              if f'name:"{tool_name}"' in line or f"name:'{tool_name}'" in line:
+                  # Update the specific field in this line
+                  if field == "cloudAct":
+                      # cloudAct:true or cloudAct:false (no quotes)
+                      pattern = r'cloudAct:\s*(true|false)'
+                      replacement = f'cloudAct:{js_value}'
+                  else:
+                      # field:"old value" — replace with new value
+                      pattern = field + r':\s*"[^"]*"'
+                      replacement = f'{field}:{js_value}'
+
+                  new_line = re.sub(pattern, replacement, line)
+                  if new_line != line:
+                      lines[i] = new_line
+                      updated = True
+                      print(f"Updated {tool_name}.{field} to {new_value}")
+                      print(f"Old line: {line.strip()[:100]}...")
+                      print(f"New line: {new_line.strip()[:100]}...")
+                  else:
+                      print(f"WARNING: Pattern not found in line for {tool_name}.{field}")
+                      print(f"Line: {line.strip()[:100]}...")
+                  break
+
+          if not updated:
+              print(f"ERROR: Could not find tool '{tool_name}' or field '{field}'")
+              sys.exit(1)
+
+          with open("Website/assets/saas-db.js", 'w') as f:
+              f.write('\n'.join(lines))
+
+          print("saas-db.js updated successfully")
+          PYEOF
+
+      - name: Clear alert from db-alerts.json
+        run: |
+          python3 << 'PYEOF'
+          import json, os
+
+          tool_name = "${{ github.event.inputs.tool_name }}"
+          field = "${{ github.event.inputs.field }}"
+          alerts_path = "Website/db-alerts.json"
+
+          if os.path.exists(alerts_path):
+              with open(alerts_path) as f:
+                  data = json.load(f)
+
+              # Mark matching alert as approved
+              alerts = data.get("alerts", [])
+              remaining = [a for a in alerts if not (a["tool_name"] == tool_name and a["change"] == field)]
+              cleared = len(alerts) - len(remaining)
+
+              data["alerts"] = remaining
+              with open(alerts_path, 'w') as f:
+                  json.dump(data, f, indent=2, ensure_ascii=False)
+
+              print(f"Cleared {cleared} alert(s) for {tool_name}.{field}")
+          else:
+              print("No db-alerts.json found — skipping")
+          PYEOF
+
+      - name: Commit changes
+        run: |
+          git config user.name "Signals Bot"
+          git config user.email "bot@upperharbour.ca"
+          git add Website/assets/saas-db.js
+          if [ -f Website/db-alerts.json ]; then
+            git add Website/db-alerts.json
+          fi
+          REASON="${{ github.event.inputs.reason }}"
+          git diff --staged --quiet || git commit -m "db: ${{ github.event.inputs.tool_name }} — ${REASON}"
+          git push
