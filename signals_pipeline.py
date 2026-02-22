@@ -585,6 +585,7 @@ def run_pipeline():
 
     # 4. Process with Claude
     log.info("Step 3: Processing with Claude...")
+    time.sleep(60)  # Wait for rate limit window to reset after searches
     processed = process_with_claude(unique_items)
     log.info(f"Processed: {len(processed)} relevant signals")
 
