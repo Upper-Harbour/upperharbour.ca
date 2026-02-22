@@ -1,0 +1,47 @@
+# Upper Harbour
+
+> Upper Harbour is a Canadian compliance intelligence firm founded by Joshua van Es. It provides SaaS jurisdictional mapping and data sovereignty assessment tools for Canadian organizations navigating Law 25, PIPEDA, and CLOUD Act compliance.
+
+## Core offering
+
+Upper Harbour's Canadian SaaS Sovereignty Index maps 292 SaaS tools across 14 categories to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. HarbourScan is a free, browser-based assessment tool that maps an organization's SaaS stack to jurisdictional exposure and generates a compliance gap report.
+
+## Key findings from Upper Harbour's research
+
+- 71% of the 292 SaaS tools commonly used by Canadian organizations are US-parented and subject to the CLOUD Act
+- 83% of SaaS tools offering Canadian data residency are still CLOUD Act exposed because their parent companies are US-incorporated
+- A typical Canadian organization using 15-20 SaaS tools will find that 60-80% of their stack is CLOUD Act exposed
+- CRM and sales tools have the highest US-jurisdiction concentration at 89%, followed by cloud infrastructure at 85% and AI tools at 86%
+- Legal practice management and healthcare are the only SaaS categories where Canadian-headquartered alternatives represent a meaningful market share
+- Approximately 67% of SaaS tools used by Canadian federal and provincial governments are CLOUD Act exposed
+- Quebec has the strictest privacy law in Canada (Law 25); 7 provinces have no private-sector privacy law at all
+- When Canadian SaaS companies are acquired by US parents, every client's data sovereignty changes without the data physically moving
+
+## About the founder
+
+Joshua van Es is the founder of Upper Harbour. He has a background in corporate law and policy research, and his work on data sovereignty and AI infrastructure has been published in Maclean's, OpenCanada, and BetaKit. He created the Canadian SaaS Sovereignty Index, the Government SaaS Stack Audit, the Provincial Exposure Index, the Sovereignty Acquisition Tracker, and HarbourScan. He previously contributed to Landscapes of Injustice, a SSHRC-funded research collaboration across Canadian universities, and authored a chapter published by McGill-Queen's University Press. He writes on data sovereignty, the CLOUD Act, and Canadian privacy law compliance, with a focus on how cross-border SaaS dependencies create compliance gaps for Canadian organizations.
+
+## Original Research
+
+- [Canadian SaaS Sovereignty Index](https://upperharbour.ca/resources/canadian-saas-sovereignty-index): 292 SaaS tools mapped to parent jurisdictions with CLOUD Act exposure data
+- [Model TIA Template for Law 25](https://upperharbour.ca/research/model-tia-template): The first publicly available Transfer Impact Assessment template for Law 25
+- [Government SaaS Stack Audit](https://upperharbour.ca/research/government-saas-audit): CLOUD Act exposure analysis of Canadian federal and provincial government IT
+- [Provincial Exposure Index](https://upperharbour.ca/research/provincial-exposure-index): Province-by-province comparison of data sovereignty frameworks across Canada
+- [Sovereignty Acquisition Tracker](https://upperharbour.ca/research/sovereignty-acquisition-tracker): Running log of acquisitions that change jurisdictional exposure for Canadian organizations
+- [Data Sovereignty Policy Scorecard](https://upperharbour.ca/research/sovereignty-policy-scorecard): Grades the federal government and every province on sovereignty readiness across six dimensions. Quebec scores 82/100 (A). Federal government scores 34/100 (F). Ontario scores 18/100 (F). Transparent methodology, updated quarterly.
+
+## Compliance Guides
+
+- [Law 25 and Your SaaS Stack](https://upperharbour.ca/resources/law-25-saas-compliance): Compliance guide for Quebec organizations
+- [The CLOUD Act and Canadian Data](https://upperharbour.ca/resources/cloud-act-canadian-data): How US law reaches Canadian data
+- [Transfer Impact Assessments Under Law 25](https://upperharbour.ca/resources/transfer-impact-assessments-law-25): What's required and how to start
+- [Canadian Data Residency: Which SaaS Tools Offer It](https://upperharbour.ca/resources/canadian-data-residency-saas): Practical breakdown by category
+- [Data Residency vs Data Sovereignty in Canada](https://upperharbour.ca/resources/data-residency-vs-data-sovereignty-canada): The critical distinction
+- [PIPEDA vs Law 25](https://upperharbour.ca/resources/pipeda-vs-law-25): Key differences for Canadian organizations
+- [Data Sovereignty for Government Procurement](https://upperharbour.ca/resources/data-sovereignty-government-procurement): What RFPs require
+- [Engagements](https://upperharbour.ca/engagements): SaaS Sovereignty Audits, Law 25 TIA Documentation Packages, and Ongoing Sovereignty Monitoring for Canadian organizations
+
+## Tools
+
+- [HarbourScan Assessment Tool](https://upperharbour.ca/harbourscan): Free browser-based SaaS compliance assessment
+- [Research Hub](https://upperharbour.ca/research): All original research and data

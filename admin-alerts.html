@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alert Review — HarbourScan Pipeline Admin | Upper Harbour</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&family=DM+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #06090E; --surface: #0C1219; --surface-2: #111A24;
+      --teal: #3CB8B0; --teal-dim: rgba(60,184,176,0.08); --teal-border: rgba(60,184,176,0.22);
+      --gold: #C9A84C; --gold-dim: rgba(201,168,76,0.08); --gold-border: rgba(201,168,76,0.3);
+      --red: #E06050; --red-dim: rgba(224,96,80,0.08); --red-border: rgba(224,96,80,0.3);
+      --ice: #EAF0F4; --slate: #8A9DB0; --muted: #566778;
+      --border: rgba(234,240,244,0.06); --border-md: rgba(234,240,244,0.1);
+      --display: 'Newsreader', Georgia, serif;
+      --body: 'DM Sans', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--ice); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    /* ── Nav ──────────────────────────────────────── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 66px; background: rgba(6,9,14,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); }
+    .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
+    .nav-divider { width: 1px; height: 18px; background: var(--border-md); margin: 0 14px; }
+    .nav-sub { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+    /* ── Auth Gate ────────────────────────────────── */
+    .auth-gate { max-width: 400px; margin: 200px auto 0; padding: 0 20px; text-align: center; }
+    .auth-gate h2 { font-family: var(--display); font-size: 24px; font-weight: 700; margin-bottom: 8px; }
+    .auth-gate p { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .auth-input { width: 100%; font-family: var(--mono); font-size: 14px; color: var(--ice); background: var(--surface); border: 1px solid var(--border-md); border-radius: 6px; padding: 14px 18px; outline: none; text-align: center; }
+    .auth-input:focus { border-color: var(--teal); }
+    .auth-error { font-size: 12px; color: var(--red); margin-top: 10px; display: none; }
+
+    /* ── Main ─────────────────────────────────────── */
+    .main { max-width: 900px; margin: 0 auto; padding: 110px 32px 80px; display: none; }
+    .main.visible { display: block; }
+    .page-header { margin-bottom: 40px; }
+    .page-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; display: inline-flex; align-items: center; gap: 10px; }
+    .page-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--teal); opacity: 0.5; }
+    .page-title { font-family: var(--display); font-size: 32px; font-weight: 700; color: var(--ice); margin-bottom: 8px; }
+    .page-sub { font-size: 15px; color: var(--slate); max-width: 600px; }
+
+    /* ── Stats Row ────────────────────────────────── */
+    .stats-row { display: flex; gap: 16px; margin-bottom: 32px; }
+    .stat-box { background: var(--surface); border: 1px solid var(--border-md); border-radius: 8px; padding: 16px 24px; text-align: center; flex: 1; }
+    .stat-num { font-size: 28px; font-weight: 800; line-height: 1; }
+    .stat-label { font-family: var(--mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 4px; }
+
+    /* ── Alert Cards ──────────────────────────────── */
+    .alert-card { background: var(--surface); border: 1px solid var(--border-md); border-radius: 10px; padding: 28px 32px; margin-bottom: 16px; transition: border-color 0.3s; }
+    .alert-card:hover { border-color: rgba(60,184,176,0.15); }
+    .alert-card.applied { opacity: 0.5; pointer-events: none; }
+    .alert-card.dismissed { opacity: 0.3; pointer-events: none; }
+    .alert-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+    .alert-tool { font-size: 20px; font-weight: 800; color: var(--ice); }
+    .alert-signal { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .alert-badge { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+    .badge-pending { background: var(--gold-dim); color: var(--gold); border: 1px solid var(--gold-border); }
+    .badge-approved { background: var(--teal-dim); color: var(--teal); border: 1px solid var(--teal-border); }
+    .badge-applied { background: var(--teal-dim); color: var(--teal); border: 1px solid var(--teal-border); }
+    .badge-dismissed { background: rgba(122,146,168,0.1); color: var(--slate); border: 1px solid rgba(122,146,168,0.2); }
+    .badge-failed { background: var(--red-dim); color: var(--red); border: 1px solid var(--red-border); }
+
+    /* ── Changes Table ────────────────────────────── */
+    .changes-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    .changes-table th { font-family: var(--mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-align: left; padding: 8px 0; border-bottom: 1px solid var(--border-md); }
+    .changes-table td { font-size: 13px; color: var(--slate); padding: 8px 0; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .changes-table .field-name { font-family: var(--mono); font-size: 12px; color: var(--ice); font-weight: 600; }
+    .val-old { color: var(--muted); text-decoration: line-through; }
+    .val-new { color: var(--ice); font-weight: 600; }
+    .val-arrow { color: var(--teal); margin: 0 6px; font-size: 11px; }
+
+    /* ── Action Buttons ──────────────────────────── */
+    .alert-actions { display: flex; gap: 10px; }
+    .btn { font-family: var(--body); font-size: 13px; font-weight: 700; border: none; border-radius: 5px; padding: 10px 24px; cursor: pointer; transition: all 0.2s; }
+    .btn-approve { background: var(--teal); color: var(--bg); }
+    .btn-approve:hover { background: #47cec5; }
+    .btn-dismiss { background: transparent; color: var(--muted); border: 1px solid var(--border-md); }
+    .btn-dismiss:hover { border-color: var(--slate); color: var(--ice); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    /* ── Empty State ──────────────────────────────── */
+    .empty-state { text-align: center; padding: 80px 20px; }
+    .empty-state .icon { font-size: 36px; margin-bottom: 16px; opacity: 0.4; }
+    .empty-state h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .empty-state p { font-size: 14px; color: var(--muted); }
+
+    /* ── Status Toast ─────────────────────────────── */
+    .toast { position: fixed; bottom: 32px; right: 32px; background: var(--surface-2); border: 1px solid var(--teal-border); border-radius: 8px; padding: 14px 24px; font-size: 13px; font-weight: 600; color: var(--teal); display: none; z-index: 200; box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .toast.error { border-color: var(--red-border); color: var(--red); }
+    .toast.visible { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── History Section ──────────────────────────── */
+    .history-toggle { font-size: 13px; font-weight: 600; color: var(--muted); cursor: pointer; margin-top: 40px; padding: 12px 0; border-top: 1px solid var(--border); }
+    .history-toggle:hover { color: var(--ice); }
+    .history-section { display: none; margin-top: 16px; }
+    .history-section.visible { display: block; }
+
+    /* ── Responsive ───────────────────────────────── */
+    @media(max-width:768px) {
+      nav { padding: 0 16px; }
+      .main { padding: 100px 16px 60px; }
+      .stats-row { flex-direction: column; }
+      .alert-card { padding: 20px; }
+      .alert-top { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ── Nav ──────────────────────────────────────── -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+      <span class="nav-divider"></span>
+      <span class="nav-sub">Pipeline Admin</span>
+    </a>
+  </nav>
+
+  <!-- ── Auth Gate ────────────────────────────────── -->
+  <div class="auth-gate" id="authGate">
+    <h2>Pipeline Admin</h2>
+    <p>Enter your admin key to review database alerts.</p>
+    <input type="password" class="auth-input" id="authInput" placeholder="Admin key" autofocus />
+    <div class="auth-error" id="authError">Invalid key. Try again.</div>
+  </div>
+
+  <!-- ── Main Content ─────────────────────────────── -->
+  <div class="main" id="mainContent">
+    <div class="page-header">
+      <div class="page-eyebrow">Pipeline Admin</div>
+      <h1 class="page-title">Database Alerts</h1>
+      <p class="page-sub">Signals pipeline changes that need your approval before updating saas-db.js. Approve to update the database. Dismiss to ignore.</p>
+    </div>
+
+    <div class="stats-row" id="statsRow">
+      <div class="stat-box"><div class="stat-num" style="color:var(--gold)" id="statPending">—</div><div class="stat-label">Pending</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--teal)" id="statApplied">—</div><div class="stat-label">Applied</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--slate)" id="statDismissed">—</div><div class="stat-label">Dismissed</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--red)" id="statFailed">—</div><div class="stat-label">Failed</div></div>
+    </div>
+
+    <div id="pendingAlerts"></div>
+
+    <div class="history-toggle" id="historyToggle" style="display:none;">
+      ▸ Show resolved alerts
+    </div>
+    <div class="history-section" id="historySection"></div>
+
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="icon">✓</div>
+      <h3>No pending alerts</h3>
+      <p>The signals pipeline hasn't flagged any database changes that need review. Check back after the next scan cycle.</p>
+    </div>
+  </div>
+
+  <!-- ── Toast ────────────────────────────────────── -->
+  <div class="toast" id="toast"></div>
+
+  <script>
+  /* ══════════════════════════════════════════════════════════════
+     CONFIGURATION — Update these for your repository
+     ══════════════════════════════════════════════════════════════ */
+  const CONFIG = {
+    // GitHub repo details
+    owner: 'upperharbour',
+    repo: 'upperharbour.ca',
+    branch: 'main',
+    alertsPath: 'db-alerts.json',
+
+    // The admin key hash (SHA-256 of your chosen passphrase)
+    // Generate with: echo -n "your-passphrase" | shasum -a 256
+    // Replace this with your own hash:
+    adminKeyHash: '423edb3aff452f697c5dc29961802a3ba0a65bd399a2979a9b75a10e019397c5',
+
+    // Local path to fetch alerts (for display before auth)
+    alertsUrl: '/db-alerts.json',
+  };
+
+
+  /* ══════════════════════════════════════════════════════════════
+     STATE
+     ══════════════════════════════════════════════════════════════ */
+  let allAlerts = [];
+  let githubToken = null;
+  let fileSha = null;
+
+  /* ══════════════════════════════════════════════════════════════
+     AUTH
+     ══════════════════════════════════════════════════════════════ */
+  async function hashString(str) {
+    const buf = await crypto.subtle.digest('SHA-256',
+      new TextEncoder().encode(str)
+    );
+    return Array.from(new Uint8Array(buf))
+      .map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  document.getElementById('authInput').addEventListener('keydown', async (e) => {
+    if (e.key !== 'Enter') return;
+    const input = e.target.value.trim();
+    if (!input) return;
+
+    // The input format is: adminkey:github_pat_xxxxx
+    // First part is the admin passphrase, second is GitHub PAT
+    const parts = input.split(':');
+    if (parts.length < 2) {
+      showAuthError('Format: passphrase:github_token');
+      return;
+    }
+
+    const passphrase = parts[0];
+    const token = parts.slice(1).join(':'); // PAT may contain colons
+
+    const hash = await hashString(passphrase);
+    if (hash !== CONFIG.adminKeyHash) {
+      showAuthError('Invalid admin key.');
+      return;
+    }
+
+    githubToken = token;
+
+    // Verify the GitHub token works
+    try {
+      const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}`, {
+        headers: { 'Authorization': `Bearer ${githubToken}` }
+      });
+      if (!res.ok) throw new Error('Token rejected');
+    } catch (err) {
+      showAuthError('GitHub token invalid or insufficient permissions.');
+      return;
+    }
+
+    // Auth successful
+    document.getElementById('authGate').style.display = 'none';
+    document.getElementById('mainContent').classList.add('visible');
+    loadAlerts();
+  });
+
+  function showAuthError(msg) {
+    const el = document.getElementById('authError');
+    el.textContent = msg;
+    el.style.display = 'block';
+    document.getElementById('authInput').select();
+  }
+
+  /* ══════════════════════════════════════════════════════════════
+     LOAD & RENDER ALERTS
+     ══════════════════════════════════════════════════════════════ */
+  async function loadAlerts() {
+    try {
+      // Fetch from GitHub to get current state + SHA for commits
+      const res = await fetch(
+        `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.alertsPath}?ref=${CONFIG.branch}`,
+        { headers: { 'Authorization': `Bearer ${githubToken}` } }
+      );
+
+      if (!res.ok) {
+        if (res.status === 404) {
+          allAlerts = [];
+          renderAlerts();
+          return;
+        }
+        throw new Error(`GitHub API error: ${res.status}`);
+      }
+
+      const data = await res.json();
+      fileSha = data.sha;
+
+      const content = atob(data.content);
+      const parsed = JSON.parse(content);
+      allAlerts = Array.isArray(parsed) ? parsed : (parsed.alerts || []);
+      renderAlerts();
+    } catch (err) {
+      showToast('Failed to load alerts: ' + err.message, true);
+    }
+  }
+
+  function renderAlerts() {
+    const pending = allAlerts.filter(a => a.status === 'pending_review');
+    const approved = allAlerts.filter(a => a.status === 'approved');
+    const applied = allAlerts.filter(a => a.status === 'applied');
+    const dismissed = allAlerts.filter(a => a.status === 'dismissed');
+    const failed = allAlerts.filter(a => a.status === 'failed');
+
+    // Stats
+    document.getElementById('statPending').textContent = pending.length + approved.length;
+    document.getElementById('statApplied').textContent = applied.length;
+    document.getElementById('statDismissed').textContent = dismissed.length;
+    document.getElementById('statFailed').textContent = failed.length;
+
+    // Pending alerts
+    const pendingContainer = document.getElementById('pendingAlerts');
+    const actionable = [...pending, ...approved]; // approved but not yet applied also shown
+
+    if (actionable.length === 0) {
+      pendingContainer.innerHTML = '';
+      document.getElementById('emptyState').style.display = 'block';
+    } else {
+      document.getElementById('emptyState').style.display = 'none';
+      pendingContainer.innerHTML = actionable.map((alert, i) => renderAlertCard(alert, i, true)).join('');
+    }
+
+    // History
+    const history = [...applied, ...dismissed, ...failed];
+    const historyToggle = document.getElementById('historyToggle');
+    const historySection = document.getElementById('historySection');
+
+    if (history.length > 0) {
+      historyToggle.style.display = 'block';
+      historySection.innerHTML = history.map((alert, i) => renderAlertCard(alert, i + 1000, false)).join('');
+    } else {
+      historyToggle.style.display = 'none';
+    }
+  }
+
+  function renderAlertCard(alert, index, showActions) {
+    const toolName = alert.tool_name || alert.tool || alert.name || 'Unknown tool';
+    const status = alert.status;
+    const signalDate = alert.signal_date || alert.date || '';
+    const signalId = alert.signal_id || '';
+
+    // Build changes display
+    let changesHTML = '';
+    const updates = alert.updates || alert.changes || {};
+    const hasUpdates = Object.keys(updates).length > 0;
+
+    if (hasUpdates) {
+      changesHTML = `<table class="changes-table">
+        <thead><tr><th>Field</th><th>Change</th></tr></thead>
+        <tbody>
+          ${Object.entries(updates).map(([field, newVal]) => `
+            <tr>
+              <td class="field-name">${field}</td>
+              <td><span class="val-new">${formatValue(newVal)}</span></td>
+            </tr>
+          `).join('')}
+        </tbody>
+      </table>`;
+    } else if (alert.change) {
+      // Pipeline's simpler format: change, old_value, new_value
+      changesHTML = `<table class="changes-table">
+        <thead><tr><th>Field</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="field-name">${alert.change}</td>
+            <td>
+              <span class="val-old">${alert.old_value || '?'}</span>
+              <span class="val-arrow">→</span>
+              <span class="val-new">${alert.new_value || '?'}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>`;
+    }
+
+    const badgeClass = {
+      'pending_review': 'badge-pending',
+      'approved': 'badge-approved',
+      'applied': 'badge-applied',
+      'dismissed': 'badge-dismissed',
+      'failed': 'badge-failed',
+    }[status] || 'badge-pending';
+
+    const cardClass = status === 'applied' ? 'applied' :
+                      status === 'dismissed' ? 'dismissed' : '';
+
+    const actionsHTML = showActions && (status === 'pending_review' || status === 'approved')
+      ? `<div class="alert-actions">
+          <button class="btn btn-approve" onclick="approveAlert(${index})" id="approveBtn${index}">Approve</button>
+          <button class="btn btn-dismiss" onclick="dismissAlert(${index})" id="dismissBtn${index}">Dismiss</button>
+        </div>`
+      : '';
+
+    const failReason = alert.failureReason
+      ? `<div style="font-size:12px;color:var(--red);margin-bottom:12px;">Failed: ${alert.failureReason}</div>`
+      : '';
+
+    return `
+      <div class="alert-card ${cardClass}" id="alertCard${index}">
+        <div class="alert-top">
+          <div>
+            <div class="alert-tool">${toolName}</div>
+            <div class="alert-signal">${signalId ? signalId + ' · ' : ''}${signalDate}</div>
+          </div>
+          <span class="alert-badge ${badgeClass}">${status.replace('_', ' ')}</span>
+        </div>
+        ${failReason}
+        ${changesHTML}
+        ${actionsHTML}
+      </div>
+    `;
+  }
+
+  function formatValue(val) {
+    if (typeof val === 'boolean') return val ? 'true' : 'false';
+    return String(val);
+  }
+
+
+  /* ══════════════════════════════════════════════════════════════
+     APPROVE / DISMISS ACTIONS
+     ══════════════════════════════════════════════════════════════ */
+  async function approveAlert(index) {
+    await updateAlertStatus(index, 'approved');
+  }
+
+  async function dismissAlert(index) {
+    await updateAlertStatus(index, 'dismissed');
+  }
+
+  async function updateAlertStatus(index, newStatus) {
+    const alert = allAlerts[index];
+    if (!alert) return;
+
+    // Disable buttons
+    const approveBtn = document.getElementById(`approveBtn${index}`);
+    const dismissBtn = document.getElementById(`dismissBtn${index}`);
+    if (approveBtn) approveBtn.disabled = true;
+    if (dismissBtn) dismissBtn.disabled = true;
+
+    const toolName = alert.tool_name || alert.tool || alert.name || 'Unknown';
+    const oldStatus = alert.status;
+
+    // Update the alert status
+    alert.status = newStatus;
+    alert[newStatus + 'At'] = new Date().toISOString();
+    alert.reviewedBy = 'admin';
+
+    // If approving and the alert uses the simple format (change/old_value/new_value),
+    // normalize it into an updates object so apply_db_updates.py can process it
+    if (newStatus === 'approved' && !alert.updates && alert.change && alert.new_value) {
+      alert.updates = {};
+      alert.updates[alert.change] = alert.new_value;
+    }
+
+    try {
+      await commitAlerts(
+        `${newStatus}: ${toolName} (${alert.signal_id || 'manual'})`
+      );
+      showToast(`${toolName} — ${newStatus}`);
+      renderAlerts();
+    } catch (err) {
+      // Revert
+      alert.status = oldStatus;
+      delete alert[newStatus + 'At'];
+      delete alert.reviewedBy;
+      showToast('Failed to commit: ' + err.message, true);
+      if (approveBtn) approveBtn.disabled = false;
+      if (dismissBtn) dismissBtn.disabled = false;
+    }
+  }
+
+
+  /* ══════════════════════════════════════════════════════════════
+     GITHUB COMMIT
+     ══════════════════════════════════════════════════════════════ */
+  async function commitAlerts(message) {
+    const content = JSON.stringify(allAlerts, null, 2) + '\n';
+    const encoded = btoa(unescape(encodeURIComponent(content)));
+
+    const res = await fetch(
+      `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.alertsPath}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${githubToken}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          message: `chore(alerts): ${message}`,
+          content: encoded,
+          sha: fileSha,
+          branch: CONFIG.branch,
+        }),
+      }
+    );
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || `HTTP ${res.status}`);
+    }
+
+    const data = await res.json();
+    fileSha = data.content.sha; // Update SHA for next commit
+  }
+
+
+  /* ══════════════════════════════════════════════════════════════
+     UI HELPERS
+     ══════════════════════════════════════════════════════════════ */
+  function showToast(message, isError = false) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = 'toast visible' + (isError ? ' error' : '');
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => {
+      toast.classList.remove('visible');
+    }, 3000);
+  }
+
+  document.getElementById('historyToggle').addEventListener('click', function() {
+    const section = document.getElementById('historySection');
+    const isOpen = section.classList.contains('visible');
+    section.classList.toggle('visible');
+    this.textContent = isOpen ? '▸ Show resolved alerts' : '▾ Hide resolved alerts';
+  });
+  </script>
+</body>
+</html>

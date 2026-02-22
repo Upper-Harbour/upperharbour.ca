@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signals — Canadian Data Sovereignty Intelligence | Upper Harbour</title>
+  <meta name="description" content="Real-time monitoring of Canadian data sovereignty developments. Enforcement actions, vendor acquisitions, legislative changes, and procurement policy — tracked and summarized every 6 hours." />
+  <link rel="canonical" href="https://upperharbour.ca/signals" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta property="og:title" content="Signals — Canadian Data Sovereignty Intelligence" />
+  <meta property="og:description" content="Enforcement actions, vendor acquisitions, legislative changes, and procurement policy — tracked every 6 hours." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/signals" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#06090E;--surface:#0C1219;--surface-2:#111A24;--surface-3:#162030;
+      --teal:#3CB8B0;--teal-dim:rgba(60,184,176,0.07);--teal-glow:rgba(60,184,176,0.12);
+      --gold:#C9A84C;--gold-dim:rgba(201,168,76,0.07);
+      --red:#E06050;--red-dim:rgba(224,96,80,0.06);
+      --ice:#EAF0F4;--slate:#8A9DB0;--muted:#566778;
+      --border:rgba(234,240,244,0.06);--border-md:rgba(234,240,244,0.10);--border-lg:rgba(234,240,244,0.15);
+      --display:'Newsreader',Georgia,serif;
+      --body:'DM Sans',sans-serif;
+      --mono:'JetBrains Mono',monospace;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--body);background:var(--bg);color:var(--ice);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+    /* ── Nav ───────────────────────── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(6,9,14,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .nav-upper{font-size:17px;font-weight:400;color:var(--slate)}
+    .nav-harbour{font-size:17px;font-weight:800;color:var(--ice);letter-spacing:-0.8px;margin-left:4px}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}.nav-link:hover{color:var(--ice)}
+    .nav-link.active{color:var(--teal)}
+    .nav-cta{font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}.nav-cta:hover{background:#47cec5}
+
+    /* ── Hero ──────────────────────── */
+    .hero{position:relative;padding:140px 52px 48px;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;z-index:0}
+    .hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 55% at 50% 30%,rgba(60,184,176,0.05) 0%,transparent 65%),var(--bg)}
+    .hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,0.015) 1px,transparent 1px);background-size:72px 72px}
+    .hero-inner{position:relative;z-index:1;max-width:1120px;margin:0 auto}
+    .hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;display:inline-flex;align-items:center;gap:10px;opacity:0;animation:fadeUp 0.6s ease forwards 0.15s}
+    .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--teal);opacity:0.5}
+    .hero h1{font-family:var(--display);font-size:clamp(36px,5vw,56px);font-weight:700;color:var(--ice);line-height:1.06;letter-spacing:-0.5px;margin-bottom:16px;opacity:0;animation:fadeUp 0.7s ease forwards 0.3s}
+    .hero h1 em{font-style:italic;color:var(--gold)}
+    .hero-sub{font-size:15px;color:var(--slate);line-height:1.7;max-width:540px;margin-bottom:12px;opacity:0;animation:fadeUp 0.7s ease forwards 0.4s;background:rgba(234,240,244,0.04);padding:14px 18px;border-radius:4px}
+    .hero-sub strong{color:var(--ice);font-weight:700}
+    .hero-nudge{font-size:13px;color:var(--teal);margin-bottom:32px;opacity:0;animation:fadeUp 0.7s ease forwards 0.48s}
+    .hero-nudge a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+    .hero-meta{display:flex;gap:32px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s ease forwards 0.55s}
+    .hero-meta-item{font-family:var(--mono);font-size:11px;color:var(--muted)}
+    .hero-meta-item strong{color:var(--ice);font-weight:600}
+
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+    /* ── Stats Bar ─────────────────── */
+    .stats-bar{max-width:1120px;margin:0 auto;padding:0 52px 40px;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border-md);border:1px solid var(--border-md);border-radius:8px;overflow:hidden}
+    .stat-cell{background:var(--surface);padding:22px 16px;text-align:center;transition:background 0.2s}
+    .stat-cell:hover{background:var(--surface-2)}
+    .stat-num{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ice);margin-bottom:4px}
+    .stat-label{font-family:var(--mono);font-size:9px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em}
+
+    /* ── Filters ───────────────────── */
+    .filters{max-width:1120px;margin:0 auto;padding:0 52px 28px;display:flex;gap:6px;flex-wrap:wrap}
+    .filter-btn{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--muted);background:var(--surface);border:1px solid var(--border-md);padding:8px 16px;border-radius:4px;cursor:pointer;transition:all 0.2s}
+    .filter-btn:hover{color:var(--ice);border-color:var(--border-lg);background:var(--surface-2)}
+    .filter-btn.active{color:var(--teal);border-color:rgba(60,184,176,0.3);background:var(--teal-dim)}
+
+    /* ── Signal Cards ──────────────── */
+    .signals{max-width:1120px;margin:0 auto;padding:0 52px 80px}
+    .signal-date-group{margin-bottom:40px}
+    .signal-date{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);padding-bottom:12px;border-bottom:1px solid var(--border);margin-bottom:4px}
+    .signal-card{display:grid;grid-template-columns:110px 1fr 180px;gap:20px;align-items:start;padding:20px 0;border-bottom:1px solid var(--border);transition:background 0.15s}
+    .signal-card:last-child{border-bottom:none}
+    .signal-type{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 10px;border-radius:3px;white-space:nowrap;text-align:center}
+    .type-enforcement{color:var(--red);background:var(--red-dim);border:1px solid rgba(224,96,80,0.2)}
+    .type-acquisition{color:var(--gold);background:var(--gold-dim);border:1px solid rgba(201,168,76,0.2)}
+    .type-legislation{color:var(--teal);background:var(--teal-dim);border:1px solid rgba(60,184,176,0.2)}
+    .type-vendor{color:#8B9FE8;background:rgba(139,159,232,0.07);border:1px solid rgba(139,159,232,0.2)}
+    .type-procurement{color:#C490D1;background:rgba(196,144,209,0.07);border:1px solid rgba(196,144,209,0.2)}
+    .type-policy{color:var(--slate);background:rgba(234,240,244,0.04);border:1px solid var(--border-md)}
+    .signal-content h3{font-family:var(--body);font-size:15px;font-weight:700;color:var(--ice);line-height:1.4;margin-bottom:6px}
+    .signal-content p{font-size:14px;color:var(--slate);line-height:1.65}
+    .signal-source{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:8px}
+    .signal-source a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border)}.signal-source a:hover{color:var(--teal);border-color:var(--teal)}
+    .signal-impact{font-family:var(--mono);font-size:10px;color:var(--muted);line-height:1.55}
+    .signal-db-update{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);background:var(--teal-dim);border:1px solid rgba(60,184,176,0.2);padding:3px 8px;border-radius:3px;margin-top:8px}
+
+    /* ── Empty State ───────────────── */
+    .signals-empty{text-align:center;padding:80px 20px;color:var(--muted);font-size:15px}
+
+    /* ── CTA Strip ─────────────────── */
+    .cta-strip{max-width:1120px;margin:0 auto;padding:0 52px 80px}
+    .cta-inner{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:44px;display:flex;align-items:center;justify-content:space-between;gap:32px;position:relative;overflow:hidden}
+    .cta-inner::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(60,184,176,0.06) 0%,transparent 70%);pointer-events:none}
+    .cta-text h3{font-family:var(--display);font-size:22px;font-weight:700;color:var(--ice);margin-bottom:8px}
+    .cta-text h3 em{font-style:italic;color:var(--gold)}
+    .cta-text p{font-size:14px;color:var(--muted);line-height:1.65}
+    .cta-actions{display:flex;gap:12px;flex-shrink:0}
+    .btn-teal{font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;white-space:nowrap}.btn-teal:hover{background:#47cec5}
+    .btn-outline{font-size:13px;font-weight:600;color:var(--slate);padding:12px 24px;border:1px solid var(--border-md);border-radius:4px;text-decoration:none;transition:all 0.2s;white-space:nowrap}.btn-outline:hover{color:var(--ice);border-color:var(--border-lg)}
+
+    /* ── Footer ────────────────────── */
+    footer{padding:64px 0 32px;border-top:1px solid var(--border)}
+    .footer-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px}
+    .footer-logo{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+    .footer-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:250px}
+    .footer-col-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+    .footer-links{list-style:none}.footer-links li{margin-bottom:8px}.footer-links a{font-size:13px;color:var(--slate);text-decoration:none;transition:color 0.2s}.footer-links a:hover{color:var(--teal)}
+    .footer-bottom{max-width:1120px;margin:24px auto 0;padding:16px 48px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .footer-copy{font-size:11px;color:var(--muted)}
+
+    /* ── Responsive ────────────────── */
+    @media(max-width:960px){
+      .signal-card{grid-template-columns:auto 1fr;gap:12px}
+      .signal-impact{grid-column:1/-1;max-width:none}
+    }
+    @media(max-width:768px){
+      nav{padding:0 16px}.nav-link{font-size:11px}.nav-cta{font-size:11px;padding:7px 14px}.nav-links{gap:14px}
+      .hero{padding:110px 20px 36px}
+      .filters{padding:0 20px 24px}
+      .signals{padding:0 20px 60px}
+      .stats-bar{padding:0 20px 32px;grid-template-columns:repeat(3,1fr)}
+      .signal-card{grid-template-columns:1fr;gap:8px}
+      .signal-type{justify-self:start}
+      .cta-strip{padding:0 20px 60px}.cta-inner{flex-direction:column;text-align:center;padding:32px 24px}.cta-actions{justify-content:center}
+      .footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:16px 20px 0;flex-direction:column}
+    }
+    @media(max-width:480px){.stats-bar{grid-template-columns:1fr 1fr}}
+
+    /* ── Responsive Nav ─────────────── */
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+    .nav-hamburger svg{display:block}
+    .nav-mobile-overlay{display:none;position:fixed;inset:0;z-index:99;background:rgba(6,9,14,0.6);backdrop-filter:blur(4px)}
+    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
+    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
+    .nav-mobile-menu a:last-child{border-bottom:none}
+    .nav-mobile-menu a:hover{color:#EAF0F4}
+    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
+    .nav-mobile-menu .mobile-cta:hover{background:#47cec5;color:#06090E}
+    .nav-mobile-open .nav-mobile-overlay{display:block}
+    .nav-mobile-open .nav-mobile-menu{display:flex}
+    @media(max-width:480px){
+      .nav-hamburger{display:block}
+      .nav-links{display:none !important}
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo">
+      <svg width="30" height="30" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/signals" class="nav-link active">Signals</a>
+      <a href="/tools" class="nav-link">Tools</a>
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/resources" class="nav-link">Guides</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </nav>
+  <div class="nav-mobile-overlay" onclick="document.body.classList.remove('nav-mobile-open')"></div>
+  <div class="nav-mobile-menu">
+    <a href="/signals">Signals</a>
+    <a href="/tools">Tools</a>
+    <a href="/research">Research</a>
+    <a href="/resources">Guides</a>
+    <a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-eyebrow">Intelligence Feed</div>
+      <h1>Sovereignty <em>signals.</em></h1>
+      <p class="hero-sub">Enforcement actions, vendor acquisitions, legislative changes, and procurement policy shifts affecting Canadian data sovereignty — monitored every 6 hours from regulatory, legal, government, and news sources — <strong>built for Canadian compliance teams.</strong></p>
+      <p class="hero-nudge">Each signal represents a shift in the compliance landscape. <a href="/harbourscan">HarbourScan</a> maps whether your organization is exposed.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">Last updated: <strong id="lastUpdated">—</strong></div>
+        <div class="hero-meta-item">Sources monitored: <strong id="sourceCount">—</strong></div>
+        <div class="hero-meta-item">Signals this month: <strong id="monthCount">—</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar" id="statsBar" style="display:none">
+    <div class="stat-cell"><div class="stat-num" id="statEnforcement">0</div><div class="stat-label">Enforcement</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statAcquisition">0</div><div class="stat-label">Acquisitions</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statLegislation">0</div><div class="stat-label">Legislation</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statVendor">0</div><div class="stat-label">Vendor Updates</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statProcurement">0</div><div class="stat-label">Procurement</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statPolicy">0</div><div class="stat-label">Policy</div></div>
+  </div>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="enforcement">Enforcement</button>
+    <button class="filter-btn" data-filter="acquisition">Acquisitions</button>
+    <button class="filter-btn" data-filter="legislation">Legislation</button>
+    <button class="filter-btn" data-filter="vendor">Vendor Updates</button>
+    <button class="filter-btn" data-filter="procurement">Procurement</button>
+    <button class="filter-btn" data-filter="policy">Policy</button>
+  </div>
+
+  <div class="signals" id="signalsList">
+    <div class="signals-empty">Loading signals…</div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h3>These signals affect <em>your stack.</em></h3>
+        <p>Run a HarbourScan to see which vendor changes and enforcement actions apply to your organization.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/harbourscan" class="btn-teal">Run HarbourScan</a>
+        <a href="/tools" class="btn-outline">Browse the Index</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
+          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span>
+        </div>
+        <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Research</div>
+        <ul class="footer-links">
+          <li><a href="/resources/canadian-saas-sovereignty-index">Sovereignty Index</a></li>
+          <li><a href="/research/sovereignty-policy-scorecard">Policy Scorecard</a></li>
+          <li><a href="/research/government-saas-audit">Government SaaS Audit</a></li>
+          <li><a href="/research/provincial-exposure-index">Provincial Exposure Index</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Tools</a></li>
+          <li><a href="/resources">Guides</a></li>
+          <li><a href="/signals">Signals</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none">Joshua van Es</a></span>
+    </div>
+  </footer>
+
+  <script>
+    const TYPE_MAP = {
+      enforcement: { label: 'Enforcement', cls: 'type-enforcement' },
+      acquisition: { label: 'Acquisition', cls: 'type-acquisition' },
+      legislation: { label: 'Legislation', cls: 'type-legislation' },
+      vendor:      { label: 'Vendor Update', cls: 'type-vendor' },
+      procurement: { label: 'Procurement', cls: 'type-procurement' },
+      policy:      { label: 'Policy', cls: 'type-policy' }
+    };
+
+    let allSignals = [];
+    let activeFilter = 'all';
+
+    async function loadSignals() {
+      try {
+        const res = await fetch('/signals.json');
+        if (!res.ok) throw new Error('No signals data');
+        const data = await res.json();
+
+        allSignals = data.signals || [];
+        const meta = data.meta || {};
+
+        document.getElementById('lastUpdated').textContent = meta.lastUpdated || '—';
+        document.getElementById('sourceCount').textContent = meta.sourceCount || '—';
+
+        const now = new Date();
+        const monthSignals = allSignals.filter(s => {
+          const d = new Date(s.date);
+          return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+        });
+        document.getElementById('monthCount').textContent = monthSignals.length;
+
+        const counts = { enforcement: 0, acquisition: 0, legislation: 0, vendor: 0, procurement: 0, policy: 0 };
+        allSignals.forEach(s => { if (counts[s.type] !== undefined) counts[s.type]++; });
+        document.getElementById('statEnforcement').textContent = counts.enforcement;
+        document.getElementById('statAcquisition').textContent = counts.acquisition;
+        document.getElementById('statLegislation').textContent = counts.legislation;
+        document.getElementById('statVendor').textContent = counts.vendor;
+        document.getElementById('statProcurement').textContent = counts.procurement;
+        document.getElementById('statPolicy').textContent = counts.policy;
+        document.getElementById('statsBar').style.display = 'grid';
+
+        renderSignals();
+      } catch (e) {
+        document.getElementById('signalsList').innerHTML = '<div class="signals-empty">No signals yet. The pipeline monitors sources every 6 hours.</div>';
+      }
+    }
+
+    function renderSignals() {
+      const filtered = activeFilter === 'all' ? allSignals : allSignals.filter(s => s.type === activeFilter);
+      const container = document.getElementById('signalsList');
+
+      if (!filtered.length) {
+        container.innerHTML = '<div class="signals-empty">No signals matching this filter.</div>';
+        return;
+      }
+
+      const groups = {};
+      filtered.forEach(s => {
+        const dateKey = s.date;
+        if (!groups[dateKey]) groups[dateKey] = [];
+        groups[dateKey].push(s);
+      });
+
+      let html = '';
+      const sortedDates = Object.keys(groups).sort((a, b) => new Date(b) - new Date(a));
+
+      sortedDates.forEach(date => {
+        const d = new Date(date + 'T12:00:00');
+        const formatted = d.toLocaleDateString('en-CA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        html += '<div class="signal-date-group">';
+        html += '<div class="signal-date">' + formatted + '</div>';
+
+        groups[date].forEach(s => {
+          const typeInfo = TYPE_MAP[s.type] || { label: s.type, cls: 'type-policy' };
+          html += '<div class="signal-card" data-type="' + s.type + '">';
+          html += '<span class="signal-type ' + typeInfo.cls + '">' + typeInfo.label + '</span>';
+          html += '<div class="signal-content">';
+          html += '<h3>' + s.headline + '</h3>';
+          html += '<p>' + s.summary + '</p>';
+          html += '<div class="signal-source">';
+          if (s.sourceUrl) {
+            html += 'Source: <a href="' + s.sourceUrl + '" target="_blank" rel="noopener">' + s.source + '</a>';
+          } else {
+            html += 'Source: ' + s.source;
+          }
+          html += '</div>';
+          if (s.dbUpdate) {
+            html += '<div class="signal-db-update">⟳ Database updated</div>';
+          }
+          html += '</div>';
+          if (s.impact) {
+            html += '<div class="signal-impact">' + s.impact + '</div>';
+          }
+          html += '</div>';
+        });
+
+        html += '</div>';
+      });
+
+      container.innerHTML = html;
+    }
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeFilter = btn.dataset.filter;
+        renderSignals();
+      });
+    });
+
+    loadSignals();
+  </script>
+</body>
+</html>
