@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "lastUpdated": "Feb 22, 2026 — 02:40 ET",
+    "sourceCount": "37+"
+  },
+  "signals": [
+    {
+      "headline": "Quebec Announces $1.4 Billion Digital Sovereignty Plan",
+      "summary": "Quebec has tabled a new digital sovereignty plan with $1.4 billion in funding, following operational failures at the provincial auto insurance board. The plan represents a provincial commitment to reducing reliance on external digital infrastructure and building domestic capacity.",
+      "type": "policy",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/quebec-has-a-new-digital-sovereignty-plan-will-it-work/",
+      "date": "2026-02-19",
+      "impact": "Quebec-based organizations and vendors should monitor implementation details of this plan, as it may establish new procurement preferences or data residency requirements for provincial contracts.",
+      "dbUpdate": false
+    }
+  ]
+}
