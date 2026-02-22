@@ -94,6 +94,11 @@
     .no-results{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
     .empty-prompt{padding:20px 0 0}
     .empty-prompt-inner{background:var(--surface);border:1px solid var(--border-md);border-radius:10px;padding:40px;text-align:center}
+    .empty-search-wrap{position:relative;max-width:520px;margin:0 auto 32px}
+    .empty-search-wrap input{width:100%;font-family:var(--font);font-size:16px;font-weight:500;color:var(--ice);background:var(--midnight);border:1px solid var(--border-md);border-radius:6px;padding:16px 20px 16px 48px;outline:none;transition:border-color 0.2s}
+    .empty-search-wrap input:focus{border-color:var(--teal)}
+    .empty-search-wrap input::placeholder{color:var(--muted)}
+    .empty-search-wrap .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
     .empty-prompt-text p{font-size:14px;color:var(--slate);line-height:1.7;max-width:520px;margin:0 auto 28px}
     .featured-section{margin-top:8px}
     .featured-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
@@ -170,7 +175,7 @@
     </div>
   </div>
 
-  <div class="search-section">
+  <div class="search-section" id="topSearchSection">
     <div class="search-wrap">
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="toolSearch" placeholder="Search tools — Slack, Clio, QuickBooks, Zoom…" autocomplete="off" />
@@ -178,7 +183,7 @@
     <div class="search-count" id="searchCount"></div>
   </div>
 
-  <div class="filter-row">
+  <div class="filter-row" id="topFilterRow">
     <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
     <button class="filter-btn" onclick="setFilter('exposed',this)">Exposed</button>
     <button class="filter-btn" onclick="setFilter('review',this)">Review</button>
@@ -197,11 +202,12 @@
     <div class="no-results" id="noResults" style="display:none">No tools match your search.</div>
     <div id="emptyState" class="empty-prompt">
       <div class="empty-prompt-inner">
-        <div class="empty-prompt-text">
-          <p>Search for a tool by name, parent company, or jurisdiction — or filter by risk classification to explore the database.</p>
+        <div class="empty-search-wrap">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" id="emptySearch" placeholder="Search tools — Slack, Clio, QuickBooks, Zoom…" autocomplete="off" />
         </div>
         <div class="featured-section">
-          <div class="featured-label">Commonly looked up</div>
+          <div class="featured-label">Or look up</div>
           <div class="featured-chips" id="featuredChips"></div>
         </div>
       </div>
@@ -317,16 +323,22 @@
 
       // If no search and no filter and user hasn't interacted, show empty state
       const isDefault = !currentSearch && currentFilter === 'all' && !userInteracted;
+      var topSearch = document.getElementById('topSearchSection');
+      var topFilter = document.getElementById('topFilterRow');
 
       if (isDefault && !expandedTool) {
         document.getElementById('searchCount').textContent = total + ' tools tracked';
         list.innerHTML = '';
         noR.style.display = 'none';
         if (emptyState) emptyState.style.display = 'block';
+        if (topSearch) topSearch.style.display = 'none';
+        if (topFilter) topFilter.style.display = 'none';
         return;
       }
 
       if (emptyState) emptyState.style.display = 'none';
+      if (topSearch) topSearch.style.display = 'block';
+      if (topFilter) topFilter.style.display = 'flex';
       document.getElementById('searchCount').textContent =
         tools.length + ' of ' + total + ' tools';
 
@@ -399,6 +411,19 @@
       if (currentSearch) userInteracted = true;
       render();
     });
+
+    // Sync the empty state search with main search
+    var emptySearchEl = document.getElementById('emptySearch');
+    if (emptySearchEl) {
+      emptySearchEl.addEventListener('input', function(e) {
+        currentSearch = e.target.value.trim();
+        if (currentSearch) {
+          userInteracted = true;
+          document.getElementById('toolSearch').value = currentSearch;
+        }
+        render();
+      });
+    }
 
     document.getElementById('metaUpdated').textContent =
       new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
