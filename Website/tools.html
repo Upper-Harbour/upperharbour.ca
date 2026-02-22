@@ -92,6 +92,18 @@
     .tool-cta-nudge a.nudge-link{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--teal);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(60,184,176,0.3);padding-bottom:1px;transition:border-color 0.2s}
     .tool-cta-nudge a.nudge-link:hover{border-color:var(--teal)}
     .no-results{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
+    .empty-prompt{padding:20px 0 0}
+    .empty-prompt-inner{background:var(--surface);border:1px solid var(--border-md);border-radius:10px;padding:40px;text-align:center}
+    .empty-prompt-text p{font-size:14px;color:var(--slate);line-height:1.7;max-width:520px;margin:0 auto 28px}
+    .featured-section{margin-top:8px}
+    .featured-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+    .featured-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+    .featured-chip{font-family:var(--font);font-size:13px;font-weight:600;color:var(--ice);background:var(--midnight);border:1px solid var(--border-md);padding:8px 18px;border-radius:4px;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+    .featured-chip:hover{border-color:var(--teal);color:var(--teal)}
+    .featured-chip .chip-risk{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+    .featured-chip .chip-risk.exposed{background:var(--red)}
+    .featured-chip .chip-risk.review{background:var(--gold)}
+    .featured-chip .chip-risk.canadian{background:var(--teal)}
     .cta-strip{max-width:1120px;margin:0 auto;padding:0 52px 80px}
     .cta-inner{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:32px}
     .cta-text h3{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ice);margin-bottom:6px}
@@ -183,6 +195,17 @@
   <div class="tool-grid">
     <div class="tool-list" id="toolList"></div>
     <div class="no-results" id="noResults" style="display:none">No tools match your search.</div>
+    <div id="emptyState" class="empty-prompt">
+      <div class="empty-prompt-inner">
+        <div class="empty-prompt-text">
+          <p>Search for a tool by name, parent company, or jurisdiction — or filter by risk classification to explore the database.</p>
+        </div>
+        <div class="featured-section">
+          <div class="featured-label">Commonly looked up</div>
+          <div class="featured-chips" id="featuredChips"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="cta-strip">
@@ -218,7 +241,7 @@
         <ul class="footer-links">
           <li><a href="/harbourscan">HarbourScan</a></li>
           <li><a href="/resources">Guides</a></li>
-          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Tools</a></li>
           <li><a href="/signals">Signals</a></li>
         </ul>
       </div>
@@ -230,7 +253,7 @@
   <script src="/assets/saas-db.js"></script>
   <script>
     if (typeof saasDB === 'undefined') var saasDB = [];
-    let currentFilter = 'all', currentSearch = '', expandedTool = null;
+    let currentFilter = 'all', currentSearch = '', expandedTool = null, userInteracted = false;
 
     function getHashTool() {
       return decodeURIComponent(window.location.hash.replace('#', '')) || null;
@@ -240,6 +263,7 @@
     }
     function setFilter(f, btn) {
       currentFilter = f;
+      userInteracted = true;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       render();
@@ -279,6 +303,7 @@
       const tools = getFiltered();
       const list = document.getElementById('toolList');
       const noR = document.getElementById('noResults');
+      const emptyState = document.getElementById('emptyState');
       const total = saasDB.length;
       const exposed = saasDB.filter(t => t.risk === 'exposed').length;
       const review = saasDB.filter(t => t.risk === 'review').length;
@@ -289,10 +314,21 @@
       document.getElementById('statReview').textContent = review;
       document.getElementById('statCanadian').textContent = canadian;
       document.getElementById('metaTotal').textContent = total;
+
+      // If no search and no filter and user hasn't interacted, show empty state
+      const isDefault = !currentSearch && currentFilter === 'all' && !userInteracted;
+
+      if (isDefault && !expandedTool) {
+        document.getElementById('searchCount').textContent = total + ' tools tracked';
+        list.innerHTML = '';
+        noR.style.display = 'none';
+        if (emptyState) emptyState.style.display = 'block';
+        return;
+      }
+
+      if (emptyState) emptyState.style.display = 'none';
       document.getElementById('searchCount').textContent =
-        (currentSearch || currentFilter !== 'all')
-          ? tools.length + ' of ' + total + ' tools'
-          : total + ' tools tracked';
+        tools.length + ' of ' + total + ' tools';
 
       let h = '<div class="tool-header"><span>Tool</span><span>Parent Company</span><span>Jurisdiction</span><span>CLOUD Act</span><span>Data Residency</span><span>Risk</span></div>';
 
@@ -360,11 +396,39 @@
 
     document.getElementById('toolSearch').addEventListener('input', function(e) {
       currentSearch = e.target.value.trim();
+      if (currentSearch) userInteracted = true;
       render();
     });
 
     document.getElementById('metaUpdated').textContent =
       new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+
+    // Populate featured chips — well-known tools people look up
+    var featuredNames = ['Slack','Microsoft Teams','Zoom','Google Workspace','Salesforce','Notion','Clio','Asana','Dropbox','Canva','QuickBooks','Intercom','HubSpot','DocuSign','Shopify'];
+    var chipsContainer = document.getElementById('featuredChips');
+    if (chipsContainer && saasDB.length > 0) {
+      var chipsHTML = '';
+      featuredNames.forEach(function(name) {
+        var tool = saasDB.find(function(t) { return t.name === name; });
+        if (tool) {
+          chipsHTML += '<button class="featured-chip" onclick="chipClick(\'' + name.replace(/'/g, "\\'") + '\')">' +
+            '<span class="chip-risk ' + tool.risk + '"></span>' + name + '</button>';
+        }
+      });
+      chipsContainer.innerHTML = chipsHTML;
+    }
+
+    function chipClick(name) {
+      document.getElementById('toolSearch').value = name;
+      currentSearch = name;
+      var tool = saasDB.find(function(t) { return t.name === name; });
+      if (tool) expandedTool = tool.name;
+      render();
+      setTimeout(function() {
+        var el = document.querySelector('.tool-detail.visible');
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
 
     render();
 
