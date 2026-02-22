@@ -2,16 +2,15 @@
 """
 Upper Harbour — Signals Pipeline
 Runs every 6 hours via GitHub Actions.
-Collects, filters, and processes Canadian data sovereignty intelligence.
+Collects, filters, and auto-publishes Canadian data sovereignty intelligence.
 
 Flow:
   1. Pull RSS feeds from known sources
   2. Run Claude API web searches for broader coverage
   3. Deduplicate and score for relevance
   4. Claude API rewrites summaries and classifies event type
-  5. Detect database update candidates (acquisitions, vendor changes)
-  6. Send approval email with approve/reject links
-  7. Approved items → signals.json → site renders them
+  5. Auto-publish to signals.json (no approval step)
+  6. Send daily digest email summarizing what was published
 
 Requirements:
   pip install anthropic feedparser requests
@@ -23,8 +22,7 @@ Environment variables:
   SMTP_USER          — Email address to send from
   SMTP_PASS          — Email password / app password
   APPROVAL_EMAIL     — Your email (josh@upperharbour.ca)
-  SIGNALS_JSON_PATH  — Path to signals.json in repo (default: signals.json)
-  PENDING_JSON_PATH  — Path to pending.json in repo (default: pending.json)
+  SIGNALS_JSON_PATH  — Path to signals.json in repo (default: Website/signals.json)
 """
 
 import os
@@ -52,8 +50,7 @@ SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER = os.environ.get("SMTP_USER")
 SMTP_PASS = os.environ.get("SMTP_PASS")
 APPROVAL_EMAIL = os.environ.get("APPROVAL_EMAIL", "josh@upperharbour.ca")
-SIGNALS_JSON_PATH = os.environ.get("SIGNALS_JSON_PATH", "signals.json")
-PENDING_JSON_PATH = os.environ.get("PENDING_JSON_PATH", "pending.json")
+SIGNALS_JSON_PATH = os.environ.get("SIGNALS_JSON_PATH", "Website/signals.json")
 
 # RSS feeds to monitor
 RSS_FEEDS = [
@@ -283,6 +280,8 @@ Review these news items and process ONLY the ones that are directly relevant to 
 - Product announcements without jurisdictional relevance
 - Duplicate or trivial updates
 
+IMPORTANT: Only process items about real, verifiable events. Do not infer, speculate, or embellish. If an item is ambiguous about whether it relates to Canadian data sovereignty, discard it.
+
 For each relevant item, return a JSON array with objects containing:
 - "headline": Rewritten headline — factual, concise, no clickbait. Written as Upper Harbour would write it.
 - "summary": 2-3 sentence summary in Upper Harbour's voice — precise, analytical, focused on jurisdictional implications. Do not editorialize. State what happened and what it means for Canadian organizations.
@@ -290,7 +289,7 @@ For each relevant item, return a JSON array with objects containing:
 - "source": Original source name
 - "source_url": Original URL
 - "date": YYYY-MM-DD
-- "impact": Geographic scope — e.g., "QC", "ON", "Federal", "All provinces"
+- "impact": A short actionable sentence describing who is affected and what they should do. Examples: "Quebec public-sector organizations using this vendor should reassess compliance." or "Federal departments may need to update procurement documentation." or "Organizations using this tool should review their TIA." Do NOT just write a province code — write a sentence.
 - "db_update": If this event should trigger a change in our SaaS database (e.g., a company was acquired, a vendor added Canadian data residency), include an object with:
   - "tool_name": Name of the SaaS tool affected
   - "change": What changed (e.g., "parent_company", "data_residency", "risk_status")
@@ -323,21 +322,17 @@ Return ONLY the JSON array. If no items are relevant, return: []"""
     return processed
 
 
-# ── Approval Email ───────────────────────────────────────────
+# ── Digest Email ─────────────────────────────────────────────
 
-def send_approval_email(signals: list[dict]):
-    """Send an HTML email with approve/reject for each signal."""
+def send_digest_email(signals: list[dict]):
+    """Send a daily digest email summarizing what was auto-published."""
     if not SMTP_USER or not SMTP_PASS:
-        log.warning("No SMTP credentials — skipping email")
-        # Write to pending.json instead
-        save_pending(signals)
+        log.warning("No SMTP credentials — skipping digest email")
         return
 
     if not signals:
-        log.info("No new signals to approve")
         return
 
-    # Build HTML email
     now = datetime.now().strftime("%B %d, %Y — %H:%M ET")
     db_updates = [s for s in signals if s.get("db_update")]
 
@@ -361,27 +356,16 @@ def send_approval_email(signals: list[dict]):
         .badge-procurement {{ background: rgba(196,144,209,0.15); color: #C490D1; }}
         .badge-policy {{ background: rgba(234,240,244,0.08); color: #EAF0F4; }}
         .db-alert {{ background: rgba(60,184,176,0.08); border: 1px solid rgba(60,184,176,0.2); border-radius: 4px; padding: 10px 14px; margin-top: 10px; font-size: 12px; color: #3CB8B0; }}
-        .actions {{ margin-top: 12px; }}
-        .btn {{ display: inline-block; font-size: 12px; font-weight: 700; text-decoration: none; padding: 8px 20px; border-radius: 4px; margin-right: 8px; }}
-        .btn-approve {{ background: #3CB8B0; color: #0A1018; }}
-        .btn-reject {{ background: transparent; border: 1px solid rgba(234,240,244,0.15); color: #7A92A8; }}
-        .summary {{ background: #131E2D; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; }}
-        .summary h2 {{ font-size: 14px; color: #3CB8B0; margin: 0 0 8px 0; }}
-        .summary p {{ font-size: 13px; color: #7A92A8; margin: 0; }}
+        .impact {{ font-size: 12px; color: #C9A84C; font-style: italic; margin-top: 8px; }}
       </style>
     </head>
     <body>
       <div class="container">
-        <h1>Signals — Approval Queue</h1>
-        <p class="subtitle">{now} &middot; {len(signals)} items pending &middot; {len(db_updates)} database updates</p>
-
-        <div class="summary">
-          <h2>Quick Summary</h2>
-          <p>{len(signals)} new signals detected. Review each below and reply with the numbers you want to approve. Items not approved within 24 hours are discarded.</p>
-        </div>
+        <h1>Signals — Published</h1>
+        <p class="subtitle">{now} &middot; {len(signals)} signals auto-published &middot; <a href="https://upperharbour.ca/signals" style="color:#3CB8B0;">View live page</a></p>
     """
 
-    for idx, signal in enumerate(signals):
+    for signal in signals:
         badge_cls = f"badge-{signal.get('type', 'policy')}"
         html += f"""
         <div class="signal">
@@ -389,38 +373,28 @@ def send_approval_email(signals: list[dict]):
           <span class="meta">{signal.get('date', '')} &middot; {signal.get('source', '')}</span>
           <h3>{signal.get('headline', '')}</h3>
           <p>{signal.get('summary', '')}</p>
-          <div class="meta">Impact: {signal.get('impact', 'TBD')} &middot; <a href="{signal.get('source_url', '#')}" style="color:#3CB8B0;">View source</a></div>
+          <div class="impact">Impact: {signal.get('impact', 'TBD')}</div>
+          <div class="meta"><a href="{signal.get('source_url', '#')}" style="color:#3CB8B0;">View source</a></div>
         """
 
         if signal.get("db_update"):
             db = signal["db_update"]
             html += f"""
           <div class="db-alert">
-            ⟳ Database update: <strong>{db.get('tool_name', '?')}</strong> — {db.get('change', '?')}: {db.get('old_value', '?')} → {db.get('new_value', '?')}
-            <br/>{db.get('reason', '')}
+            ⟳ Database update recommended: <strong>{db.get('tool_name', '?')}</strong> — {db.get('change', '?')}: {db.get('old_value', '?')} → {db.get('new_value', '?')}
           </div>
             """
 
-        html += f"""
-          <div class="actions">
-            <span style="font-size:13px;font-weight:700;color:#EAF0F4;">#{idx + 1}</span>
-          </div>
-        </div>
-        """
+        html += "</div>"
 
     html += """
-        <div class="summary" style="margin-top:32px;">
-          <h2>How to Approve</h2>
-          <p>Reply to this email with the numbers of the signals you want to publish. Example: "Approve 1, 2, 4" or "Approve all" or "Reject all".</p>
-        </div>
       </div>
     </body>
     </html>
     """
 
-    # Send email
     msg = MIMEMultipart('alternative')
-    msg['Subject'] = f"Signals: {len(signals)} items pending — {now}"
+    msg['Subject'] = f"Signals: {len(signals)} published — {now}"
     msg['From'] = SMTP_USER
     msg['To'] = APPROVAL_EMAIL
     msg.attach(MIMEText(html, 'html'))
@@ -430,10 +404,9 @@ def send_approval_email(signals: list[dict]):
             server.starttls()
             server.login(SMTP_USER, SMTP_PASS)
             server.send_message(msg)
-        log.info(f"Approval email sent to {APPROVAL_EMAIL}")
+        log.info(f"Digest email sent to {APPROVAL_EMAIL}")
     except Exception as e:
         log.error(f"Email failed: {e}")
-        save_pending(signals)
 
 
 # ── File I/O ─────────────────────────────────────────────────
@@ -453,51 +426,28 @@ def save_signals(data: dict):
     log.info(f"Saved {len(data.get('signals', []))} signals to {SIGNALS_JSON_PATH}")
 
 
-def save_pending(signals: list[dict]):
-    """Save pending signals for manual approval."""
-    with open(PENDING_JSON_PATH, 'w') as f:
-        json.dump({"pending": signals, "created": datetime.now().isoformat()}, f, indent=2, ensure_ascii=False)
-    log.info(f"Saved {len(signals)} pending signals to {PENDING_JSON_PATH}")
+# ── Auto-Publish ─────────────────────────────────────────────
 
-
-def load_pending() -> list[dict]:
-    """Load pending signals."""
-    if os.path.exists(PENDING_JSON_PATH):
-        with open(PENDING_JSON_PATH) as f:
-            data = json.load(f)
-        return data.get("pending", [])
-    return []
-
-
-# ── Approval Handler ─────────────────────────────────────────
-
-def approve_signals(approved_indices: list[int]):
-    """
-    Move approved signals from pending to published.
-    Called by the approval webhook or manual script.
-    """
-    pending = load_pending()
+def publish_signals(new_signals: list[dict]):
+    """Auto-publish signals directly to signals.json."""
     existing = load_existing_signals()
 
-    approved = []
-    for idx in approved_indices:
-        if 0 <= idx < len(pending):
-            signal = pending[idx]
-            # Convert to published format
-            published = {
-                "headline": signal.get("headline", ""),
-                "summary": signal.get("summary", ""),
-                "type": signal.get("type", "policy"),
-                "source": signal.get("source", ""),
-                "sourceUrl": signal.get("source_url", ""),
-                "date": signal.get("date", ""),
-                "impact": signal.get("impact", ""),
-                "dbUpdate": signal.get("db_update") is not None,
-            }
-            approved.append(published)
+    published = []
+    for signal in new_signals:
+        item = {
+            "headline": signal.get("headline", ""),
+            "summary": signal.get("summary", ""),
+            "type": signal.get("type", "policy"),
+            "source": signal.get("source", ""),
+            "sourceUrl": signal.get("source_url", ""),
+            "date": signal.get("date", ""),
+            "impact": signal.get("impact", ""),
+            "dbUpdate": signal.get("db_update") is not None,
+        }
+        published.append(item)
 
     # Add to existing signals (newest first)
-    existing["signals"] = approved + existing.get("signals", [])
+    existing["signals"] = published + existing.get("signals", [])
 
     # Keep max 200 signals
     existing["signals"] = existing["signals"][:200]
@@ -509,13 +459,8 @@ def approve_signals(approved_indices: list[int]):
     }
 
     save_signals(existing)
-
-    # Clear pending
-    if os.path.exists(PENDING_JSON_PATH):
-        os.remove(PENDING_JSON_PATH)
-
-    log.info(f"Published {len(approved)} signals")
-    return approved
+    log.info(f"Auto-published {len(published)} signals")
+    return published
 
 
 # ── Main Pipeline ────────────────────────────────────────────
@@ -562,12 +507,16 @@ def run_pipeline():
         log.info("All items already published. Done.")
         return
 
-    # 6. Send approval email
-    log.info("Step 4: Sending approval email...")
-    send_approval_email(new_signals)
+    # 6. Auto-publish
+    log.info("Step 4: Auto-publishing signals...")
+    published = publish_signals(new_signals)
+
+    # 7. Send digest email
+    log.info("Step 5: Sending digest email...")
+    send_digest_email(published)
 
     log.info("=" * 60)
-    log.info(f"PIPELINE COMPLETE — {len(new_signals)} items pending approval")
+    log.info(f"PIPELINE COMPLETE — {len(published)} signals published")
     log.info("=" * 60)
 
 
@@ -580,34 +529,14 @@ if __name__ == "__main__":
         command = sys.argv[1]
 
         if command == "collect":
-            # Run the full pipeline
             run_pipeline()
 
-        elif command == "approve":
-            # Approve specific signals: python signals.py approve 1 2 4
-            indices = [int(x) - 1 for x in sys.argv[2:]]  # Convert to 0-indexed
-            approved = approve_signals(indices)
-            print(f"Approved {len(approved)} signals")
-
-        elif command == "approve-all":
-            pending = load_pending()
-            indices = list(range(len(pending)))
-            approved = approve_signals(indices)
-            print(f"Approved all {len(approved)} signals")
-
-        elif command == "reject-all":
-            if os.path.exists(PENDING_JSON_PATH):
-                os.remove(PENDING_JSON_PATH)
-            print("All pending signals rejected")
-
         elif command == "status":
-            pending = load_pending()
             existing = load_existing_signals()
             print(f"Published signals: {len(existing.get('signals', []))}")
-            print(f"Pending approval: {len(pending)}")
 
         else:
             print(f"Unknown command: {command}")
-            print("Usage: python signals_pipeline.py [collect|approve N N N|approve-all|reject-all|status]")
+            print("Usage: python signals_pipeline.py [collect|status]")
     else:
         run_pipeline()
