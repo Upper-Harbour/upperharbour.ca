@@ -193,7 +193,7 @@
     .policy-grid { grid-template-columns: 1fr 1fr; }
     @media(max-width:960px) {
       nav { padding: 0 20px; } .nav-cta { font-size: 11px; padding: 8px 14px; white-space: nowrap; }
-      .nav-link { display: none; }
+      
       .hero-credit { text-align: center; }
       .hero { padding: 140px 20px 60px; }
       .section { padding: 60px 20px; }
@@ -213,6 +213,30 @@
       .headline-stats { grid-template-columns: 1fr 1fr; }
       .hero-h1 { letter-spacing: -1px; }
     }
+  
+    /* ── Responsive Nav ─────────────── */
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+    .nav-hamburger svg{display:block}
+    .nav-mobile-overlay{display:none;position:fixed;inset:0;z-index:99;background:rgba(6,9,14,0.6);backdrop-filter:blur(4px)}
+    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
+    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
+    .nav-mobile-menu a:last-child{border-bottom:none}
+    .nav-mobile-menu a:hover{color:#EAF0F4}
+    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
+    .nav-mobile-menu .mobile-cta:hover{background:#47cec5;color:#06090E}
+    .nav-mobile-open .nav-mobile-overlay{display:block}
+    .nav-mobile-open .nav-mobile-menu{display:flex}
+    @media(max-width:768px){
+      nav{padding:0 16px}
+      .nav-link{font-size:11px}
+      .nav-cta{font-size:11px;padding:7px 14px}
+      .nav-links{gap:14px}
+    }
+    @media(max-width:480px){
+      .nav-hamburger{display:block}
+      .nav-links{display:none !important}
+    }
+
   </style>
 </head>
 <body>
@@ -232,7 +256,16 @@
       <a href="/resources" class="nav-link">Guides</a>
       <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
     </div>
+      <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </nav>
+  <div class="nav-mobile-overlay" onclick="document.body.classList.remove('nav-mobile-open')"></div>
+  <div class="nav-mobile-menu">
+    <a href="/signals">Signals</a>
+    <a href="/tools">Tools</a>
+    <a href="/research">Research</a>
+    <a href="/resources">Guides</a>
+    <a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -276,13 +309,13 @@
       <h2 class="section-title reveal">The <strong>Sovereignty Index</strong></h2>
       <p class="section-desc reveal">Our core database — mapping the jurisdictional reality behind every major SaaS tool Canadian organizations rely on.</p>
 
-      <a href="/resources/canadian-saas-sovereignty-index" class="featured reveal" style="text-decoration:none;">
+      <a href="/tools" class="featured reveal" style="text-decoration:none;">
         <div class="featured-inner">
           <div class="featured-content">
             <div class="featured-badge badge-gold">◆ Flagship · Updated Q1 2026</div>
-            <div class="featured-title">Canadian SaaS Sovereignty Index</div>
-            <div class="featured-desc">292 SaaS tools mapped to parent company jurisdictions, CLOUD Act exposure, Canadian data residency availability, and DPA status. The most comprehensive jurisdictional dataset for Canadian SaaS compliance.</div>
-            <span class="featured-link">Explore the index →</span>
+            <div class="featured-title">Browse the Sovereignty Index</div>
+            <div class="featured-desc">292 SaaS tools. Parent company jurisdictions. CLOUD Act exposure. Canadian data residency. Search any tool your organization uses and see its jurisdictional profile — free and instant.</div>
+            <span class="featured-link">Search the index →</span>
           </div>
           <div class="featured-viz">
             <div class="bar-chart">
@@ -574,4 +607,11 @@
     }
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+  </script>
+</body>
+</html>
