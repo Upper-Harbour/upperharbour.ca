@@ -262,8 +262,11 @@
         <div class="footer-col-title">Pages</div>
         <ul class="footer-links">
           <li><a href="/">Home</a></li>
-          <li><a href="/sovereignty.html">Data Sovereignty</a></li>
-          <li><a href="/law25.html">Law 25</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/tools">Tools</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/resources">Guides</a></li>
+          <li><a href="/harbourscan">HarbourScan</a></li>
         </ul>
       </div>
       <div>
@@ -282,4 +285,10 @@
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     document.querySelectorAll('.reveal').forEach(el => {
-      new IntersectionObserver((entr
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+</body>
+</html>
