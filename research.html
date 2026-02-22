@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Research — Canadian Data Sovereignty Intelligence | Upper Harbour</title>
-  <meta name="description" content="Original research on Canadian data sovereignty, SaaS jurisdictional exposure, Law 25 compliance, and CLOUD Act risk. Independent analysis from Upper Harbour's 292-tool sovereignty database." />
+  <meta name="description" content="Original research on Canadian data sovereignty, SaaS jurisdictional exposure, Law 25 compliance, and CLOUD Act risk. Independent analysis from Upper Harbour's sovereignty database." />
   <link rel="canonical" href="https://upperharbour.ca/research" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
@@ -16,7 +16,7 @@
   <meta property="og:site_name" content="Upper Harbour" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Research — Canadian Data Sovereignty Intelligence" />
-  <meta name="twitter:description" content="Original research from Upper Harbour's 292-tool sovereignty database." />
+  <meta name="twitter:description" content="Original research from Upper Harbour's sovereignty database." />
   <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -275,17 +275,17 @@
     <div class="hero-inner">
       <div class="hero-eyebrow">Upper Harbour Research · Updated Q1 2026</div>
       <h1 class="hero-h1">Independent research on <strong>Canadian data</strong> <em>sovereignty</em></h1>
-      <p class="hero-sub">We maintain the most comprehensive database of SaaS jurisdictional exposure in Canada — <strong>292 tools mapped</strong> across 14 categories. Our research informs compliance strategy, procurement decisions, and policy development.</p>
+      <p class="hero-sub" id="heroSub">We maintain the most comprehensive database of SaaS jurisdictional exposure in Canada. Our research informs compliance strategy, procurement decisions, and policy development.</p>
       <div class="headline-stats">
         <div class="h-stat">
-          <div class="h-stat-num teal" data-target="292">0</div>
+          <div class="h-stat-num teal" id="statTotal">0</div>
           <div class="h-stat-label">SaaS tools mapped to<br/>parent jurisdictions</div>
-          <div class="h-stat-sub">across 14 categories</div>
+          <div class="h-stat-sub" id="statCategories">across multiple categories</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-num red" data-target="71" data-suffix="%">0%</div>
+          <div class="h-stat-num red" id="statCloudAct">0%</div>
           <div class="h-stat-label">US-parented and<br/>CLOUD Act exposed</div>
-          <div class="h-stat-sub">≈ 207 of 292 tools</div>
+          <div class="h-stat-sub" id="statCloudActSub"></div>
         </div>
         <div class="h-stat">
           <div class="h-stat-num gold" data-target="13">0</div>
@@ -293,7 +293,7 @@
           <div class="h-stat-sub">regulatory framework mapped</div>
         </div>
         <div class="h-stat">
-          <div class="h-stat-num ice" data-target="83" data-suffix="%">0%</div>
+          <div class="h-stat-num ice" id="statCaRes">0%</div>
           <div class="h-stat-label">CA-resident tools still<br/>CLOUD Act exposed</div>
           <div class="h-stat-sub">residency ≠ sovereignty</div>
         </div>
@@ -314,19 +314,12 @@
           <div class="featured-content">
             <div class="featured-badge badge-gold">◆ Flagship · Updated Q1 2026</div>
             <div class="featured-title">Browse the Sovereignty Index</div>
-            <div class="featured-desc">292 SaaS tools. Parent company jurisdictions. CLOUD Act exposure. Canadian data residency. Search any tool your organization uses and see its jurisdictional profile — free and instant.</div>
+            <div class="featured-desc" id="featuredDesc">SaaS tools. Parent company jurisdictions. CLOUD Act exposure. Canadian data residency. Search any tool your organization uses and see its jurisdictional profile — free and instant.</div>
             <span class="featured-link">Search the index →</span>
           </div>
           <div class="featured-viz">
-            <div class="bar-chart">
-              <div class="bar-row"><div class="bar-label">CRM &amp; Sales</div><div class="bar-track"><div class="bar-fill red" style="width: 89%;">89%</div></div></div>
-              <div class="bar-row"><div class="bar-label">Cloud Infra</div><div class="bar-track"><div class="bar-fill red" style="width: 85%;">85%</div></div></div>
-              <div class="bar-row"><div class="bar-label">Productivity</div><div class="bar-track"><div class="bar-fill red" style="width: 82%;">82%</div></div></div>
-              <div class="bar-row"><div class="bar-label">AI &amp; Data</div><div class="bar-track"><div class="bar-fill red" style="width: 86%;">86%</div></div></div>
-              <div class="bar-row"><div class="bar-label">Finance</div><div class="bar-track"><div class="bar-fill gold" style="width: 64%;">64%</div></div></div>
-              <div class="bar-row"><div class="bar-label">Healthcare</div><div class="bar-track"><div class="bar-fill teal" style="width: 44%;">44%</div></div></div>
-              <div class="bar-row"><div class="bar-label">Legal</div><div class="bar-track"><div class="bar-fill teal" style="width: 43%;">43%</div></div></div>
-              <div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:12px;text-align:center;">% US-parented by category</div>
+            <div class="bar-chart" id="barChart">
+              <div style="font-family:var(--mono);font-size:9px;color:var(--muted);text-align:center;">Loading…</div>
             </div>
           </div>
         </div>
@@ -449,12 +442,12 @@
 
         <div class="research-card reveal" style="border-left: 3px solid var(--red);">
           <div class="rc-title" style="margin-top:0; font-size: 16px;">The Microsoft admission</div>
-          <div class="rc-desc">In June 2025, Microsoft France's director of public and legal affairs testified before the French Senate that if a legally valid US order is issued under the CLOUD Act, Microsoft must comply — regardless of where data is stored. Microsoft subsequently pledged $7.5B to build Canadian AI infrastructure with promises to "defend digital sovereignty." But contractual promises cannot override statutory obligations. Our research quantifies the gap between vendor sovereignty claims and jurisdictional reality: <strong>71% of the SaaS tools Canadian organizations rely on are operated by companies that cannot guarantee sovereignty under oath.</strong></div>
+          <div class="rc-desc">In June 2025, Microsoft France's director of public and legal affairs testified before the French Senate that if a legally valid US order is issued under the CLOUD Act, Microsoft must comply — regardless of where data is stored. Microsoft subsequently pledged $7.5B to build Canadian AI infrastructure with promises to "defend digital sovereignty." But contractual promises cannot override statutory obligations. Our research quantifies the gap between vendor sovereignty claims and jurisdictional reality: <strong><span id="policyCloudAct">most</span> of the SaaS tools Canadian organizations rely on are operated by companies that cannot guarantee sovereignty under oath.</strong></div>
         </div>
 
         <div class="research-card reveal" style="border-left: 3px solid var(--gold);">
           <div class="rc-title" style="margin-top:0; font-size: 16px;">The sovereign cloud question</div>
-          <div class="rc-desc">Prime Minister Carney announced plans to build a "Canadian sovereign cloud" through the Major Projects Office. Minister Solomon has called digital sovereignty "the most pressing policy and democratic issue of our time." But the policy conversation focuses on infrastructure — servers and data centres. Our research shows the problem sits one layer up: <strong>in the SaaS applications running on that infrastructure.</strong> A sovereign cloud running US-parented SaaS is not sovereign. The 292 tools in our index represent the application layer that cloud strategy alone doesn't address.</div>
+          <div class="rc-desc">Prime Minister Carney announced plans to build a "Canadian sovereign cloud" through the Major Projects Office. Minister Solomon has called digital sovereignty "the most pressing policy and democratic issue of our time." But the policy conversation focuses on infrastructure — servers and data centres. Our research shows the problem sits one layer up: <strong>in the SaaS applications running on that infrastructure.</strong> A sovereign cloud running US-parented SaaS is not sovereign. The <span id="policySovCloud">tools</span> in our index represent the application layer that cloud strategy alone doesn't address.</div>
         </div>
 
         <div class="research-card reveal" style="border-left: 3px solid var(--teal);">
@@ -464,7 +457,7 @@
 
         <div class="research-card reveal" style="border-left: 3px solid var(--ice);">
           <div class="rc-title" style="margin-top:0; font-size: 16px;">The ownership question</div>
-          <div class="rc-desc">The Council of Canadian Innovators has called for "buy Canadian" rules in government tech procurement. SHIELD has proposed a Sovereignty Score measuring Canadian ownership and control. Our Sovereignty Acquisition Tracker documents how Canadian SaaS companies are quietly acquired by US-incorporated parents — shifting jurisdictional exposure for every Canadian client. <strong>Only 16% of the 292 tools in our index are Canadian-headquartered.</strong> Without tracking corporate ownership changes, sovereignty assessments go stale the moment an acquisition closes.</div>
+          <div class="rc-desc">The Council of Canadian Innovators has called for "buy Canadian" rules in government tech procurement. SHIELD has proposed a Sovereignty Score measuring Canadian ownership and control. Our Sovereignty Acquisition Tracker documents how Canadian SaaS companies are quietly acquired by US-incorporated parents — shifting jurisdictional exposure for every Canadian client. <strong>Only <span id="policyCanadian">a small fraction</span> of the tools in our index are Canadian-headquartered.</strong> Without tracking corporate ownership changes, sovereignty assessments go stale the moment an acquisition closes.</div>
         </div>
 
       </div>
@@ -523,7 +516,7 @@
     <div class="cta-inner">
       <div class="section-label">Assessment Tool</div>
       <h2 class="cta-title">Apply the research to <strong>your stack</strong></h2>
-      <p class="cta-desc">HarbourScan uses our 292-tool sovereignty database to map your organization's specific jurisdictional exposure — free, browser-based, in about 10 minutes.</p>
+      <p class="cta-desc" id="ctaDesc">HarbourScan uses our sovereignty database to map your organization's specific jurisdictional exposure — free, browser-based, in about 10 minutes.</p>
       <p class="cta-desc" style="margin-top:8px;font-size:13px;color:var(--muted);font-style:italic;">HarbourScan operationalizes this research — applying the Sovereignty Index to your organization's actual SaaS environment.</p>
       <a href="/harbourscan" class="cta-btn">Run HarbourScan →</a>
       <p style="font-size:13px;color:var(--muted);margin-top:20px;">Need help operationalizing HarbourScan? <a href="https://calendly.com/josh-upperharbour/30min" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Request a scoping call →</a></p>
@@ -566,7 +559,9 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/assets/saas-db.js"></script>
+  <script>
     // Reveal on scroll
     document.querySelectorAll('.reveal').forEach(el => {
       new IntersectionObserver((entries) => {
@@ -574,37 +569,98 @@
       }, { threshold: 0.1 }).observe(el);
     });
 
-    // Animated counters
-    function animateCounters() {
-      document.querySelectorAll('[data-target]').forEach(el => {
-        const target = parseInt(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        const duration = 1800;
-        const start = performance.now();
+    // ── Compute all stats from saasDB ─────────────────
+    (function() {
+      if (typeof saasDB === 'undefined') return;
+      const total = saasDB.length;
+      const cloudActCount = saasDB.filter(t => t.cloudAct).length;
+      const cloudActPct = Math.round(cloudActCount / total * 100);
+      const canadian = saasDB.filter(t => t.risk === 'canadian').length;
+      const canadianPct = Math.round(canadian / total * 100);
+
+      // Unique categories
+      const categories = new Set(saasDB.map(t => t.category).filter(Boolean));
+
+      // CA-resident non-Canadian tools still CLOUD Act exposed
+      const caResNonCdn = saasDB.filter(t => {
+        if (t.risk === 'canadian') return false;
+        const dr = t.dataResidency.toLowerCase();
+        return dr.includes('canada') || dr.includes('ca-central') || dr.includes('montreal') || dr.includes('toronto');
+      });
+      const caResExposed = caResNonCdn.filter(t => t.cloudAct).length;
+      const caResPct = caResNonCdn.length > 0 ? Math.round(caResExposed / caResNonCdn.length * 100) : 0;
+
+      // Populate hero
+      document.getElementById('heroSub').innerHTML = 'We maintain the most comprehensive database of SaaS jurisdictional exposure in Canada — <strong>' + total + ' tools mapped</strong> across ' + categories.size + ' categories. Our research informs compliance strategy, procurement decisions, and policy development.';
+      document.getElementById('statCategories').textContent = 'across ' + categories.size + ' categories';
+      document.getElementById('statCloudActSub').textContent = '\u2248 ' + cloudActCount + ' of ' + total + ' tools';
+
+      // Populate featured
+      document.getElementById('featuredDesc').textContent = total + ' SaaS tools. Parent company jurisdictions. CLOUD Act exposure. Canadian data residency. Search any tool your organization uses and see its jurisdictional profile \u2014 free and instant.';
+
+      // Populate policy context
+      document.getElementById('policyCloudAct').textContent = cloudActPct + '%';
+      document.getElementById('policySovCloud').textContent = total + ' tools';
+      document.getElementById('policyCanadian').textContent = canadianPct + '% of the ' + total;
+
+      // Populate CTA
+      document.getElementById('ctaDesc').textContent = 'HarbourScan uses our ' + total + '-tool sovereignty database to map your organization\u2019s specific jurisdictional exposure \u2014 free, browser-based, in about 10 minutes.';
+
+      // ── Bar chart: compute % US-parented by category ──
+      const chartCategories = [
+        { key: 'crm', label: 'CRM & Sales' },
+        { key: 'cloud_infrastructure', label: 'Cloud Infra' },
+        { key: 'productivity', label: 'Productivity' },
+        { key: 'ai', label: 'AI & Data' },
+        { key: 'finance', label: 'Finance' },
+        { key: 'healthcare', label: 'Healthcare' },
+        { key: 'legal', label: 'Legal' }
+      ];
+      var barHtml = '';
+      chartCategories.forEach(function(cat) {
+        var catTools = saasDB.filter(function(t) { return t.category === cat.key; });
+        if (catTools.length === 0) return;
+        var usParented = catTools.filter(function(t) { return t.cloudAct; }).length;
+        var pct = Math.round(usParented / catTools.length * 100);
+        var colorClass = pct >= 75 ? 'red' : pct >= 50 ? 'gold' : 'teal';
+        barHtml += '<div class="bar-row"><div class="bar-label">' + cat.label + '</div><div class="bar-track"><div class="bar-fill ' + colorClass + '" style="width: ' + pct + '%;">' + pct + '%</div></div></div>';
+      });
+      barHtml += '<div style="font-family:var(--mono);font-size:9px;color:var(--muted);margin-top:12px;text-align:center;">% US-parented by category</div>';
+      document.getElementById('barChart').innerHTML = barHtml;
+
+      // ── Animated counters ─────────────────────────────
+      var targets = [
+        { el: document.getElementById('statTotal'), value: total, suffix: '' },
+        { el: document.getElementById('statCloudAct'), value: cloudActPct, suffix: '%' },
+        { el: document.getElementById('statCaRes'), value: caResPct, suffix: '%' },
+        { el: document.getElementById('statCanadian'), value: canadianPct, suffix: '%' }
+      ];
+      // Province counter still uses data-target
+      document.querySelectorAll('[data-target]').forEach(function(el) {
+        targets.push({ el: el, value: parseInt(el.dataset.target), suffix: el.dataset.suffix || '' });
+      });
+
+      function animateCounters() {
+        var duration = 1800, start = performance.now();
         function update(now) {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(target * eased) + suffix;
-          if (progress < 1) requestAnimationFrame(update);
+          var p = Math.min((now - start) / duration, 1), eased = 1 - Math.pow(1 - p, 3);
+          targets.forEach(function(t) { t.el.textContent = Math.round(t.value * eased) + t.suffix; });
+          if (p < 1) requestAnimationFrame(update);
         }
         requestAnimationFrame(update);
-      });
-    }
-    // Trigger counters when hero stats are visible
-    const statsEl = document.querySelector('.headline-stats');
-    if (statsEl) {
-      new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            animateCounters();
-            e.target.dataset.animated = 'true';
-          }
-        });
-      }, { threshold: 0.2 }).observe(statsEl);
+      }
 
-      // Fallback: if stats are already in viewport on load
-      setTimeout(() => { if (!statsEl.dataset.animated) animateCounters(); }, 500);
-    }
+      var statsEl = document.querySelector('.headline-stats');
+      if (statsEl) {
+        new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) { animateCounters(); e.target.dataset.animated = 'true'; }
+          });
+        }, { threshold: 0.2 }).observe(statsEl);
+        setTimeout(function() { if (!statsEl.dataset.animated) animateCounters(); }, 500);
+      }
+    })();
+
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
