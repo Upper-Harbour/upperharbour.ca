@@ -1,5 +1,6 @@
 # .github/workflows/signals.yml
 # Runs the signals intelligence pipeline every 6 hours
+# Auto-publishes signals directly to Website/signals.json
 
 name: Signals Pipeline
 
@@ -36,43 +37,10 @@ jobs:
           APPROVAL_EMAIL: ${{ secrets.APPROVAL_EMAIL }}
         run: python signals_pipeline.py collect
 
-      - name: Commit pending signals
+      - name: Commit published signals
         run: |
           git config user.name "Signals Bot"
           git config user.email "bot@upperharbour.ca"
-          git add pending.json signals.json 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "signals: $(date -u +%Y-%m-%dT%H:%M) — pipeline run"
-          git push || true
-
-  # Separate job for processing approval replies
-  # This can be triggered manually or via webhook
-  approve:
-    runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch'
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install dependencies
-        run: pip install anthropic feedparser requests
-
-      - name: Process approvals
-        run: |
-          # This step would be customized based on how approvals come in
-          # For email-based: parse reply and extract approved numbers
-          # For now, provides manual approve-all option
-          echo "Run manually: python signals_pipeline.py approve 1 2 3"
-          echo "Or: python signals_pipeline.py approve-all"
-
-      - name: Commit approved signals
-        run: |
-          git config user.name "Signals Bot"
-          git config user.email "bot@upperharbour.ca"
-          git add signals.json 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "signals: approved items published"
+          git add Website/signals.json 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "signals: $(date -u +%Y-%m-%dT%H:%M) — auto-published"
           git push || true
