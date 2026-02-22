@@ -54,27 +54,50 @@ SIGNALS_JSON_PATH = os.environ.get("SIGNALS_JSON_PATH", "Website/signals.json")
 
 # RSS feeds to monitor
 RSS_FEEDS = [
-    # Canadian regulators
-    {"url": "https://www.cai.gouv.qc.ca/rss", "name": "CAI Quebec", "type_hint": "enforcement"},
-    {"url": "https://www.priv.gc.ca/en/opc-news/news-and-announcements/rss/", "name": "OPC Canada", "type_hint": "enforcement"},
-    {"url": "https://www.ipc.on.ca/feed/", "name": "IPC Ontario", "type_hint": "policy"},
-    {"url": "https://www.oipc.bc.ca/feed/", "name": "OIPC BC", "type_hint": "enforcement"},
-    {"url": "https://www.oipc.ab.ca/feed/", "name": "OIPC Alberta", "type_hint": "enforcement"},
+    # Canadian regulators (skip keyword filtering — always relevant)
+    {"url": "https://www.cai.gouv.qc.ca/rss", "name": "CAI Quebec", "type_hint": "enforcement", "always_relevant": True},
+    {"url": "https://www.priv.gc.ca/en/opc-news/news-and-announcements/rss/", "name": "OPC Canada", "type_hint": "enforcement", "always_relevant": True},
+    {"url": "https://www.priv.gc.ca/en/rss/blog", "name": "OPC Canada Blog", "type_hint": "policy", "always_relevant": True},
+    {"url": "https://www.ipc.on.ca/feed/", "name": "IPC Ontario", "type_hint": "policy", "always_relevant": True},
+    {"url": "https://www.oipc.bc.ca/feed/", "name": "OIPC BC", "type_hint": "enforcement", "always_relevant": True},
+    {"url": "https://www.oipc.ab.ca/feed/", "name": "OIPC Alberta", "type_hint": "enforcement", "always_relevant": True},
 
     # Government
-    {"url": "https://www.canada.ca/en/treasury-board-secretariat.atom", "name": "Treasury Board", "type_hint": "procurement"},
-    {"url": "https://www.parl.ca/legisinfo/en/bills/rss", "name": "Parliament of Canada", "type_hint": "legislation"},
+    {"url": "https://www.canada.ca/en/treasury-board-secretariat.atom", "name": "Treasury Board", "type_hint": "procurement", "always_relevant": False},
+    {"url": "https://www.parl.ca/legisinfo/en/bills/rss", "name": "Parliament of Canada", "type_hint": "legislation", "always_relevant": False},
+    {"url": "https://www.gazette.gc.ca/rss/part2-en.xml", "name": "Canada Gazette", "type_hint": "legislation", "always_relevant": False},
+    {"url": "https://buyandsell.gc.ca/procurement-data/rss", "name": "CanadaBuys", "type_hint": "procurement", "always_relevant": False},
+    {"url": "https://www.canada.ca/en/shared-services.atom", "name": "Shared Services Canada", "type_hint": "procurement", "always_relevant": False},
+    {"url": "https://ised-isde.canada.ca/site/ised/en/rss.xml", "name": "ISED", "type_hint": "policy", "always_relevant": False},
+
+    # Canadian law firms — privacy practices
+    {"url": "https://www.blakes.com/insights/rss", "name": "Blakes", "type_hint": None, "always_relevant": False},
+    {"url": "https://stikeman.com/en-ca/kh/canadian-communications-law/feed", "name": "Stikeman Elliott", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.mccarthy.ca/en/insights/rss", "name": "McCarthy Tétrault", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.osler.com/en/resources/rss", "name": "Osler", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.fasken.com/en/feeds/knowledge", "name": "Fasken", "type_hint": None, "always_relevant": False},
 
     # Tech / legal news
-    {"url": "https://betakit.com/feed/", "name": "BetaKit", "type_hint": None},
-    {"url": "https://www.itworldcanada.com/feed", "name": "IT World Canada", "type_hint": None},
-    {"url": "https://www.lexology.com/feed", "name": "Lexology", "type_hint": None},
-    {"url": "https://thelogic.co/feed/", "name": "The Logic", "type_hint": None},
+    {"url": "https://betakit.com/feed/", "name": "BetaKit", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.itworldcanada.com/feed", "name": "IT World Canada", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.lexology.com/feed", "name": "Lexology", "type_hint": None, "always_relevant": False},
+    {"url": "https://thelogic.co/feed/", "name": "The Logic", "type_hint": None, "always_relevant": False},
+    {"url": "https://iapp.org/rss/daily-dashboard/", "name": "IAPP", "type_hint": None, "always_relevant": False},
+
+    # Policy media — shapes procurement narratives
+    {"url": "https://ipolitics.ca/feed/", "name": "iPolitics", "type_hint": "policy", "always_relevant": False},
+    {"url": "https://thehub.ca/feed/", "name": "The Hub", "type_hint": "policy", "always_relevant": False},
+    {"url": "https://policyoptions.irpp.org/feed/", "name": "Policy Options", "type_hint": "policy", "always_relevant": False},
+    {"url": "https://www.hilltimes.com/feed/", "name": "Hill Times", "type_hint": "policy", "always_relevant": False},
+    {"url": "https://ppforum.ca/feed/", "name": "Public Policy Forum", "type_hint": "policy", "always_relevant": False},
+
+    # The Conversation — Canada, politics + tech
+    {"url": "https://theconversation.com/ca/articles.atom?tag=data-privacy", "name": "The Conversation CA", "type_hint": "policy", "always_relevant": False},
 
     # Cloud vendor blogs
-    {"url": "https://aws.amazon.com/blogs/publicsector/feed/", "name": "AWS Public Sector", "type_hint": "vendor"},
-    {"url": "https://azure.microsoft.com/en-us/blog/feed/", "name": "Azure Blog", "type_hint": "vendor"},
-    {"url": "https://cloud.google.com/blog/rss", "name": "Google Cloud Blog", "type_hint": "vendor"},
+    {"url": "https://aws.amazon.com/blogs/publicsector/feed/", "name": "AWS Public Sector", "type_hint": "vendor", "always_relevant": False},
+    {"url": "https://azure.microsoft.com/en-us/blog/feed/", "name": "Azure Blog", "type_hint": "vendor", "always_relevant": False},
+    {"url": "https://cloud.google.com/blog/rss", "name": "Google Cloud Blog", "type_hint": "vendor", "always_relevant": False},
 ]
 
 # Web search queries (run via Claude API with web search tool)
@@ -88,12 +111,34 @@ SEARCH_QUERIES = [
 
 # Relevance keywords for filtering
 RELEVANCE_KEYWORDS = [
-    "data sovereignty", "cloud act", "law 25", "pipeda", "cppa",
+    # Core sovereignty terms
+    "data sovereignty", "digital sovereignty", "canadian sovereignty",
+    "canadian data sovereignty", "cloud act", "law 25", "loi 25",
+    "pipeda", "cppa", "fippa",
+    # Data handling
     "data residency", "data localization", "transfer impact assessment",
-    "cross-border data", "privacy commissioner", "enforcement order",
-    "saas", "cloud computing", "data protection", "procurement",
-    "jurisdictional", "foreign jurisdiction", "acquisition",
-    "data centre canada", "data center canada", "canadian privacy",
+    "cross-border data", "data transfer", "data protection",
+    # Regulators and enforcement
+    "privacy commissioner", "enforcement order", "enforcement action",
+    "commission d'accès", "cai quebec",
+    # Industry
+    "saas", "cloud computing", "cloud infrastructure",
+    "procurement", "government procurement", "public sector",
+    # Corporate activity
+    "jurisdictional", "foreign jurisdiction", "acquisition", "acquired",
+    "private equity", "merger",
+    # Infrastructure
+    "data centre canada", "data center canada", "canadian data centre",
+    "aws canada", "azure canada", "gcp canada",
+    # Privacy and compliance
+    "canadian privacy", "privacy law canada", "privacy reform",
+    "compliance", "cybersecurity canada",
+    # Procurement language shifts (early warning indicators)
+    "canadian hosting", "data residency required", "protected b",
+    "controlled access", "sovereign cloud", "domestic hosting",
+    "data boundary", "sovereign key", "local control",
+    # Vendor sovereignty marketing
+    "canadian data centre", "canada region", "canadian customers",
 ]
 
 # Event type classification
@@ -126,10 +171,11 @@ def collect_rss() -> list[dict]:
                 summary = entry.get('summary', entry.get('description', ''))
                 link = entry.get('link', '')
 
-                # Basic relevance check
-                text = (title + ' ' + summary).lower()
-                if not any(kw in text for kw in RELEVANCE_KEYWORDS):
-                    continue
+                # Basic relevance check (skip for regulator feeds — always relevant)
+                if not feed_config.get("always_relevant", False):
+                    text = (title + ' ' + summary).lower()
+                    if not any(kw in text for kw in RELEVANCE_KEYWORDS):
+                        continue
 
                 items.append({
                     "source": feed_config["name"],
@@ -426,13 +472,40 @@ def save_signals(data: dict):
     log.info(f"Saved {len(data.get('signals', []))} signals to {SIGNALS_JSON_PATH}")
 
 
+DB_ALERTS_PATH = os.environ.get("DB_ALERTS_PATH", "Website/db-alerts.json")
+
+def load_db_alerts() -> list[dict]:
+    """Load existing database update alerts."""
+    if os.path.exists(DB_ALERTS_PATH):
+        with open(DB_ALERTS_PATH) as f:
+            data = json.load(f)
+        return data.get("alerts", [])
+    return []
+
+def save_db_alerts(new_alerts: list[dict]):
+    """Append new database alerts to db-alerts.json."""
+    existing = load_db_alerts()
+    # Avoid duplicate alerts for the same tool + change
+    existing_keys = {(a["tool_name"], a["change"], a.get("new_value", "")) for a in existing}
+    for alert in new_alerts:
+        key = (alert["tool_name"], alert["change"], alert.get("new_value", ""))
+        if key not in existing_keys:
+            existing.append(alert)
+    # Keep only pending alerts (max 50)
+    existing = [a for a in existing if a.get("status") == "pending_review"][:50]
+    with open(DB_ALERTS_PATH, 'w') as f:
+        json.dump({"alerts": existing, "updated": datetime.now().isoformat()}, f, indent=2, ensure_ascii=False)
+    log.info(f"Saved {len(existing)} db alerts to {DB_ALERTS_PATH}")
+
+
 # ── Auto-Publish ─────────────────────────────────────────────
 
 def publish_signals(new_signals: list[dict]):
-    """Auto-publish signals directly to signals.json."""
+    """Auto-publish signals directly to signals.json and flag db updates."""
     existing = load_existing_signals()
 
     published = []
+    db_alerts = []
     for signal in new_signals:
         item = {
             "headline": signal.get("headline", ""),
@@ -445,6 +518,22 @@ def publish_signals(new_signals: list[dict]):
             "dbUpdate": signal.get("db_update") is not None,
         }
         published.append(item)
+
+        # Collect database update alerts
+        if signal.get("db_update"):
+            db = signal["db_update"]
+            db_alerts.append({
+                "tool_name": db.get("tool_name", ""),
+                "change": db.get("change", ""),
+                "old_value": db.get("old_value", ""),
+                "new_value": db.get("new_value", ""),
+                "reason": db.get("reason", ""),
+                "signal_headline": signal.get("headline", ""),
+                "signal_date": signal.get("date", ""),
+                "source_url": signal.get("source_url", ""),
+                "flagged_at": datetime.now().isoformat(),
+                "status": "pending_review",
+            })
 
     # Add to existing signals (newest first)
     existing["signals"] = published + existing.get("signals", [])
@@ -459,7 +548,12 @@ def publish_signals(new_signals: list[dict]):
     }
 
     save_signals(existing)
-    log.info(f"Auto-published {len(published)} signals")
+
+    # Write database alerts file (append to existing)
+    if db_alerts:
+        save_db_alerts(db_alerts)
+
+    log.info(f"Auto-published {len(published)} signals, {len(db_alerts)} db alerts flagged")
     return published
 
 
