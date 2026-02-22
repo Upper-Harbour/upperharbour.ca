@@ -1,24 +1,13 @@
-# approve-db-update.yml
-# Triggered when db-alerts.json is updated with approved alerts.
-# Runs apply_db_updates.py to write changes to saas-db.js, then
-# commits and pushes the result.
-
 name: Apply Approved DB Updates
 
-on:
-  # Run when db-alerts.json changes on main (e.g. after manual approval)
+'on':
   push:
     branches: [main]
     paths:
       - 'db-alerts.json'
-
-  # Allow manual trigger from the Actions tab
   workflow_dispatch:
-
-  # Also run on the same schedule as the signals pipeline (30 min after)
-  # so approved alerts are picked up promptly
   schedule:
-    - cron: '30 */6 * * *'   # every 6 hours, offset from pipeline
+    - cron: '30 */6 * * *'
 
 permissions:
   contents: write
@@ -26,12 +15,11 @@ permissions:
 jobs:
   apply-updates:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -47,39 +35,42 @@ jobs:
         id: check
         run: |
           if [ ! -f db-alerts.json ]; then
-            echo "has_approved=false" >> $GITHUB_OUTPUT
+            echo "skip=true" >> $GITHUB_OUTPUT
             echo "No db-alerts.json found"
             exit 0
           fi
-          # Check if any alerts have status "approved"
           APPROVED=$(python3 -c "
-          import json, sys
-          data = json.load(open('db-alerts.json'))
-          alerts = data.get('alerts', data) if isinstance(data, dict) else data
+          import json
+          with open('db-alerts.json') as f:
+            alerts = json.load(f)
           count = sum(1 for a in alerts if a.get('status') == 'approved')
           print(count)
           ")
-          echo "approved_count=$APPROVED" >> $GITHUB_OUTPUT
-          if [ "$APPROVED" -gt 0 ]; then
-            echo "has_approved=true" >> $GITHUB_OUTPUT
-            echo "Found $APPROVED approved alert(s)"
-          else
-            echo "has_approved=false" >> $GITHUB_OUTPUT
+          echo "approved=$APPROVED" >> $GITHUB_OUTPUT
+          if [ "$APPROVED" = "0" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
             echo "No approved alerts to process"
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "Found $APPROVED approved alert(s)"
           fi
 
-      - name: Apply approved alerts to saas-db.js
-        if: steps.check.outputs.has_approved == 'true'
+      - name: Apply approved updates
+        if: steps.check.outputs.skip != 'true'
         run: |
           python3 apply_db_updates.py --apply --commit
+          echo "Updates applied successfully"
 
-      - name: Summary
-        if: always()
+      - name: Commit and push changes
+        if: steps.check.outputs.skip != 'true'
         run: |
-          echo "### DB Update Results" >> $GITHUB_STEP_SUMMARY
-          if [ "${{ steps.check.outputs.has_approved }}" = "true" ]; then
-            echo "✅ Processed ${{ steps.check.outputs.approved_count }} approved alert(s)" >> $GITHUB_STEP_SUMMARY
-            echo "Changes committed to saas-db.js" >> $GITHUB_STEP_SUMMARY
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/saas-db.js db-alerts.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
           else
-            echo "ℹ️ No approved alerts to process" >> $GITHUB_STEP_SUMMARY
+            git commit -m "Auto-apply approved DB updates [skip ci]"
+            git push
+            echo "Changes committed and pushed"
           fi
