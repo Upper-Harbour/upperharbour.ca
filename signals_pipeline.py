@@ -22,7 +22,7 @@ Environment variables:
   SMTP_USER          — Email address to send from
   SMTP_PASS          — Email password / app password
   APPROVAL_EMAIL     — Your email (josh@upperharbour.ca)
-  SIGNALS_JSON_PATH  — Path to signals.json in repo (default: Website/signals.json)
+  SIGNALS_JSON_PATH  — Path to signals.json in repo (default: assets/signals.json)
 """
 
 import os
@@ -50,7 +50,7 @@ SMTP_PORT = int(os.environ.get("SMTP_PORT", "587"))
 SMTP_USER = os.environ.get("SMTP_USER")
 SMTP_PASS = os.environ.get("SMTP_PASS")
 APPROVAL_EMAIL = os.environ.get("APPROVAL_EMAIL", "josh@upperharbour.ca")
-SIGNALS_JSON_PATH = os.environ.get("SIGNALS_JSON_PATH", "Website/signals.json")
+SIGNALS_JSON_PATH = os.environ.get("SIGNALS_JSON_PATH", "assets/signals.json")
 
 # RSS feeds to monitor
 RSS_FEEDS = [
@@ -474,7 +474,7 @@ def save_signals(data: dict):
     log.info(f"Saved {len(data.get('signals', []))} signals to {SIGNALS_JSON_PATH}")
 
 
-DB_ALERTS_PATH = os.environ.get("DB_ALERTS_PATH", "Website/db-alerts.json")
+DB_ALERTS_PATH = os.environ.get("DB_ALERTS_PATH", "db-alerts.json")
 
 def load_db_alerts() -> list[dict]:
     """Load existing database update alerts."""
