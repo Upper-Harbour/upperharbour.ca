@@ -64,7 +64,7 @@
     .signal-content p{font-size:14px;color:var(--slate);line-height:1.65}
     .signal-content .signal-source{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:8px}
     .signal-content .signal-source a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border)}.signal-content .signal-source a:hover{color:var(--teal);border-color:var(--teal)}
-    .signal-impact{font-family:var(--mono);font-size:10px;color:var(--muted);white-space:nowrap}
+    .signal-impact{font-family:var(--mono);font-size:10px;color:var(--muted);max-width:200px;line-height:1.5}
     .signal-db-update{display:inline-block;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);background:rgba(60,184,176,0.08);border:1px solid rgba(60,184,176,0.2);padding:2px 8px;border-radius:2px;margin-top:8px}
 
     /* Empty state */
@@ -96,6 +96,11 @@
     .footer-copy{font-size:11px;color:var(--muted)}
 
     /* Responsive */
+    @media(max-width:960px){
+      .signal-card{grid-template-columns:auto 1fr;gap:12px}
+      .signal-impact{grid-column:1/-1;max-width:none}
+      .hero-meta{gap:20px}
+    }
     @media(max-width:768px){
       nav{padding:0 20px}.nav-link{display:none}.nav-cta{font-size:11px;padding:8px 14px}
       .hero{padding:110px 20px 36px}
