@@ -17,69 +17,121 @@ This document defines the classification logic used in Upper Harbour's Canadian 
 
 ---
 
-## The Three Classifications
+## Core Principle: Data Residency ≠ Data Sovereignty
 
-Every tool in the database receives exactly one of three risk classifications:
+The CLOUD Act grants US authorities the power to compel disclosure of data held by US-incorporated companies **regardless of where that data is stored**. A tool that offers "Canadian data residency" but is incorporated in the United States is still subject to US legal process. The availability of Canadian hosting is a compliance consideration — it does not eliminate jurisdictional risk.
 
-### EXPOSED (red)
+This principle underpins the entire classification system.
+
+---
+
+## The Four Classifications
+
+Every tool in the database receives exactly one of four risk classifications:
+
+### EXPOSED (red badge)
 
 **Definition:** The tool's parent entity is incorporated in the United States or is otherwise directly subject to the CLOUD Act, AND the tool does not offer meaningful Canadian data residency that would warrant additional nuance.
 
 **Logic:** US-incorporated parent → CLOUD Act applies → Canadian data is subject to US legal process regardless of where it is stored → classification is **exposed**.
 
-**Typical profile:**
-- Parent company incorporated in the US
+**Legal test:**
+- Parent company incorporated in the US (including Delaware subsidiaries)
 - `cloudAct: true`
+- No meaningful Canadian data residency option available
+
+**Typical profile:**
 - Data residency is US-only, or Canadian residency is not available or not meaningful
 - No structural ambiguity about jurisdiction
 
-**Examples:** Slack (Salesforce), Notion, Asana, Dropbox, Figma, HubSpot, Zoom (without CA residency option), GitHub (Microsoft)
+**Examples:** Slack (Salesforce), Notion, Asana, Dropbox, Figma, HubSpot, Zoom, GitHub (Microsoft)
 
 **Why these aren't "review":** These tools are unambiguously under US jurisdiction with no Canadian data residency option that would create a meaningful compliance pathway. There is nothing to "review" — the exposure is clear.
 
 ---
 
-### REVIEW (gold)
+### REVIEW (gold badge)
 
-**Definition:** The tool has jurisdictional exposure that requires analysis, but the situation is not as straightforward as a simple US-incorporated/no-residency tool. This includes:
+**Definition:** The tool has jurisdictional exposure that requires case-by-case assessment. This classification is used when:
 
-1. **US-parented tools that offer Canadian data residency** — CLOUD Act still applies, but the availability of Canadian hosting creates a compliance consideration worth documenting (e.g., Microsoft 365, AWS, Salesforce via Hyperforce)
-2. **Dual-jurisdiction or complex corporate structures** — the tool has a split or ambiguous jurisdiction (e.g., Atlassian/Jira: incorporated in Delaware but headquartered in Australia; Ceridian/Dayforce: dual-headquartered Canada/US)
-3. **Non-US, non-Canadian foreign jurisdiction** — tools incorporated in countries that are not subject to the CLOUD Act but are also not Canadian, where the regulatory environment may still create exposure (e.g., Canva in Australia, Monday.com in Israel)
-4. **US-parented tools where the data type or processing model introduces nuance** — e.g., infrastructure providers like AWS/Azure where the customer has more architectural control over data placement
+1. **US-parented tools that offer Canadian data residency** — CLOUD Act still applies (data residency ≠ data sovereignty), but the availability of Canadian hosting creates a compliance consideration worth documenting in a TIA
+2. **Dual-jurisdiction or complex corporate structures** — the tool has a split or ambiguous jurisdiction (e.g., Delaware-incorporated but Australian-headquartered)
+3. **Jurisdictions with compelled disclosure laws equivalent to the CLOUD Act** — tools incorporated in countries with their own compelled disclosure frameworks:
+   - **United Kingdom:** Investigatory Powers Act 2016 — authorities can compel disclosure of data held by UK-incorporated companies
+   - **Australia:** Telecommunications and Other Legislation Amendment (Assistance and Access) Act 2018 — can compel data access from Australian-incorporated companies
+4. **Non-US tools where data hosting creates indirect US exposure** — tools incorporated outside the US but hosting data primarily on US infrastructure (e.g., Israeli company using US-only cloud hosting)
 
-**Logic:** There is real jurisdictional exposure, but a blanket "exposed" label would be reductive. The tool requires case-by-case assessment depending on how the organization uses it, what data it processes, and whether available residency options are configured.
+**Critical note on US-parented tools with Canadian residency:** These tools are CLOUD Act exposed. The Canadian data residency option does **not** eliminate the risk. The "review" classification means the organization must make a documented decision (via TIA) about whether the residency option provides an acceptable risk posture for their use case. It does **not** mean the tool is safe.
 
-**Typical profile:**
-- `cloudAct: true` (for US-parented with CA residency) OR `cloudAct: false` (for non-US/non-Canadian)
-- Canadian data residency available or partially available
-- Corporate structure is complex, split, or recently changed
-- Data processing model gives the customer some control
+**Legal test for "review":**
+- US-incorporated parent with `cloudAct: true` AND meaningful Canadian data residency available, OR
+- Parent incorporated in a jurisdiction with compelled disclosure laws (UK IPA, AU AA Act), OR
+- Complex corporate structure creating dual jurisdiction exposure, OR
+- Non-US parent but data hosted primarily on US infrastructure
 
-**Examples:** Microsoft 365, Microsoft Teams, AWS, Azure, Google Workspace, Salesforce, DocuSign, Workday, Jira (Atlassian), Canva, Monday.com, QuickBooks, ADP, Ceridian/Dayforce
+**Examples:**
+- **US + CA residency:** Microsoft 365, AWS, Azure, Google Workspace, Salesforce, DocuSign, Snowflake
+- **UK (IPA):** Sage, Finastra, Wise, Dext, LexisNexis (RELX)
+- **Australia (AA Act):** Canva, Moodle, Cliniko, LEAP, Maptek Vulcan
+- **Dual jurisdiction:** Atlassian/Jira (Delaware + Australia), Ceridian/Dayforce (Canada + US)
+- **Indirect US exposure:** Monday.com (Israel, US hosting), Wix (Israel, US hosting)
 
-**The key distinction from "exposed":** These tools require a decision. An organization might be able to configure them in a way that reduces (but does not eliminate) jurisdictional risk. That decision needs to be documented — which is exactly what a TIA is for.
+**The key distinction from "exposed":** These tools require a documented decision. An organization might be able to configure them in a way that reduces (but does not eliminate) jurisdictional risk. That decision needs to be documented in a TIA.
+
+**The key distinction from "non_exposed":** These tools have a known legal pathway for compelled data disclosure — either via the CLOUD Act, the UK IPA, the AU AA Act, or indirect US infrastructure exposure.
 
 ---
 
-### CANADIAN (teal)
+### NON-EXPOSED (blue badge)
 
-**Definition:** The tool's parent entity is headquartered in Canada with Canadian incorporation, OR the tool is headquartered in a jurisdiction that is not subject to the CLOUD Act and does not create comparable foreign legal process exposure for Canadian data.
+**Definition:** The tool's parent entity is incorporated outside the United States, the United Kingdom, and Australia, in a jurisdiction that does not have a known compelled disclosure law equivalent to the CLOUD Act. The tool is not CLOUD Act exposed and is not subject to equivalent foreign compelled disclosure mechanisms.
 
-**Logic:** The parent entity is not subject to US legal compulsion over Canadian data. This does not mean the tool is risk-free — ownership can change, VC backing can shift control, and non-Canadian jurisdictions have their own legal frameworks — but it means the tool is not currently CLOUD Act exposed.
+**Legal test — ALL three must be true:**
+1. **Not incorporated in the US** (including no Delaware subsidiaries or US-incorporated parent in the corporate chain)
+2. **Not a subsidiary of a US-incorporated parent**
+3. **No equivalent compelled disclosure law** in their home jurisdiction (excludes UK and Australia)
+
+**Additional considerations:**
+- Data should not be hosted primarily on US infrastructure (if so, classify as REVIEW)
+- The tool may still be subject to the data protection laws of its home jurisdiction (e.g., EU GDPR)
+- Foreign ownership can change — monitor for acquisition by US, UK, or AU entities
 
 **Typical profile:**
 - `cloudAct: false`
-- Parent company incorporated in Canada, or in a non-CLOUD Act jurisdiction (EU, NZ, AU without US nexus)
-- No US parent company in the corporate chain that would create CLOUD Act exposure
+- Parent incorporated in EU, Switzerland, New Zealand, India, Israel (without US hosting), or other non-compelled-disclosure jurisdiction
+- No US parent company in the corporate chain
+- Data not hosted primarily on US infrastructure
 
 **Examples:**
-- **Canadian:** Clio, Shopify, FreshBooks, Hootsuite, Wealthsimple, Jane App, D2L Brightspace, Lightspeed, 1Password, Cohere
-- **Non-Canadian, non-CLOUD Act:** SAP (Germany), Xero (New Zealand)
+- **EU:** SAP (Germany), Brevo (France), Sketch (Netherlands), Typeform (Spain), Make (Czech Republic), Hotjar (Malta), Adyen (Netherlands), Bluebeam (Germany/Nemetschek), CCH iFirm (Netherlands/Wolters Kluwer), GEOVIA (France/Dassault), Odoo (Belgium)
+- **Switzerland:** Temenos
+- **New Zealand:** Xero
+- **India:** Zoho
+- **Sweden:** Hexagon Mining
+- **Italy:** Evernote (Bending Spoons)
 
-**Why SAP and Xero are "canadian" and not "review":** The "canadian" classification indicates the tool is not CLOUD Act exposed. SAP (German-incorporated) and Xero (NZ-incorporated) meet this test. The label could be more precisely called "not exposed" or "low jurisdictional risk," but "Canadian" was chosen because the primary audience is Canadian organizations looking for tools that don't create US legal process exposure. The label communicates the practical outcome: this tool does not expose your data to the CLOUD Act.
+**Why these aren't "canadian":** These tools are not Canadian-incorporated. While they are not CLOUD Act exposed, they operate under the legal frameworks of their home jurisdictions. For Canadian organizations specifically seeking Canadian-incorporated tools (e.g., for government procurement requiring Canadian jurisdiction), these do not qualify.
 
-**Note on this naming decision:** If the index expands significantly beyond Canadian-headquartered tools in this tier, consider renaming the classification to "sovereign" or "low risk" to avoid confusion. For now, the label is accurate for the audience.
+**Why these aren't "review":** There is no known compelled disclosure pathway. The parent entity is not subject to the CLOUD Act, the UK IPA, or the AU AA Act. There is no case-by-case jurisdictional decision to make — the tool is not exposed to these mechanisms.
+
+---
+
+### CANADIAN (teal badge)
+
+**Definition:** The tool's parent entity is incorporated in Canada. Not subject to the US CLOUD Act.
+
+**Legal test:**
+- Parent company incorporated in Canada
+- `cloudAct: false`
+- No US parent company in the corporate chain that would create CLOUD Act exposure
+
+**Typical profile:**
+- Canadian-headquartered and Canadian-incorporated
+- Canadian data residency available or standard
+
+**Examples:** Clio, Shopify, FreshBooks, Hootsuite, Wealthsimple, Jane App, D2L Brightspace, Lightspeed, 1Password, Cohere, OpenText, Thomson Reuters
+
+**Why this is the highest-trust tier:** Canadian incorporation means the tool is subject to Canadian privacy law (PIPEDA, Law 25, provincial legislation) and Canadian courts. There is no foreign legal process pathway for compelled data disclosure. This does not mean the tool is risk-free — ownership can change, VC backing can shift control — but it means the tool currently provides the strongest jurisdictional alignment for Canadian organizations.
 
 ---
 
@@ -95,12 +147,36 @@ For any new tool being added to the database:
    └── NO  → Is the parent entity incorporated in Canada?
              ├── YES → CANADIAN
              └── NO  → Is the parent entity in a jurisdiction with
-                        CLOUD Act-equivalent foreign legal process risk?
-                        ├── YES or UNCLEAR → REVIEW
-                        └── NO → CANADIAN
+                        compelled disclosure laws (UK IPA, AU AA Act)?
+                        ├── YES → REVIEW
+                        └── NO  → Is data hosted primarily on
+                                  US infrastructure?
+                                  ├── YES → REVIEW
+                                  └── NO  → NON_EXPOSED
 ```
 
 **"Meaningful Canadian data residency"** means the vendor offers a Canada-region deployment option that a customer can select, and the option is available on business/enterprise plans (not just government contracts). Marketing language about "data staying in Canada" without a specific Canadian region offering does not qualify.
+
+**"Compelled disclosure law"** means a statute that grants the government of the tool's home jurisdiction the legal power to compel the company to disclose data held on behalf of customers, regardless of where that data is stored. Currently tracked: US CLOUD Act, UK Investigatory Powers Act 2016, Australia Assistance and Access Act 2018. Other jurisdictions should be added as new legislation emerges.
+
+---
+
+## Compelled Disclosure Jurisdictions
+
+| Jurisdiction | Law | Effective | Notes |
+|-------------|-----|-----------|-------|
+| United States | CLOUD Act (Clarifying Lawful Overseas Use of Data Act) | 2018 | Applies to all US-incorporated companies. Can compel disclosure regardless of data location. |
+| United Kingdom | Investigatory Powers Act 2016 | 2016 | Broad surveillance powers. Technical capability notices can compel assistance. |
+| Australia | Assistance and Access Act 2018 | 2018 | Technical assistance requests/notices can compel cooperation. Applies to AU-incorporated companies. |
+
+**Jurisdictions monitored but not currently classified as compelled disclosure:**
+- **Five Eyes (NZ, Canada):** Intelligence sharing agreements create indirect exposure but not direct statutory compulsion equivalent to the CLOUD Act
+- **EU:** GDPR provides strong data protection; no equivalent compelled disclosure mechanism for foreign data
+- **India:** IT Act has government access provisions but not comparable to CLOUD Act extraterritorial reach
+- **Israel:** No equivalent compelled disclosure law for foreign-held data
+- **Switzerland:** Strong data protection tradition; no equivalent compelled disclosure mechanism
+
+This list should be reviewed quarterly and when new legislation is enacted.
 
 ---
 
@@ -116,24 +192,43 @@ For any new tool being added to the database:
 **Reasoning:** Acquisition by a US parent changes the jurisdiction. The tool is reclassified immediately upon acquisition closing. If the US parent maintains Canadian data residency, classify as REVIEW. If not, EXPOSED.
 **Example:** Slack was Canadian-founded but US-incorporated since pre-IPO, then acquired by Salesforce. Classification: EXPOSED.
 
+### Canadian company acquired by a non-US, non-compelled-disclosure parent
+**Classification:** NON_EXPOSED
+**Reasoning:** The parent is not subject to the CLOUD Act or equivalent law. The tool retains its Canadian operations but is no longer Canadian-incorporated.
+**Example:** TaxCycle (Canadian-developed, acquired by Xero of New Zealand). Classification: NON_EXPOSED.
+
 ### Dual-headquartered company (Canada/US)
 **Classification:** REVIEW
 **Reasoning:** If the entity has any US incorporation that could subject it to CLOUD Act jurisdiction, it cannot be classified as CANADIAN. But the Canadian presence and operations create nuance worth documenting.
 **Example:** Ceridian/Dayforce (Toronto/Minneapolis, US incorporation creates CLOUD Act exposure).
 
-### Australian or European company with no US nexus
-**Classification:** CANADIAN
-**Reasoning:** Not subject to CLOUD Act. May have its own regulatory framework, but for the purposes of Canadian jurisdictional compliance (the specific question this index answers), the tool does not expose Canadian data to US legal process.
-**Examples:** Canva (Australia) is classified as REVIEW because its infrastructure runs on US cloud providers, creating indirect exposure. SAP (Germany) is classified as CANADIAN because it offers Canadian data residency on non-US infrastructure.
+### EU/NZ/Swiss company with no US nexus
+**Classification:** NON_EXPOSED
+**Reasoning:** Not subject to CLOUD Act. Not subject to UK IPA or AU AA Act. No known compelled disclosure mechanism in home jurisdiction.
+**Examples:** SAP (Germany), Xero (New Zealand), Temenos (Switzerland), Adyen (Netherlands)
+
+### Australian company with no US nexus
+**Classification:** REVIEW
+**Reasoning:** Australia's Assistance and Access Act 2018 creates compelled disclosure exposure similar (though not identical) to the CLOUD Act.
+**Examples:** Canva, Moodle, Cliniko, LEAP, Maptek Vulcan
+
+### UK company with no US nexus
+**Classification:** REVIEW
+**Reasoning:** The UK Investigatory Powers Act 2016 creates compelled disclosure exposure.
+**Examples:** Sage, Finastra, Wise, Dext
+
+### Non-US company with data hosted primarily on US infrastructure
+**Classification:** REVIEW
+**Reasoning:** Even without a US parent, routing data through US infrastructure creates indirect jurisdictional exposure. US authorities could potentially access data through the infrastructure provider (which IS US-incorporated and CLOUD Act subject).
+**Examples:** Monday.com (Israel, US-hosted), Wix (Israel, US-hosted)
 
 ### Tool changes infrastructure but not corporate parent
-**Classification:** Unchanged unless infrastructure change creates new jurisdictional exposure
-**Reasoning:** The classification is primarily based on the parent entity's legal jurisdiction, not infrastructure. However, if a tool moves from self-hosted infrastructure to US cloud providers, the note should be updated. If the move creates a new CLOUD Act pathway (e.g., a Canadian company moves all processing to AWS US-East with no Canadian option), consider reclassification to REVIEW.
+**Classification:** May change if infrastructure move creates or eliminates US hosting dependency
+**Reasoning:** For non_exposed tools, a move to primarily US infrastructure would trigger reclassification to REVIEW. For review tools hosted on US infrastructure, a move to non-US infrastructure might enable reclassification to NON_EXPOSED (if all other criteria are met).
 
 ### Tool parent is acquired by another company in the same jurisdiction
 **Classification:** Unchanged
-**Reasoning:** Intra-jurisdictional acquisitions don't change CLOUD Act exposure. Update the parent company name and note, but keep the classification.
-**Example:** If Salesforce acquires another US SaaS company, the acquired tool stays EXPOSED.
+**Reasoning:** Intra-jurisdictional acquisitions don't change compelled disclosure exposure. Update the parent company name and note, but keep the classification.
 
 ---
 
@@ -150,7 +245,9 @@ Each tool in the database has the following fields:
 | `cloudAct` | Boolean: is the parent entity subject to US CLOUD Act jurisdiction? |
 | `dataResidency` | Available data residency regions (as offered to business customers) |
 | `note` | Free-text explanation of classification reasoning |
-| `risk` | Classification: `exposed`, `review`, or `canadian` |
+| `risk` | Classification: `exposed`, `review`, `non_exposed`, or `canadian` |
+| `category` | Functional category (e.g., "communication", "crm", "healthcare") |
+| `industries` | Array of industries that commonly use this tool |
 
 ### cloudAct field logic
 
@@ -159,12 +256,40 @@ Each tool in the database has the following fields:
 - `false` if the parent entity is not incorporated in or controlled by a US entity
 - For dual-jurisdiction entities, `true` if any entity in the corporate chain is US-incorporated
 
+### risk field logic
+
+| Value | cloudAct | Jurisdiction | Canadian residency | Compelled disclosure |
+|-------|----------|-------------|-------------------|---------------------|
+| `exposed` | `true` | US | No | CLOUD Act |
+| `review` | `true` or `false` | US + CA residency, UK, AU, dual, or US-hosted | Varies | CLOUD Act, IPA, AA Act, or indirect |
+| `non_exposed` | `false` | EU, NZ, CH, IN, IL, etc. | N/A | None known |
+| `canadian` | `false` | Canada | Typically yes | None (Canadian law applies) |
+
+### category field values
+
+```
+communication, productivity, project_management, file_storage, crm, 
+marketing, cloud_infrastructure, devops, design, finance, hr, 
+customer_support, security, analytics, integration, ai, healthcare, 
+legal, education, ecommerce, enterprise_it, erp, mining, real_estate, 
+hospitality, accounting, survey, cms, government, other
+```
+
+### industries field values
+
+```
+technology, finance, government, healthcare, legal, education, 
+real_estate, accounting, mining, hospitality, nonprofit
+```
+
+These align with the `industryProfiles` in `regulatory-map.js`.
+
 ### note field standards
 
 Every note should contain:
 1. The jurisdictional fact (e.g., "US-incorporated" or "Canadian-headquartered")
 2. The data residency situation (e.g., "Canadian data residency available" or "US only")
-3. The CLOUD Act implication if applicable (e.g., "CLOUD Act applies regardless of data location")
+3. The compelled disclosure implication (e.g., "CLOUD Act applies" or "Not subject to US CLOUD Act or equivalent compelled disclosure law")
 4. Any structural nuance (e.g., "Dual-headquartered" or "Acquired by [parent] in [year]")
 
 ---
@@ -173,14 +298,27 @@ Every note should contain:
 
 A tool should be reviewed for potential reclassification when:
 
-1. **Acquisition or merger** — new parent entity may change jurisdiction
+1. **Acquisition or merger** — new parent entity may change jurisdiction and compelled disclosure exposure
 2. **Reincorporation** — company moves legal domicile (rare but significant)
 3. **New data residency offering** — US tool adds Canadian region (could move from EXPOSED to REVIEW)
 4. **Data residency removal** — tool eliminates Canadian region option (could move from REVIEW to EXPOSED)
-5. **Regulatory change** — new law creates CLOUD Act-equivalent exposure in another jurisdiction
-6. **Infrastructure migration** — significant change in where data is processed
+5. **Regulatory change** — new compelled disclosure law enacted in a jurisdiction (could move tools from NON_EXPOSED to REVIEW)
+6. **Infrastructure migration** — significant change in where data is hosted (could move NON_EXPOSED to REVIEW or vice versa)
+7. **New compelled disclosure law** — a jurisdiction previously classified as safe enacts equivalent legislation
 
-The signals pipeline monitors for triggers 1, 2, and 3 automatically. Triggers 4, 5, and 6 require manual review.
+The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Triggers 4, 5, and 6 require manual review.
+
+---
+
+## Current Database Statistics (February 2026)
+
+| Classification | Count | Percentage |
+|---------------|-------|------------|
+| EXPOSED | 160 | 55% |
+| REVIEW | 52 | 18% |
+| NON_EXPOSED | 18 | 6% |
+| CANADIAN | 62 | 21% |
+| **Total** | **292** | **100%** |
 
 ---
 
@@ -189,6 +327,7 @@ The signals pipeline monitors for triggers 1, 2, and 3 automatically. Triggers 4
 | Date | Change | Reason |
 |------|--------|--------|
 | Feb 2026 | Initial rubric created | Codify classification logic used since database creation |
+| Feb 2026 | Four-tier system implemented | Split "review" and "canadian" tiers to distinguish non-US/non-compelled-disclosure tools from Canadian-incorporated tools. Added compelled disclosure law tracking for UK (IPA) and Australia (AA Act). Added `category` and `industries` fields. |
 
 ---
 
@@ -196,6 +335,6 @@ The signals pipeline monitors for triggers 1, 2, and 3 automatically. Triggers 4
 
 This rubric should be reviewed:
 - When a classification decision is ambiguous or contested
-- When a new jurisdiction category is considered (e.g., UK post-Brexit, India)
+- When a new compelled disclosure law is enacted in any jurisdiction
 - Quarterly, as part of database maintenance
 - When the database exceeds 350 tools (may need to add subcategories)
