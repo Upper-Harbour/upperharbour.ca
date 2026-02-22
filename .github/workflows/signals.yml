@@ -41,6 +41,11 @@ jobs:
         run: |
           git config user.name "Signals Bot"
           git config user.email "bot@upperharbour.ca"
+          echo "=== Checking for signals.json ==="
+          ls -la Website/signals.json 2>/dev/null || echo "signals.json NOT FOUND"
+          ls -la Website/db-alerts.json 2>/dev/null || echo "db-alerts.json not found (ok)"
+          echo "=== Git status ==="
+          git status
           git add Website/signals.json Website/db-alerts.json 2>/dev/null || true
           git diff --staged --quiet || git commit -m "signals: $(date -u +%Y-%m-%dT%H:%M) — auto-published"
           git push || true
