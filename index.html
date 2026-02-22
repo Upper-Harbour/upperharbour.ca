@@ -4,19 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Upper Harbour — Canadian SaaS Jurisdictional Compliance</title>
-  <meta name="description" content="71% of SaaS tools used by Canadian organizations are CLOUD Act exposed. Upper Harbour maps jurisdictional risk across 292 tools for Law 25 and PIPEDA compliance." />
+  <meta name="description" content="Most SaaS tools used by Canadian organizations are CLOUD Act exposed. Upper Harbour maps jurisdictional risk for Law 25 and PIPEDA compliance." />
   <link rel="canonical" href="https://upperharbour.ca/" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <meta property="og:title" content="Upper Harbour — 71% of Your SaaS Stack Is CLOUD Act Exposed" />
-  <meta property="og:description" content="We mapped 292 SaaS tools to their parent jurisdictions. Only 16% are Canadian-owned." />
+  <meta property="og:title" content="Upper Harbour — Is Your SaaS Stack Under Foreign Jurisdiction?" />
+  <meta property="og:description" content="We mapped the SaaS tools Canadian organizations rely on to their parent jurisdictions, CLOUD Act exposure, and data residency options." />
   <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
   <meta property="og:url" content="https://upperharbour.ca/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Upper Harbour" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Upper Harbour — 71% of Your SaaS Stack Is CLOUD Act Exposed" />
-  <meta name="twitter:description" content="We mapped 292 SaaS tools to their parent jurisdictions. Only 16% are Canadian-owned." />
+  <meta name="twitter:title" content="Upper Harbour — Is Your SaaS Stack Under Foreign Jurisdiction?" />
+  <meta name="twitter:description" content="We mapped the SaaS tools Canadian organizations rely on to their parent jurisdictions, CLOUD Act exposure, and data residency options." />
   <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Upper Harbour","url":"https://upperharbour.ca","description":"Jurisdictional compliance intelligence for Canadian organizations.","founder":{"@type":"Person","name":"Joshua van Es"},"sameAs":["https://www.linkedin.com/in/joshuavanes"]}
@@ -93,6 +93,7 @@
     .checker-badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:3px}
     .badge-exposed{background:var(--red-dim);color:var(--red);border:1px solid rgba(224,96,80,0.25)}
     .badge-review{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,0.25)}
+    .badge-non_exposed{background:rgba(91,155,213,0.1);color:#5B9BD5;border:1px solid rgba(91,155,213,0.25)}
     .badge-canadian{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(60,184,176,0.25)}
     .checker-result-row{display:flex;justify-content:space-between;font-size:12px;color:var(--slate);padding:5px 0;border-bottom:1px solid var(--border)}.checker-result-row:last-of-type{border-bottom:none}
     .checker-noresult{text-align:left;font-size:13px;color:var(--muted);margin-top:16px;line-height:1.6}.checker-noresult a{color:var(--teal);text-decoration:none}
@@ -183,14 +184,14 @@
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow">Canadian SaaS Sovereignty Index &middot; 292 Tools Mapped</div>
-      <h1 class="hero-h1">71% of your SaaS stack is under <em>foreign jurisdiction.</em></h1>
-      <p class="hero-sub">We mapped 292 SaaS tools commonly used by Canadian organizations to their parent companies, legal jurisdictions, and CLOUD Act exposure. <strong>Most organizations haven't documented this. Law 25 already requires it.</strong></p>
+      <div class="hero-eyebrow" id="heroEyebrow">Canadian SaaS Sovereignty Index</div>
+      <h1 class="hero-h1" id="heroH1">of your SaaS stack is under <em>foreign jurisdiction.</em></h1>
+      <p class="hero-sub" id="heroSub">We mapped SaaS tools commonly used by Canadian organizations to their parent companies, legal jurisdictions, and CLOUD Act exposure. <strong>Most organizations haven't documented this. Law 25 already requires it.</strong></p>
       <div class="hero-stats">
-        <div class="h-stat"><div class="h-stat-num teal" data-target="292">0</div><div class="h-stat-label">SaaS tools mapped</div></div>
-        <div class="h-stat"><div class="h-stat-num red" data-target="71" data-suffix="%">0%</div><div class="h-stat-label">US-parented<br/>(CLOUD Act exposed)</div></div>
-        <div class="h-stat"><div class="h-stat-num gold" data-target="83" data-suffix="%">0%</div><div class="h-stat-label">CA-resident tools still<br/>CLOUD Act exposed</div></div>
-        <div class="h-stat"><div class="h-stat-num teal" data-target="16" data-suffix="%">0%</div><div class="h-stat-label">Canadian-owned</div></div>
+        <div class="h-stat"><div class="h-stat-num teal" id="statTotal">0</div><div class="h-stat-label">SaaS tools mapped</div></div>
+        <div class="h-stat"><div class="h-stat-num red" id="statCloudAct">0%</div><div class="h-stat-label">US-parented<br/>(CLOUD Act exposed)</div></div>
+        <div class="h-stat"><div class="h-stat-num gold" id="statCaRes">0%</div><div class="h-stat-label">CA-resident tools still<br/>CLOUD Act exposed</div></div>
+        <div class="h-stat"><div class="h-stat-num teal" id="statCanadian">0%</div><div class="h-stat-label">Canadian-owned</div></div>
       </div>
       <div class="hero-actions">
         <a href="/harbourscan" class="btn-primary">Run HarbourScan &mdash; free &rarr;</a>
@@ -207,7 +208,7 @@
         <div class="callout-source">Anton Carniaux, Microsoft France &middot; French Senate testimony, June 2025</div>
       </div>
       <div class="callout-text">
-        <p><strong>Canadian data residency does not equal Canadian data sovereignty.</strong> Data residency does not change the legal jurisdiction of the platform provider. This applies to every US-parented SaaS tool &mdash; not just Microsoft. In our dataset, 83% of tools offering Canadian hosting remain CLOUD Act exposed.</p>
+        <p><strong>Canadian data residency does not equal Canadian data sovereignty.</strong> Data residency does not change the legal jurisdiction of the platform provider. This applies to every US-parented SaaS tool &mdash; not just Microsoft. In our dataset, <span id="calloutCaRes">most</span> non-Canadian tools offering Canadian hosting remain CLOUD Act exposed.</p>
       </div>
     </div>
   </section>
@@ -218,7 +219,7 @@
       <h2 class="checker-title">Is your SaaS tool under <em>foreign jurisdiction?</em></h2>
       <p class="checker-sub">Type a tool your organization uses. We&#39;ll show you the parent company, jurisdiction, and CLOUD Act status.</p>
       <div class="checker-input-wrap"><input type="text" class="checker-input" id="checkerInput" placeholder="Try Slack, Notion, Zoom, Shopify&hellip;" autocomplete="off" /></div>
-      <p style="font-size:12px;color:var(--muted);margin-top:12px">Quick check uses a sample. The full <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Sovereignty Index</a> covers all 292 tools.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">Searches our full database. <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Browse the Sovereignty Index</a> or <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">run HarbourScan</a> for a complete assessment.</p>
       <div id="checkerResults"></div>
     </div>
   </section>
@@ -232,7 +233,7 @@
         <div class="flow-step reveal">
           <div class="flow-num">01 &mdash; Research</div>
           <div class="flow-title">We mapped the landscape</div>
-          <div class="flow-body">292 SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, Canadian data residency, and ownership status. Province-by-province regulatory analysis. Government procurement audit. The research is <a href="/research">public and free</a>.</div>
+          <div class="flow-body"><span id="flowResearchText">SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, Canadian data residency, and ownership status.</span> Province-by-province regulatory analysis. Government procurement audit. The research is <a href="/research">public and free</a>.</div>
         </div>
         <div class="flow-step reveal">
           <div class="flow-num">02 &mdash; HarbourScan</div>
@@ -318,98 +319,90 @@
         else { alert('Something went wrong. Please email josh@upperharbour.ca directly.'); }
       } catch(err) { alert('Something went wrong. Please email josh@upperharbour.ca directly.'); }
     }
+  </script>
+  <script src="/assets/saas-db.js"></script>
+  <script>
+    /* ── Accessibility: skip link ────────────────────── */
+    (function() { var s = document.querySelector('.skip-link'); if (s) s.addEventListener('click', function(e) { e.preventDefault(); var t = document.querySelector(s.getAttribute('href')); if (t) { t.setAttribute('tabindex', '-1'); t.focus(); } }); })();
+    /* ── Reveal on scroll ────────────────────────────── */
     document.querySelectorAll('.reveal').forEach(el => {
       new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 }).observe(el);
     });
-    function animateCounters() {
-      document.querySelectorAll('[data-target]').forEach(el => {
-        const target = parseInt(el.dataset.target), suffix = el.dataset.suffix || '', duration = 1800, start = performance.now();
-        function update(now) { const p = Math.min((now - start) / duration, 1), eased = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(target * eased) + suffix; if (p < 1) requestAnimationFrame(update); }
-        requestAnimationFrame(update);
+    /* ── Compute all stats from saasDB ───────────────── */
+    (function() {
+      if (typeof saasDB === 'undefined') return;
+      const total = saasDB.length;
+      const cloudActCount = saasDB.filter(t => t.cloudAct).length;
+      const cloudActPct = Math.round(cloudActCount / total * 100);
+      const canadian = saasDB.filter(t => t.risk === 'canadian').length;
+      const canadianPct = Math.round(canadian / total * 100);
+
+      // CA-resident non-Canadian tools that are still CLOUD Act exposed
+      const caResNonCdn = saasDB.filter(t => {
+        if (t.risk === 'canadian') return false;
+        const dr = t.dataResidency.toLowerCase();
+        return dr.includes('canada') || dr.includes('ca-central') || dr.includes('montreal') || dr.includes('toronto');
       });
-    }
-    const statsEl = document.querySelector('.hero-stats');
-    if (statsEl) {
-      new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { animateCounters(); e.target.dataset.animated = 'true'; } }); }, { threshold: 0.2 }).observe(statsEl);
-      setTimeout(() => { if (!statsEl.dataset.animated) animateCounters(); }, 500);
-    }
-    const saasDB = [
-      {name:"Slack",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Global regions",note:"Acquired by Salesforce (US) in 2021. Formerly Canadian-founded. All data subject to US legal process.",risk:"exposed"},
-      {name:"Microsoft Teams",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Part of Microsoft 365. Canadian hosting available but US-parent jurisdiction applies.",risk:"review"},
-      {name:"Microsoft 365",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Canadian data residency available but parent entity remains subject to US CLOUD Act.",risk:"review"},
-      {name:"Google Workspace",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Canadian data residency available but Alphabet's US incorporation means CLOUD Act exposure persists.",risk:"review"},
-      {name:"Zoom",parent:"Zoom Video Communications",hq:"San Jose, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US primary",note:"US-incorporated. Encryption keys and metadata under US legal jurisdiction.",risk:"exposed"},
-      {name:"Notion",parent:"Notion Labs Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated with no Canadian data residency option.",risk:"exposed"},
-      {name:"Salesforce",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Canadian data centre available but US-parent entity subject to CLOUD Act.",risk:"review"},
-      {name:"HubSpot",parent:"HubSpot Inc.",hq:"Cambridge, MA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU",note:"US-incorporated. CRM and marketing data under US jurisdiction.",risk:"exposed"},
-      {name:"AWS",parent:"Amazon.com Inc.",hq:"Seattle, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region (ca-central-1)",note:"Canadian region available but Amazon's US incorporation means CLOUD Act applies.",risk:"review"},
-      {name:"Azure",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada Central/East",note:"Canadian data centres available but Microsoft (US) subject to CLOUD Act.",risk:"review"},
-      {name:"Google Cloud",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Montreal region",note:"Canadian region in Montreal but Alphabet (US) subject to CLOUD Act.",risk:"review"},
-      {name:"Shopify",parent:"Shopify Inc.",hq:"Ottawa, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",note:"Canadian-headquartered and TSX-listed.",risk:"canadian"},
-      {name:"Dropbox",parent:"Dropbox Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated. All file storage subject to US legal process.",risk:"exposed"},
-      {name:"GitHub",parent:"Microsoft Corporation",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"Owned by Microsoft (US). Source code under US jurisdiction.",risk:"exposed"},
-      {name:"Stripe",parent:"Stripe Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated payment processor.",risk:"exposed"},
-      {name:"DocuSign",parent:"DocuSign Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Canada/EU",note:"Canadian residency available but US-incorporated.",risk:"review"},
-      {name:"Okta",parent:"Okta Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU/AU",note:"US-incorporated identity provider. Authentication data under US jurisdiction.",risk:"exposed"},
-      {name:"1Password",parent:"AgileBits Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada available",note:"Canadian-headquartered. Zero-knowledge architecture.",risk:"canadian"},
-      {name:"Clio",parent:"Themis Solutions Inc.",hq:"Burnaby, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",note:"Canadian-headquartered legal practice management.",risk:"canadian"},
-      {name:"Cohere",parent:"Cohere Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Multiple including Canada",note:"Canadian-headquartered AI company.",risk:"canadian"},
-      {name:"OpenAI",parent:"OpenAI Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated. ChatGPT and API data under US jurisdiction.",risk:"exposed"},
-      {name:"Zendesk",parent:"Zendesk Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU/AU",note:"US-incorporated. No Canadian data residency.",risk:"exposed"},
-      {name:"Snowflake",parent:"Snowflake Inc.",hq:"Bozeman, MT",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada available",note:"Canadian region available but US-incorporated.",risk:"review"},
-      {name:"ServiceNow",parent:"ServiceNow Inc.",hq:"Santa Clara, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada available",note:"Canadian data centre available but US-parent entity subject to CLOUD Act.",risk:"review"},
-      {name:"Workday",parent:"Workday Inc.",hq:"Pleasanton, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Canada/EU",note:"US-incorporated. Canadian data centre available but CLOUD Act applies.",risk:"review"},
-      {name:"BambooHR",parent:"BambooHR LLC",hq:"Lindon, UT",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated HRIS. Employee data under US jurisdiction.",risk:"exposed"},
-      {name:"Hootsuite",parent:"Hootsuite Inc.",hq:"Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"US/Canada",note:"Canadian-headquartered.",risk:"canadian"},
-      {name:"Wealthsimple",parent:"Wealthsimple Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",note:"Canadian-incorporated fintech.",risk:"canadian"},
-      {name:"Zapier",parent:"Zapier Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"Integration platform. All data transiting Zapier under US jurisdiction.",risk:"exposed"},
-      {name:"Mailchimp",parent:"Intuit Inc.",hq:"Atlanta, GA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"Acquired by Intuit (US). Subscriber lists under US jurisdiction.",risk:"exposed"},
-      {name:"Figma",parent:"Figma Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated. Design files under US jurisdiction.",risk:"exposed"},
-      {name:"Canva",parent:"Canva Pty Ltd",hq:"Sydney, Australia",jurisdiction:"Australia",cloudAct:false,dataResidency:"US",note:"Australian-incorporated. Not directly subject to CLOUD Act.",risk:"review"},
-      {name:"SAP",parent:"SAP SE",hq:"Walldorf, Germany",jurisdiction:"Germany / EU",cloudAct:false,dataResidency:"Multiple including Canada",note:"German-incorporated. Canadian data residency available.",risk:"canadian"},
-      {name:"Jira",parent:"Atlassian Corporation",hq:"Sydney, AU (US-listed)",jurisdiction:"United States / Australia",cloudAct:true,dataResidency:"Multiple regions",note:"Incorporated in Delaware (US). Dual jurisdiction.",risk:"review"},
-      {name:"QuickBooks",parent:"Intuit Inc.",hq:"Mountain View, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Canada",note:"Intuit is US-incorporated.",risk:"review"},
-      {name:"CrowdStrike",parent:"CrowdStrike Holdings Inc.",hq:"Austin, TX",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU/AU",note:"US-incorporated. Telemetry from all protected devices under US jurisdiction.",risk:"exposed"},
-      {name:"Datadog",parent:"Datadog Inc.",hq:"New York, NY",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU",note:"US-incorporated observability.",risk:"exposed"},
-      {name:"Asana",parent:"Asana Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated. No Canadian data residency.",risk:"exposed"},
-      {name:"Monday.com",parent:"monday.com Ltd.",hq:"Tel Aviv, Israel",jurisdiction:"Israel",cloudAct:false,dataResidency:"US/EU",note:"Israeli-incorporated. Not directly subject to CLOUD Act.",risk:"review"},
-      {name:"Harvey",parent:"Counsel AI Corporation",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US (Azure)",note:"US-incorporated AI for law firms. Sensitive legal documents under US jurisdiction.",risk:"exposed"},
-      {name:"Epic Systems",parent:"Epic Systems Corporation",hq:"Verona, WI",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated EMR. Widely used in Canadian hospitals. Patient records under US jurisdiction.",risk:"exposed"},
-      {name:"Jane App",parent:"Jane Software Inc.",hq:"North Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",note:"Canadian-founded clinic management.",risk:"canadian"},
-      {name:"D2L Brightspace",parent:"D2L Inc.",hq:"Kitchener, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada available",note:"Canadian-headquartered LMS.",risk:"canadian"},
-      {name:"Lightspeed",parent:"Lightspeed Commerce Inc.",hq:"Montreal, QC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US/EU",note:"Canadian-headquartered POS.",risk:"canadian"},
-      {name:"FreshBooks",parent:"2ndSite Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"US",note:"Canadian-headquartered invoicing.",risk:"canadian"},
-      {name:"Xero",parent:"Xero Ltd.",hq:"Wellington, NZ",jurisdiction:"New Zealand",cloudAct:false,dataResidency:"Multiple regions",note:"New Zealand-incorporated. Not subject to CLOUD Act.",risk:"canadian"},
-      {name:"Intercom",parent:"Intercom Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated. Customer communication data under US jurisdiction.",risk:"exposed"},
-      {name:"Calendly",parent:"Calendly LLC",hq:"Atlanta, GA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated scheduling platform.",risk:"exposed"},
-      {name:"ADP",parent:"ADP Inc.",hq:"Roseland, NJ",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada available",note:"US-incorporated payroll processor. Canadian data options but CLOUD Act applies.",risk:"review"},
-      {name:"Ceridian",parent:"Dayforce Inc.",hq:"Toronto / Minneapolis",jurisdiction:"Canada / United States",cloudAct:true,dataResidency:"Canada/US",note:"Dual-headquartered. Rebranded to Dayforce. US incorporation creates CLOUD Act exposure.",risk:"review"},
-      {name:"Adobe Creative Cloud",parent:"Adobe Inc.",hq:"San Jose, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated.",risk:"exposed"},
-      {name:"Grammarly",parent:"Grammarly Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated. Processes all text input through US servers.",risk:"exposed"},
-      {name:"Twilio",parent:"Twilio Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated communications platform.",risk:"exposed"}
-    ];
-    const input = document.getElementById('checkerInput'), results = document.getElementById('checkerResults');
-    let debounce;
-    input.addEventListener('input', () => {
-      clearTimeout(debounce);
-      debounce = setTimeout(() => {
-        const q = input.value.trim().toLowerCase();
-        if (q.length < 2) { results.innerHTML = ''; return; }
-        const matches = saasDB.filter(t => t.name.toLowerCase().includes(q)).slice(0, 3);
-        if (!matches.length) { results.innerHTML = '<div class="checker-noresult">No match in our sample. <a href="/tools">Search the full Sovereignty Index</a> for all 292 tools.</div>'; return; }
-        results.innerHTML = matches.map(function(t) {
-          var bc = t.risk === 'exposed' ? 'badge-exposed' : t.risk === 'review' ? 'badge-review' : 'badge-canadian';
-          var bt = t.risk === 'exposed' ? 'CLOUD Act Exposed' : t.risk === 'review' ? 'Review Required' : 'Canadian HQ';
-          return '<div class="checker-result"><div class="checker-result-header"><span class="checker-result-name">' + t.name + '</span><span class="checker-badge ' + bc + '">' + bt + '</span></div>' +
-            '<div class="checker-result-row"><span>Parent entity</span><span>' + t.parent + '</span></div>' +
-            '<div class="checker-result-row"><span>Headquarters</span><span>' + t.hq + '</span></div>' +
-            '<div class="checker-result-row"><span>Jurisdiction</span><span>' + t.jurisdiction + '</span></div>' +
-            '<div class="checker-result-row"><span>CLOUD Act</span><span>' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No direct exposure') + '</span></div>' +
-            '<div class="checker-result-row"><span>Data residency</span><span>' + t.dataResidency + '</span></div>' +
-            '<p style="font-size:12px;color:var(--slate);margin-top:10px;line-height:1.55">' + t.note + '</p></div>';
-        }).join('') + '<p style="font-size:11px;color:var(--muted);margin-top:16px">Sample only. <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Search the full Sovereignty Index</a> or <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">run HarbourScan</a> for complete assessment.</p>';
-      }, 200);
-    });
+      const caResExposed = caResNonCdn.filter(t => t.cloudAct).length;
+      const caResPct = caResNonCdn.length > 0 ? Math.round(caResExposed / caResNonCdn.length * 100) : 0;
+
+      // Populate hero text
+      document.getElementById('heroEyebrow').textContent = 'Canadian SaaS Sovereignty Index \u00B7 ' + total + ' Tools Mapped';
+      document.getElementById('heroH1').innerHTML = cloudActPct + '% of your SaaS stack is under <em>foreign jurisdiction.</em>';
+      document.getElementById('heroSub').innerHTML = 'We mapped ' + total + ' SaaS tools commonly used by Canadian organizations to their parent companies, legal jurisdictions, and CLOUD Act exposure. <strong>Most organizations haven\u2019t documented this. Law 25 already requires it.</strong>';
+      document.getElementById('calloutCaRes').textContent = caResPct + '% of';
+      var flowEl = document.getElementById('flowResearchText');
+      if (flowEl) flowEl.textContent = total + ' SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, Canadian data residency, and ownership status.';
+
+      // Animated counters
+      var targets = [
+        { el: document.getElementById('statTotal'), value: total, suffix: '' },
+        { el: document.getElementById('statCloudAct'), value: cloudActPct, suffix: '%' },
+        { el: document.getElementById('statCaRes'), value: caResPct, suffix: '%' },
+        { el: document.getElementById('statCanadian'), value: canadianPct, suffix: '%' }
+      ];
+      function animateCounters() {
+        var duration = 1800, start = performance.now();
+        function update(now) {
+          var p = Math.min((now - start) / duration, 1), eased = 1 - Math.pow(1 - p, 3);
+          targets.forEach(function(t) { t.el.textContent = Math.round(t.value * eased) + t.suffix; });
+          if (p < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      }
+      var statsEl = document.querySelector('.hero-stats');
+      if (statsEl) {
+        new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { animateCounters(); e.target.dataset.animated = 'true'; } }); }, { threshold: 0.2 }).observe(statsEl);
+        setTimeout(function() { if (!statsEl.dataset.animated) animateCounters(); }, 500);
+      }
+    })();
+    /* ── Sovereignty Checker (full DB) ────────────────── */
+    (function() {
+      if (typeof saasDB === 'undefined') return;
+      var input = document.getElementById('checkerInput'), results = document.getElementById('checkerResults');
+      var debounce;
+      input.addEventListener('input', function() {
+        clearTimeout(debounce);
+        debounce = setTimeout(function() {
+          var q = input.value.trim().toLowerCase();
+          if (q.length < 2) { results.innerHTML = ''; return; }
+          var matches = saasDB.filter(function(t) { return t.name.toLowerCase().includes(q) || t.parent.toLowerCase().includes(q); }).slice(0, 3);
+          if (!matches.length) { results.innerHTML = '<div class="checker-noresult">No match in our ' + saasDB.length + '-tool database. <a href="/tools">Search the full Sovereignty Index</a> or <a href="/harbourscan">run HarbourScan</a>.</div>'; return; }
+          results.innerHTML = matches.map(function(t) {
+            var bc = 'badge-' + t.risk;
+            var bt = t.risk === 'exposed' ? 'CLOUD Act Exposed' : t.risk === 'review' ? 'Review Required' : t.risk === 'non_exposed' ? 'Non-Exposed' : 'Canadian HQ';
+            return '<div class="checker-result"><div class="checker-result-header"><span class="checker-result-name">' + t.name + '</span><span class="checker-badge ' + bc + '">' + bt + '</span></div>' +
+              '<div class="checker-result-row"><span>Parent entity</span><span>' + t.parent + '</span></div>' +
+              '<div class="checker-result-row"><span>Headquarters</span><span>' + t.hq + '</span></div>' +
+              '<div class="checker-result-row"><span>Jurisdiction</span><span>' + t.jurisdiction + '</span></div>' +
+              '<div class="checker-result-row"><span>CLOUD Act</span><span>' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No direct exposure') + '</span></div>' +
+              '<div class="checker-result-row"><span>Data residency</span><span>' + t.dataResidency + '</span></div>' +
+              '<p style="font-size:12px;color:var(--slate);margin-top:10px;line-height:1.55">' + t.note + '</p></div>';
+          }).join('') + '<p style="font-size:11px;color:var(--muted);margin-top:16px">Full lookup. <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Browse the Sovereignty Index</a> or <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">run HarbourScan</a> for complete assessment.</p>';
+        }, 200);
+      });
+    })();
+    /* ── Smooth scroll ───────────────────────────────── */
     document.querySelectorAll('a[href^="#"]').forEach(function(a) { a.addEventListener('click', function(e) { var t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } }); });
   </script>
 </body>

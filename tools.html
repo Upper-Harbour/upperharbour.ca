@@ -113,6 +113,7 @@
     .tool-risk{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
     .risk-exposed{color:var(--red);background:var(--red-dim);border:1px solid rgba(224,96,80,0.2)}
     .risk-review{color:var(--gold);background:var(--gold-dim);border:1px solid rgba(201,168,76,0.2)}
+    .risk-non_exposed{color:#5B9BD5;background:rgba(91,155,213,0.1);border:1px solid rgba(91,155,213,0.2)}
     .risk-canadian{color:var(--teal);background:var(--teal-dim);border:1px solid rgba(60,184,176,0.2)}
 
     /* ── Tool Detail ─────────────────────────────── */
@@ -130,6 +131,7 @@
     .tool-cta-nudge{grid-column:1/-1;margin-top:14px;padding:16px 20px;border-radius:6px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
     .tool-cta-nudge.risk-exposed{background:var(--red-dim);border:1px solid rgba(224,96,80,0.18)}
     .tool-cta-nudge.risk-review{background:var(--gold-dim);border:1px solid rgba(201,168,76,0.18)}
+    .tool-cta-nudge.risk-non_exposed{background:rgba(91,155,213,0.08);border:1px solid rgba(91,155,213,0.18)}
     .tool-cta-nudge.risk-canadian{background:var(--teal-dim);border:1px solid rgba(60,184,176,0.18)}
     .tool-cta-nudge-text{font-size:12px;color:var(--slate);line-height:1.5;flex:1}
     .tool-cta-nudge-text strong{color:var(--ice);font-weight:700}
@@ -265,11 +267,13 @@
     <div class="risk-meter" id="riskMeter">
       <div class="risk-meter-seg exposed" id="meterExposed"></div>
       <div class="risk-meter-seg review" id="meterReview"></div>
+      <div class="risk-meter-seg" id="meterNonExposed" style="background:#5B9BD5"></div>
       <div class="risk-meter-seg canadian" id="meterCanadian"></div>
     </div>
     <div class="risk-meter-labels">
       <div class="risk-meter-label"><span class="dot" style="background:var(--red)"></span>Exposed <span class="num" id="labelExposed">—</span></div>
       <div class="risk-meter-label"><span class="dot" style="background:var(--gold)"></span>Review <span class="num" id="labelReview">—</span></div>
+      <div class="risk-meter-label"><span class="dot" style="background:#5B9BD5"></span>Non-Exposed <span class="num" id="labelNonExposed">—</span></div>
       <div class="risk-meter-label"><span class="dot" style="background:var(--teal)"></span>Canadian <span class="num" id="labelCanadian">—</span></div>
     </div>
   </div>
@@ -293,6 +297,7 @@
     <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
     <button class="filter-btn" onclick="setFilter('exposed',this)">Exposed</button>
     <button class="filter-btn" onclick="setFilter('review',this)">Review</button>
+    <button class="filter-btn" onclick="setFilter('non_exposed',this)">Non-Exposed</button>
     <button class="filter-btn" onclick="setFilter('canadian',this)">Canadian</button>
   </div>
 
@@ -360,12 +365,14 @@
       const total = saasDB.length;
       const exposed = saasDB.filter(t => t.risk === 'exposed').length;
       const review = saasDB.filter(t => t.risk === 'review').length;
+      const nonExposed = saasDB.filter(t => t.risk === 'non_exposed').length;
       const canadian = saasDB.filter(t => t.risk === 'canadian').length;
 
       document.getElementById('heroExposed').textContent = exposed;
       document.getElementById('heroTotal').textContent = total;
       document.getElementById('labelExposed').textContent = exposed;
       document.getElementById('labelReview').textContent = review;
+      document.getElementById('labelNonExposed').textContent = nonExposed;
       document.getElementById('labelCanadian').textContent = canadian;
       document.getElementById('metaUpdated').textContent =
         new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
@@ -374,6 +381,7 @@
       if (total > 0) {
         document.getElementById('meterExposed').style.width = (exposed / total * 100) + '%';
         document.getElementById('meterReview').style.width = (review / total * 100) + '%';
+        document.getElementById('meterNonExposed').style.width = (nonExposed / total * 100) + '%';
         document.getElementById('meterCanadian').style.width = (canadian / total * 100) + '%';
       }
     }
@@ -485,7 +493,7 @@
           '<div class="tool-jurisdiction">' + t.jurisdiction + '</div>' +
           '<div class="tool-cloudact ' + (t.cloudAct ? 'yes' : 'no') + '">' + (t.cloudAct ? 'Yes' : 'No') + '</div>' +
           '<div class="tool-residency">' + (t.dataResidency || '\u2014') + '</div>' +
-          '<div><span class="tool-risk risk-' + t.risk + '">' + t.risk + '</span></div>' +
+          '<div><span class="tool-risk risk-' + t.risk + '">' + (t.risk === 'non_exposed' ? 'non-exposed' : t.risk) + '</span></div>' +
           '</div>';
 
         if (ex) {
@@ -495,7 +503,7 @@
             '<div class="detail-field"><span class="detail-label">Jurisdiction</span><span class="detail-value">' + t.jurisdiction + '</span></div>' +
             '<div class="detail-field"><span class="detail-label">CLOUD Act Exposure</span><span class="detail-value" style="color:' + (t.cloudAct ? 'var(--red)' : 'var(--teal)') + '">' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No') + '</span></div>' +
             '<div class="detail-field"><span class="detail-label">Data Residency</span><span class="detail-value">' + (t.dataResidency || 'Not specified') + '</span></div>' +
-            '<div class="detail-field"><span class="detail-label">Risk Classification</span><span class="detail-value"><span class="tool-risk risk-' + t.risk + '">' + t.risk + '</span></span></div>' +
+            '<div class="detail-field"><span class="detail-label">Risk Classification</span><span class="detail-value"><span class="tool-risk risk-' + t.risk + '">' + (t.risk === 'non_exposed' ? 'non-exposed' : t.risk) + '</span></span></div>' +
             (t.note ? '<div class="tool-note"><p>' + t.note + '</p></div>' : '') +
             '</div>' +
             (function() {
@@ -506,6 +514,10 @@
               } else if (t.risk === 'review') {
                 return '<div class="tool-cta-nudge risk-review">' +
                   '<div class="tool-cta-nudge-text"><strong>' + t.name + ' requires jurisdictional review.</strong> Ownership or infrastructure dependencies create potential exposure.</div>' +
+                  '<a href="/harbourscan" class="nudge-link">Assess your stack →</a></div>';
+              } else if (t.risk === 'non_exposed') {
+                return '<div class="tool-cta-nudge risk-non_exposed">' +
+                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' is not subject to the CLOUD Act or equivalent compelled disclosure laws.</strong> Parent entity is incorporated in a jurisdiction without known compelled disclosure mechanisms.</div>' +
                   '<a href="/harbourscan" class="nudge-link">Assess your stack →</a></div>';
               } else {
                 return '<div class="tool-cta-nudge risk-canadian">' +
