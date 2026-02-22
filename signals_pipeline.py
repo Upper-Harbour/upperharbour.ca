@@ -468,6 +468,7 @@ def load_existing_signals() -> dict:
 
 def save_signals(data: dict):
     """Write signals.json."""
+    os.makedirs(os.path.dirname(SIGNALS_JSON_PATH) or '.', exist_ok=True)
     with open(SIGNALS_JSON_PATH, 'w') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
     log.info(f"Saved {len(data.get('signals', []))} signals to {SIGNALS_JSON_PATH}")
