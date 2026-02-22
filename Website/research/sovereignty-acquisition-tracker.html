@@ -108,7 +108,7 @@
   </style>
 </head>
 <body>
-  <nav><a href="/" class="nav-logo"><svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/engagements" class="nav-link">Engagements</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Run HarbourScan</a></div></nav>
+  <nav><a href="/" class="nav-logo"><svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Run HarbourScan</a></div></nav>
 
   <header class="article-hero">
     <div class="breadcrumb"><a href="/">Home</a> → <a href="/research">Research</a> → Acquisition Tracker</div>
@@ -127,7 +127,7 @@
 
     <div class="callout">
       <div class="callout-label">How we track</div>
-      <p>Upper Harbour monitors M&A activity across the Canadian SaaS landscape through SEC filings, Investment Canada Act notices, Competition Bureau announcements, press releases, and corporate registry changes. When we identify an acquisition that changes the jurisdictional status of a SaaS tool in our <a href="/resources/canadian-saas-sovereignty-index">292-tool database</a>, we add it to this tracker and update the tool's sovereignty status in our index.</p>
+      <p>Upper Harbour monitors M&A activity across the Canadian SaaS landscape through SEC filings, Investment Canada Act notices, Competition Bureau announcements, press releases, and corporate registry changes. When we identify an acquisition that changes the jurisdictional status of a SaaS tool in our <a href="/resources/canadian-saas-sovereignty-index">292-tool database</a>, we add it to this tracker and update the tool's sovereignty status in our index. Acquisitions flagged by the <a href="/signals">signals pipeline</a> appear automatically below the editorial entries.</p>
     </div>
 
     <h2>The tracker</h2>
@@ -296,6 +296,13 @@
     </div>
 
     <h2>Patterns we're watching</h2>
+
+    <!-- ── Pipeline Signals: Dynamically loaded from signals.json ──── -->
+    <div id="pipelineSignals" style="display:none;">
+      <h2 id="pipelineTitle">Recent pipeline signals</h2>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:24px;">Acquisition and jurisdiction-change signals detected by the Upper Harbour signals pipeline. These are automatically surfaced from ongoing monitoring.</p>
+      <div id="pipelineEntries"></div>
+    </div>
     <p><strong>Private equity roll-ups.</strong> US private equity firms are actively acquiring Canadian SaaS companies, particularly in fintech, healthtech, and legal tech. These acquisitions often happen quietly, without the press coverage of a major public acquisition. The PE firm typically keeps the Canadian brand name and operations, making the sovereignty change invisible to clients.</p>
     <p><strong>Delaware incorporation at founding.</strong> Many Canadian-founded SaaS companies incorporate in Delaware from day one — often at the advice of US-oriented VC firms. These companies appear Canadian (HQ in Toronto, team in Canada) but are legally US entities from the start. The sovereignty exposure exists from the first day of use, not from an acquisition event.</p>
     <p><strong>Investment Canada Act reviews.</strong> The Investment Canada Act requires federal review of foreign acquisitions above certain thresholds and in sensitive sectors. However, the review focuses on national security and economic benefit — not on data sovereignty implications for the acquired company's clients. There is no mechanism to notify clients that their vendor's sovereignty status has changed.</p>
@@ -317,9 +324,9 @@
     <div class="faq-item"><div class="faq-q">How often do Canadian SaaS companies get acquired by US firms?</div><div class="faq-a">Frequently. US private equity and strategic acquirers are active in the Canadian SaaS market, particularly in fintech, healthtech, and legal tech. Many acquisitions happen without significant press coverage, making the sovereignty change invisible to most clients.</div></div>
   </section>
 
-  <section class="cta-section"><h2>Check your vendors' current jurisdiction</h2><p>HarbourScan maps your SaaS tools to their current parent jurisdictions — including recently-changed ownership.</p><a href="/harbourscan" class="cta-btn">Run HarbourScan →</a><p style="font-size:13px;color:var(--muted);margin-top:20px;">Need help applying this? <a href="/engagements" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">See our engagements →</a></p></section>
+  <section class="cta-section"><h2>Check your vendors' current jurisdiction</h2><p>HarbourScan maps your SaaS tools to their current parent jurisdictions — including recently-changed ownership.</p><a href="/harbourscan" class="cta-btn">Run HarbourScan →</a><p style="font-size:13px;color:var(--muted);margin-top:20px;">Need help operationalizing this? <a href="https://calendly.com/josh-upperharbour/30min" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Request a scoping call →</a></p></section>
 
-  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span></div><p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="/engagements">Engagements</a></li><li><a href="/research">Research</a></li><li><a href="/resources">Guides</a></li><li><a href="/harbourscan">HarbourScan</a></li></ul></div><div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="/cdn-cgi/l/email-protection#81ebeef2e9c1f4f1f1e4f3e9e0f3e3eef4f3afe2e0">Contact us</a></li><li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li><li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li></ul></div></div>
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span></div><p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/research">Research</a></li><li><a href="/resources">Guides</a></li><li><a href="/harbourscan">HarbourScan</a></li></ul></div><div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="/cdn-cgi/l/email-protection#81ebeef2e9c1f4f1f1e4f3e9e0f3e3eef4f3afe2e0">Contact us</a></li><li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li><li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li></ul></div></div>
 </span></div>
   </footer>
   <script>
@@ -328,6 +335,63 @@
         entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
       }, { threshold: 0.1 }).observe(el);
     });
+
+    // ── Load acquisition signals from pipeline ──────────────────────
+    (async function loadPipelineSignals() {
+      try {
+        const res = await fetch('/signals.json');
+        if (!res.ok) return;
+        const data = await res.json();
+        const signals = Array.isArray(data) ? data : (data.signals || []);
+
+        // Filter for acquisition-type signals
+        const acquisitions = signals.filter(s => {
+          const type = (s.type || s.category || '').toLowerCase();
+          const title = (s.title || s.headline || '').toLowerCase();
+          const body = (s.summary || s.body || s.description || '').toLowerCase();
+          return type.includes('acquisition') ||
+                 type.includes('jurisdiction') ||
+                 type.includes('ownership') ||
+                 title.includes('acquir') ||
+                 title.includes('acquisition') ||
+                 title.includes('merger') ||
+                 title.includes('bought by') ||
+                 title.includes('jurisdiction change') ||
+                 body.includes('acquired by') ||
+                 body.includes('acquisition');
+        });
+
+        if (acquisitions.length === 0) return;
+
+        const container = document.getElementById('pipelineEntries');
+        container.innerHTML = acquisitions.map(s => {
+          const title = s.title || s.headline || 'Untitled signal';
+          const date = s.date || s.published || s.signal_date || '';
+          const summary = s.summary || s.body || s.description || '';
+          const source = s.source || s.url || '';
+          const toolName = s.tool || s.tool_name || '';
+          const signalId = s.signal_id || s.id || '';
+
+          return `
+            <div class="acq-entry" style="border-left:3px solid var(--gold);">
+              <div class="acq-header">
+                <div class="acq-title-group">
+                  <span class="acq-target">${toolName || title}</span>
+                  ${toolName ? `<span class="acq-arrow">—</span><span style="font-size:14px;color:var(--slate);">${title}</span>` : ''}
+                </div>
+                <div class="acq-date">${date}${signalId ? ' · ' + signalId : ''}</div>
+              </div>
+              <div class="acq-body">
+                <div style="font-size:13px;color:var(--slate);line-height:1.7;">${summary}</div>
+                ${source ? `<div style="margin-top:10px;"><a href="${source}" target="_blank" style="font-size:12px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Source →</a></div>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        document.getElementById('pipelineSignals').style.display = 'block';
+      } catch (e) { /* signals.json not available — that's fine */ }
+    })();
   </script>
 </body>
 </html>
