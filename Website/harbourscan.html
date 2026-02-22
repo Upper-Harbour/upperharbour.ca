@@ -203,9 +203,6 @@
     /* ── Mobile ───────────────────────────────────────────────────── */
     @media(max-width:768px) {
       nav { padding: 0 16px; }
-      .nav-sub { display: none; }
-      .nav-divider { display: none; }
-      .nav-badge { font-size: 9px; padding: 3px 8px; white-space: nowrap; }
       .app { padding: 88px 16px 60px; }
       .progress-label { display: none; }
       .progress-line { min-width: 8px; }
@@ -232,8 +229,7 @@
   <!-- ── Nav ──────────────────────────────────────────────────────── -->
   <nav>
     <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
-      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+      <span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span>
       <span class="nav-divider"></span>
       <span class="nav-sub">HarbourScan</span>
     </a>
@@ -252,6 +248,18 @@
       <div class="progress-step" data-step="4"><div class="progress-num">4</div><div class="progress-label">Review</div></div>
       <div class="progress-line" data-line="4"></div>
       <div class="progress-step" data-step="5"><div class="progress-num">5</div><div class="progress-label">Report</div></div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <!-- DATABASE ALERTS BANNER (auto-populated from signals pipeline) -->
+    <!-- ══════════════════════════════════════════════════════════ -->
+    <div id="dbAlertsBanner" style="display:none; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:8px; padding:16px 20px; margin-bottom:24px;">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+        <span style="font-size:14px;">⟳</span>
+        <span style="font-size:13px;font-weight:700;color:#C9A84C;">Database updates flagged by Signals</span>
+      </div>
+      <div id="dbAlertsList" style="font-size:12px;color:var(--slate);line-height:1.7;"></div>
+      <div style="margin-top:8px;font-size:11px;color:var(--muted);">These tools may have changed ownership, jurisdiction, or data residency status. <a href="/signals" style="color:var(--teal);">View signals →</a></div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════ -->
@@ -444,129 +452,33 @@
 
   <!-- ── Data Files ──────────────────────────────────────────── -->
   <script src="/assets/saas-db.js"></script>
+  <script>
+    // Load database alerts from signals pipeline
+    (async function loadDbAlerts() {
+      try {
+        const res = await fetch('/db-alerts.json');
+        if (!res.ok) return;
+        const data = await res.json();
+        const alerts = (data.alerts || []).filter(a => a.status === 'pending_review');
+        if (alerts.length === 0) return;
+        const banner = document.getElementById('dbAlertsBanner');
+        const list = document.getElementById('dbAlertsList');
+        list.innerHTML = alerts.map(a =>
+          `<div style="margin-bottom:4px;">
+            <strong style="color:var(--ice);">${a.tool_name}</strong> —
+            ${a.change}: ${a.old_value || '?'} → <strong>${a.new_value || '?'}</strong>
+            <span style="color:var(--muted);"> · ${a.signal_date || ''}</span>
+          </div>`
+        ).join('');
+        banner.style.display = 'block';
+      } catch (e) { /* no alerts file yet — that's fine */ }
+    })();
+  </script>
   <script src="/assets/regulatory-map.js"></script>
   <script>
   /* ══════════════════════════════════════════════════════════════
      HARBOURSCAN — APPLICATION LOGIC
      ══════════════════════════════════════════════════════════════ */
-
-  // ── Industry Profiles ─────────────────────────────────────────
-  const industryProfiles = [
-    {id:"legal", label:"Legal / Law Firm"},
-    {id:"healthcare", label:"Healthcare / Clinic"},
-    {id:"accounting", label:"Accounting / Tax"},
-    {id:"realestate", label:"Real Estate / Construction"},
-    {id:"finance", label:"Financial Services"},
-    {id:"education", label:"Education"},
-    {id:"government", label:"Government / Public Sector"},
-    {id:"technology", label:"Technology / SaaS"},
-    {id:"restaurant", label:"Restaurant / Hospitality"},
-    {id:"mining", label:"Mining / Resources"},
-    {id:"nonprofit", label:"Non-Profit / Charity"},
-    {id:"retail", label:"Retail / E-Commerce"},
-    {id:"media", label:"Media / Publishing"},
-    {id:"other", label:"Other"}
-  ];
-
-  // ── Regulatory Map ────────────────────────────────────────────
-  const regulatoryMap = {
-  AB:{province:"Alberta",laws:["PIPA","HIA (health)"],authority:"OIPC Alberta",breach:"Mandatory breach notification under PIPA."},
-  BC:{province:"British Columbia",laws:["PIPA BC","FIPPA (public)"],authority:"OIPC BC",breach:"Mandatory breach notification under PIPA BC."},
-  MB:{province:"Manitoba",laws:["PIPEDA","PHIA (health)"],authority:"Manitoba Ombudsman",breach:"PIPEDA mandatory breach notification."},
-  NB:{province:"New Brunswick",laws:["PIPEDA"],authority:"OIPC NB",breach:"PIPEDA mandatory breach notification."},
-  NL:{province:"Newfoundland & Labrador",laws:["PIPEDA","PHIA (health)"],authority:"OIPC NL",breach:"PIPEDA mandatory breach notification."},
-  NS:{province:"Nova Scotia",laws:["PIPEDA"],authority:"OIPC NS",breach:"PIPEDA mandatory breach notification."},
-  NT:{province:"Northwest Territories",laws:["PIPEDA"],authority:"IPC NWT",breach:"PIPEDA mandatory breach notification."},
-  NU:{province:"Nunavut",laws:["PIPEDA"],authority:"IPC Nunavut",breach:"PIPEDA mandatory breach notification."},
-  ON:{province:"Ontario",laws:["PIPEDA","PHIPA (health)","FIPPA (public)"],authority:"IPC Ontario",breach:"PIPEDA + PHIPA mandatory breach notification."},
-  PE:{province:"Prince Edward Island",laws:["PIPEDA"],authority:"IPC PEI",breach:"PIPEDA mandatory breach notification."},
-  QC:{province:"Quebec",laws:["Law 25","Access Act (public)"],authority:"Commission d'accès à l'information (CAI)",breach:"Mandatory notification to CAI. Penalties up to 4% global turnover or $25M."},
-  SK:{province:"Saskatchewan",laws:["PIPEDA","HIPA (health)"],authority:"OIPC Saskatchewan",breach:"PIPEDA mandatory breach notification."},
-  YT:{province:"Yukon",laws:["PIPEDA"],authority:"IPC Yukon",breach:"PIPEDA mandatory breach notification."}
-};
-
-  // ── SaaS Database ────────────────────────────────────────────
-  const saasDB=[
-  {name:"Slack",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Global",risk:"exposed"},
-  {name:"Microsoft Teams",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
-  {name:"Microsoft 365",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
-  {name:"Google Workspace",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
-  {name:"Zoom",parent:"Zoom Video Communications",hq:"San Jose, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US primary",risk:"exposed"},
-  {name:"Notion",parent:"Notion Labs Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US only",risk:"exposed"},
-  {name:"Asana",parent:"Asana Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Jira",parent:"Atlassian Corporation",hq:"Sydney, AU / Delaware",jurisdiction:"US/AU",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
-  {name:"Monday.com",parent:"monday.com Ltd.",hq:"Tel Aviv, Israel",jurisdiction:"Israel",cloudAct:false,dataResidency:"US/EU",risk:"review"},
-  {name:"Dropbox",parent:"Dropbox Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Box",parent:"Box Inc.",hq:"Redwood City, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
-  {name:"DocuSign",parent:"DocuSign Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
-  {name:"Salesforce",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
-  {name:"HubSpot",parent:"HubSpot Inc.",hq:"Cambridge, MA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU",risk:"exposed"},
-  {name:"Mailchimp",parent:"Intuit Inc.",hq:"Atlanta, GA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"AWS",parent:"Amazon.com Inc.",hq:"Seattle, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada region available",risk:"review"},
-  {name:"Microsoft Azure",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada region available",risk:"review"},
-  {name:"Google Cloud",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada region available",risk:"review"},
-  {name:"GitHub",parent:"Microsoft Corporation",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Figma",parent:"Adobe Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Canva",parent:"Canva Pty Ltd",hq:"Sydney, Australia",jurisdiction:"AU",cloudAct:false,dataResidency:"US/AU",risk:"review"},
-  {name:"Adobe Creative Cloud",parent:"Adobe Inc.",hq:"San Jose, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Stripe",parent:"Stripe Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"QuickBooks Online",parent:"Intuit Inc.",hq:"Mountain View, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Xero",parent:"Xero Ltd",hq:"Wellington, NZ",jurisdiction:"NZ",cloudAct:false,dataResidency:"US/NZ/AU",risk:"review"},
-  {name:"FreshBooks",parent:"2ndSite Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",risk:"canadian"},
-  {name:"Wave",parent:"H&R Block Inc.",hq:"Toronto, ON",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"review"},
-  {name:"BambooHR",parent:"BambooHR LLC",hq:"Lindon, UT",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Workday",parent:"Workday Inc.",hq:"Pleasanton, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
-  {name:"Gusto",parent:"Gusto Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"ADP",parent:"ADP Inc.",hq:"Roseland, NJ",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada",risk:"review"},
-  {name:"Rippling",parent:"Rippling Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Zendesk",parent:"Zendesk Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
-  {name:"Intercom",parent:"Intercom Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
-  {name:"Okta",parent:"Okta Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
-  {name:"1Password",parent:"AgileBits Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US/EU",risk:"canadian"},
-  {name:"CrowdStrike",parent:"CrowdStrike Holdings",hq:"Austin, TX",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
-  {name:"Snowflake",parent:"Snowflake Inc.",hq:"Bozeman, MT",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"review"},
-  {name:"OpenAI",parent:"OpenAI Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Anthropic",parent:"Anthropic PBC",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Shopify",parent:"Shopify Inc.",hq:"Ottawa, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",risk:"canadian"},
-  {name:"Clio",parent:"Themis Solutions Inc.",hq:"Burnaby, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US/EU",risk:"canadian"},
-  {name:"Hootsuite",parent:"Hootsuite Inc.",hq:"Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"US",risk:"review"},
-  {name:"Wealthsimple",parent:"Wealthsimple Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Cohere",parent:"Cohere Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada available",risk:"canadian"},
-  {name:"Humi",parent:"Humi Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"TELUS Health",parent:"TELUS Corporation",hq:"Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Jane App",parent:"Jane Software Inc.",hq:"North Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Plaid",parent:"Plaid Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Square",parent:"Block Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Toast",parent:"Toast Inc.",hq:"Boston, MA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Moneris",parent:"RBC / BMO (JV)",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Koho",parent:"Koho Financial Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"TouchBistro",parent:"TouchBistro Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"ServiceNow",parent:"ServiceNow Inc.",hq:"Santa Clara, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada/EU",risk:"exposed"},
-  {name:"SAP",parent:"SAP SE",hq:"Walldorf, Germany",jurisdiction:"EU",cloudAct:false,dataResidency:"EU/Global",risk:"review"},
-  {name:"Oracle ERP",parent:"Oracle Corporation",hq:"Austin, TX",jurisdiction:"US",cloudAct:true,dataResidency:"US/Canada",risk:"exposed"},
-  {name:"OpenText",parent:"Open Text Corporation",hq:"Waterloo, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/Global",risk:"canadian"},
-  {name:"Procore",parent:"Procore Technologies",hq:"Carpinteria, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Harvey AI",parent:"Harvey AI Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"NetDocuments",parent:"NetDocuments",hq:"Lehi, UT",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU/AU",risk:"exposed"},
-  {name:"DoorDash",parent:"DoorDash Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Uber Eats",parent:"Uber Technologies",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"PayPal",parent:"PayPal Holdings",hq:"San Jose, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Sage",parent:"Sage Group plc",hq:"Newcastle, UK",jurisdiction:"UK",cloudAct:false,dataResidency:"UK/US/Canada",risk:"review"},
-  {name:"Lightspeed Restaurant",parent:"Lightspeed Commerce",hq:"Montreal, QC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",risk:"canadian"},
-  {name:"Palantir",parent:"Palantir Technologies",hq:"Denver, CO",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Datadog",parent:"Datadog Inc.",hq:"New York, NY",jurisdiction:"US",cloudAct:true,dataResidency:"US/EU",risk:"exposed"},
-  {name:"Grammarly",parent:"Grammarly Inc.",hq:"San Francisco, CA",jurisdiction:"US",cloudAct:true,dataResidency:"US",risk:"exposed"},
-  {name:"Benevity",parent:"Benevity Inc.",hq:"Calgary, AB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Coveo",parent:"Coveo Solutions Inc.",hq:"Quebec City, QC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Docebo",parent:"Docebo Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Helcim",parent:"Helcim Inc.",hq:"Calgary, AB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Neo Financial",parent:"Neo Financial Technologies",hq:"Calgary, AB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"TaxCycle",parent:"Trilogy Software",hq:"Winnipeg, MB",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",risk:"canadian"},
-  {name:"Seequent Leapfrog",parent:"Bentley Systems",hq:"Exton, PA",jurisdiction:"US",cloudAct:true,dataResidency:"Various",risk:"exposed"},
-  {name:"Deswik",parent:"Sandvik AB",hq:"Stockholm, Sweden",jurisdiction:"Sweden",cloudAct:false,dataResidency:"Various",risk:"review"},
-  {name:"Microsoft Dynamics",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"US",cloudAct:true,dataResidency:"Canada available",risk:"review"},
-  {name:"Maptek Vulcan",parent:"Maptek Pty Ltd",hq:"Adelaide, AU",jurisdiction:"Australia",cloudAct:false,dataResidency:"Various",risk:"review"},
-];
 
   // ── State ──────────────────────────────────────────────────────
   const state = {
