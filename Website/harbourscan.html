@@ -3,11 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HarbourScan — Sovereignty Assessment | Upper Harbour</title>
-  <meta name="description" content="Free guided sovereignty assessment for Canadian organizations. Map your SaaS stack's jurisdictional exposure under Law 25, PIPEDA, and provincial privacy law." />
+  <title>HarbourScan — Structured Compliance Assessment | Upper Harbour</title>
+  <meta name="description" content="Free structured sovereignty assessment for Canadian organizations. Map your SaaS stack's jurisdictional exposure under Law 25, PIPEDA, and CLOUD Act compliance. Self-assessment wizard with board-ready report output." />
+  <link rel="canonical" href="https://upperharbour.ca/harbourscan" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="HarbourScan — Structured Compliance Assessment | Upper Harbour" />
+  <meta property="og:description" content="Map your SaaS stack to jurisdictional exposure. Free self-assessment with board-ready report." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/harbourscan" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LANDING PAGE STYLES (site design system)
+       ═══════════════════════════════════════════════════════════════ -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #06090E; --surface: #0C1219; --surface-2: #111A24;
+      --teal: #3CB8B0; --teal-dim: rgba(60,184,176,0.08); --teal-border: rgba(60,184,176,0.22);
+      --gold: #C9A84C; --gold-dim: rgba(201,168,76,0.08);
+      --red: #E06050; --red-dim: rgba(224,96,80,0.08);
+      --ice: #EAF0F4; --slate: #8A9DB0; --muted: #566778;
+      --border: rgba(234,240,244,0.06); --border-md: rgba(234,240,244,0.1);
+      --display: 'Newsreader', Georgia, serif;
+      --body: 'DM Sans', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); background: var(--bg); color: var(--ice); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+
+    /* ── Site Nav ───────────────────────────────────────────────────── */
+    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 66px; background: rgba(6,9,14,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); }
+    .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .nav-link:hover { color: var(--ice); }
+    .nav-link.active { color: var(--teal); }
+    .nav-cta { font-size: 13px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 9px 22px; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: #47cec5; }
+
+    /* ── Landing: Hero ──────────────────────────────────────────────── */
+    .landing-hero { padding: 160px 52px 80px; max-width: 860px; margin: 0 auto; }
+    .landing-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 28px; display: inline-flex; align-items: center; gap: 10px; }
+    .landing-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--teal); opacity: 0.5; }
+    .landing-hero h1 { font-family: var(--display); font-size: clamp(36px, 5vw, 52px); font-weight: 700; color: var(--ice); line-height: 1.08; letter-spacing: -1px; margin-bottom: 24px; }
+    .landing-hero h1 em { font-style: italic; color: var(--gold); }
+    .landing-hero-sub { font-size: 17px; color: var(--slate); line-height: 1.72; max-width: 620px; margin-bottom: 12px; }
+    .landing-hero-for { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 20px; }
+    .landing-hero-for strong { color: var(--slate); }
+    .landing-hero-cta { display: inline-block; font-size: 14px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 16px 36px; border-radius: 4px; text-decoration: none; margin-top: 32px; transition: background 0.2s; }
+    .landing-hero-cta:hover { background: #47cec5; }
+
+    /* ── Landing: Output Cards ──────────────────────────────────────── */
+    .landing-outputs { max-width: 960px; margin: 0 auto; padding: 0 52px 80px; }
+    .landing-outputs-intro { max-width: 700px; margin: 0 auto 48px; text-align: center; }
+    .landing-outputs-intro .label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .landing-outputs-intro p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+    .output-card { background: var(--surface); border: 1px solid var(--border-md); border-radius: 12px; overflow: hidden; margin-bottom: 32px; transition: border-color 0.3s; }
+    .output-card:hover { border-color: rgba(60,184,176,0.2); }
+    .output-header { padding: 36px 40px 0; }
+    .output-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 12px; }
+    .output-label-teal { color: var(--teal); }
+    .output-label-gold { color: var(--gold); }
+    .output-label-ice { color: var(--ice); }
+    .output-title { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ice); line-height: 1.15; margin-bottom: 12px; }
+    .output-summary { font-size: 15px; color: var(--slate); line-height: 1.75; max-width: 600px; }
+    .output-body { padding: 28px 40px 36px; }
+    .output-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .output-col-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+    .output-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .output-list li { font-size: 14px; color: var(--slate); line-height: 1.6; padding-left: 18px; position: relative; }
+    .output-list li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-size: 12px; }
+
+    /* ── Landing: Deployment Process ────────────────────────────────── */
+    .landing-process { max-width: 960px; margin: 0 auto; padding: 0 52px 80px; }
+    .landing-process-title { font-family: var(--display); font-size: 32px; font-weight: 700; color: var(--ice); margin-bottom: 12px; }
+    .landing-process-sub { font-size: 15px; color: var(--slate); margin-bottom: 40px; max-width: 560px; }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .process-step {}
+    .process-num { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--teal); opacity: 0.4; margin-bottom: 12px; }
+    .process-step-title { font-size: 15px; font-weight: 700; color: var(--ice); margin-bottom: 6px; }
+    .process-step-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── Landing: Differentiators ───────────────────────────────────── */
+    .landing-diff { background: var(--surface); border-top: 1px solid var(--border-md); border-bottom: 1px solid var(--border-md); padding: 80px 52px; }
+    .landing-diff-inner { max-width: 960px; margin: 0 auto; }
+    .landing-diff-title { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ice); margin-bottom: 32px; }
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+    .diff-item-title { font-size: 14px; font-weight: 700; color: var(--ice); margin-bottom: 6px; }
+    .diff-item-desc { font-size: 13px; color: var(--slate); line-height: 1.65; }
+
+    /* ── Landing: Final CTA ────────────────────────────────────────── */
+    .landing-cta { padding: 80px 52px; text-align: center; }
+    .landing-cta h2 { font-family: var(--display); font-size: 36px; font-weight: 700; color: var(--ice); margin-bottom: 16px; }
+    .landing-cta p { font-size: 15px; color: var(--muted); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .landing-cta-btn { display: inline-block; font-size: 14px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 16px 36px; border-radius: 4px; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s; }
+    .landing-cta-btn:hover { background: #47cec5; }
+    .landing-cta-or { font-size: 13px; color: var(--muted); margin-top: 16px; }
+    .landing-cta-or a { color: var(--teal); text-decoration: none; }
+
+    /* ── Landing: Footer ───────────────────────────────────────────── */
+    .landing-footer { padding: 48px 0 32px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
+    .footer-desc { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 250px; }
+    .footer-col-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 13px; color: var(--slate); text-decoration: none; }
+    .footer-bottom { max-width: 1120px; margin: 32px auto 0; padding: 20px 48px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-copy { font-size: 11px; color: var(--muted); }
+
+    /* ── Toggle visibility ─────────────────────────────────────────── */
+    #landingSection { display: block; }
+    #wizardSection { display: none; }
+    #landingSection.hidden { display: none; }
+    #wizardSection.visible { display: block; }
+
+    /* ── Responsive: Landing ────────────────────────────────────────── */
+    @media(max-width:768px) {
+      .site-nav { padding: 0 16px; }
+      .nav-cta { font-size: 11px; padding: 8px 14px; white-space: nowrap; }
+      .landing-hero { padding: 110px 20px 60px; }
+      .landing-outputs, .landing-process { padding: 0 20px 60px; }
+      .output-header, .output-body { padding-left: 24px; padding-right: 24px; }
+      .output-grid { grid-template-columns: 1fr; gap: 24px; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .landing-diff { padding: 60px 20px; }
+      .diff-grid { grid-template-columns: 1fr; gap: 24px; }
+      .landing-cta { padding: 60px 20px; }
+      .footer-inner { grid-template-columns: 1fr; padding: 0 20px; }
+      .footer-bottom { padding: 20px 20px 0; flex-direction: column; }
+    }
+    @media(max-width:480px) {
+      .nav-upper, .nav-harbour { display: none; }
+      .process-steps { grid-template-columns: 1fr; }
+      .nav-link { display: none; }
+    }
+
+    /* ── Print: hide landing ───────────────────────────────────────── */
+    @media print {
+      #landingSection, .site-nav { display: none !important; }
+      #wizardSection { display: block !important; }
+    }
+  </style>
+
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       WIZARD STYLES (original HarbourScan — unchanged)
+       ═══════════════════════════════════════════════════════════════ -->
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -23,7 +174,7 @@
     body { font-family: var(--font); background: var(--midnight); color: var(--ice); line-height: 1.6; overflow-x: hidden; }
 
     /* ── Nav ──────────────────────────────────────────────────────── */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(10,16,24,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    #wizardSection nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(10,16,24,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
     .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
     .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; }
     .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
@@ -202,7 +353,7 @@
 
     /* ── Mobile ───────────────────────────────────────────────────── */
     @media(max-width:768px) {
-      nav { padding: 0 16px; }
+      #wizardSection nav { padding: 0 16px; }
       .app { padding: 88px 16px 60px; }
       .progress-label { display: none; }
       .progress-line { min-width: 8px; }
@@ -226,10 +377,261 @@
   </style>
 </head>
 <body>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       SITE NAV (standard nav — visible on landing, hidden in wizard mode)
+       ═══════════════════════════════════════════════════════════════════ -->
+  <nav class="site-nav" id="siteNav">
+    <a href="/" class="nav-logo">
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/tools" class="nav-link">Tools</a>
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/resources" class="nav-link">Guides</a>
+      <a href="#" class="nav-cta" onclick="startAssessment(); return false;">Start Assessment</a>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       LANDING PAGE
+       ═══════════════════════════════════════════════════════════════════ -->
+  <div id="landingSection">
+
+    <!-- HERO -->
+    <section class="landing-hero">
+      <div class="landing-eyebrow">HarbourScan</div>
+      <h1>Structured jurisdictional compliance assessment for your <em>SaaS stack</em></h1>
+      <p class="landing-hero-sub">HarbourScan maps your organization's SaaS stack to parent jurisdictions, CLOUD Act exposure, and Canadian data residency status — then produces a board-ready compliance gap report. Results are generated locally in your browser and can be saved for your records. Nothing is stored or transmitted by Upper Harbour.</p>
+      <p class="landing-hero-sub" style="margin-top:16px; font-size:14px; color:var(--muted);">HarbourScan is already being used in early deployments across Canadian regulated sectors.</p>
+      <p class="landing-hero-for"><strong>For:</strong> Privacy Officers, General Counsel, CIOs, and procurement leads at organizations with 20+ SaaS tools — particularly those subject to Law 25, operating in regulated sectors, or selling into government.</p>
+      <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;">Start Free Assessment →</a>
+    </section>
+
+    <!-- SYSTEM OUTPUTS -->
+    <section class="landing-outputs">
+      <div class="landing-outputs-intro">
+        <div class="label">What HarbourScan produces</div>
+        <p>Three structured outputs — from initial exposure mapping through to ongoing monitoring. Each draws on the 292-tool Canadian SaaS Sovereignty Index — the same dataset used in HarbourScan deployments for institutional clients.</p>
+      </div>
+
+      <!-- Output 1: SaaS Sovereignty Audit -->
+      <div class="output-card">
+        <div class="output-header">
+          <div class="output-label output-label-teal">Core Output</div>
+          <div class="output-title">SaaS Sovereignty Audit</div>
+          <p class="output-summary">A complete jurisdictional map of your organization's SaaS stack. HarbourScan identifies every tool, traces it to its parent company and country of incorporation, assesses CLOUD Act exposure, and produces a compliance gap report with prioritized remediation.</p>
+        </div>
+        <div class="output-body">
+          <div class="output-grid">
+            <div>
+              <div class="output-col-title">Deliverables</div>
+              <ul class="output-list">
+                <li>Full SaaS stack inventory with jurisdictional mapping</li>
+                <li>CLOUD Act exposure assessment for each tool</li>
+                <li>Canadian data residency status verification</li>
+                <li>DPA and contractual safeguards review</li>
+                <li>Compliance gap report with prioritized risk register</li>
+                <li>Executive summary for board or audit committee</li>
+              </ul>
+            </div>
+            <div>
+              <div class="output-col-title">What you'll know</div>
+              <ul class="output-list">
+                <li>Which tools in your stack are CLOUD Act exposed</li>
+                <li>Where data residency claims don't equal sovereignty</li>
+                <li>Which tools require Transfer Impact Assessments</li>
+                <li>Where your DPA coverage has gaps</li>
+                <li>What your overall sovereignty posture looks like</li>
+                <li>What to prioritize first</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output 2: TIA Documentation -->
+      <div class="output-card">
+        <div class="output-header">
+          <div class="output-label output-label-gold">Compliance Documentation</div>
+          <div class="output-title">TIA Documentation Package</div>
+          <p class="output-summary">Law 25 requires a Transfer Impact Assessment for every cross-border SaaS tool processing personal information of Quebec residents. HarbourScan identifies which tools in your stack require TIAs and produces the jurisdictional analysis and safeguards evaluation needed to complete them.</p>
+        </div>
+        <div class="output-body">
+          <div class="output-grid">
+            <div>
+              <div class="output-col-title">Deliverables</div>
+              <ul class="output-list">
+                <li>Individual TIA for each cross-border SaaS tool</li>
+                <li>Jurisdictional analysis of parent company legal framework</li>
+                <li>CLOUD Act exposure assessment per tool</li>
+                <li>Contractual safeguards evaluation (DPAs, SCCs)</li>
+                <li>Residual risk determination with mitigation recommendations</li>
+                <li>CAI-ready documentation format</li>
+              </ul>
+            </div>
+            <div>
+              <div class="output-col-title">Why this matters now</div>
+              <ul class="output-list">
+                <li>TIAs have been mandatory since September 2023</li>
+                <li>The CAI processed 277 complaints in 2023–2024</li>
+                <li>First post-Law 25 enforcement order issued Sept 2024</li>
+                <li>Penalties up to $25M or 4% of worldwide turnover</li>
+                <li>Private right of action with $1,000 minimum per violation</li>
+                <li>Class actions are explicitly permitted</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output 3: Sovereignty Monitoring -->
+      <div class="output-card">
+        <div class="output-header">
+          <div class="output-label output-label-ice">Ongoing</div>
+          <div class="output-title">Sovereignty Monitoring</div>
+          <p class="output-summary">Sovereignty isn't static. Vendors get acquired. Corporate structures change. Regulations evolve. New tools enter your stack. The self-assessment provides your baseline. Organizations running HarbourScan operationally receive ongoing tracking of jurisdictional changes across 292 tools — so your compliance posture stays current, not just accurate on the day it was run.</p>
+        </div>
+        <div class="output-body">
+          <div class="output-grid">
+            <div>
+              <div class="output-col-title">What's included</div>
+              <ul class="output-list">
+                <li>Quarterly sovereignty posture review</li>
+                <li>Acquisition and jurisdiction change alerts</li>
+                <li>New tool assessment as your stack evolves</li>
+                <li>TIA update when vendor circumstances change</li>
+                <li>Regulatory change briefings (Law 25, CPPA, provincial)</li>
+                <li>Annual board-ready sovereignty status report</li>
+              </ul>
+            </div>
+            <div>
+              <div class="output-col-title">Why ongoing matters</div>
+              <ul class="output-list">
+                <li>Canadian SaaS companies are acquired regularly — shifting jurisdiction for every client</li>
+                <li>Vendors launch (and retire) Canadian data centre regions</li>
+                <li>The CPPA will change federal requirements when enacted</li>
+                <li>Alberta's PIPA amendments are expected in 2026</li>
+                <li>EU adequacy review of Canada's framework is pending</li>
+                <li>A point-in-time audit goes stale within months</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW HARBOURSCAN DEPLOYS -->
+    <section class="landing-process">
+      <div class="landing-process-title">How HarbourScan deploys</div>
+      <p class="landing-process-sub">Four phases — from initial self-assessment through ongoing monitoring. Each step draws on verified corporate registry data from the Sovereignty Index.</p>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-num">01</div>
+          <div class="process-step-title">Self-assessment</div>
+          <div class="process-step-desc">Launch HarbourScan in your browser and begin mapping your SaaS environment against the 292-tool Sovereignty Index database.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">02</div>
+          <div class="process-step-title">Stack intake</div>
+          <div class="process-step-desc">Select your tools and tag each one with the personal information it processes, the data subjects involved, and the safeguards currently in place.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">03</div>
+          <div class="process-step-title">Analysis & documentation</div>
+          <div class="process-step-desc">HarbourScan produces jurisdictional assessments, identifies compliance gaps, and generates a prioritized risk register and remediation plan.</div>
+        </div>
+        <div class="process-step">
+          <div class="process-num">04</div>
+          <div class="process-step-title">Delivery & monitoring</div>
+          <div class="process-step-desc">Download your board-ready report. The signals pipeline continues to track vendor acquisitions, jurisdiction changes, and regulatory developments affecting your stack.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY UPPER HARBOUR -->
+    <section class="landing-diff">
+      <div class="landing-diff-inner">
+        <div class="landing-diff-title">Why Upper Harbour</div>
+        <div class="diff-grid">
+          <div class="diff-item">
+            <div class="diff-item-title">292-tool database</div>
+            <div class="diff-item-desc">Every assessment draws on the Canadian SaaS Sovereignty Index — the most comprehensive jurisdictional dataset for Canadian SaaS. We don't start from scratch. We start from verified corporate registry data.</div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-item-title">Canadian-specific</div>
+            <div class="diff-item-desc">Built for Law 25, PIPEDA, and Canadian procurement requirements. Not a US GRC platform repurposed for the Canadian market. The analysis accounts for the CLOUD Act, provincial variations, and the regulatory landscape that actually governs your data.</div>
+          </div>
+          <div class="diff-item">
+            <div class="diff-item-title">Independent</div>
+            <div class="diff-item-desc">No vendor affiliations. No paid placements. No commercial relationships with the SaaS tools we assess. Our analysis is independent because our business model doesn't depend on the vendors we're evaluating.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="landing-cta">
+      <h2>Map your stack. Understand your jurisdictional exposure.</h2>
+      <p>Run a free self-assessment in your browser. No account required. Board-ready report in minutes.</p>
+      <button class="landing-cta-btn" onclick="startAssessment()">Start Free Assessment →</button>
+      <p class="landing-cta-or">Need help operationalizing HarbourScan? <a href="https://calendly.com/josh-upperharbour/30min" target="_blank">Request a scoping call</a></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="landing-footer">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
+            <span style="font-weight:800;color:var(--ice);font-size:15px;">Upper Harbour</span>
+          </div>
+          <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Research</div>
+          <ul class="footer-links">
+            <li><a href="/resources/canadian-saas-sovereignty-index">Sovereignty Index</a></li>
+            <li><a href="/research/sovereignty-policy-scorecard">Policy Scorecard</a></li>
+            <li><a href="/research/government-saas-audit">Government SaaS Audit</a></li>
+            <li><a href="/research/provincial-exposure-index">Provincial Exposure Index</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Guides</div>
+          <ul class="footer-links">
+            <li><a href="/resources/law-25-saas-compliance">Law 25 & SaaS Compliance</a></li>
+            <li><a href="/resources/cloud-act-canadian-data">CLOUD Act & Canadian Data</a></li>
+            <li><a href="/research/model-tia-template">Model TIA Template</a></li>
+            <li><a href="/harbourscan">HarbourScan</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none;">Joshua van Es</a></span>
+      </div>
+    </footer>
+
+  </div><!-- /landingSection -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       WIZARD (original HarbourScan — completely unchanged below)
+       ═══════════════════════════════════════════════════════════════════ -->
+  <div id="wizardSection">
   <!-- ── Nav ──────────────────────────────────────────────────────── -->
   <nav>
     <a href="/" class="nav-logo">
-      <span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span>
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
       <span class="nav-divider"></span>
       <span class="nav-sub">HarbourScan</span>
     </a>
@@ -449,6 +851,7 @@
     </div>
 
   </div><!-- /app -->
+  </div><!-- /wizardSection -->
 
   <!-- ── Data Files ──────────────────────────────────────────── -->
   <script src="/assets/saas-db.js"></script>
@@ -479,6 +882,12 @@
   /* ══════════════════════════════════════════════════════════════
      HARBOURSCAN — APPLICATION LOGIC
      ══════════════════════════════════════════════════════════════ */
+
+  // ── Fallbacks for external dependencies ────────────────────────
+  if (typeof saasDB === 'undefined') var saasDB = [];
+  if (typeof dataCategories === 'undefined') var dataCategories = [];
+  if (typeof industryProfiles === 'undefined') var industryProfiles = [];
+  if (typeof regulatoryMap === 'undefined') var regulatoryMap = {};
 
   // ── State ──────────────────────────────────────────────────────
   const state = {
@@ -565,7 +974,7 @@
         const q = input.value.trim().toLowerCase();
         if (q.length < 1) { dropdown.classList.remove('open'); return; }
 
-        const matches = (typeof saasDB !== 'undefined' ? saasDB : [])
+        const matches = saasDB
           .filter(t => t.name.toLowerCase().includes(q) || t.parent.toLowerCase().includes(q))
           .filter(t => !state.selectedTools.find(s => s.name === t.name))
           .slice(0, 8);
@@ -587,7 +996,7 @@
 
         dropdown.querySelectorAll('.stack-option').forEach(opt => {
           opt.addEventListener('click', () => {
-            const tool = (saasDB || []).find(t => t.name === opt.dataset.name);
+            const tool = saasDB.find(t => t.name === opt.dataset.name);
             if (tool) addTool(tool);
             input.value = '';
             dropdown.classList.remove('open');
@@ -902,7 +1311,7 @@
           <div class="r-section-title">Executive Summary</div>
           <p class="r-text">This assessment evaluated <strong>${tools.length}</strong> SaaS tools used by ${o.name}. Of these, <strong>${exposed}</strong> are operated by entities in foreign jurisdictions with potential cross-border data exposure, and <strong>${canadian}</strong> are Canadian-headquartered. The assessment identified <strong>${critical}</strong> critical compliance gap${critical !== 1 ? 's' : ''} and <strong>${gaps.length - critical}</strong> additional finding${gaps.length - critical !== 1 ? 's' : ''} requiring attention.</p>
           ${isQuebec ? `<p class="r-text">As a Quebec-based organization, ${o.name} is subject to <strong>Law 25</strong> (Act to modernize legislative provisions as regards the protection of personal information), which requires Transfer Impact Assessments for each cross-border data transfer, written agreements with foreign service providers, and Privacy Impact Assessments for new or modified information systems. Maximum penalties reach $25M or 4% of worldwide turnover.</p>` : ''}
-          <p class="r-text">This is an indicative assessment based on self-reported information. A full HarbourScan engagement maps integration pathways, subprocessor chains, and contractual documentation in detail.</p>
+          <p class="r-text">This is an indicative assessment based on self-reported information. A full HarbourScan deployment maps integration pathways, subprocessor chains, and contractual documentation in detail.</p>
         </div>
 
         <div class="r-section">
@@ -1003,13 +1412,13 @@
 
         <div class="r-section">
           <div class="r-section-title">Next Steps</div>
-          <p class="r-text">This HarbourScan self-assessment provides an indicative jurisdictional overview. For a complete compliance engagement, Upper Harbour conducts:</p>
+          <p class="r-text">This HarbourScan self-assessment provides an indicative jurisdictional overview. A full HarbourScan deployment includes:</p>
           <p class="r-text">• <strong>Full environment mapping</strong> — integration pathways, API connections, and data flow tracing across your complete stack</p>
           <p class="r-text">• <strong>Subprocessor chain analysis</strong> — downstream dependencies (e.g. Slack → AWS, Clio → Stripe → Twilio) and their jurisdictional implications</p>
           <p class="r-text">• <strong>Contractual review</strong> — DPA adequacy assessment, transfer clause compliance, and gap remediation</p>
           <p class="r-text">• <strong>Complete PIA/TIA documentation</strong> — CAI-compliant Privacy Impact Assessments and Transfer Impact Assessments</p>
           <p class="r-text">• <strong>Ongoing monitoring</strong> — vendor acquisition tracking, regulatory change alerts, and periodic reassessment</p>
-          <p class="r-text" style="margin-top:16px;">Contact Upper Harbour to discuss a full HarbourScan engagement: <strong>josh@upperharbour.com</strong></p>
+          <p class="r-text" style="margin-top:16px;">Contact Upper Harbour to discuss a full HarbourScan deployment: <strong>josh@upperharbour.com</strong></p>
         </div>
 
         <div class="r-footer">
@@ -1099,5 +1508,48 @@
   }
 
   </script>
+
+  <!-- ═══════════════════════════════════════════════════════════════════
+       LANDING ↔ WIZARD TOGGLE
+       ═══════════════════════════════════════════════════════════════════ -->
+  <script>
+    function startAssessment() {
+      document.getElementById('landingSection').classList.add('hidden');
+      document.getElementById('siteNav').style.display = 'none';
+      document.getElementById('wizardSection').classList.add('visible');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      try {
+        if (window.location.hash !== '#start') {
+          history.pushState(null, '', '#start');
+        }
+      } catch (e) { /* sandboxed or cross-origin — safe to ignore */ }
+    }
+
+    function showLanding() {
+      document.getElementById('landingSection').classList.remove('hidden');
+      document.getElementById('siteNav').style.display = '';
+      document.getElementById('wizardSection').classList.remove('visible');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    // On load: only jump to wizard if hash is exactly #start on our domain
+    (function() {
+      try {
+        if (window.location.hash === '#start' && window.location.hostname.indexOf('upperharbour') !== -1) {
+          startAssessment();
+        }
+      } catch (e) {}
+    })();
+
+    // Handle back button
+    window.addEventListener('popstate', function() {
+      if (window.location.hash === '#start') {
+        startAssessment();
+      } else {
+        showLanding();
+      }
+    });
+  </script>
+
 </body>
 </html>
