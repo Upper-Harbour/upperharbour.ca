@@ -209,7 +209,7 @@ def collect_web_search() -> list[dict]:
 
     for idx, query in enumerate(SEARCH_QUERIES):
         if idx > 0:
-            time.sleep(60)  # Wait full minute to reset rate limit window
+            time.sleep(90)  # Wait 90s to reset rate limit window
         try:
             response = client.messages.create(
                 model="claude-haiku-4-5-20251001",
@@ -586,7 +586,7 @@ def run_pipeline():
 
     # 4. Process with Claude
     log.info("Step 3: Processing with Claude...")
-    time.sleep(60)  # Wait for rate limit window to reset after searches
+    time.sleep(90)  # Wait for rate limit window to reset after searches
     processed = process_with_claude(unique_items)
     log.info(f"Processed: {len(processed)} relevant signals")
 
