@@ -129,6 +129,7 @@
     <div class="hero-eyebrow">Intelligence Feed</div>
     <h1>Sovereignty <em>signals.</em></h1>
     <p class="hero-sub">Enforcement actions, vendor acquisitions, legislative changes, and procurement policy shifts affecting Canadian data sovereignty — monitored every 6 hours from regulatory, legal, government, and news sources.</p>
+    <p class="hero-sub" style="color:var(--teal);font-size:13px;margin-bottom:32px">Each signal represents a shift in the compliance landscape. <a href="/harbourscan" style="color:var(--teal);text-decoration:underline">HarbourScan</a> maps whether your organization is exposed.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">Last updated: <strong id="lastUpdated">—</strong></div>
       <div class="hero-meta-item">Sources monitored: <strong id="sourceCount">—</strong></div>
@@ -251,8 +252,7 @@
 
         renderSignals();
       } catch (e) {
-        // Show sample data if no JSON yet
-        loadSampleSignals();
+        document.getElementById('signalsList').innerHTML = '<div class="signals-empty">No signals yet. The pipeline monitors sources every 6 hours.</div>';
       }
     }
 
@@ -323,83 +323,6 @@
     });
 
     // ── Sample data (shown until real signals.json exists) ──────
-    function loadSampleSignals() {
-      allSignals = [
-        {
-          date: "2026-02-21",
-          type: "enforcement",
-          headline: "CAI opens investigation into cross-border SaaS data transfers by Quebec municipality",
-          summary: "The Commission d'accès à l'information has initiated an investigation into a Quebec municipal government's use of US-hosted SaaS platforms for processing citizen data. The investigation focuses on whether adequate Transfer Impact Assessments were conducted as required under Law 25.",
-          source: "Commission d'accès à l'information",
-          sourceUrl: "https://www.cai.gouv.qc.ca",
-          impact: "QC"
-        },
-        {
-          date: "2026-02-20",
-          type: "acquisition",
-          headline: "Vista Equity Partners completes acquisition of Canadian HR platform Collage",
-          summary: "US-based private equity firm Vista Equity Partners has finalized its acquisition of Collage, a Canadian HR and benefits platform used by over 1,200 Canadian organizations. The acquisition changes Collage's jurisdictional status from Canadian-owned to US-parented, introducing CLOUD Act exposure for all customer data.",
-          source: "BetaKit",
-          sourceUrl: "https://betakit.com",
-          impact: "All provinces",
-          dbUpdate: true
-        },
-        {
-          date: "2026-02-19",
-          type: "legislation",
-          headline: "CPPA receives second reading in House of Commons",
-          summary: "Bill C-27's Consumer Privacy Protection Act component received second reading, advancing federal privacy reform that would make Transfer Impact Assessments mandatory for all cross-border data transfers. The bill includes an administrative monetary penalty framework with fines up to 3% of global revenue.",
-          source: "Parliament of Canada",
-          sourceUrl: "https://www.parl.ca",
-          impact: "Federal"
-        },
-        {
-          date: "2026-02-18",
-          type: "vendor",
-          headline: "Notion announces Canadian data residency option for Enterprise customers",
-          summary: "Notion Labs has launched Canadian data residency for Enterprise-tier customers, hosting data in AWS ca-central-1. While this addresses data residency requirements, Notion remains US-incorporated and subject to the CLOUD Act. The change affects risk classification from 'exposed' to 'review required.'",
-          source: "Notion Blog",
-          sourceUrl: "https://notion.so/blog",
-          impact: "All provinces",
-          dbUpdate: true
-        },
-        {
-          date: "2026-02-17",
-          type: "procurement",
-          headline: "Treasury Board updates GC Cloud Guardrails to require sovereignty documentation",
-          summary: "The Government of Canada has updated its Cloud Guardrails to require documented sovereignty assessments for all new SaaS procurements above $25,000. Departments must now demonstrate awareness of parent jurisdiction and CLOUD Act exposure before vendor approval.",
-          source: "Treasury Board of Canada Secretariat",
-          sourceUrl: "https://www.canada.ca/en/treasury-board-secretariat.html",
-          impact: "Federal"
-        },
-        {
-          date: "2026-02-16",
-          type: "policy",
-          headline: "Ontario Privacy Commissioner calls for provincial private-sector privacy law",
-          summary: "Ontario's Information and Privacy Commissioner has issued a public statement urging the provincial government to introduce private-sector privacy legislation, citing the gap between Ontario's public-sector FIPPA and the absence of provincial private-sector oversight. The Commissioner noted that Ontario organizations currently rely solely on federal PIPEDA.",
-          source: "IPC Ontario",
-          sourceUrl: "https://www.ipc.on.ca",
-          impact: "ON"
-        }
-      ];
-
-      const meta = { lastUpdated: "Feb 21, 2026 — 06:00 ET", sourceCount: "45+" };
-      document.getElementById('lastUpdated').textContent = meta.lastUpdated;
-      document.getElementById('sourceCount').textContent = meta.sourceCount;
-      document.getElementById('monthCount').textContent = allSignals.length;
-
-      const counts = { enforcement: 0, acquisition: 0, legislation: 0, vendor: 0, procurement: 0 };
-      allSignals.forEach(s => { if (counts[s.type] !== undefined) counts[s.type]++; });
-      document.getElementById('statEnforcement').textContent = counts.enforcement;
-      document.getElementById('statAcquisition').textContent = counts.acquisition;
-      document.getElementById('statLegislation').textContent = counts.legislation;
-      document.getElementById('statVendor').textContent = counts.vendor;
-      document.getElementById('statProcurement').textContent = counts.procurement;
-      document.getElementById('statsBar').style.display = 'grid';
-
-      renderSignals();
-    }
-
     loadSignals();
   </script>
 </body>
