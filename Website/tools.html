@@ -83,6 +83,14 @@
     .btn-teal-sm{color:var(--midnight);background:var(--teal)}.btn-teal-sm:hover{background:#47cec5}
     .btn-outline-sm{color:var(--slate);border:1px solid var(--border-md);cursor:pointer}.btn-outline-sm:hover{color:var(--ice);border-color:var(--slate)}
     .share-link{font-family:var(--mono);font-size:10px;color:var(--muted)}
+    .tool-cta-nudge{grid-column:1/-1;margin-top:12px;padding:14px 20px;border-radius:5px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .tool-cta-nudge.risk-exposed{background:rgba(224,96,80,0.06);border:1px solid rgba(224,96,80,0.18)}
+    .tool-cta-nudge.risk-review{background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.18)}
+    .tool-cta-nudge.risk-canadian{background:rgba(60,184,176,0.06);border:1px solid rgba(60,184,176,0.18)}
+    .tool-cta-nudge-text{font-size:12px;color:var(--slate);line-height:1.5}
+    .tool-cta-nudge-text strong{color:var(--ice);font-weight:700}
+    .tool-cta-nudge a.nudge-link{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--teal);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(60,184,176,0.3);padding-bottom:1px;transition:border-color 0.2s}
+    .tool-cta-nudge a.nudge-link:hover{border-color:var(--teal)}
     .no-results{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
     .cta-strip{max-width:1120px;margin:0 auto;padding:0 52px 80px}
     .cta-inner{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:32px}
@@ -237,6 +245,7 @@
       render();
     }
     function getFiltered() {
+      const riskOrder = { exposed: 0, review: 1, canadian: 2 };
       let t = saasDB;
       if (currentFilter !== 'all') t = t.filter(x => x.risk === currentFilter);
       if (currentSearch) {
@@ -248,6 +257,12 @@
           (x.note && x.note.toLowerCase().includes(q))
         );
       }
+      t = t.slice().sort(function(a, b) {
+        var ra = riskOrder[a.risk] !== undefined ? riskOrder[a.risk] : 9;
+        var rb = riskOrder[b.risk] !== undefined ? riskOrder[b.risk] : 9;
+        if (ra !== rb) return ra - rb;
+        return a.name.localeCompare(b.name);
+      });
       return t;
     }
     function toggleDetail(name) {
@@ -306,8 +321,22 @@
             '<div class="detail-field"><span class="detail-label">Risk Classification</span><span class="detail-value"><span class="tool-risk risk-' + t.risk + '">' + t.risk + '</span></span></div>' +
             (t.note ? '<div class="tool-note"><p>' + t.note + '</p></div>' : '') +
             '</div>' +
+            (function() {
+              if (t.risk === 'exposed') {
+                return '<div class="tool-cta-nudge risk-exposed">' +
+                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' is CLOUD Act exposed.</strong> US law enforcement can compel disclosure of data held by ' + t.parent + ', regardless of where it\'s stored. See how this affects your full stack.</div>' +
+                  '<a href="/harbourscan" class="nudge-link">Run HarbourScan →</a></div>';
+              } else if (t.risk === 'review') {
+                return '<div class="tool-cta-nudge risk-review">' +
+                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' requires jurisdictional review.</strong> Ownership structure or infrastructure dependencies create potential exposure. Map your full stack to understand cumulative risk.</div>' +
+                  '<a href="/harbourscan" class="nudge-link">Run HarbourScan →</a></div>';
+              } else {
+                return '<div class="tool-cta-nudge risk-canadian">' +
+                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' is Canadian-headquartered.</strong> Canadian jurisdiction today doesn\'t mean Canadian jurisdiction tomorrow. HarbourScan monitors ownership changes across your stack.</div>' +
+                  '<a href="/harbourscan" class="nudge-link">Run HarbourScan →</a></div>';
+              }
+            })() +
             '<div class="tool-detail-actions">' +
-            '<a href="/harbourscan" class="btn-small btn-teal-sm">Assess with HarbourScan</a>' +
             '<a href="#" class="btn-small btn-outline-sm" onclick="event.preventDefault();event.stopPropagation();copyLink(\'' + ne + '\')">Copy link</a>' +
             '<span class="share-link">upperharbour.ca/tools#' + slugify(t.name) + '</span>' +
             '</div></div></div>';
