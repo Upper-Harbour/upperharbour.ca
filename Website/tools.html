@@ -109,7 +109,7 @@
       .footer-inner{padding:0 28px}.footer-bottom{padding:20px 28px 0}
     }
     @media(max-width:768px){
-      nav{padding:0 20px}.nav-link{display:none}.nav-cta{font-size:11px;padding:8px 14px}
+      nav{padding:0 20px}.nav-links{gap:16px}.nav-link{font-size:11px}.nav-cta{font-size:11px;padding:8px 14px}
       .hero{padding:100px 20px 24px}.hero h1{font-size:28px}
       .search-section{padding:16px 20px 10px}.filter-row{padding:6px 20px 20px}
       .stats-row{padding:0 20px 20px;grid-template-columns:1fr 1fr}.tool-grid{padding:0 20px 48px}
@@ -119,6 +119,9 @@
       .tool-row .tool-jurisdiction,.tool-row .tool-cloudact,.tool-row .tool-residency{display:none}
       .cta-strip{padding:0 20px 48px}.cta-inner{padding:28px 20px}
       .footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:20px 20px 0;flex-direction:column}
+    }
+    @media(max-width:480px){
+      .nav-link{display:none}
     }
   </style>
 </head>
@@ -218,6 +221,7 @@
   </footer>
   <script src="/assets/saas-db.js"></script>
   <script>
+    if (typeof saasDB === 'undefined') var saasDB = [];
     let currentFilter = 'all', currentSearch = '', expandedTool = null;
 
     function getHashTool() {
