@@ -107,6 +107,7 @@ SEARCH_QUERIES = [
     "Canadian SaaS acquisition cloud act",
     "Canada data residency SaaS vendor announcement",
     "government procurement data sovereignty Canada",
+    "Canada RFP data residency SaaS procurement 2026",
 ]
 
 # Relevance keywords for filtering
