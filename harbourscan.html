@@ -843,24 +843,27 @@
       <div id="gapSummary" style="margin-bottom:48px;"></div>
 
       <!-- ═══════════════════════════════════════════════════════ -->
-      <!-- GATED: Full Report Preview (blurred)                    -->
+      <!-- URGENCY LINE                                            -->
       <!-- ═══════════════════════════════════════════════════════ -->
-      <div style="position:relative; margin-bottom:48px;">
-        <div style="position:absolute; top:0; left:0; right:0; bottom:0; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(6,9,14,0) 0%, rgba(6,9,14,0.85) 30%, rgba(6,9,14,0.95) 100%); border-radius:12px; pointer-events:all;">
-          <div style="text-align:center; max-width:520px; padding:48px 32px;">
-            <div style="font-size:28px; margin-bottom:12px;">🔒</div>
-            <div style="font-size:20px; font-weight:800; color:var(--ice); margin-bottom:8px; letter-spacing:-0.3px;">Unlock your full HarbourScan Report</div>
-            <p style="font-size:14px; color:var(--slate); line-height:1.7; margin-bottom:24px;">Your complete sovereignty assessment — compliance gaps, remediation priorities, Register of Processing Activities, and TIA requirements — packaged as a board-ready document.</p>
-            <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-              <a href="mailto:josh@upperharbour.com?subject=HarbourScan%20Report%20Request&body=Organization%3A%20%0AProvince%3A%20%0ATools%20selected%3A%20%0A%0AI'd%20like%20to%20purchase%20a%20full%20HarbourScan%20Report." class="btn btn-primary" style="font-size:14px; padding:14px 28px; text-decoration:none;">Get Full Report — $2,500</a>
-              <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="btn btn-secondary" style="font-size:14px; padding:14px 28px; text-decoration:none;">Book a Scoping Call</a>
-            </div>
-            <p style="font-size:11px; color:var(--muted); margin-top:16px;">Includes: Compliance Gap Analysis · Register of Processing Activities · TIA Requirements · Remediation Plan · Board-Ready PDF</p>
+      <div style="background:rgba(224,96,80,0.06); border:1px solid rgba(224,96,80,0.18); border-radius:8px; padding:20px 24px; margin-bottom:40px;">
+        <p style="font-size:14px; color:var(--ice); line-height:1.7; margin:0;" id="urgencyLine">Most organizations discover at least one foreign-controlled SaaS tool processing personal data without documented safeguards. If your organization were asked to produce a defensible processing inventory today — could you?</p>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- BLURRED PREVIEW + "SEE WHAT'S INSIDE" (Step 1 of gate) -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <div style="position:relative; margin-bottom:0;" id="blurredSection">
+        <!-- Gradient overlay with reveal CTA -->
+        <div style="position:absolute; top:0; left:0; right:0; bottom:0; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(6,9,14,0) 0%, rgba(6,9,14,0.8) 25%, rgba(6,9,14,0.95) 100%); border-radius:12px;" id="blurOverlay">
+          <div style="text-align:center; max-width:480px; padding:48px 32px;">
+            <div style="font-size:20px; font-weight:800; color:var(--ice); margin-bottom:10px; letter-spacing:-0.3px;">Your full report is ready</div>
+            <p style="font-size:14px; color:var(--slate); line-height:1.7; margin-bottom:24px;">Compliance gaps, remediation priorities, and a Register of Processing Activities — structured for legal, security, and procurement workflows.</p>
+            <button class="btn btn-primary" style="font-size:14px; padding:14px 28px;" onclick="revealReportPreview()">See what's in the full report →</button>
           </div>
         </div>
 
-        <!-- Blurred preview content -->
-        <div style="filter:blur(6px); -webkit-filter:blur(6px); pointer-events:none; user-select:none; opacity:0.5; padding:32px 0;">
+        <!-- Blurred content -->
+        <div style="filter:blur(6px); -webkit-filter:blur(6px); pointer-events:none; user-select:none; opacity:0.4; padding:32px 0;">
           <h3 style="font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:16px;">Compliance Gaps</h3>
           <div id="gapListBlurred"></div>
           <h3 style="font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:var(--teal); margin-bottom:16px; margin-top:32px;">Register of Processing Activities</h3>
@@ -875,22 +878,85 @@
         </div>
       </div>
 
-      <!-- ── What's included in the full report ── -->
-      <div style="background:var(--surface); border:1px solid var(--border-md); border-radius:12px; padding:40px; margin-bottom:32px;">
-        <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:16px;">What's in the full report</div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-          <div>
-            <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:8px;">Compliance Documentation</div>
-            <p style="font-size:13px; color:var(--slate); line-height:1.7;">Complete gap analysis with descriptions and severity ratings. Register of Processing Activities for your entire stack. Prioritized remediation plan with specific actions.</p>
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <!-- REPORT PREVIEW (Step 2 of gate — hidden until reveal)   -->
+      <!-- ═══════════════════════════════════════════════════════ -->
+      <div id="reportPreview" style="display:none;">
+
+        <!-- Section-by-section breakdown -->
+        <div style="margin-bottom:40px;">
+          <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:24px;">What's in your HarbourScan Report</div>
+
+          <!-- Section 1 -->
+          <div style="background:var(--surface); border:1px solid var(--border-md); border-radius:8px; padding:24px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:6px;">1. Compliance Gap Analysis</div>
+                <p style="font-size:13px; color:var(--slate); line-height:1.7; margin:0;">Every gap identified in your stack — described, rated by severity, and mapped to the specific regulation it violates. Your report found <strong style="color:var(--red);" id="previewGapCount">0</strong> gaps.</p>
+              </div>
+              <span style="font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 10px; border-radius:3px; color:var(--red); background:rgba(224,96,80,0.1); border:1px solid rgba(224,96,80,0.2); white-space:nowrap; margin-left:16px;">Critical</span>
+            </div>
           </div>
-          <div>
-            <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:8px;">TIA & Regulatory Package</div>
-            <p style="font-size:13px; color:var(--slate); line-height:1.7;">Transfer Impact Assessment requirements mapped per tool. Province-specific regulatory analysis. Board-ready PDF you can hand to counsel, procurement, or your privacy officer.</p>
+
+          <!-- Section 2 -->
+          <div style="background:var(--surface); border:1px solid var(--border-md); border-radius:8px; padding:24px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:6px;">2. Register of Processing Activities</div>
+                <p style="font-size:13px; color:var(--slate); line-height:1.7; margin:0;">A structured register of every tool in your stack — parent entity, jurisdiction, CLOUD Act status, data residency, and risk classification. This is the document procurement and legal ask for.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div style="background:var(--surface); border:1px solid var(--border-md); border-radius:8px; padding:24px; margin-bottom:12px;" id="previewTIASection">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:6px;">3. Transfer Impact Assessment Requirements</div>
+                <p style="font-size:13px; color:var(--slate); line-height:1.7; margin:0;">Which tools require TIAs, the jurisdictional analysis for each, and the documentation framework needed to complete them. <strong style="color:var(--gold);" id="previewTIACount">0</strong> tools in your stack require TIAs.</p>
+              </div>
+              <span style="font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 10px; border-radius:3px; color:var(--gold); background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); white-space:nowrap; margin-left:16px;">Law 25</span>
+            </div>
+          </div>
+
+          <!-- Section 4 -->
+          <div style="background:var(--surface); border:1px solid var(--border-md); border-radius:8px; padding:24px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:6px;">4. Prioritized Remediation Plan</div>
+                <p style="font-size:13px; color:var(--slate); line-height:1.7; margin:0;">Numbered, ranked actions — what to fix first, what can wait, and why. Structured so you can hand it to your team and start working immediately.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 5 -->
+          <div style="background:var(--surface); border:1px solid var(--border-md); border-radius:8px; padding:24px; margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+              <div>
+                <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:6px;">5. Regulatory Framework Analysis</div>
+                <p style="font-size:13px; color:var(--slate); line-height:1.7; margin:0;">Province-specific regulatory requirements mapped to your stack. Which laws apply, what they require, who enforces them, and what the penalties are.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Delivery format -->
+          <div style="font-size:12px; color:var(--muted); margin-top:16px; padding-left:4px;">
+            Delivered as a structured HarbourScan report — exportable for legal, security, and procurement workflows.
           </div>
         </div>
-        <div style="text-align:center; margin-top:28px; padding-top:24px; border-top:1px solid var(--border);">
-          <a href="mailto:josh@upperharbour.com?subject=HarbourScan%20Report%20Request" class="btn btn-primary" style="font-size:14px; padding:14px 32px; text-decoration:none;">Get Full Report — $2,500</a>
-          <div style="margin-top:12px; font-size:12px; color:var(--muted);">or <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="color:var(--teal); text-decoration:none;">book a 15-minute scoping call</a> to walk through your results</div>
+
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <!-- PRICING + CTA (Step 3 of gate — the actual ask)        -->
+        <!-- ═══════════════════════════════════════════════════════ -->
+        <div style="background:var(--surface); border:1px solid rgba(60,184,176,0.2); border-radius:12px; padding:40px; margin-bottom:32px; text-align:center;">
+          <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">Full HarbourScan Report</div>
+          <div style="font-size:42px; font-weight:800; color:var(--ice); margin-bottom:4px; letter-spacing:-1px;">$2,500</div>
+          <div style="font-size:13px; color:var(--muted); margin-bottom:24px;">One-time · Includes all five sections · Board-ready PDF</div>
+          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+            <a href="mailto:josh@upperharbour.com?subject=HarbourScan%20Report%20Request&body=Organization%3A%20%0AProvince%3A%20%0ATools%20assessed%3A%20%0A%0AI'd%20like%20to%20purchase%20a%20full%20HarbourScan%20Report." class="btn btn-primary" style="font-size:14px; padding:14px 32px; text-decoration:none;">Get Full Report</a>
+            <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="btn btn-secondary" style="font-size:14px; padding:14px 28px; text-decoration:none;">Book a 15-min Call First</a>
+          </div>
+          <p style="font-size:12px; color:var(--muted); margin-top:20px; line-height:1.6;">We review your scan data, generate your report, and deliver within 48 hours.<br/>Questions? <a href="mailto:josh@upperharbour.com" style="color:var(--teal); text-decoration:none;">josh@upperharbour.com</a></p>
         </div>
       </div>
 
@@ -1030,6 +1096,15 @@
     return gaps;
   }
 
+  function revealReportPreview() {
+    // Hide the blurred section entirely
+    document.getElementById('blurredSection').style.display = 'none';
+    // Show the detailed preview + pricing
+    document.getElementById('reportPreview').style.display = 'block';
+    // Smooth scroll to the preview
+    document.getElementById('reportPreview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
   function buildFreeResults() {
     const tools = state.selectedTools;
     const o = state.org;
@@ -1141,6 +1216,19 @@
       </div>
     `).join('');
     document.getElementById('remediationBlurred').innerHTML = remPreview;
+
+    // ── Populate report preview counts ──
+    document.getElementById('previewGapCount').textContent = gaps.length;
+    var tiaCount = isQuebec ? tools.filter(function(t) { return t.jurisdiction !== 'Canada'; }).length : foreignCount;
+    document.getElementById('previewTIACount').textContent = tiaCount;
+
+    // Hide TIA section for non-Quebec orgs
+    var tiaSection = document.getElementById('previewTIASection');
+    if (!isQuebec) { tiaSection.style.display = 'none'; }
+
+    // Reset reveal state (hide preview, show blurred)
+    document.getElementById('blurredSection').style.display = '';
+    document.getElementById('reportPreview').style.display = 'none';
   }
 
   function collectOrgProfile() {
