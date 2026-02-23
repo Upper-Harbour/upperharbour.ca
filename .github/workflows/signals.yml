@@ -1,6 +1,6 @@
 # .github/workflows/signals.yml
 # Runs the signals intelligence pipeline every 6 hours
-# Auto-publishes signals directly to Website/signals.json
+# Auto-publishes signals directly to signals.json
 
 name: Signals Pipeline
 
@@ -35,17 +35,19 @@ jobs:
           SMTP_USER: ${{ secrets.SMTP_USER }}
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           APPROVAL_EMAIL: ${{ secrets.APPROVAL_EMAIL }}
+          SIGNALS_JSON_PATH: signals.json
         run: python signals_pipeline.py collect
 
       - name: Commit published signals
         run: |
           git config user.name "Signals Bot"
           git config user.email "bot@upperharbour.ca"
-          if [ -f Website/signals.json ]; then
-            git add -f Website/signals.json
+          if [ -f signals.json ]; then
+            git add -f signals.json
           fi
-          if [ -f Website/db-alerts.json ]; then
-            git add -f Website/db-alerts.json
+          if [ -f db-alerts.json ]; then
+            git add -f db-alerts.json
           fi
           git diff --staged --quiet || git commit -m "signals: $(date -u +%Y-%m-%dT%H:%M) — auto-published"
+          git pull --rebase origin main || true
           git push || true
