@@ -665,17 +665,6 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════════ -->
-    <!-- DATABASE ALERTS BANNER (auto-populated from signals pipeline) -->
-    <!-- ══════════════════════════════════════════════════════════ -->
-    <div id="dbAlertsBanner" style="display:none; background:rgba(201,168,76,0.08); border:1px solid rgba(201,168,76,0.25); border-radius:8px; padding:16px 20px; margin-bottom:24px;">
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-        <span style="font-size:14px;">⟳</span>
-        <span style="font-size:13px;font-weight:700;color:#C9A84C;">Database updates flagged by Signals</span>
-      </div>
-      <div id="dbAlertsList" style="font-size:12px;color:var(--slate);line-height:1.7;"></div>
-      <div style="margin-top:8px;font-size:11px;color:var(--muted);">These tools may have changed ownership, jurisdiction, or data residency status. <a href="/signals" style="color:var(--teal);">View signals →</a></div>
-    </div>
-
     <!-- ══════════════════════════════════════════════════════════ -->
     <!-- STEP 1: Organization Profile                              -->
     <!-- ══════════════════════════════════════════════════════════ -->
@@ -1013,26 +1002,6 @@
   <!-- ── Data Files ──────────────────────────────────────────── -->
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/saas-db.js"></script>
   <script>
-    // Load database alerts from signals pipeline
-    (async function loadDbAlerts() {
-      try {
-        const res = await fetch('/db-alerts.json');
-        if (!res.ok) return;
-        const data = await res.json();
-        const alerts = (data.alerts || []).filter(a => a.status === 'pending_review');
-        if (alerts.length === 0) return;
-        const banner = document.getElementById('dbAlertsBanner');
-        const list = document.getElementById('dbAlertsList');
-        list.innerHTML = alerts.map(a =>
-          `<div style="margin-bottom:4px;">
-            <strong style="color:var(--ice);">${a.tool_name}</strong> —
-            ${a.change}: ${a.old_value || '?'} → <strong>${a.new_value || '?'}</strong>
-            <span style="color:var(--muted);"> · ${a.signal_date || ''}</span>
-          </div>`
-        ).join('');
-        banner.style.display = 'block';
-      } catch (e) { /* no alerts file yet — that's fine */ }
-    })();
   </script>
   <script src="/assets/regulatory-map.js"></script>
   <script>
