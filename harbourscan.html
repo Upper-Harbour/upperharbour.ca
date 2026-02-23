@@ -39,16 +39,6 @@
     body { font-family: var(--body); background: var(--bg); color: var(--ice); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
 
     /* ── Site Nav ───────────────────────────────────────────────────── */
-    .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 66px; background: rgba(6,9,14,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; font-family: var(--body); }
-    .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; font-family: var(--body); }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-link:hover { color: var(--ice); }
-    .nav-link.active { color: var(--teal); }
-    .nav-cta { font-size: 13px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 9px 22px; border-radius: 4px; text-decoration: none; transition: background 0.2s; }
-    .nav-cta:hover { background: #47cec5; }
 
     /* ── Landing: Hero ──────────────────────────────────────────────── */
     .landing-hero { padding: 160px 52px 80px; max-width: 860px; margin: 0 auto; }
@@ -129,8 +119,6 @@
 
     /* ── Responsive: Landing ────────────────────────────────────────── */
     @media(max-width:768px) {
-      .site-nav { padding: 0 16px; }
-      .nav-cta { font-size: 11px; padding: 8px 14px; white-space: nowrap; }
       .landing-hero { padding: 110px 20px 60px; }
       .landing-outputs, .landing-process { padding: 0 20px 60px; }
       .output-header, .output-body { padding-left: 24px; padding-right: 24px; }
@@ -181,10 +169,7 @@
     body { font-family: var(--font); background: var(--midnight); color: var(--ice); line-height: 1.6; overflow-x: hidden; }
 
     /* ── Nav ──────────────────────────────────────────────────────── */
-    #wizardSection nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(10,16,24,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-    #wizardSection .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    #wizardSection .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; font-family: var(--body); }
-    #wizardSection .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; font-family: var(--body); }
+    #wizardSection nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 66px; background: rgba(10,16,24,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
     .nav-divider { width: 1px; height: 18px; background: var(--border-md); margin: 0 14px; }
     .nav-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .nav-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); background: var(--teal-dim); border: 1px solid var(--teal-border); padding: 4px 10px; border-radius: 3px; }
@@ -400,6 +385,7 @@
     "featureList": ["Jurisdictional mapping", "CLOUD Act exposure detection", "TIA gap identification", "DPA compliance check", "Compliance gap report generation"]
   }
   </script>
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
 
