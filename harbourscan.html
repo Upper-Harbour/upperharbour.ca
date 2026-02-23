@@ -41,7 +41,7 @@
     /* ── Site Nav ───────────────────────────────────────────────────── */
     .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 66px; background: rgba(6,9,14,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); }
+    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; }
     .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
@@ -182,9 +182,9 @@
 
     /* ── Nav ──────────────────────────────────────────────────────── */
     #wizardSection nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 48px; height: 64px; background: rgba(10,16,24,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
-    .nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
-    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; }
-    .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
+    #wizardSection .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    #wizardSection .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); letter-spacing: -0.2px; }
+    #wizardSection .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
     .nav-divider { width: 1px; height: 18px; background: var(--border-md); margin: 0 14px; }
     .nav-sub { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
     .nav-badge { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal); background: var(--teal-dim); border: 1px solid var(--teal-border); padding: 4px 10px; border-radius: 3px; }
@@ -408,7 +408,7 @@
        ═══════════════════════════════════════════════════════════════════ -->
   <nav class="site-nav" id="siteNav">
     <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E4D52"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
         <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
         <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
       </svg>
@@ -617,7 +617,7 @@
       <div class="footer-inner">
         <div>
           <div class="footer-logo">
-            <svg width="24" height="24" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E4D52"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
+            <svg width="24" height="24" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
             <span style="font-weight:800;color:var(--ice);font-size:15px;">Upper Harbour</span>
           </div>
           <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
@@ -656,7 +656,7 @@
   <!-- ── Nav ──────────────────────────────────────────────────────── -->
   <nav>
     <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E4D52"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
         <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
         <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
       </svg>
@@ -912,8 +912,8 @@
           <div style="background:var(--surface); border:1px solid var(--border-md); border-radius:8px; padding:24px; margin-bottom:12px;" id="previewTIASection">
             <div style="display:flex; justify-content:space-between; align-items:flex-start;">
               <div>
-                <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:6px;">3. Transfer Impact Assessment Requirements</div>
-                <p style="font-size:13px; color:var(--slate); line-height:1.7; margin:0;">Which tools require TIAs, the jurisdictional analysis for each, and the documentation framework needed to complete them. <strong style="color:var(--gold);" id="previewTIACount">0</strong> tools in your stack require TIAs.</p>
+                <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:6px;">3. Transfer Impact Assessment (TIA / PIA) Guidance</div>
+                <p style="font-size:13px; color:var(--slate); line-height:1.7; margin:0;">For any foreign-controlled SaaS in your stack, HarbourScan identifies where a TIA or PIA is likely required based on your province's regulatory framework, and what factors regulators expect you to document. Includes jurisdictional exposure, vendor control analysis, and safeguard considerations. <strong style="color:var(--gold);" id="previewTIACount">0</strong> tools in your stack require assessment.</p>
               </div>
               <span style="font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; padding:4px 10px; border-radius:3px; color:var(--gold); background:rgba(201,168,76,0.1); border:1px solid rgba(201,168,76,0.2); white-space:nowrap; margin-left:16px;">Law 25</span>
             </div>
@@ -941,7 +941,10 @@
 
           <!-- Delivery format -->
           <div style="font-size:12px; color:var(--muted); margin-top:16px; padding-left:4px;">
-            Delivered as a structured HarbourScan report — exportable for legal, security, and procurement workflows.
+            Delivered as a structured HarbourScan report — exportable for legal review, security validation, procurement approval, and audit response.
+          </div>
+          <div style="font-size:14px; color:var(--slate); margin-top:20px; padding-left:4px; line-height:1.7;">
+            The full HarbourScan report turns your SaaS stack from an undocumented risk surface into a defensible compliance record.
           </div>
         </div>
 
@@ -953,10 +956,10 @@
           <div style="font-size:42px; font-weight:800; color:var(--ice); margin-bottom:4px; letter-spacing:-1px;">$2,500</div>
           <div style="font-size:13px; color:var(--muted); margin-bottom:24px;">One-time · Includes all five sections · Board-ready PDF</div>
           <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a href="mailto:josh@upperharbour.com?subject=HarbourScan%20Report%20Request&body=Organization%3A%20%0AProvince%3A%20%0ATools%20assessed%3A%20%0A%0AI'd%20like%20to%20purchase%20a%20full%20HarbourScan%20Report." class="btn btn-primary" style="font-size:14px; padding:14px 32px; text-decoration:none;">Get Full Report</a>
+            <a href="/cdn-cgi/l/email-protection#f49e9b879cb481848491869c9586969b8186da979b99cb8781969e919780c9bc9586969b8186a797959ad1c6c4a691849b8680d1c6c4a6918581918780d2969b908dc9bb8693959a9d8e95809d9b9ad1c7b5d1c6c4d1c4b5a4869b829d9a9791d1c7b5d1c6c4d1c4b5a09b9b9887d1c6c49587879187879190d1c7b5d1c6c4d1c4b5d1c4b5bdd390d1c6c4989d9f91d1c6c4809bd1c6c4848186979c958791d1c6c495d1c6c492819898d1c6c4bc9586969b8186a797959ad1c6c4a691849b8680da" class="btn btn-primary" style="font-size:14px; padding:14px 32px; text-decoration:none;">Get Full Report</a>
             <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="btn btn-secondary" style="font-size:14px; padding:14px 28px; text-decoration:none;">Book a 15-min Call First</a>
           </div>
-          <p style="font-size:12px; color:var(--muted); margin-top:20px; line-height:1.6;">We review your scan data, generate your report, and deliver within 48 hours.<br/>Questions? <a href="mailto:josh@upperharbour.com" style="color:var(--teal); text-decoration:none;">josh@upperharbour.com</a></p>
+          <p style="font-size:12px; color:var(--muted); margin-top:20px; line-height:1.6;">We review your scan data, generate your report, and deliver within 48 hours.<br/>Questions? <a href="/cdn-cgi/l/email-protection#8ae0e5f9e2cafffafaeff8e2ebf8e8e5fff8a4e9e5e7" style="color:var(--teal); text-decoration:none;"><span class="__cf_email__" data-cfemail="ec86839f84ac999c9c899e848d9e8e83999ec28f8381">[email&#160;protected]</span></a></p>
         </div>
       </div>
 
@@ -970,7 +973,7 @@
   </div><!-- /wizardSection -->
 
   <!-- ── Data Files ──────────────────────────────────────────── -->
-  <script src="/assets/saas-db.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/saas-db.js"></script>
   <script>
     // Load database alerts from signals pipeline
     (async function loadDbAlerts() {
@@ -1843,24 +1846,4 @@
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
-    // On load: only jump to wizard if hash is exactly #start on our domain
-    (function() {
-      try {
-        if (window.location.hash === '#start' && window.location.hostname.indexOf('upperharbour') !== -1) {
-          startAssessment();
-        }
-      } catch (e) {}
-    })();
-
-    // Handle back button
-    window.addEventListener('popstate', function() {
-      if (window.location.hash === '#start') {
-        startAssessment();
-      } else {
-        showLanding();
-      }
-    });
-  </script>
-
-</body>
-</html>
+    // On load: only jump to wizard if hash is exactly #st
