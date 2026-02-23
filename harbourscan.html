@@ -693,7 +693,7 @@
     <!-- STEP 1: Organization Profile                              -->
     <!-- ══════════════════════════════════════════════════════════ -->
     <div class="step visible" id="step1">
-      <div class="step-eyebrow">Step 1 of 5</div>
+      <div class="step-eyebrow">Step 1 of 3</div>
       <h1 class="step-title">Tell us about your <em>organization</em></h1>
       <p class="step-sub">All inputs remain local to your browser. Nothing is stored or transmitted — your report is generated locally and downloaded directly.</p>
 
@@ -792,7 +792,7 @@
     <!-- STEP 2: Stack Selection                                   -->
     <!-- ══════════════════════════════════════════════════════════ -->
     <div class="step" id="step2">
-      <div class="step-eyebrow">Step 2 of 5</div>
+      <div class="step-eyebrow">Step 2 of 3</div>
       <h1 class="step-title">Select your <em>tools</em></h1>
       <p class="step-sub">Search for the SaaS tools your organization uses. We'll map each one to its parent jurisdiction. Add as many as apply.</p>
 
@@ -990,6 +990,44 @@
     });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function identifyGaps() {
+    const tools = state.selectedTools;
+    const o = state.org;
+    const isQuebec = o.province === 'QC';
+    const gaps = [];
+
+    // Governance gaps (from Step 1 profile)
+    if (o.dpo === 'no' || o.dpo === 'unsure') {
+      gaps.push({ severity: 'critical', title: 'No Privacy Officer designated', desc: isQuebec ? 'Law 25 requires a Privacy Officer. Without one, the CEO is the default and personally liable.' : 'PIPEDA best practice strongly recommends designating a Privacy Officer.' });
+    }
+    if (o.breachPlan === 'no' || o.breachPlan === 'unsure') {
+      gaps.push({ severity: 'critical', title: 'No breach incident response plan', desc: isQuebec ? 'Law 25 requires reporting breaches presenting serious harm to the CAI. A documented plan is essential.' : 'PIPEDA requires breach reporting to the OPC. An incident plan is mandatory.' });
+    }
+    if (o.incidentLog !== 'yes') {
+      gaps.push({ severity: 'warning', title: 'No incident register maintained', desc: isQuebec ? 'Law 25 requires maintaining an incident register for 5 years.' : 'PIPEDA requires organizations to keep records of all breaches.' });
+    }
+
+    // Per-tool gaps (from database — no data flow answers needed)
+    tools.forEach(t => {
+      const isForeign = t.jurisdiction !== 'Canada';
+
+      if (isForeign && isQuebec) {
+        gaps.push({ severity: 'critical', title: 'TIA required: ' + t.name, desc: 'Law 25 mandates a Transfer Impact Assessment before any personal information leaves Quebec. ' + t.name + ' (' + t.jurisdiction + ') requires a completed TIA.' });
+      }
+      if (t.cloudAct) {
+        gaps.push({ severity: 'warning', title: 'CLOUD Act exposure: ' + t.name, desc: t.name + '\'s parent (' + t.parent + ') is subject to the US CLOUD Act. US authorities can compel disclosure of data regardless of where it is stored.' });
+      }
+      if (isForeign) {
+        gaps.push({ severity: 'warning', title: 'Cross-border transfer: ' + t.name, desc: t.name + ' operates under ' + t.jurisdiction + ' jurisdiction. Cross-border data transfers require contractual safeguards and may require a DPA.' });
+      }
+    });
+
+    // Sort: critical first
+    var order = { critical: 0, warning: 1, info: 2 };
+    gaps.sort(function(a, b) { return (order[a.severity] || 2) - (order[b.severity] || 2); });
+    return gaps;
   }
 
   function buildFreeResults() {
