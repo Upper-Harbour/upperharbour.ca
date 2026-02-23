@@ -408,7 +408,7 @@
        ═══════════════════════════════════════════════════════════════════ -->
   <nav class="site-nav" id="siteNav">
     <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E4D52"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
         <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
         <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
       </svg>
@@ -617,7 +617,7 @@
       <div class="footer-inner">
         <div>
           <div class="footer-logo">
-            <svg width="24" height="24" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
+            <svg width="24" height="24" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E4D52"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
             <span style="font-weight:800;color:var(--ice);font-size:15px;">Upper Harbour</span>
           </div>
           <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
@@ -656,7 +656,7 @@
   <!-- ── Nav ──────────────────────────────────────────────────────── -->
   <nav>
     <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E4D52"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
         <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
         <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
       </svg>
@@ -1846,4 +1846,24 @@
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
-    // On load: only jump to wizard if hash is exactly #st
+    // On load: only jump to wizard if hash is exactly #start on our domain
+    (function() {
+      try {
+        if (window.location.hash === '#start' && window.location.hostname.indexOf('upperharbour') !== -1) {
+          startAssessment();
+        }
+      } catch (e) {}
+    })();
+
+    // Handle back button
+    window.addEventListener('popstate', function() {
+      if (window.location.hash === '#start') {
+        startAssessment();
+      } else {
+        showLanding();
+      }
+    });
+  </script>
+
+</body>
+</html>
