@@ -19,8 +19,6 @@
   <meta name="twitter:description" content="Practical guides on Law 25 compliance, CLOUD Act exposure, and Canadian data residency." />
   <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  
-  <link rel="stylesheet" href="/assets/site.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
@@ -36,11 +34,10 @@
         { "@type": "ListItem", "position": 1, "url": "https://upperharbour.ca/resources/law-25-saas-compliance" },
         { "@type": "ListItem", "position": 2, "url": "https://upperharbour.ca/resources/cloud-act-canadian-data" },
         { "@type": "ListItem", "position": 3, "url": "https://upperharbour.ca/resources/transfer-impact-assessments-law-25" },
-        { "@type": "ListItem", "position": 4, "url": "https://upperharbour.ca/resources/model-tia-template" },
-        { "@type": "ListItem", "position": 5, "url": "https://upperharbour.ca/resources/canadian-data-residency-saas" },
-        { "@type": "ListItem", "position": 6, "url": "https://upperharbour.ca/resources/data-residency-vs-data-sovereignty-canada" },
-        { "@type": "ListItem", "position": 7, "url": "https://upperharbour.ca/resources/pipeda-vs-law-25" },
-        { "@type": "ListItem", "position": 8, "url": "https://upperharbour.ca/resources/data-sovereignty-government-procurement" }
+        { "@type": "ListItem", "position": 4, "url": "https://upperharbour.ca/resources/canadian-data-residency-saas" },
+        { "@type": "ListItem", "position": 5, "url": "https://upperharbour.ca/resources/data-residency-vs-data-sovereignty-canada" },
+        { "@type": "ListItem", "position": 6, "url": "https://upperharbour.ca/resources/pipeda-vs-law-25" },
+        { "@type": "ListItem", "position": 7, "url": "https://upperharbour.ca/resources/data-sovereignty-government-procurement" }
       ]
     }
   }
@@ -62,6 +59,14 @@
     body{font-family:var(--body);background:var(--bg);color:var(--ice);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
     /* ── Nav ───────────────────────── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(6,9,14,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+    .nav-upper{font-size:17px;font-weight:400;color:var(--slate)}
+    .nav-harbour{font-size:17px;font-weight:800;color:var(--ice);letter-spacing:-0.8px;margin-left:4px}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}.nav-link:hover{color:var(--ice)}
+    .nav-link.active{color:var(--teal)}
+    .nav-cta{font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}.nav-cta:hover{background:#47cec5}
 
     /* ── Hero ──────────────────────── */
     .hero{position:relative;padding:140px 52px 64px;overflow:hidden}
@@ -102,47 +107,39 @@
     .cta-note a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
 
     /* ── Footer ────────────────────── */
-
-    .footer-links li{margin-bottom:8px}
+    footer{padding:64px 0 32px;border-top:1px solid var(--border)}
+    .footer-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px}
+    .footer-logo{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+    .footer-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:250px}
+    .footer-col-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+    .footer-links{list-style:none}.footer-links li{margin-bottom:8px}.footer-links a{font-size:13px;color:var(--slate);text-decoration:none;transition:color 0.2s}.footer-links a:hover{color:var(--teal)}
+    .footer-bottom{max-width:1120px;margin:24px auto 0;padding:16px 48px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .footer-copy{font-size:11px;color:var(--muted)}
 
     /* ── Responsive ────────────────── */
     @media(max-width:768px){
-      
+      nav{padding:0 16px}.nav-link{font-size:11px}.nav-cta{font-size:11px;padding:7px 14px}.nav-links{gap:14px}
       .hero{padding:110px 20px 48px}
       .articles{padding:32px 20px 60px}
       .article-card{padding:24px}
       .cta-section{padding:48px 20px}
-      
+      .footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:16px 20px 0;flex-direction:column}
     }
 
-    
-  </style>
+        @media(max-width:480px){</style>
+  <link rel="stylesheet" href="/assets/site.css" />
 </head>
 <body>
-  <nav>
-    <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
-      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="/signals" class="nav-link">Signals</a>
-      <a href="/tools" class="nav-link">Tools</a>
-      <a href="/research" class="nav-link">Research</a>
-      <a href="/resources" class="nav-link active">Guides</a>
-      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
-    </div>
+    <nav>
+    <a href="/" class="nav-logo"><svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a>
+    <div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link active">Guides</a><a href="/harbourscan" class="nav-cta">Run HarbourScan</a></div>
     <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </nav>
-  <div class="nav-mobile-overlay" onclick="document.body.classList.remove('nav-mobile-open')"></div>
   <div class="nav-mobile-menu">
-    <a href="/signals">Signals</a>
-    <a href="/tools">Tools</a>
-    <a href="/research">Research</a>
-    <a href="/resources">Guides</a>
-    <a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+    <a href="/signals">Signals</a><a href="/tools">Tools</a><a href="/research">Research</a><a href="/resources">Guides</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
   </div>
-
-  <section class="hero">
+  <div class="nav-mobile-overlay" onclick="document.body.classList.remove('nav-mobile-open')"></div>
+<section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner">
       <div class="hero-eyebrow">Resources</div>
@@ -152,6 +149,17 @@
   </section>
 
   <section class="articles">
+
+    <a href="/research/canadian-saas-sovereignty-index" class="article-card article-card-featured reveal">
+      <div class="article-card-tags">
+        <span class="article-card-tag tag-gold">Research</span>
+        <span class="article-card-tag tag-gold">2026 Index</span>
+        <span class="article-card-meta">Updated Feb 2026</span>
+      </div>
+      <h2>Canadian SaaS Sovereignty Index: 292 Tools Mapped</h2>
+      <p>Upper Harbour's proprietary research mapping 292 SaaS tools to parent jurisdictions, CLOUD Act exposure, and Canadian data residency. The definitive reference for Canadian data sovereignty compliance.</p>
+      <span class="article-card-link link-gold">View the index →</span>
+    </a>
 
     <a href="/resources/law-25-saas-compliance" class="article-card reveal">
       <div class="article-card-tags">
@@ -184,17 +192,6 @@
       <h2>Transfer Impact Assessments Under Law 25: What's Required and How to Start</h2>
       <p>Every cross-border data transfer requires a documented TIA under Law 25. Here's what a TIA must include, when one is triggered, and a practical framework for completing them.</p>
       <span class="article-card-link">Read guide →</span>
-    </a>
-
-    <a href="/resources/model-tia-template" class="article-card reveal">
-      <div class="article-card-tags">
-        <span class="article-card-tag">Law 25</span>
-        <span class="article-card-tag">Template</span>
-        <span class="article-card-meta">Downloadable</span>
-      </div>
-      <h2>Model TIA Template for Law 25</h2>
-      <p>The CAI hasn't published a standard Transfer Impact Assessment template. We did. A complete, structured framework any Quebec organization can use to document cross-border SaaS compliance — covering jurisdictional assessment, CLOUD Act exposure, safeguards evaluation, and residual risk determination.</p>
-      <span class="article-card-link">Access the template →</span>
     </a>
 
     <a href="/resources/canadian-data-residency-saas" class="article-card reveal">
@@ -250,36 +247,17 @@
     <p class="cta-note">Need compliance documentation? <a href="https://calendly.com/josh-upperharbour/30min">Request a scoping call →</a></p>
   </section>
 
-  <footer>
+    <footer>
     <div class="footer-inner">
       <div>
-        <div class="footer-logo">
-          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
-          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span>
-        </div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body,var(--font))">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body,var(--font))">Harbour</span></span></div>
         <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
       </div>
-      <div>
-        <div class="footer-col-title">Research</div>
-        <ul class="footer-links">
-          <li><a href="/research/canadian-saas-sovereignty-index">Sovereignty Index</a></li>
-          <li><a href="/research/sovereignty-policy-scorecard">Policy Scorecard</a></li>
-          <li><a href="/research/government-saas-audit">Government SaaS Audit</a></li>
-          <li><a href="/research/provincial-exposure-index">Provincial Exposure Index</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Resources</div>
-        <ul class="footer-links">
-          <li><a href="/harbourscan">HarbourScan</a></li>
-          <li><a href="/tools">Tools</a></li>
-          <li><a href="/resources">Guides</a></li>
-          <li><a href="/signals">Signals</a></li>
-        </ul>
-      </div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/research">Research</a></li><li><a href="/resources">Guides</a></li><li><a href="/tools">Tools</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:josh@upperharbour.ca">Contact us</a></li><li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li><li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none">Joshua van Es</a></span>
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.4)">Joshua van Es</a></span>
     </div>
   </footer>
 

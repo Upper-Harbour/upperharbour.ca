@@ -16,14 +16,15 @@
   <meta property="og:site_name" content="Upper Harbour" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  
-  <link rel="stylesheet" href="/assets/site.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root { --bg: #06090E; --surface: #0C1219; --surface-2: #111A24; --teal: #3CB8B0; --teal-dim: rgba(60,184,176,0.08); --gold: #C9A84C; --gold-dim: rgba(201,168,76,0.08); --red: #E06050; --red-dim: rgba(224,96,80,0.08); --ice: #EAF0F4; --slate: #8A9DB0; --muted: #566778; --border: rgba(234,240,244,0.06); --border-md: rgba(234,240,244,0.1); --display: 'Newsreader', Georgia, serif; --body: 'DM Sans', sans-serif; --mono: 'JetBrains Mono', monospace; }
     html { scroll-behavior: smooth; } body { font-family: var(--body); background: var(--bg); color: var(--ice); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 66px; background: rgba(6,9,14,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; } .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); } .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; } .nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; } .nav-link:hover { color: var(--ice); } .nav-cta { font-size: 13px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 9px 22px; border-radius: 4px; text-decoration: none; }
 
     /* HERO */
     .hero { padding: 160px 52px 80px; max-width: 860px; margin: 0 auto; }
@@ -84,9 +85,15 @@
     .cta-or a { color: var(--teal); text-decoration: none; }
 
     /* FOOTER */
+    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); }
+    .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
+    .footer-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; } .footer-desc { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 250px; }
+    .footer-col-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; } .footer-links a { font-size: 13px; color: var(--slate); text-decoration: none; }
+    .footer-bottom { max-width: 1120px; margin: 32px auto 0; padding: 20px 48px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; } .footer-copy { font-size: 11px; color: var(--muted); }
 
     @media(max-width:768px) {
-       
+      nav { padding: 0 16px; } .nav-cta { font-size: 11px; padding: 8px 14px; white-space: nowrap; }
       .hero { padding: 110px 20px 60px; }
       .engagements, .how-section { padding: 0 20px 60px; }
       .eng-header, .eng-body { padding-left: 24px; padding-right: 24px; }
@@ -95,19 +102,14 @@
       .diff-section { padding: 60px 20px; }
       .diff-grid { grid-template-columns: 1fr; gap: 24px; }
       .cta-section { padding: 60px 20px; }
-
+      .footer-inner { grid-template-columns: 1fr; padding: 0 20px; }
+      .footer-bottom { padding: 20px 20px 0; flex-direction: column; }
     }
-    
-    @media(max-width:480px) { .nav-upper, .how-steps { grid-template-columns: 1fr; }  }</style>
+    @media(max-width:480px) { .nav-upper,.nav-harbour { display: none; } .how-steps { grid-template-columns: 1fr; }  }
+  </style>
+  <link rel="stylesheet" href="/assets/site.css" />
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Upper Harbour — Sovereignty Compliance Engagements",
-    "description": "Professional compliance services including sovereignty audits, Transfer Impact Assessment packages, and ongoing SaaS jurisdiction monitoring for Canadian organizations.",
-    "url": "https://www.upperharbour.ca/engagements",
-    "provider": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" }
-  }
+  {"@context":"https://schema.org","@type":"ProfessionalService","name":"Upper Harbour — Sovereignty Compliance Engagements","description":"Professional compliance services including sovereignty audits, Transfer Impact Assessment packages, and ongoing SaaS jurisdiction monitoring.","url":"https://www.upperharbour.ca/engagements","provider":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"}}
   </script>
 </head>
 <body>
@@ -318,29 +320,14 @@
     <footer>
     <div class="footer-inner">
       <div>
-        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body,var(--font))">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body,var(--font))">Harbour</span></span></div>
         <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
       </div>
-      <div>
-        <div class="footer-col-title">Resources</div>
-        <ul class="footer-links">
-          <li><a href="/harbourscan">HarbourScan</a></li>
-          <li><a href="/research">Research</a></li>
-          <li><a href="/resources">Guides</a></li>
-          <li><a href="/tools">Tools</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">Contact</div>
-        <ul class="footer-links">
-          <li><a href="/cdn-cgi/l/email-protection#d3b9bca0bb93a6a3a3b6a1bbb2a1b1bca6a1fdb0b2">Contact us</a></li>
-          <li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li>
-          <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li>
-        </ul>
-      </div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/research">Research</a></li><li><a href="/resources">Guides</a></li><li><a href="/tools">Tools</a></li></ul></div>
+      <div><div class="footer-col-title">Contact</div><ul class="footer-links"><li><a href="mailto:josh@upperharbour.ca">Contact us</a></li><li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li><li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.4);transition:color 0.2s">Joshua van Es</a></span>
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.4)">Joshua van Es</a></span>
     </div>
   </footer>
 
