@@ -21,13 +21,23 @@
     :root{--midnight:#0A1018;--navy:#0F1C2E;--surface:#131E2D;--teal:#3CB8B0;--ice:#EAF0F4;--slate:#7A92A8;--gold:#C9A84C;--red:#E06050;--muted:#6B7B8D;--border:rgba(234,240,244,0.07);--border-md:rgba(234,240,244,0.13);--serif:'Newsreader',Georgia,serif;--font:'DM Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--mono:'JetBrains Mono','SF Mono','Consolas',monospace}
     html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--midnight);color:var(--ice);line-height:1.6;overflow-x:hidden}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(6,9,14,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
-    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .nav-upper{font-size:17px;font-weight:400;color:var(--slate)}
+    .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;flex-shrink:0}
+    .nav-upper{font-size:17px;font-weight:400;color:var(--slate);letter-spacing:-0.2px}
     .nav-harbour{font-size:17px;font-weight:800;color:var(--ice);letter-spacing:-0.8px;margin-left:4px}
-    .nav-links{display:flex;align-items:center;gap:28px}
-    .nav-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}.nav-link:hover{color:var(--ice)}
-    .nav-link.active{color:var(--ice)}
-    .nav-cta{font-family:var(--font);font-size:13px;font-weight:700;color:var(--midnight);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}.nav-cta:hover{background:#47cec5}
+    .nav-links{display:flex;align-items:center;gap:28px;margin-left:auto}
+    .nav-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}
+    .nav-link:hover{color:var(--ice)} .nav-link.active{color:var(--teal)}
+    .nav-cta{font-size:13px;font-weight:700;color:var(--bg,#06090E);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}
+    .nav-cta:hover{background:#47cec5}
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+    .nav-hamburger svg{display:block}
+    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
+    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
+    .nav-mobile-menu a:last-child{border-bottom:none}
+    .nav-mobile-menu a:hover{color:#EAF0F4}
+    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
+    .nav-mobile-menu .mobile-cta:hover{background:#47cec5;color:#06090E}
+    .nav-mobile-open .nav-mobile-menu{display:flex}
     .hero{padding:130px 52px 36px;max-width:1120px;margin:0 auto}
     .hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
     .hero h1{font-family:var(--serif);font-size:clamp(28px,4vw,46px);font-weight:900;color:var(--ice);line-height:1.08;letter-spacing:-0.5px;margin-bottom:16px}
@@ -137,6 +147,8 @@
       .footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:20px 20px 0;flex-direction:column}
       .featured{padding:0 20px 32px}.feat-grid{grid-template-columns:1fr 1fr}.browse-all{padding:0 20px 24px}
     }
+    @media(max-width:540px){ .nav-links{display:none} .nav-hamburger{display:block} }
+    @media(max-width:480px){.nav-upper,.nav-harbour{display:none}}
   
     
 
@@ -154,30 +166,12 @@
     "creator": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" }
   }
   </script>
-
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
-      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
-        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
-        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
-      </svg>
-      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="/signals" class="nav-link">Signals</a>
-      <a href="/tools" class="nav-link active">Tools</a>
-      <a href="/research" class="nav-link">Research</a>
-      <a href="/resources" class="nav-link">Guides</a>
-      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
-    </div>
-    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-    </button>
+    <a href="/" class="nav-logo"><svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a>
+    <div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link active">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Run HarbourScan</a></div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </nav>
   <div class="nav-mobile-menu">
     <a href="/signals">Signals</a><a href="/tools">Tools</a><a href="/research">Research</a><a href="/resources">Guides</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
@@ -219,11 +213,9 @@
     <div class="featured-title">Notable tools in the database</div>
     <div class="feat-grid" id="featGrid"></div>
   </div>
-
   <div class="browse-all" id="browseAllSection">
     <button class="browse-btn" onclick="showFullList()">Browse all tools ↓</button>
   </div>
-
   <div class="tool-grid" style="display:none;" id="toolGridWrap">
     <div class="tool-list" id="toolList"></div>
     <div class="no-results" id="noResults" style="display:none">No tools match your search.</div>
@@ -272,53 +264,10 @@
     let currentFilter = 'all', currentSearch = '', expandedTool = null;
     var FEATURED = ['Slack','Microsoft Teams','Zoom','Notion','Google Workspace','Salesforce','Shopify','1Password'];
     var fullListVisible = false;
-
-    function renderFeatured() {
-      var grid = document.getElementById('featGrid');
-      var html = '';
-      FEATURED.forEach(function(name) {
-        var t = saasDB.find(function(x) { return x.name === name; });
-        if (!t) return;
-        var ne = t.name.replace(/'/g, "\\'");
-        html += '<div class="feat-card" onclick="jumpToTool(\'' + ne + '\')">' +
-          '<div class="feat-card-name">' + t.name + '</div>' +
-          '<div class="feat-card-parent">' + t.parent + '</div>' +
-          '<div class="feat-card-row">' +
-            '<span class="feat-card-juris">' + t.jurisdiction + (t.cloudAct ? ' · CLOUD Act' : '') + '</span>' +
-            '<span class="feat-card-risk risk-' + t.risk + '">' + t.risk + '</span>' +
-          '</div>' +
-        '</div>';
-      });
-      grid.innerHTML = html;
-    }
-
-    function jumpToTool(name) {
-      showFullList();
-      expandedTool = name;
-      currentSearch = name;
-      document.getElementById('toolSearch').value = name;
-      render();
-      setTimeout(function() {
-        var el = document.querySelector('.tool-row.expanded');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 100);
-    }
-
-    function showFullList() {
-      fullListVisible = true;
-      document.getElementById('toolGridWrap').style.display = '';
-      document.getElementById('featuredSection').style.display = 'none';
-      document.getElementById('browseAllSection').style.display = 'none';
-      render();
-    }
-
-    function showDefaultView() {
-      fullListVisible = false;
-      document.getElementById('toolGridWrap').style.display = 'none';
-      document.getElementById('featuredSection').style.display = '';
-      document.getElementById('browseAllSection').style.display = '';
-      expandedTool = null;
-    }
+    function renderFeatured(){var g=document.getElementById('featGrid');var h='';FEATURED.forEach(function(n){var t=saasDB.find(function(x){return x.name===n});if(!t)return;var ne=t.name.replace(/'/g,"\\'");h+='<div class="feat-card" onclick="jumpToTool(''+ne+'')"><div class="feat-card-name">'+t.name+'</div><div class="feat-card-parent">'+t.parent+'</div><div class="feat-card-row"><span class="feat-card-juris">'+t.jurisdiction+(t.cloudAct?' · CLOUD Act':'')+'</span><span class="feat-card-risk risk-'+t.risk+'">'+t.risk+'</span></div></div>'});g.innerHTML=h}
+    function jumpToTool(n){showFullList();expandedTool=n;currentSearch=n;document.getElementById('toolSearch').value=n;render();setTimeout(function(){var e=document.querySelector('.tool-row.expanded');if(e)e.scrollIntoView({behavior:'smooth',block:'center'})},100)}
+    function showFullList(){fullListVisible=true;document.getElementById('toolGridWrap').style.display='';document.getElementById('featuredSection').style.display='none';document.getElementById('browseAllSection').style.display='none';render()}
+    function showDefaultView(){fullListVisible=false;document.getElementById('toolGridWrap').style.display='none';document.getElementById('featuredSection').style.display='';document.getElementById('browseAllSection').style.display='';expandedTool=null}
 
     function getHashTool() {
       return decodeURIComponent(window.location.hash.replace('#', '')) || null;
@@ -327,14 +276,10 @@
       return encodeURIComponent(n.toLowerCase().replace(/\s+/g, '-'));
     }
     function setFilter(f, btn) {
+      if (f !== 'all') { showFullList(); } else if (!currentSearch) { showDefaultView(); }
       currentFilter = f;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      if (f !== 'all') {
-        showFullList();
-      } else if (!currentSearch) {
-        showDefaultView();
-      }
       render();
     }
     function getFiltered() {
@@ -432,18 +377,14 @@
 
     document.getElementById('toolSearch').addEventListener('input', function(e) {
       currentSearch = e.target.value.trim();
-      if (currentSearch) {
-        showFullList();
-      } else if (currentFilter === 'all') {
-        showDefaultView();
-      }
+      if (currentSearch) { showFullList(); } else if (currentFilter === 'all') { showDefaultView(); }
       render();
     });
 
     document.getElementById('metaUpdated').textContent =
-      new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+      renderFeatured();
+    new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
 
-    renderFeatured();
     render();
 
     // Handle direct links via hash
@@ -454,7 +395,9 @@
                t.name.toLowerCase().replace(/\s+/g, '-') === ht.toLowerCase();
       });
       if (m) {
-        jumpToTool(m.name);
+        jumpToTool(m.name); //
+        document.getElementById('toolSearch').value = m.name;
+        currentSearch = m.name;
         render();
         setTimeout(function() {
           var el = document.querySelector('.tool-detail.visible');
@@ -471,7 +414,7 @@
                  t.name.toLowerCase().replace(/\s+/g, '-') === h.toLowerCase();
         });
         if (m) {
-          expandedTool = m.name;
+          jumpToTool(m.name); //
           currentSearch = m.name;
           document.getElementById('toolSearch').value = m.name;
           render();
