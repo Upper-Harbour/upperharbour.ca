@@ -121,7 +121,16 @@
     .footer-bottom { max-width: 1120px; margin: 32px auto 0; padding: 20px 48px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
     .footer-copy { font-size: 11px; color: var(--muted); }
 
-    @media(max-width:768px) {
+    
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+    .nav-hamburger svg{display:block}
+    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
+    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
+    .nav-mobile-menu a:last-child{border-bottom:none}
+    .nav-mobile-menu a:hover{color:#EAF0F4}
+    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
+    .nav-mobile-open .nav-mobile-menu{display:flex}
+@media(max-width:768px){ .nav-hamburger{display:block} } @media(max-width:600px){ .nav-links{display:none} } @media(max-width:768px) {
       nav { padding: 0 16px; } .nav-cta { font-size: 11px; padding: 8px 14px; white-space: nowrap; }
       .article-hero { padding: 100px 20px 40px; }
       .body { padding: 0 20px 60px; }
@@ -136,7 +145,7 @@
 <body>
   <nav>
     <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
+      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
       <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
     </a>
     <div class="nav-links">
@@ -146,7 +155,11 @@
       <a href="/resources" class="nav-link">Guides</a>
       <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
     </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </nav>
+  <div class="nav-mobile-menu">
+    <a href="/signals">Signals</a><a href="/tools">Tools</a><a href="/research">Research</a><a href="/resources">Guides</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
 
   <header class="article-hero">
     <div class="breadcrumb"><a href="/">Home</a> → <a href="/resources">Guides</a> → Model TIA Template</div>
@@ -448,7 +461,7 @@
     <div class="footer-inner">
       <div>
         <div class="footer-logo">
-          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
+          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
           <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span>
         </div>
         <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
@@ -459,6 +472,7 @@
           <li><a href="/harbourscan">HarbourScan</a></li>
           <li><a href="/research">Research</a></li>
           <li><a href="/resources">Guides</a></li>
+          <li><a href="/tools">Tools</a></li>
           <li><a href="/harbourscan">HarbourScan</a></li>
         </ul>
       </div>
