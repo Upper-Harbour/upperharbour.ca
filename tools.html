@@ -227,6 +227,22 @@
     </div>
   </div>
 
+  <div style="max-width:820px;margin:0 auto;padding:32px 52px 48px;">
+    <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Detailed sovereignty analyses</div>
+    <p style="font-size:13px;color:var(--slate);line-height:1.9;">
+      <a href="/tools/microsoft-365" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">Microsoft 365</a> · 
+      <a href="/tools/google-workspace" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">Google Workspace</a> · 
+      <a href="/tools/slack" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">Slack</a> · 
+      <a href="/tools/zoom" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">Zoom</a> · 
+      <a href="/tools/salesforce" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">Salesforce</a> · 
+      <a href="/tools/aws" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">AWS</a> · 
+      <a href="/tools/docusign" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">DocuSign</a> · 
+      <a href="/tools/openai" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">OpenAI &amp; ChatGPT</a> · 
+      <a href="/tools/dropbox" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">Dropbox</a> · 
+      <a href="/tools/notion" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border);">Notion</a>
+    </p>
+  </div>
+
   <footer>
     <div class="footer-inner">
       <div>
@@ -260,6 +276,27 @@
     let currentFilter = 'all', currentSearch = '', expandedTool = null;
     var FEATURED = ['Slack','Microsoft Teams','Zoom','Notion','Google Workspace','Salesforce','Shopify','1Password'];
     var fullListVisible = false;
+    // Map of tools that have deep-dive analysis pages
+    var ANALYSIS_PAGES = {
+      'Microsoft 365': '/tools/microsoft-365',
+      'Microsoft Teams': '/tools/microsoft-365',
+      'OneDrive': '/tools/microsoft-365',
+      'SharePoint': '/tools/microsoft-365',
+      'Slack': '/tools/slack',
+      'Google Workspace': '/tools/google-workspace',
+      'Google Drive': '/tools/google-workspace',
+      'Gmail': '/tools/google-workspace',
+      'Google Chat': '/tools/google-workspace',
+      'Zoom': '/tools/zoom',
+      'Salesforce': '/tools/salesforce',
+      'AWS': '/tools/aws',
+      'Dropbox': '/tools/dropbox',
+      'DocuSign': '/tools/docusign',
+      'OpenAI': '/tools/openai',
+      'ChatGPT': '/tools/openai',
+      'Notion': '/tools/notion'
+    };
+
     function renderFeatured(){var g=document.getElementById('featGrid');var h='';FEATURED.forEach(function(n){var t=saasDB.find(function(x){return x.name===n});if(!t)return;var ne=t.name.replace(/'/g,"\\'");h+='<div class="feat-card" onclick="jumpToTool(\''+ne+'\')"><div class="feat-card-name">'+t.name+'</div><div class="feat-card-parent">'+t.parent+'</div><div class="feat-card-row"><span class="feat-card-juris">'+t.jurisdiction+(t.cloudAct?' · CLOUD Act':'')+'</span><span class="feat-card-risk risk-'+t.risk+'">'+t.risk+'</span></div></div>'});g.innerHTML=h}
     function jumpToTool(n){showFullList();expandedTool=n;currentSearch=n;document.getElementById('toolSearch').value=n;render();setTimeout(function(){var e=document.querySelector('.tool-row.expanded');if(e)e.scrollIntoView({behavior:'smooth',block:'center'})},100)}
     function showFullList(){fullListVisible=true;document.getElementById('toolGridWrap').style.display='';document.getElementById('featuredSection').style.display='none';document.getElementById('browseAllSection').style.display='none';render()}
@@ -349,7 +386,8 @@
             (t.note ? '<div class="tool-note"><p>' + t.note + '</p></div>' : '') +
             '</div>' +
             '<div class="tool-detail-actions">' +
-            '<a href="/harbourscan" class="btn-small btn-teal-sm">Assess with HarbourScan</a>' +
+            (ANALYSIS_PAGES[t.name] ? '<a href="' + ANALYSIS_PAGES[t.name] + '" class="btn-small btn-teal-sm" onclick="event.stopPropagation()">Read full analysis →</a>' : '') +
+            '<a href="/harbourscan" class="btn-small ' + (ANALYSIS_PAGES[t.name] ? 'btn-outline-sm' : 'btn-teal-sm') + '" onclick="event.stopPropagation()">Assess with HarbourScan</a>' +
             '<a href="#" class="btn-small btn-outline-sm" onclick="event.preventDefault();event.stopPropagation();copyLink(\'' + ne + '\')">Copy link</a>' +
             '<span class="share-link">upperharbour.ca/tools#' + slugify(t.name) + '</span>' +
             '</div></div></div>';
