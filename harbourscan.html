@@ -142,6 +142,12 @@
       .footer-inner { grid-template-columns: 1fr; padding: 0 20px; }
       .footer-bottom { padding: 20px 20px 0; flex-direction: column; }
     }
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+    .nav-hamburger svg{display:block}
+    .nav-mobile-overlay{display:none}
+    .nav-mobile-menu{display:none}
+    .nav-mobile-open .nav-mobile-overlay{display:block}
+    .nav-mobile-open .nav-mobile-menu{display:flex}
     @media(max-width:540px){ .nav-links{display:none} .nav-hamburger{display:block} }
     @media(max-width:480px) {
       .nav-upper, .nav-harbour { display: none; }
@@ -958,10 +964,6 @@
 
     // Stack search
     initStackSearch();
-
-    // Questionnaire nav
-    document.getElementById('qBackBtn').addEventListener('click', () => navQuestion(-1));
-    document.getElementById('qNextBtn').addEventListener('click', () => navQuestion(1));
   });
 
   // ── Navigation ─────────────────────────────────────────────────
