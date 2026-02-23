@@ -209,7 +209,7 @@ def collect_web_search() -> list[dict]:
 
     for idx, query in enumerate(SEARCH_QUERIES):
         if idx > 0:
-            time.sleep(90)  # Wait 90s to reset rate limit window
+            time.sleep(120)  # Wait 120s between searches to avoid rate limits
         try:
             response = client.messages.create(
                 model="claude-haiku-4-5-20251001",
