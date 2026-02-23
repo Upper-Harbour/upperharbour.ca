@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Feb 23, 2026 — 07:57 ET",
+    "lastUpdated": "Feb 23, 2026 — 23:52 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "Alberta OIPC joins 61 global data protection authorities on AI-generated imagery privacy risks",
+      "summary": "The Alberta Office of the Information and Privacy Commissioner participated in an international joint statement from 61 data protection authorities addressing privacy risks associated with AI-generated imagery. This coordinated stance reflects Canadian regulators' engagement with global privacy standards on emerging AI threats.",
+      "type": "policy",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/alberta-oipc-part-of-international-joint-statement-on-privacy-risks-of-ai-generated-imagery/",
+      "date": "2026-02-23",
+      "impact": "Canadian organizations deploying or relying on AI-generated imagery tools should monitor this statement for regulatory guidance from federal and provincial privacy commissioners.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Analysis: CLOUD Act creates constitutional conflicts with Canadian digital sovereignty",
+      "summary": "A working paper by Barry Appleton examines how the U.S. CLOUD Act presents constitutional incompatibilities with Canadian privacy law and digital sovereignty principles, proposing a seven-pillar policy framework for federal response. The analysis directly addresses how American legal authority over data accessed by U.S. companies conflicts with Canadian jurisdictional claims.",
+      "type": "legislation",
+      "source": "Barry Appleton / SSRN",
+      "sourceUrl": "https://barryappleton.substack.com/p/whose-law-governs-canadian-data-the",
+      "date": "2026-01-04",
+      "impact": "Federal policymakers should review this framework as input for potential legislative or regulatory responses protecting Canadian data from extraterritorial U.S. legal claims.",
+      "dbUpdate": false
+    },
     {
       "headline": "Samsara Launches Canadian Data Residency on AWS Canada Infrastructure",
       "summary": "Samsara announced the deployment of dedicated data residency on AWS Canada infrastructure to serve Canadian public sector organizations, Crown corporations, and regulated industries. This infrastructure change eliminates cross-border data transfer requirements and addresses data sovereignty requirements for domestic government and regulated sector procurement.",
