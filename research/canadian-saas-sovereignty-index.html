@@ -118,8 +118,9 @@
 </head>
 <body>
   <nav>
-    <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1A3040"/><stop offset="100%" stop-color="#2A8A84"/></linearGradient></defs>
         <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
         <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
       </svg>
@@ -128,11 +129,15 @@
     <div class="nav-links">
       <a href="/signals" class="nav-link">Signals</a>
       <a href="/tools" class="nav-link">Tools</a>
-      <a href="/research" class="nav-link">Research</a>
+      <a href="/research" class="nav-link active">Research</a>
       <a href="/resources" class="nav-link">Guides</a>
       <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
     </div>
-    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
   </nav>
   <div class="nav-mobile-menu">
     <a href="/signals">Signals</a><a href="/tools">Tools</a><a href="/research">Research</a><a href="/resources">Guides</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
