@@ -63,7 +63,7 @@
     .signals-empty{text-align:center;padding:80px 20px;color:var(--muted);font-size:15px}
 
     /* Stats bar */
-    .stats-bar{max-width:1120px;margin:0 auto;padding:0 52px 40px;display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border-md);border:1px solid var(--border-md);border-radius:8px;overflow:hidden}
+    .stats-bar{max-width:1120px;margin:0 auto;padding:0 52px 40px;display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border-md);border:1px solid var(--border-md);border-radius:8px;overflow:hidden}
     .stat-cell{background:var(--surface);padding:20px;text-align:center}
     .stat-num{font-family:var(--mono);font-size:24px;font-weight:700;color:var(--ice);margin-bottom:4px}
     .stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
@@ -167,6 +167,7 @@
     <div class="stat-cell"><div class="stat-num" id="statLegislation">0</div><div class="stat-label">Legislation</div></div>
     <div class="stat-cell"><div class="stat-num" id="statVendor">0</div><div class="stat-label">Vendor Updates</div></div>
     <div class="stat-cell"><div class="stat-num" id="statProcurement">0</div><div class="stat-label">Procurement</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statPolicy">0</div><div class="stat-label">Policy</div></div>
   </div>
 
   <div class="filters" id="filters">
@@ -261,13 +262,14 @@
         document.getElementById('monthCount').textContent = monthSignals.length;
 
         // Stats
-        const counts = { enforcement: 0, acquisition: 0, legislation: 0, vendor: 0, procurement: 0 };
+        const counts = { enforcement: 0, acquisition: 0, legislation: 0, vendor: 0, procurement: 0, policy: 0 };
         allSignals.forEach(s => { if (counts[s.type] !== undefined) counts[s.type]++; });
         document.getElementById('statEnforcement').textContent = counts.enforcement;
         document.getElementById('statAcquisition').textContent = counts.acquisition;
         document.getElementById('statLegislation').textContent = counts.legislation;
         document.getElementById('statVendor').textContent = counts.vendor;
         document.getElementById('statProcurement').textContent = counts.procurement;
+        document.getElementById('statPolicy').textContent = counts.policy;
         document.getElementById('statsBar').style.display = 'grid';
 
         renderSignals();
