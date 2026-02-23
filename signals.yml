@@ -1,0 +1,52 @@
+# .github/workflows/signals.yml
+# Runs the signals intelligence pipeline every 6 hours
+# Auto-publishes signals directly to Website/signals.json
+
+name: Signals Pipeline
+
+on:
+  schedule:
+    # Every 6 hours: midnight, 6am, noon, 6pm ET (UTC-5)
+    - cron: '0 5,11,17,23 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic feedparser requests
+
+      - name: Run signals pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          APPROVAL_EMAIL: ${{ secrets.APPROVAL_EMAIL }}
+        run: python signals_pipeline.py collect
+
+      - name: Commit published signals
+        run: |
+          git config user.name "Signals Bot"
+          git config user.email "bot@upperharbour.ca"
+          if [ -f Website/signals.json ]; then
+            git add -f Website/signals.json
+          fi
+          if [ -f Website/db-alerts.json ]; then
+            git add -f Website/db-alerts.json
+          fi
+          git diff --staged --quiet || git commit -m "signals: $(date -u +%Y-%m-%dT%H:%M) — auto-published"
+          git pull --rebase origin main || true
+          git push || true
