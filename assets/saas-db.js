@@ -365,3 +365,9 @@
       { name:"Temenos", parent:"Temenos AG", hq:"Geneva, Switzerland", jurisdiction:"Switzerland", cloudAct:false, dataResidency:"Switzerland/Global", note:"Swiss-incorporated core banking software. Used by 1,000+ banks in 150 countries. Swiss data protection laws apply. Not subject to US CLOUD Act or equivalent compelled disclosure law.", risk:"non_exposed", category:"finance", industries:["finance"] },
       { name:"Snap Projections", parent:"Snap Projections Inc.", hq:"Winnipeg, MB", jurisdiction:"Canada", cloudAct:false, dataResidency:"Canada", note:"Canadian financial planning software for advisors. Built specifically for the Canadian market with Canadian tax calculations.", risk:"canadian", category:"finance", industries:["finance","accounting"] },
     ];
+
+    var saasDBMeta = {
+      lastUpdated: "2026-02-22T18:00:00-05:00",
+      version: "2026-Q1",
+      totalTools: saasDB.length
+    };

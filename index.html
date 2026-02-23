@@ -4,199 +4,137 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Upper Harbour — Canadian SaaS Jurisdictional Compliance</title>
-  <meta name="description" content="Most SaaS tools used by Canadian organizations are CLOUD Act exposed. Upper Harbour maps jurisdictional risk for Law 25 and PIPEDA compliance." />
+  <meta name="description" content="71% of SaaS tools used by Canadian organizations are CLOUD Act exposed. Upper Harbour maps jurisdictional risk across 292 tools for Law 25 and PIPEDA compliance." />
   <link rel="canonical" href="https://upperharbour.ca/" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <meta property="og:title" content="Upper Harbour — Is Your SaaS Stack Under Foreign Jurisdiction?" />
-  <meta property="og:description" content="We mapped the SaaS tools Canadian organizations rely on to their parent jurisdictions, CLOUD Act exposure, and data residency options." />
+  <meta property="og:title" content="Upper Harbour — 71% of Your SaaS Stack Is CLOUD Act Exposed" />
+  <meta property="og:description" content="We mapped 292 SaaS tools to their parent jurisdictions. Only 16% are Canadian-owned." />
   <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
   <meta property="og:url" content="https://upperharbour.ca/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Upper Harbour" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Upper Harbour — Is Your SaaS Stack Under Foreign Jurisdiction?" />
-  <meta name="twitter:description" content="We mapped the SaaS tools Canadian organizations rely on to their parent jurisdictions, CLOUD Act exposure, and data residency options." />
+  <meta name="twitter:title" content="Upper Harbour — 71% of Your SaaS Stack Is CLOUD Act Exposed" />
+  <meta name="twitter:description" content="We mapped 292 SaaS tools to their parent jurisdictions. Only 16% are Canadian-owned." />
   <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Organization","name":"Upper Harbour","url":"https://upperharbour.ca","description":"Jurisdictional compliance intelligence for Canadian organizations.","founder":{"@type":"Person","name":"Joshua van Es"},"sameAs":["https://www.linkedin.com/in/joshuavanes"]}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#06090E;--surface:#0C1219;--surface-2:#111A24;
-      --teal:#3CB8B0;--teal-dim:rgba(60,184,176,0.07);
-      --gold:#C9A84C;--gold-dim:rgba(201,168,76,0.07);
-      --red:#E06050;--red-dim:rgba(224,96,80,0.06);
-      --ice:#EAF0F4;--slate:#8A9DB0;--muted:#566778;
-      --border:rgba(234,240,244,0.06);--border-md:rgba(234,240,244,0.10);
-      --display:'Newsreader',Georgia,serif;
-      --body:'DM Sans',sans-serif;
-      --mono:'JetBrains Mono',monospace;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:var(--body);background:var(--bg);color:var(--ice);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(6,9,14,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    :root{--midnight:#0A1018;--navy:#0F1C2E;--surface:#131E2D;--teal:#3CB8B0;--ice:#EAF0F4;--slate:#7A92A8;--gold:#C9A84C;--red:#E06050;--muted:#6B7B8D;--border:rgba(234,240,244,0.07);--border-md:rgba(234,240,244,0.13);--serif:'Playfair Display',Georgia,serif;--font:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--mono:'JetBrains Mono','SF Mono','Consolas',monospace}
+    html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--midnight);color:var(--ice);line-height:1.6;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(10,16,24,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
     .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}.nav-upper{font-size:17px;font-weight:400;color:var(--slate)}.nav-harbour{font-size:17px;font-weight:800;color:var(--ice);letter-spacing:-0.8px;margin-left:4px}
     .nav-links{display:flex;align-items:center;gap:28px}.nav-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}.nav-link:hover{color:var(--ice)}
-    .nav-cta{font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}.nav-cta:hover{background:#47cec5}
-
+    .nav-cta{font-size:13px;font-weight:700;color:var(--midnight);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}.nav-cta:hover{background:#47cec5}
     @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
-
     .hero{position:relative;padding:150px 52px 80px;overflow:hidden}
-    .hero-bg{position:absolute;inset:0;z-index:0}
-    .hero-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 60% at 55% 35%,rgba(60,184,176,0.06) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 10% 75%,rgba(201,168,76,0.03) 0%,transparent 55%),var(--bg)}
-    .hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,0.015) 1px,transparent 1px);background-size:72px 72px}
+    .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 60% at 55% 35%,rgba(60,184,176,0.07) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 10% 75%,rgba(201,168,76,0.04) 0%,transparent 55%),var(--midnight);z-index:0}
+    .hero-bg::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,0.018) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,0.018) 1px,transparent 1px);background-size:72px 72px}
     .hero-inner{position:relative;z-index:1;max-width:1120px;margin:0 auto}
-    .hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:24px;opacity:0;animation:fadeUp 0.7s ease forwards 0.15s;display:inline-flex;align-items:center;gap:10px}
-    .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--teal);opacity:0.5}
-    .hero-h1{font-family:var(--display);font-size:clamp(38px,5.5vw,68px);font-weight:700;color:var(--ice);line-height:1.06;letter-spacing:-1px;margin-bottom:24px;max-width:820px;opacity:0;animation:fadeUp 0.7s ease forwards 0.3s}
-    .hero-h1 em{font-style:italic;color:var(--gold)}
-    .hero-sub{font-size:17px;color:var(--slate);line-height:1.72;max-width:600px;margin-bottom:40px;opacity:0;animation:fadeUp 0.7s ease forwards 0.44s}
-    .hero-sub strong{color:var(--ice);font-weight:700}
+    .hero-eyebrow{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);margin-bottom:24px;opacity:0;animation:fadeUp 0.7s ease forwards 0.15s}
+    .hero-h1{font-family:var(--serif);font-size:clamp(42px,6vw,72px);font-weight:900;color:var(--ice);line-height:1.06;letter-spacing:-1px;margin-bottom:24px;max-width:820px;opacity:0;animation:fadeUp 0.7s ease forwards 0.3s}
+    .hero-h1 em{font-style:italic;font-weight:700;color:var(--gold)}
+    .hero-sub{font-size:17px;color:var(--slate);line-height:1.72;max-width:620px;margin-bottom:40px;opacity:0;animation:fadeUp 0.7s ease forwards 0.44s}
     .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-md);border:1px solid var(--border-md);border-radius:8px;overflow:hidden;max-width:820px;margin-bottom:40px;opacity:0;animation:fadeUp 0.7s ease forwards 0.55s}
     .h-stat{background:var(--surface);padding:28px 24px;text-align:center}
     .h-stat-num{font-family:var(--mono);font-size:36px;font-weight:700;line-height:1;margin-bottom:6px}
     .h-stat-num.teal{color:var(--teal)}.h-stat-num.red{color:var(--red)}.h-stat-num.gold{color:var(--gold)}
     .h-stat-label{font-size:11px;color:var(--muted);line-height:1.4}
     .hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;opacity:0;animation:fadeUp 0.7s ease forwards 0.65s}
-    .btn-primary{font-size:14px;font-weight:800;color:var(--bg);background:var(--teal);padding:16px 32px;text-decoration:none;border-radius:4px;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:6px}.btn-primary:hover{background:#47cec5;transform:translateY(-1px)}
-    .btn-ghost{font-size:13px;font-weight:600;color:var(--slate);text-decoration:none;padding:16px 4px;transition:color 0.2s}.btn-ghost:hover{color:var(--teal)}
-
+    .btn-primary{font-size:13px;font-weight:800;color:var(--midnight);background:var(--teal);padding:16px 32px;text-decoration:none;border-radius:4px;transition:background 0.2s,transform 0.15s;display:inline-flex;align-items:center;gap:6px}.btn-primary:hover{background:#47cec5;transform:translateY(-1px)}
+    .btn-ghost{font-size:13px;font-weight:500;color:var(--slate);text-decoration:none;padding:14px 4px;border-bottom:1px solid var(--border-md);transition:color 0.2s,border-color 0.2s}.btn-ghost:hover{color:var(--teal);border-color:var(--teal)}
     .container{max-width:1120px;margin:0 auto;padding:0 52px}
     .section-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
-    .section-title{font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--ice);line-height:1.12;letter-spacing:-0.3px;margin-bottom:16px}.section-title em{font-style:italic;color:var(--gold)}
+    .section-title{font-family:var(--serif);font-size:clamp(28px,3.5vw,44px);font-weight:700;color:var(--ice);line-height:1.12;letter-spacing:-0.3px;margin-bottom:16px}.section-title em{font-style:italic;color:var(--gold)}
     .section-body{font-size:15px;color:var(--slate);line-height:1.75;max-width:580px}
-
-    .callout-section{padding:64px 0;background:rgba(224,96,80,0.03);border-top:1px solid rgba(224,96,80,0.12);border-bottom:1px solid rgba(224,96,80,0.12)}
+    .callout-section{padding:64px 0;background:rgba(200,57,43,0.04);border-top:1px solid rgba(200,57,43,0.15);border-bottom:1px solid rgba(200,57,43,0.15)}
     .callout-inner{max-width:1120px;margin:0 auto;padding:0 52px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-    .callout-quote{border-left:3px solid var(--red);padding:24px 28px;background:rgba(224,96,80,0.04);border-radius:0 6px 6px 0}
-    .callout-quote p{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ice);line-height:1.6;margin-bottom:12px}
+    .callout-quote{border-left:3px solid var(--red);padding:24px 28px;background:rgba(200,57,43,0.06);border-radius:0 6px 6px 0}
+    .callout-quote p{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ice);line-height:1.6;margin-bottom:12px}
     .callout-source{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
     .callout-text{font-size:15px;color:var(--slate);line-height:1.75}.callout-text strong{color:var(--ice)}
-
     .checker{padding:80px 0;border-top:1px solid var(--border)}
     .checker-inner{max-width:620px;margin:0 auto;text-align:center}
     .checker-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
-    .checker-title{font-family:var(--display);font-size:32px;font-weight:700;color:var(--ice);margin-bottom:12px;line-height:1.15}.checker-title em{font-style:italic;color:var(--gold)}
+    .checker-title{font-family:var(--serif);font-size:32px;font-weight:700;color:var(--ice);margin-bottom:12px;line-height:1.15}.checker-title em{font-style:italic;color:var(--gold)}
     .checker-sub{font-size:14px;color:var(--muted);margin-bottom:28px;line-height:1.65}
     .checker-input-wrap{position:relative;max-width:480px;margin:0 auto}
-    .checker-input{width:100%;font-family:var(--body);font-size:15px;color:var(--ice);background:var(--bg);border:1px solid var(--border-md);border-radius:6px;padding:16px 20px;outline:none;transition:border-color 0.25s,box-shadow 0.25s}.checker-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-dim)}.checker-input::placeholder{color:var(--muted)}
-    .checker-result{text-align:left;background:var(--surface-2);border:1px solid var(--border-md);border-radius:6px;padding:20px;margin-top:12px}
+    .checker-input{width:100%;font-family:var(--font);font-size:15px;color:var(--ice);background:var(--midnight);border:1px solid var(--border-md);border-radius:6px;padding:16px 20px;outline:none;transition:border-color 0.25s,box-shadow 0.25s}.checker-input:focus{border-color:var(--teal);box-shadow:0 0 0 3px rgba(60,184,176,0.12)}.checker-input::placeholder{color:var(--muted)}
+    .checker-result{text-align:left;background:var(--navy);border:1px solid var(--border-md);border-radius:6px;padding:20px;margin-top:12px}
     .checker-result-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
     .checker-result-name{font-weight:700;font-size:16px;color:var(--ice)}
-    .checker-badge{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:3px}
-    .badge-exposed{background:var(--red-dim);color:var(--red);border:1px solid rgba(224,96,80,0.25)}
-    .badge-review{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(201,168,76,0.25)}
-    .badge-non_exposed{background:rgba(91,155,213,0.1);color:#5B9BD5;border:1px solid rgba(91,155,213,0.25)}
-    .badge-canadian{background:var(--teal-dim);color:var(--teal);border:1px solid rgba(60,184,176,0.25)}
+    .checker-badge{font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 10px;border-radius:3px}
+    .badge-exposed{background:rgba(200,57,43,0.12);color:#e06050;border:1px solid rgba(200,57,43,0.3)}
+    .badge-review{background:rgba(201,168,76,0.12);color:var(--gold);border:1px solid rgba(201,168,76,0.3)}
+    .badge-canadian{background:rgba(60,184,176,0.1);color:var(--teal);border:1px solid rgba(60,184,176,0.25)}
     .checker-result-row{display:flex;justify-content:space-between;font-size:12px;color:var(--slate);padding:5px 0;border-bottom:1px solid var(--border)}.checker-result-row:last-of-type{border-bottom:none}
     .checker-noresult{text-align:left;font-size:13px;color:var(--muted);margin-top:16px;line-height:1.6}.checker-noresult a{color:var(--teal);text-decoration:none}
-
-    .how{padding:80px 0;background:var(--surface);border-top:1px solid var(--border)}
+    .how{padding:80px 0;background:var(--navy);border-top:1px solid var(--border)}
     .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
-    .flow-step{background:var(--bg);padding:36px 28px;border-top:2px solid var(--border);transition:border-color 0.25s}.flow-step:hover{border-top-color:var(--teal)}
+    .flow-step{background:var(--surface);padding:36px 28px;border-top:2px solid var(--border);transition:border-color 0.25s}.flow-step:hover{border-top-color:var(--teal)}
     .flow-num{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--teal);opacity:0.7;margin-bottom:16px}
-    .flow-title{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin-bottom:10px}
+    .flow-title{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--ice);margin-bottom:10px}
     .flow-body{font-size:14px;color:var(--muted);line-height:1.75}.flow-body a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
     .flow-connector{text-align:center;margin-top:32px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-
     .proof{padding:80px 0;border-top:1px solid var(--border)}
     .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px}
-    .proof-card{padding:28px;border:1px solid var(--border);border-radius:6px;background:rgba(234,240,244,0.015)}
+    .proof-card{padding:28px;border:1px solid var(--border);border-radius:6px;background:rgba(234,240,244,0.02)}
     .proof-src{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-    .proof-quote{font-family:var(--display);font-style:italic;font-size:16px;color:var(--ice);line-height:1.55}
-
+    .proof-quote{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ice);line-height:1.55}
     .press{padding:60px 0;border-top:1px solid var(--border)}
     .press-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:32px}
     .press-row{display:flex;justify-content:center;align-items:center;gap:60px;flex-wrap:wrap}
-    .press-name{font-family:var(--display);font-size:20px;font-weight:700;color:var(--muted)}
-
-    .cta{padding:100px 0;text-align:center;border-top:1px solid var(--border);background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,0.05) 0%,transparent 70%)}
+    .press-name{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--muted)}
+    .cta{padding:100px 0;text-align:center;border-top:1px solid var(--border);background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,0.06) 0%,transparent 70%)}
     .cta-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
-    .cta-title{font-family:var(--display);font-size:clamp(32px,4vw,48px);font-weight:700;color:var(--ice);line-height:1.08;max-width:640px;margin:0 auto 16px}.cta-title em{font-style:italic;color:var(--gold)}
+    .cta-title{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:900;color:var(--ice);line-height:1.08;max-width:640px;margin:0 auto 16px}.cta-title em{font-style:italic;color:var(--gold)}
     .cta-sub{font-size:15px;color:var(--muted);max-width:480px;margin:0 auto 36px;line-height:1.7}
-    .cta-btn{display:inline-block;font-family:var(--body);font-size:14px;font-weight:800;color:var(--bg);background:var(--teal);padding:16px 36px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s}.cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
-    .cta-btn-gold{background:var(--gold);color:var(--bg)}.cta-btn-gold:hover{background:#b8922e}
+    .cta-btn{display:inline-block;font-family:var(--font);font-size:14px;font-weight:800;color:var(--midnight);background:var(--teal);padding:16px 36px;border-radius:4px;text-decoration:none;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s}.cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
+    .cta-btn-gold{background:var(--gold)}.cta-btn-gold:hover{background:#b8922e}
     .cta-or{font-size:13px;color:var(--muted);margin-top:20px;margin-bottom:20px}
     .cta-form{max-width:480px;margin:0 auto}
     .cta-form-row{display:flex;gap:10px;margin-bottom:10px}
-    .cta-field{flex:1;font-family:var(--body);font-size:14px;color:var(--ice);background:rgba(234,240,244,0.04);border:1px solid var(--border-md);border-radius:4px;padding:13px 16px;outline:none;transition:border-color 0.2s;width:100%;display:block;margin-bottom:10px}.cta-field:focus{border-color:var(--teal)}.cta-field::placeholder{color:var(--muted)}
+    .cta-field{flex:1;font-family:var(--font);font-size:14px;color:var(--ice);background:rgba(234,240,244,0.05);border:1px solid var(--border-md);border-radius:4px;padding:13px 16px;outline:none;transition:border-color 0.2s;width:100%;display:block;margin-bottom:10px}.cta-field:focus{border-color:var(--teal)}.cta-field::placeholder{color:var(--muted)}
     .cta-note{font-size:11px;color:var(--muted);margin-top:12px}
-
-    footer{padding:64px 0 32px;border-top:1px solid var(--border)}
+    footer{padding:64px 0 32px;border-top:1px solid var(--border);background:var(--midnight)}
     .footer-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px}
     .footer-logo{display:flex;align-items:center;gap:9px;margin-bottom:10px}
     .footer-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:250px}
     .footer-col-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
     .footer-links{list-style:none}.footer-links li{margin-bottom:8px}.footer-links a{font-size:13px;color:var(--slate);text-decoration:none;transition:color 0.2s}.footer-links a:hover{color:var(--teal)}
-    .footer-bottom{max-width:1120px;margin:24px auto 0;padding:16px 48px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .footer-bottom{max-width:1120px;margin:32px auto 0;padding:20px 48px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
     .footer-copy{font-size:11px;color:var(--muted)}
-
-    @media(max-width:768px){nav{padding:0 20px}.nav-links{gap:16px}.nav-link{font-size:11px}.nav-cta{font-size:11px;padding:8px 14px;white-space:nowrap}.hero{padding:110px 20px 60px}.hero-stats{grid-template-columns:repeat(2,1fr)}.callout-inner{grid-template-columns:1fr;gap:32px;padding:0 20px}.callout-section{padding:48px 0}.checker-inner{padding:0 20px}.how .container{padding:0 20px}.flow{grid-template-columns:1fr}.proof .container{padding:0 20px}.proof-grid{grid-template-columns:1fr}.press{padding:48px 20px}.cta{padding:64px 20px}.footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:16px 20px 0;flex-direction:column}}
-    @media(max-width:480px){.hero-stats{grid-template-columns:1fr 1fr}}
-  
-    /* ── Responsive Nav ─────────────── */
-    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
-    .nav-hamburger svg{display:block}
-    .nav-mobile-overlay{display:none;position:fixed;inset:0;z-index:99;background:rgba(6,9,14,0.6);backdrop-filter:blur(4px)}
-    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
-    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
-    .nav-mobile-menu a:last-child{border-bottom:none}
-    .nav-mobile-menu a:hover{color:#EAF0F4}
-    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
-    .nav-mobile-menu .mobile-cta:hover{background:#47cec5;color:#06090E}
-    .nav-mobile-open .nav-mobile-overlay{display:block}
-    .nav-mobile-open .nav-mobile-menu{display:flex}
-    @media(max-width:768px){
-      nav{padding:0 16px}
-      .nav-link{font-size:11px}
-      .nav-cta{font-size:11px;padding:7px 14px}
-      .nav-links{gap:14px}
-    }
-    @media(max-width:480px){
-      .nav-hamburger{display:block}
-      .nav-links{display:none !important}
-    }
-
+    @media(max-width:768px){nav{padding:0 20px}.nav-cta{font-size:11px;padding:8px 14px;white-space:nowrap}.nav-link{display:none}.hero{padding:110px 20px 60px}.hero-stats{grid-template-columns:repeat(2,1fr)}.callout-inner{grid-template-columns:1fr;gap:32px;padding:0 20px}.callout-section{padding:48px 0}.checker-inner{padding:0 20px}.how .container{padding:0 20px}.flow{grid-template-columns:1fr}.proof .container{padding:0 20px}.proof-grid{grid-template-columns:1fr}.press{padding:48px 20px}.cta{padding:64px 20px}.footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:20px 20px 0;flex-direction:column}}
   </style>
 </head>
 <body>
   <nav>
     <a href="/" class="nav-logo"><svg width="30" height="30" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a>
-    <div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Run HarbourScan</a></div>
-      <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <div class="nav-links"><a href="/engagements" class="nav-link">Engagements</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Run HarbourScan</a></div>
   </nav>
-  <div class="nav-mobile-overlay" onclick="document.body.classList.remove('nav-mobile-open')"></div>
-  <div class="nav-mobile-menu">
-    <a href="/signals">Signals</a>
-    <a href="/tools">Tools</a>
-    <a href="/research">Research</a>
-    <a href="/resources">Guides</a>
-    <a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
-  </div>
 
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="hero-inner">
-      <div class="hero-eyebrow" id="heroEyebrow">Canadian SaaS Sovereignty Index</div>
-      <h1 class="hero-h1" id="heroH1">of your SaaS stack is under <em>foreign jurisdiction.</em></h1>
-      <p class="hero-sub" id="heroSub">We mapped SaaS tools commonly used by Canadian organizations to their parent companies, legal jurisdictions, and CLOUD Act exposure. <strong>Most organizations haven't documented this. Law 25 already requires it.</strong></p>
+      <div class="hero-eyebrow">292 SaaS Tools Mapped &middot; Updated Q1 2026</div>
+      <h1 class="hero-h1">71% of your SaaS stack is under <em>foreign jurisdiction.</em></h1>
+      <p class="hero-sub">We mapped 292 SaaS tools commonly used by Canadian organizations to their parent companies, countries of incorporation, and CLOUD Act exposure. Most organizations rely on these tools without documenting jurisdictional exposure. That gap creates legal, procurement, and reputational risk &mdash; and Law 25 already requires that it be closed.</p>
       <div class="hero-stats">
-        <div class="h-stat"><div class="h-stat-num teal" id="statTotal">0</div><div class="h-stat-label">SaaS tools mapped</div></div>
-        <div class="h-stat"><div class="h-stat-num red" id="statCloudAct">0%</div><div class="h-stat-label">US-parented<br/>(CLOUD Act exposed)</div></div>
-        <div class="h-stat"><div class="h-stat-num gold" id="statCaRes">0%</div><div class="h-stat-label">CA-resident tools still<br/>CLOUD Act exposed</div></div>
-        <div class="h-stat"><div class="h-stat-num teal" id="statCanadian">0%</div><div class="h-stat-label">Canadian-owned</div></div>
+        <div class="h-stat"><div class="h-stat-num teal" data-target="292">0</div><div class="h-stat-label">SaaS tools mapped</div></div>
+        <div class="h-stat"><div class="h-stat-num red" data-target="71" data-suffix="%">0%</div><div class="h-stat-label">US-parented<br/>(CLOUD Act exposed)</div></div>
+        <div class="h-stat"><div class="h-stat-num gold" data-target="83" data-suffix="%">0%</div><div class="h-stat-label">CA-resident tools still<br/>CLOUD Act exposed</div></div>
+        <div class="h-stat"><div class="h-stat-num teal" data-target="16" data-suffix="%">0%</div><div class="h-stat-label">Canadian-owned</div></div>
       </div>
       <div class="hero-actions">
-        <a href="/harbourscan" class="btn-primary">Run HarbourScan &mdash; free &rarr;</a>
-        <a href="/tools" class="btn-ghost">Look up a tool</a>
-        <a href="/research" class="btn-ghost">Explore the research</a>
+        <a href="/research" class="btn-primary">Explore the research &rarr;</a>
+        <a href="/harbourscan" class="btn-ghost">Run HarbourScan &mdash; free</a>
       </div>
     </div>
   </section>
@@ -208,7 +146,7 @@
         <div class="callout-source">Anton Carniaux, Microsoft France &middot; French Senate testimony, June 2025</div>
       </div>
       <div class="callout-text">
-        <p><strong>Canadian data residency does not equal Canadian data sovereignty.</strong> Data residency does not change the legal jurisdiction of the platform provider. This applies to every US-parented SaaS tool &mdash; not just Microsoft. In our dataset, <span id="calloutCaRes">most</span> non-Canadian tools offering Canadian hosting remain CLOUD Act exposed.</p>
+        <p><strong>Canadian data residency does not equal Canadian data sovereignty.</strong> Data residency does not change the legal jurisdiction of the platform provider. This applies to every US-parented SaaS tool &mdash; not just Microsoft. In our dataset, 83% of tools offering Canadian hosting remain CLOUD Act exposed.</p>
       </div>
     </div>
   </section>
@@ -219,7 +157,7 @@
       <h2 class="checker-title">Is your SaaS tool under <em>foreign jurisdiction?</em></h2>
       <p class="checker-sub">Type a tool your organization uses. We&#39;ll show you the parent company, jurisdiction, and CLOUD Act status.</p>
       <div class="checker-input-wrap"><input type="text" class="checker-input" id="checkerInput" placeholder="Try Slack, Notion, Zoom, Shopify&hellip;" autocomplete="off" /></div>
-      <p style="font-size:12px;color:var(--muted);margin-top:12px">Searches our full database. <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Browse the Sovereignty Index</a> or <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">run HarbourScan</a> for a complete assessment.</p>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">This quick check uses a sample of our 292-tool database. A full <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">HarbourScan</a> maps your entire environment.</p>
       <div id="checkerResults"></div>
     </div>
   </section>
@@ -228,12 +166,12 @@
     <div class="container">
       <div class="section-label reveal">How it works</div>
       <h2 class="section-title reveal">From exposure mapping to <em>compliance documentation.</em></h2>
-      <p class="section-body reveal">Upper Harbour&#39;s research identifies the problem. Our tools produce the documentation.</p>
+      <p class="section-body reveal">Upper Harbour&#39;s research identifies the problem. Our tools and engagements help you document the solution.</p>
       <div class="flow">
         <div class="flow-step reveal">
           <div class="flow-num">01 &mdash; Research</div>
           <div class="flow-title">We mapped the landscape</div>
-          <div class="flow-body"><span id="flowResearchText">SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, Canadian data residency, and ownership status.</span> Province-by-province regulatory analysis. Government procurement audit. The research is <a href="/research">public and free</a>.</div>
+          <div class="flow-body">292 SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, Canadian data residency, and ownership status. Province-by-province regulatory analysis. Government procurement audit. The research is <a href="/research">public and free</a>.</div>
         </div>
         <div class="flow-step reveal">
           <div class="flow-num">02 &mdash; HarbourScan</div>
@@ -241,12 +179,12 @@
           <div class="flow-body"><a href="/harbourscan">HarbourScan</a> applies our database to your specific environment. Enter your tools, get a jurisdictional map &mdash; CLOUD Act exposure, missing TIAs, DPA gaps. Free, in your browser, in about 10 minutes.</div>
         </div>
         <div class="flow-step reveal">
-          <div class="flow-num">03 &mdash; Documentation</div>
-          <div class="flow-title">We produce the deliverables</div>
-          <div class="flow-body">Need the compliance work done? We produce sovereignty audits, Transfer Impact Assessment packages, and ongoing monitoring &mdash; the documentation that Law 25 requires and procurement officers ask for. <a href="https://calendly.com/josh-upperharbour/30min">Request a scoping call</a>.</div>
+          <div class="flow-num">03 &mdash; Engagements</div>
+          <div class="flow-title">We do the documentation</div>
+          <div class="flow-body">Need the compliance work done? We produce <a href="/engagements">sovereignty audits</a>, Transfer Impact Assessment packages, and ongoing monitoring &mdash; the documentation that Law 25 requires and procurement officers ask for.</div>
         </div>
       </div>
-      <div class="flow-connector reveal" style="font-size:14px;font-weight:600;color:var(--ice);margin-top:40px;padding:20px 0;border-top:1px solid var(--border)">HarbourScan is the entry point. The documentation builds on what it finds.</div>
+      <div class="flow-connector reveal" style="font-size:14px;font-weight:600;color:var(--ice);margin-top:40px;padding:20px 0;border-top:1px solid var(--border)">HarbourScan is the entry point. Engagements build on what it finds.</div>
     </div>
   </section>
 
@@ -301,8 +239,8 @@
         <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span></div>
         <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
       </div>
-      <div><div class="footer-col-title">Research</div><ul class="footer-links"><li><a href="/resources/canadian-saas-sovereignty-index">Sovereignty Index</a></li><li><a href="/research/sovereignty-policy-scorecard">Policy Scorecard</a></li><li><a href="/research/government-saas-audit">Government SaaS Audit</a></li><li><a href="/research/provincial-exposure-index">Provincial Exposure Index</a></li></ul></div>
-      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Tools</a></li><li><a href="/resources">Guides</a></li><li><a href="/signals">Signals</a></li></ul></div>
+      <div><div class="footer-col-title">Research</div><ul class="footer-links"><li><a href="/research/canadian-saas-sovereignty-index">Sovereignty Index</a></li><li><a href="/research/sovereignty-policy-scorecard">Policy Scorecard</a></li><li><a href="/research/government-saas-audit">Government SaaS Audit</a></li><li><a href="/research/provincial-exposure-index">Provincial Exposure Index</a></li></ul></div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="/engagements">Engagements</a></li><li><a href="/resources">Guides</a></li><li><a href="/harbourscan">HarbourScan</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none">Joshua van Es</a></span>
@@ -319,90 +257,98 @@
         else { alert('Something went wrong. Please email josh@upperharbour.ca directly.'); }
       } catch(err) { alert('Something went wrong. Please email josh@upperharbour.ca directly.'); }
     }
-  </script>
-  <script src="/assets/saas-db.js"></script>
-  <script>
-    /* ── Accessibility: skip link ────────────────────── */
-    (function() { var s = document.querySelector('.skip-link'); if (s) s.addEventListener('click', function(e) { e.preventDefault(); var t = document.querySelector(s.getAttribute('href')); if (t) { t.setAttribute('tabindex', '-1'); t.focus(); } }); })();
-    /* ── Reveal on scroll ────────────────────────────── */
     document.querySelectorAll('.reveal').forEach(el => {
       new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 }).observe(el);
     });
-    /* ── Compute all stats from saasDB ───────────────── */
-    (function() {
-      if (typeof saasDB === 'undefined') return;
-      const total = saasDB.length;
-      const cloudActCount = saasDB.filter(t => t.cloudAct).length;
-      const cloudActPct = Math.round(cloudActCount / total * 100);
-      const canadian = saasDB.filter(t => t.risk === 'canadian').length;
-      const canadianPct = Math.round(canadian / total * 100);
-
-      // CA-resident non-Canadian tools that are still CLOUD Act exposed
-      const caResNonCdn = saasDB.filter(t => {
-        if (t.risk === 'canadian') return false;
-        const dr = t.dataResidency.toLowerCase();
-        return dr.includes('canada') || dr.includes('ca-central') || dr.includes('montreal') || dr.includes('toronto');
-      });
-      const caResExposed = caResNonCdn.filter(t => t.cloudAct).length;
-      const caResPct = caResNonCdn.length > 0 ? Math.round(caResExposed / caResNonCdn.length * 100) : 0;
-
-      // Populate hero text
-      document.getElementById('heroEyebrow').textContent = 'Canadian SaaS Sovereignty Index \u00B7 ' + total + ' Tools Mapped';
-      document.getElementById('heroH1').innerHTML = cloudActPct + '% of your SaaS stack is under <em>foreign jurisdiction.</em>';
-      document.getElementById('heroSub').innerHTML = 'We mapped ' + total + ' SaaS tools commonly used by Canadian organizations to their parent companies, legal jurisdictions, and CLOUD Act exposure. <strong>Most organizations haven\u2019t documented this. Law 25 already requires it.</strong>';
-      document.getElementById('calloutCaRes').textContent = caResPct + '% of';
-      var flowEl = document.getElementById('flowResearchText');
-      if (flowEl) flowEl.textContent = total + ' SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, Canadian data residency, and ownership status.';
-
-      // Animated counters
-      var targets = [
-        { el: document.getElementById('statTotal'), value: total, suffix: '' },
-        { el: document.getElementById('statCloudAct'), value: cloudActPct, suffix: '%' },
-        { el: document.getElementById('statCaRes'), value: caResPct, suffix: '%' },
-        { el: document.getElementById('statCanadian'), value: canadianPct, suffix: '%' }
-      ];
-      function animateCounters() {
-        var duration = 1800, start = performance.now();
-        function update(now) {
-          var p = Math.min((now - start) / duration, 1), eased = 1 - Math.pow(1 - p, 3);
-          targets.forEach(function(t) { t.el.textContent = Math.round(t.value * eased) + t.suffix; });
-          if (p < 1) requestAnimationFrame(update);
-        }
+    function animateCounters() {
+      document.querySelectorAll('[data-target]').forEach(el => {
+        const target = parseInt(el.dataset.target), suffix = el.dataset.suffix || '', duration = 1800, start = performance.now();
+        function update(now) { const p = Math.min((now - start) / duration, 1), eased = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(target * eased) + suffix; if (p < 1) requestAnimationFrame(update); }
         requestAnimationFrame(update);
-      }
-      var statsEl = document.querySelector('.hero-stats');
-      if (statsEl) {
-        new IntersectionObserver(function(entries) { entries.forEach(function(e) { if (e.isIntersecting) { animateCounters(); e.target.dataset.animated = 'true'; } }); }, { threshold: 0.2 }).observe(statsEl);
-        setTimeout(function() { if (!statsEl.dataset.animated) animateCounters(); }, 500);
-      }
-    })();
-    /* ── Sovereignty Checker (full DB) ────────────────── */
-    (function() {
-      if (typeof saasDB === 'undefined') return;
-      var input = document.getElementById('checkerInput'), results = document.getElementById('checkerResults');
-      var debounce;
-      input.addEventListener('input', function() {
-        clearTimeout(debounce);
-        debounce = setTimeout(function() {
-          var q = input.value.trim().toLowerCase();
-          if (q.length < 2) { results.innerHTML = ''; return; }
-          var matches = saasDB.filter(function(t) { return t.name.toLowerCase().includes(q) || t.parent.toLowerCase().includes(q); }).slice(0, 3);
-          if (!matches.length) { results.innerHTML = '<div class="checker-noresult">No match in our ' + saasDB.length + '-tool database. <a href="/tools">Search the full Sovereignty Index</a> or <a href="/harbourscan">run HarbourScan</a>.</div>'; return; }
-          results.innerHTML = matches.map(function(t) {
-            var bc = 'badge-' + t.risk;
-            var bt = t.risk === 'exposed' ? 'CLOUD Act Exposed' : t.risk === 'review' ? 'Review Required' : t.risk === 'non_exposed' ? 'Non-Exposed' : 'Canadian HQ';
-            return '<div class="checker-result"><div class="checker-result-header"><span class="checker-result-name">' + t.name + '</span><span class="checker-badge ' + bc + '">' + bt + '</span></div>' +
-              '<div class="checker-result-row"><span>Parent entity</span><span>' + t.parent + '</span></div>' +
-              '<div class="checker-result-row"><span>Headquarters</span><span>' + t.hq + '</span></div>' +
-              '<div class="checker-result-row"><span>Jurisdiction</span><span>' + t.jurisdiction + '</span></div>' +
-              '<div class="checker-result-row"><span>CLOUD Act</span><span>' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No direct exposure') + '</span></div>' +
-              '<div class="checker-result-row"><span>Data residency</span><span>' + t.dataResidency + '</span></div>' +
-              '<p style="font-size:12px;color:var(--slate);margin-top:10px;line-height:1.55">' + t.note + '</p></div>';
-          }).join('') + '<p style="font-size:11px;color:var(--muted);margin-top:16px">Full lookup. <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Browse the Sovereignty Index</a> or <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">run HarbourScan</a> for complete assessment.</p>';
-        }, 200);
       });
-    })();
-    /* ── Smooth scroll ───────────────────────────────── */
+    }
+    const statsEl = document.querySelector('.hero-stats');
+    if (statsEl) {
+      new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { animateCounters(); e.target.dataset.animated = 'true'; } }); }, { threshold: 0.2 }).observe(statsEl);
+      setTimeout(() => { if (!statsEl.dataset.animated) animateCounters(); }, 500);
+    }
+    const saasDB = [
+      {name:"Slack",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Global regions",note:"Acquired by Salesforce (US) in 2021. Formerly Canadian-founded. All data subject to US legal process.",risk:"exposed"},
+      {name:"Microsoft Teams",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Part of Microsoft 365. Canadian hosting available but US-parent jurisdiction applies.",risk:"review"},
+      {name:"Microsoft 365",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Canadian data residency available but parent entity remains subject to US CLOUD Act.",risk:"review"},
+      {name:"Google Workspace",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Canadian data residency available but Alphabet's US incorporation means CLOUD Act exposure persists.",risk:"review"},
+      {name:"Zoom",parent:"Zoom Video Communications",hq:"San Jose, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US primary",note:"US-incorporated. Encryption keys and metadata under US legal jurisdiction.",risk:"exposed"},
+      {name:"Notion",parent:"Notion Labs Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated with no Canadian data residency option.",risk:"exposed"},
+      {name:"Salesforce",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Canadian data centre available but US-parent entity subject to CLOUD Act.",risk:"review"},
+      {name:"HubSpot",parent:"HubSpot Inc.",hq:"Cambridge, MA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU",note:"US-incorporated. CRM and marketing data under US jurisdiction.",risk:"exposed"},
+      {name:"AWS",parent:"Amazon.com Inc.",hq:"Seattle, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region (ca-central-1)",note:"Canadian region available but Amazon's US incorporation means CLOUD Act applies.",risk:"review"},
+      {name:"Azure",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada Central/East",note:"Canadian data centres available but Microsoft (US) subject to CLOUD Act.",risk:"review"},
+      {name:"Google Cloud",parent:"Alphabet Inc.",hq:"Mountain View, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Montreal region",note:"Canadian region in Montreal but Alphabet (US) subject to CLOUD Act.",risk:"review"},
+      {name:"Shopify",parent:"Shopify Inc.",hq:"Ottawa, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US",note:"Canadian-headquartered and TSX-listed.",risk:"canadian"},
+      {name:"Dropbox",parent:"Dropbox Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated. All file storage subject to US legal process.",risk:"exposed"},
+      {name:"GitHub",parent:"Microsoft Corporation",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"Owned by Microsoft (US). Source code under US jurisdiction.",risk:"exposed"},
+      {name:"Stripe",parent:"Stripe Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated payment processor.",risk:"exposed"},
+      {name:"DocuSign",parent:"DocuSign Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Canada/EU",note:"Canadian residency available but US-incorporated.",risk:"review"},
+      {name:"Okta",parent:"Okta Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU/AU",note:"US-incorporated identity provider. Authentication data under US jurisdiction.",risk:"exposed"},
+      {name:"1Password",parent:"AgileBits Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada available",note:"Canadian-headquartered. Zero-knowledge architecture.",risk:"canadian"},
+      {name:"Clio",parent:"Themis Solutions Inc.",hq:"Burnaby, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",note:"Canadian-headquartered legal practice management.",risk:"canadian"},
+      {name:"Cohere",parent:"Cohere Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Multiple including Canada",note:"Canadian-headquartered AI company.",risk:"canadian"},
+      {name:"OpenAI",parent:"OpenAI Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated. ChatGPT and API data under US jurisdiction.",risk:"exposed"},
+      {name:"Zendesk",parent:"Zendesk Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU/AU",note:"US-incorporated. No Canadian data residency.",risk:"exposed"},
+      {name:"Snowflake",parent:"Snowflake Inc.",hq:"Bozeman, MT",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada available",note:"Canadian region available but US-incorporated.",risk:"review"},
+      {name:"ServiceNow",parent:"ServiceNow Inc.",hq:"Santa Clara, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada available",note:"Canadian data centre available but US-parent entity subject to CLOUD Act.",risk:"review"},
+      {name:"Workday",parent:"Workday Inc.",hq:"Pleasanton, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Canada/EU",note:"US-incorporated. Canadian data centre available but CLOUD Act applies.",risk:"review"},
+      {name:"BambooHR",parent:"BambooHR LLC",hq:"Lindon, UT",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated HRIS. Employee data under US jurisdiction.",risk:"exposed"},
+      {name:"Hootsuite",parent:"Hootsuite Inc.",hq:"Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"US/Canada",note:"Canadian-headquartered.",risk:"canadian"},
+      {name:"Wealthsimple",parent:"Wealthsimple Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",note:"Canadian-incorporated fintech.",risk:"canadian"},
+      {name:"Zapier",parent:"Zapier Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"Integration platform. All data transiting Zapier under US jurisdiction.",risk:"exposed"},
+      {name:"Mailchimp",parent:"Intuit Inc.",hq:"Atlanta, GA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"Acquired by Intuit (US). Subscriber lists under US jurisdiction.",risk:"exposed"},
+      {name:"Figma",parent:"Figma Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated. Design files under US jurisdiction.",risk:"exposed"},
+      {name:"Canva",parent:"Canva Pty Ltd",hq:"Sydney, Australia",jurisdiction:"Australia",cloudAct:false,dataResidency:"US",note:"Australian-incorporated. Not directly subject to CLOUD Act.",risk:"review"},
+      {name:"SAP",parent:"SAP SE",hq:"Walldorf, Germany",jurisdiction:"Germany / EU",cloudAct:false,dataResidency:"Multiple including Canada",note:"German-incorporated. Canadian data residency available.",risk:"canadian"},
+      {name:"Jira",parent:"Atlassian Corporation",hq:"Sydney, AU (US-listed)",jurisdiction:"United States / Australia",cloudAct:true,dataResidency:"Multiple regions",note:"Incorporated in Delaware (US). Dual jurisdiction.",risk:"review"},
+      {name:"QuickBooks",parent:"Intuit Inc.",hq:"Mountain View, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Canada",note:"Intuit is US-incorporated.",risk:"review"},
+      {name:"CrowdStrike",parent:"CrowdStrike Holdings Inc.",hq:"Austin, TX",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU/AU",note:"US-incorporated. Telemetry from all protected devices under US jurisdiction.",risk:"exposed"},
+      {name:"Datadog",parent:"Datadog Inc.",hq:"New York, NY",jurisdiction:"United States",cloudAct:true,dataResidency:"US/EU",note:"US-incorporated observability.",risk:"exposed"},
+      {name:"Asana",parent:"Asana Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated. No Canadian data residency.",risk:"exposed"},
+      {name:"Monday.com",parent:"monday.com Ltd.",hq:"Tel Aviv, Israel",jurisdiction:"Israel",cloudAct:false,dataResidency:"US/EU",note:"Israeli-incorporated. Not directly subject to CLOUD Act.",risk:"review"},
+      {name:"Harvey",parent:"Counsel AI Corporation",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US (Azure)",note:"US-incorporated AI for law firms. Sensitive legal documents under US jurisdiction.",risk:"exposed"},
+      {name:"Epic Systems",parent:"Epic Systems Corporation",hq:"Verona, WI",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated EMR. Widely used in Canadian hospitals. Patient records under US jurisdiction.",risk:"exposed"},
+      {name:"Jane App",parent:"Jane Software Inc.",hq:"North Vancouver, BC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada",note:"Canadian-founded clinic management.",risk:"canadian"},
+      {name:"D2L Brightspace",parent:"D2L Inc.",hq:"Kitchener, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada available",note:"Canadian-headquartered LMS.",risk:"canadian"},
+      {name:"Lightspeed",parent:"Lightspeed Commerce Inc.",hq:"Montreal, QC",jurisdiction:"Canada",cloudAct:false,dataResidency:"Canada/US/EU",note:"Canadian-headquartered POS.",risk:"canadian"},
+      {name:"FreshBooks",parent:"2ndSite Inc.",hq:"Toronto, ON",jurisdiction:"Canada",cloudAct:false,dataResidency:"US",note:"Canadian-headquartered invoicing.",risk:"canadian"},
+      {name:"Xero",parent:"Xero Ltd.",hq:"Wellington, NZ",jurisdiction:"New Zealand",cloudAct:false,dataResidency:"Multiple regions",note:"New Zealand-incorporated. Not subject to CLOUD Act.",risk:"canadian"},
+      {name:"Intercom",parent:"Intercom Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated. Customer communication data under US jurisdiction.",risk:"exposed"},
+      {name:"Calendly",parent:"Calendly LLC",hq:"Atlanta, GA",jurisdiction:"United States",cloudAct:true,dataResidency:"US only",note:"US-incorporated scheduling platform.",risk:"exposed"},
+      {name:"ADP",parent:"ADP Inc.",hq:"Roseland, NJ",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada available",note:"US-incorporated payroll processor. Canadian data options but CLOUD Act applies.",risk:"review"},
+      {name:"Ceridian",parent:"Dayforce Inc.",hq:"Toronto / Minneapolis",jurisdiction:"Canada / United States",cloudAct:true,dataResidency:"Canada/US",note:"Dual-headquartered. Rebranded to Dayforce. US incorporation creates CLOUD Act exposure.",risk:"review"},
+      {name:"Adobe Creative Cloud",parent:"Adobe Inc.",hq:"San Jose, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated.",risk:"exposed"},
+      {name:"Grammarly",parent:"Grammarly Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated. Processes all text input through US servers.",risk:"exposed"},
+      {name:"Twilio",parent:"Twilio Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US",note:"US-incorporated communications platform.",risk:"exposed"}
+    ];
+    const input = document.getElementById('checkerInput'), results = document.getElementById('checkerResults');
+    let debounce;
+    input.addEventListener('input', () => {
+      clearTimeout(debounce);
+      debounce = setTimeout(() => {
+        const q = input.value.trim().toLowerCase();
+        if (q.length < 2) { results.innerHTML = ''; return; }
+        const matches = saasDB.filter(t => t.name.toLowerCase().includes(q)).slice(0, 3);
+        if (!matches.length) { results.innerHTML = '<div class="checker-noresult">No match in our sample database. <a href="/harbourscan">Run a full HarbourScan</a> to check against all 292 tools.</div>'; return; }
+        results.innerHTML = matches.map(function(t) {
+          var bc = t.risk === 'exposed' ? 'badge-exposed' : t.risk === 'review' ? 'badge-review' : 'badge-canadian';
+          var bt = t.risk === 'exposed' ? 'CLOUD Act Exposed' : t.risk === 'review' ? 'Review Required' : 'Canadian HQ';
+          return '<div class="checker-result"><div class="checker-result-header"><span class="checker-result-name">' + t.name + '</span><span class="checker-badge ' + bc + '">' + bt + '</span></div>' +
+            '<div class="checker-result-row"><span>Parent entity</span><span>' + t.parent + '</span></div>' +
+            '<div class="checker-result-row"><span>Headquarters</span><span>' + t.hq + '</span></div>' +
+            '<div class="checker-result-row"><span>Jurisdiction</span><span>' + t.jurisdiction + '</span></div>' +
+            '<div class="checker-result-row"><span>CLOUD Act</span><span>' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No direct exposure') + '</span></div>' +
+            '<div class="checker-result-row"><span>Data residency</span><span>' + t.dataResidency + '</span></div>' +
+            '<p style="font-size:12px;color:var(--slate);margin-top:10px;line-height:1.55">' + t.note + '</p></div>';
+        }).join('') + '<p style="font-size:11px;color:var(--muted);margin-top:16px">Indicative only. <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Run a full HarbourScan</a> for complete assessment.</p>';
+      }, 200);
+    });
     document.querySelectorAll('a[href^="#"]').forEach(function(a) { a.addEventListener('click', function(e) { var t = document.querySelector(a.getAttribute('href')); if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); } }); });
   </script>
 </body>

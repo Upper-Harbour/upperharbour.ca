@@ -4,321 +4,187 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tool Directory — Canadian Data Sovereignty Lookup | Upper Harbour</title>
-  <meta name="description" content="Look up any SaaS tool's sovereignty profile. Parent company, jurisdiction, CLOUD Act exposure, and data residency — mapped for Canadian compliance." />
+  <meta name="description" content="Understand the sovereignty profile of the SaaS tools your organization relies on." />
   <link rel="canonical" href="https://upperharbour.ca/tools" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta property="og:title" content="Tool Directory — Canadian Data Sovereignty Lookup" />
-  <meta property="og:description" content="Look up any SaaS tool's sovereignty profile — mapped for Canadian compliance." />
+  <meta property="og:description" content="Understand the sovereignty profile of the SaaS tools your organization relies on." />
   <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
   <meta property="og:url" content="https://upperharbour.ca/tools" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --bg:#06090E;--surface:#0C1219;--surface-2:#111A24;--surface-3:#162030;
-      --teal:#3CB8B0;--teal-dim:rgba(60,184,176,0.07);--teal-glow:rgba(60,184,176,0.12);
-      --gold:#C9A84C;--gold-dim:rgba(201,168,76,0.07);
-      --red:#E06050;--red-dim:rgba(224,96,80,0.06);--red-glow:rgba(224,96,80,0.10);
-      --ice:#EAF0F4;--slate:#8A9DB0;--muted:#566778;
-      --border:rgba(234,240,244,0.06);--border-md:rgba(234,240,244,0.10);--border-lg:rgba(234,240,244,0.15);
-      --display:'Newsreader',Georgia,serif;
-      --body:'DM Sans',sans-serif;
-      --mono:'JetBrains Mono',monospace;
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:var(--body);background:var(--bg);color:var(--ice);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-
-    /* ── Nav ─────────────────────────────────────── */
-    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(6,9,14,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+    :root{--midnight:#0A1018;--navy:#0F1C2E;--surface:#131E2D;--teal:#3CB8B0;--ice:#EAF0F4;--slate:#7A92A8;--gold:#C9A84C;--red:#E06050;--muted:#6B7B8D;--border:rgba(234,240,244,0.07);--border-md:rgba(234,240,244,0.13);--serif:'Playfair Display',Georgia,serif;--font:'Inter',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--mono:'JetBrains Mono','SF Mono','Consolas',monospace}
+    html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--midnight);color:var(--ice);line-height:1.6;overflow-x:hidden}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 52px;height:66px;background:rgba(10,16,24,0.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
     .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
-    .nav-upper{font-size:17px;font-weight:400;color:var(--slate)}.nav-harbour{font-size:17px;font-weight:800;color:var(--ice);letter-spacing:-0.8px;margin-left:4px}
-    .nav-links{display:flex;align-items:center;gap:28px}.nav-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}.nav-link:hover{color:var(--ice)}.nav-link.active{color:var(--ice)}
-    .nav-cta{font-family:var(--body);font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}.nav-cta:hover{background:#47cec5}
-
-    /* ── Hero: The Number ────────────────────────── */
-    .hero{padding:130px 52px 0;max-width:1120px;margin:0 auto;position:relative}
-    .hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;display:inline-flex;align-items:center;gap:10px}
-    .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--teal);opacity:0.5}
-
-    .hero-index-name{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:700;color:var(--ice);letter-spacing:-0.5px;margin-bottom:16px;line-height:1.2}
-
-    .hero-stat-row{display:flex;align-items:baseline;gap:20px;margin-bottom:12px;flex-wrap:wrap}
-    .hero-big-num{font-family:var(--mono);font-size:clamp(72px,10vw,120px);font-weight:700;line-height:0.9;letter-spacing:-4px;color:var(--red);position:relative}
-    .hero-big-num::after{content:'';position:absolute;bottom:-4px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),transparent);opacity:0.4}
-    .hero-of{font-family:var(--display);font-size:clamp(24px,3.5vw,42px);font-weight:300;color:var(--slate);font-style:italic;letter-spacing:-0.5px}
-    .hero-total-num{font-family:var(--mono);font-size:clamp(36px,5vw,56px);font-weight:700;color:var(--ice);letter-spacing:-2px}
-    .hero-label{font-family:var(--display);font-size:clamp(24px,3.5vw,42px);font-weight:300;color:var(--slate);font-style:italic;letter-spacing:-0.5px}
-
-    .hero-subline{font-size:15px;color:var(--slate);line-height:1.7;max-width:540px;margin-bottom:8px}
-    .hero-subline strong{color:var(--ice);font-weight:700}
-
-    .hero-meta{font-family:var(--mono);font-size:11px;color:var(--muted);margin-bottom:0}
-    .hero-meta strong{color:var(--slate);font-weight:600}
-
-    /* ── Risk Meter ──────────────────────────────── */
-    .risk-meter-section{max-width:1120px;margin:0 auto;padding:32px 52px 0}
-    .risk-meter{height:6px;border-radius:3px;overflow:hidden;display:flex;background:var(--surface)}
-    .risk-meter-seg{height:100%;transition:width 0.8s cubic-bezier(0.16,1,0.3,1)}
-    .risk-meter-seg.exposed{background:var(--red)}
-    .risk-meter-seg.review{background:var(--gold)}
-    .risk-meter-seg.canadian{background:var(--teal)}
-    .risk-meter-labels{display:flex;justify-content:space-between;margin-top:10px}
-    .risk-meter-label{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.04em;color:var(--muted)}
-    .risk-meter-label .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-    .risk-meter-label .num{color:var(--ice);font-weight:700}
-
-    /* ── Search Zone ─────────────────────────────── */
-    .search-zone{max-width:1120px;margin:0 auto;padding:48px 52px 0}
-    .search-zone-inner{position:relative}
-    .search-zone input{width:100%;font-family:var(--body);font-size:18px;font-weight:500;color:var(--ice);background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:20px 24px 20px 56px;outline:none;transition:border-color 0.3s,box-shadow 0.3s}
-    .search-zone input:focus{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-dim)}
-    .search-zone input::placeholder{color:var(--muted);font-weight:400}
-    .search-zone .s-icon{position:absolute;left:20px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
-    .search-count{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:12px}
-
-    /* ── Chips ────────────────────────────────────── */
-    .chips-section{max-width:1120px;margin:0 auto;padding:20px 52px 0}
-    .chips-row{display:flex;flex-wrap:wrap;gap:8px}
-    .chip{font-family:var(--body);font-size:12px;font-weight:600;color:var(--slate);background:var(--surface);border:1px solid var(--border-md);padding:7px 16px;border-radius:4px;cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:7px}
-    .chip:hover{border-color:var(--teal);color:var(--ice)}
-    .chip .cd{width:5px;height:5px;border-radius:50%;flex-shrink:0}
-    .chip .cd.exposed{background:var(--red)}.chip .cd.review{background:var(--gold)}.chip .cd.canadian{background:var(--teal)}
-
-    /* ── Filter Row ──────────────────────────────── */
-    .filter-row{max-width:1120px;margin:0 auto;padding:24px 52px 0;display:none;gap:8px;flex-wrap:wrap}
-    .filter-row.visible{display:flex}
-    .filter-btn{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--border-md);padding:7px 14px;border-radius:3px;cursor:pointer;transition:all 0.2s}
+    .nav-upper{font-size:17px;font-weight:400;color:var(--slate)}
+    .nav-harbour{font-size:17px;font-weight:800;color:var(--ice);letter-spacing:-0.8px;margin-left:4px}
+    .nav-links{display:flex;align-items:center;gap:28px}
+    .nav-link{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.2s}.nav-link:hover{color:var(--ice)}
+    .nav-link.active{color:var(--ice)}
+    .nav-cta{font-family:var(--font);font-size:13px;font-weight:700;color:var(--midnight);background:var(--teal);padding:9px 22px;border-radius:4px;text-decoration:none;transition:background 0.2s}.nav-cta:hover{background:#47cec5}
+    .hero{padding:130px 52px 36px;max-width:1120px;margin:0 auto}
+    .hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+    .hero h1{font-family:var(--serif);font-size:clamp(28px,4vw,46px);font-weight:900;color:var(--ice);line-height:1.08;letter-spacing:-0.5px;margin-bottom:16px}
+    .hero h1 em{font-style:italic;font-weight:700;color:var(--gold)}
+    .hero-sub{font-size:15px;color:var(--slate);line-height:1.72;max-width:620px;margin-bottom:12px}
+    .hero-connector{font-size:13px;color:var(--teal);line-height:1.72;max-width:620px;margin-bottom:24px}
+    .hero-connector a{color:var(--teal);text-decoration:underline}
+    .hero-meta{display:flex;gap:32px;flex-wrap:wrap}
+    .hero-meta-item{font-family:var(--mono);font-size:11px;color:var(--muted)}
+    .hero-meta-item strong{color:var(--ice);font-weight:600}
+    .search-section{max-width:1120px;margin:0 auto;padding:24px 52px 16px}
+    .search-wrap{position:relative;max-width:580px}
+    .search-wrap input{width:100%;font-family:var(--font);font-size:16px;font-weight:500;color:var(--ice);background:var(--surface);border:1px solid var(--border-md);border-radius:6px;padding:16px 20px 16px 48px;outline:none;transition:border-color 0.2s}
+    .search-wrap input:focus{border-color:var(--teal)}
+    .search-wrap input::placeholder{color:var(--muted)}
+    .search-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+    .search-count{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:10px}
+    .filter-row{max-width:1120px;margin:0 auto;padding:8px 52px 32px;display:flex;gap:8px;flex-wrap:wrap}
+    .filter-btn{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);background:transparent;border:1px solid var(--border-md);padding:6px 12px;border-radius:3px;cursor:pointer;transition:all 0.2s}
     .filter-btn:hover{color:var(--ice);border-color:var(--slate)}
-    .filter-btn.active{color:var(--teal);border-color:var(--teal);background:var(--teal-dim)}
-
-    /* ── Tool List ────────────────────────────────── */
-    .tool-grid{max-width:1120px;margin:0 auto;padding:24px 52px 80px;display:none}
-    .tool-grid.visible{display:block}
+    .filter-btn.active{color:var(--teal);border-color:var(--teal);background:rgba(60,184,176,0.06)}
+    .stats-row{max-width:1120px;margin:0 auto;padding:0 52px 32px;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-md);border:1px solid var(--border-md);border-radius:8px;overflow:hidden}
+    .stat-cell{background:var(--surface);padding:18px;text-align:center}
+    .stat-num{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ice);margin-bottom:3px}
+    .stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
+    .tool-grid{max-width:1120px;margin:0 auto;padding:0 52px 80px}
     .tool-list{display:flex;flex-direction:column;border:1px solid var(--border-md);border-radius:8px;overflow:hidden}
-    .tool-header{display:grid;grid-template-columns:200px 200px 140px 80px 140px 1fr;gap:0;padding:10px 20px;background:var(--surface-2)}
+    .tool-header{display:grid;grid-template-columns:200px 200px 140px 80px 140px 1fr;gap:0;padding:10px 20px;background:var(--navy)}
     .tool-header span{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
-    .tool-row{display:grid;grid-template-columns:200px 200px 140px 80px 140px 1fr;gap:0;background:var(--bg);padding:14px 20px;align-items:center;cursor:pointer;transition:background 0.15s;border-top:1px solid var(--border)}
-    .tool-row:hover{background:var(--surface)}
-    .tool-row.expanded{background:var(--surface);border-left:2px solid var(--teal)}
+    .tool-row{display:grid;grid-template-columns:200px 200px 140px 80px 140px 1fr;gap:0;background:var(--midnight);padding:14px 20px;align-items:center;cursor:pointer;transition:background 0.15s;border-top:1px solid var(--border)}
+    .tool-row:hover{background:var(--surface)}.tool-row.expanded{background:var(--surface)}
     .tool-name{font-size:14px;font-weight:700;color:var(--ice)}
     .tool-parent{font-size:12px;color:var(--slate)}
     .tool-jurisdiction{font-size:12px;color:var(--slate)}
     .tool-cloudact{font-family:var(--mono);font-size:11px;font-weight:600}
     .tool-cloudact.yes{color:var(--red)}.tool-cloudact.no{color:var(--teal)}
     .tool-residency{font-size:12px;color:var(--slate)}
-    .tool-risk{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:3px 8px;border-radius:3px}
-    .risk-exposed{color:var(--red);background:var(--red-dim);border:1px solid rgba(224,96,80,0.2)}
-    .risk-review{color:var(--gold);background:var(--gold-dim);border:1px solid rgba(201,168,76,0.2)}
-    .risk-non_exposed{color:#5B9BD5;background:rgba(91,155,213,0.1);border:1px solid rgba(91,155,213,0.2)}
-    .risk-canadian{color:var(--teal);background:var(--teal-dim);border:1px solid rgba(60,184,176,0.2)}
-
-    /* ── Tool Detail ─────────────────────────────── */
+    .tool-risk{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:3px;text-align:center;white-space:nowrap;display:inline-block}
+    .risk-exposed{color:var(--red);background:rgba(224,96,80,0.1);border:1px solid rgba(224,96,80,0.2)}
+    .risk-review{color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2)}
+    .risk-canadian{color:var(--teal);background:rgba(60,184,176,0.1);border:1px solid rgba(60,184,176,0.2)}
     .tool-detail{display:none;background:var(--surface);padding:0 20px 20px;border-top:1px solid var(--border)}
     .tool-detail.visible{display:block}
-    .tool-detail-inner{background:var(--bg);border:1px solid var(--border-md);border-radius:6px;padding:20px 24px}
+    .tool-detail-inner{background:var(--midnight);border:1px solid var(--border-md);border-radius:6px;padding:20px 24px}
     .tool-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px}
     .detail-field{display:flex;flex-direction:column;gap:2px}
-    .detail-label{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+    .detail-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
     .detail-value{font-size:13px;color:var(--ice);line-height:1.5}
     .tool-note{grid-column:1/-1;margin-top:4px;padding-top:12px;border-top:1px solid var(--border)}
     .tool-note p{font-size:13px;color:var(--slate);line-height:1.65}
-
-    /* ── Contextual CTA Nudge ────────────────────── */
-    .tool-cta-nudge{grid-column:1/-1;margin-top:14px;padding:16px 20px;border-radius:6px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .tool-cta-nudge.risk-exposed{background:var(--red-dim);border:1px solid rgba(224,96,80,0.18)}
-    .tool-cta-nudge.risk-review{background:var(--gold-dim);border:1px solid rgba(201,168,76,0.18)}
-    .tool-cta-nudge.risk-non_exposed{background:rgba(91,155,213,0.08);border:1px solid rgba(91,155,213,0.18)}
-    .tool-cta-nudge.risk-canadian{background:var(--teal-dim);border:1px solid rgba(60,184,176,0.18)}
-    .tool-cta-nudge-text{font-size:12px;color:var(--slate);line-height:1.5;flex:1}
-    .tool-cta-nudge-text strong{color:var(--ice);font-weight:700}
-    .nudge-link{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--teal);text-decoration:none;white-space:nowrap;border-bottom:1px solid rgba(60,184,176,0.3);padding-bottom:1px;transition:border-color 0.2s;flex-shrink:0}
-    .nudge-link:hover{border-color:var(--teal)}
-
-    /* ── Detail Actions ──────────────────────────── */
     .tool-detail-actions{margin-top:16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
     .btn-small{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:8px 16px;border-radius:3px;text-decoration:none;transition:all 0.2s;display:inline-block}
-    .btn-outline-sm{color:var(--slate);border:1px solid var(--border-md);cursor:pointer;background:none}.btn-outline-sm:hover{color:var(--ice);border-color:var(--slate)}
+    .btn-teal-sm{color:var(--midnight);background:var(--teal)}.btn-teal-sm:hover{background:#47cec5}
+    .btn-outline-sm{color:var(--slate);border:1px solid var(--border-md);cursor:pointer}.btn-outline-sm:hover{color:var(--ice);border-color:var(--slate)}
     .share-link{font-family:var(--mono);font-size:10px;color:var(--muted)}
-
-    /* ── No Results ───────────────────────────────── */
-    .no-results{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px;display:none}
-
-    /* ── Bottom CTA ──────────────────────────────── */
+    .no-results{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
     .cta-strip{max-width:1120px;margin:0 auto;padding:0 52px 80px}
     .cta-inner{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:32px}
-    .cta-text h3{font-family:var(--display);font-size:22px;font-weight:700;color:var(--ice);margin-bottom:6px}
+    .cta-text h3{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ice);margin-bottom:6px}
     .cta-text p{font-size:14px;color:var(--muted)}
-    .btn-teal{font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;white-space:nowrap}.btn-teal:hover{background:#47cec5}
-
-    /* ── Footer ───────────────────────────────────── */
-    footer{padding:64px 0 32px;border-top:1px solid var(--border)}
+    .btn-teal{font-family:var(--font);font-size:13px;font-weight:700;color:var(--midnight);background:var(--teal);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;white-space:nowrap}.btn-teal:hover{background:#47cec5}
+    footer{padding:64px 0 32px;border-top:1px solid var(--border);background:var(--midnight)}
     .footer-inner{max-width:1120px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px}
     .footer-logo{display:flex;align-items:center;gap:9px;margin-bottom:10px}
     .footer-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:250px}
     .footer-col-title{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
     .footer-links{list-style:none}.footer-links li{margin-bottom:8px}.footer-links a{font-size:13px;color:var(--slate);text-decoration:none;transition:color 0.2s}.footer-links a:hover{color:var(--teal)}
-    .footer-bottom{max-width:1120px;margin:24px auto 0;padding:16px 48px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+    .footer-bottom{max-width:1120px;margin:32px auto 0;padding:20px 48px 0;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
     .footer-copy{font-size:11px;color:var(--muted)}
-
-    /* ── Animations ───────────────────────────────── */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
-    @keyframes countUp{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
-    @keyframes meterGrow{from{width:0}to{width:var(--w)}}
-    .anim-fade{animation:fadeUp 0.6s ease both}
-    .anim-fade-d1{animation:fadeUp 0.6s ease 0.1s both}
-    .anim-fade-d2{animation:fadeUp 0.6s ease 0.2s both}
-    .anim-fade-d3{animation:fadeUp 0.6s ease 0.3s both}
-    .anim-count{animation:countUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.2s both}
-
-    /* ── Responsive ───────────────────────────────── */
+    @media(max-width:960px){
+      nav{padding:0 28px}.nav-links{gap:16px}
+      .hero{padding:120px 28px 28px}.search-section{padding:20px 28px 12px}.filter-row{padding:8px 28px 24px}
+      .stats-row{padding:0 28px 24px;grid-template-columns:repeat(2,1fr)}.tool-grid{padding:0 28px 60px}
+      .tool-header{grid-template-columns:1fr 1fr 100px}.tool-header span:nth-child(n+4){display:none}
+      .tool-row{grid-template-columns:1fr 1fr 100px;gap:8px}
+      .tool-row .tool-cloudact,.tool-row .tool-residency,.tool-row .tool-jurisdiction{display:none}
+      .tool-detail-grid{grid-template-columns:1fr}
+      .cta-strip{padding:0 28px 60px}.cta-inner{flex-direction:column;text-align:center;padding:32px 24px}
+      .footer-inner{padding:0 28px}.footer-bottom{padding:20px 28px 0}
+    }
     @media(max-width:768px){
-      nav{padding:0 20px}.nav-links{gap:16px}.nav-link{font-size:11px}.nav-cta{font-size:11px;padding:8px 14px}
-      .hero{padding:100px 20px 0}
-      .hero-big-num{font-size:64px;letter-spacing:-3px}
-      .hero-total-num{font-size:32px;letter-spacing:-1px}
-      .hero-of,.hero-label{font-size:20px}
-      .risk-meter-section{padding:28px 20px 0}
-      .search-zone{padding:36px 20px 0}
-      .chips-section{padding:16px 20px 0}
-      .filter-row{padding:20px 20px 0}
-      .tool-grid{padding:20px 20px 60px}
+      nav{padding:0 20px}.nav-link{display:none}.nav-cta{font-size:11px;padding:8px 14px}
+      .hero{padding:100px 20px 24px}.hero h1{font-size:28px}
+      .search-section{padding:16px 20px 10px}.filter-row{padding:6px 20px 20px}
+      .stats-row{padding:0 20px 20px;grid-template-columns:1fr 1fr}.tool-grid{padding:0 20px 48px}
       .tool-header{display:none}
       .tool-row{grid-template-columns:1fr auto;gap:4px;padding:14px 16px}
       .tool-row .tool-parent{grid-column:1/-1;font-size:11px}
       .tool-row .tool-jurisdiction,.tool-row .tool-cloudact,.tool-row .tool-residency{display:none}
-      .tool-detail-grid{grid-template-columns:1fr}
-      .cta-strip{padding:0 20px 60px}.cta-inner{flex-direction:column;padding:28px 20px;text-align:center}
-      .footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:16px 20px 0;flex-direction:column}
+      .cta-strip{padding:0 20px 48px}.cta-inner{padding:28px 20px}
+      .footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:20px 20px 0;flex-direction:column}
     }
-    @media(max-width:480px){
-      
-      .hero-stat-row{gap:12px}
-      .risk-meter-labels{flex-wrap:wrap;gap:8px}
-    }
-  
-    /* ── Responsive Nav ─────────────── */
-    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
-    .nav-hamburger svg{display:block}
-    .nav-mobile-overlay{display:none;position:fixed;inset:0;z-index:99;background:rgba(6,9,14,0.6);backdrop-filter:blur(4px)}
-    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
-    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
-    .nav-mobile-menu a:last-child{border-bottom:none}
-    .nav-mobile-menu a:hover{color:#EAF0F4}
-    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
-    .nav-mobile-menu .mobile-cta:hover{background:#47cec5;color:#06090E}
-    .nav-mobile-open .nav-mobile-overlay{display:block}
-    .nav-mobile-open .nav-mobile-menu{display:flex}
-    @media(max-width:768px){
-      nav{padding:0 16px}
-      .nav-link{font-size:11px}
-      .nav-cta{font-size:11px;padding:7px 14px}
-      .nav-links{gap:14px}
-    }
-    @media(max-width:480px){
-      .nav-hamburger{display:block}
-      .nav-links{display:none !important}
-    }
-
   </style>
 </head>
 <body>
-  <nav>
+<nav>
     <a href="/" class="nav-logo">
-      <svg width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
+      <svg width="30" height="30" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#3CB8B0"/></svg>
       <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
     </a>
     <div class="nav-links">
-      <a href="/signals" class="nav-link">Signals</a>
-      <a href="/tools" class="nav-link active">Tools</a>
+      <a href="/engagements" class="nav-link">Engagements</a>
       <a href="/research" class="nav-link">Research</a>
       <a href="/resources" class="nav-link">Guides</a>
+      <a href="/signals" class="nav-link">Signals</a>
       <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
     </div>
-      <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </nav>
-  <div class="nav-mobile-overlay" onclick="document.body.classList.remove('nav-mobile-open')"></div>
-  <div class="nav-mobile-menu">
-    <a href="/signals">Signals</a>
-    <a href="/tools">Tools</a>
-    <a href="/research">Research</a>
-    <a href="/resources">Guides</a>
-    <a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
-  </div>
-
-  <!-- ── Hero ──────────────────────────────────────── -->
   <div class="hero">
-    <div class="hero-eyebrow anim-fade">Canadian SaaS Sovereignty Index</div>
-    <div class="hero-stat-row anim-fade-d1">
-      <span class="hero-big-num anim-count" id="heroExposed">—</span>
-      <span class="hero-of">of</span>
-      <span class="hero-total-num anim-count" id="heroTotal">—</span>
-      <span class="hero-label">tools are CLOUD Act exposed</span>
-    </div>
-    <p class="hero-subline anim-fade-d2">Every tool in our database is mapped to its parent company, legal jurisdiction, and data residency options — <strong>built for Canadian jurisdictional compliance.</strong></p>
-    <div class="hero-meta anim-fade-d3">Last updated: <strong id="metaUpdated">—</strong></div>
-  </div>
-
-  <!-- ── Risk Meter ────────────────────────────────── -->
-  <div class="risk-meter-section anim-fade-d3">
-    <div class="risk-meter" id="riskMeter">
-      <div class="risk-meter-seg exposed" id="meterExposed"></div>
-      <div class="risk-meter-seg review" id="meterReview"></div>
-      <div class="risk-meter-seg" id="meterNonExposed" style="background:#5B9BD5"></div>
-      <div class="risk-meter-seg canadian" id="meterCanadian"></div>
-    </div>
-    <div class="risk-meter-labels">
-      <div class="risk-meter-label"><span class="dot" style="background:var(--red)"></span>Exposed <span class="num" id="labelExposed">—</span></div>
-      <div class="risk-meter-label"><span class="dot" style="background:var(--gold)"></span>Review <span class="num" id="labelReview">—</span></div>
-      <div class="risk-meter-label"><span class="dot" style="background:#5B9BD5"></span>Non-Exposed <span class="num" id="labelNonExposed">—</span></div>
-      <div class="risk-meter-label"><span class="dot" style="background:var(--teal)"></span>Canadian <span class="num" id="labelCanadian">—</span></div>
+    <div class="hero-eyebrow">Tool Directory</div>
+    <h1>Sovereignty <em>lookup.</em></h1>
+    <p class="hero-sub">Understand the sovereignty profile of the tools your organization relies on. Parent company, jurisdiction, CLOUD Act exposure, and data residency — mapped for Canadian compliance.</p>
+    <p class="hero-connector">This directory reflects the vendor intelligence layer used in <a href="/harbourscan">HarbourScan</a> assessments.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">Tools tracked: <strong id="metaTotal">—</strong></div>
+      <div class="hero-meta-item">Last updated: <strong id="metaUpdated">—</strong></div>
     </div>
   </div>
 
-  <!-- ── Search ────────────────────────────────────── -->
-  <div class="search-zone">
-    <div class="search-zone-inner">
-      <svg class="s-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="toolSearch" placeholder="Look up a tool — Slack, Clio, QuickBooks, Zoom…" autocomplete="off" />
+  <div class="search-section">
+    <div class="search-wrap">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="toolSearch" placeholder="Search tools — Slack, Clio, QuickBooks, Zoom…" autocomplete="off" />
     </div>
     <div class="search-count" id="searchCount"></div>
   </div>
 
-  <!-- ── Chips ─────────────────────────────────────── -->
-  <div class="chips-section" id="chipsSection">
-    <div class="chips-row" id="chipsRow"></div>
-  </div>
-
-  <!-- ── Filters ───────────────────────────────────── -->
-  <div class="filter-row" id="filterRow">
+  <div class="filter-row">
     <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
     <button class="filter-btn" onclick="setFilter('exposed',this)">Exposed</button>
     <button class="filter-btn" onclick="setFilter('review',this)">Review</button>
-    <button class="filter-btn" onclick="setFilter('non_exposed',this)">Non-Exposed</button>
     <button class="filter-btn" onclick="setFilter('canadian',this)">Canadian</button>
   </div>
 
-  <!-- ── Tool List ─────────────────────────────────── -->
-  <div class="tool-grid" id="toolGrid">
-    <div class="tool-list" id="toolList"></div>
-    <div class="no-results" id="noResults">No tools match your search.</div>
+  <div class="stats-row">
+    <div class="stat-cell"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Tools tracked</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statExposed" style="color:var(--red)">—</div><div class="stat-label">Exposed</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statReview" style="color:var(--gold)">—</div><div class="stat-label">Review</div></div>
+    <div class="stat-cell"><div class="stat-num" id="statCanadian" style="color:var(--teal)">—</div><div class="stat-label">Canadian</div></div>
   </div>
 
-  <!-- ── Bottom CTA ────────────────────────────────── -->
+  <div class="tool-grid">
+    <div class="tool-list" id="toolList"></div>
+    <div class="no-results" id="noResults" style="display:none">No tools match your search.</div>
+  </div>
+
   <div class="cta-strip">
     <div class="cta-inner">
       <div class="cta-text">
-        <h3>This page tells you the risk. HarbourScan produces the documentation.</h3>
-        <p>HarbourScan maps your entire SaaS environment using the same sovereignty dataset shown here — jurisdictions, CLOUD Act exposure, and data residency for every tool at once. Then it produces the documentation: sovereignty audit, TIA package, and jurisdictional risk report.</p>
+        <h3>Run a full sovereignty assessment.</h3>
+        <p>Looking up individual tools is step one. HarbourScan maps your entire SaaS stack against Canadian compliance requirements.</p>
       </div>
       <a href="/harbourscan" class="btn-teal">Run HarbourScan →</a>
     </div>
   </div>
 
-  <footer>
+<footer>
     <div class="footer-inner">
       <div>
         <div class="footer-logo">
@@ -330,17 +196,18 @@
       <div>
         <div class="footer-col-title">Research</div>
         <ul class="footer-links">
-          <li><a href="/resources/canadian-saas-sovereignty-index">Sovereignty Index</a></li>
-          <li><a href="/resources/cloud-act-canadian-data">CLOUD Act & Canada</a></li>
-          <li><a href="/resources/data-residency-vs-data-sovereignty-canada">Residency vs Sovereignty</a></li>
+          <li><a href="/research/canadian-saas-sovereignty-index">Sovereignty Index</a></li>
+          <li><a href="/research/sovereignty-policy-scorecard">Policy Scorecard</a></li>
+          <li><a href="/research/government-saas-audit">Government SaaS Audit</a></li>
+          <li><a href="/research/provincial-exposure-index">Provincial Exposure Index</a></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Resources</div>
         <ul class="footer-links">
-          <li><a href="/harbourscan">HarbourScan</a></li>
-          <li><a href="/tools">Tools</a></li>
+          <li><a href="/engagements">Engagements</a></li>
           <li><a href="/resources">Guides</a></li>
+          <li><a href="/harbourscan">HarbourScan</a></li>
           <li><a href="/signals">Signals</a></li>
         </ul>
       </div>
@@ -349,78 +216,22 @@
       <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; Founder: <a href="/founder" style="color:var(--muted);text-decoration:none">Joshua van Es</a></span>
     </div>
   </footer>
-
   <script src="/assets/saas-db.js"></script>
   <script>
-    if (typeof saasDB === 'undefined') var saasDB = [];
-
     let currentFilter = 'all', currentSearch = '', expandedTool = null;
-    const riskOrder = { exposed: 0, review: 1, canadian: 2 };
 
-    function slugify(n) { return encodeURIComponent(n.toLowerCase().replace(/\s+/g, '-')); }
-    function getHashTool() { return decodeURIComponent(window.location.hash.replace('#', '')) || null; }
-
-    // ── Populate hero stats ──────────────────────────
-    function initStats() {
-      const total = saasDB.length;
-      const exposed = saasDB.filter(t => t.risk === 'exposed').length;
-      const review = saasDB.filter(t => t.risk === 'review').length;
-      const nonExposed = saasDB.filter(t => t.risk === 'non_exposed').length;
-      const canadian = saasDB.filter(t => t.risk === 'canadian').length;
-
-      document.getElementById('heroExposed').textContent = exposed;
-      document.getElementById('heroTotal').textContent = total;
-      document.getElementById('labelExposed').textContent = exposed;
-      document.getElementById('labelReview').textContent = review;
-      document.getElementById('labelNonExposed').textContent = nonExposed;
-      document.getElementById('labelCanadian').textContent = canadian;
-      document.getElementById('metaUpdated').textContent =
-        new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
-
-      // Risk meter
-      if (total > 0) {
-        document.getElementById('meterExposed').style.width = (exposed / total * 100) + '%';
-        document.getElementById('meterReview').style.width = (review / total * 100) + '%';
-        document.getElementById('meterNonExposed').style.width = (nonExposed / total * 100) + '%';
-        document.getElementById('meterCanadian').style.width = (canadian / total * 100) + '%';
-      }
+    function getHashTool() {
+      return decodeURIComponent(window.location.hash.replace('#', '')) || null;
     }
-
-    // ── Featured chips ───────────────────────────────
-    function initChips() {
-      var names = ['Slack','Microsoft Teams','Zoom','Google Workspace','Salesforce','Notion','Clio','Shopify'];
-      var html = '';
-      names.forEach(function(name) {
-        var tool = saasDB.find(function(t) { return t.name === name; });
-        if (tool) {
-          html += '<button class="chip" onclick="chipClick(\'' + name.replace(/'/g, "\\'") + '\')">' +
-            '<span class="cd ' + tool.risk + '"></span>' + name + '</button>';
-        }
-      });
-      document.getElementById('chipsRow').innerHTML = html;
+    function slugify(n) {
+      return encodeURIComponent(n.toLowerCase().replace(/\s+/g, '-'));
     }
-
-    function chipClick(name) {
-      document.getElementById('toolSearch').value = name;
-      currentSearch = name;
-      var tool = saasDB.find(function(t) { return t.name === name; });
-      if (tool) expandedTool = tool.name;
-      render();
-      setTimeout(function() {
-        var el = document.querySelector('.tool-detail.visible');
-        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }, 100);
-    }
-
-    // ── Filter ───────────────────────────────────────
     function setFilter(f, btn) {
       currentFilter = f;
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       render();
     }
-
-    // ── Get filtered list ────────────────────────────
     function getFiltered() {
       let t = saasDB;
       if (currentFilter !== 'all') t = t.filter(x => x.risk === currentFilter);
@@ -433,51 +244,36 @@
           (x.note && x.note.toLowerCase().includes(q))
         );
       }
-      return t.slice().sort(function(a, b) {
-        var ra = riskOrder[a.risk] !== undefined ? riskOrder[a.risk] : 9;
-        var rb = riskOrder[b.risk] !== undefined ? riskOrder[b.risk] : 9;
-        if (ra !== rb) return ra - rb;
-        return a.name.localeCompare(b.name);
-      });
+      return t;
     }
-
-    // ── Toggle detail ────────────────────────────────
     function toggleDetail(name) {
       if (expandedTool === name) {
         expandedTool = null;
-        try { window.history.replaceState(null, '', '/tools'); } catch(e) {}
+        window.history.replaceState(null, '', '/tools');
       } else {
         expandedTool = name;
-        try { window.history.replaceState(null, '', '/tools#' + slugify(name)); } catch(e) {}
+        window.history.replaceState(null, '', '/tools#' + slugify(name));
       }
       render();
     }
-
-    // ── Render ───────────────────────────────────────
     function render() {
       const tools = getFiltered();
       const list = document.getElementById('toolList');
       const noR = document.getElementById('noResults');
-      const grid = document.getElementById('toolGrid');
-      const chips = document.getElementById('chipsSection');
-      const filters = document.getElementById('filterRow');
       const total = saasDB.length;
-      const hasQuery = currentSearch || currentFilter !== 'all';
+      const exposed = saasDB.filter(t => t.risk === 'exposed').length;
+      const review = saasDB.filter(t => t.risk === 'review').length;
+      const canadian = saasDB.filter(t => t.risk === 'canadian').length;
 
-      // Show/hide sections
-      if (hasQuery || expandedTool) {
-        grid.classList.add('visible');
-        filters.classList.add('visible');
-        chips.style.display = 'none';
-        document.getElementById('searchCount').textContent = tools.length + ' of ' + total + ' tools';
-      } else {
-        grid.classList.remove('visible');
-        filters.classList.remove('visible');
-        chips.style.display = 'block';
-        document.getElementById('searchCount').textContent = '';
-      }
-
-      if (!hasQuery && !expandedTool) { list.innerHTML = ''; return; }
+      document.getElementById('statTotal').textContent = total;
+      document.getElementById('statExposed').textContent = exposed;
+      document.getElementById('statReview').textContent = review;
+      document.getElementById('statCanadian').textContent = canadian;
+      document.getElementById('metaTotal').textContent = total;
+      document.getElementById('searchCount').textContent =
+        (currentSearch || currentFilter !== 'all')
+          ? tools.length + ' of ' + total + ' tools'
+          : total + ' tools tracked';
 
       let h = '<div class="tool-header"><span>Tool</span><span>Parent Company</span><span>Jurisdiction</span><span>CLOUD Act</span><span>Data Residency</span><span>Risk</span></div>';
 
@@ -493,7 +289,7 @@
           '<div class="tool-jurisdiction">' + t.jurisdiction + '</div>' +
           '<div class="tool-cloudact ' + (t.cloudAct ? 'yes' : 'no') + '">' + (t.cloudAct ? 'Yes' : 'No') + '</div>' +
           '<div class="tool-residency">' + (t.dataResidency || '\u2014') + '</div>' +
-          '<div><span class="tool-risk risk-' + t.risk + '">' + (t.risk === 'non_exposed' ? 'non-exposed' : t.risk) + '</span></div>' +
+          '<div><span class="tool-risk risk-' + t.risk + '">' + t.risk + '</span></div>' +
           '</div>';
 
         if (ex) {
@@ -503,29 +299,11 @@
             '<div class="detail-field"><span class="detail-label">Jurisdiction</span><span class="detail-value">' + t.jurisdiction + '</span></div>' +
             '<div class="detail-field"><span class="detail-label">CLOUD Act Exposure</span><span class="detail-value" style="color:' + (t.cloudAct ? 'var(--red)' : 'var(--teal)') + '">' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No') + '</span></div>' +
             '<div class="detail-field"><span class="detail-label">Data Residency</span><span class="detail-value">' + (t.dataResidency || 'Not specified') + '</span></div>' +
-            '<div class="detail-field"><span class="detail-label">Risk Classification</span><span class="detail-value"><span class="tool-risk risk-' + t.risk + '">' + (t.risk === 'non_exposed' ? 'non-exposed' : t.risk) + '</span></span></div>' +
+            '<div class="detail-field"><span class="detail-label">Risk Classification</span><span class="detail-value"><span class="tool-risk risk-' + t.risk + '">' + t.risk + '</span></span></div>' +
             (t.note ? '<div class="tool-note"><p>' + t.note + '</p></div>' : '') +
             '</div>' +
-            (function() {
-              if (t.risk === 'exposed') {
-                return '<div class="tool-cta-nudge risk-exposed">' +
-                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' is CLOUD Act exposed.</strong> US law enforcement can compel disclosure of data held by ' + t.parent + ', regardless of where it\'s stored.</div>' +
-                  '<a href="/harbourscan" class="nudge-link">Assess your stack →</a></div>';
-              } else if (t.risk === 'review') {
-                return '<div class="tool-cta-nudge risk-review">' +
-                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' requires jurisdictional review.</strong> Ownership or infrastructure dependencies create potential exposure.</div>' +
-                  '<a href="/harbourscan" class="nudge-link">Assess your stack →</a></div>';
-              } else if (t.risk === 'non_exposed') {
-                return '<div class="tool-cta-nudge risk-non_exposed">' +
-                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' is not subject to the CLOUD Act or equivalent compelled disclosure laws.</strong> Parent entity is incorporated in a jurisdiction without known compelled disclosure mechanisms.</div>' +
-                  '<a href="/harbourscan" class="nudge-link">Assess your stack →</a></div>';
-              } else {
-                return '<div class="tool-cta-nudge risk-canadian">' +
-                  '<div class="tool-cta-nudge-text"><strong>' + t.name + ' is Canadian-headquartered.</strong> Jurisdiction today doesn\'t guarantee jurisdiction tomorrow.</div>' +
-                  '<a href="/harbourscan" class="nudge-link">Assess your stack →</a></div>';
-              }
-            })() +
             '<div class="tool-detail-actions">' +
+            '<a href="/harbourscan" class="btn-small btn-teal-sm">Assess with HarbourScan</a>' +
             '<a href="#" class="btn-small btn-outline-sm" onclick="event.preventDefault();event.stopPropagation();copyLink(\'' + ne + '\')">Copy link</a>' +
             '<span class="share-link">upperharbour.ca/tools#' + slugify(t.name) + '</span>' +
             '</div></div></div>';
@@ -547,18 +325,17 @@
       });
     }
 
-    // ── Search listener ──────────────────────────────
     document.getElementById('toolSearch').addEventListener('input', function(e) {
       currentSearch = e.target.value.trim();
       render();
     });
 
-    // ── Init ─────────────────────────────────────────
-    initStats();
-    initChips();
+    document.getElementById('metaUpdated').textContent =
+      new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
+
     render();
 
-    // Handle hash links
+    // Handle direct links via hash
     var ht = getHashTool();
     if (ht) {
       var m = saasDB.find(function(t) {
