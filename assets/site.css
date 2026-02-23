@@ -139,7 +139,7 @@ footer {
   .nav-hamburger { display: block; }
 }
 @media (max-width: 480px) {
-  .nav-upper { display: none; }
+  .nav-upper, .nav-harbour { display: none; }
 }
 
 /* ── Common article styles ──────────────────────────────────────── */
