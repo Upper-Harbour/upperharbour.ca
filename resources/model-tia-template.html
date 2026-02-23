@@ -23,6 +23,8 @@
   <meta name="twitter:description" content="The first publicly available Transfer Impact Assessment template for Law 25." />
   <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  
+  <link rel="stylesheet" href="/assets/site.css" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <script type="application/ld+json">
@@ -54,15 +56,6 @@
     :root { --bg: #06090E; --surface: #0C1219; --surface-2: #111A24; --teal: #3CB8B0; --teal-dim: rgba(60,184,176,0.08); --gold: #C9A84C; --gold-dim: rgba(201,168,76,0.08); --red: #E06050; --ice: #EAF0F4; --slate: #8A9DB0; --muted: #566778; --border: rgba(234,240,244,0.06); --border-md: rgba(234,240,244,0.1); --display: 'Newsreader', Georgia, serif; --body: 'DM Sans', sans-serif; --mono: 'JetBrains Mono', monospace; }
     html { scroll-behavior: smooth; }
     body { font-family: var(--body); background: var(--bg); color: var(--ice); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
-
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 52px; height: 66px; background: rgba(6,9,14,0.88); backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); }
-    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-upper { font-size: 17px; font-weight: 400; color: var(--slate); }
-    .nav-harbour { font-size: 17px; font-weight: 800; color: var(--ice); letter-spacing: -0.8px; margin-left: 4px; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-link { font-size: 13px; font-weight: 500; color: var(--muted); text-decoration: none; transition: color 0.2s; }
-    .nav-link:hover { color: var(--ice); }
-    .nav-cta { font-size: 13px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 9px 22px; border-radius: 4px; text-decoration: none; }
 
     .article-hero { padding: 140px 52px 32px; max-width: 820px; margin: 0 auto; }
     .breadcrumb { font-size: 12px; color: var(--muted); margin-bottom: 24px; font-family: var(--body); }
@@ -111,35 +104,16 @@
     .cta-section p { font-size: 15px; color: var(--muted); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
     .cta-btn { display: inline-block; font-size: 14px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 16px 36px; border-radius: 4px; text-decoration: none; }
 
-    footer { padding: 48px 0 32px; border-top: 1px solid var(--border); }
-    .footer-inner { max-width: 1120px; margin: 0 auto; padding: 0 48px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
-    .footer-logo { display: flex; align-items: center; gap: 9px; margin-bottom: 10px; }
-    .footer-desc { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 250px; }
-    .footer-col-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 16px; }
-    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-    .footer-links a { font-size: 13px; color: var(--slate); text-decoration: none; }
-    .footer-bottom { max-width: 1120px; margin: 32px auto 0; padding: 20px 48px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-    .footer-copy { font-size: 11px; color: var(--muted); }
-
-    
-    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
-    .nav-hamburger svg{display:block}
-    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
-    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
-    .nav-mobile-menu a:last-child{border-bottom:none}
-    .nav-mobile-menu a:hover{color:#EAF0F4}
-    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
-    .nav-mobile-open .nav-mobile-menu{display:flex}
-@media(max-width:540px){ .nav-links{display:none} .nav-hamburger{display:block} } @media(max-width:768px) {
-      nav { padding: 0 16px; } .nav-cta { font-size: 11px; padding: 8px 14px; white-space: nowrap; }
+    {
+       
       .article-hero { padding: 100px 20px 40px; }
       .body { padding: 0 20px 60px; }
       .faq-section { padding: 0 20px 60px; }
       .cta-section { padding: 48px 20px; }
       .tia-section { padding: 24px; }
-      .nav-links { gap: 16px; } .footer-inner{grid-template-columns:1fr;padding:0 20px;} .footer-bottom{padding:20px 20px 0;flex-direction:column;}
+        
     }
-    @media(max-width:480px) { .nav-upper,.nav-harbour { display: none; } }
+    @media(max-width:480px) { .nav-upper, }
   </style>
 </head>
 <body>
