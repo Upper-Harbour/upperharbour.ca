@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 22, 2026 — 02:40 ET",
+    "lastUpdated": "Feb 23, 2026 — 07:57 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "Samsara Launches Canadian Data Residency on AWS Canada Infrastructure",
+      "summary": "Samsara announced the deployment of dedicated data residency on AWS Canada infrastructure to serve Canadian public sector organizations, Crown corporations, and regulated industries. This infrastructure change eliminates cross-border data transfer requirements and addresses data sovereignty requirements for domestic government and regulated sector procurement.",
+      "type": "vendor",
+      "source": "Business Wire",
+      "sourceUrl": "https://www.businesswire.com/news/home/20250203584292/en/Samsara-Deepens-Investment-in-Canada-With-Local-Data-Residency-Domestic-Fulfillment-and-Continued-Market-Growth",
+      "date": "2026-02-03",
+      "impact": "Federal and provincial government departments, Crown corporations, and regulated sector organizations using or evaluating Samsara should confirm data residency is hosted on AWS Canada and review their existing deployment configurations to ensure compliance with domestic data residency requirements.",
+      "dbUpdate": true
+    },
     {
       "headline": "Quebec Announces $1.4 Billion Digital Sovereignty Plan",
       "summary": "Quebec has tabled a new digital sovereignty plan with $1.4 billion in funding, following operational failures at the provincial auto insurance board. The plan represents a provincial commitment to reducing reliance on external digital infrastructure and building domestic capacity.",

@@ -1,0 +1,17 @@
+{
+  "alerts": [
+    {
+      "tool_name": "Samsara",
+      "change": "data_residency",
+      "old_value": "US/multi-region",
+      "new_value": "AWS Canada (dedicated)",
+      "reason": "Vendor announced Canadian data residency capability on AWS Canada infrastructure",
+      "signal_headline": "Samsara Launches Canadian Data Residency on AWS Canada Infrastructure",
+      "signal_date": "2026-02-03",
+      "source_url": "https://www.businesswire.com/news/home/20250203584292/en/Samsara-Deepens-Investment-in-Canada-With-Local-Data-Residency-Domestic-Fulfillment-and-Continued-Market-Growth",
+      "flagged_at": "2026-02-23T07:57:11.602549",
+      "status": "pending_review"
+    }
+  ],
+  "updated": "2026-02-23T07:57:11.603049"
+}
