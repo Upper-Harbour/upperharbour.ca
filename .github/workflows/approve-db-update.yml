@@ -42,8 +42,9 @@ jobs:
           APPROVED=$(python3 -c "
           import json
           with open('db-alerts.json') as f:
-            alerts = json.load(f)
-          count = sum(1 for a in alerts if a.get('status') == 'approved')
+            data = json.load(f)
+          alerts = data.get('alerts', data) if isinstance(data, dict) else data
+          count = sum(1 for a in alerts if isinstance(a, dict) and a.get('status') == 'approved')
           print(count)
           ")
           echo "approved=$APPROVED" >> $GITHUB_OUTPUT
