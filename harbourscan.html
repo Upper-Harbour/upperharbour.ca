@@ -228,6 +228,7 @@
     .stack-search { position: relative; margin-bottom: 24px; }
     .stack-search input { width: 100%; font-family: var(--font); font-size: 15px; color: var(--ice); background: var(--navy); border: 1px solid var(--border-md); border-radius: 6px; padding: 16px 20px 16px 44px; outline: none; transition: border-color 0.25s, box-shadow 0.25s; }
     .stack-search input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(60,184,176,0.1); }
+    #reportIntakeForm input:focus, #reportIntakeForm select:focus, #reportIntakeForm textarea:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(60,184,176,0.1); }
     .stack-search input::placeholder { color: var(--muted); }
     .stack-search svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--muted); }
     .stack-dropdown { position: absolute; top: 100%; left: 0; right: 0; background: var(--navy); border: 1px solid var(--border-md); border-top: none; border-radius: 0 0 6px 6px; max-height: 280px; overflow-y: auto; z-index: 10; display: none; }
@@ -937,15 +938,66 @@
         <!-- ═══════════════════════════════════════════════════════ -->
         <!-- PRICING + CTA (Step 3 of gate — the actual ask)        -->
         <!-- ═══════════════════════════════════════════════════════ -->
-        <div style="background:var(--surface); border:1px solid rgba(60,184,176,0.2); border-radius:12px; padding:40px; margin-bottom:32px; text-align:center;">
-          <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">Full HarbourScan Report</div>
-          <div style="font-size:42px; font-weight:800; color:var(--ice); margin-bottom:4px; letter-spacing:-1px;">$2,500</div>
-          <div style="font-size:13px; color:var(--muted); margin-bottom:24px;">One-time · Includes all five sections · Board-ready PDF</div>
-          <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-            <a href="/cdn-cgi/l/email-protection#f49e9b879cb481848491869c9586969b8186da979b99cb8781969e919780c9bc9586969b8186a797959ad1c6c4a691849b8680d1c6c4a6918581918780d2969b908dc9bb8693959a9d8e95809d9b9ad1c7b5d1c6c4d1c4b5a4869b829d9a9791d1c7b5d1c6c4d1c4b5a09b9b9887d1c6c49587879187879190d1c7b5d1c6c4d1c4b5d1c4b5bdd390d1c6c4989d9f91d1c6c4809bd1c6c4848186979c958791d1c6c495d1c6c492819898d1c6c4bc9586969b8186a797959ad1c6c4a691849b8680da" class="btn btn-primary" style="font-size:14px; padding:14px 32px; text-decoration:none;">Get Full Report</a>
-            <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="btn btn-secondary" style="font-size:14px; padding:14px 28px; text-decoration:none;">Book a 15-min Call First</a>
+        <div style="background:var(--surface); border:1px solid rgba(60,184,176,0.2); border-radius:12px; padding:40px; margin-bottom:32px;">
+          <div style="text-align:center;">
+            <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">Full HarbourScan Report</div>
+            <div style="font-size:42px; font-weight:800; color:var(--ice); margin-bottom:4px; letter-spacing:-1px;">$2,500</div>
+            <div style="font-size:13px; color:var(--muted); margin-bottom:32px;">One-time · Includes all five sections · Board-ready PDF</div>
           </div>
-          <p style="font-size:12px; color:var(--muted); margin-top:20px; line-height:1.6;">We review your scan data, generate your report, and deliver within 48 hours.<br/>Questions? <a href="/cdn-cgi/l/email-protection#8ae0e5f9e2cafffafaeff8e2ebf8e8e5fff8a4e9e5e7" style="color:var(--teal); text-decoration:none;"><span class="__cf_email__" data-cfemail="ec86839f84ac999c9c899e848d9e8e83999ec28f8381">[email&#160;protected]</span></a></p>
+
+          <!-- Intake form -->
+          <div id="reportIntakeForm" style="max-width:480px; margin:0 auto;">
+            <div style="margin-bottom:16px;">
+              <label style="display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px;">Name</label>
+              <input type="text" id="intakeName" style="width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border-md); border-radius:6px; color:var(--ice); font-size:14px; font-family:var(--body); outline:none;" placeholder="Your full name" />
+            </div>
+            <div style="margin-bottom:16px;">
+              <label style="display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px;">Organization</label>
+              <input type="text" id="intakeOrg" style="width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border-md); border-radius:6px; color:var(--ice); font-size:14px; font-family:var(--body); outline:none;" placeholder="Organization name" />
+            </div>
+            <div style="margin-bottom:16px;">
+              <label style="display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px;">Email</label>
+              <input type="email" id="intakeEmail" style="width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border-md); border-radius:6px; color:var(--ice); font-size:14px; font-family:var(--body); outline:none;" placeholder="you@organization.ca" />
+            </div>
+            <div style="margin-bottom:16px;">
+              <label style="display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px;">Province / Jurisdiction</label>
+              <select id="intakeProvince" style="width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border-md); border-radius:6px; color:var(--ice); font-size:14px; font-family:var(--body); outline:none; appearance:none; -webkit-appearance:none;">
+                <option value="">Select province</option>
+                <option value="AB">Alberta</option>
+                <option value="BC">British Columbia</option>
+                <option value="MB">Manitoba</option>
+                <option value="NB">New Brunswick</option>
+                <option value="NL">Newfoundland and Labrador</option>
+                <option value="NS">Nova Scotia</option>
+                <option value="NT">Northwest Territories</option>
+                <option value="NU">Nunavut</option>
+                <option value="ON">Ontario</option>
+                <option value="PE">Prince Edward Island</option>
+                <option value="QC">Quebec</option>
+                <option value="SK">Saskatchewan</option>
+                <option value="YT">Yukon</option>
+                <option value="Federal">Federal</option>
+              </select>
+            </div>
+            <div style="margin-bottom:24px;">
+              <label style="display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px;">Anything we should know about your environment? <span style="font-weight:400; text-transform:none; letter-spacing:0;">(optional)</span></label>
+              <textarea id="intakeNotes" rows="3" style="width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border-md); border-radius:6px; color:var(--ice); font-size:14px; font-family:var(--body); outline:none; resize:vertical;" placeholder="e.g., number of tools, regulatory context, timeline"></textarea>
+            </div>
+            <button onclick="submitReportRequest()" class="btn btn-primary" style="width:100%; font-size:14px; padding:16px 32px; text-decoration:none; cursor:pointer; border:none;">Request Full HarbourScan Report</button>
+            <div style="text-align:center; margin-top:16px;">
+              <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="font-size:13px; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border-md);">Prefer to talk first? Book a 15-minute call</a>
+            </div>
+          </div>
+
+          <!-- Confirmation (hidden by default) -->
+          <div id="reportIntakeConfirm" style="display:none; max-width:480px; margin:0 auto; text-align:center; padding:24px 0;">
+            <div style="width:48px; height:48px; border-radius:50%; background:rgba(60,184,176,0.12); border:2px solid var(--teal); display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3CB8B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div style="font-size:18px; font-weight:700; color:var(--ice); margin-bottom:10px;">Your request has been received.</div>
+            <p style="font-size:14px; color:var(--slate); line-height:1.7;">You'll receive a short engagement letter and invoice within 24 hours so your team can initiate procurement.</p>
+            <p style="font-size:13px; color:var(--muted); margin-top:16px; line-height:1.6;">If you'd like to discuss your environment first, you can <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="color:var(--teal); text-decoration:none;">book a short call here</a>.</p>
+          </div>
         </div>
       </div>
 
@@ -1090,8 +1142,80 @@
     document.getElementById('blurredSection').style.display = 'none';
     // Show the detailed preview + pricing
     document.getElementById('reportPreview').style.display = 'block';
+    // Pre-fill intake form from scan data
+    if (state && state.org) {
+      if (state.org.name) document.getElementById('intakeOrg').value = state.org.name;
+      if (state.org.province) document.getElementById('intakeProvince').value = state.org.province;
+    }
     // Smooth scroll to the preview
     document.getElementById('reportPreview').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function submitReportRequest() {
+    var name = document.getElementById('intakeName').value.trim();
+    var org = document.getElementById('intakeOrg').value.trim();
+    var email = document.getElementById('intakeEmail').value.trim();
+    var province = document.getElementById('intakeProvince').value;
+    var notes = document.getElementById('intakeNotes').value.trim();
+
+    // Basic validation
+    if (!name || !org || !email) {
+      alert('Please fill in your name, organization, and email.');
+      return;
+    }
+    if (!email.includes('@')) {
+      alert('Please enter a valid email address.');
+      return;
+    }
+
+    // Collect scan context
+    var scanSummary = '';
+    if (state && state.org) {
+      scanSummary += 'Org: ' + (state.org.name || '') + '\n';
+      scanSummary += 'Province: ' + (state.org.province || '') + '\n';
+      scanSummary += 'Sector: ' + (state.org.sector || '') + '\n';
+      scanSummary += 'Tools scanned: ' + (state.selectedTools ? state.selectedTools.length : 0) + '\n';
+      if (state.selectedTools) {
+        var toolNames = state.selectedTools.map(function(t) { return t.name; }).join(', ');
+        scanSummary += 'Tool list: ' + toolNames + '\n';
+      }
+    }
+
+    // Disable button while submitting
+    var btn = document.querySelector('#reportIntakeForm button');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+    btn.style.opacity = '0.6';
+
+    // Submit to Formspree
+    fetch('https://formspree.io/f/xjgepypp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        organization: org,
+        email: email,
+        province: province,
+        notes: notes,
+        _subject: 'HarbourScan Report Request — ' + org,
+        scan_data: scanSummary
+      })
+    }).then(function(response) {
+      if (response.ok) {
+        document.getElementById('reportIntakeForm').style.display = 'none';
+        document.getElementById('reportIntakeConfirm').style.display = 'block';
+      } else {
+        btn.disabled = false;
+        btn.textContent = 'Request Full HarbourScan Report';
+        btn.style.opacity = '1';
+        alert('Something went wrong. Please try again or email josh@upperharbour.ca directly.');
+      }
+    }).catch(function() {
+      btn.disabled = false;
+      btn.textContent = 'Request Full HarbourScan Report';
+      btn.style.opacity = '1';
+      alert('Something went wrong. Please try again or email josh@upperharbour.ca directly.');
+    });
   }
 
   function buildFreeResults() {
