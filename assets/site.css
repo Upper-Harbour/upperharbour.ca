@@ -59,7 +59,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 52px; height: 66px;
-  background: rgba(6,9,14,0.88); backdrop-filter: blur(16px);
+  background: rgba(10,16,24,0.92); backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; flex-shrink: 0; }
