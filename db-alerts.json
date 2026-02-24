@@ -11,7 +11,19 @@
       "source_url": "https://www.businesswire.com/news/home/20250203584292/en/Samsara-Deepens-Investment-in-Canada-With-Local-Data-Residency-Domestic-Fulfillment-and-Continued-Market-Growth",
       "flagged_at": "2026-02-23T07:57:11.602549",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Zoho Payroll",
+      "change": "data_residency",
+      "old_value": "Unknown/Not specified",
+      "new_value": "Canadian data centre available",
+      "reason": "Zoho Canada launched Payroll module with explicit in-country data centre capabilities",
+      "signal_headline": "Zoho Canada launches Payroll and POS modules with Canadian data residency",
+      "signal_date": "2026-02-10",
+      "source_url": "https://channelbuzz.ca/2026/02/zoho-canada-adds-payroll-pos-solopreneur-offering-to-business-operating-system-45910/",
+      "flagged_at": "2026-02-24T11:57:21.341982",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-02-23T07:57:11.603049"
+  "updated": "2026-02-24T11:57:21.342577"
 }

@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 24, 2026 — 06:13 ET",
+    "lastUpdated": "Feb 24, 2026 — 11:57 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "Zoho Canada launches Payroll and POS modules with Canadian data residency",
+      "summary": "Zoho Canada expanded its business operating system platform with Payroll and Point of Sales modules designed for Canadian regulatory compliance, emphasizing in-country data centre capabilities. This represents a vendor offering that addresses Canadian data residency requirements for payroll and transaction processing workloads.",
+      "type": "vendor",
+      "source": "ChannelBuzz",
+      "sourceUrl": "https://channelbuzz.ca/2026/02/zoho-canada-adds-payroll-pos-solopreneur-offering-to-business-operating-system-45910/",
+      "date": "2026-02-10",
+      "impact": "Canadian small and medium businesses evaluating payroll and POS solutions should assess Zoho's Canadian data residency claims against their own data sovereignty requirements and provincial employment standards.",
+      "dbUpdate": true
+    },
     {
       "headline": "Alberta OIPC joins 61 international data protection authorities on AI-generated imagery privacy risks",
       "summary": "Alberta's Office of the Information and Privacy Commissioner participated in a coordinated international statement from 61 data protection authorities addressing privacy risks associated with AI-generated imagery. This represents Canadian regulatory alignment with global privacy standards on emerging AI threats and signals domestic focus on generative AI governance.",
