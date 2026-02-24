@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 23, 2026 — 23:52 ET",
+    "lastUpdated": "Feb 24, 2026 — 06:13 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "Alberta OIPC joins 61 international data protection authorities on AI-generated imagery privacy risks",
+      "summary": "Alberta's Office of the Information and Privacy Commissioner participated in a coordinated international statement from 61 data protection authorities addressing privacy risks associated with AI-generated imagery. This represents Canadian regulatory alignment with global privacy standards on emerging AI threats and signals domestic focus on generative AI governance.",
+      "type": "policy",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/alberta-oipc-part-of-international-joint-statement-on-privacy-risks-of-ai-generated-imagery/",
+      "date": "2026-02-23",
+      "impact": "Canadian organizations deploying or considering AI image generation tools should monitor OIPC guidance and ensure compliance frameworks address the identified privacy risks in this statement.",
+      "dbUpdate": false
+    },
     {
       "headline": "Alberta OIPC joins 61 global data protection authorities on AI-generated imagery privacy risks",
       "summary": "The Alberta Office of the Information and Privacy Commissioner participated in an international joint statement from 61 data protection authorities addressing privacy risks associated with AI-generated imagery. This coordinated stance reflects Canadian regulators' engagement with global privacy standards on emerging AI threats.",
