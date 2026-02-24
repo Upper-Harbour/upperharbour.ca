@@ -209,7 +209,7 @@ def collect_web_search() -> list[dict]:
 
     for idx, query in enumerate(SEARCH_QUERIES):
         if idx > 0:
-            time.sleep(120)  # Wait 120s between searches to avoid rate limits
+            time.sleep(90)  # Wait 90s to reset rate limit window
         try:
             response = client.messages.create(
                 model="claude-haiku-4-5-20251001",
@@ -421,7 +421,7 @@ def send_digest_email(signals: list[dict]):
           <h3>{signal.get('headline', '')}</h3>
           <p>{signal.get('summary', '')}</p>
           <div class="impact">Impact: {signal.get('impact', 'TBD')}</div>
-          <div class="meta"><a href="{signal.get('source_url', '#')}" style="color:#3CB8B0;">View source</a></div>
+          <div class="meta"><a href="{signal.get('sourceUrl', signal.get('source_url', '#'))}" style="color:#3CB8B0;">View source</a></div>
         """
 
         if signal.get("db_update"):
