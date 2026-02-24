@@ -506,9 +506,38 @@ def publish_signals(new_signals: list[dict]):
     """Auto-publish signals directly to signals.json and flag db updates."""
     existing = load_existing_signals()
 
+    # Build sets of existing source URLs and headline fingerprints for dedup
+    existing_urls = set()
+    existing_headlines = set()
+    for s in existing.get("signals", []):
+        url = s.get("sourceUrl", "").strip().rstrip("/").lower()
+        if url:
+            existing_urls.add(url)
+        headline = s.get("headline", "").lower().strip()
+        if headline:
+            # Extract key terms for fuzzy matching (strips filler words)
+            words = set(w for w in headline.split() if len(w) > 3 and w not in {'this', 'that', 'with', 'from', 'their', 'about', 'into', 'have', 'been', 'will', 'more', 'than', 'also', 'over', 'under', 'after', 'before', 'between', 'through', 'across', 'along', 'other', 'each', 'which', 'would', 'could', 'should', 'there', 'these', 'those', 'where', 'when', 'what', 'just', 'some', 'most', 'very', 'only', 'first', 'international', 'global', 'world', 'worldwide', 'announces', 'announced', 'launches', 'launched', 'joins', 'joined', 'says', 'said', 'new', 'based'})
+            key_terms = sorted(words)[:6]  # Top 6 keywords alphabetically
+            existing_headlines.add(hashlib.md5(' '.join(key_terms).encode()).hexdigest())
+
     published = []
     db_alerts = []
     for signal in new_signals:
+        # Check if this signal's source URL already exists
+        src_url = signal.get("source_url", "").strip().rstrip("/").lower()
+        if src_url and src_url in existing_urls:
+            log.info(f"Skipping duplicate (URL match): {signal.get('headline', '?')[:60]}")
+            continue
+
+        # Check headline similarity against existing (keyword-based)
+        headline = signal.get("headline", "").lower().strip()
+        words = set(w for w in headline.split() if len(w) > 3 and w not in {'this', 'that', 'with', 'from', 'their', 'about', 'into', 'have', 'been', 'will', 'more', 'than', 'also', 'over', 'under', 'after', 'before', 'between', 'through', 'across', 'along', 'other', 'each', 'which', 'would', 'could', 'should', 'there', 'these', 'those', 'where', 'when', 'what', 'just', 'some', 'most', 'very', 'only', 'first', 'international', 'global', 'world', 'worldwide', 'announces', 'announced', 'launches', 'launched', 'joins', 'joined', 'says', 'said', 'new', 'based'})
+        key_terms = sorted(words)[:6]
+        headline_hash = hashlib.md5(' '.join(key_terms).encode()).hexdigest()
+        if headline_hash in existing_headlines:
+            log.info(f"Skipping duplicate (headline match): {signal.get('headline', '?')[:60]}")
+            continue
+
         item = {
             "headline": signal.get("headline", ""),
             "summary": signal.get("summary", ""),
@@ -520,6 +549,8 @@ def publish_signals(new_signals: list[dict]):
             "dbUpdate": signal.get("db_update") is not None,
         }
         published.append(item)
+        existing_urls.add(src_url)
+        existing_headlines.add(headline_hash)
 
         # Collect database update alerts
         if signal.get("db_update"):
