@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 24, 2026 — 11:57 ET",
+    "lastUpdated": "Feb 24, 2026 — 18:13 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "Deloitte Canada policy brief examines definitional gaps in Canadian AI sovereignty strategy",
+      "summary": "Deloitte Canada published a policy analysis addressing ambiguities in how Canada defines AI sovereignty, examining data residency requirements, compute infrastructure control, procurement constraints, and the feasibility of domestic alternatives to U.S. hyperscalers. The brief provides critical context for federal and provincial policy development and reveals structural constraints in achieving full AI sovereignty without significant investment.",
+      "type": "policy",
+      "source": "Deloitte Canada",
+      "sourceUrl": "https://www.deloitte.com/ca/en/our-thinking/future-of-canada-center/canadian-ai-sovereignty.html",
+      "date": "2026-02-10",
+      "impact": "Federal procurement teams and crown corporations should review this analysis when evaluating AI infrastructure decisions, as it documents the practical limitations of sovereignty-first procurement models.",
+      "dbUpdate": false
+    },
     {
       "headline": "Zoho Canada launches Payroll and POS modules with Canadian data residency",
       "summary": "Zoho Canada expanded its business operating system platform with Payroll and Point of Sales modules designed for Canadian regulatory compliance, emphasizing in-country data centre capabilities. This represents a vendor offering that addresses Canadian data residency requirements for payroll and transaction processing workloads.",
