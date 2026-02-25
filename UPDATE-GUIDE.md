@@ -80,4 +80,6 @@ find . -type f \( -name "*.html" -o -name "*.md" -o -name "*.txt" \) \
     s/all ${OLD_COUNT}/all ${NEW_COUNT}/g" {} +
 ```
 
-Then review the diff — percentage stats (68%, 75%, 19%, etc.) need manual recalculation.
+Then review the diff — percentage stats (68%, 95%, 22%, etc.) need manual recalculation.
+
+**CRITICAL: Run the validation checklist** from CLASSIFICATION-RUBRIC.md after every DB change. The quick validation command checks that `jurisdiction` and `risk` fields are consistent — a mismatch will cause visible stat discrepancies on the live site.

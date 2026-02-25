@@ -112,6 +112,8 @@ Every tool in the database receives exactly one of four risk classifications:
 
 **Why these aren't "canadian":** These tools are not Canadian-incorporated. While they are not CLOUD Act exposed, they operate under the legal frameworks of their home jurisdictions. For Canadian organizations specifically seeking Canadian-incorporated tools (e.g., for government procurement requiring Canadian jurisdiction), these do not qualify.
 
+**⚠️ GUARDRAIL: A tool with `jurisdiction:"Canada"` must NEVER be classified as `non_exposed`.** If the parent is Canadian-incorporated, the correct classification is always `canadian`. The `non_exposed` tier is exclusively for non-US, non-UK, non-AU, **non-Canadian** foreign vendors. This distinction matters because the site's JavaScript counts Canadian-owned tools by `jurisdiction:"Canada"` — a mismatch between `jurisdiction` and `risk` fields will cause stat discrepancies between dynamic and hardcoded values across the site.
+
 **Why these aren't "review":** There is no known compelled disclosure pathway. The parent entity is not subject to the CLOUD Act, the UK IPA, or the AU AA Act. There is no case-by-case jurisdictional decision to make — the tool is not exposed to these mechanisms.
 
 ---
@@ -262,7 +264,7 @@ Each tool in the database has the following fields:
 |-------|----------|-------------|-------------------|---------------------|
 | `exposed` | `true` | US | No | CLOUD Act |
 | `review` | `true` or `false` | US + CA residency, UK, AU, dual, or US-hosted | Varies | CLOUD Act, IPA, AA Act, or indirect |
-| `non_exposed` | `false` | EU, NZ, CH, IN, IL, etc. | N/A | None known |
+| `non_exposed` | `false` | EU, NZ, CH, IN, IL, etc. (**never** Canada) | N/A | None known |
 | `canadian` | `false` | Canada | Typically yes | None (Canadian law applies) |
 
 ### category field values
@@ -316,8 +318,8 @@ The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Trigger
 |---------------|-------|------------|
 | EXPOSED | 173 | 53% |
 | REVIEW | 60 | 19% |
-| NON_EXPOSED | 29 | 9% |
-| CANADIAN | 62 | 19% |
+| NON_EXPOSED | 19 | 6% |
+| CANADIAN | 72 | 22% |
 | **Total** | **324** | **100%** |
 
 ---
@@ -328,6 +330,55 @@ The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Trigger
 |------|--------|--------|
 | Feb 2026 | Initial rubric created | Codify classification logic used since database creation |
 | Feb 2026 | Four-tier system implemented | Split "review" and "canadian" tiers to distinguish non-US/non-compelled-disclosure tools from Canadian-incorporated tools. Added compelled disclosure law tracking for UK (IPA) and Australia (AA Act). Added `category` and `industries` fields. |
+
+---
+
+## Post-Entry Validation Checklist
+
+After adding or modifying any tool in `saas-db.js`, verify these invariants hold for the entire database. Any violation indicates a classification error.
+
+**Field consistency rules (must all pass):**
+
+| Rule | Check | If violated |
+|------|-------|-------------|
+| Canada → canadian | Every tool with `jurisdiction:"Canada"` must have `risk:"canadian"` | Reclassify to `canadian` |
+| canadian → Canada | Every tool with `risk:"canadian"` must have `jurisdiction:"Canada"` | Fix jurisdiction or reclassify |
+| canadian → no CLOUD | Every tool with `risk:"canadian"` must have `cloudAct:false` | Fix cloudAct or reclassify |
+| non_exposed → not Canada | No tool with `risk:"non_exposed"` may have `jurisdiction:"Canada"` | Reclassify to `canadian` |
+| non_exposed → no CLOUD | Every tool with `risk:"non_exposed"` must have `cloudAct:false` | Fix cloudAct or reclassify |
+| cloudAct:true → not canadian/non_exposed | No tool with `cloudAct:true` may be `risk:"canadian"` or `risk:"non_exposed"` | Reclassify to `exposed` or `review` |
+| US + no CLOUD | No tool with `jurisdiction:"United States"` should have `cloudAct:false` | Fix cloudAct |
+
+**Why this matters:** The site's JavaScript computes stats using different fields for different metrics (e.g., `jurisdiction:"Canada"` for the Canadian-owned stat vs `risk:"canadian"` for the ownership pie chart). If `jurisdiction` and `risk` fields are inconsistent, the dynamic stats on the live page will not match hardcoded fallback values, producing visible discrepancies like "19% Canadian-owned" in one place and "22%" in another.
+
+**Quick validation command (run in project root):**
+
+```bash
+python3 -c "
+import re
+with open('assets/saas-db.js') as f: raw = f.read()
+entries = []
+for m in re.finditer(r'\{([^}]+)\}', raw):
+    e = {}
+    for f in re.finditer(r'(\w+):\s*(?:\"([^\"]*)\"|(\w+))', m.group(1)):
+        k, v = f.group(1), f.group(2) if f.group(2) is not None else f.group(3)
+        if v == 'true': v = True
+        elif v == 'false': v = False
+        e[k] = v
+    if 'name' in e: entries.append(e)
+ok = True
+for t in entries:
+    j, r, ca, n = t.get('jurisdiction',''), t.get('risk',''), t.get('cloudAct'), t.get('name','')
+    if j == 'Canada' and r != 'canadian': print(f'FAIL: {n} jurisdiction=Canada but risk={r}'); ok = False
+    if r == 'canadian' and j != 'Canada': print(f'FAIL: {n} risk=canadian but jurisdiction={j}'); ok = False
+    if r == 'canadian' and ca == True: print(f'FAIL: {n} risk=canadian but cloudAct=true'); ok = False
+    if r == 'non_exposed' and j == 'Canada': print(f'FAIL: {n} risk=non_exposed but jurisdiction=Canada'); ok = False
+    if r == 'non_exposed' and ca == True: print(f'FAIL: {n} risk=non_exposed but cloudAct=true'); ok = False
+    if ca == True and r in ('canadian','non_exposed'): print(f'FAIL: {n} cloudAct=true but risk={r}'); ok = False
+    if j == 'United States' and ca == False: print(f'WARN: {n} jurisdiction=US but cloudAct=false'); ok = False
+if ok: print('ALL CHECKS PASSED ✓')
+"
+```
 
 ---
 

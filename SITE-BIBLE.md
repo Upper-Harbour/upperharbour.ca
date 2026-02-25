@@ -290,7 +290,7 @@ The homepage and several articles cite Anton Carniaux (Microsoft France) from Fr
 ## Content Tone
 
 - **Authoritative but not academic.** The site presents compliance intelligence, not consulting jargon. Short sentences. Active voice.
-- **The data speaks.** Lead with numbers (71%, 324, 75%, 19%). Let the statistics create urgency.
+- **The data speaks.** Lead with numbers (71%, 324, 95%, 22%). Let the statistics create urgency.
 - **Never say "engagement."** Say "documentation," "deliverables," "compliance work," or "scoping call."
 - **"Jurisdictional" is the differentiator.** Not just "compliance" — "jurisdictional compliance." This is what makes Upper Harbour different from generic privacy consultants.
 - **CTAs are direct.** "Run HarbourScan — free →" not "Learn more about our assessment tool." "Request a scoping call" not "Contact us to discuss your needs."

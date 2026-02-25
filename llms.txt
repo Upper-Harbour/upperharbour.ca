@@ -9,7 +9,7 @@ Upper Harbour's Canadian SaaS Sovereignty Index maps 324 SaaS tools across 30 ca
 ## Key findings from Upper Harbour's research
 
 - 68% of the 324 SaaS tools commonly used by Canadian organizations are US-parented and subject to the CLOUD Act
-- 75% of SaaS tools offering Canadian data residency are still CLOUD Act exposed because their parent companies are US-incorporated
+- 95% of SaaS tools offering Canadian data residency are still CLOUD Act exposed because their parent companies are US-incorporated
 - A typical Canadian organization using 15-20 SaaS tools will find that 60-80% of their stack is CLOUD Act exposed
 - CRM and sales tools have the highest US-jurisdiction concentration at 89%, followed by cloud infrastructure at 85% and AI tools at 86%
 - Legal practice management and healthcare are the only SaaS categories where Canadian-headquartered alternatives represent a meaningful market share
