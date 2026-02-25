@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found | Upper Harbour</title>
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <style>
+    .four-oh-four { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 66px); padding: 40px 20px; text-align: center; }
+    .four-oh-four-code { font-family: var(--mono, 'JetBrains Mono', monospace); font-size: 13px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal, #3CB8B0); margin-bottom: 20px; }
+    .four-oh-four h1 { font-family: var(--display, 'Newsreader', Georgia, serif); font-size: clamp(32px, 5vw, 48px); font-weight: 900; color: var(--ice, #EAF0F4); line-height: 1.15; margin-bottom: 16px; }
+    .four-oh-four p { font-size: 16px; color: var(--slate, #8A9DB0); line-height: 1.7; max-width: 480px; margin-bottom: 32px; }
+    .four-oh-four-links { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .four-oh-four-links a { font-size: 13px; font-weight: 700; padding: 12px 24px; border-radius: 4px; text-decoration: none; transition: background 0.2s, transform 0.15s; }
+    .four-oh-four-links .primary { color: var(--bg, #06090E); background: var(--teal, #3CB8B0); }
+    .four-oh-four-links .primary:hover { background: #47cec5; transform: translateY(-1px); }
+    .four-oh-four-links .secondary { color: var(--teal, #3CB8B0); border: 1px solid var(--teal, #3CB8B0); }
+    .four-oh-four-links .secondary:hover { background: rgba(60,184,176,0.08); }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/tools" class="nav-link">Tools</a>
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/resources" class="nav-link">Guides</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/signals">Signals</a><a href="/tools">Tools</a><a href="/research">Research</a><a href="/resources">Guides</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <main class="four-oh-four">
+    <div class="four-oh-four-code">404 — Page not found</div>
+    <h1>Wrong jurisdiction.</h1>
+    <p>The page you're looking for doesn't exist here. Try the Sovereignty Index to look up a tool, or run HarbourScan to assess your stack.</p>
+    <div class="four-oh-four-links">
+      <a href="/tools" class="primary">Search the Sovereignty Index</a>
+      <a href="/" class="secondary">Back to home</a>
+    </div>
+  </main>
+</body>
+</html>
