@@ -8,7 +8,7 @@ Maintainer: Joshua van Es
 
 ## Purpose
 
-This document defines the classification logic used in Upper Harbour's Canadian SaaS Sovereignty Index (the 292-tool database powering the Tools page, HarbourScan, and all published research). It exists so that:
+This document defines the classification logic used in Upper Harbour's Canadian SaaS Sovereignty Index (the 324-tool database powering the Tools page, HarbourScan, and all published research). It exists so that:
 
 - Classification decisions are consistent across all tools
 - New tools and reclassifications follow a documented logic model
@@ -314,11 +314,11 @@ The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Trigger
 
 | Classification | Count | Percentage |
 |---------------|-------|------------|
-| EXPOSED | 160 | 55% |
-| REVIEW | 52 | 18% |
-| NON_EXPOSED | 18 | 6% |
-| CANADIAN | 62 | 21% |
-| **Total** | **292** | **100%** |
+| EXPOSED | 173 | 53% |
+| REVIEW | 60 | 19% |
+| NON_EXPOSED | 29 | 9% |
+| CANADIAN | 62 | 19% |
+| **Total** | **324** | **100%** |
 
 ---
 

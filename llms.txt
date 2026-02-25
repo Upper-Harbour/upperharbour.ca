@@ -4,12 +4,12 @@
 
 ## Core offering
 
-Upper Harbour's Canadian SaaS Sovereignty Index maps 292 SaaS tools across 14 categories to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. HarbourScan is a free, browser-based assessment tool that maps an organization's SaaS stack to jurisdictional exposure and generates a compliance gap report.
+Upper Harbour's Canadian SaaS Sovereignty Index maps 324 SaaS tools across 30 categories to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. HarbourScan is a free, browser-based assessment tool that maps an organization's SaaS stack to jurisdictional exposure and generates a compliance gap report.
 
 ## Key findings from Upper Harbour's research
 
-- 71% of the 292 SaaS tools commonly used by Canadian organizations are US-parented and subject to the CLOUD Act
-- 83% of SaaS tools offering Canadian data residency are still CLOUD Act exposed because their parent companies are US-incorporated
+- 68% of the 324 SaaS tools commonly used by Canadian organizations are US-parented and subject to the CLOUD Act
+- 75% of SaaS tools offering Canadian data residency are still CLOUD Act exposed because their parent companies are US-incorporated
 - A typical Canadian organization using 15-20 SaaS tools will find that 60-80% of their stack is CLOUD Act exposed
 - CRM and sales tools have the highest US-jurisdiction concentration at 89%, followed by cloud infrastructure at 85% and AI tools at 86%
 - Legal practice management and healthcare are the only SaaS categories where Canadian-headquartered alternatives represent a meaningful market share
@@ -23,7 +23,7 @@ Joshua van Es is the founder of Upper Harbour. He has a background in corporate 
 
 ## Original Research
 
-- [Canadian SaaS Sovereignty Index](https://upperharbour.ca/resources/canadian-saas-sovereignty-index): 292 SaaS tools mapped to parent jurisdictions with CLOUD Act exposure data
+- [Canadian SaaS Sovereignty Index](https://upperharbour.ca/resources/canadian-saas-sovereignty-index): 324 SaaS tools mapped to parent jurisdictions with CLOUD Act exposure data
 - [Model TIA Template for Law 25](https://upperharbour.ca/research/model-tia-template): The first publicly available Transfer Impact Assessment template for Law 25
 - [Government SaaS Stack Audit](https://upperharbour.ca/research/government-saas-audit): CLOUD Act exposure analysis of Canadian federal and provincial government IT
 - [Provincial Exposure Index](https://upperharbour.ca/research/provincial-exposure-index): Province-by-province comparison of data sovereignty frameworks across Canada

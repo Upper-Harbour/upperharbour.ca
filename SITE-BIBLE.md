@@ -19,7 +19,7 @@ Upper Harbour's research is public and free. The revenue model is compliance doc
 ## Product Architecture
 
 ### Free tier (acquisition)
-- **Tools page** (`/tools`) — lookup any of 292 SaaS tools for jurisdiction, CLOUD Act status, parent company. Branded as the "Canadian SaaS Sovereignty Index."
+- **Tools page** (`/tools`) — lookup any of 324 SaaS tools for jurisdiction, CLOUD Act status, parent company. Branded as the "Canadian SaaS Sovereignty Index."
 - **HarbourScan** (`/harbourscan`) — free browser-based assessment. User enters their tools, gets a jurisdictional map with CLOUD Act exposure, missing TIAs, DPA gaps. Takes ~10 minutes. Runs entirely client-side.
 - **Signals** (`/signals`) — automated feed of sovereignty-relevant events: enforcement actions, acquisitions, legislation, vendor updates.
 - **Research** (`/research`) and **Guides** (`/resources`) — public articles, templates, and analysis.
@@ -59,7 +59,7 @@ Every page should support this flow. CTAs point toward HarbourScan (primary) or 
 ├── SITE-BIBLE.md               Internal: this document
 │
 ├── /assets/
-│   ├── saas-db.js              The 292-tool database (loaded by tools.html and harbourscan.html)
+│   ├── saas-db.js              The 324-tool database (loaded by tools.html and harbourscan.html)
 │   └── signals.json            Pipeline-generated signals feed (loaded by signals.html)
 │
 ├── /research/
@@ -188,8 +188,8 @@ See `CLASSIFICATION-RUBRIC.md` for the full decision tree, edge cases, and prece
 - **canadian**: not CLOUD Act exposed (Canadian-incorporated, or non-US/non-Canadian jurisdiction without CLOUD Act equivalent)
 
 ### Current counts (as of February 2026)
-- 292 tools total
-- ~158 exposed
+- 324 tools total
+- ~173 exposed
 - ~59 review
 - ~75 canadian
 
@@ -242,7 +242,7 @@ The original site had an `/engagements` page and "Engagements" in the nav. This 
 **If you see any remaining reference to "engagements" or `/engagements` anywhere on the site, it's a bug. Remove it.**
 
 ### Tools page UX: empty state on load
-The tools page does NOT show all 292 rows on load. It shows: the hero stat (158 of 292 exposed), a risk meter, a search bar, and clickable chips for common tools. The full list only appears when the user searches or filters. This was a deliberate decision — 292 rows on load is overwhelming and kills conversion.
+The tools page does NOT show all 324 rows on load. It shows: the hero stat (173 of 324 exposed), a risk meter, a search bar, and clickable chips for common tools. The full list only appears when the user searches or filters. This was a deliberate decision — 324 rows on load is overwhelming and kills conversion.
 
 ### Tools page: "Canadian SaaS Sovereignty Index" branding
 The eyebrow on the tools page says "Canadian SaaS Sovereignty Index." This brands the dataset as a named, citable reference. The nav still says "Tools" because that's what people search for. The page teaches them it's an index once they arrive.
@@ -290,7 +290,7 @@ The homepage and several articles cite Anton Carniaux (Microsoft France) from Fr
 ## Content Tone
 
 - **Authoritative but not academic.** The site presents compliance intelligence, not consulting jargon. Short sentences. Active voice.
-- **The data speaks.** Lead with numbers (71%, 292, 83%, 16%). Let the statistics create urgency.
+- **The data speaks.** Lead with numbers (71%, 324, 75%, 19%). Let the statistics create urgency.
 - **Never say "engagement."** Say "documentation," "deliverables," "compliance work," or "scoping call."
 - **"Jurisdictional" is the differentiator.** Not just "compliance" — "jurisdictional compliance." This is what makes Upper Harbour different from generic privacy consultants.
 - **CTAs are direct.** "Run HarbourScan — free →" not "Learn more about our assessment tool." "Request a scoping call" not "Contact us to discuss your needs."
