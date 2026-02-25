@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 25, 2026 — 11:57 ET",
+    "lastUpdated": "Feb 25, 2026 — 18:19 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "Canada's Defence Industrial Strategy prioritizes digital sovereignty in procurement",
+      "summary": "The Government of Canada released a Defence Industrial Strategy on February 17, 2026, using a \"Build-Partner-Buy\" framework that explicitly prioritizes domestic procurement for sovereign concerns, including digital sovereignty and supply chain security. This establishes new procurement requirements for defence-related digital acquisitions.",
+      "type": "procurement",
+      "source": "BLG",
+      "sourceUrl": "https://www.blg.com/en/insights/2026/02/how-canadas-defence-industrial-strategy-reshapes-defence-acquisition-and-procurement-law",
+      "date": "2026-02-17",
+      "impact": "Canadian defence contractors and software vendors should review the Defence Industrial Strategy to understand revised procurement criteria; non-Canadian vendors may face increased barriers to defence sector sales.",
+      "dbUpdate": false
+    },
     {
       "headline": "Bell and Hypertec launch Canadian-sovereign data centre partnership",
       "summary": "Bell and Hypertec have announced a collaboration to build data centres within Canada with domestic sovereignty requirements. This initiative directly addresses Canadian organizational demand for data residency and sovereignty compliance, reducing reliance on foreign cloud infrastructure for sensitive workloads.",
