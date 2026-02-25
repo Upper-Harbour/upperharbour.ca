@@ -1008,6 +1008,28 @@
 
   // ── Fallbacks for external dependencies ────────────────────────
   if (typeof saasDB === 'undefined') var saasDB = [];
+
+  // ── Unmatched search logging ────────────────────────────────────
+  function logUnmatchedSearch(query, source) {
+    if (!query || query.length < 2) return;
+    try {
+      var key = 'uh_unmatched_searches';
+      var data = JSON.parse(localStorage.getItem(key) || '[]');
+      var q = query.toLowerCase().trim();
+      var existing = data.find(function(d) { return d.query === q; });
+      if (existing) {
+        existing.count++;
+        existing.lastSeen = new Date().toISOString();
+        if (existing.sources.indexOf(source) === -1) existing.sources.push(source);
+      } else {
+        data.push({ query: q, count: 1, firstSeen: new Date().toISOString(), lastSeen: new Date().toISOString(), sources: [source] });
+      }
+      // Keep only last 200 entries, sorted by count desc
+      data.sort(function(a, b) { return b.count - a.count; });
+      if (data.length > 200) data = data.slice(0, 200);
+      localStorage.setItem(key, JSON.stringify(data));
+    } catch(e) { /* localStorage unavailable — silent fail */ }
+  }
   if (typeof dataCategories === 'undefined') var dataCategories = [];
   if (typeof industryProfiles === 'undefined') var industryProfiles = [];
   if (typeof regulatoryMap === 'undefined') var regulatoryMap = {};
@@ -1338,6 +1360,7 @@
 
         if (matches.length === 0) {
           dropdown.innerHTML = '<div style="padding:14px 20px;font-size:13px;color:var(--muted);">No matching tools found. You can still proceed with what you have.</div>';
+          logUnmatchedSearch(q, 'harbourscan');
         } else {
           dropdown.innerHTML = matches.map(t => `
             <div class="stack-option" data-name="${t.name}">

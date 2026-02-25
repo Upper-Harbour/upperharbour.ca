@@ -174,7 +174,7 @@
   <div class="hero">
     <div class="hero-eyebrow">Canadian SaaS Sovereignty Index</div>
     <h1>Sovereignty <em>lookup.</em></h1>
-    <p class="hero-sub">Search 324 SaaS tools mapped to parent jurisdiction, CLOUD Act exposure, and Canadian data residency — the definitive sovereignty reference for Canadian compliance.</p>
+    <p class="hero-sub">Search <span id="heroTotal">324</span> SaaS tools mapped to parent jurisdiction, CLOUD Act exposure, and Canadian data residency — the definitive sovereignty reference for Canadian compliance.</p>
     <p class="hero-connector">This directory reflects the vendor intelligence layer used in <a href="/harbourscan">HarbourScan</a> assessments.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">Tools tracked: <strong id="metaTotal">—</strong></div>
@@ -273,6 +273,27 @@
   </footer>
   <script src="/assets/saas-db.js"></script>
   <script>
+    // ── Unmatched search logging ────────────────────────────────────
+    function logUnmatchedSearch(query, source) {
+      if (!query || query.length < 2) return;
+      try {
+        var key = 'uh_unmatched_searches';
+        var data = JSON.parse(localStorage.getItem(key) || '[]');
+        var q = query.toLowerCase().trim();
+        var existing = data.find(function(d) { return d.query === q; });
+        if (existing) {
+          existing.count++;
+          existing.lastSeen = new Date().toISOString();
+          if (existing.sources.indexOf(source) === -1) existing.sources.push(source);
+        } else {
+          data.push({ query: q, count: 1, firstSeen: new Date().toISOString(), lastSeen: new Date().toISOString(), sources: [source] });
+        }
+        data.sort(function(a, b) { return b.count - a.count; });
+        if (data.length > 200) data = data.slice(0, 200);
+        localStorage.setItem(key, JSON.stringify(data));
+      } catch(e) { /* silent fail */ }
+    }
+
     let currentFilter = 'all', currentSearch = '', expandedTool = null;
     var FEATURED = ['Slack','Microsoft Teams','Zoom','Notion','Google Workspace','Salesforce','Shopify','1Password'];
     var fullListVisible = false;
@@ -353,6 +374,7 @@
       document.getElementById('statReview').textContent = review;
       document.getElementById('statCanadian').textContent = canadian;
       document.getElementById('metaTotal').textContent = total;
+      var heroTotalEl = document.getElementById('heroTotal'); if (heroTotalEl) heroTotalEl.textContent = total;
       document.getElementById('searchCount').textContent =
         (currentSearch || currentFilter !== 'all')
           ? tools.length + ' of ' + total + ' tools'
@@ -360,7 +382,7 @@
 
       let h = '<div class="tool-header"><span>Tool</span><span>Parent Company</span><span>Jurisdiction</span><span>CLOUD Act</span><span>Data Residency</span><span>Risk</span></div>';
 
-      if (!tools.length) { list.innerHTML = h; noR.style.display = 'block'; return; }
+      if (!tools.length) { list.innerHTML = h; noR.style.display = 'block'; if (currentSearch) logUnmatchedSearch(currentSearch, 'tools'); return; }
       noR.style.display = 'none';
 
       tools.forEach(function(t) {

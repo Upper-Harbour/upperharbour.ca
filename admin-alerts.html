@@ -166,6 +166,19 @@
       <h3>No pending alerts</h3>
       <p>The signals pipeline hasn't flagged any database changes that need review. Check back after the next scan cycle.</p>
     </div>
+
+    <!-- ── Unmatched Searches (Demand Signal) ────────── -->
+    <div id="unmatchedSection" style="margin-top:48px; display:none;">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px;">
+        <div>
+          <div class="page-eyebrow" style="margin-bottom:4px;">Demand Signal</div>
+          <h2 style="font-family:var(--display); font-size:22px; font-weight:700; color:var(--ice);">Unmatched Searches</h2>
+          <p style="font-size:13px; color:var(--muted); margin-top:4px;">Tools users searched for that aren't in saas-db.js. High-count queries = expansion candidates.</p>
+        </div>
+        <button onclick="clearUnmatched()" style="font-family:var(--mono); font-size:11px; color:var(--muted); background:var(--surface); border:1px solid var(--border-md); border-radius:4px; padding:6px 12px; cursor:pointer;">Clear all</button>
+      </div>
+      <div id="unmatchedList"></div>
+    </div>
   </div>
 
   <!-- ── Toast ────────────────────────────────────── -->
@@ -249,6 +262,7 @@
     document.getElementById('authGate').style.display = 'none';
     document.getElementById('mainContent').classList.add('visible');
     loadAlerts();
+    if (typeof renderUnmatched === 'function') renderUnmatched();
   });
 
   function showAuthError(msg) {
@@ -519,6 +533,40 @@
     section.classList.toggle('visible');
     this.textContent = isOpen ? '▸ Show resolved alerts' : '▾ Hide resolved alerts';
   });
+  // ── Unmatched Search Demand Signal ────────────────────────────
+  function renderUnmatched() {
+    try {
+      var data = JSON.parse(localStorage.getItem('uh_unmatched_searches') || '[]');
+      var section = document.getElementById('unmatchedSection');
+      var list = document.getElementById('unmatchedList');
+      if (!data.length) { section.style.display = 'none'; return; }
+      section.style.display = 'block';
+      data.sort(function(a, b) { return b.count - a.count; });
+      list.innerHTML = '<table style="width:100%; border-collapse:collapse; font-size:13px;">' +
+        '<thead><tr style="border-bottom:1px solid var(--border-md); color:var(--muted); font-family:var(--mono); font-size:11px; text-transform:uppercase; letter-spacing:0.1em;">' +
+        '<th style="text-align:left; padding:10px 12px;">Query</th>' +
+        '<th style="text-align:center; padding:10px 12px;">Count</th>' +
+        '<th style="text-align:left; padding:10px 12px;">Source</th>' +
+        '<th style="text-align:left; padding:10px 12px;">First Seen</th>' +
+        '<th style="text-align:left; padding:10px 12px;">Last Seen</th></tr></thead><tbody>' +
+        data.map(function(d) {
+          var countColor = d.count >= 5 ? 'var(--gold)' : d.count >= 3 ? 'var(--teal)' : 'var(--muted)';
+          return '<tr style="border-bottom:1px solid var(--border);">' +
+            '<td style="padding:10px 12px; color:var(--ice); font-weight:600;">' + d.query + '</td>' +
+            '<td style="padding:10px 12px; text-align:center; color:' + countColor + '; font-family:var(--mono); font-weight:700;">' + d.count + '</td>' +
+            '<td style="padding:10px 12px; color:var(--slate);">' + d.sources.join(', ') + '</td>' +
+            '<td style="padding:10px 12px; color:var(--slate);">' + new Date(d.firstSeen).toLocaleDateString('en-CA') + '</td>' +
+            '<td style="padding:10px 12px; color:var(--slate);">' + new Date(d.lastSeen).toLocaleDateString('en-CA') + '</td></tr>';
+        }).join('') + '</tbody></table>';
+    } catch(e) { /* silent */ }
+  }
+  function clearUnmatched() {
+    if (confirm('Clear all unmatched search data?')) {
+      localStorage.removeItem('uh_unmatched_searches');
+      renderUnmatched();
+    }
+  }
+  // Render on auth success (after main content is visible)
   </script>
 </body>
 </html>
