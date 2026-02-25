@@ -23,7 +23,19 @@
       "source_url": "https://channelbuzz.ca/2026/02/zoho-canada-adds-payroll-pos-solopreneur-offering-to-business-operating-system-45910/",
       "flagged_at": "2026-02-24T11:57:21.341982",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Bell/Hypertec Canadian Data Centres",
+      "change": "vendor_entry",
+      "old_value": null,
+      "new_value": "Active partnership offering Canadian data centre services",
+      "reason": "New domestic sovereign data centre infrastructure launched with direct relevance to Canadian data residency requirements",
+      "signal_headline": "Bell and Hypertec launch Canadian-sovereign data centre partnership",
+      "signal_date": "2026-02-25",
+      "source_url": "https://thelogic.co/news/bell-hypertec-data-centres-canada-sovereign-ai/",
+      "flagged_at": "2026-02-25T11:57:28.306583",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-02-24T11:57:21.342577"
+  "updated": "2026-02-25T11:57:28.307161"
 }

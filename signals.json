@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 25, 2026 — 06:19 ET",
+    "lastUpdated": "Feb 25, 2026 — 11:57 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "Bell and Hypertec launch Canadian-sovereign data centre partnership",
+      "summary": "Bell and Hypertec have announced a collaboration to build data centres within Canada with domestic sovereignty requirements. This initiative directly addresses Canadian organizational demand for data residency and sovereignty compliance, reducing reliance on foreign cloud infrastructure for sensitive workloads.",
+      "type": "vendor",
+      "source": "The Logic",
+      "sourceUrl": "https://thelogic.co/news/bell-hypertec-data-centres-canada-sovereign-ai/",
+      "date": "2026-02-25",
+      "impact": "Canadian organizations subject to data residency requirements should evaluate this offering as an alternative to foreign cloud providers for workloads requiring domestic data storage and processing.",
+      "dbUpdate": true
+    },
     {
       "headline": "CLOUD Act and digital sovereignty: Academic analysis of constitutional implications for Canadian data governance",
       "summary": "Academic research examines the constitutional incompatibility between the US CLOUD Act and Canadian data privacy frameworks, proposing a seven-pillar policy framework for Canadian response. The analysis addresses a core tension in Canadian digital governance: US legal authority over data held on American infrastructure versus Canadian regulatory obligations.",
