@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 24, 2026 — 18:13 ET",
+    "lastUpdated": "Feb 25, 2026 — 06:19 ET",
     "sourceCount": "37+"
   },
   "signals": [
+    {
+      "headline": "CLOUD Act and digital sovereignty: Academic analysis of constitutional implications for Canadian data governance",
+      "summary": "Academic research examines the constitutional incompatibility between the US CLOUD Act and Canadian data privacy frameworks, proposing a seven-pillar policy framework for Canadian response. The analysis addresses a core tension in Canadian digital governance: US legal authority over data held on American infrastructure versus Canadian regulatory obligations.",
+      "type": "legislation",
+      "source": "SSRN",
+      "sourceUrl": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5955017",
+      "date": "2026-01-16",
+      "impact": "Federal and provincial policy makers should review this analysis during USMCA/CUSMA review processes and cloud procurement strategy development.",
+      "dbUpdate": false
+    },
     {
       "headline": "Deloitte Canada policy brief examines definitional gaps in Canadian AI sovereignty strategy",
       "summary": "Deloitte Canada published a policy analysis addressing ambiguities in how Canada defines AI sovereignty, examining data residency requirements, compute infrastructure control, procurement constraints, and the feasibility of domestic alternatives to U.S. hyperscalers. The brief provides critical context for federal and provincial policy development and reveals structural constraints in achieving full AI sovereignty without significant investment.",
