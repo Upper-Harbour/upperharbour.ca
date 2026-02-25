@@ -1,19 +1,9 @@
 {
   "meta": {
-    "lastUpdated": "Feb 25, 2026 — 23:49 ET",
-    "sourceCount": "37+"
+    "lastUpdated": "Feb 25, 2026 — 18:19 ET",
+    "sourceCount": "57+"
   },
   "signals": [
-    {
-      "headline": "Canada's Sovereign Cloud Initiative establishes Canadian-ownership requirement for public sector cloud procurement",
-      "summary": "Canada's 2025 Sovereign Cloud Initiative mandates that bidders for specified public sector cloud contracts must be fully Canadian-owned and controlled, backed by over $2 billion in federal investment to build domestic compute and cloud capacity. This establishes an explicit procurement policy linking cloud services to Canadian ownership and control criteria.",
-      "type": "procurement",
-      "source": "Carbon60",
-      "sourceUrl": "https://www.carbon60.com/compliance/residency-vs-sovereignty-what-canadian-cios-need-to-know",
-      "date": "2025-11-27",
-      "impact": "Federal departments and designated public sector organizations must ensure cloud service providers meet Canadian-ownership and control requirements in procurement processes; foreign-owned cloud providers should assess eligibility and potential restructuring requirements.",
-      "dbUpdate": false
-    },
     {
       "headline": "Canada's Defence Industrial Strategy prioritizes digital sovereignty in procurement",
       "summary": "The Government of Canada released a Defence Industrial Strategy on February 17, 2026, using a \"Build-Partner-Buy\" framework that explicitly prioritizes domestic procurement for sovereign concerns, including digital sovereignty and supply chain security. This establishes new procurement requirements for defence-related digital acquisitions.",

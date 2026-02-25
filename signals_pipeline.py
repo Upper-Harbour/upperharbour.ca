@@ -61,6 +61,9 @@ RSS_FEEDS = [
     {"url": "https://www.ipc.on.ca/feed/", "name": "IPC Ontario", "type_hint": "policy", "always_relevant": True},
     {"url": "https://www.oipc.bc.ca/feed/", "name": "OIPC BC", "type_hint": "enforcement", "always_relevant": True},
     {"url": "https://www.oipc.ab.ca/feed/", "name": "OIPC Alberta", "type_hint": "enforcement", "always_relevant": True},
+    {"url": "https://www.oipc.sk.ca/feed/", "name": "OIPC Saskatchewan", "type_hint": "enforcement", "always_relevant": True},
+    {"url": "https://www.ombudsman.mb.ca/info/access-and-privacy-feed.xml", "name": "Manitoba Ombudsman", "type_hint": "enforcement", "always_relevant": True},
+    {"url": "https://www.gnb.ca/legis/bill/rss/index-e.asp", "name": "New Brunswick Legislature", "type_hint": "legislation", "always_relevant": False},
 
     # Government
     {"url": "https://www.canada.ca/en/treasury-board-secretariat.atom", "name": "Treasury Board", "type_hint": "procurement", "always_relevant": False},
@@ -69,6 +72,7 @@ RSS_FEEDS = [
     {"url": "https://buyandsell.gc.ca/procurement-data/rss", "name": "CanadaBuys", "type_hint": "procurement", "always_relevant": False},
     {"url": "https://www.canada.ca/en/shared-services.atom", "name": "Shared Services Canada", "type_hint": "procurement", "always_relevant": False},
     {"url": "https://ised-isde.canada.ca/site/ised/en/rss.xml", "name": "ISED", "type_hint": "policy", "always_relevant": False},
+    {"url": "https://www.cyber.gc.ca/en/alerts-advisories/rss", "name": "Canadian Cyber Centre", "type_hint": "policy", "always_relevant": False},
 
     # Canadian law firms — privacy practices
     {"url": "https://www.blakes.com/insights/rss", "name": "Blakes", "type_hint": None, "always_relevant": False},
@@ -76,6 +80,11 @@ RSS_FEEDS = [
     {"url": "https://www.mccarthy.ca/en/insights/rss", "name": "McCarthy Tétrault", "type_hint": None, "always_relevant": False},
     {"url": "https://www.osler.com/en/resources/rss", "name": "Osler", "type_hint": None, "always_relevant": False},
     {"url": "https://www.fasken.com/en/feeds/knowledge", "name": "Fasken", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.blg.com/en/insights/rss", "name": "BLG", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.nortonrosefulbright.com/en-ca/knowledge/rss", "name": "Norton Rose Fulbright", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.dentons.com/en/insights/rss", "name": "Dentons", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.torys.com/en/insights/rss", "name": "Torys", "type_hint": None, "always_relevant": False},
+    {"url": "https://gowlingwlg.com/en/insights/rss", "name": "Gowling WLG", "type_hint": None, "always_relevant": False},
 
     # Tech / legal news
     {"url": "https://betakit.com/feed/", "name": "BetaKit", "type_hint": None, "always_relevant": False},
@@ -83,6 +92,9 @@ RSS_FEEDS = [
     {"url": "https://www.lexology.com/feed", "name": "Lexology", "type_hint": None, "always_relevant": False},
     {"url": "https://thelogic.co/feed/", "name": "The Logic", "type_hint": None, "always_relevant": False},
     {"url": "https://iapp.org/rss/daily-dashboard/", "name": "IAPP", "type_hint": None, "always_relevant": False},
+    {"url": "https://channelbuzz.ca/feed/", "name": "ChannelBuzz", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.cantechletter.com/feed/", "name": "Cantech Letter", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.cira.ca/en/blog/feed", "name": "CIRA", "type_hint": None, "always_relevant": False},
 
     # Policy media — shapes procurement narratives
     {"url": "https://ipolitics.ca/feed/", "name": "iPolitics", "type_hint": "policy", "always_relevant": False},
@@ -102,12 +114,26 @@ RSS_FEEDS = [
 
 # Web search queries (run via Claude API with web search tool)
 SEARCH_QUERIES = [
+    # Core sovereignty
     "Canada data sovereignty privacy law news",
     "Law 25 Quebec PIPEDA enforcement",
-    "Canadian SaaS acquisition cloud act",
     "Canada data residency SaaS vendor announcement",
     "government procurement data sovereignty Canada",
-    "Canada RFP data residency SaaS procurement 2026",
+    # M&A tracking (critical for DB accuracy)
+    "Canadian SaaS company acquired 2026",
+    "Canadian tech company acquisition private equity",
+    # Enforcement (highest-value signals)
+    "PIPEDA order privacy commissioner finding",
+    "Law 25 penalty fine Quebec CAI",
+    "privacy commissioner enforcement order Canada",
+    # Infrastructure
+    "Canada cloud provider data centre announcement",
+    "sovereign cloud Canada announcement",
+    # Provincial procurement
+    "provincial government RFP SaaS data residency Canada",
+    # Policy
+    "digital sovereignty Canada federal policy",
+    "Canadian cybersecurity regulation SaaS cloud",
 ]
 
 # Relevance keywords for filtering
@@ -221,16 +247,18 @@ def collect_web_search() -> list[dict]:
                         "role": "user",
                         "content": f"""Search for: {query}
 
-Return ONLY items from the last 48 hours that are directly relevant to Canadian data sovereignty, privacy law enforcement, SaaS vendor jurisdictional changes, or government procurement policy.
+Today's date is {datetime.now().strftime('%Y-%m-%d')}. Return ONLY items published in the last 48 hours (on or after {(datetime.now() - timedelta(hours=48)).strftime('%Y-%m-%d')}). Ignore anything older — even if it appears in search results.
+
+Items must be directly relevant to Canadian data sovereignty, privacy law enforcement, SaaS vendor jurisdictional changes, or government procurement policy.
 
 For each relevant result, return a JSON array with objects containing:
 - "title": the headline
 - "summary": 1-2 sentence summary of the development
 - "source": publication name
 - "source_url": URL
-- "date": date in YYYY-MM-DD format
+- "date": date in YYYY-MM-DD format (must be {(datetime.now() - timedelta(hours=48)).strftime('%Y-%m-%d')} or later)
 
-If nothing relevant is found, return an empty array: []
+If nothing relevant was published in the last 48 hours, return an empty array: []
 
 Return ONLY the JSON array, nothing else."""
                     }]
@@ -257,7 +285,13 @@ Return ONLY the JSON array, nothing else."""
             text = text.strip().strip('```json').strip('```').strip()
             if text.startswith('['):
                 results = json.loads(text)
+                cutoff_str = (datetime.now() - timedelta(hours=72)).strftime("%Y-%m-%d")
                 for r in results:
+                    # Hard gate: reject anything with a date older than 72 hours
+                    item_date = r.get("date", "")
+                    if item_date < cutoff_str:
+                        log.info(f"Search: rejected stale result '{r.get('title','')[:50]}' (date: {item_date})")
+                        continue
                     items.append({
                         "source": r.get("source", "Web"),
                         "source_url": r.get("source_url", ""),
@@ -380,6 +414,177 @@ Return ONLY the JSON array. If no items are relevant, return: []"""
             log.warning(f"Claude processing failed: {e}")
 
     return processed
+
+
+# ── Source Verification ──────────────────────────────────────
+
+def verify_signals(signals: list[dict]) -> list[dict]:
+    """
+    Fetch each signal's source URL and verify:
+    1. The URL is reachable and returns content
+    2. The page content actually relates to the signal headline
+    3. The publish date on the page is recent (not months old)
+    
+    Rejects signals where the source doesn't match the claim.
+    """
+    if not ANTHROPIC_API_KEY or not signals:
+        return signals
+
+    import requests
+
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    verified = []
+
+    for signal in signals:
+        url = signal.get("source_url", "")
+        headline = signal.get("headline", "")
+
+        if not url:
+            log.warning(f"Verify: no URL for '{headline[:50]}' — skipping")
+            continue
+
+        # Fetch the page
+        try:
+            resp = requests.get(url, timeout=10, headers={
+                "User-Agent": "Mozilla/5.0 (Upper Harbour Signals Pipeline)"
+            })
+            if resp.status_code != 200:
+                log.warning(f"Verify: HTTP {resp.status_code} for '{headline[:50]}' — rejecting")
+                continue
+
+            # Get first 3000 chars of page text (enough to verify topic + find date)
+            page_text = resp.text[:8000]
+            # Strip HTML tags crudely for comparison
+            import re
+            page_text_clean = re.sub(r'<[^>]+>', ' ', page_text)
+            page_text_clean = re.sub(r'\s+', ' ', page_text_clean)[:3000]
+
+        except Exception as e:
+            log.warning(f"Verify: fetch failed for '{headline[:50]}': {e} — rejecting")
+            continue
+
+        # Ask Claude to verify: does this page content match the signal?
+        try:
+            time.sleep(2)  # Light rate limiting
+            verify_response = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=200,
+                messages=[{
+                    "role": "user",
+                    "content": f"""You are a fact-checker. A signals pipeline generated this signal:
+
+Headline: {headline}
+Date claimed: {signal.get('date', 'unknown')}
+Source URL: {url}
+
+Here is the actual text from that URL (first 3000 chars):
+---
+{page_text_clean}
+---
+
+Answer these questions:
+1. Does the page content actually discuss the topic described in the headline? (yes/no)
+2. What is the actual publish date on the page? (YYYY-MM-DD or "unknown")
+3. Is this from the last 7 days? (yes/no/unknown)
+
+Return ONLY a JSON object: {{"topic_match": true/false, "actual_date": "YYYY-MM-DD", "recent": true/false}}
+If you can't determine the date, use "unknown" and set recent to false."""
+                }]
+            )
+
+            vtext = ""
+            for block in verify_response.content:
+                if hasattr(block, 'text'):
+                    vtext += block.text
+
+            vtext = vtext.strip().strip('```json').strip('```').strip()
+            verdict = json.loads(vtext)
+
+            if not verdict.get("topic_match", False):
+                log.info(f"Verify REJECTED (topic mismatch): '{headline[:60]}'")
+                continue
+
+            if verdict.get("recent") == False and verdict.get("actual_date", "unknown") != "unknown":
+                actual = verdict["actual_date"]
+                log.info(f"Verify REJECTED (stale — actual date {actual}): '{headline[:60]}'")
+                continue
+
+            # If actual_date is known and different from claimed, correct it
+            if verdict.get("actual_date", "unknown") != "unknown":
+                signal["date"] = verdict["actual_date"]
+
+            verified.append(signal)
+            log.info(f"Verify PASSED: '{headline[:60]}' (date: {signal['date']})")
+
+        except Exception as e:
+            log.warning(f"Verify: Claude check failed for '{headline[:50]}': {e} — keeping signal")
+            verified.append(signal)  # Fail open — keep if we can't verify
+
+    log.info(f"Verification: {len(signals)} in → {len(verified)} verified")
+    return verified
+
+
+# ── Semantic Dedup ───────────────────────────────────────────
+
+def semantic_dedup(new_signals: list[dict], existing_signals: list[dict]) -> list[dict]:
+    """
+    Use Claude to detect when a new signal covers the same event as an
+    existing signal (different source, same story). Returns only truly new signals.
+    """
+    if not ANTHROPIC_API_KEY or not new_signals:
+        return new_signals
+
+    # Build compact representations
+    new_list = [{"idx": i, "headline": s.get("headline", ""), "date": s.get("date", ""), "source": s.get("source", "")}
+                for i, s in enumerate(new_signals)]
+    existing_list = [{"headline": s.get("headline", ""), "date": s.get("date", ""), "source": s.get("source", "")}
+                     for s in existing_signals[:30]]
+
+    if not existing_list:
+        return new_signals
+
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+    try:
+        response = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=1000,
+            messages=[{
+                "role": "user",
+                "content": f"""You are a deduplication filter. Compare these NEW signals against EXISTING published signals.
+
+A signal is a DUPLICATE if it covers the same underlying event, announcement, or development as an existing signal — even if the source, wording, or angle is different.
+
+NEW signals (candidates for publishing):
+{json.dumps(new_list, indent=2)}
+
+EXISTING signals (already published):
+{json.dumps(existing_list, indent=2)}
+
+Return a JSON array of the idx values of NEW signals that are DUPLICATES of existing signals. If none are duplicates, return an empty array: []
+
+Return ONLY the JSON array of duplicate idx numbers, nothing else."""
+            }]
+        )
+
+        text = ""
+        for block in response.content:
+            if hasattr(block, 'text'):
+                text += block.text
+
+        text = text.strip().strip('```json').strip('```').strip()
+        if text.startswith('['):
+            duplicate_idxs = set(json.loads(text))
+            kept = [s for i, s in enumerate(new_signals) if i not in duplicate_idxs]
+            removed = len(new_signals) - len(kept)
+            if removed:
+                log.info(f"Semantic dedup removed {removed} duplicate(s)")
+            return kept
+
+    except Exception as e:
+        log.warning(f"Semantic dedup failed (keeping all signals): {e}")
+
+    return new_signals
 
 
 # ── Digest Email ─────────────────────────────────────────────
@@ -584,7 +789,7 @@ def publish_signals(new_signals: list[dict]):
     # Add to existing signals (newest first)
     existing["signals"] = published + existing.get("signals", [])
 
-    # Keep max 200 signals
+    # Keep max 200 signals (oldest drop off naturally as new ones are added)
     existing["signals"] = existing["signals"][:200]
 
     # Update meta
@@ -638,6 +843,14 @@ def run_pipeline():
         log.info("No items passed relevance filter. Done.")
         return
 
+    # 4b. Verify signals against their actual source URLs
+    log.info("Step 3b: Verifying signals against source URLs...")
+    processed = verify_signals(processed)
+
+    if not processed:
+        log.info("No items passed source verification. Done.")
+        return
+
     # 5. Check against existing signals (avoid re-publishing)
     existing = load_existing_signals()
     existing_headlines = {s.get("headline", "").lower() for s in existing.get("signals", [])}
@@ -646,6 +859,15 @@ def run_pipeline():
 
     if not new_signals:
         log.info("All items already published. Done.")
+        return
+
+    # 5b. Semantic dedup — catch same story from different sources
+    log.info("Step 3b: Semantic dedup...")
+    new_signals = semantic_dedup(new_signals, existing.get("signals", [])[:30])
+    log.info(f"After semantic dedup: {len(new_signals)} signals")
+
+    if not new_signals:
+        log.info("All items were duplicates of existing signals. Done.")
         return
 
     # 6. Auto-publish
