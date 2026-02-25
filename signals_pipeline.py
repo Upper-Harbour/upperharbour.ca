@@ -209,15 +209,17 @@ def collect_web_search() -> list[dict]:
 
     for idx, query in enumerate(SEARCH_QUERIES):
         if idx > 0:
-            time.sleep(90)  # Wait 90s to reset rate limit window
-        try:
-            response = client.messages.create(
-                model="claude-haiku-4-5-20251001",
-                max_tokens=2000,
-                tools=[{"type": "web_search_20250305", "name": "web_search"}],
-                messages=[{
-                    "role": "user",
-                    "content": f"""Search for: {query}
+            time.sleep(120)  # Wait 120s to stay within rate limit window
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                response = client.messages.create(
+                    model="claude-haiku-4-5-20251001",
+                    max_tokens=2000,
+                    tools=[{"type": "web_search_20250305", "name": "web_search"}],
+                    messages=[{
+                        "role": "user",
+                        "content": f"""Search for: {query}
 
 Return ONLY items from the last 48 hours that are directly relevant to Canadian data sovereignty, privacy law enforcement, SaaS vendor jurisdictional changes, or government procurement policy.
 
@@ -231,9 +233,20 @@ For each relevant result, return a JSON array with objects containing:
 If nothing relevant is found, return an empty array: []
 
 Return ONLY the JSON array, nothing else."""
-                }]
-            )
+                    }]
+                )
+                break  # Success — exit retry loop
+            except anthropic.RateLimitError:
+                wait = 60 * (attempt + 1)  # 60s, 120s, 180s
+                log.warning(f"Rate limited on '{query}', retrying in {wait}s (attempt {attempt + 1}/{max_retries})")
+                time.sleep(wait)
+                if attempt == max_retries - 1:
+                    log.warning(f"Search failed for '{query}': exhausted retries after rate limiting")
+                    response = None
+        if response is None:
+            continue
 
+        try:
             # Extract text from response
             text = ""
             for block in response.content:
