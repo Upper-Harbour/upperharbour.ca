@@ -370,61 +370,54 @@
       }, { threshold: 0.1 }).observe(el);
     });
 
-    // ── Load acquisition signals from pipeline ──────────────────────
-    (async function loadPipelineSignals() {
+    // ── Load acquisitions from acquisitions.json ──────────────────────
+    (async function loadAcquisitions() {
       try {
-        const res = await fetch('/signals.json');
+        const res = await fetch('/acquisitions.json');
         if (!res.ok) return;
         const data = await res.json();
-        const signals = Array.isArray(data) ? data : (data.signals || []);
+        const acquisitions = data.acquisitions || [];
 
-        // Filter for acquisition-type signals
-        const acquisitions = signals.filter(s => {
-          const type = (s.type || s.category || '').toLowerCase();
-          const title = (s.title || s.headline || '').toLowerCase();
-          const body = (s.summary || s.body || s.description || '').toLowerCase();
-          return type.includes('acquisition') ||
-                 type.includes('jurisdiction') ||
-                 type.includes('ownership') ||
-                 title.includes('acquir') ||
-                 title.includes('acquisition') ||
-                 title.includes('merger') ||
-                 title.includes('bought by') ||
-                 title.includes('jurisdiction change') ||
-                 body.includes('acquired by') ||
-                 body.includes('acquisition');
-        });
+        // Only render pipeline-sourced entries (editorial ones are hardcoded above)
+        const pipelineEntries = acquisitions.filter(a => a.source === 'pipeline');
 
-        if (acquisitions.length === 0) return;
+        if (pipelineEntries.length === 0) {
+          document.getElementById('pipelineSignals').style.display = 'none';
+          return;
+        }
 
         const container = document.getElementById('pipelineEntries');
-        container.innerHTML = acquisitions.map(s => {
-          const title = s.title || s.headline || 'Untitled signal';
-          const date = s.date || s.published || s.signal_date || '';
-          const summary = s.summary || s.body || s.description || '';
-          const source = s.source || s.url || '';
-          const toolName = s.tool || s.tool_name || '';
-          const signalId = s.signal_id || s.id || '';
+        container.innerHTML = pipelineEntries.map(a => {
+          const statusColor = a.status === 'monitoring' ? 'var(--gold)' : 'var(--red)';
+          const detailsHTML = (a.details || []).map(d =>
+            `<div class="acq-detail"><span class="acq-detail-label">${d.label}</span><span class="acq-detail-value">${d.value}</span></div>`
+          ).join('');
+          const sourceLink = a.sourceUrl
+            ? `<div style="margin-top:10px;"><a href="${a.sourceUrl}" target="_blank" rel="noopener" style="font-size:12px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Source →</a></div>`
+            : '';
 
           return `
             <div class="acq-entry" style="border-left:3px solid var(--gold);">
               <div class="acq-header">
                 <div class="acq-title-group">
-                  <span class="acq-target">${toolName || title}</span>
-                  ${toolName ? `<span class="acq-arrow">—</span><span style="font-size:14px;color:var(--slate);">${title}</span>` : ''}
+                  <span class="acq-target">${a.target}</span>
+                  <span class="acq-arrow">→</span>
+                  <span class="acq-acquirer">${a.acquirer}</span>
                 </div>
-                <div class="acq-date">${date}${signalId ? ' · ' + signalId : ''}</div>
+                <div class="acq-date">${a.date}</div>
               </div>
               <div class="acq-body">
-                <div style="font-size:13px;color:var(--slate);line-height:1.7;">${summary}</div>
-                ${source ? `<div style="margin-top:10px;"><a href="${source}" target="_blank" style="font-size:12px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Source →</a></div>` : ''}
+                ${detailsHTML ? `<div class="acq-details">${detailsHTML}</div>` : ''}
+                <div class="acq-impact"><div class="acq-impact-label">Sovereignty impact</div><div class="acq-impact-text">${a.impact}</div></div>
+                ${sourceLink}
               </div>
             </div>
           `;
         }).join('');
 
         document.getElementById('pipelineSignals').style.display = 'block';
-      } catch (e) { /* signals.json not available — that's fine */ }
+        document.getElementById('pipelineTitle').textContent = `Pipeline-detected acquisitions (${pipelineEntries.length})`;
+      } catch (e) { /* acquisitions.json not available — that's fine */ }
     })();
   </script>
 </body>

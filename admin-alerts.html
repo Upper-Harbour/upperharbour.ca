@@ -466,6 +466,12 @@
       await commitAlerts(
         `${newStatus}: ${toolName} (${alert.signal_id || 'manual'})`
       );
+
+      // If this is an approved acquisition, add it to acquisitions.json
+      if (newStatus === 'approved' && isAcquisitionAlert(alert)) {
+        await addToAcquisitionTracker(alert);
+      }
+
       showToast(`${toolName} — ${newStatus}`);
       renderAlerts();
     } catch (err) {
@@ -567,6 +573,104 @@
     }
   }
   // Render on auth success (after main content is visible)
+
+
+  /* ══════════════════════════════════════════════════════════════
+     ACQUISITION TRACKER INTEGRATION
+     ══════════════════════════════════════════════════════════════ */
+  function isAcquisitionAlert(alert) {
+    const change = (alert.change || '').toLowerCase();
+    const reason = (alert.reason || '').toLowerCase();
+    const headline = (alert.signal_headline || '').toLowerCase();
+    return change.includes('parent') ||
+           change.includes('risk') ||
+           reason.includes('acqui') ||
+           reason.includes('merger') ||
+           headline.includes('acqui') ||
+           headline.includes('merger') ||
+           headline.includes('bought');
+  }
+
+  async function addToAcquisitionTracker(alert) {
+    try {
+      // Fetch current acquisitions.json
+      const res = await fetch(
+        `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/acquisitions.json?ref=${CONFIG.branch}`,
+        { headers: { 'Authorization': `Bearer ${githubToken}` } }
+      );
+
+      let acqData = { acquisitions: [], lastUpdated: '' };
+      let acqSha = null;
+
+      if (res.ok) {
+        const data = await res.json();
+        acqSha = data.sha;
+        acqData = JSON.parse(atob(data.content));
+      }
+
+      // Build the acquisition entry
+      const entry = {
+        target: alert.tool_name || alert.tool || 'Unknown',
+        acquirer: alert.new_value || 'Unknown acquirer',
+        date: alert.signal_date || new Date().toISOString().split('T')[0],
+        status: 'completed',
+        jurisdictionBefore: alert.old_value || 'Unknown',
+        jurisdictionAfter: alert.new_value || 'Unknown',
+        details: [
+          { label: 'Change', value: `${alert.change}: ${alert.old_value || '?'} → ${alert.new_value || '?'}` },
+          { label: 'Source', value: alert.signal_headline || 'Pipeline signal' }
+        ],
+        impact: alert.reason || `Ownership change detected for ${alert.tool_name || 'this tool'}. Organizations using this tool should review their jurisdictional assessment.`,
+        source: 'pipeline',
+        sourceUrl: alert.source_url || '',
+        addedAt: new Date().toISOString(),
+        featured: false
+      };
+
+      // Check for duplicates (same target name)
+      const exists = acqData.acquisitions.some(a =>
+        a.target.toLowerCase() === entry.target.toLowerCase() && a.source === 'pipeline'
+      );
+      if (exists) {
+        log && console.log('Acquisition already tracked:', entry.target);
+        return;
+      }
+
+      // Add to beginning (newest first, after editorial entries)
+      const editorialEntries = acqData.acquisitions.filter(a => a.source === 'editorial');
+      const pipelineEntries = acqData.acquisitions.filter(a => a.source !== 'editorial');
+      acqData.acquisitions = [...editorialEntries, entry, ...pipelineEntries];
+      acqData.lastUpdated = new Date().toISOString().split('T')[0];
+
+      // Commit
+      const content = JSON.stringify(acqData, null, 2) + '\n';
+      const encoded = btoa(unescape(encodeURIComponent(content)));
+
+      const commitBody = {
+        message: `chore(acquisitions): add ${entry.target}`,
+        content: encoded,
+        branch: CONFIG.branch,
+      };
+      if (acqSha) commitBody.sha = acqSha;
+
+      await fetch(
+        `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/acquisitions.json`,
+        {
+          method: 'PUT',
+          headers: {
+            'Authorization': `Bearer ${githubToken}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(commitBody)
+        }
+      );
+
+      console.log('Added to acquisition tracker:', entry.target);
+    } catch (err) {
+      console.warn('Failed to update acquisition tracker:', err.message);
+      // Non-fatal — the DB alert was already approved successfully
+    }
+  }
   </script>
 </body>
 </html>

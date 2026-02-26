@@ -1,0 +1,208 @@
+{
+  "acquisitions": [
+    {
+      "target": "Magnet Forensics",
+      "acquirer": "Thoma Bravo (US PE)",
+      "date": "Closed April 2023",
+      "status": "completed",
+      "jurisdictionBefore": "Canada",
+      "jurisdictionAfter": "United States",
+      "details": [
+        {
+          "label": "Pre-acquisition HQ",
+          "value": "Waterloo, ON"
+        },
+        {
+          "label": "Post-acquisition jurisdiction",
+          "value": "United States (Thoma Bravo, San Francisco)"
+        },
+        {
+          "label": "CLOUD Act status change",
+          "value": "Not exposed → Exposed"
+        },
+        {
+          "label": "Affected sectors",
+          "value": "Law enforcement, government, digital forensics"
+        }
+      ],
+      "impact": "Magnet Forensics' digital forensics tools are used by Canadian law enforcement and government agencies — organizations handling some of the most sensitive data imaginable. The acquisition by Thoma Bravo, a US private equity firm, shifted the corporate jurisdiction from Canadian to US. Canadian police forces using Magnet's tools now have their forensic data subject to US legal process. The irony is acute: tools used to investigate crime are now jurisdictionally exposed to foreign government access.",
+      "source": "editorial",
+      "featured": true
+    },
+    {
+      "target": "Cohere",
+      "acquirer": "Monitoring: VC-funded, CA-HQ",
+      "date": "Status: Independent (as of Feb 2026)",
+      "status": "monitoring",
+      "jurisdictionBefore": "Canada",
+      "jurisdictionAfter": "Canada (current)",
+      "details": [
+        {
+          "label": "Current HQ",
+          "value": "Toronto, ON"
+        },
+        {
+          "label": "Jurisdiction",
+          "value": "Canada (independent)"
+        },
+        {
+          "label": "CLOUD Act status",
+          "value": "Not exposed (currently)"
+        },
+        {
+          "label": "Risk factor",
+          "value": "Significant US VC backing — acquisition possible"
+        }
+      ],
+      "impact": "Cohere is one of the most significant Canadian-headquartered AI companies, positioning itself as a sovereign AI alternative for Canadian and international organizations. It has raised significant US venture capital. If Cohere were to be acquired by a US company, every Canadian organization using Cohere as a \"sovereign AI\" option would lose that sovereignty status. We monitor Cohere's ownership structure because it represents one of the most consequential sovereignty dependencies in the Canadian AI ecosystem.",
+      "source": "editorial",
+      "featured": true
+    },
+    {
+      "target": "BBTV Holdings",
+      "acquirer": "Rhino Media (US)",
+      "date": "2024",
+      "status": "completed",
+      "jurisdictionBefore": "Canada",
+      "jurisdictionAfter": "United States",
+      "details": [
+        {
+          "label": "Pre-acquisition HQ",
+          "value": "Vancouver, BC"
+        },
+        {
+          "label": "Post-acquisition jurisdiction",
+          "value": "United States (Rhino Media)"
+        },
+        {
+          "label": "CLOUD Act status change",
+          "value": "Not exposed → Exposed"
+        },
+        {
+          "label": "Affected sectors",
+          "value": "Media, content, digital creators"
+        }
+      ],
+      "impact": "Canadian media creators and content partners who used BBTV as a Canadian-headquartered platform saw their content data and analytics shift to US jurisdiction. While media data may seem lower sensitivity, creator financial data, audience analytics, and contractual information are commercially sensitive.",
+      "source": "editorial",
+      "featured": true
+    },
+    {
+      "target": "Slack (Canadian-founded)",
+      "acquirer": "Salesforce (US)",
+      "date": "Closed July 2021",
+      "status": "completed",
+      "jurisdictionBefore": "United States (Delaware-incorporated from founding)",
+      "jurisdictionAfter": "United States (Salesforce)",
+      "details": [
+        {
+          "label": "Founded",
+          "value": "Vancouver, BC — incorporated Delaware pre-IPO"
+        },
+        {
+          "label": "Post-acquisition parent",
+          "value": "Salesforce (San Francisco)"
+        },
+        {
+          "label": "CLOUD Act status change",
+          "value": "Exposed → Exposed (no change)"
+        },
+        {
+          "label": "Key lesson",
+          "value": "Canadian origin ≠ Canadian jurisdiction"
+        }
+      ],
+      "impact": "Slack was founded in Vancouver by Stewart Butterfield but incorporated in the US (Delaware) before its IPO. The Salesforce acquisition didn't change Slack's CLOUD Act status (it was already US-incorporated), but it illustrates the broader pattern: Canadian-founded SaaS companies typically incorporate in the US for capital market access, meaning Canadian users were CLOUD Act exposed from the start. The Canadian origin story creates a false sense of sovereignty.",
+      "source": "editorial",
+      "featured": true
+    },
+    {
+      "target": "Hootsuite",
+      "acquirer": "Status: CA-HQ, private",
+      "date": "Monitoring",
+      "status": "monitoring",
+      "jurisdictionBefore": "Canada",
+      "jurisdictionAfter": "Canada (current)",
+      "details": [
+        {
+          "label": "Current HQ",
+          "value": "Vancouver, BC"
+        },
+        {
+          "label": "Jurisdiction",
+          "value": "Canada (private company)"
+        },
+        {
+          "label": "CLOUD Act status",
+          "value": "Not exposed (currently)"
+        },
+        {
+          "label": "Risk factor",
+          "value": "Private ownership, PE interest, US infrastructure dependency"
+        }
+      ],
+      "impact": "Hootsuite is one of the best-known Canadian SaaS brands. It remains Canadian-headquartered but relies on US cloud infrastructure and has undergone significant ownership changes through private equity. Any acquisition by a US entity would shift sovereignty for a large base of Canadian government, media, and enterprise clients. We monitor ownership structure changes.",
+      "source": "editorial",
+      "featured": true
+    },
+    {
+      "target": "Verafin",
+      "acquirer": "Nasdaq (US)",
+      "date": "Closed February 2021",
+      "status": "completed",
+      "jurisdictionBefore": "Canada",
+      "jurisdictionAfter": "United States",
+      "details": [
+        {
+          "label": "Pre-acquisition HQ",
+          "value": "St. John's, NL"
+        },
+        {
+          "label": "Post-acquisition parent",
+          "value": "Nasdaq Inc. (New York)"
+        },
+        {
+          "label": "CLOUD Act status change",
+          "value": "Not exposed → Exposed"
+        },
+        {
+          "label": "Affected sectors",
+          "value": "Banking, financial crime, AML"
+        }
+      ],
+      "impact": "Verafin provided anti-money-laundering and fraud detection to Canadian financial institutions — processing some of the most sensitive financial data in the country. The Nasdaq acquisition shifted this data to US jurisdiction. Canadian banks and credit unions using Verafin now have their transaction monitoring data subject to CLOUD Act access. This is particularly significant given the sensitivity of financial crime investigation data.",
+      "source": "editorial",
+      "featured": true
+    },
+    {
+      "target": "Iotum / FreeConference.com",
+      "acquirer": "Vast Conference → StartMeeting (US)",
+      "date": "2020 → 2022",
+      "status": "completed",
+      "jurisdictionBefore": "Canada",
+      "jurisdictionAfter": "United States",
+      "details": [
+        {
+          "label": "Pre-acquisition HQ",
+          "value": "Ottawa, ON"
+        },
+        {
+          "label": "Acquisition chain",
+          "value": "Vast Conference (US) → StartMeeting (US)"
+        },
+        {
+          "label": "CLOUD Act status change",
+          "value": "Not exposed → Exposed"
+        },
+        {
+          "label": "Pattern",
+          "value": "Chain acquisition — multiple US acquirers in sequence"
+        }
+      ],
+      "impact": "This illustrates the \"chain acquisition\" pattern — a Canadian company acquired by a US company, which is then acquired by another US company. With each transaction, the original Canadian sovereignty connection becomes more distant. Clients who evaluated the vendor at the time of the first acquisition may not have reassessed through subsequent ownership changes. Each transaction should trigger a new compliance review.",
+      "source": "editorial",
+      "featured": true
+    }
+  ],
+  "lastUpdated": "2026-02-25"
+}
