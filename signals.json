@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 25, 2026 — 18:19 ET",
+    "lastUpdated": "Feb 26, 2026 — 06:33 ET",
     "sourceCount": "57+"
   },
   "signals": [
+    {
+      "headline": "Kanata North Business Association provides sovereign cloud infrastructure access through Canadian providers",
+      "summary": "The Kanata North Business Association announced exclusive access to sovereign cloud infrastructure provided by Canadian companies ThinkOn and PureColo for its 570+ member technology companies. The initiative explicitly targets organizations seeking to meet data sovereignty requirements while competing for Canada's public sector IT procurement market.",
+      "type": "vendor",
+      "source": "TheNewswire",
+      "sourceUrl": "https://www.thenewswire.com/press-releases/1AMqF8rnj-kanata-north-fueling-data-centre-promises-of-government-with-sovereign-and-secure-canadian-cloud-infrastructure.html",
+      "date": "2026-02-23",
+      "impact": "Canadian technology companies, particularly those in Kanata North, should evaluate this infrastructure offering for government procurement eligibility and data sovereignty compliance positioning.",
+      "dbUpdate": true
+    },
     {
       "headline": "Canada's Defence Industrial Strategy prioritizes digital sovereignty in procurement",
       "summary": "The Government of Canada released a Defence Industrial Strategy on February 17, 2026, using a \"Build-Partner-Buy\" framework that explicitly prioritizes domestic procurement for sovereign concerns, including digital sovereignty and supply chain security. This establishes new procurement requirements for defence-related digital acquisitions.",
