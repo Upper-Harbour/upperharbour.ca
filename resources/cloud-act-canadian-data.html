@@ -35,6 +35,19 @@
     "mainEntityOfPage": "https://upperharbour.ca/resources/cloud-act-canadian-data"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the CLOUD Act?", "acceptedAnswer": { "@type": "Answer", "text": "The Clarifying Lawful Overseas Use of Data Act is a US federal law enacted in 2018 that gives American authorities the power to compel US-incorporated technology companies to produce data — regardless of where that data is physically stored. For Canadian organizations, this means data held by US-parented SaaS vendors can be accessed under US legal process even if it never leaves Canada." } },
+      { "@type": "Question", "name": "Does the CLOUD Act apply to Canadian companies?", "acceptedAnswer": { "@type": "Answer", "text": "The CLOUD Act applies to companies incorporated in or subject to US jurisdiction. Canadian-incorporated companies with no US parent are not directly subject to it. However, most major SaaS tools used by Canadian organizations — Microsoft 365, Salesforce, Slack, Zoom, Google Workspace — are operated by US-parented companies and are therefore CLOUD Act exposed." } },
+      { "@type": "Question", "name": "Can US authorities access data stored in Canadian data centres?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Under the CLOUD Act, US authorities can compel a US-incorporated company to produce data regardless of where the server is located. A Canadian data centre operated by Microsoft, Google, or AWS does not remove the data from US legal reach. This is the core distinction between data residency and data sovereignty." } },
+      { "@type": "Question", "name": "Does a Canadian data centre protect against the CLOUD Act?", "acceptedAnswer": { "@type": "Answer", "text": "A Canadian data centre provides data residency — your data is physically located in Canada. But if the company operating that data centre is US-incorporated, the data remains subject to US jurisdiction under the CLOUD Act. Data residency reduces some risks but does not eliminate jurisdictional exposure." } }
+    ]
+  }
+  </script>
+
 
 <style>
     .warning-callout { border-left-color: var(--gold); }
@@ -157,6 +170,26 @@
     </div>
 
   </article>
+
+  <section class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the CLOUD Act?</div>
+      <div class="faq-a">The Clarifying Lawful Overseas Use of Data Act is a US federal law enacted in 2018 that gives American authorities the power to compel US-incorporated technology companies to produce data — regardless of where that data is physically stored. For Canadian organizations, this means data held by US-parented SaaS vendors can be accessed under US legal process even if it never leaves Canada.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does the CLOUD Act apply to Canadian companies?</div>
+      <div class="faq-a">The CLOUD Act applies to companies incorporated in or subject to US jurisdiction. Canadian-incorporated companies with no US parent are not directly subject to it. However, most major SaaS tools used by Canadian organizations — Microsoft 365, Salesforce, Slack, Zoom, Google Workspace — are operated by US-parented companies and are therefore CLOUD Act exposed. Upper Harbour's <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> tracks which tools are affected.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can US authorities access data stored in Canadian data centres?</div>
+      <div class="faq-a">Yes. Under the CLOUD Act, US authorities can compel a US-incorporated company to produce data regardless of where the server is located. A Canadian data centre operated by Microsoft, Google, or AWS does not remove the data from US legal reach. This is the core distinction between data residency (where data sits) and data sovereignty (whose laws apply).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does a Canadian data centre protect against the CLOUD Act?</div>
+      <div class="faq-a">A Canadian data centre provides data residency — your data is physically located in Canada. But if the company operating that data centre is US-incorporated, the data remains subject to US jurisdiction under the CLOUD Act. Data residency reduces some risks (e.g., data in transit) but does not eliminate jurisdictional exposure. See our guide on <a href="/resources/data-residency-vs-data-sovereignty-canada" style="color:var(--teal);">data residency vs data sovereignty</a>.</div>
+    </div>
+  </section>
 
   <section class="cta-section">
     <h2>Know where your data stands</h2>

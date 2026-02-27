@@ -35,6 +35,19 @@
     "mainEntityOfPage": "https://upperharbour.ca/resources/data-sovereignty-government-procurement"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Does FIPPA require Canadian data residency for SaaS tools?", "acceptedAnswer": { "@type": "Answer", "text": "British Columbia's FIPPA includes the strongest data residency provision — section 30.1 requires public bodies to ensure personal information is stored and accessed only in Canada, with limited exceptions. Other provinces have varying requirements. Federal legislation does not explicitly mandate residency but government policy directives establish Canadian storage as the default." } },
+      { "@type": "Question", "name": "Can Canadian government organizations use US SaaS tools?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but with significant compliance obligations. Upper Harbour's Government SaaS Audit found approximately 67% of government SaaS tools are CLOUD Act exposed. Using these tools requires configuring Canadian data residency where available, executing appropriate DPAs, documenting risk assessment rationale, and in Quebec, completing Transfer Impact Assessments." } },
+      { "@type": "Question", "name": "What data sovereignty requirements exist for government RFPs?", "acceptedAnswer": { "@type": "Answer", "text": "Increasingly, Canadian government RFPs include data sovereignty evaluation criteria. Common requirements include Canadian data residency, disclosure of parent company jurisdiction, CLOUD Act exposure assessment, subprocessor transparency, and encryption provisions. Vendors that demonstrate Canadian-headquartered operations have a meaningful procurement advantage." } },
+      { "@type": "Question", "name": "What is the Government of Canada's position on data sovereignty?", "acceptedAnswer": { "@type": "Answer", "text": "The Government of Canada's Digital Sovereignty Framework acknowledges dependence on foreign-owned technology platforms as a strategic risk. It calls for supplier diversification and investment in domestic digital capacity. However, the gap between policy aspiration and operational reality remains wide — most core government IT still runs on US-jurisdictioned platforms." } }
+    ]
+  }
+  </script>
+
 
 <style>
     .warning-callout { border-left-color: var(--gold); }
@@ -179,6 +192,26 @@
     </div>
 
   </article>
+
+  <section class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Does FIPPA require Canadian data residency for SaaS tools?</div>
+      <div class="faq-a">British Columbia's FIPPA includes the strongest data residency provision — section 30.1 requires public bodies to ensure personal information in their custody is stored and accessed only in Canada, with limited exceptions. Other provinces have varying requirements. Federal ATIP legislation does not explicitly mandate residency but government policy directives establish Canadian storage as the default.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can Canadian government organizations use US SaaS tools?</div>
+      <div class="faq-a">Yes, but with significant compliance obligations. Most Canadian government organizations use US-parented SaaS tools — Upper Harbour's <a href="/research/government-saas-audit" style="color:var(--teal);">Government SaaS Audit</a> found approximately 67% of government SaaS tools are CLOUD Act exposed. Using these tools requires configuring Canadian data residency where available, executing appropriate DPAs, documenting a risk assessment rationale, and in Quebec, completing Transfer Impact Assessments.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What data sovereignty requirements exist for government RFPs?</div>
+      <div class="faq-a">Increasingly, Canadian government RFPs include data sovereignty evaluation criteria. Common requirements include Canadian data residency, disclosure of parent company jurisdiction, CLOUD Act exposure assessment, subprocessor transparency, and encryption provisions. Vendors that can demonstrate Canadian-headquartered operations and independence from foreign jurisdiction have a meaningful procurement advantage.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the Government of Canada's position on data sovereignty?</div>
+      <div class="faq-a">The Government of Canada's Digital Sovereignty Framework acknowledges dependence on foreign-owned technology platforms as a strategic risk. The framework calls for supplier diversification, investment in domestic digital capacity, and assessment of foreign law access risks. However, the gap between policy aspiration and operational reality remains wide — most core government IT still runs on US-jurisdictioned platforms.</div>
+    </div>
+  </section>
 
   <section class="cta-section">
     <h2>Document your sovereignty posture</h2>

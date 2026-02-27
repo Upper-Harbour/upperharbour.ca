@@ -35,6 +35,19 @@
     "mainEntityOfPage": "https://upperharbour.ca/resources/canadian-data-residency-saas"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Which SaaS tools offer Canadian data residency?", "acceptedAnswer": { "@type": "Answer", "text": "Major tools with Canadian data residency include Microsoft 365 (Canada Central/East), AWS (Montréal and Calgary regions), Google Workspace (Enterprise tier), Salesforce (Hyperforce), and ServiceNow. However, many widely used tools — including Slack, Zoom, Dropbox, Notion, and ChatGPT — do not offer Canadian data residency at any tier. Upper Harbour's Sovereignty Index tracks residency options for 292 tools." } },
+      { "@type": "Question", "name": "Does Canadian data residency mean my data is safe from US law?", "acceptedAnswer": { "@type": "Answer", "text": "No. Canadian data residency means your data is physically stored in Canada. But if the company operating the service is US-incorporated, that data remains subject to the CLOUD Act regardless of where the server sits. Data residency reduces some risks but does not change the legal jurisdiction of the vendor." } },
+      { "@type": "Question", "name": "How many SaaS tools have Canadian data centres?", "acceptedAnswer": { "@type": "Answer", "text": "According to Upper Harbour's Sovereignty Index, approximately 52 of the 292 tracked tools offer some form of Canadian data residency — but the scope and availability varies significantly. Some offer it only on enterprise tiers, some only for primary data, and some require manual migration. Only 62 tools in the index are fully Canadian-controlled." } },
+      { "@type": "Question", "name": "Is Canadian data residency required by law?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your jurisdiction and sector. British Columbia's FIPPA requires public bodies to store personal information in Canada. Quebec's Law 25 requires a Transfer Impact Assessment for any cross-border transfer. PIPEDA does not require Canadian residency but expects organizations to ensure adequate protection." } }
+    ]
+  }
+  </script>
+
 
 <style>
     .warning-callout { border-left-color: var(--gold); }
@@ -193,6 +206,26 @@
     </div>
 
   </article>
+
+  <section class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Which SaaS tools offer Canadian data residency?</div>
+      <div class="faq-a">Major tools with Canadian data residency include Microsoft 365 (Canada Central/East), AWS (Montréal and Calgary regions), Google Workspace (Enterprise tier), Salesforce (Hyperforce), and ServiceNow. However, many widely used tools — including Slack, Zoom, Dropbox, Notion, and ChatGPT — do not offer Canadian data residency at any tier. Upper Harbour's <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> tracks residency options for 292 tools.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does Canadian data residency mean my data is safe from US law?</div>
+      <div class="faq-a">No. Canadian data residency means your data is physically stored in Canada. But if the company operating the service is US-incorporated, that data remains subject to the CLOUD Act regardless of where the server sits. Data residency reduces some risks but does not change the legal jurisdiction of the vendor. See our guide on <a href="/resources/data-residency-vs-data-sovereignty-canada" style="color:var(--teal);">data residency vs data sovereignty</a>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many SaaS tools have Canadian data centres?</div>
+      <div class="faq-a">According to Upper Harbour's Sovereignty Index, approximately 52 of the 292 tracked tools offer some form of Canadian data residency — but the scope and availability varies significantly. Some offer it only on enterprise tiers, some only for primary data (not metadata or logs), and some require manual migration. Only 62 tools in the index are fully Canadian-controlled.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is Canadian data residency required by law?</div>
+      <div class="faq-a">It depends on your jurisdiction and sector. British Columbia's FIPPA requires public bodies to store personal information in Canada. Quebec's Law 25 doesn't mandate residency but requires a Transfer Impact Assessment for any cross-border transfer. PIPEDA does not require Canadian residency but expects organizations to ensure adequate protection. Healthcare and financial regulators may have additional requirements.</div>
+    </div>
+  </section>
 
   <section class="cta-section">
     <h2>See your stack's residency status</h2>

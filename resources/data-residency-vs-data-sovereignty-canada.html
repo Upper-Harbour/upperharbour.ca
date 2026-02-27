@@ -35,6 +35,19 @@
     "mainEntityOfPage": "https://upperharbour.ca/resources/data-residency-vs-data-sovereignty-canada"
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the difference between data residency and data sovereignty?", "acceptedAnswer": { "@type": "Answer", "text": "Data residency refers to where data is physically stored — the geographic location of the server. Data sovereignty refers to which country's laws have legal authority over that data. A Canadian data centre operated by a US company is Canadian residency under US sovereignty. The distinction matters because the CLOUD Act allows US authorities to compel access to data held by US companies regardless of server location." } },
+      { "@type": "Question", "name": "Is data residency enough for Canadian compliance?", "acceptedAnswer": { "@type": "Answer", "text": "Data residency alone is not sufficient for full compliance. It satisfies some requirements — for example, BC's FIPPA requires personal information to be stored in Canada. But it does not address jurisdictional exposure under the CLOUD Act, which is a separate risk that Law 25 TIA requirements and PIPEDA adequacy assessments are designed to evaluate." } },
+      { "@type": "Question", "name": "Does using a Canadian data centre protect against the CLOUD Act?", "acceptedAnswer": { "@type": "Answer", "text": "No. The CLOUD Act applies based on the jurisdiction of the company, not the location of the server. If the data centre is operated by a US-incorporated company — which includes Microsoft Azure Canada, AWS ca-central-1, and Google Cloud Montréal — the data remains subject to US legal process." } },
+      { "@type": "Question", "name": "How do I achieve data sovereignty in Canada?", "acceptedAnswer": { "@type": "Answer", "text": "True data sovereignty requires both Canadian data residency and a Canadian-controlled vendor — one not subject to foreign jurisdiction. This means using tools operated by Canadian-incorporated companies with no foreign parent. Upper Harbour's Sovereignty Index identifies 62 Canadian-controlled tools. For tools where Canadian alternatives don't exist, mitigations like customer-managed encryption can reduce practical risk." } }
+    ]
+  }
+  </script>
+
 
 <style>
     .warning-callout { border-left-color: var(--gold); }
@@ -183,6 +196,26 @@
     </div>
 
   </article>
+
+  <section class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the difference between data residency and data sovereignty?</div>
+      <div class="faq-a">Data residency refers to where data is physically stored — the geographic location of the server. Data sovereignty refers to which country's laws have legal authority over that data. A Canadian data centre operated by a US company is Canadian residency under US sovereignty. The distinction matters because the CLOUD Act allows US authorities to compel access to data held by US companies regardless of server location.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is data residency enough for Canadian compliance?</div>
+      <div class="faq-a">Data residency alone is not sufficient for full compliance. It satisfies some requirements — for example, BC's FIPPA requires personal information to be stored in Canada. But it does not address jurisdictional exposure under the CLOUD Act, which is a separate risk that Law 25 TIA requirements and PIPEDA adequacy assessments are designed to evaluate. A complete compliance posture considers both residency and sovereignty.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does using a Canadian data centre protect against the CLOUD Act?</div>
+      <div class="faq-a">No. The CLOUD Act applies based on the jurisdiction of the company, not the location of the server. If the data centre is operated by a US-incorporated company — which includes Microsoft Azure Canada, AWS ca-central-1, and Google Cloud Montréal — the data remains subject to US legal process. The server location is irrelevant to the CLOUD Act's reach. See our full <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);">CLOUD Act guide</a>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do I achieve data sovereignty in Canada?</div>
+      <div class="faq-a">True data sovereignty requires both Canadian data residency and a Canadian-controlled vendor — one not subject to foreign jurisdiction. This means using tools operated by Canadian-incorporated companies with no foreign parent. Upper Harbour's <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> identifies 62 Canadian-controlled tools. For tools where Canadian alternatives don't exist, mitigations like customer-managed encryption can reduce practical risk.</div>
+    </div>
+  </section>
 
   <section class="cta-section">
     <h2>Know residency and sovereignty for every tool</h2>
