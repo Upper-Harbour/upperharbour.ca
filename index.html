@@ -90,7 +90,7 @@
     .press{padding:60px 0;border-top:1px solid var(--border)}
     .press-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);text-align:center;margin-bottom:32px}
     .press-row{display:flex;justify-content:center;align-items:center;gap:60px;flex-wrap:wrap}
-    .press-name{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--muted)}
+    .press-name{font-family:var(--serif);font-size:20px;font-weight:700;color:var(--muted);transition:color 0.2s}a.press-name:hover{color:var(--teal)}
     .cta{padding:100px 0;text-align:center;border-top:1px solid var(--border);background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,0.06) 0%,transparent 70%)}
     .cta-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
     .cta-title{font-family:var(--serif);font-size:clamp(32px,4vw,52px);font-weight:900;color:var(--ice);line-height:1.08;max-width:640px;margin:0 auto 16px}.cta-title em{font-style:italic;color:var(--gold)}
@@ -225,7 +225,7 @@
 
   <section class="press">
     <div class="press-label">Upper Harbour has been featured in</div>
-    <div class="press-row"><span class="press-name">Maclean&#39;s</span><span class="press-name">BetaKit</span><span class="press-name">OpenCanada</span></div>
+    <div class="press-row"><a href="https://macleans.ca/technology-3/canada-needs-homegrown-ai-infrastructure/" target="_blank" class="press-name" style="text-decoration:none;color:var(--muted);transition:color 0.2s"><span>Maclean&#39;s</span></a><a href="https://betakit.com/what-canadas-ai-strategy-get-wrong-about-sovereignty/" target="_blank" class="press-name" style="text-decoration:none;color:var(--muted);transition:color 0.2s"><span>BetaKit</span></a><a href="https://opencanada.org/canadas-sovereign-ai-compute-gap-why-were-still-treating-a-strategic-asset-as-a-service/" target="_blank" class="press-name" style="text-decoration:none;color:var(--muted);transition:color 0.2s"><span>OpenCanada</span></a></div>
   </section>
 
   <section class="cta" id="cta">
@@ -270,6 +270,7 @@
           <li><a href="/signals">Signals</a></li>
           <li><a href="/research">Research</a></li>
           <li><a href="/resources">Guides</a></li>
+          <li><a href="/founder">Founder</a></li>
         </ul>
       </div>
       <div>
