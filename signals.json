@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Feb 26, 2026 — 06:33 ET",
+    "lastUpdated": "Feb 27, 2026 — 12:10 ET",
     "sourceCount": "57+"
   },
   "signals": [
+    {
+      "headline": "Fediverse Adoption Examined as Potential Canadian Digital Sovereignty Tool",
+      "summary": "Canadian digital sovereignty advocates are exploring the Fediverse—decentralized social networks—as a means to reduce dependence on centralized Big Tech platforms. The discussion reflects growing interest in federated, open-source alternatives for maintaining Canadian control over digital infrastructure and data flows.",
+      "type": "policy",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/can-canada-find-digital-sovereignty-in-the-fediverse/",
+      "date": "2026-02-25",
+      "impact": "Canadian government and institutional technology decision-makers should monitor Fediverse maturity and governance models as potential alternatives to centralized US-based platforms for sensitive communications.",
+      "dbUpdate": false
+    },
     {
       "headline": "Kanata North Business Association provides sovereign cloud infrastructure access through Canadian providers",
       "summary": "The Kanata North Business Association announced exclusive access to sovereign cloud infrastructure provided by Canadian companies ThinkOn and PureColo for its 570+ member technology companies. The initiative explicitly targets organizations seeking to meet data sovereignty requirements while competing for Canada's public sector IT procurement market.",
