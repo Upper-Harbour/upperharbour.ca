@@ -507,7 +507,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     async function handleCta(e) {
       e.preventDefault();
       const form = e.target, data = new FormData(form);
@@ -529,8 +529,9 @@
     }
     const statsEl = document.querySelector('.hero-stats');
     if (statsEl) {
-      new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { animateCounters(); e.target.dataset.animated = 'true'; } }); }, { threshold: 0.2 }).observe(statsEl);
-      setTimeout(() => { if (!statsEl.dataset.animated) animateCounters(); }, 500);
+      let animated = false;
+      new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting && !animated) { animated = true; animateCounters(); } }); }, { threshold: 0.15 }).observe(statsEl);
+      setTimeout(() => { if (!animated) { animated = true; animateCounters(); } }, 800);
     }
     /* ── Checker database (sample) ── */
     const saasDB = [
@@ -574,4 +575,9 @@
             '<div class="checker-result-row"><span>CLOUD Act</span><span>' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No direct exposure') + '</span></div>' +
             '<div class="checker-result-row"><span>Data residency</span><span>' + t.dataResidency + '</span></div>' +
             '<p style="font-size:12px;color:var(--slate);margin-top:10px;line-height:1.55">' + t.note + '</p></div>';
-        }).join('') + '<p style="font-size:11px;color:var(--muted);margin-top:16px">Indicative only. <a href="/harbourscan" style="color:var(--teal);text-decoration:none;bord
+        }).join('') + '<p style="font-size:11px;color:var(--muted);margin-top:16px">Indicative only. <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2)">Run a full HarbourScan</a> for complete assessment.</p>';
+      }, 200);
+    });
+  </script>
+</body>
+</html>
