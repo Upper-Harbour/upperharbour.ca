@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — Sovereignty Intelligence for Canadian Organizations | Upper Harbour</title>
+  <meta name="description" content="From a free HarbourScan to ongoing sovereignty monitoring. Upper Harbour pricing is structured around your compliance situation — not the number of tools in your stack." />
+  <link rel="canonical" href="https://upperharbour.ca/pricing" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Pricing — Upper Harbour" />
+  <meta property="og:description" content="Sovereignty assessments, compliance documentation, and ongoing monitoring for Canadian organizations." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/pricing" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+<style>
+    .pricing-hero{padding:140px 52px 60px;max-width:900px;margin:0 auto;text-align:center}
+    .pricing-hero h1{font-family:var(--display);font-size:clamp(36px,5vw,52px);font-weight:900;color:var(--ice);line-height:1.08;letter-spacing:-1px;margin-bottom:20px}
+    .pricing-hero h1 em{font-style:italic;font-weight:700;color:var(--gold)}
+    .pricing-hero .sub{font-size:17px;color:var(--slate);line-height:1.72;max-width:600px;margin:0 auto 12px}
+    .pricing-hero .note{font-size:13px;color:var(--muted);line-height:1.6}
+
+    /* ── Tier cards ──────────────────────────────────────── */
+    .tiers{max-width:1120px;margin:0 auto;padding:0 52px 80px;display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+    .tier{background:var(--surface);padding:36px 28px;display:flex;flex-direction:column;border-top:3px solid var(--border-md);transition:border-color 0.3s}
+    .tier:hover{border-top-color:var(--teal)}
+    .tier.featured{border-top-color:var(--teal);background:var(--surface-2)}
+    .tier-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+    .tier-eyebrow.gold{color:var(--gold)}
+    .tier-name{font-family:var(--display);font-size:24px;font-weight:700;color:var(--ice);margin-bottom:8px;line-height:1.15}
+    .tier-situation{font-size:14px;color:var(--gold);font-style:italic;font-family:var(--display);margin-bottom:16px;line-height:1.4}
+    .tier-price{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ice);margin-bottom:4px}
+    .tier-price-note{font-size:12px;color:var(--muted);margin-bottom:24px}
+    .tier-desc{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:24px;flex:1}
+    .tier-includes{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+    .tier-includes li{font-size:13px;color:var(--slate);line-height:1.5;padding-left:18px;position:relative}
+    .tier-includes li::before{content:'→';position:absolute;left:0;color:var(--teal);font-size:12px}
+    .tier-cta{display:block;text-align:center;font-size:13px;font-weight:800;text-decoration:none;padding:14px 24px;border-radius:4px;transition:background 0.2s,transform 0.15s}
+    .tier-cta:hover{transform:translateY(-1px)}
+    .tier-cta-primary{color:var(--bg);background:var(--teal)}.tier-cta-primary:hover{background:#47cec5}
+    .tier-cta-ghost{color:var(--teal);background:transparent;border:1px solid rgba(60,184,176,0.3)}.tier-cta-ghost:hover{background:rgba(60,184,176,0.06)}
+    .tier-cta-gold{color:var(--bg);background:var(--gold)}.tier-cta-gold:hover{background:#b8922e}
+
+    /* ── Journey ─────────────────────────────────────────── */
+    .journey{max-width:900px;margin:0 auto;padding:0 52px 80px}
+    .journey-label{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+    .journey h2{font-family:var(--display);font-size:clamp(28px,3.5vw,40px);font-weight:700;color:var(--ice);line-height:1.12;margin-bottom:16px}
+    .journey h2 em{font-style:italic;color:var(--gold)}
+    .journey-desc{font-size:15px;color:var(--slate);line-height:1.75;max-width:640px;margin-bottom:40px}
+    .journey-steps{position:relative;padding-left:28px}
+    .journey-steps::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--border-md)}
+    .journey-step{position:relative;padding:0 0 32px 28px}
+    .journey-step:last-child{padding-bottom:0}
+    .journey-step::before{content:'';position:absolute;left:-22px;top:7px;width:9px;height:9px;border-radius:50%;border:2px solid var(--teal);background:var(--bg)}
+    .journey-step-title{font-size:15px;font-weight:700;color:var(--ice);margin-bottom:4px}
+    .journey-step-desc{font-size:14px;color:var(--muted);line-height:1.65}
+
+    /* ── Additional services ──────────────────────────────── */
+    .additional{max-width:900px;margin:0 auto;padding:0 52px 80px}
+    .additional h2{font-family:var(--display);font-size:28px;font-weight:700;color:var(--ice);margin-bottom:24px}
+    .add-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .add-card{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:24px}
+    .add-card-name{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+    .add-card h3{font-size:16px;font-weight:700;color:var(--ice);margin-bottom:6px}
+    .add-card p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:8px}
+    .add-card .price{font-family:var(--mono);font-size:13px;color:var(--gold);font-weight:600}
+
+    /* ── FAQ ──────────────────────────────────────────────── */
+    .pricing-faq{max-width:820px;margin:0 auto;padding:0 52px 60px}
+    .pricing-faq h2{font-family:var(--display);font-size:28px;font-weight:700;color:var(--ice);margin-bottom:24px}
+    .faq-item{border-bottom:1px solid var(--border);padding:20px 0}
+    .faq-item:last-child{border-bottom:none}
+    .faq-q{font-size:15px;font-weight:700;color:var(--ice);margin-bottom:8px}
+    .faq-a{font-size:14px;color:var(--slate);line-height:1.75}
+    .faq-a a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+
+    @media(max-width:900px){
+      .tiers{grid-template-columns:1fr 1fr;padding:0 20px 60px}
+    }
+    @media(max-width:768px){
+      .pricing-hero{padding:110px 20px 48px}
+      .tiers{grid-template-columns:1fr;padding:0 20px 60px}
+      .journey{padding:0 20px 60px}
+      .additional{padding:0 20px 60px}
+      .add-grid{grid-template-columns:1fr}
+      .pricing-faq{padding:0 20px 60px}
+    }
+</style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/methodology" class="nav-link">Methodology</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/methodology">Methodology</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="pricing-hero">
+    <h1>Priced around your <em>situation.</em></h1>
+    <p class="sub">Not around your stack &mdash; around the question you need to answer, and who&rsquo;s asking it. Most organizations discover they need this only when someone asks for documentation.</p>
+    <p class="note">All pricing in CAD. Scoping calls confirm final scope and pricing before any work begins.</p>
+  </section>
+
+  <!-- ═══════════════ TIERS ═══════════════ -->
+  <section class="tiers">
+
+    <!-- Tier 0: HarbourScan -->
+    <div class="tier">
+      <div class="tier-eyebrow">Start Here</div>
+      <div class="tier-name">HarbourScan</div>
+      <div class="tier-situation">&ldquo;I need to see what we&rsquo;re exposed to.&rdquo;</div>
+      <div class="tier-price">Free</div>
+      <div class="tier-price-note">Self-serve assessment &middot; 10 minutes &middot; Browser-based</div>
+      <div class="tier-desc">Map your organization&rsquo;s SaaS stack against the Sovereignty Index. See which tools are CLOUD Act exposed, which need TIAs, and where the gaps are. No data stored.</div>
+      <ul class="tier-includes">
+        <li>Jurisdictional map of your SaaS stack</li>
+        <li>CLOUD Act exposure flags</li>
+        <li>Missing TIA / DPA identification</li>
+        <li>Exportable summary report</li>
+      </ul>
+      <a href="/harbourscan" class="tier-cta tier-cta-primary">Run HarbourScan &rarr;</a>
+    </div>
+
+    <!-- Tier 1: Snapshot -->
+    <div class="tier">
+      <div class="tier-eyebrow">Assessment</div>
+      <div class="tier-name">Sovereignty Snapshot</div>
+      <div class="tier-situation">&ldquo;Someone asked and I need an answer.&rdquo;</div>
+      <div class="tier-price">From $350</div>
+      <div class="tier-price-note">Delivered in 5 business days</div>
+      <div class="tier-desc">A professional sovereignty assessment of your organization&rsquo;s SaaS environment. The document you produce when a regulator, partner, or procurement officer asks how you manage cross-border data exposure. This is often the first document organizations produce once sovereignty becomes a procurement or regulatory question.</div>
+      <ul class="tier-includes">
+        <li>Full jurisdictional exposure map</li>
+        <li>CLOUD Act risk classification</li>
+        <li>Sovereignty Score for each tool</li>
+        <li>Gap identification with priority ranking</li>
+        <li>Executive summary (PDF)</li>
+      </ul>
+      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="tier-cta tier-cta-ghost">Request scoping call &rarr;</a>
+    </div>
+
+    <!-- Tier 2: Documentation -->
+    <div class="tier featured">
+      <div class="tier-eyebrow gold">Documentation</div>
+      <div class="tier-name">Compliance Documentation</div>
+      <div class="tier-situation">&ldquo;We need to prove compliance.&rdquo;</div>
+      <div class="tier-price">From $2,000</div>
+      <div class="tier-price-note">Delivered in 10&ndash;15 business days</div>
+      <div class="tier-desc">The structured compliance record you need when regulators, auditors, or procurement evaluators ask how you manage cross-border data exposure &mdash; documentation they expect to see, and increasingly require. Board-ready deliverables that demonstrate defensible process.</div>
+      <ul class="tier-includes">
+        <li>Everything in the Snapshot</li>
+        <li>TIA guidance for each flagged tool</li>
+        <li>Register of Processing Activities (ROPA)</li>
+        <li>Prioritized remediation roadmap</li>
+        <li>Regulatory framework mapping (Law 25, PIPEDA)</li>
+        <li>Board-ready deliverable (PDF + editable)</li>
+      </ul>
+      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="tier-cta tier-cta-gold">Request scoping call &rarr;</a>
+    </div>
+
+    <!-- Tier 3: Monitoring -->
+    <div class="tier">
+      <div class="tier-eyebrow">Ongoing</div>
+      <div class="tier-name">Sovereignty Monitoring</div>
+      <div class="tier-situation">&ldquo;We need to stay compliant as things change.&rdquo;</div>
+      <div class="tier-price">From $200/mo</div>
+      <div class="tier-price-note">Monthly or annual billing &middot; Typically follows Snapshot or Documentation</div>
+      <div class="tier-desc">Your sovereignty posture evolves as vendors get acquired, hosting changes, and regulations shift. Sovereignty Monitoring keeps your compliance documentation current without your team tracking every change. Without it, your documentation quietly becomes outdated as vendors change.</div>
+      <ul class="tier-includes">
+        <li>Continuous vendor ownership monitoring</li>
+        <li>Hosting and infrastructure change alerts</li>
+        <li>Regulatory development tracking</li>
+        <li>Sovereignty Score updates</li>
+        <li>Quarterly compliance status report</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="tier-cta tier-cta-ghost">Request scoping call &rarr;</a>
+    </div>
+
+  </section>
+
+  <!-- ═══════════════ JOURNEY ═══════════════ -->
+  <section class="journey">
+    <div class="journey-label">The Typical Path</div>
+    <h2>Most organizations follow the <em>same pattern.</em></h2>
+    <p class="journey-desc">You don&rsquo;t need to commit to everything at once. Most clients start with the free scan and work forward as their compliance needs become clear.</p>
+    <div class="journey-steps">
+      <div class="journey-step">
+        <div class="journey-step-title">Run HarbourScan (free)</div>
+        <div class="journey-step-desc">You see your stack&rsquo;s jurisdictional exposure for the first time. Most organizations discover 60&ndash;80% of their tools are CLOUD Act exposed.</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-title">Sovereignty Snapshot ($350+)</div>
+        <div class="journey-step-desc">The scan raised questions. You need a professional assessment &mdash; something you can hand to a board member, a procurement officer, or a regulator when they ask.</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-title">Compliance Documentation ($2,000+)</div>
+        <div class="journey-step-desc">The Snapshot showed real gaps. You need the full compliance record &mdash; TIA guidance, ROPA, remediation roadmap, regulatory mapping. The documentation that demonstrates defensible process.</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-title">Sovereignty Monitoring ($200+/mo)</div>
+        <div class="journey-step-desc">Your documentation is current today. But vendor ownership changes, hosting shifts, and regulations evolve. Monitoring keeps your compliance posture current without manual tracking.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ADDITIONAL ═══════════════ -->
+  <section class="additional">
+    <h2>Additional services</h2>
+    <div class="add-grid">
+      <div class="add-card">
+        <div class="add-card-name">Coming Q3 2026</div>
+        <h3>Vendor Sovereignty Certification</h3>
+        <p>For SaaS vendors selling into Canadian government or regulated industries. A third-party sovereignty assessment and certification based on Upper Harbour&rsquo;s classification methodology.</p>
+        <div class="price">$5,000 &ndash; $15,000</div>
+      </div>
+      <div class="add-card">
+        <div class="add-card-name">Coming Q4 2026</div>
+        <h3>Procurement Intelligence</h3>
+        <p>For procurement teams evaluating SaaS vendors against sovereignty requirements. Custom analysis of vendor shortlists with Sovereignty Scores, risk assessments, and alternative recommendations.</p>
+        <div class="price">$10,000 &ndash; $25,000/year</div>
+      </div>
+      <div class="add-card">
+        <div class="add-card-name">Coming Q3 2026</div>
+        <h3>Sector Reports</h3>
+        <p>Deep-dive sovereignty analysis for specific sectors: healthcare, legal, education, government, financial services. Sector-specific tool landscapes, regulatory requirements, and Canadian alternatives.</p>
+        <div class="price">$5,000 &ndash; $15,000</div>
+      </div>
+      <div class="add-card">
+        <div class="add-card-name">Available Now</div>
+        <h3>Advisory</h3>
+        <p>Direct access to Upper Harbour&rsquo;s founder for sovereignty strategy, compliance architecture, and policy analysis. For organizations that need targeted guidance beyond standard deliverables.</p>
+        <div class="price">$300 &ndash; $500/hour</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="pricing-faq">
+    <h2>Common questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">How is pricing determined?</div>
+      <div class="faq-a">Pricing is based on your compliance situation &mdash; the question you need to answer, and who you need to answer it to. We scope during a free 30-minute call. Final pricing reflects organizational complexity, data sensitivity, regulatory requirements, and the number of jurisdictions involved. The prices shown here are starting points.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What&rsquo;s the difference between the Snapshot and full Documentation?</div>
+      <div class="faq-a">The Snapshot tells you where you stand &mdash; it maps your exposure and identifies gaps. The full Documentation package proves where you stand &mdash; it produces the TIA guidance, ROPA, remediation roadmap, and regulatory mapping that regulators, auditors, and procurement evaluators expect to see. If someone is going to audit your compliance, you want the full Documentation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need the Monitoring subscription?</div>
+      <div class="faq-a">If your compliance posture needs to be current on an ongoing basis &mdash; because you&rsquo;re subject to Law 25, selling into government procurement, or in a regulated industry &mdash; then yes. A compliance assessment is a snapshot in time. Vendor ownership changes, hosting shifts, and new regulations can make your documentation stale. Monitoring keeps it current.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is HarbourScan really free?</div>
+      <div class="faq-a">Yes. <a href="/harbourscan">HarbourScan</a> runs entirely in your browser, no data is stored or transmitted, and there is no paywall. It&rsquo;s powered by the same <a href="/tools">Sovereignty Index</a> database that underlies all our paid products. We built it because the first step to fixing a problem is seeing it.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I start with HarbourScan and upgrade later?</div>
+      <div class="faq-a">Absolutely. Most clients do exactly this. Run HarbourScan first to see your exposure, then request a scoping call if you need professional assessment or compliance documentation.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who is this for?</div>
+      <div class="faq-a">Canadian organizations that use SaaS tools and need to understand or document their jurisdictional exposure. This includes startups preparing for enterprise sales, healthcare and legal practices with regulatory obligations, organizations subject to Law 25, companies selling into government procurement, and any organization that might need to answer &ldquo;how do you manage cross-border data exposure?&rdquo;</div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="cta-section">
+    <h2>Start with HarbourScan</h2>
+    <p>See your organization&rsquo;s jurisdictional exposure in 10 minutes. Free, browser-based, no data stored.</p>
+    <div style="display:flex;justify-content:center;gap:14px;flex-wrap:wrap">
+      <a href="/harbourscan" class="cta-btn">Run HarbourScan &mdash; free &rarr;</a>
+      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="cta-btn" style="background:var(--gold)">Request a scoping call</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#73191c001b3306030316011b1201111c06015d1012">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></sp

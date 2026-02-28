@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Methodology — How We Classify Technology Sovereignty | Upper Harbour</title>
+  <meta name="description" content="Upper Harbour's open methodology for classifying SaaS tools by jurisdiction, ownership, CLOUD Act exposure, and sovereignty posture. Designed to be cited in procurement, compliance, and policy contexts." />
+  <link rel="canonical" href="https://upperharbour.ca/methodology" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Methodology — How We Classify Technology Sovereignty | Upper Harbour" />
+  <meta property="og:description" content="Open, transparent classification methodology for 693 SaaS tools. Four tiers, three compelled disclosure jurisdictions, one Sovereignty Score." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/methodology" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How We Classify Technology Sovereignty — Upper Harbour Methodology",
+    "description": "Open, transparent classification methodology for 693 SaaS tools. Four tiers, three compelled disclosure jurisdictions, one Sovereignty Score.",
+    "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://www.linkedin.com/in/joshuavanes", "jobTitle": "Founder", "worksFor": { "@type": "Organization", "name": "Upper Harbour" } },
+    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://upperharbour.ca" },
+    "datePublished": "2026-02-20",
+    "dateModified": "2026-02-28",
+    "mainEntityOfPage": "https://upperharbour.ca/methodology"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+<style>
+    .meth-hero{padding:140px 52px 48px;max-width:820px;margin:0 auto}
+    .meth-hero .breadcrumb{font-size:12px;color:var(--muted);margin-bottom:24px}.breadcrumb a{color:var(--teal);text-decoration:none}
+    .meth-hero h1{font-family:var(--display);font-size:clamp(32px,5vw,48px);font-weight:900;color:var(--ice);line-height:1.1;letter-spacing:-0.5px;margin-bottom:20px}
+    .meth-hero h1 em{font-style:italic;font-weight:700;color:var(--gold)}
+    .meth-hero .intro{font-size:17px;color:var(--slate);line-height:1.72;max-width:660px;margin-bottom:12px}
+    .meth-hero .meta{font-size:12px;color:var(--muted)}
+
+    .meth-body{max-width:820px;margin:0 auto;padding:0 52px 80px}
+    .meth-body h2{font-family:var(--display);font-size:28px;font-weight:700;color:var(--ice);margin:48px 0 16px;line-height:1.2}
+    .meth-body h3{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:32px 0 12px;line-height:1.25}
+    .meth-body p{font-size:15px;color:var(--slate);line-height:1.8;margin-bottom:16px}
+    .meth-body strong{color:var(--ice);font-weight:600}
+    .meth-body a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+
+    .principle-box{background:var(--surface);border:1px solid var(--border-md);border-left:3px solid var(--teal);border-radius:0 6px 6px 0;padding:24px 28px;margin:32px 0}
+    .principle-box .label{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+    .principle-box p{font-size:15px;color:var(--ice);line-height:1.7;margin-bottom:0;font-weight:500}
+
+    .tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
+    .tier-card{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:24px;border-top:3px solid}
+    .tier-card.exposed{border-top-color:var(--red)}.tier-card.review{border-top-color:var(--gold)}.tier-card.non-exposed{border-top-color:var(--slate)}.tier-card.canadian{border-top-color:var(--teal)}
+    .tier-name{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+    .tier-name.exposed{color:var(--red)}.tier-name.review{color:var(--gold)}.tier-name.non-exposed{color:var(--slate)}.tier-name.canadian{color:var(--teal)}
+    .tier-def{font-size:14px;color:var(--ice);font-weight:600;margin-bottom:8px;line-height:1.4}
+    .tier-desc{font-size:13px;color:var(--muted);line-height:1.65}
+    .tier-examples{font-size:12px;color:var(--slate);margin-top:8px;font-style:italic}
+
+    .decision-tree{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:36px;margin:32px 0;font-family:var(--mono);font-size:13px;color:var(--slate);line-height:2.4;white-space:pre-wrap}
+    .decision-tree .q{color:var(--ice);font-weight:600}
+    .decision-tree .yes{color:var(--teal)}.decision-tree .no{color:var(--red)}
+    .decision-tree .result{font-weight:700;padding:2px 8px;border-radius:3px;font-size:11px;letter-spacing:0.06em}
+    .decision-tree .r-exposed{background:var(--red-dim);color:var(--red)}
+    .decision-tree .r-review{background:var(--gold-dim);color:var(--gold)}
+    .decision-tree .r-non{background:rgba(138,157,176,0.1);color:var(--slate)}
+    .decision-tree .r-cdn{background:var(--teal-dim);color:var(--teal)}
+
+    .juris-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:13px}
+    .juris-table th{font-family:var(--mono);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--border-md)}
+    .juris-table td{padding:12px;border-bottom:1px solid var(--border);color:var(--slate);vertical-align:top}
+    .juris-table tr:hover td{background:rgba(60,184,176,0.03)}
+    .juris-table .country{color:var(--ice);font-weight:600}
+
+    .score-section{margin:48px 0}
+    .score-factors{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+    .score-factor{background:var(--surface);border:1px solid var(--border-md);border-radius:6px;padding:20px;text-align:center}
+    .score-factor-name{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+    .score-factor-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+    @media(max-width:768px){
+      .meth-hero{padding:100px 20px 40px}
+      .meth-body{padding:0 20px 60px}
+      .tier-grid{grid-template-columns:1fr}
+      .score-factors{grid-template-columns:1fr}
+      .decision-tree{padding:20px;font-size:11px;overflow-x:auto}
+    }
+</style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/methodology" class="nav-link active">Methodology</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/methodology">Methodology</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <header class="meth-hero">
+    <div class="breadcrumb"><a href="/">Home</a> &rarr; Methodology</div>
+    <h1>How we classify <em>technology sovereignty.</em></h1>
+    <p class="intro">Upper Harbour&rsquo;s classification methodology is open, transparent, and designed to be cited. Every classification in the <a href="/research/canadian-saas-sovereignty-index">Canadian SaaS Sovereignty Index</a> is traceable to public corporate filings, ownership structures, and legal jurisdiction. This framework provides a consistent basis for evaluating SaaS vendors across jurisdictions.</p>
+    <p class="meta">Last updated: February 2026 &middot; Maintained by <a href="/founder" style="color:var(--teal);text-decoration:none">Joshua van Es</a></p>
+  </header>
+
+  <article class="meth-body">
+
+    <div class="principle-box">
+      <div class="label">Core Principle</div>
+      <p>Data residency &ne; data sovereignty. The physical location of the server is irrelevant if the company that operates it can be compelled by a foreign government to hand over data. Data residency is a server configuration. Data sovereignty is a legal and corporate structure question.</p>
+    </div>
+
+    <p>Organizations increasingly need to document these classifications when responding to procurement reviews, regulatory inquiries, or data governance audits. This methodology exists so that those classifications are defensible, consistent, and citable.</p>
+
+    <h2>The four classifications</h2>
+    <p>Every tool in the <a href="/tools">Canadian SaaS Sovereignty Index</a> receives one of four classifications based on the jurisdictional exposure of its ultimate parent entity:</p>
+
+    <div class="tier-grid">
+      <div class="tier-card exposed">
+        <div class="tier-name exposed">Exposed</div>
+        <div class="tier-def"><strong>US-parented</strong>, CLOUD Act applies, no meaningful Canadian data residency.</div>
+        <div class="tier-desc">The parent entity is incorporated in the United States and subject to the CLOUD Act. Canadian data processed through this tool is subject to US legal process regardless of where it is stored. No Canadian data residency option exists that would warrant additional compliance nuance.</div>
+        <div class="tier-examples">Slack, Notion, Zoom, Dropbox, Figma, HubSpot, GitHub</div>
+      </div>
+      <div class="tier-card review">
+        <div class="tier-name review">Review</div>
+        <div class="tier-def">Jurisdictional exposure exists but requires <strong>case-by-case assessment</strong>.</div>
+        <div class="tier-desc">US-parented tools with Canadian data residency available (CLOUD Act still applies but residency creates a compliance consideration), UK or Australian tools subject to equivalent compelled disclosure laws, dual-jurisdiction structures, or non-US tools with data hosted primarily on US infrastructure.</div>
+        <div class="tier-examples">Microsoft 365, AWS, Salesforce, Canva, Atlassian/Jira</div>
+      </div>
+      <div class="tier-card non-exposed">
+        <div class="tier-name non-exposed">Non-Exposed</div>
+        <div class="tier-def">Foreign-incorporated, <strong>no known compelled disclosure</strong> mechanism.</div>
+        <div class="tier-desc">The parent entity is incorporated outside the US, UK, and Australia in a jurisdiction without a known compelled disclosure law equivalent to the CLOUD Act. Not CLOUD Act exposed. May still be subject to home jurisdiction data protection laws (e.g., EU GDPR).</div>
+        <div class="tier-examples">SAP (Germany), Xero (New Zealand), Zoho (India), Typeform (Spain)</div>
+      </div>
+      <div class="tier-card canadian">
+        <div class="tier-name canadian">Canadian</div>
+        <div class="tier-def"><strong>Canadian-incorporated</strong>, no foreign compelled disclosure exposure.</div>
+        <div class="tier-desc">The parent entity is incorporated in Canada with no US parent company in the corporate chain. Subject to Canadian privacy law (PIPEDA, Law 25, provincial legislation) and Canadian courts. Strongest jurisdictional alignment for Canadian organizations.</div>
+        <div class="tier-examples">Clio, Shopify, 1Password, Hootsuite, Jane App, Cohere</div>
+      </div>
+    </div>
+
+    <h2>The decision tree</h2>
+    <p>For any tool being classified, we follow this logic:</p>
+
+    <div class="decision-tree"><span class="q">1. Is the parent entity incorporated in the United States?</span>
+   <span class="yes">YES</span> &rarr; Is meaningful Canadian data residency available?
+         <span class="yes">YES</span> &rarr; <span class="result r-review">REVIEW</span>
+         <span class="no">NO</span>  &rarr; <span class="result r-exposed">EXPOSED</span>
+   <span class="no">NO</span>  &rarr; <span class="q">Is the parent entity incorporated in Canada?</span>
+         <span class="yes">YES</span> &rarr; <span class="result r-cdn">CANADIAN</span>
+         <span class="no">NO</span>  &rarr; <span class="q">Is the parent in a compelled disclosure jurisdiction (UK, AU)?</span>
+               <span class="yes">YES</span> &rarr; <span class="result r-review">REVIEW</span>
+               <span class="no">NO</span>  &rarr; <span class="q">Is data hosted primarily on US infrastructure?</span>
+                     <span class="yes">YES</span> &rarr; <span class="result r-review">REVIEW</span>
+                     <span class="no">NO</span>  &rarr; <span class="result r-non">NON-EXPOSED</span></div>
+
+    <p><strong>&ldquo;Meaningful Canadian data residency&rdquo;</strong> means the vendor offers a Canada-region deployment option available on business or enterprise plans. Marketing language about &ldquo;data staying in Canada&rdquo; without a specific Canadian region offering does not qualify.</p>
+
+    <h2>Compelled disclosure jurisdictions</h2>
+    <p>We currently track three jurisdictions with statutory compelled disclosure powers that can reach data held on behalf of customers regardless of where it is stored:</p>
+
+    <table class="juris-table">
+      <thead><tr><th>Jurisdiction</th><th>Law</th><th>Effective</th><th>Implication</th></tr></thead>
+      <tbody>
+        <tr><td class="country">United States</td><td>CLOUD Act (Clarifying Lawful Overseas Use of Data Act)</td><td>2018</td><td>Applies to all US-incorporated companies. Can compel disclosure regardless of data location.</td></tr>
+        <tr><td class="country">United Kingdom</td><td>Investigatory Powers Act 2016</td><td>2016</td><td>Broad surveillance powers. Technical capability notices can compel assistance from UK-incorporated entities.</td></tr>
+        <tr><td class="country">Australia</td><td>Assistance and Access Act 2018</td><td>2018</td><td>Technical assistance requests and notices can compel cooperation from AU-incorporated entities.</td></tr>
+      </tbody>
+    </table>
+
+    <p>We focus specifically on jurisdictions with <strong>extraterritorial compelled disclosure powers</strong> &mdash; laws that can reach data held outside their borders by compelling the corporate entity to produce it. Many countries have domestic surveillance or data access frameworks, but only these three currently have statutory mechanisms that operate extraterritorially against corporate entities. Additional jurisdictions will be added as comparable legislation emerges.</p>
+
+    <p>This list is reviewed quarterly and updated when new legislation is enacted. Five Eyes intelligence-sharing agreements create indirect exposure for New Zealand and Canadian entities, but we do not classify these as direct statutory compulsion equivalent to the CLOUD Act.</p>
+
+    <h2>The six-step classification process</h2>
+
+    <h3>Step 1: Identify the parent entity</h3>
+    <p>For each tool, we trace ownership through subsidiaries, holding companies, and corporate structures to identify the ultimate parent entity and its jurisdiction of incorporation. Sources: corporate registry filings, SEC/SEDAR disclosures, annual reports.</p>
+
+    <h3>Step 2: Determine legal jurisdiction</h3>
+    <p>We assess which country&rsquo;s laws govern the entity that controls the data. A Canadian subsidiary of a US parent remains subject to US law. A Delaware-incorporated company headquartered in Toronto is legally a US entity.</p>
+
+    <h3>Step 3: Assess compelled disclosure exposure</h3>
+    <p>We evaluate whether the provider or any entity in its corporate chain is subject to compelled disclosure laws &mdash; the CLOUD Act (US), Investigatory Powers Act (UK), or Assistance and Access Act (AU).</p>
+
+    <h3>Step 4: Map data residency options</h3>
+    <p>We document whether Canadian data residency is available, whether it&rsquo;s default or opt-in, and whether residency alone provides meaningful protection given the provider&rsquo;s jurisdictional status.</p>
+
+    <h3>Step 5: Classify Canadian control</h3>
+    <p>Our &ldquo;Canadian-controlled&rdquo; definition goes beyond headquarters location. The entity must be Canadian-incorporated, majority Canadian-owned (or publicly listed on a Canadian exchange), and have no corporate chain that creates foreign jurisdictional exposure.</p>
+
+    <h3>Step 6: Assign a Sovereignty Score</h3>
+    <p>Each tool receives a composite Sovereignty Score (0&ndash;100) based on five weighted factors:</p>
+
+    <div class="score-factors">
+      <div class="score-factor">
+        <div class="score-factor-name">Jurisdiction</div>
+        <div class="score-factor-desc">Where is the parent entity incorporated? Canadian jurisdiction scores highest.</div>
+      </div>
+      <div class="score-factor">
+        <div class="score-factor-name">Ownership</div>
+        <div class="score-factor-desc">Who controls the entity? Canadian majority ownership vs. foreign parent chain.</div>
+      </div>
+      <div class="score-factor">
+        <div class="score-factor-name">Compelled Disclosure</div>
+        <div class="score-factor-desc">Is the entity subject to CLOUD Act, UK IPA, or AU AA Act?</div>
+      </div>
+      <div class="score-factor">
+        <div class="score-factor-name">Data Residency</div>
+        <div class="score-factor-desc">Is Canadian data residency available, default, or absent?</div>
+      </div>
+      <div class="score-factor">
+        <div class="score-factor-name">Alternatives</div>
+        <div class="score-factor-desc">Do Canadian-controlled alternatives exist in this category?</div>
+      </div>
+    </div>
+
+    <p>The score is designed to be referenced in procurement decisions, compliance audits, and policy analysis. A higher score indicates stronger sovereignty alignment for Canadian organizations.</p>
+
+    <div class="principle-box" style="border-left-color:var(--gold)">
+      <div class="label" style="color:var(--gold)">Important note on scores</div>
+      <p style="font-weight:400;color:var(--slate)">Sovereignty Scores are illustrative examples based on our methodology. As we formalize the scoring framework, individual tool scores may be refined. The classification tiers (Exposed, Review, Non-Exposed, Canadian) are stable and based on verifiable legal structures.</p>
+    </div>
+
+    <h2>Edge cases and precedents</h2>
+    <p><strong>Canadian company with US VC backing:</strong> Classified as Canadian. VC investment does not change the legal jurisdiction of the corporate entity. However, the note field documents the VC structure as a risk factor for future acquisition.</p>
+    <p><strong>Canadian company acquired by a US parent:</strong> Reclassified immediately to Exposed or Review depending on whether Canadian data residency is maintained.</p>
+    <p><strong>Dual-headquartered (Canada/US):</strong> Classified as Review. If any entity in the corporate chain is US-incorporated, the tool cannot be classified as Canadian.</p>
+    <p><strong>Non-US company with data on US infrastructure:</strong> Classified as Review. Even without a US parent, routing data through US infrastructure creates indirect jurisdictional exposure through the infrastructure provider.</p>
+
+    <h2>Data sources</h2>
+    <p>Classifications are based on primary research into corporate ownership structures using: provincial and federal corporate registries (Canada), SEC filings (US), SEDAR+ filings (Canada), annual reports, vendor documentation, and publicly reported funding rounds. Each classification includes a note field documenting the specific reasoning and sources.</p>
+
+    <h2>Update cycle</h2>
+    <p>The index is updated continuously through the <a href="/signals">Signals pipeline</a>, which monitors for sovereignty-relevant events including acquisitions, reincorporations, new data residency offerings, and regulatory changes. Formal review of all classifications occurs quarterly. Last comprehensive review: February 2026.</p>
+
+    <h2>How to cite this methodology</h2>
+    <p>This methodology is designed to be cited in procurement documents, compliance reports, Transfer Impact Assessments, and policy analysis. Suggested citation:</p>
+    <div class="principle-box" style="border-left-color:var(--muted)">
+      <p style="font-weight:400;color:var(--slate);font-size:14px">Upper Harbour, &ldquo;Canadian SaaS Sovereignty Index: Classification Methodology,&rdquo; February 2026. Available at: upperharbour.ca/methodology</p>
+    </div>
+
+  </article>
+
+  <section class="cta-section">
+    <h2>Apply this framework to your stack</h2>
+    <p>HarbourScan uses this classification framework to assess your specific SaaS environment &mdash; free, in your browser.</p>
+    <a href="/harbourscan" class="cta-btn">Run HarbourScan &rarr;</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;"><a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index &rarr;</a></p>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+</body>
+</html>
