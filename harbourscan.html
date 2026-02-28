@@ -29,7 +29,7 @@
       --teal: #3CB8B0; --teal-dim: rgba(60,184,176,0.08); --teal-border: rgba(60,184,176,0.22);
       --gold: #C9A84C; --gold-dim: rgba(201,168,76,0.08);
       --red: #E06050; --red-dim: rgba(224,96,80,0.08);
-      --ice: #EAF0F4; --slate: #8A9DB0; --muted: #566778;
+      --ice: #EAF0F4; --slate: #8A9DB0; --muted: #7B8FA1;
       --border: rgba(234,240,244,0.06); --border-md: rgba(234,240,244,0.1);
       --display: 'Newsreader', Georgia, serif;
       --body: 'DM Sans', sans-serif;
@@ -143,6 +143,7 @@
       .nav-upper, .nav-harbour { display: none; }
       .process-steps { grid-template-columns: 1fr; }
       [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr !important; }
+      .dash-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* ── Print: hide landing ───────────────────────────────────────── */
@@ -159,7 +160,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --midnight: #0A1018; --navy: #0F1C2E; --teal: #3CB8B0;
-      --ice: #EAF0F4; --slate: #7A92A8; --gold: #C9A84C; --muted: #6B7B8D;
+      --ice: #EAF0F4; --slate: #7A92A8; --gold: #C9A84C; --muted: #7B8FA1;
       --border: rgba(234,240,244,0.07); --border-md: rgba(234,240,244,0.13);
       --teal-dim: rgba(60,184,176,0.08); --teal-border: rgba(60,184,176,0.22);
       --red: #E06050; --red-dim: rgba(224,96,80,0.12); --red-border: rgba(224,96,80,0.3);
@@ -355,7 +356,7 @@
       .progress-line { min-width: 8px; }
       .field-row { grid-template-columns: 1fr; }
       .q-checks { grid-template-columns: 1fr; }
-      .dash-grid { grid-template-columns: 1fr; }
+      .dash-grid { grid-template-columns: repeat(3, 1fr); }
       .report-inner { padding: 24px; }
       .btn-row { flex-direction: column; }
       .stack-tally { flex-wrap: wrap; gap: 16px; }
@@ -617,10 +618,9 @@
             <div class="diff-item-desc">No vendor affiliations. No paid placements. No commercial relationships with the SaaS tools we assess. Our analysis is independent because our business model doesn't depend on the vendors we're evaluating.</div>
           </div>
         </div>
+        <p style="font-size:13px; color:var(--slate); margin-top:32px; line-height:1.7; max-width:700px;">In a 2026 survey of Canadian security and compliance professionals, 56% reported a shortage of compliance expertise, 65% said infrastructure changes are their largest resource drain, and more than half said their customers now routinely ask about sovereignty practices. <span style="color:var(--muted);">(Kiteworks, 2026 Data Sovereignty Report)</span></p>
       </div>
     </section>
-
-    <!-- HARBOURSCAN IN ACTION -->
     <section style="padding:0 52px 0;max-width:860px;margin:0 auto;">
       <div style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(60,184,176,0.7);margin-bottom:20px;">HarbourScan in action</div>
       <a href="/research/athena-collective-law-25-compliance" style="text-decoration:none;display:block;background:var(--surface);border:1px solid var(--border-md);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:32px 36px;transition:border-color 0.3s,transform 0.2s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-1px)'" onmouseout="this.style.borderColor='var(--border-md)';this.style.borderLeftColor='var(--gold)';this.style.transform='none'">
@@ -706,7 +706,7 @@
           <ul class="footer-links">
             <li><a href="/founder">Founder</a></li>
             <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#e08a8f9388a09590908592888192828f9592ce8381">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -1133,7 +1133,7 @@
   </div><!-- /wizardSection -->
 
   <!-- ── Data Files ──────────────────────────────────────────── -->
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/saas-db.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/saas-db.js"></script>
   <script>
   </script>
   <script src="/assets/regulatory-map.js"></script>
@@ -2087,13 +2087,4 @@
 
     // Handle back button
     window.addEventListener('popstate', function() {
-      if (window.location.hash === '#start') {
-        startAssessment();
-      } else {
-        showLanding();
-      }
-    });
-  </script>
-
-</body>
-</html>
+     
