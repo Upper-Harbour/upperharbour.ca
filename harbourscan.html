@@ -130,6 +130,7 @@
       .footer-inner { grid-template-columns: 1fr; padding: 0 20px; }
       .footer-bottom { padding: 20px 20px 0; flex-direction: column; }
       #reportPreview [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr 1fr !important; }
     }
     .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
     .nav-hamburger svg{display:block}
@@ -141,7 +142,7 @@
     @media(max-width:480px) {
       .nav-upper, .nav-harbour { display: none; }
       .process-steps { grid-template-columns: 1fr; }
-      
+      [style*="grid-template-columns:repeat(4,1fr)"] { grid-template-columns: 1fr !important; }
     }
 
     /* ── Print: hide landing ───────────────────────────────────────── */
@@ -422,9 +423,10 @@
     <section class="landing-hero">
       <div class="landing-eyebrow">HarbourScan</div>
       <h1>Map your organization's <em>sovereignty exposure</em></h1>
-      <p class="landing-hero-sub">HarbourScan maps your SaaS stack to parent jurisdictions, CLOUD Act exposure, and Canadian data residency status. Start with a free exposure map in your browser — then choose the level of documentation your organization needs.</p>
+      <p class="landing-hero-sub">HarbourScan maps your SaaS stack to parent jurisdictions, CLOUD Act exposure, and Canadian data residency status. Start with a free exposure map in your browser &mdash; then choose the level of documentation your organization needs.</p>
+      <p class="landing-hero-sub" style="margin-top:16px; font-size:15px; color:var(--slate);">Most organizations run HarbourScan after a regulator, partner, or procurement review asks where their data is stored.</p>
       <p class="landing-hero-sub" style="margin-top:16px; font-size:14px; color:var(--muted);">Built on the 693-tool <a href="/research/canadian-saas-sovereignty-index" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2);">Canadian SaaS Sovereignty Index</a> &mdash; the most comprehensive jurisdictional dataset for Canadian SaaS.</p>
-      <p class="landing-hero-for"><strong>For:</strong> Privacy Officers, General Counsel, CIOs, and procurement leads at organizations with 20+ SaaS tools &mdash; particularly those subject to Law 25, operating in regulated sectors, or selling into government.</p>
+      <p class="landing-hero-for"><strong>For:</strong> Organizations managing sensitive data, regulated operations, or cross-border vendors &mdash; particularly those subject to Law 25, operating in regulated sectors, or selling into government.</p>
       <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;">Start Free Assessment &rarr;</a>
     </section>
 
@@ -441,7 +443,7 @@
         <div class="output-header">
           <div class="output-label output-label-teal">Free</div>
           <div class="output-title">HarbourScan</div>
-          <p class="output-summary">&ldquo;I need to see what we&rsquo;re exposed to.&rdquo; &mdash; Enter your tools and see your jurisdictional exposure instantly. HarbourScan maps each tool to its parent company, flags CLOUD Act risk, and shows you how many compliance gaps your stack has &mdash; all in your browser, nothing transmitted.</p>
+          <p class="output-summary">&ldquo;I need to see what we&rsquo;re exposed to.&rdquo; &mdash; Enter your tools and see your jurisdictional exposure instantly. HarbourScan maps each tool to its parent company, flags CLOUD Act risk, and shows you how many compliance gaps your stack has. The initial scan runs entirely in your browser.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
@@ -641,6 +643,34 @@
       </a>
     </section>
 
+    <!-- WHAT HAPPENS NEXT -->
+    <section style="max-width:860px;margin:0 auto;padding:60px 52px 0;">
+      <div style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--teal);margin-bottom:20px;">What most organizations do next</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <div style="padding:20px;border-top:2px solid var(--teal);background:var(--surface);border-radius:0 0 6px 6px;">
+          <div style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--teal);margin-bottom:8px;">01</div>
+          <div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:6px;">Run the scan</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">See your stack's jurisdictional exposure in 10 minutes. Free.</div>
+        </div>
+        <div style="padding:20px;border-top:2px solid var(--teal);background:var(--surface);border-radius:0 0 6px 6px;">
+          <div style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--teal);margin-bottom:8px;">02</div>
+          <div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:6px;">Realize the gap</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Most organizations discover exposure they didn&rsquo;t know they had &mdash; and can&rsquo;t yet document.</div>
+        </div>
+        <div style="padding:20px;border-top:2px solid var(--gold);background:var(--surface);border-radius:0 0 6px 6px;">
+          <div style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--gold);margin-bottom:8px;">03</div>
+          <div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:6px;">Get the documentation</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Request a Snapshot or full Compliance Documentation &mdash; the formal answer you produce on request.</div>
+        </div>
+        <div style="padding:20px;border-top:2px solid var(--ice);background:var(--surface);border-radius:0 0 6px 6px;">
+          <div style="font-family:var(--mono);font-size:11px;font-weight:700;color:var(--ice);margin-bottom:8px;">04</div>
+          <div style="font-size:14px;font-weight:700;color:var(--ice);margin-bottom:6px;">Stay current</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;">Add Monitoring so your compliance posture tracks vendor changes, acquisitions, and regulatory shifts.</div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:24px;line-height:1.6;">Designed to support regulatory review, procurement evaluation, and board oversight.</p>
+    </section>
+
     <!-- FINAL CTA -->
     <section class="landing-cta">
       <h2>Map your stack. Understand your sovereignty exposure.</h2>
@@ -722,7 +752,7 @@
     <div class="step visible" id="step1">
       <div class="step-eyebrow">Step 1 of 3</div>
       <h1 class="step-title">Tell us about your <em>organization</em></h1>
-      <p class="step-sub">All inputs remain local to your browser. Nothing is stored or transmitted — your report is generated locally and downloaded directly.</p>
+      <p class="step-sub">Most organizations start here when a regulator, partner, or procurement review asks how their SaaS vendors handle data. The initial scan runs entirely in your browser.</p>
 
       <div class="field">
         <label class="field-label">Organization Name</label>
@@ -982,7 +1012,8 @@
           <div style="text-align:center; margin-bottom:32px;">
             <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">What comes next</div>
             <div style="font-size:18px; font-weight:700; color:var(--ice); margin-bottom:8px;">Choose the level of documentation you need</div>
-            <div style="font-size:13px; color:var(--muted); max-width:520px; margin:0 auto;">Your free scan identified the exposure. These tiers turn it into documentation you can produce on request.</div>
+            <div id="pricingScanSummary" style="font-size:13px; color:var(--slate); max-width:520px; margin:0 auto 12px; line-height:1.6;"></div>
+            <div style="font-size:13px; color:var(--muted); max-width:520px; margin:0 auto;">These tiers turn your scan results into documentation you can produce on request.</div>
           </div>
 
           <!-- Tier cards -->
@@ -1027,6 +1058,7 @@
                 <li>✓ Sovereignty Score updates</li>
                 <li>✓ Quarterly status report</li>
               </ul>
+              <div style="font-size:11px; color:var(--muted); margin-top:12px; line-height:1.6; font-style:italic;">Without monitoring, today&rsquo;s documentation slowly becomes outdated as vendors change.</div>
             </div>
           </div>
 
@@ -1421,6 +1453,14 @@
     document.getElementById('previewGapCount').textContent = gaps.length;
     var tiaCount = isQuebec ? tools.filter(function(t) { return t.jurisdiction !== 'Canada'; }).length : foreignCount;
     document.getElementById('previewTIACount').textContent = tiaCount;
+
+    // ── Populate personalized pricing summary ──
+    var summaryParts = [];
+    summaryParts.push('Your scan flagged <strong style="color:var(--ice);">' + cloudActCount + '</strong> tool' + (cloudActCount !== 1 ? 's' : '') + ' with CLOUD Act exposure');
+    if (critical > 0) summaryParts.push('<strong style="color:var(--red);">' + critical + '</strong> critical compliance gap' + (critical !== 1 ? 's' : ''));
+    if (isQuebec && tiaRequired > 0) summaryParts.push('<strong style="color:var(--gold);">' + tiaRequired + '</strong> TIA' + (tiaRequired !== 1 ? 's' : '') + ' required under Law 25');
+    var pricingSummaryEl = document.getElementById('pricingScanSummary');
+    if (pricingSummaryEl) pricingSummaryEl.innerHTML = summaryParts.join(', ') + '.';
 
     // Show TIA/PIA section for all orgs (TIA for Quebec, PIA for others)
     var tiaSection = document.getElementById('previewTIASection');
