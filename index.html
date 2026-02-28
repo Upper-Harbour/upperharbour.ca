@@ -248,7 +248,7 @@
       <h2 class="checker-title">Is your SaaS tool under <em>foreign jurisdiction?</em></h2>
       <p class="checker-sub">Type a tool your organization uses. We&rsquo;ll show you the parent company, jurisdiction, and CLOUD Act status.</p>
       <div class="checker-input-wrap"><input type="text" class="checker-input" id="checkerInput" placeholder="Try Slack, Notion, Zoom, Shopify&hellip;" autocomplete="off" /></div>
-      <p style="font-size:11px;color:var(--muted);margin-top:12px;opacity:0.7">Sample of 693-tool database. <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2)">Full Sovereignty Index</a> · <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2)">Full HarbourScan</a></p>
+      <p style="font-size:11px;color:var(--muted);margin-top:12px;opacity:0.7">This checker uses a 20-tool sample only. The full database covers 693 tools. <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2)">Search the full Sovereignty Index</a> &middot; <a href="/harbourscan" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2)">Run a full HarbourScan</a></p>
       <div id="checkerResults"></div>
     </div>
   </section>
@@ -273,7 +273,7 @@
         <div class="method-card reveal">
           <div class="method-num">03 &mdash; Exposure</div>
           <div class="method-title">Assess compelled disclosure risk</div>
-          <div class="method-desc">We evaluate CLOUD Act exposure (US), Investigatory Powers Act (UK), and Assistance and Access Act (AU) &mdash; the three jurisdictions with statutory compelled disclosure powers.</div>
+          <div class="method-desc">We evaluate CLOUD Act exposure (US), Investigatory Powers Act (UK), and Assistance and Access Act (AU) &mdash; three regimes with extraterritorial compelled-assistance powers that can reach data stored in Canada.</div>
         </div>
         <div class="method-card reveal">
           <div class="method-num">04 &mdash; Residency</div>
@@ -324,7 +324,7 @@
           </div>
           <div class="score-row">
             <div class="score-badge mid">44</div>
-            <div><div class="score-tool">Shopify</div><div class="score-detail">Canadian HQ &middot; US-listed &middot; Partial exposure via infrastructure dependencies</div></div>
+            <div><div class="score-tool">Shopify</div><div class="score-detail">Canadian-founded &middot; US-listed &middot; Partial exposure via infrastructure dependencies</div></div>
           </div>
           <div class="score-row">
             <div class="score-badge low">12</div>
@@ -563,10 +563,10 @@
         const q = input.value.trim().toLowerCase();
         if (q.length < 2) { results.innerHTML = ''; return; }
         const matches = saasDB.filter(t => t.name.toLowerCase().includes(q)).slice(0, 3);
-        if (!matches.length) { results.innerHTML = '<div class="checker-noresult">No match in our sample database. <a href="/tools">Search the full Sovereignty Index</a> or <a href="/harbourscan">run a full HarbourScan</a> to check against all 693 tools.</div>'; return; }
+        if (!matches.length) { results.innerHTML = '<div class="checker-noresult">Not in this 20-tool sample. <a href="/tools">Search the full 693-tool Sovereignty Index</a> or <a href="/harbourscan">run a full HarbourScan</a>.</div>'; return; }
         results.innerHTML = matches.map(function(t) {
           var bc = t.risk === 'exposed' ? 'badge-exposed' : t.risk === 'review' ? 'badge-review' : t.risk === 'canadian' ? 'badge-canadian' : 'badge-non_exposed';
-          var bt = t.risk === 'exposed' ? 'CLOUD Act Exposed' : t.risk === 'review' ? 'Review Required' : t.risk === 'canadian' ? 'Canadian HQ' : 'Non-Exposed';
+          var bt = t.risk === 'exposed' ? 'CLOUD Act Exposed' : t.risk === 'review' ? 'Review Required' : t.risk === 'canadian' ? 'Canadian-controlled' : 'Non-Exposed';
           return '<div class="checker-result"><div class="checker-result-header"><span class="checker-result-name">' + t.name + '</span><span class="checker-badge ' + bc + '">' + bt + '</span></div>' +
             '<div class="checker-result-row"><span>Parent entity</span><span>' + t.parent + '</span></div>' +
             '<div class="checker-result-row"><span>Headquarters</span><span>' + t.hq + '</span></div>' +

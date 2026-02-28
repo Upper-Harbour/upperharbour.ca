@@ -129,6 +129,7 @@
       .landing-cta { padding: 60px 20px; }
       .footer-inner { grid-template-columns: 1fr; padding: 0 20px; }
       .footer-bottom { padding: 20px 20px 0; flex-direction: column; }
+      #reportPreview [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
     }
     .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
     .nav-hamburger svg{display:block}
@@ -420,26 +421,27 @@
     <!-- HERO -->
     <section class="landing-hero">
       <div class="landing-eyebrow">HarbourScan</div>
-      <h1>Structured jurisdictional compliance assessment for your <em>SaaS stack</em></h1>
-      <p class="landing-hero-sub">HarbourScan maps your organization's SaaS stack to parent jurisdictions, CLOUD Act exposure, and Canadian data residency status. Start with a free exposure map — then upgrade to a full compliance report with gap analysis, remediation priorities, and TIA documentation for $2,500.</p>
-      <p class="landing-hero-sub" style="margin-top:16px; font-size:14px; color:var(--muted);">HarbourScan is already being used in early deployments across Canadian regulated sectors.</p>
-      <p class="landing-hero-for"><strong>For:</strong> Privacy Officers, General Counsel, CIOs, and procurement leads at organizations with 20+ SaaS tools — particularly those subject to Law 25, operating in regulated sectors, or selling into government.</p>
-      <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;">Start Free Assessment →</a>
+      <h1>Map your organization's <em>sovereignty exposure</em></h1>
+      <p class="landing-hero-sub">HarbourScan maps your SaaS stack to parent jurisdictions, CLOUD Act exposure, and Canadian data residency status. Start with a free exposure map in your browser — then choose the level of documentation your organization needs.</p>
+      <p class="landing-hero-sub" style="margin-top:16px; font-size:14px; color:var(--muted);">Built on the 693-tool <a href="/research/canadian-saas-sovereignty-index" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2);">Canadian SaaS Sovereignty Index</a> &mdash; the most comprehensive jurisdictional dataset for Canadian SaaS.</p>
+      <p class="landing-hero-for"><strong>For:</strong> Privacy Officers, General Counsel, CIOs, and procurement leads at organizations with 20+ SaaS tools &mdash; particularly those subject to Law 25, operating in regulated sectors, or selling into government.</p>
+      <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;">Start Free Assessment &rarr;</a>
     </section>
 
     <!-- SYSTEM OUTPUTS -->
     <section class="landing-outputs">
       <div class="landing-outputs-intro">
         <div class="label">How it works</div>
-        <p>Start with a free exposure map of your SaaS stack. If the results warrant action, upgrade to a full HarbourScan Report — a board-ready compliance document with gap analysis, remediation priorities, and TIA requirements.</p>
+        <p>HarbourScan is where most organizations first understand their exposure. From there, they decide how formal an answer they need.</p>
+        <p style="font-size:13px; color:var(--muted); margin-top:12px; line-height:1.7;">Many organizations start here because Law 25 requires documented TIAs and vendor assessments &mdash; HarbourScan identifies which tools trigger those obligations.</p>
       </div>
 
       <!-- Output 1: Free Assessment -->
       <div class="output-card">
         <div class="output-header">
           <div class="output-label output-label-teal">Free</div>
-          <div class="output-title">Sovereignty Exposure Map</div>
-          <p class="output-summary">Enter your tools and see your jurisdictional exposure instantly. HarbourScan maps each tool to its parent company, flags CLOUD Act risk, and shows you how many compliance gaps your stack has — all in your browser, nothing transmitted.</p>
+          <div class="output-title">HarbourScan</div>
+          <p class="output-summary">&ldquo;I need to see what we&rsquo;re exposed to.&rdquo; &mdash; Enter your tools and see your jurisdictional exposure instantly. HarbourScan maps each tool to its parent company, flags CLOUD Act risk, and shows you how many compliance gaps your stack has &mdash; all in your browser, nothing transmitted.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
@@ -448,7 +450,7 @@
               <ul class="output-list">
                 <li>Jurisdictional exposure breakdown by risk level</li>
                 <li>CLOUD Act exposure count</li>
-                <li>Tool-by-tool risk badges</li>
+                <li>Tool-by-tool risk classification</li>
                 <li>Applicable regulatory framework for your province</li>
                 <li>Total compliance gap count and severity</li>
                 <li>TIA requirement count (Quebec organizations)</li>
@@ -457,74 +459,106 @@
             <div>
               <div class="output-col-title">What you'll know</div>
               <ul class="output-list">
-                <li>How exposed your stack is — and how urgently it needs attention</li>
+                <li>How exposed your stack is &mdash; and how urgently it needs attention</li>
                 <li>Which tools are under foreign jurisdiction</li>
-                <li>Whether your province's regulations require immediate action</li>
-                <li>The scale of the documentation gap you're facing</li>
+                <li>Whether your province&rsquo;s regulations require immediate action</li>
+                <li>The scale of the documentation gap you&rsquo;re facing</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Output 2: Full Report ($2,500) -->
-      <div class="output-card" style="border-color:rgba(201,168,76,0.25);">
+      <!-- Output 2: Sovereignty Snapshot ($350) -->
+      <div class="output-card" style="border-color:rgba(60,184,176,0.25);">
         <div class="output-header">
-          <div class="output-label output-label-gold">$2,500</div>
-          <div class="output-title">Full HarbourScan Report</div>
-          <p class="output-summary">Everything in the free assessment, plus the documentation your privacy officer, legal counsel, and procurement team actually need: detailed gap analysis, Register of Processing Activities, TIA requirements, and a prioritized remediation plan — delivered as a board-ready PDF.</p>
+          <div class="output-label output-label-teal">From $350</div>
+          <div class="output-title">Sovereignty Snapshot</div>
+          <p class="output-summary">&ldquo;Someone asked and I need an answer.&rdquo; &mdash; A professional sovereignty assessment you can produce when a regulator, partner, or procurement officer asks how your organization manages cross-border data exposure. Delivered in 5 business days.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
             <div>
               <div class="output-col-title">Deliverables</div>
               <ul class="output-list">
-                <li>Complete compliance gap analysis with descriptions</li>
-                <li>Register of Processing Activities for your stack</li>
-                <li>Transfer Impact Assessment requirements per tool</li>
-                <li>Prioritized remediation plan with specific actions</li>
-                <li>Regulatory framework analysis (province-specific)</li>
-                <li>Board-ready PDF document</li>
+                <li>Full jurisdictional exposure map</li>
+                <li>CLOUD Act risk classification per tool</li>
+                <li>Sovereignty Score for each assessed tool</li>
+                <li>Gap identification with severity ratings</li>
+                <li>Executive summary PDF</li>
               </ul>
             </div>
             <div>
-              <div class="output-col-title">Why organizations upgrade</div>
+              <div class="output-col-title">When you need this</div>
               <ul class="output-list">
-                <li>Knowing the problem isn't the same as documenting it</li>
-                <li>Law 25 requires written TIAs — not just awareness</li>
-                <li>Procurement officers ask for compliance documentation</li>
-                <li>Penalties reach $25M or 4% of worldwide turnover</li>
-                <li>The report pays for itself in avoided legal exposure</li>
+                <li>A board member or partner asks about your data sovereignty posture</li>
+                <li>You&rsquo;re responding to an RFP with sovereignty requirements</li>
+                <li>You need a defensible answer faster than a full compliance engagement</li>
+                <li>You want to scope the problem before committing to full documentation</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Output 3: Ongoing Monitoring -->
-      <div class="output-card">
+      <!-- Output 3: Compliance Documentation ($2,000) -->
+      <div class="output-card" style="border-color:rgba(201,168,76,0.25);">
         <div class="output-header">
-          <div class="output-label output-label-ice">Ongoing</div>
-          <div class="output-title">Sovereignty Monitoring</div>
-          <p class="output-summary">Sovereignty isn't static. Vendors get acquired. Corporate structures change. Regulations evolve. Organizations running HarbourScan operationally receive ongoing tracking of jurisdictional changes — so your compliance posture stays current, not just accurate on the day it was run.</p>
+          <div class="output-label output-label-gold">From $2,000</div>
+          <div class="output-title">Compliance Documentation</div>
+          <p class="output-summary">&ldquo;We need to prove compliance.&rdquo; &mdash; The structured compliance record you need when regulators, auditors, or procurement evaluators ask how you manage cross-border data exposure. Board-ready deliverables that demonstrate defensible process. Delivered in 10&ndash;15 business days.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
             <div>
-              <div class="output-col-title">What's included</div>
+              <div class="output-col-title">Deliverables</div>
               <ul class="output-list">
-                <li>Quarterly sovereignty posture review</li>
-                <li>Acquisition and jurisdiction change alerts</li>
+                <li>Everything in the Sovereignty Snapshot</li>
+                <li>Transfer Impact Assessment guidance per tool</li>
+                <li>Register of Processing Activities</li>
+                <li>Prioritized remediation roadmap</li>
+                <li>Regulatory framework mapping (province-specific)</li>
+                <li>Board-ready compliance document</li>
+              </ul>
+            </div>
+            <div>
+              <div class="output-col-title">When you need this</div>
+              <ul class="output-list">
+                <li>Law 25 requires written TIAs &mdash; not just awareness</li>
+                <li>Procurement officers ask for compliance documentation</li>
+                <li>You&rsquo;re preparing for audit or regulatory review</li>
+                <li>Penalties reach $25M or 4% of worldwide turnover</li>
+                <li>The documentation pays for itself in avoided legal exposure</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output 4: Sovereignty Monitoring ($200/mo) -->
+      <div class="output-card">
+        <div class="output-header">
+          <div class="output-label output-label-ice">From $200/mo</div>
+          <div class="output-title">Sovereignty Monitoring</div>
+          <p class="output-summary">&ldquo;We need to stay compliant as things change.&rdquo; &mdash; Sovereignty isn&rsquo;t static. Vendors get acquired. Corporate structures change. Regulations evolve. Monitoring keeps your compliance documentation current &mdash; even as vendors, ownership, and regulations shift &mdash; so a point-in-time assessment doesn&rsquo;t quietly become a liability.</p>
+        </div>
+        <div class="output-body">
+          <div class="output-grid">
+            <div>
+              <div class="output-col-title">What&rsquo;s included</div>
+              <ul class="output-list">
+                <li>Continuous vendor ownership monitoring</li>
+                <li>Infrastructure change alerts</li>
+                <li>Regulatory development tracking</li>
+                <li>Sovereignty Score updates</li>
+                <li>Quarterly compliance status report</li>
                 <li>New tool assessment as your stack evolves</li>
-                <li>TIA update when vendor circumstances change</li>
-                <li>Regulatory change briefings (Law 25, CPPA, provincial)</li>
-                <li>Annual board-ready sovereignty status report</li>
               </ul>
             </div>
             <div>
               <div class="output-col-title">Why ongoing matters</div>
               <ul class="output-list">
-                <li>Canadian SaaS companies are acquired regularly — shifting jurisdiction for every client</li>
+                <li>Canadian SaaS companies are acquired regularly &mdash; shifting jurisdiction for every client</li>
                 <li>Vendors launch (and retire) Canadian data centre regions</li>
                 <li>The CPPA will change federal requirements when enacted</li>
                 <li>A point-in-time audit goes stale within months</li>
@@ -537,28 +571,28 @@
 
     <!-- HOW HARBOURSCAN DEPLOYS -->
     <section class="landing-process">
-      <div class="landing-process-title">How HarbourScan deploys</div>
-      <p class="landing-process-sub">Four phases — from initial self-assessment through ongoing monitoring. Each step draws on verified corporate registry data from the Sovereignty Index.</p>
+      <div class="landing-process-title">How it works</div>
+      <p class="landing-process-sub">Four steps — from free self-assessment to ongoing compliance intelligence. Each step draws on the 693-tool Sovereignty Index.</p>
       <div class="process-steps">
         <div class="process-step">
           <div class="process-num">01</div>
-          <div class="process-step-title">Self-assessment</div>
-          <div class="process-step-desc">Launch HarbourScan in your browser and begin mapping your SaaS environment against the 693-tool Sovereignty Index database.</div>
+          <div class="process-step-title">Free scan</div>
+          <div class="process-step-desc">Run HarbourScan in your browser. Select your tools, see your jurisdictional exposure map. Free, private, nothing stored.</div>
         </div>
         <div class="process-step">
           <div class="process-num">02</div>
-          <div class="process-step-title">Stack intake</div>
-          <div class="process-step-desc">Select your tools and tag each one with the personal information it processes, the data subjects involved, and the safeguards currently in place.</div>
+          <div class="process-step-title">Snapshot</div>
+          <div class="process-step-desc">Need a formal answer? The Sovereignty Snapshot delivers a professional assessment with Sovereignty Scores and an executive summary. From $350.</div>
         </div>
         <div class="process-step">
           <div class="process-num">03</div>
-          <div class="process-step-title">Analysis & documentation</div>
-          <div class="process-step-desc">HarbourScan produces jurisdictional assessments, identifies compliance gaps, and generates a prioritized risk register and remediation plan.</div>
+          <div class="process-step-title">Documentation</div>
+          <div class="process-step-desc">Need to prove compliance? Full documentation package with TIA guidance, Register of Processing Activities, remediation roadmap, and board-ready deliverables. From $2,000.</div>
         </div>
         <div class="process-step">
           <div class="process-num">04</div>
-          <div class="process-step-title">Delivery & monitoring</div>
-          <div class="process-step-desc">Download your board-ready report. The signals pipeline continues to track vendor acquisitions, jurisdiction changes, and regulatory developments affecting your stack.</div>
+          <div class="process-step-title">Monitoring</div>
+          <div class="process-step-desc">Need to stay compliant? Continuous vendor ownership monitoring, regulatory tracking, and quarterly sovereignty status reports. From $200/mo.</div>
         </div>
       </div>
     </section>
@@ -609,10 +643,10 @@
 
     <!-- FINAL CTA -->
     <section class="landing-cta">
-      <h2>Map your stack. Understand your jurisdictional exposure.</h2>
-      <p>Run a free self-assessment in your browser. No account required. Board-ready report in minutes.</p>
+      <h2>Map your stack. Understand your sovereignty exposure.</h2>
+      <p>Run a free self-assessment in your browser. No account required. Choose the level of documentation you need after you see your results.</p>
       <button class="landing-cta-btn" onclick="startAssessment()">Start Free Assessment →</button>
-      <p class="landing-cta-or">Need help operationalizing HarbourScan? <a href="https://calendly.com/josh-upperharbour/30min" target="_blank">Request a scoping call</a></p>
+      <p class="landing-cta-or">Want to discuss your situation first? <a href="https://calendly.com/josh-upperharbour/30min" target="_blank">Book a scoping call</a> · <a href="/pricing" style="color:var(--teal); text-decoration:none;">View pricing</a></p>
     </section>
 
     <!-- FOOTER -->
@@ -626,22 +660,23 @@
           <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
         </div>
         <div>
-          <div class="footer-col-title">Research</div>
+          <div class="footer-col-title">Platform</div>
           <ul class="footer-links">
-            <li><a href="/research/canadian-saas-sovereignty-index">Sovereignty Index</a></li>
-            <li><a href="/research/sovereignty-policy-scorecard">Policy Scorecard</a></li>
-            <li><a href="/research/government-saas-audit">Government SaaS Audit</a></li>
-            <li><a href="/research/provincial-exposure-index">Provincial Exposure Index</a></li>
+            <li><a href="/harbourscan">HarbourScan</a></li>
+            <li><a href="/tools">Sovereignty Index</a></li>
+            <li><a href="/signals">Signals</a></li>
+            <li><a href="/research">Research</a></li>
+            <li><a href="/methodology">Methodology</a></li>
+            <li><a href="/resources">Compliance Guides</a></li>
+            <li><a href="/pricing">Pricing</a></li>
           </ul>
         </div>
         <div>
-          <div class="footer-col-title">Guides</div>
+          <div class="footer-col-title">About</div>
           <ul class="footer-links">
-            <li><a href="/resources/law-25-saas-compliance">Law 25 & SaaS Compliance</a></li>
-            <li><a href="/resources/cloud-act-canadian-data">CLOUD Act & Canadian Data</a></li>
-            <li><a href="/resources/model-tia-template">Model TIA Template</a></li>
-            <li><a href="/tools">Tools</a></li>
             <li><a href="/founder">Founder</a></li>
+            <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -944,14 +979,63 @@
         <!-- PRICING + CTA (Step 3 of gate — the actual ask)        -->
         <!-- ═══════════════════════════════════════════════════════ -->
         <div style="background:var(--surface); border:1px solid rgba(60,184,176,0.2); border-radius:12px; padding:40px; margin-bottom:32px;">
-          <div style="text-align:center;">
-            <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">Full HarbourScan Report</div>
-            <div style="font-size:42px; font-weight:800; color:var(--ice); margin-bottom:4px; letter-spacing:-1px;">$2,500</div>
-            <div style="font-size:13px; color:var(--muted); margin-bottom:32px;">One-time · Includes all five sections · Board-ready PDF</div>
+          <div style="text-align:center; margin-bottom:32px;">
+            <div style="font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal); margin-bottom:12px;">What comes next</div>
+            <div style="font-size:18px; font-weight:700; color:var(--ice); margin-bottom:8px;">Choose the level of documentation you need</div>
+            <div style="font-size:13px; color:var(--muted); max-width:520px; margin:0 auto;">Your free scan identified the exposure. These tiers turn it into documentation you can produce on request.</div>
+          </div>
+
+          <!-- Tier cards -->
+          <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:32px;">
+            <!-- Snapshot -->
+            <div style="background:var(--bg); border:1px solid var(--border-md); border-radius:8px; padding:24px;">
+              <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--teal); margin-bottom:8px;">Snapshot</div>
+              <div style="font-size:28px; font-weight:800; color:var(--ice); margin-bottom:4px;">$350</div>
+              <div style="font-size:11px; color:var(--muted); margin-bottom:16px;">5 business days</div>
+              <div style="font-size:13px; color:var(--slate); line-height:1.6; margin-bottom:16px;">&ldquo;Someone asked and I need an answer.&rdquo;</div>
+              <ul style="list-style:none; font-size:12px; color:var(--slate); line-height:2;">
+                <li>✓ Jurisdictional exposure map</li>
+                <li>✓ CLOUD Act risk classification</li>
+                <li>✓ Sovereignty Score per tool</li>
+                <li>✓ Executive summary PDF</li>
+              </ul>
+            </div>
+            <!-- Documentation (featured) -->
+            <div style="background:var(--bg); border:2px solid var(--gold); border-radius:8px; padding:24px; position:relative;">
+              <div style="position:absolute; top:-10px; right:16px; font-size:9px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:3px 10px; background:var(--gold); color:var(--bg); border-radius:3px;">Most common</div>
+              <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--gold); margin-bottom:8px;">Documentation</div>
+              <div style="font-size:28px; font-weight:800; color:var(--ice); margin-bottom:4px;">$2,000</div>
+              <div style="font-size:11px; color:var(--muted); margin-bottom:16px;">10–15 business days</div>
+              <div style="font-size:13px; color:var(--slate); line-height:1.6; margin-bottom:16px;">&ldquo;We need to prove compliance.&rdquo;</div>
+              <ul style="list-style:none; font-size:12px; color:var(--slate); line-height:2;">
+                <li>✓ Everything in Snapshot</li>
+                <li>✓ TIA/PIA guidance per tool</li>
+                <li>✓ Register of Processing Activities</li>
+                <li>✓ Remediation roadmap</li>
+                <li>✓ Board-ready deliverables</li>
+              </ul>
+            </div>
+            <!-- Monitoring -->
+            <div style="background:var(--bg); border:1px solid var(--border-md); border-radius:8px; padding:24px;">
+              <div style="font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--ice); margin-bottom:8px;">Monitoring</div>
+              <div style="font-size:28px; font-weight:800; color:var(--ice); margin-bottom:4px;">$200<span style="font-size:14px; font-weight:400; color:var(--muted);">/mo</span></div>
+              <div style="font-size:11px; color:var(--muted); margin-bottom:16px;">Ongoing</div>
+              <div style="font-size:13px; color:var(--slate); line-height:1.6; margin-bottom:16px;">&ldquo;We need to stay compliant as things change.&rdquo;</div>
+              <ul style="list-style:none; font-size:12px; color:var(--slate); line-height:2;">
+                <li>✓ Vendor ownership alerts</li>
+                <li>✓ Regulatory tracking</li>
+                <li>✓ Sovereignty Score updates</li>
+                <li>✓ Quarterly status report</li>
+              </ul>
+            </div>
           </div>
 
           <!-- Intake form -->
           <div id="reportIntakeForm" style="max-width:480px; margin:0 auto;">
+            <div style="text-align:center; margin-bottom:24px;">
+              <div style="font-size:15px; font-weight:700; color:var(--ice); margin-bottom:4px;">Request a scoping call or get started</div>
+              <div style="font-size:13px; color:var(--muted);">We&rsquo;ll review your scan results and recommend the right tier.</div>
+            </div>
             <div style="margin-bottom:16px;">
               <label style="display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px;">Name</label>
               <input type="text" id="intakeName" style="width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border-md); border-radius:6px; color:var(--ice); font-size:14px; font-family:var(--body); outline:none;" placeholder="Your full name" />
@@ -988,8 +1072,8 @@
               <label style="display:block; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--muted); margin-bottom:6px;">Anything we should know about your environment? <span style="font-weight:400; text-transform:none; letter-spacing:0;">(optional)</span></label>
               <textarea id="intakeNotes" rows="3" style="width:100%; padding:12px 14px; background:var(--bg); border:1px solid var(--border-md); border-radius:6px; color:var(--ice); font-size:14px; font-family:var(--body); outline:none; resize:vertical;" placeholder="e.g., number of tools, regulatory context, timeline"></textarea>
             </div>
-            <button onclick="submitReportRequest()" class="btn btn-primary" style="width:100%; font-size:14px; padding:16px 32px; text-decoration:none; cursor:pointer; border:none;">Request Full HarbourScan Report</button>
-            <p style="font-size:12px; color:var(--muted); text-align:center; margin-top:12px; line-height:1.6;">You'll receive an engagement letter and invoice within 24 hours so your team can initiate procurement.<br/>No obligation until your team confirms the engagement.</p>
+            <button onclick="submitReportRequest()" class="btn btn-primary" style="width:100%; font-size:14px; padding:16px 32px; text-decoration:none; cursor:pointer; border:none;">Get Started →</button>
+            <p style="font-size:12px; color:var(--muted); text-align:center; margin-top:12px; line-height:1.6;">We&rsquo;ll review your scan results and send a recommendation within 24 hours.<br/>No obligation until your team confirms the engagement.</p>
             <div style="text-align:center; margin-top:16px;">
               <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="font-size:13px; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border-md);">Prefer to talk first? Book a 15-minute call</a>
             </div>
@@ -1001,7 +1085,7 @@
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3CB8B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div style="font-size:18px; font-weight:700; color:var(--ice); margin-bottom:10px;">Your request has been received.</div>
-            <p style="font-size:14px; color:var(--slate); line-height:1.7;">You'll receive a short engagement letter and invoice within 24 hours so your team can initiate procurement.</p>
+            <p style="font-size:14px; color:var(--slate); line-height:1.7;">We&rsquo;ll review your scan results and reach out within 24 hours with a recommendation on the right tier for your organization.</p>
             <p style="font-size:13px; color:var(--muted); margin-top:16px; line-height:1.6;">If you'd like to discuss your environment first, you can <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="color:var(--teal); text-decoration:none;">book a short call here</a>.</p>
           </div>
         </div>
@@ -1200,7 +1284,7 @@
         email: email,
         province: province,
         notes: notes,
-        _subject: 'HarbourScan Report Request — ' + org,
+        _subject: 'HarbourScan Inquiry — ' + org,
         scan_data: scanSummary
       })
     }).then(function(response) {
@@ -1209,13 +1293,13 @@
         document.getElementById('reportIntakeConfirm').style.display = 'block';
       } else {
         btn.disabled = false;
-        btn.textContent = 'Request Full HarbourScan Report';
+        btn.textContent = 'Get Started →';
         btn.style.opacity = '1';
         alert('Something went wrong. Please try again or email josh@upperharbour.ca directly.');
       }
     }).catch(function() {
       btn.disabled = false;
-      btn.textContent = 'Request Full HarbourScan Report';
+      btn.textContent = 'Get Started →';
       btn.style.opacity = '1';
       alert('Something went wrong. Please try again or email josh@upperharbour.ca directly.');
     });
@@ -1704,7 +1788,7 @@
       <div class="report-inner" id="reportContent">
         <div class="r-header">
           <div class="r-logo"><span>Upper </span>Harbour</div>
-          <div style="font-size:11px;color:#999;margin-top:2px;">Compliance Intelligence for Canadian Organizations</div>
+          <div style="font-size:11px;color:#999;margin-top:2px;">Technology Sovereignty Intelligence for Canadian Organizations</div>
           <div class="r-title">HarbourScan Sovereignty Assessment</div>
           <div class="r-meta">${o.name} · ${reg.province || o.province} · ${now}</div>
           <div class="r-meta">Prepared for: ${o.contact || 'N/A'} (${o.email || 'N/A'})</div>
@@ -1815,17 +1899,15 @@
 
         <div class="r-section">
           <div class="r-section-title">Next Steps</div>
-          <p class="r-text">This HarbourScan self-assessment provides an indicative jurisdictional overview. A full HarbourScan deployment includes:</p>
-          <p class="r-text">• <strong>Full environment mapping</strong> — integration pathways, API connections, and data flow tracing across your complete stack</p>
-          <p class="r-text">• <strong>Subprocessor chain analysis</strong> — downstream dependencies (e.g. Slack → AWS, Clio → Stripe → Twilio) and their jurisdictional implications</p>
-          <p class="r-text">• <strong>Contractual review</strong> — DPA adequacy assessment, transfer clause compliance, and gap remediation</p>
-          <p class="r-text">• <strong>Complete PIA/TIA documentation</strong> — CAI-compliant Privacy Impact Assessments and Transfer Impact Assessments</p>
-          <p class="r-text">• <strong>Ongoing monitoring</strong> — vendor acquisition tracking, regulatory change alerts, and periodic reassessment</p>
-          <p class="r-text" style="margin-top:16px;">Contact Upper Harbour to discuss a full HarbourScan deployment: <strong>josh@upperharbour.com</strong></p>
+          <p class="r-text">This HarbourScan self-assessment provides an indicative jurisdictional overview. To turn these findings into actionable documentation:</p>
+          <p class="r-text">• <strong>Sovereignty Snapshot (from $350)</strong> — A professional assessment you can produce when someone asks. Jurisdictional exposure map, Sovereignty Scores, and an executive summary.</p>
+          <p class="r-text">• <strong>Compliance Documentation (from $2,000)</strong> — Full compliance record with gap analysis, Register of Processing Activities, TIA/PIA guidance, remediation roadmap, and board-ready deliverables.</p>
+          <p class="r-text">• <strong>Sovereignty Monitoring (from $200/mo)</strong> — Ongoing vendor ownership monitoring, regulatory tracking, and quarterly compliance status reports.</p>
+          <p class="r-text" style="margin-top:16px;">Contact Upper Harbour to discuss your results: <strong>josh@upperharbour.ca</strong></p>
         </div>
 
         <div class="r-footer">
-          <strong>Upper Harbour</strong> · Compliance Intelligence for Canadian Organizations<br/>
+          <strong>Upper Harbour</strong> · Technology Sovereignty Intelligence for Canadian Organizations<br/>
           Generated ${now} · This assessment is indicative and does not constitute legal advice.
         </div>
       </div>
