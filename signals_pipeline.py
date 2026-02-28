@@ -106,6 +106,17 @@ RSS_FEEDS = [
     # The Conversation — Canada, politics + tech
     {"url": "https://theconversation.com/ca/articles.atom?tag=data-privacy", "name": "The Conversation CA", "type_hint": "policy", "always_relevant": False},
 
+    # Industry research & reports
+    {"url": "https://www.kiteworks.com/blog/feed/", "name": "Kiteworks", "type_hint": "policy", "always_relevant": False},
+    {"url": "https://www.securityscorecard.com/blog/feed/", "name": "SecurityScorecard", "type_hint": "vendor", "always_relevant": False},
+    {"url": "https://www.thalesgroup.com/en/feeds/blog/dis.rss", "name": "Thales", "type_hint": "vendor", "always_relevant": False},
+
+    # Canadian news — sovereignty/tech coverage
+    {"url": "https://www.canadianlawyermag.com/feed", "name": "Canadian Lawyer", "type_hint": None, "always_relevant": False},
+    {"url": "https://www.thestar.com/search/?contenttype=articles&q=data+sovereignty&output=rss", "name": "Toronto Star", "type_hint": None, "always_relevant": False},
+    {"url": "https://globalnews.ca/feed/", "name": "Global News", "type_hint": None, "always_relevant": False},
+    {"url": "https://financialpost.com/feed/", "name": "Financial Post", "type_hint": None, "always_relevant": False},
+
     # Cloud vendor blogs
     {"url": "https://aws.amazon.com/blogs/publicsector/feed/", "name": "AWS Public Sector", "type_hint": "vendor", "always_relevant": False},
     {"url": "https://azure.microsoft.com/en-us/blog/feed/", "name": "Azure Blog", "type_hint": "vendor", "always_relevant": False},
@@ -114,26 +125,21 @@ RSS_FEEDS = [
 
 # Web search queries (run via Claude API with web search tool)
 SEARCH_QUERIES = [
-    # Core sovereignty
-    "Canada data sovereignty privacy law news",
-    "Law 25 Quebec PIPEDA enforcement",
-    "Canada data residency SaaS vendor announcement",
-    "government procurement data sovereignty Canada",
+    # Core sovereignty (highest yield)
+    "Canada data sovereignty news this week",
+    "Law 25 Quebec enforcement PIPEDA",
+    "CLOUD Act Canada data 2026",
     # M&A tracking (critical for DB accuracy)
     "Canadian SaaS company acquired 2026",
-    "Canadian tech company acquisition private equity",
-    # Enforcement (highest-value signals)
-    "PIPEDA order privacy commissioner finding",
-    "Law 25 penalty fine Quebec CAI",
-    "privacy commissioner enforcement order Canada",
-    # Infrastructure
-    "Canada cloud provider data centre announcement",
-    "sovereign cloud Canada announcement",
-    # Provincial procurement
-    "provincial government RFP SaaS data residency Canada",
+    # Enforcement
+    "privacy commissioner order Canada 2026",
+    # Infrastructure & procurement
+    "sovereign cloud Canada data centre announcement",
+    "government procurement data sovereignty Canada",
+    # Research & reports
+    "data sovereignty survey report Canada 2026",
     # Policy
-    "digital sovereignty Canada federal policy",
-    "Canadian cybersecurity regulation SaaS cloud",
+    "digital sovereignty Canada federal policy 2026",
 ]
 
 # Relevance keywords for filtering
@@ -166,6 +172,10 @@ RELEVANCE_KEYWORDS = [
     "data boundary", "sovereign key", "local control",
     # Vendor sovereignty marketing
     "canadian data centre", "canada region", "canadian customers",
+    # Research and reports
+    "sovereignty report", "sovereignty survey", "compliance survey",
+    "data sovereignty report", "privacy survey", "compliance report",
+    "kiteworks", "ponemon", "thales data threat",
 ]
 
 # Event type classification
@@ -177,7 +187,7 @@ EVENT_TYPES = ["enforcement", "acquisition", "legislation", "vendor", "procureme
 def collect_rss() -> list[dict]:
     """Pull items from all RSS feeds, filter by recency and relevance."""
     items = []
-    cutoff = datetime.now() - timedelta(hours=72)  # Last 72 hours
+    cutoff = datetime.now() - timedelta(hours=168)  # Last 7 days
 
     for feed_config in RSS_FEEDS:
         try:
@@ -235,7 +245,7 @@ def collect_web_search() -> list[dict]:
 
     for idx, query in enumerate(SEARCH_QUERIES):
         if idx > 0:
-            time.sleep(120)  # Wait 120s to stay within rate limit window
+            time.sleep(180)  # Wait 180s between searches to avoid rate limits
         max_retries = 3
         for attempt in range(max_retries):
             try:
@@ -247,7 +257,7 @@ def collect_web_search() -> list[dict]:
                         "role": "user",
                         "content": f"""Search for: {query}
 
-Today's date is {datetime.now().strftime('%Y-%m-%d')}. Return ONLY items published in the last 48 hours (on or after {(datetime.now() - timedelta(hours=48)).strftime('%Y-%m-%d')}). Ignore anything older — even if it appears in search results.
+Today's date is {datetime.now().strftime('%Y-%m-%d')}. Return ONLY items published in the last 7 days (on or after {(datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')}). Ignore anything older — even if it appears in search results.
 
 Items must be directly relevant to Canadian data sovereignty, privacy law enforcement, SaaS vendor jurisdictional changes, or government procurement policy.
 
@@ -256,7 +266,7 @@ For each relevant result, return a JSON array with objects containing:
 - "summary": 1-2 sentence summary of the development
 - "source": publication name
 - "source_url": URL
-- "date": date in YYYY-MM-DD format (must be {(datetime.now() - timedelta(hours=48)).strftime('%Y-%m-%d')} or later)
+- "date": date in YYYY-MM-DD format (must be {(datetime.now() - timedelta(days=7)).strftime('%Y-%m-%d')} or later)
 
 If nothing relevant was published in the last 48 hours, return an empty array: []
 
@@ -285,7 +295,7 @@ Return ONLY the JSON array, nothing else."""
             text = text.strip().strip('```json').strip('```').strip()
             if text.startswith('['):
                 results = json.loads(text)
-                cutoff_str = (datetime.now() - timedelta(hours=72)).strftime("%Y-%m-%d")
+                cutoff_str = (datetime.now() - timedelta(days=7)).strftime("%Y-%m-%d")
                 for r in results:
                     # Hard gate: reject anything with a date older than 72 hours
                     item_date = r.get("date", "")
@@ -504,10 +514,13 @@ If you can't determine the date, use "unknown" and set recent to false."""
                 log.info(f"Verify REJECTED (topic mismatch): '{headline[:60]}'")
                 continue
 
-            if verdict.get("recent") == False and verdict.get("actual_date", "unknown") != "unknown":
+            # Only reject if we have a confirmed date that's older than 14 days
+            if verdict.get("actual_date", "unknown") != "unknown":
                 actual = verdict["actual_date"]
-                log.info(f"Verify REJECTED (stale — actual date {actual}): '{headline[:60]}'")
-                continue
+                cutoff_date = (datetime.now() - timedelta(days=14)).strftime("%Y-%m-%d")
+                if actual < cutoff_date:
+                    log.info(f"Verify REJECTED (stale — actual date {actual}): '{headline[:60]}'")
+                    continue
 
             # If actual_date is known and different from claimed, correct it
             if verdict.get("actual_date", "unknown") != "unknown":
