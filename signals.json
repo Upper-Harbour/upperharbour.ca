@@ -1,9 +1,39 @@
 {
   "meta": {
-    "lastUpdated": "Feb 27, 2026 — 12:10 ET",
-    "sourceCount": "57+"
+    "lastUpdated": "Feb 28, 2026 — 23:57 ET",
+    "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Kiteworks 2026 Data Sovereignty Report: 23% incident rate among Canadian organizations despite high awareness",
+      "summary": "Kiteworks released research showing Canadian organizations experienced a 23% data sovereignty incident rate in 2025, the lowest among surveyed regions, yet gaps persist between policy and architecture—particularly in mid-market firms. The report identifies Canada-U.S. data-sharing changes as the top concern for 40% of Canadian respondents, with 23% actively migrating from U.S. cloud providers.",
+      "type": "vendor",
+      "source": "Cybersecurity Insiders",
+      "sourceUrl": "https://www.cybersecurity-insiders.com/new-kiteworks-research-reveals-urgent-channel-opportunity-in-canadian-data-sovereignty-mid-market-organisations-left-exposed-at-the-border/",
+      "date": "2026-02-26",
+      "impact": "Mid-market Canadian organizations should conduct sovereignty readiness assessments and review cloud infrastructure alignment with evolving Canada-U.S. data-sharing frameworks.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Micrologic partners with Cohesity to deliver sovereign cloud data protection for Canadian organizations",
+      "summary": "Micrologic, a Canadian sovereign cloud provider, partnered with Cohesity to deliver AI-powered data protection solutions maintaining data residency within Canada. This partnership addresses demand for data protection tools certified for Canadian data sovereignty compliance.",
+      "type": "vendor",
+      "source": "StorageNewsletter",
+      "sourceUrl": "https://www.storagenewsletter.com/2026/02/23/micrologic-partners-with-cohesity-to-become-the-leading-sovereign-cloud-data-protection-solution-in-canada/",
+      "date": "2026-02-23",
+      "impact": "Canadian organizations evaluating data protection solutions should assess the Micrologic-Cohesity offering as a domestic sovereign alternative to U.S.-based providers.",
+      "dbUpdate": true
+    },
+    {
+      "headline": "Canadian Digital Sovereignty Policy Criticized as Vague Amid Microsoft Procurement Decisions",
+      "summary": "Policy Options analysis argues Canada's digital sovereignty approach lacks clarity and specificity in implementation. The article highlights tensions between government rhetoric on avoiding technology dependence and recent major procurement commitments with Microsoft, suggesting policy objectives may not align with actual procurement practice.",
+      "type": "policy",
+      "source": "Policy Options",
+      "sourceUrl": "https://policyoptions.irpp.org/2026/02/carney-davos-digital-sovereignty-icc/",
+      "date": "2026-02-27",
+      "impact": "Federal government and public institutions should clarify digital sovereignty criteria in procurement frameworks to ensure alignment between policy statements and vendor selection decisions.",
+      "dbUpdate": false
+    },
     {
       "headline": "Fediverse Adoption Examined as Potential Canadian Digital Sovereignty Tool",
       "summary": "Canadian digital sovereignty advocates are exploring the Fediverse—decentralized social networks—as a means to reduce dependence on centralized Big Tech platforms. The discussion reflects growing interest in federated, open-source alternatives for maintaining Canadian control over digital infrastructure and data flows.",

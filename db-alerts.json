@@ -47,7 +47,19 @@
       "source_url": "https://www.thenewswire.com/press-releases/1AMqF8rnj-kanata-north-fueling-data-centre-promises-of-government-with-sovereign-and-secure-canadian-cloud-infrastructure.html",
       "flagged_at": "2026-02-26T06:33:26.730960",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Cohesity (Micrologic partnership)",
+      "change": "canadian_sovereign_option",
+      "old_value": null,
+      "new_value": "Available via Micrologic with Canadian data residency",
+      "reason": "Partnership establishes Cohesity as accessible through Canadian sovereign infrastructure provider",
+      "signal_headline": "Micrologic partners with Cohesity to deliver sovereign cloud data protection for Canadian organizations",
+      "signal_date": "2026-02-23",
+      "source_url": "https://www.storagenewsletter.com/2026/02/23/micrologic-partners-with-cohesity-to-become-the-leading-sovereign-cloud-data-protection-solution-in-canada/",
+      "flagged_at": "2026-02-28T23:57:47.076481",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-02-26T06:33:26.731631"
+  "updated": "2026-02-28T23:57:47.077196"
 }
