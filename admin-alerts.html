@@ -326,7 +326,10 @@
       document.getElementById('emptyState').style.display = 'block';
     } else {
       document.getElementById('emptyState').style.display = 'none';
-      pendingContainer.innerHTML = actionable.map((alert, i) => renderAlertCard(alert, i, true)).join('');
+      pendingContainer.innerHTML = actionable.map((alert) => {
+        const realIndex = allAlerts.indexOf(alert);
+        return renderAlertCard(alert, realIndex, true);
+      }).join('');
     }
 
     // History
@@ -336,7 +339,10 @@
 
     if (history.length > 0) {
       historyToggle.style.display = 'block';
-      historySection.innerHTML = history.map((alert, i) => renderAlertCard(alert, i + 1000, false)).join('');
+      historySection.innerHTML = history.map((alert) => {
+        const realIndex = allAlerts.indexOf(alert);
+        return renderAlertCard(alert, realIndex, false);
+      }).join('');
     } else {
       historyToggle.style.display = 'none';
     }
