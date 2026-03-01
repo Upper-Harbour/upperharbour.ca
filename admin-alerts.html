@@ -461,34 +461,68 @@
     const signalUrl = alert.source_url || '';
     const headline = alert.signal_headline || '';
     const isNotFound = reason.toLowerCase().includes('not found');
+    const changeDesc = alert.reason || alert.change || '';
 
     const sourceLink = signalUrl
-      ? `<a href="${signalUrl}" target="_blank" rel="noopener" style="font-size:12px; color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3);">${headline || 'Source →'}</a>`
-      : (headline ? `<span style="font-size:12px; color:var(--slate);">${headline}</span>` : '');
+      ? `<a href="${signalUrl}" target="_blank" rel="noopener" style="color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3);">${headline || signalUrl}</a>`
+      : (headline ? `<span style="color:var(--slate);">${headline}</span>` : '');
+
+    // Build the research checklist and template for "not found" cases
+    let researchHTML = '';
+    if (isNotFound) {
+      const templateEntry = `{ name:"${toolName}", parent:"???", hq:"???", jurisdiction:"???", cloudAct:???, dataResidency:"???", note:"???", risk:"???", category:"???", industries:["???"] },`;
+
+      researchHTML = `
+        <div style="margin-bottom:16px;">
+          <div style="font-size:13px; font-weight:700; color:var(--ice); margin-bottom:10px;">Research checklist</div>
+          <div style="font-size:13px; color:var(--slate); line-height:2;">
+            <div>□ <strong>Parent entity</strong> — who owns it? Check corporate registry, SEC/SEDAR filings, Crunchbase</div>
+            <div>□ <strong>Jurisdiction</strong> — where is the parent incorporated? (not HQ — incorporation)</div>
+            <div>□ <strong>CLOUD Act</strong> — any US entity in the ownership chain? → true</div>
+            <div>□ <strong>Data residency</strong> — does it offer Canadian hosting? Which regions?</div>
+            <div>□ <strong>Risk tier</strong> — run the <a href="/CLASSIFICATION-RUBRIC.md" style="color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3);">decision tree</a>: US parent → exposed/review · Canadian parent → canadian · UK/AU → review · Other → non_exposed</div>
+            <div>□ <strong>Category</strong> — which existing category fits?</div>
+          </div>
+        </div>
+        <div style="margin-bottom:16px;">
+          <div style="font-size:13px; font-weight:700; color:var(--ice); margin-bottom:8px;">Entry template</div>
+          <div style="position:relative;">
+            <pre id="template${index}" style="font-family:var(--mono); font-size:11px; color:var(--slate); background:var(--surface-2); border:1px solid var(--border-md); border-radius:6px; padding:14px 16px; overflow-x:auto; white-space:pre-wrap; line-height:1.6;">${templateEntry}</pre>
+            <button onclick="copyTemplate(${index})" style="position:absolute; top:8px; right:8px; font-family:var(--mono); font-size:10px; color:var(--muted); background:var(--surface); border:1px solid var(--border-md); border-radius:3px; padding:4px 8px; cursor:pointer;">Copy</button>
+          </div>
+          <div style="font-size:11px; color:var(--muted); margin-top:6px;">Copy → fill in the ??? fields → add to saas-db.js → commit → then dismiss this alert</div>
+        </div>`;
+    }
 
     return `
       <div class="alert-card" id="alertCard${index}" style="border-color:var(--red-border);">
         <div class="alert-top">
           <div>
             <div class="alert-tool">${toolName}</div>
-            <div class="alert-signal">${signalDate}${sourceLink ? ' · ' + sourceLink : ''}</div>
+            <div class="alert-signal" style="margin-top:4px;">${signalDate}${sourceLink ? ' · ' + sourceLink : ''}</div>
+            ${changeDesc ? `<div style="font-size:13px; color:var(--slate); margin-top:8px; line-height:1.5;">${changeDesc}</div>` : ''}
           </div>
-          <span class="alert-badge badge-failed">failed</span>
+          <span class="alert-badge badge-failed">needs attention</span>
         </div>
-        <div style="background:var(--red-dim); border:1px solid var(--red-border); border-radius:6px; padding:12px 16px; margin-bottom:16px;">
-          <div style="font-size:13px; color:var(--red); font-weight:600; margin-bottom:4px;">Why it failed</div>
-          <div style="font-size:13px; color:var(--slate);">${reason}</div>
+        <div style="background:var(--red-dim); border:1px solid var(--red-border); border-radius:6px; padding:12px 16px; margin:16px 0;">
+          <div style="font-size:12px; color:var(--red);">${reason}</div>
         </div>
-        ${isNotFound ? `
-        <div style="font-size:13px; color:var(--slate); margin-bottom:16px; line-height:1.6;">
-          This tool doesn't exist in saas-db.js yet. To fix: add the tool entry to <code style="font-family:var(--mono); font-size:12px; background:var(--surface-2); padding:2px 6px; border-radius:3px;">saas-db.js</code>, then re-approve or re-run the pipeline.
-        </div>` : ''}
+        ${researchHTML}
         <div class="alert-actions">
           <button class="btn btn-dismiss" onclick="dismissFailedAlert(${index})">Dismiss</button>
           <button class="btn btn-dismiss" onclick="retryAlert(${index})">Reset to Pending</button>
         </div>
       </div>
     `;
+  }
+
+  function copyTemplate(index) {
+    const pre = document.getElementById('template' + index);
+    if (pre) {
+      navigator.clipboard.writeText(pre.textContent).then(() => {
+        showToast('Template copied');
+      });
+    }
   }
 
   async function dismissFailedAlert(index) {
