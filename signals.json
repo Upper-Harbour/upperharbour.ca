@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Feb 28, 2026 — 23:57 ET",
+    "lastUpdated": "Mar 01, 2026 — 11:56 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian Organizations Cite U.S. Cloud Act and Cross-Border Data Sharing as Top Sovereignty Threats",
+      "summary": "According to the Kiteworks 2026 Data Sovereignty Report, 40% of Canadian respondents identify Canada-U.S. data-sharing policy changes as a top sovereignty concern, while 21% specifically flag the U.S. Cloud Act as a direct threat to Canadian data sovereignty. This reflects heightened concern among Canadian organizations about cross-border legal mechanisms affecting data stored in or transiting through U.S. jurisdictions.",
+      "type": "policy",
+      "source": "National Law Review",
+      "sourceUrl": "https://natlawreview.com/press-releases/one-three-organizations-experienced-data-sovereignty-incident-last-year",
+      "date": "2026-02-26",
+      "impact": "Canadian organizations using U.S.-based cloud services should conduct immediate legal assessments of their exposure under the U.S. Cloud Act and develop strategies to minimize cross-border data flows or migrate to Canadian-resident alternatives.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Federal Government Implements Reciprocal Procurement Policy Restricting SaaS Contracts to Canadian Suppliers",
+      "summary": "The federal government has enacted a reciprocal procurement policy effective July 14, 2025, with permanent rules planned for spring 2026, that restricts SaaS and other government contracts to Canadian suppliers and trading partners. This policy enforces digital and economic sovereignty requirements in federal contracting.",
+      "type": "procurement",
+      "source": "Norton Rose Fulbright",
+      "sourceUrl": "https://www.nortonrosefulbright.com/en/knowledge/publications/a1741fc5/elbows-up-buy-canadian-in-federal-government-contracting",
+      "date": "2026-02-26",
+      "impact": "Federal government departments and agencies must align SaaS vendor selections with reciprocal procurement rules by spring 2026; non-Canadian SaaS providers may lose federal contracts unless they qualify as trading partners.",
+      "dbUpdate": false
+    },
     {
       "headline": "Kiteworks 2026 Data Sovereignty Report: 23% incident rate among Canadian organizations despite high awareness",
       "summary": "Kiteworks released research showing Canadian organizations experienced a 23% data sovereignty incident rate in 2025, the lowest among surveyed regions, yet gaps persist between policy and architecture—particularly in mid-market firms. The report identifies Canada-U.S. data-sharing changes as the top concern for 40% of Canadian respondents, with 23% actively migrating from U.S. cloud providers.",
