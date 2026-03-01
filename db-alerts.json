@@ -26,7 +26,12 @@
     "signal_date": "2026-02-10",
     "source_url": "https://channelbuzz.ca/2026/02/zoho-canada-adds-payroll-pos-solopreneur-offering-to-business-operating-system-45910/",
     "flagged_at": "2026-02-24T11:57:21.341982",
-    "status": "pending_review"
+    "status": "approved",
+    "approvedAt": "2026-03-01T04:57:41.651Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "data_residency": "Canadian data centre available"
+    }
   },
   {
     "tool_name": "Bell/Hypertec Canadian Data Centres",
