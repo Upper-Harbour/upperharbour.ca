@@ -788,10 +788,11 @@
       { name:"InputHealth", parent:"TELUS Health", hq:"Toronto, ON", jurisdiction:"Canada", cloudAct:false, dataResidency:"Canada", note:"Canadian-incorporated (TELUS Health subsidiary) patient engagement and virtual care. Patient health records and appointment data under Canadian jurisdiction.", risk:"canadian", category:"healthcare", industries:["healthcare"] },
       { name:"Paysafe", parent:"Paysafe Limited", hq:"London, United Kingdom", jurisdiction:"United Kingdom/Bermuda", cloudAct:false, dataResidency:"EU/US", note:"Bermuda-incorporated (NYSE-listed), London HQ. Payment processing and digital wallet platform. Transaction data under UK/Bermuda jurisdiction. Not subject to US CLOUD Act.", risk:"non_exposed", category:"finance", industries:["finance","hospitality"] },
       { name:"Veriff", parent:"Veriff OÜ", hq:"Tallinn, Estonia", jurisdiction:"Estonia", cloudAct:false, dataResidency:"EU", note:"Estonian-incorporated identity verification platform. Biometric data, ID documents, and selfie images. Sensitive identity data under EU jurisdiction with GDPR protections.", risk:"non_exposed", category:"security", industries:["finance","technology"] },
+      { name:"Heidi Health", parent:"Heidi Health Trading Pty Ltd", hq:"Melbourne, Australia", jurisdiction:"Australia", cloudAct:false, dataResidency:"CA (Quebec)/AU/US/UK", note:"Australian-incorporated AI clinical scribe. Processes patient consultation audio and generates clinical notes, referrals, and care plans. Canadian data stored in Quebec. Subject to Australia's Assistance and Access Act (2018), a Five Eyes compelled-access regime analogous to the CLOUD Act. Claims PIPEDA, PHIPA, PIPA, Law 25 compliance. ISO 27001, SOC 2 Type II certified. US VC investors (Point72, Goodwater) hold equity but not controlling interest.", risk:"review", category:"healthcare", industries:["healthcare"] },
     ];
 
     var saasDBMeta = {
-      lastUpdated: "2026-02-27T08:00:00-05:00",
+      lastUpdated: "2026-02-28T08:00:00-05:00",
       version: "2026-Q1-700",
       totalTools: saasDB.length
     };
