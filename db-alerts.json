@@ -1,65 +1,67 @@
-{
-  "alerts": [
-    {
-      "tool_name": "Samsara",
-      "change": "data_residency",
-      "old_value": "US/multi-region",
-      "new_value": "AWS Canada (dedicated)",
-      "reason": "Vendor announced Canadian data residency capability on AWS Canada infrastructure",
-      "signal_headline": "Samsara Launches Canadian Data Residency on AWS Canada Infrastructure",
-      "signal_date": "2026-02-03",
-      "source_url": "https://www.businesswire.com/news/home/20250203584292/en/Samsara-Deepens-Investment-in-Canada-With-Local-Data-Residency-Domestic-Fulfillment-and-Continued-Market-Growth",
-      "flagged_at": "2026-02-23T07:57:11.602549",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "Zoho Payroll",
-      "change": "data_residency",
-      "old_value": "Unknown/Not specified",
-      "new_value": "Canadian data centre available",
-      "reason": "Zoho Canada launched Payroll module with explicit in-country data centre capabilities",
-      "signal_headline": "Zoho Canada launches Payroll and POS modules with Canadian data residency",
-      "signal_date": "2026-02-10",
-      "source_url": "https://channelbuzz.ca/2026/02/zoho-canada-adds-payroll-pos-solopreneur-offering-to-business-operating-system-45910/",
-      "flagged_at": "2026-02-24T11:57:21.341982",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "Bell/Hypertec Canadian Data Centres",
-      "change": "vendor_entry",
-      "old_value": null,
-      "new_value": "Active partnership offering Canadian data centre services",
-      "reason": "New domestic sovereign data centre infrastructure launched with direct relevance to Canadian data residency requirements",
-      "signal_headline": "Bell and Hypertec launch Canadian-sovereign data centre partnership",
-      "signal_date": "2026-02-25",
-      "source_url": "https://thelogic.co/news/bell-hypertec-data-centres-canada-sovereign-ai/",
-      "flagged_at": "2026-02-25T11:57:28.306583",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "ThinkOn Sovereign Cloud",
-      "change": "data_residency",
-      "old_value": null,
-      "new_value": "Canadian-owned and operated cloud infrastructure provider",
-      "reason": "Confirmed Canadian provider with explicit sovereign infrastructure positioning",
-      "signal_headline": "Kanata North Business Association provides sovereign cloud infrastructure access through Canadian providers",
-      "signal_date": "2026-02-23",
-      "source_url": "https://www.thenewswire.com/press-releases/1AMqF8rnj-kanata-north-fueling-data-centre-promises-of-government-with-sovereign-and-secure-canadian-cloud-infrastructure.html",
-      "flagged_at": "2026-02-26T06:33:26.730960",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "Cohesity (Micrologic partnership)",
-      "change": "canadian_sovereign_option",
-      "old_value": null,
-      "new_value": "Available via Micrologic with Canadian data residency",
-      "reason": "Partnership establishes Cohesity as accessible through Canadian sovereign infrastructure provider",
-      "signal_headline": "Micrologic partners with Cohesity to deliver sovereign cloud data protection for Canadian organizations",
-      "signal_date": "2026-02-23",
-      "source_url": "https://www.storagenewsletter.com/2026/02/23/micrologic-partners-with-cohesity-to-become-the-leading-sovereign-cloud-data-protection-solution-in-canada/",
-      "flagged_at": "2026-02-28T23:57:47.076481",
-      "status": "pending_review"
+[
+  {
+    "tool_name": "Samsara",
+    "change": "data_residency",
+    "old_value": "US/multi-region",
+    "new_value": "AWS Canada (dedicated)",
+    "reason": "Vendor announced Canadian data residency capability on AWS Canada infrastructure",
+    "signal_headline": "Samsara Launches Canadian Data Residency on AWS Canada Infrastructure",
+    "signal_date": "2026-02-03",
+    "source_url": "https://www.businesswire.com/news/home/20250203584292/en/Samsara-Deepens-Investment-in-Canada-With-Local-Data-Residency-Domestic-Fulfillment-and-Continued-Market-Growth",
+    "flagged_at": "2026-02-23T07:57:11.602549",
+    "status": "approved",
+    "approvedAt": "2026-03-01T04:23:07.913Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "data_residency": "AWS Canada (dedicated)"
     }
-  ],
-  "updated": "2026-02-28T23:57:47.077196"
-}
+  },
+  {
+    "tool_name": "Zoho Payroll",
+    "change": "data_residency",
+    "old_value": "Unknown/Not specified",
+    "new_value": "Canadian data centre available",
+    "reason": "Zoho Canada launched Payroll module with explicit in-country data centre capabilities",
+    "signal_headline": "Zoho Canada launches Payroll and POS modules with Canadian data residency",
+    "signal_date": "2026-02-10",
+    "source_url": "https://channelbuzz.ca/2026/02/zoho-canada-adds-payroll-pos-solopreneur-offering-to-business-operating-system-45910/",
+    "flagged_at": "2026-02-24T11:57:21.341982",
+    "status": "pending_review"
+  },
+  {
+    "tool_name": "Bell/Hypertec Canadian Data Centres",
+    "change": "vendor_entry",
+    "old_value": null,
+    "new_value": "Active partnership offering Canadian data centre services",
+    "reason": "New domestic sovereign data centre infrastructure launched with direct relevance to Canadian data residency requirements",
+    "signal_headline": "Bell and Hypertec launch Canadian-sovereign data centre partnership",
+    "signal_date": "2026-02-25",
+    "source_url": "https://thelogic.co/news/bell-hypertec-data-centres-canada-sovereign-ai/",
+    "flagged_at": "2026-02-25T11:57:28.306583",
+    "status": "pending_review"
+  },
+  {
+    "tool_name": "ThinkOn Sovereign Cloud",
+    "change": "data_residency",
+    "old_value": null,
+    "new_value": "Canadian-owned and operated cloud infrastructure provider",
+    "reason": "Confirmed Canadian provider with explicit sovereign infrastructure positioning",
+    "signal_headline": "Kanata North Business Association provides sovereign cloud infrastructure access through Canadian providers",
+    "signal_date": "2026-02-23",
+    "source_url": "https://www.thenewswire.com/press-releases/1AMqF8rnj-kanata-north-fueling-data-centre-promises-of-government-with-sovereign-and-secure-canadian-cloud-infrastructure.html",
+    "flagged_at": "2026-02-26T06:33:26.730960",
+    "status": "pending_review"
+  },
+  {
+    "tool_name": "Cohesity (Micrologic partnership)",
+    "change": "canadian_sovereign_option",
+    "old_value": null,
+    "new_value": "Available via Micrologic with Canadian data residency",
+    "reason": "Partnership establishes Cohesity as accessible through Canadian sovereign infrastructure provider",
+    "signal_headline": "Micrologic partners with Cohesity to deliver sovereign cloud data protection for Canadian organizations",
+    "signal_date": "2026-02-23",
+    "source_url": "https://www.storagenewsletter.com/2026/02/23/micrologic-partners-with-cohesity-to-become-the-leading-sovereign-cloud-data-protection-solution-in-canada/",
+    "flagged_at": "2026-02-28T23:57:47.076481",
+    "status": "pending_review"
+  }
+]
