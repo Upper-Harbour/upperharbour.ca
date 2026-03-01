@@ -1,85 +1,113 @@
-# What Auto-Updates vs What Doesn't
-## When you add tools to saas-db.js
+# Updating the Database
+
+When Claude (or anyone) adds, removes, or edits a tool in `assets/saas-db.js`, here's what happens and what to do.
 
 ---
 
-## ✅ FULLY AUTOMATIC (computed from saasDB at runtime)
+## What updates automatically (you do nothing)
 
-| Page | What auto-updates |
-|------|-------------------|
-| `tools.html` | Stat boxes (total, exposed, review, canadian), search count, hero paragraph total |
-| `research/canadian-saas-sovereignty-index.html` | All body text spans (introTotal, bodyTotal, bodyTotal2, statTools, bodyUSCount, bodyUSPct, bodyCaResPct, bodyCdnPct, sampleCount, sampleTotal, ownerTotal, etc.), stat boxes, category table, sample table |
-| `research.html` (hub) | Hero subtitle, browse count, paper description, all interactive category data |
-| `harbourscan.html` | Tool matching/lookups |
+**Every visible number on every page** updates itself. This includes:
 
-These pages load `saas-db.js` and compute everything from `saasDB.length` and filters.
+- The animated counters on the homepage (tool count, foreign %, CLOUD Act %, Canadian %)
+- All body text that says "693 tools" or "89% of tools offering Canadian residency" etc.
+- The Sovereignty Index page charts, tables, stats, and category breakdowns
+- The research hub page stats
+- HarbourScan's scan logic and tool matching
+- The tools page search, filters, and stat boxes
 
----
-
-## ❌ HARDCODED — Must manually update on each DB change
-
-### index.html (homepage) — does NOT load saas-db.js
-- Line 7: meta description ("324 tools")
-- Line 12: og:description ("324 SaaS tools")  
-- Line 19: twitter:description ("324 SaaS tools")
-- Line 147: hero eyebrow ("324 SaaS Tools Mapped")
-- Line 149: hero paragraph ("We mapped 324 SaaS tools...")
-- Line 152: data-target="324" (animated counter)
-- Line 182: "324-tool database"
-- Line 197: "324 SaaS tools mapped"
-- Line 376: JS string "all 324 tools"
-
-### tools.html — meta tags & structured data only
-- Line 6: `<title>` ("324 Tools Mapped")
-- Line 7: meta description ("Search 324 SaaS tools")
-- Line 11: og:title ("324 Tools Mapped")
-- Line 12: og:description ("Search 324 SaaS tools")
-- Line 138: JSON-LD description ("Search 324+ SaaS tools")
-
-### harbourscan.html — prose text
-- Line ~550: "324-tool Sovereignty Index database"
-- Line ~576: "324-tool database"
-
-### research/canadian-saas-sovereignty-index.html — meta tags, JSON-LD FAQ, body FAQ
-- Lines 6-7, 11-12, 21-22, 32-33: meta/og/twitter/JSON-LD headline (all say "324")
-- Lines 49, 64, 74, 84, 89, 94, 104, 109: JSON-LD FAQ answers (hardcoded stats + percentages)
-- Lines 260, 272, 276, 280: Body FAQ text (hardcoded stats)
-
-### Other pages with hardcoded count
-- `engagements.html`: meta description, hero paragraph, diff item
-- `founder.html`: JSON-LD description
-- `research/sovereignty-acquisition-tracker.html`: body text
-- `research/sovereignty-policy-scorecard.html`: JSON-LD FAQ, methodology text
-- `research/government-saas-audit.html`: references to main DB count
-- `resources/saas-inventory-compliance.html`: body text
-- `resources/foreign-jurisdiction-saas-action-guide.html`: body text
-- `llms.txt`: multiple references
-- `SITE-BIBLE.md`: multiple references
-- `CLASSIFICATION-RUBRIC.md`: breakdown table
+This works because `uh-stats.js` (loaded on every page) reads `saas-db.js` at runtime and computes fresh numbers. The hardcoded values in the HTML (like "693") are just fallbacks for search engine crawlers — real visitors always see live computed numbers.
 
 ---
 
-## Fastest update method for future tool additions
+## What needs the update script
 
-```bash
-# After updating saas-db.js, run this from repo root:
-NEW_COUNT=$(grep -c 'name:"' assets/saas-db.js)
-OLD_COUNT=324  # update this to current count
+**JSON-LD schema markup and meta tags** contain hardcoded numbers that Google reads directly from the HTML source. These are invisible to users but matter for SEO. The script `update-schema-stats.py` updates these automatically.
 
-find . -type f \( -name "*.html" -o -name "*.md" -o -name "*.txt" \) \
-  -not -path "./__MACOSX/*" \
-  -exec sed -i "s/${OLD_COUNT} SaaS/${NEW_COUNT} SaaS/g; \
-    s/${OLD_COUNT}-tool/${NEW_COUNT}-tool/g; \
-    s/${OLD_COUNT} tools/${NEW_COUNT} tools/g; \
-    s/${OLD_COUNT} Tools/${NEW_COUNT} Tools/g; \
-    s/>${OLD_COUNT}</>${NEW_COUNT}</g; \
-    s/target=\"${OLD_COUNT}\"/target=\"${NEW_COUNT}\"/g; \
-    s/of ${OLD_COUNT}/of ${NEW_COUNT}/g; \
-    s/${OLD_COUNT} commonly/${NEW_COUNT} commonly/g; \
-    s/${OLD_COUNT}+/${NEW_COUNT}+/g; \
-    s/all ${OLD_COUNT}/all ${NEW_COUNT}/g" {} +
+Pages with schema markup that gets updated:
+- index.html (meta tags)
+- founder.html (Person schema)
+- methodology.html (schema description)
+- tools.html (schema description)
+- research/canadian-saas-sovereignty-index.html (6 FAQ answers with stats)
+- research/athena-collective-law-25-compliance.html (FAQ answer)
+- research/sovereignty-policy-scorecard.html (FAQ answer)
+- resources/canadian-data-residency-saas.html (2 FAQ answers)
+- resources/law-25-saas-compliance.html (FAQ answer)
+- resources/transfer-impact-assessments-law-25.html (FAQ answer)
+
+---
+
+## The workflow
+
+After editing `assets/saas-db.js`:
+
+```
+python3 update-schema-stats.py
+git add -A
+git commit -m "Add [tool name]"
+git push
 ```
 
-Then review the diff — percentage stats (68%, 95%, 22%, etc.) need manual recalculation.
+That's it. The script reads saas-db.js, computes fresh stats, and updates every schema block and meta tag across the site. It also saves a reference file (`assets/schema-stats-ref.json`) so it knows what numbers to look for next time.
 
-**CRITICAL: Run the validation checklist** from CLASSIFICATION-RUBRIC.md after every DB change. The quick validation command checks that `jurisdiction` and `risk` fields are consistent — a mismatch will cause visible stat discrepancies on the live site.
+---
+
+## Adding a tool to saas-db.js
+
+Each tool entry looks like this:
+
+```javascript
+{ name:"Tool Name", parent:"Parent Company Inc.", hq:"City, Country", jurisdiction:"United States", cloudAct:true, dataResidency:"US/CA", note:"Brief description of the tool, its ownership, and sovereignty implications.", risk:"exposed", category:"category-name", industries:["industry1","industry2"] },
+```
+
+**Required fields:**
+- `name` — the product name users know
+- `parent` — the legal parent entity (check SEC filings, corporate registries)
+- `hq` — headquarters city and country
+- `jurisdiction` — country of incorporation of the ultimate parent
+- `cloudAct` — `true` if subject to US CLOUD Act (any US-incorporated entity in the ownership chain)
+- `dataResidency` — where data can be stored (e.g. "US", "US/CA/EU", "Canada")
+- `note` — 1-2 sentences explaining ownership structure and sovereignty implications
+- `risk` — one of: `"canadian"`, `"review"`, `"non_exposed"`, `"exposed"`
+- `category` — must match an existing category in the database
+- `industries` — array of relevant industry tags
+
+**Risk tier rules:**
+- `"canadian"` — Canadian-headquartered, majority Canadian-owned, no foreign parent
+- `"review"` — Canadian HQ with foreign backing, or foreign parent with Canadian residency available
+- `"non_exposed"` — Non-US foreign jurisdiction, not subject to CLOUD Act
+- `"exposed"` — US-parented or US-incorporated, subject to CLOUD Act
+
+**Also update the metadata timestamp:**
+
+```javascript
+var saasDBMeta = {
+  lastUpdated: "2026-03-01T10:00:00-05:00",  // ← update this date
+  version: "2026-Q1",
+  totalTools: saasDB.length
+};
+```
+
+---
+
+## Other files that may need manual updates (infrequently)
+
+These files reference tool counts but aren't covered by the automated system:
+
+- `llms.txt` — plain text, update when count changes significantly
+- `SITE-BIBLE.md` — internal reference doc
+- `CLASSIFICATION-RUBRIC.md` — breakdown table
+
+These only matter for internal reference and AI context. Update them periodically, not on every tool addition.
+
+---
+
+## How the system works (technical reference)
+
+**Client-side: `assets/uh-stats.js`**
+Loaded by every page alongside `saas-db.js`. Computes stats from the database and populates any HTML element with `class="uh-stat"` and a `data-stat` attribute. Example: `<span class="uh-stat" data-stat="totalTools">693</span>` gets its text replaced with the live count.
+
+Available data-stat values: `totalTools`, `foreignPct`, `cloudActPct`, `canadianPct`, `reviewPct`, `nonExposedPct`, `exposedPct`, `caResExposedPct`, `nonCanadianPct`, `categoryCount`, `lastUpdated`
+
+**Build-time: `update-schema-stats.py`**
+Run manually after DB changes. Reads saas-db.js with regex, computes the same stats, finds old values in JSON-LD schema blocks and meta tags, replaces with new values. Uses `assets/schema-stats-ref.json` to track what values are currently in the files.
