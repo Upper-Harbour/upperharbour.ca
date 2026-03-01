@@ -43,7 +43,12 @@
     "signal_date": "2026-02-25",
     "source_url": "https://thelogic.co/news/bell-hypertec-data-centres-canada-sovereign-ai/",
     "flagged_at": "2026-02-25T11:57:28.306583",
-    "status": "pending_review"
+    "status": "approved",
+    "approvedAt": "2026-03-01T04:58:06.939Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "vendor_entry": "Active partnership offering Canadian data centre services"
+    }
   },
   {
     "tool_name": "ThinkOn Sovereign Cloud",
