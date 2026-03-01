@@ -62,6 +62,11 @@
     "signal_date": "2026-02-23",
     "source_url": "https://www.storagenewsletter.com/2026/02/23/micrologic-partners-with-cohesity-to-become-the-leading-sovereign-cloud-data-protection-solution-in-canada/",
     "flagged_at": "2026-02-28T23:57:47.076481",
-    "status": "pending_review"
+    "status": "approved",
+    "approvedAt": "2026-03-01T04:23:39.909Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "canadian_sovereign_option": "Available via Micrologic with Canadian data residency"
+    }
   }
 ]
