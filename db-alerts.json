@@ -60,12 +60,7 @@
     "signal_date": "2026-02-23",
     "source_url": "https://www.thenewswire.com/press-releases/1AMqF8rnj-kanata-north-fueling-data-centre-promises-of-government-with-sovereign-and-secure-canadian-cloud-infrastructure.html",
     "flagged_at": "2026-02-26T06:33:26.730960",
-    "status": "approved",
-    "approvedAt": "2026-03-01T05:42:48.240Z",
-    "reviewedBy": "admin",
-    "updates": {
-      "data_residency": "Canadian-owned and operated cloud infrastructure provider"
-    }
+    "status": "pending_review"
   },
   {
     "tool_name": "Cohesity (Micrologic partnership)",

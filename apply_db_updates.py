@@ -46,6 +46,19 @@ UPDATABLE_FIELDS = {
     "name",  # rare — renames
 }
 
+# Map snake_case and alternate names from pipeline to saas-db.js camelCase field names
+FIELD_ALIASES = {
+    "data_residency": "dataResidency",
+    "cloud_act": "cloudAct",
+    "data_residency_option": "dataResidency",
+    "dataresidency": "dataResidency",
+    "cloudact": "cloudAct",
+}
+
+def normalize_field(field: str) -> str:
+    """Normalize a field name from pipeline format to saas-db.js format."""
+    return FIELD_ALIASES.get(field, field)
+
 
 # ── Parse saas-db.js via Node.js ──────────────────────────────────────────────
 
@@ -183,13 +196,16 @@ def apply_alert(db: list[dict], alert: dict) -> tuple[bool, str]:
 
     applied_fields = []
     for field, new_value in updates.items():
-        if field not in UPDATABLE_FIELDS:
-            print(f"  [skip] Field '{field}' is not updatable")
+        norm_field = normalize_field(field)
+
+        # Skip fields that aren't actual saas-db.js fields (e.g. vendor_entry, canadian_sovereign_option)
+        if norm_field not in UPDATABLE_FIELDS:
+            print(f"  [skip] Field '{field}' (normalized: '{norm_field}') is not updatable")
             continue
 
-        old_value = db[idx].get(field)
-        db[idx][field] = new_value
-        applied_fields.append(f"{field}: {old_value!r} → {new_value!r}")
+        old_value = db[idx].get(norm_field)
+        db[idx][norm_field] = new_value
+        applied_fields.append(f"{norm_field}: {old_value!r} → {new_value!r}")
 
     if not applied_fields:
         return False, f"No valid fields to update for '{tool_name}'"

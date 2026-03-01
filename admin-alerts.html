@@ -57,10 +57,11 @@
     .stat-label { font-family: var(--mono); font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-top: 4px; }
 
     /* ── Alert Cards ──────────────────────────────── */
-    .alert-card { background: var(--surface); border: 1px solid var(--border-md); border-radius: 10px; padding: 28px 32px; margin-bottom: 16px; transition: border-color 0.3s; }
+    .alert-card { background: var(--surface); border: 1px solid var(--border-md); border-radius: 10px; padding: 28px 32px; margin-bottom: 16px; transition: all 0.4s ease; }
     .alert-card:hover { border-color: rgba(60,184,176,0.15); }
     .alert-card.applied { opacity: 0.5; pointer-events: none; }
     .alert-card.dismissed { opacity: 0.3; pointer-events: none; }
+    .alert-card.removing { opacity: 0; transform: translateX(40px); max-height: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; overflow: hidden; }
     .alert-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
     .alert-tool { font-size: 20px; font-weight: 800; color: var(--ice); }
     .alert-signal { font-size: 12px; color: var(--muted); margin-top: 2px; }
@@ -149,12 +150,22 @@
 
     <div class="stats-row" id="statsRow">
       <div class="stat-box"><div class="stat-num" style="color:var(--gold)" id="statPending">—</div><div class="stat-label">Pending</div></div>
-      <div class="stat-box"><div class="stat-num" style="color:var(--teal)" id="statApplied">—</div><div class="stat-label">Applied</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:var(--teal)" id="statApplied">—</div><div class="stat-label">Approved</div></div>
       <div class="stat-box"><div class="stat-num" style="color:var(--slate)" id="statDismissed">—</div><div class="stat-label">Dismissed</div></div>
       <div class="stat-box"><div class="stat-num" style="color:var(--red)" id="statFailed">—</div><div class="stat-label">Failed</div></div>
     </div>
 
     <div id="pendingAlerts"></div>
+
+    <!-- ── Failed Alerts (Needs Attention) ────────────── -->
+    <div id="failedSection" style="display:none; margin-top:32px;">
+      <div style="display:flex; align-items:center; gap:10px; margin-bottom:16px;">
+        <div style="width:8px; height:8px; background:var(--red); border-radius:50%;"></div>
+        <h2 style="font-family:var(--display); font-size:20px; font-weight:700; color:var(--red);">Needs Attention</h2>
+      </div>
+      <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">These alerts were approved but couldn't be applied automatically. Usually this means the tool isn't in the database yet and needs to be added manually.</p>
+      <div id="failedAlerts"></div>
+    </div>
 
     <div class="history-toggle" id="historyToggle" style="display:none;">
       ▸ Show resolved alerts
@@ -312,28 +323,40 @@
     const failed = allAlerts.filter(a => a.status === 'failed');
 
     // Stats
-    document.getElementById('statPending').textContent = pending.length + approved.length;
-    document.getElementById('statApplied').textContent = applied.length;
+    document.getElementById('statPending').textContent = pending.length;
+    document.getElementById('statApplied').textContent = approved.length + applied.length;
     document.getElementById('statDismissed').textContent = dismissed.length;
     document.getElementById('statFailed').textContent = failed.length;
 
-    // Pending alerts
+    // Pending alerts — only truly pending ones get action buttons
     const pendingContainer = document.getElementById('pendingAlerts');
-    const actionable = [...pending, ...approved]; // approved but not yet applied also shown
 
-    if (actionable.length === 0) {
+    if (pending.length === 0 && failed.length === 0) {
       pendingContainer.innerHTML = '';
       document.getElementById('emptyState').style.display = 'block';
     } else {
       document.getElementById('emptyState').style.display = 'none';
-      pendingContainer.innerHTML = actionable.map((alert) => {
+      pendingContainer.innerHTML = pending.map((alert) => {
         const realIndex = allAlerts.indexOf(alert);
         return renderAlertCard(alert, realIndex, true);
       }).join('');
     }
 
-    // History
-    const history = [...applied, ...dismissed, ...failed];
+    // Failed alerts — show prominently with action options
+    const failedContainer = document.getElementById('failedAlerts');
+    if (failed.length > 0) {
+      document.getElementById('emptyState').style.display = 'none';
+      document.getElementById('failedSection').style.display = 'block';
+      failedContainer.innerHTML = failed.map((alert) => {
+        const realIndex = allAlerts.indexOf(alert);
+        return renderFailedCard(alert, realIndex);
+      }).join('');
+    } else {
+      document.getElementById('failedSection').style.display = 'none';
+    }
+
+    // History — everything that's been resolved
+    const history = [...approved, ...applied, ...dismissed];
     const historyToggle = document.getElementById('historyToggle');
     const historySection = document.getElementById('historySection');
 
@@ -431,6 +454,74 @@
     return String(val);
   }
 
+  function renderFailedCard(alert, index) {
+    const toolName = alert.tool_name || alert.tool || alert.name || 'Unknown tool';
+    const reason = alert.failureReason || 'Unknown error';
+    const signalDate = alert.signal_date || alert.date || '';
+    const signalUrl = alert.source_url || '';
+    const headline = alert.signal_headline || '';
+    const isNotFound = reason.toLowerCase().includes('not found');
+
+    const sourceLink = signalUrl
+      ? `<a href="${signalUrl}" target="_blank" rel="noopener" style="font-size:12px; color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3);">${headline || 'Source →'}</a>`
+      : (headline ? `<span style="font-size:12px; color:var(--slate);">${headline}</span>` : '');
+
+    return `
+      <div class="alert-card" id="alertCard${index}" style="border-color:var(--red-border);">
+        <div class="alert-top">
+          <div>
+            <div class="alert-tool">${toolName}</div>
+            <div class="alert-signal">${signalDate}${sourceLink ? ' · ' + sourceLink : ''}</div>
+          </div>
+          <span class="alert-badge badge-failed">failed</span>
+        </div>
+        <div style="background:var(--red-dim); border:1px solid var(--red-border); border-radius:6px; padding:12px 16px; margin-bottom:16px;">
+          <div style="font-size:13px; color:var(--red); font-weight:600; margin-bottom:4px;">Why it failed</div>
+          <div style="font-size:13px; color:var(--slate);">${reason}</div>
+        </div>
+        ${isNotFound ? `
+        <div style="font-size:13px; color:var(--slate); margin-bottom:16px; line-height:1.6;">
+          This tool doesn't exist in saas-db.js yet. To fix: add the tool entry to <code style="font-family:var(--mono); font-size:12px; background:var(--surface-2); padding:2px 6px; border-radius:3px;">saas-db.js</code>, then re-approve or re-run the pipeline.
+        </div>` : ''}
+        <div class="alert-actions">
+          <button class="btn btn-dismiss" onclick="dismissFailedAlert(${index})">Dismiss</button>
+          <button class="btn btn-dismiss" onclick="retryAlert(${index})">Reset to Pending</button>
+        </div>
+      </div>
+    `;
+  }
+
+  async function dismissFailedAlert(index) {
+    await updateAlertStatus(index, 'dismissed');
+  }
+
+  async function retryAlert(index) {
+    const alert = allAlerts[index];
+    if (!alert) return;
+
+    const toolName = alert.tool_name || alert.tool || alert.name || 'Unknown';
+    alert.status = 'pending_review';
+    delete alert.failedAt;
+    delete alert.failureReason;
+    delete alert.approvedAt;
+    delete alert.reviewedBy;
+
+    try {
+      await commitAlerts(`retry: ${toolName} — reset to pending`);
+      const card = document.getElementById(`alertCard${index}`);
+      if (card) {
+        card.classList.add('removing');
+        setTimeout(() => { renderAlerts(); }, 420);
+      } else {
+        renderAlerts();
+      }
+      showToast(`Reset to pending: ${toolName}`);
+    } catch (err) {
+      alert.status = 'failed';
+      showToast('Failed to commit: ' + err.message, true);
+    }
+  }
+
 
   /* ══════════════════════════════════════════════════════════════
      APPROVE / DISMISS ACTIONS
@@ -447,7 +538,7 @@
     const alert = allAlerts[index];
     if (!alert) return;
 
-    // Disable buttons
+    // Disable buttons immediately
     const approveBtn = document.getElementById(`approveBtn${index}`);
     const dismissBtn = document.getElementById(`dismissBtn${index}`);
     if (approveBtn) approveBtn.disabled = true;
@@ -478,8 +569,17 @@
         await addToAcquisitionTracker(alert);
       }
 
-      showToast(`${toolName} — ${newStatus}`);
-      renderAlerts();
+      // Animate the card out, then re-render
+      const card = document.getElementById(`alertCard${index}`);
+      if (card) {
+        card.classList.add('removing');
+        setTimeout(() => { renderAlerts(); }, 420);
+      } else {
+        renderAlerts();
+      }
+
+      const verb = newStatus === 'approved' ? 'Approved' : 'Dismissed';
+      showToast(`${verb}: ${toolName}`);
     } catch (err) {
       // Revert
       alert.status = oldStatus;
