@@ -8,7 +8,7 @@ Maintainer: Joshua van Es
 
 ## Purpose
 
-This document defines the classification logic used in Upper Harbour's Canadian SaaS Sovereignty Index (the 324-tool database powering the Tools page, HarbourScan, and all published research). It exists so that:
+This document defines the classification logic used in Upper Harbour's Canadian SaaS Sovereignty Index (the 707-tool database powering the Tools page, HarbourScan, and all published research). It exists so that:
 
 - Classification decisions are consistent across all tools
 - New tools and reclassifications follow a documented logic model
@@ -312,15 +312,17 @@ The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Trigger
 
 ---
 
-## Current Database Statistics (February 2026)
+## Current Database Statistics (March 2026)
 
 | Classification | Count | Percentage |
 |---------------|-------|------------|
-| EXPOSED | 173 | 53% |
-| REVIEW | 60 | 19% |
-| NON_EXPOSED | 19 | 6% |
-| CANADIAN | 72 | 22% |
-| **Total** | **324** | **100%** |
+| EXPOSED | 384 | 54% |
+| REVIEW | 82 | 12% |
+| NON_EXPOSED | 118 | 17% |
+| CANADIAN | 123 | 17% |
+| **Total** | **707** | **100%** |
+
+*Note: These counts are approximate and should be regenerated from saas-db.js. Run `python3 update-schema-stats.py` to see current computed values.*
 
 ---
 
@@ -356,7 +358,7 @@ After adding or modifying any tool in `saas-db.js`, verify these invariants hold
 ```bash
 python3 -c "
 import re
-with open('assets/saas-db.js') as f: raw = f.read()
+with open('saas-db.js') as f: raw = f.read()
 entries = []
 for m in re.finditer(r'\{([^}]+)\}', raw):
     e = {}

@@ -18,7 +18,7 @@ const path = require('path');
 const ROOT = process.cwd(); // Run from repo root
 
 // ── Load the database ──────────────────────────────────────
-const dbCode = fs.readFileSync(path.join(ROOT, 'assets', 'saas-db.js'), 'utf-8');
+const dbCode = fs.readFileSync(path.join(ROOT, 'saas-db.js'), 'utf-8');
 eval(dbCode);
 
 // ── Compute stats ──────────────────────────────────────────

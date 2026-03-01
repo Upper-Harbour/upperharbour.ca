@@ -426,4 +426,16 @@
 
         document.getElementById('pipelineSignals').style.display = 'block';
         document.getElementById('pipelineTitle').textContent = `Pipeline-detected acquisitions (${pipelineEntries.length})`;
-      } catch (e) { /* acquisitions.json not availabl
+      } catch (e) { /* acquisitions.json not available */ }
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+  <script src="/saas-db.js"></script>
+  <script src="/assets/uh-stats.js"></script>
+</body>
+</html>

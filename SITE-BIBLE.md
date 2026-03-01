@@ -55,12 +55,14 @@ Every page should support this flow. CTAs point toward HarbourScan (primary) or 
 ├── sovereignty.html            Sovereignty landing page (standalone, own nav)
 ├── admin-alerts.html           Pipeline admin (auth-protected)
 ├── apply_db_updates.py         Pipeline: applies approved alerts to saas-db.js
+├── saas-db.js                  The database — 707 tools (loaded by every page via <script src="/saas-db.js">)
 ├── CLASSIFICATION-RUBRIC.md    Internal: classification logic
 ├── SITE-BIBLE.md               Internal: this document
 │
 ├── /assets/
-│   ├── saas-db.js              The 324-tool database (loaded by tools.html and harbourscan.html)
-│   └── signals.json            Pipeline-generated signals feed (loaded by signals.html)
+│   ├── uh-stats.js             Client-side dynamic stats (computes from saas-db.js, populates uh-stat spans)
+│   ├── schema-stats-ref.json   Tracks current schema values for update-schema-stats.py
+│   └── site.css                Global stylesheet
 │
 ├── /research/
 │   ├── government-saas-audit.html
@@ -167,7 +169,7 @@ When touching any page, migrate it to the current system if practical. The homep
 ## The Database: saas-db.js
 
 ### Structure
-`/assets/saas-db.js` defines a global `saasDB` array. Each entry:
+`/saas-db.js` defines a global `saasDB` array. Each entry:
 ```javascript
 {
   name: "Slack",
@@ -187,17 +189,32 @@ See `CLASSIFICATION-RUBRIC.md` for the full decision tree, edge cases, and prece
 - **review**: jurisdictional exposure exists but requires case-by-case assessment (usually because Canadian data residency is available, or the corporate structure is complex)
 - **canadian**: not CLOUD Act exposed (Canadian-incorporated, or non-US/non-Canadian jurisdiction without CLOUD Act equivalent)
 
-### Current counts (as of February 2026)
-- 324 tools total
-- ~173 exposed
-- ~59 review
-- ~75 canadian
+### Current counts (as of March 2026)
+- 707 tools total across 32 categories
+- All numbers auto-computed from saas-db.js — do not hardcode
 
 ### Pages that load saas-db.js
-- `tools.html` (full database, loaded via `<script src="/assets/saas-db.js">`)
-- `harbourscan.html` (full database)
-- `index.html` (embeds a 20-tool sample inline for the quick checker, NOT the full DB)
-- `sovereignty-acquisition-tracker.html` (loads signals.json and filters for acquisition-type signals)
+Every page with dynamic stats loads `saas-db.js` (repo root) and `assets/uh-stats.js`. Currently 16 pages:
+- `index.html` (homepage counters + inline 20-tool sample checker)
+- `tools.html` (full search/filter — also has own inline JS reading saasDB)
+- `research.html` (category breakdown — also has own inline JS reading saasDB)
+- `research/canadian-saas-sovereignty-index.html` (charts/tables — also has own inline JS)
+- `research/sovereignty-policy-scorecard.html`
+- `research/government-saas-audit.html`
+- `research/athena-collective-law-25-compliance.html`
+- `research/sovereignty-acquisition-tracker.html`
+- `harbourscan.html` (scan logic)
+- `resources/canadian-data-residency-saas.html`
+- `resources/law-25-saas-compliance.html`
+- `resources/transfer-impact-assessments-law-25.html`
+- `resources/data-sovereignty-compliance-2026.html`
+- `resources/saas-inventory-compliance.html`
+- `resources/foreign-jurisdiction-saas-action-guide.html`
+- `terms.html`
+
+### Dynamic stats system
+1. **Client-side (automatic):** `assets/uh-stats.js` computes stats from `saasDB` and populates any `<span class="uh-stat" data-stat="statName">` element. Hardcoded values in HTML are fallbacks for crawlers only.
+2. **Build-time (run manually):** `python3 update-schema-stats.py` updates JSON-LD schema blocks and meta tags for SEO. Uses `assets/schema-stats-ref.json` to track what numbers to find/replace.
 
 ---
 

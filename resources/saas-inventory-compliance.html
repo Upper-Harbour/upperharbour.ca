@@ -172,4 +172,14 @@
       <span class="footer-copy">Canadian-owned and operated. Data stays in Canada.</span>
     </div>
   </footer>
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cl
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+  <script src="/saas-db.js"></script>
+  <script src="/assets/uh-stats.js"></script>
+</body>
+</html>

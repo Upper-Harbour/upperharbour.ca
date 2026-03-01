@@ -1,6 +1,6 @@
 # Updating the Database
 
-When Claude (or anyone) adds, removes, or edits a tool in `assets/saas-db.js`, here's what happens and what to do.
+When Claude (or anyone) adds, removes, or edits a tool in `saas-db.js`, here's what happens and what to do.
 
 ---
 
@@ -39,7 +39,7 @@ Pages with schema markup that gets updated:
 
 ## The workflow
 
-After editing `assets/saas-db.js`:
+After editing `saas-db.js`:
 
 ```
 python3 update-schema-stats.py
@@ -104,10 +104,15 @@ These only matter for internal reference and AI context. Update them periodicall
 
 ## How the system works (technical reference)
 
+**Database: `saas-db.js` (repo root)**
+The single canonical database. Every page loads it via `<script src="/saas-db.js">`. There is no copy elsewhere — do not create one in assets/ or anywhere else.
+
 **Client-side: `assets/uh-stats.js`**
 Loaded by every page alongside `saas-db.js`. Computes stats from the database and populates any HTML element with `class="uh-stat"` and a `data-stat` attribute. Example: `<span class="uh-stat" data-stat="totalTools">693</span>` gets its text replaced with the live count.
+
+Three pages (tools.html, research.html, research/canadian-saas-sovereignty-index.html) also have their own inline JS that reads `saasDB` directly for charts, tables, and search — these update automatically too.
 
 Available data-stat values: `totalTools`, `foreignPct`, `cloudActPct`, `canadianPct`, `reviewPct`, `nonExposedPct`, `exposedPct`, `caResExposedPct`, `nonCanadianPct`, `categoryCount`, `lastUpdated`
 
 **Build-time: `update-schema-stats.py`**
-Run manually after DB changes. Reads saas-db.js with regex, computes the same stats, finds old values in JSON-LD schema blocks and meta tags, replaces with new values. Uses `assets/schema-stats-ref.json` to track what values are currently in the files.
+Run manually after DB changes. Reads saas-db.js (repo root) with regex, computes the same stats, finds old values in JSON-LD schema blocks and meta tags, replaces with new values. Uses `assets/schema-stats-ref.json` to track what values are currently in the files.

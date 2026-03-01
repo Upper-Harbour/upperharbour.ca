@@ -47,7 +47,7 @@ This document (the "Business Sherpa") captures the complete strategic context fo
 Upper Harbour is a technology sovereignty intelligence platform for Canadian organizations. It maps, measures, and documents Canada's technology dependency on foreign infrastructure — so organizations can prove compliance and policymakers can make informed decisions.
 
 ### Core Data Asset
-The central asset is a database of **693 SaaS tools** mapped to their:
+The central asset is a database of **707 SaaS tools** mapped to their:
 - Parent company and ultimate parent entity
 - Jurisdiction of incorporation
 - Ownership structure (Canadian-owned, US-parented, etc.)
@@ -65,7 +65,7 @@ The central asset is a database of **693 SaaS tools** mapped to their:
 The platform is more extensive than it might first appear:
 
 **Database & Research:**
-- Canadian SaaS Sovereignty Index (693 tools mapped)
+- Canadian SaaS Sovereignty Index (707 tools mapped)
 - Provincial Exposure Index (province-by-province regulatory analysis)
 - Sovereignty Policy Scorecard (evaluating policy decisions)
 - Government SaaS Audit (government procurement technology mapping)
@@ -139,7 +139,7 @@ AI will commoditize the act of scraping websites and compiling vendor databases.
 
 **Ring 1 — The Data Layer (what we know)**
 Databases that map who controls what:
-- Canadian SaaS Sovereignty Index (DONE — 693 tools)
+- Canadian SaaS Sovereignty Index (DONE — 707 tools)
 - Government Technology Dependency Map (TO BUILD)
 - Sector-specific maps: healthcare, banking, education (TO BUILD)
 - Canadian Alternative Directory — "what to switch to" (TO BUILD)
@@ -237,7 +237,7 @@ SHIELD (Securing Homegrown Innovation, Economic Leadership, and Defence) is:
 - **SecurityScorecard / BitSight** — cybersecurity ratings agencies. The model Upper Harbour should emulate (but for sovereignty, not cybersecurity).
 
 ### What Nobody Else Has
-No one has built a Canada-specific, vendor-level database mapping 693+ tools to their ultimate parent jurisdictions and CLOUD Act exposure. This is Upper Harbour's core moat right now — but it must stay current to remain valuable.
+No one has built a Canada-specific, vendor-level database mapping 707+ tools to their ultimate parent jurisdictions and CLOUD Act exposure. This is Upper Harbour's core moat right now — but it must stay current to remain valuable.
 
 ---
 
@@ -445,7 +445,9 @@ If these three transitions are managed, the strategy holds. If any one stalls, i
 
 ### Adding a tool to the database
 
-1. Add the entry to `assets/saas-db.js`
+There is ONE database file: `saas-db.js` in the repo root. No copies elsewhere.
+
+1. Add the entry to `saas-db.js` (repo root)
 2. Update `saasDBMeta.lastUpdated` at the bottom of saas-db.js
 3. Run in terminal from the repo folder:
 ```
@@ -457,6 +459,7 @@ git push
 
 ### How the dynamic stats system works
 
+- `saas-db.js` (repo root) — the single canonical database, loaded by every page via `<script src="/saas-db.js">`
 - `assets/uh-stats.js` — loaded by every page, computes stats from saas-db.js in the browser, updates all visible numbers automatically
 - `update-schema-stats.py` — run after DB changes, updates hardcoded numbers inside JSON-LD schema blocks and meta tags that Google reads
 - `assets/schema-stats-ref.json` — auto-generated file that tracks what numbers are currently in the schema so the script knows what to find and replace next time

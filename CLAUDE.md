@@ -1,25 +1,24 @@
-This is a static HTML site for upperharbour.ca hosted on GitHub Pages. The main database is assets/saas-db.js containing SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, and sovereignty risk tiers.
+This is a static HTML site for upperharbour.ca hosted on GitHub Pages.
 
-## Database updates
+## The database
 
-When adding a tool to assets/saas-db.js, run these commands afterward:
+There is ONE database file: `saas-db.js` in the repo root. Every page loads it via `<script src="/saas-db.js">`. There is no copy in assets/ — do not create one. All tools, all stats, all automation flows from this single file.
 
-```
-python3 update-schema-stats.py
-git add -A
-git commit -m "Add [tool name]"
-git push
-```
+## Adding a tool
 
-The script updates hardcoded numbers in JSON-LD schema blocks and meta tags across all HTML files. Visible page text updates automatically via assets/uh-stats.js (client-side).
+1. Add the entry to `saas-db.js` (see UPDATE-GUIDE.md for format and risk tier rules)
+2. Update the `lastUpdated` timestamp in `saasDBMeta` at the bottom of the file
+3. Run: `python3 update-schema-stats.py` (updates JSON-LD schema and meta tags for SEO)
+4. Commit and push
 
-See UPDATE-GUIDE.md for full details on the tool entry format, risk tier rules, and how the system works.
+All visible numbers on the site update automatically — `assets/uh-stats.js` computes stats from `saas-db.js` at runtime and populates every `<span class="uh-stat">` element. The hardcoded values in HTML are fallbacks for crawlers only.
 
-## Dynamic stats system
+## How stats flow
 
-- `assets/uh-stats.js` — loaded by every page, computes stats from saas-db.js at runtime, populates any `<span class="uh-stat" data-stat="statName">fallback</span>` element
-- `update-schema-stats.py` — run manually after DB changes, updates JSON-LD schema and meta tags, saves reference values to `assets/schema-stats-ref.json`
-- Hardcoded numbers in HTML are fallbacks only — real visitors see live computed values
+- `saas-db.js` — the single canonical database (root of repo, loaded by every page)
+- `assets/uh-stats.js` — client-side script, computes stats from saas-db.js, populates `<span class="uh-stat" data-stat="statName">fallback</span>` elements across 16 pages
+- `update-schema-stats.py` — run manually after DB changes, updates JSON-LD schema blocks and meta tags, saves reference to `assets/schema-stats-ref.json`
+- Three pages (tools.html, research.html, research/canadian-saas-sovereignty-index.html) have additional inline JS that reads `saasDB` directly for charts, tables, and search — these also update automatically
 
 ## Site structure
 
@@ -33,7 +32,7 @@ Deleted: engagements.html
 
 ## Key files
 
-- `assets/saas-db.js` — the database (all tools)
+- `saas-db.js` — the database (all tools, repo root, the ONLY copy)
 - `assets/uh-stats.js` — client-side dynamic stats
 - `assets/schema-stats-ref.json` — tracks current schema values for the updater
 - `update-schema-stats.py` — schema/meta tag updater script

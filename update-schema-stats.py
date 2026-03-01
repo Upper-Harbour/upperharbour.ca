@@ -15,7 +15,7 @@ import json
 
 # ── Parse saas-db.js ────────────────────────────────────────
 def parse_database():
-    db_path = os.path.join('assets', 'saas-db.js')
+    db_path = 'saas-db.js'
     if not os.path.exists(db_path):
         print(f"ERROR: Can't find {db_path}")
         print("Make sure you're running this from your repo folder.")

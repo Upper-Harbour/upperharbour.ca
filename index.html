@@ -507,7 +507,7 @@
     </div>
   </footer>
 
-  <script src="/assets/saas-db.js"></script>
+  <script src="/saas-db.js"></script>
   <script src="/assets/uh-stats.js"></script>
   <script>
     async function handleCta(e) {
@@ -536,7 +536,7 @@
       setTimeout(() => { if (!animated) { animated = true; animateCounters(); } }, 800);
     }
     /* ── Checker database (sample) ── */
-    const saasDB = [
+    const checkerSampleDB = [
       {name:"Slack",parent:"Salesforce Inc.",hq:"San Francisco, CA",jurisdiction:"United States",cloudAct:true,dataResidency:"US/Global regions",note:"Acquired by Salesforce (US) in 2021. Formerly Canadian-founded. All data subject to US legal process.",risk:"exposed"},
       {name:"Microsoft Teams",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Part of Microsoft 365. Canadian hosting available but US-parent jurisdiction applies.",risk:"review"},
       {name:"Microsoft 365",parent:"Microsoft Corporation",hq:"Redmond, WA",jurisdiction:"United States",cloudAct:true,dataResidency:"Canada region available",note:"Canadian data residency available but parent entity remains subject to US CLOUD Act.",risk:"review"},
@@ -565,7 +565,7 @@
       debounce = setTimeout(() => {
         const q = input.value.trim().toLowerCase();
         if (q.length < 2) { results.innerHTML = ''; return; }
-        const matches = saasDB.filter(t => t.name.toLowerCase().includes(q)).slice(0, 3);
+        const matches = checkerSampleDB.filter(t => t.name.toLowerCase().includes(q)).slice(0, 3);
         if (!matches.length) { results.innerHTML = '<div class="checker-noresult">Not in this 20-tool sample. <a href="/tools">Search the full <span class="uh-stat" data-stat="totalTools">693</span>-tool Sovereignty Index</a> or <a href="/harbourscan">run a full HarbourScan</a>.</div>'; return; }
         results.innerHTML = matches.map(function(t) {
           var bc = t.risk === 'exposed' ? 'badge-exposed' : t.risk === 'review' ? 'badge-review' : t.risk === 'canadian' ? 'badge-canadian' : 'badge-non_exposed';

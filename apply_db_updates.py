@@ -30,7 +30,7 @@ from pathlib import Path
 # ── Paths (relative to repo root) ────────────────────────────────────────────
 
 REPO_ROOT = Path(__file__).resolve().parent
-SAAS_DB_PATH = REPO_ROOT / "assets" / "saas-db.js"
+SAAS_DB_PATH = REPO_ROOT / "saas-db.js"
 DB_ALERTS_PATH = REPO_ROOT / "db-alerts.json"
 
 # Fields in saas-db.js entries that alerts are allowed to update
