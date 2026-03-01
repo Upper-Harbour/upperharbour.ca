@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 01, 2026 — 11:56 ET",
+    "lastUpdated": "Mar 01, 2026 — 17:58 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Modernizing federal procurement: reforms needed to support Canadian technology vendors",
+      "summary": "A Lexology analysis highlights that the Government of Canada must modernize procurement policies to support domestic technology vendors, including raising procurement thresholds and aligning practices with market standards for SaaS participation. Current policies create barriers to Canadian vendor engagement in federal contracting.",
+      "type": "legislation",
+      "source": "Lexology",
+      "sourceUrl": "https://www.lexology.com/library/detail.aspx?g=797bec95-cc7e-40db-b1ed-9da778b05283",
+      "date": "2026-02-26",
+      "impact": "Canadian SaaS and technology vendors should engage with federal procurement modernization consultations and review threshold changes as they develop.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian Organizations Cite U.S. Cloud Act and Cross-Border Data Sharing as Top Sovereignty Threats",
       "summary": "According to the Kiteworks 2026 Data Sovereignty Report, 40% of Canadian respondents identify Canada-U.S. data-sharing policy changes as a top sovereignty concern, while 21% specifically flag the U.S. Cloud Act as a direct threat to Canadian data sovereignty. This reflects heightened concern among Canadian organizations about cross-border legal mechanisms affecting data stored in or transiting through U.S. jurisdictions.",
