@@ -101,21 +101,28 @@ def write_saas_db(path: Path, data: list[dict]) -> None:
           { name:"Slack", parent:"Salesforce Inc.", ... },
           ...
         ];
+
+    Data is passed via stdin to avoid OS argument length limits.
     """
     node_script = """
-    const data = JSON.parse(process.argv[1]);
-    const lines = data.map(entry => {
-        const pairs = Object.entries(entry).map(([k, v]) => {
-            return k + ':' + JSON.stringify(v);
+    let chunks = [];
+    process.stdin.on('data', c => chunks.push(c));
+    process.stdin.on('end', () => {
+        const data = JSON.parse(chunks.join(''));
+        const lines = data.map(entry => {
+            const pairs = Object.entries(entry).map(([k, v]) => {
+                return k + ':' + JSON.stringify(v);
+            });
+            return '      { ' + pairs.join(', ') + ' }';
         });
-        return '      { ' + pairs.join(', ') + ' }';
+        const output = '    var saasDB = [\\n' + lines.join(',\\n') + '\\n    ];\\n';
+        process.stdout.write(output);
     });
-    const output = '    var saasDB = [\\n' + lines.join(',\\n') + '\\n    ];\\n';
-    process.stdout.write(output);
     """
 
     result = subprocess.run(
-        ["node", "-e", node_script, json.dumps(data)],
+        ["node", "-e", node_script],
+        input=json.dumps(data),
         capture_output=True, text=True,
     )
 
