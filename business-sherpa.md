@@ -1,5 +1,5 @@
 # UPPER HARBOUR & JOSHUA VAN ES — BUSINESS SHERPA
-## Last Updated: March 1, 2026
+## Last Updated: February 28, 2026
 
 ---
 
@@ -17,7 +17,7 @@ This document (the "Business Sherpa") captures the complete strategic context fo
 - **Previous ventures:** Founded Cordova Bay Medical Clinic (primary care clinic, built from scratch). Research contributor to Landscapes of Injustice (7-year SSHRC-funded project on the dispossession of Japanese Canadians during WWII; wrote the public-facing narrative website and contributed a chapter to the McGill-Queen's University Press published volume).
 - **Current venture:** Founder & CEO of Upper Harbour (technology sovereignty intelligence platform).
 - **Publications:** Maclean's (Canada Needs Homegrown AI Infrastructure), OpenCanada (Canada's Sovereign AI Compute Gap), BetaKit (multiple pieces on tech policy), McGill-Queen's University Press (Landscapes of Injustice chapter).
-- **Personal site:** joshuavanes.ca — custom HTML site ready to deploy via Netlify with DNS at Dreamhost. Already indexing first/second for "Joshua van Es" on Google. Updated March 1, 2026 with full entity optimization: JSON-LD Person + Organization schema, consistent identity sentence, third-person About section, 8 sameAs links, OG profile type. Site now functions as structured entity anchor for Google Knowledge Graph.
+- **Personal site:** joshuavanes.ca (being rebuilt; new custom HTML site designed and ready to deploy via Netlify with DNS at Dreamhost).
 - **Social:** LinkedIn (joshuavanes), X (@Joshuavanes).
 - **Contact:** josh@upperharbour.ca
 
@@ -36,10 +36,8 @@ This document (the "Business Sherpa") captures the complete strategic context fo
 - Wants Upper Harbour (in some form) to work.
 
 ### Known Issues to Fix
-- **Stikeman bio is out of date.** The Stikeman Elliott website still describes Joshua as "a summer student." This needs to be updated to reflect the articling position. Action: Email Stikeman's marketing team. This is the most urgent action — it's the first thing anyone Googles and it undermines credibility with editors and journalists.
-- **joshuavanes.ca needs to be deployed.** Entity-optimized version ready (Session 4). Upload index.html + headshot.jpg to Netlify.
-- **Upper Harbour cross-linking update needs to be pushed.** 43 pages updated with joshuavanes.ca footer links, 32 pages with author schema pointing to joshuavanes.ca, homepage + founder page schema updated. Zip file ready from Session 4.
-- **Upper Harbour does not yet appear in Google results for "Joshua van Es."** Expected to resolve 2-4 weeks after cross-linking changes are deployed. Cold outreach (Murad Hemmadi) should wait until this resolves.
+- **Stikeman bio is out of date.** The Stikeman Elliott website still describes Joshua as "a summer student." This needs to be updated to reflect the articling position. Action: Email Stikeman's marketing team. This is urgent — it's the first thing anyone Googles.
+- **joshuavanes.ca needs to be deployed.** A new custom HTML site has been designed and built. It needs to be uploaded to Netlify and DNS pointed from Dreamhost. The site includes his headshot, timeline, publications, Upper Harbour feature section, and contact info.
 
 ---
 
@@ -441,38 +439,6 @@ If these three transitions are managed, the strategy holds. If any one stalls, i
 
 19. **Homepage spacing fix** — Restored `.hero-sub` margin-bottom from 20px to 40px (matching previous version's visual breathing room).
 
-### Session 4 (March 1, 2026)
-
-20. **Saanich News opinion piece** — Letter to the editor comparing Dutch cycling infrastructure to Saanich BC's approach. ~850 words, fact-checked (CRD area 2,340 km², Amsterdam density ~5,000/km², Dutch 1970s fatalities ~25/100k, current CRD rate 2-3/100k, Dutch cycling mode share 27%, 1940 Netherlands 4M bikes/8M people). Core argument: Dutch infrastructure was a pragmatic response to a safety crisis built on existing cycling culture; Saanich's conditions are structurally different. Uses Tillicum Road lane removal as specific local example. Split comparison image created for publication.
-
-21. **joshuavanes.ca entity optimization for Google Knowledge Panel** — Major update to make the site function as a structured entity anchor for Google's Knowledge Graph:
-   - **Title & meta tags reframed** — from "Law, History, Technology, Policy" to "Canadian Writer on AI, Digital Sovereignty, and Technology Policy." OG type changed from `website` to `profile`.
-   - **JSON-LD Person schema added** — full structured data block including name, jobTitle, description, knowsAbout (7 topics), nationality, workLocation, alumniOf (UBC + UVic), worksFor (Stikeman Elliott), founder (Upper Harbour), hasOccupation (Writer + Legal Professional), sameAs (8 links: LinkedIn, X, Maclean's, OpenCanada, BetaKit, Stikeman, ResearchGate, Landscapes of Injustice).
-   - **JSON-LD Organization schema added** — standalone block for Upper Harbour with founder link back to joshuavanes.ca.
-   - **Consistent identity sentence deployed** — "Canadian writer and legal professional focused on AI infrastructure, digital sovereignty, and technology policy" appears in: meta description, OG description, hero text, About section opening, schema description. Google sees this repeated across structured and unstructured content.
-   - **About section rewritten** — third-person, encyclopedia-style, factual. No marketing language. Publications named and linked. Credentials stated factually.
-   - **Hero tags updated** — from "Corporate Law / AI Governance / Data Sovereignty / Canadian History" to "AI Infrastructure / Digital Sovereignty / Technology Policy / AI Governance."
-   - **Section headers made more entity-friendly** — "Bridging law, technology, and national interest" → "About Joshua van Es"; "Selected work." → "Selected Writing"; "What I'm building." → "Projects"; "From archives to infrastructure." → "Background & Career."
-
-22. **Upper Harbour cross-linking to joshuavanes.ca** — Comprehensive entity web update across 43 of 45 HTML files:
-   - **Author schema updated (32 pages)** — every article, guide, research page, and tool analysis changed from `"author": {"@type": "Organization", "name": "Upper Harbour"}` to `"author": {"@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca"}`. Some pages had Person schema pointing to LinkedIn — all now point to joshuavanes.ca.
-   - **Footer backlinks added (43 pages)** — joshuavanes.ca link added to the About section of every page footer. Only 404.html and admin-alerts.html excluded (non-public pages).
-   - **Homepage Organization schema updated** — founder field now includes `"url": "https://joshuavanes.ca"`.
-   - **Founder page Person schema updated** — `url` changed from `/founder` to `https://joshuavanes.ca`. joshuavanes.ca added to `sameAs` array.
-   - **Visible bylines updated** — "By Joshua van Es" links on research and resource pages changed from LinkedIn to joshuavanes.ca.
-   - **Result:** bidirectional entity web. joshuavanes.ca → upperharbour.ca (via site links and schema). upperharbour.ca → joshuavanes.ca (via 43 footer links, 32 author schema blocks, homepage/founder schema).
-
-23. **Media outreach emails drafted** — three emails ready to send:
-   - **Vass Bednar (SHIELD Institute)** — data partnership pitch. Positions Upper Harbour's vendor-level database as complement to SHIELD's policy-level Sovereignty Score. Proposes: SHIELD cites UH data in reports, collaborate on sector exposure report, Sovereignty Score as vendor-level complement to SHIELD Score.
-   - **Sarah Rieger (BetaKit)** — story pitch. Angle: "New dataset shows 89% of 'Canadian' SaaS tools are CLOUD Act exposed." Hooks: Kiteworks report, Law 25 enforcement, federal Buy Canadian digital mandate, SHIELD launch. Offers full dataset and methodology.
-   - **Murad Hemmadi (The Logic)** — story pitch. Angle: vendor-level data dimension to the sovereignty infrastructure story he's already covering (Buy Canadian mandate, Evan Solomon AI strategy). Offers dataset walkthrough and specific examples (Clio, Shopify, M365, Slack).
-
-24. **Google Knowledge Panel strategy defined** — assessed Wikidata readiness. Current status: borderline — has published bylines in three national outlets and MQUP chapter, but lacks third-party coverage *about* Joshua (vs. work *by* Joshua). Decision: wait for one piece of third-party coverage before creating Wikidata entry. Most likely source: Murad Hemmadi / The Logic story about Upper Harbour.
-
-25. **Outreach sequencing strategy refined** based on existing relationships:
-   - **Send now (warm contacts):** Vass Bednar, CCI contact, Sarah Rieger / BetaKit — they already know Joshua, won't Google him cold.
-   - **Hold until Upper Harbour ranks for "Joshua van Es" (cold contacts):** Murad Hemmadi / The Logic — cold contact, most likely to generate "coverage about" (not "coverage by") which is needed for Wikidata. Wait for Google to index cross-linking changes first (2-4 weeks after deployment).
-
 ---
 
 ## PART 12: DATABASE & SITE OPERATIONS
@@ -516,73 +482,26 @@ git push
 
 ## PART 11: IMMEDIATE NEXT ACTIONS (PRIORITY ORDER)
 
-### Deploy (do first, in this order)
 1. ✅ **Deploy all updated files to upperharbour.ca GitHub repo** — DONE Feb 28 2026
-2. ☐ **Deploy joshuavanes.ca** to Netlify — includes entity optimization (Person + Organization schema, consistent identity sentence, third-person About, updated meta tags)
-3. ☐ **Push Upper Harbour cross-linking update** — 43 pages now link to joshuavanes.ca (footer links + author schema + founder/homepage schema). This is the updated zip from Session 4.
-4. ☐ **Delete engagements.html** from repo
-5. ☐ **Email Stikeman marketing team to update bio** — URGENT. Currently says "summer student." Every editor/journalist will Google this. Must say "articling student" before any outreach.
-
-### Warm outreach (send now — these contacts already know Joshua)
-6. ☐ **Vass Bednar outreach** (SHIELD data partnership pitch — email drafted Session 4)
-7. ☐ **Sarah Rieger / BetaKit pitch** (story pitch — email drafted Session 4. Note: managing editor is now Sarah Rieger, not Sam Chicken. Douglas Soltys is editor-in-chief.)
-8. ☐ **Benjamin Bergen outreach** (send SHIELD email from Session 1)
-9. ☐ **Send Laura Ayre email** (use ChatGPT's tightened version with retainer line)
-10. ☐ **LinkedIn post** (Tuesday/Wednesday morning — Kiteworks stat + Index data + HarbourScan link)
-
-### Cold outreach (hold until Upper Harbour ranks for "Joshua van Es" — ~2-4 weeks after deployment)
-11. ☐ **Murad Hemmadi / The Logic pitch** (email drafted Session 4. He's the cold contact most likely to generate coverage *about* Joshua/Upper Harbour, which is what's needed for Wikidata. Wait for clean Google results.)
-12. ☐ **Imran Ahmad outreach** (CAI guidance hook — operationalizing Steps 1-2)
-
-### After first third-party coverage lands
-13. ☐ **Create Wikidata entry** — wait until one piece of coverage *about* Joshua or Upper Harbour exists (not just a byline *by* Joshua). Most likely trigger: Murad Hemmadi / The Logic piece, or BetaKit story about Upper Harbour. Entry should cite MQUP volume, Maclean's piece, and the third-party coverage.
-
-### Ongoing
-14. ☐ Begin direct outreach to Quebec organizations under Law 25 pressure
-15. ☐ Add Heidi Health to database (Australian jurisdiction, "review" tier, healthcare/ai category)
-16. ☐ Standardize dataResidency field in saas-db.js
-17. ☐ Add ownershipType, primaryJurisdiction, compelledDisclosure fields
-18. ☐ Compute sovereignty scores for all tools
+2. ☐ **Deploy joshuavanes.ca** to Netlify
+3. ☐ **Delete engagements.html** from repo
+4. ☐ **Send Laura Ayre email** (use ChatGPT's tightened version with retainer line)
+5. ☐ **LinkedIn post** (Tuesday/Wednesday morning — Kiteworks stat + Index data + HarbourScan link)
+6. ☐ **Vass Bednar outreach** (SHIELD data partnership pitch)
+7. ☐ **Benjamin Bergen outreach** (send SHIELD email from Session 1)
+8. ☐ **Imran Ahmad outreach** (CAI guidance hook — operationalizing Steps 1-2)
+9. ☐ **Sam Chicken / BetaKit pitch** (after LinkedIn post goes up)
+10. ☐ **Murad Hemmadi / The Logic pitch**
+11. ☐ Email Stikeman marketing team to update bio
+12. ☐ Begin direct outreach to Quebec organizations under Law 25 pressure
+13. ☐ Add Heidi Health to database (Australian jurisdiction, "review" tier, healthcare/ai category)
+14. ☐ Standardize dataResidency field in saas-db.js
+15. ☐ Add ownershipType, primaryJurisdiction, compelledDisclosure fields
+16. ☐ Compute sovereignty scores for all tools
 
 ---
 
-## APPENDIX A: GOOGLE KNOWLEDGE PANEL STRATEGY
-
-### Current Entity Footprint Status (as of March 1, 2026)
-- **joshuavanes.ca** — indexes first/second for "Joshua van Es." Now has JSON-LD Person schema, Organization schema, consistent identity sentence, 8 sameAs links.
-- **upperharbour.ca** — 43 pages link back to joshuavanes.ca. 32 pages have author schema pointing to joshuavanes.ca. Homepage Organization schema includes founder URL to joshuavanes.ca. Does NOT yet appear in Google results for "Joshua van Es" (expected 2-4 weeks after deployment).
-- **Third-party profiles:** LinkedIn, Stikeman Elliott (needs bio update), BetaKit author page, ResearchGate, Landscapes of Injustice project page.
-- **Publications:** Maclean's, OpenCanada, BetaKit (bylines *by* Joshua). MQUP (chapter contribution).
-
-### What's Missing for Knowledge Panel
-1. **Third-party coverage *about* Joshua or Upper Harbour** — currently only bylines *by* Joshua exist. Need at least one journalist-written piece about Upper Harbour or citing Joshua as an expert source. Most likely sources: The Logic (Murad Hemmadi) or BetaKit.
-2. **Wikidata entry** — will be created once third-party coverage exists. Should cite MQUP volume, Maclean's piece, and the coverage piece.
-3. **Upper Harbour appearing in Google results for "Joshua van Es"** — cross-linking changes deployed but not yet indexed.
-4. **Stikeman bio update** — high-authority domain currently showing outdated information.
-
-### Knowledge Panel Timeline Estimate
-- Realistic: 6-12 months from now (March 2026 baseline)
-- Depends on: third-party coverage landing, Wikidata entry, continued publication momentum
-- Accelerators: SHIELD partnership (institutional affiliation), conference speaker listings, podcast appearances
-
-### Key Principle
-Google creates Knowledge Panels when it sees a structured, consistent entity footprint across multiple authoritative sources. The site updates from Session 4 provide the technical foundation. What's needed now is external validation — third-party coverage, institutional affiliations, and the Wikidata entry.
-
----
-
-## APPENDIX B: MEDIA OUTREACH CONTACTS
-
-### Warm Contacts (send now)
-- **Vass Bednar** — Managing Director, Canadian SHIELD Institute. CIGI Senior Fellow. Globe and Mail contributor. Writes "regs to riches" newsletter. Knows Joshua. Pitch: data partnership (Upper Harbour vendor-level data + SHIELD policy-level score).
-- **Sarah Rieger** — Managing Editor, BetaKit. Previously at Wealthsimple Media (TLDR), CBC, HuffPost. Knows Joshua from past contributed articles. Pitch: story on 89% CLOUD Act exposure finding.
-- **Benjamin Bergen** — President, Council of Canadian Innovators / SHIELD. Contact via CCI.
-
-### Cold Contacts (hold until Upper Harbour ranks for name)
-- **Murad Hemmadi** — AI Reporter, The Logic. Previously Ottawa correspondent for The Logic, associate editor at Maclean's. Covers AI, semiconductors, deep tech, sovereignty infrastructure. Recently reported on federal "Buy Canadian" digital infrastructure mandate and Evan Solomon's AI strategy. Email: murad.hemmadi@thelogic.co. Pitch: vendor-level data dimension to sovereignty story he's covering. **Highest-value target for Wikidata goal** — most likely to generate coverage *about* Upper Harbour.
-
----
-
-## APPENDIX C: KEY EXTERNAL REFERENCES
+## APPENDIX: KEY EXTERNAL REFERENCES
 
 - **Canadian SHIELD Institute:** canadianshieldinstitute.ca — Balsillie-backed policy institute, CCI-affiliated. Has published a Sovereignty Score framework applied to Cohere investment. Led by Benjamin Bergen (President) and Vasiliki Bednar (Managing Director). Registered lobbyist.
 - **Kiteworks 2026 Data Sovereignty Report:** Published Feb 25, 2026. Surveyed 286 professionals. 40% of Canadians cite Canada-US data sharing as top concern. 23% migrating away from US cloud. 1 in 3 orgs experienced a sovereignty-related incident.
