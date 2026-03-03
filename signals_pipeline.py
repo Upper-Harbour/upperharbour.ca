@@ -712,6 +712,8 @@ def load_db_alerts() -> list[dict]:
     if os.path.exists(DB_ALERTS_PATH):
         with open(DB_ALERTS_PATH) as f:
             data = json.load(f)
+        if isinstance(data, list):
+            return data
         return data.get("alerts", [])
     return []
 
