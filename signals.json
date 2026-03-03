@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 02, 2026 — 06:26 ET",
+    "lastUpdated": "Mar 03, 2026 — 06:24 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "IRONSCALES Launches Canadian Data Residency Environment",
+      "summary": "IRONSCALES deployed a dedicated Canadian data center on January 28, 2026, enabling customer data to remain stored and processed entirely within Canada. This addresses procurement requirements and privacy concerns for Canadian regulated industries seeking domestic data residency.",
+      "type": "vendor",
+      "source": "Security Boulevard",
+      "sourceUrl": "https://securityboulevard.com/2026/03/canadas-data-sovereignty-question-answered-with-dedicated-data-center/",
+      "date": "2026-03-02",
+      "impact": "Canadian organizations in regulated sectors using IRONSCALES should review this capability for compliance with procurement and data residency requirements.",
+      "dbUpdate": true
+    },
     {
       "headline": "Modernizing federal procurement: reforms needed to support Canadian technology vendors",
       "summary": "A Lexology analysis highlights that the Government of Canada must modernize procurement policies to support domestic technology vendors, including raising procurement thresholds and aligning practices with market standards for SaaS participation. Current policies create barriers to Canadian vendor engagement in federal contracting.",
