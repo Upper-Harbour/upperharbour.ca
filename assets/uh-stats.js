@@ -5,11 +5,11 @@
  * and populates any element with class="uh-stat" and a data-stat attribute.
  * 
  * Usage in HTML:
- *   <span class="uh-stat" data-stat="totalTools">693</span>
+ *   <span class="uh-stat" data-stat="totalTools">715</span>
  *   <span class="uh-stat" data-stat="cloudActPct">89</span>%
  *   <span class="uh-stat" data-stat="foreignPct">63</span>%
  * 
- * The hardcoded fallback value (693, 89, etc.) is shown if JS fails or for
+ * The hardcoded fallback value (715, 89, etc.) is shown if JS fails or for
  * search engine crawlers that don't execute JS. Once JS runs, it's replaced
  * with the live computed value.
  * 

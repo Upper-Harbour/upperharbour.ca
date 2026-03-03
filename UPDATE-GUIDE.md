@@ -9,13 +9,13 @@ When Claude (or anyone) adds, removes, or edits a tool in `saas-db.js`, here's w
 **Every visible number on every page** updates itself. This includes:
 
 - The animated counters on the homepage (tool count, foreign %, CLOUD Act %, Canadian %)
-- All body text that says "693 tools" or "89% of tools offering Canadian residency" etc.
+- All body text that says "715 tools" or "89% of tools offering Canadian residency" etc.
 - The Sovereignty Index page charts, tables, stats, and category breakdowns
 - The research hub page stats
 - HarbourScan's scan logic and tool matching
 - The tools page search, filters, and stat boxes
 
-This works because `uh-stats.js` (loaded on every page) reads `saas-db.js` at runtime and computes fresh numbers. The hardcoded values in the HTML (like "693") are just fallbacks for search engine crawlers — real visitors always see live computed numbers.
+This works because `uh-stats.js` (loaded on every page) reads `saas-db.js` at runtime and computes fresh numbers. The hardcoded values in the HTML (like "715") are just fallbacks for search engine crawlers — real visitors always see live computed numbers.
 
 ---
 
@@ -28,7 +28,7 @@ Pages with schema markup that gets updated:
 - founder.html (Person schema)
 - methodology.html (schema description)
 - tools.html (schema description)
-- research/canadian-saas-sovereignty-index.html (6 FAQ answers with stats)
+- research/canadian-technology-sovereignty-index.html (6 FAQ answers with stats)
 - research/athena-collective-law-25-compliance.html (FAQ answer)
 - research/sovereignty-policy-scorecard.html (FAQ answer)
 - resources/canadian-data-residency-saas.html (2 FAQ answers)
@@ -108,9 +108,9 @@ These only matter for internal reference and AI context. Update them periodicall
 The single canonical database. Every page loads it via `<script src="/saas-db.js">`. There is no copy elsewhere — do not create one in assets/ or anywhere else.
 
 **Client-side: `assets/uh-stats.js`**
-Loaded by every page alongside `saas-db.js`. Computes stats from the database and populates any HTML element with `class="uh-stat"` and a `data-stat` attribute. Example: `<span class="uh-stat" data-stat="totalTools">693</span>` gets its text replaced with the live count.
+Loaded by every page alongside `saas-db.js`. Computes stats from the database and populates any HTML element with `class="uh-stat"` and a `data-stat` attribute. Example: `<span class="uh-stat" data-stat="totalTools">715</span>` gets its text replaced with the live count.
 
-Three pages (tools.html, research.html, research/canadian-saas-sovereignty-index.html) also have their own inline JS that reads `saasDB` directly for charts, tables, and search — these update automatically too.
+Three pages (tools.html, research.html, research/canadian-technology-sovereignty-index.html) also have their own inline JS that reads `saasDB` directly for charts, tables, and search — these update automatically too.
 
 Available data-stat values: `totalTools`, `foreignPct`, `cloudActPct`, `canadianPct`, `reviewPct`, `nonExposedPct`, `exposedPct`, `caResExposedPct`, `nonCanadianPct`, `categoryCount`, `lastUpdated`
 

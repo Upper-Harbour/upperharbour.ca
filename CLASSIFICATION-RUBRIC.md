@@ -1,4 +1,4 @@
-# Classification Rubric: Canadian SaaS Sovereignty Index
+# Classification Rubric: Canadian Technology Sovereignty Index
 
 **Internal reference document — not published.**
 Last updated: February 2026
@@ -8,7 +8,7 @@ Maintainer: Joshua van Es
 
 ## Purpose
 
-This document defines the classification logic used in Upper Harbour's Canadian SaaS Sovereignty Index (the 707-tool database powering the Tools page, HarbourScan, and all published research). It exists so that:
+This document defines the classification logic used in Upper Harbour's Canadian Technology Sovereignty Index (the 715-tool database powering the Tools page, HarbourScan, and all published research). It exists so that:
 
 - Classification decisions are consistent across all tools
 - New tools and reclassifications follow a documented logic model
@@ -320,7 +320,7 @@ The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Trigger
 | REVIEW | 82 | 12% |
 | NON_EXPOSED | 118 | 17% |
 | CANADIAN | 123 | 17% |
-| **Total** | **707** | **100%** |
+| **Total** | **715** | **100%** |
 
 *Note: These counts are approximate and should be regenerated from saas-db.js. Run `python3 update-schema-stats.py` to see current computed values.*
 

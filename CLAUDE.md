@@ -18,7 +18,7 @@ All visible numbers on the site update automatically — `assets/uh-stats.js` co
 - `saas-db.js` — the single canonical database (root of repo, loaded by every page)
 - `assets/uh-stats.js` — client-side script, computes stats from saas-db.js, populates `<span class="uh-stat" data-stat="statName">fallback</span>` elements across 16 pages
 - `update-schema-stats.py` — run manually after DB changes, updates JSON-LD schema blocks and meta tags, saves reference to `assets/schema-stats-ref.json`
-- Three pages (tools.html, research.html, research/canadian-saas-sovereignty-index.html) have additional inline JS that reads `saasDB` directly for charts, tables, and search — these also update automatically
+- Three pages (tools.html, research.html, research/canadian-technology-sovereignty-index.html) have additional inline JS that reads `saasDB` directly for charts, tables, and search — these also update automatically
 
 ## Site structure
 

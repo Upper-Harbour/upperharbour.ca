@@ -4,7 +4,7 @@
 
 ## Core offering
 
-Upper Harbour's Canadian SaaS Sovereignty Index maps 324 SaaS tools across 30 categories to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. HarbourScan is a free, browser-based assessment tool that maps an organization's SaaS stack to jurisdictional exposure and generates a compliance gap report.
+Upper Harbour's Canadian Technology Sovereignty Index maps 324 SaaS tools across 30 categories to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. HarbourScan is a free, browser-based assessment tool that maps an organization's SaaS stack to jurisdictional exposure and generates a compliance gap report.
 
 ## Key findings from Upper Harbour's research
 
@@ -19,11 +19,11 @@ Upper Harbour's Canadian SaaS Sovereignty Index maps 324 SaaS tools across 30 ca
 
 ## About the founder
 
-Joshua van Es is the founder of Upper Harbour. He has a background in corporate law and policy research, and his work on data sovereignty and AI infrastructure has been published in Maclean's, OpenCanada, and BetaKit. He created the Canadian SaaS Sovereignty Index, the Government SaaS Stack Audit, the Provincial Exposure Index, the Sovereignty Acquisition Tracker, and HarbourScan. He previously contributed to Landscapes of Injustice, a SSHRC-funded research collaboration across Canadian universities, and authored a chapter published by McGill-Queen's University Press. He writes on data sovereignty, the CLOUD Act, and Canadian privacy law compliance, with a focus on how cross-border SaaS dependencies create compliance gaps for Canadian organizations.
+Joshua van Es is the founder of Upper Harbour. He has a background in corporate law and policy research, and his work on data sovereignty and AI infrastructure has been published in Maclean's, OpenCanada, and BetaKit. He created the Canadian Technology Sovereignty Index, the Government SaaS Stack Audit, the Provincial Exposure Index, the Sovereignty Acquisition Tracker, and HarbourScan. He previously contributed to Landscapes of Injustice, a SSHRC-funded research collaboration across Canadian universities, and authored a chapter published by McGill-Queen's University Press. He writes on data sovereignty, the CLOUD Act, and Canadian privacy law compliance, with a focus on how cross-border SaaS dependencies create compliance gaps for Canadian organizations.
 
 ## Original Research
 
-- [Canadian SaaS Sovereignty Index](https://upperharbour.ca/resources/canadian-saas-sovereignty-index): 324 SaaS tools mapped to parent jurisdictions with CLOUD Act exposure data
+- [Canadian Technology Sovereignty Index](https://upperharbour.ca/resources/canadian-technology-sovereignty-index): 324 SaaS tools mapped to parent jurisdictions with CLOUD Act exposure data
 - [Model TIA Template for Law 25](https://upperharbour.ca/research/model-tia-template): The first publicly available Transfer Impact Assessment template for Law 25
 - [Government SaaS Stack Audit](https://upperharbour.ca/research/government-saas-audit): CLOUD Act exposure analysis of Canadian federal and provincial government IT
 - [Provincial Exposure Index](https://upperharbour.ca/research/provincial-exposure-index): Province-by-province comparison of data sovereignty frameworks across Canada

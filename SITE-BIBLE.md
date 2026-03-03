@@ -19,7 +19,7 @@ Upper Harbour's research is public and free. The revenue model is compliance doc
 ## Product Architecture
 
 ### Free tier (acquisition)
-- **Tools page** (`/tools`) — lookup any of 324 SaaS tools for jurisdiction, CLOUD Act status, parent company. Branded as the "Canadian SaaS Sovereignty Index."
+- **Tools page** (`/tools`) — lookup any of 324 SaaS tools for jurisdiction, CLOUD Act status, parent company. Branded as the "Canadian Technology Sovereignty Index."
 - **HarbourScan** (`/harbourscan`) — free browser-based assessment. User enters their tools, gets a jurisdictional map with CLOUD Act exposure, missing TIAs, DPA gaps. Takes ~10 minutes. Runs entirely client-side.
 - **Signals** (`/signals`) — automated feed of sovereignty-relevant events: enforcement actions, acquisitions, legislation, vendor updates.
 - **Research** (`/research`) and **Guides** (`/resources`) — public articles, templates, and analysis.
@@ -55,7 +55,7 @@ Every page should support this flow. CTAs point toward HarbourScan (primary) or 
 ├── sovereignty.html            Sovereignty landing page (standalone, own nav)
 ├── admin-alerts.html           Pipeline admin (auth-protected)
 ├── apply_db_updates.py         Pipeline: applies approved alerts to saas-db.js
-├── saas-db.js                  The database — 707 tools (loaded by every page via <script src="/saas-db.js">)
+├── saas-db.js                  The database — 715 tools (loaded by every page via <script src="/saas-db.js">)
 ├── CLASSIFICATION-RUBRIC.md    Internal: classification logic
 ├── SITE-BIBLE.md               Internal: this document
 │
@@ -73,7 +73,7 @@ Every page should support this flow. CTAs point toward HarbourScan (primary) or 
 │   └── sovereignty-policy-scorecard.html
 │
 ├── /resources/
-│   ├── canadian-saas-sovereignty-index.html
+│   ├── canadian-technology-sovereignty-index.html
 │   ├── canadian-data-residency-saas.html
 │   ├── cloud-act-canadian-data.html
 │   ├── data-residency-vs-data-sovereignty-canada.html
@@ -190,7 +190,7 @@ See `CLASSIFICATION-RUBRIC.md` for the full decision tree, edge cases, and prece
 - **canadian**: not CLOUD Act exposed (Canadian-incorporated, or non-US/non-Canadian jurisdiction without CLOUD Act equivalent)
 
 ### Current counts (as of March 2026)
-- 707 tools total across 32 categories
+- 715 tools total across 32 categories
 - All numbers auto-computed from saas-db.js — do not hardcode
 
 ### Pages that load saas-db.js
@@ -198,7 +198,7 @@ Every page with dynamic stats loads `saas-db.js` (repo root) and `assets/uh-stat
 - `index.html` (homepage counters + inline 20-tool sample checker)
 - `tools.html` (full search/filter — also has own inline JS reading saasDB)
 - `research.html` (category breakdown — also has own inline JS reading saasDB)
-- `research/canadian-saas-sovereignty-index.html` (charts/tables — also has own inline JS)
+- `research/canadian-technology-sovereignty-index.html` (charts/tables — also has own inline JS)
 - `research/sovereignty-policy-scorecard.html`
 - `research/government-saas-audit.html`
 - `research/athena-collective-law-25-compliance.html`
@@ -261,8 +261,8 @@ The original site had an `/engagements` page and "Engagements" in the nav. This 
 ### Tools page UX: empty state on load
 The tools page does NOT show all 324 rows on load. It shows: the hero stat (173 of 324 exposed), a risk meter, a search bar, and clickable chips for common tools. The full list only appears when the user searches or filters. This was a deliberate decision — 324 rows on load is overwhelming and kills conversion.
 
-### Tools page: "Canadian SaaS Sovereignty Index" branding
-The eyebrow on the tools page says "Canadian SaaS Sovereignty Index." This brands the dataset as a named, citable reference. The nav still says "Tools" because that's what people search for. The page teaches them it's an index once they arrive.
+### Tools page: "Canadian Technology Sovereignty Index" branding
+The eyebrow on the tools page says "Canadian Technology Sovereignty Index." This brands the dataset as a named, citable reference. The nav still says "Tools" because that's what people search for. The page teaches them it's an index once they arrive.
 
 ### Risk sorting: exposed first
 When the tools list renders, it sorts by risk priority: exposed first, then review, then canadian. Within each tier, alphabetical. This is deliberate — the most alarming results appear first.

@@ -47,7 +47,7 @@ This document (the "Business Sherpa") captures the complete strategic context fo
 Upper Harbour is a technology sovereignty intelligence platform for Canadian organizations. It maps, measures, and documents Canada's technology dependency on foreign infrastructure — so organizations can prove compliance and policymakers can make informed decisions.
 
 ### Core Data Asset
-The central asset is a database of **707 SaaS tools** mapped to their:
+The central asset is a database of **715 SaaS tools** mapped to their:
 - Parent company and ultimate parent entity
 - Jurisdiction of incorporation
 - Ownership structure (Canadian-owned, US-parented, etc.)
@@ -65,7 +65,7 @@ The central asset is a database of **707 SaaS tools** mapped to their:
 The platform is more extensive than it might first appear:
 
 **Database & Research:**
-- Canadian SaaS Sovereignty Index (707 tools mapped)
+- Canadian Technology Sovereignty Index (715 tools mapped)
 - Provincial Exposure Index (province-by-province regulatory analysis)
 - Sovereignty Policy Scorecard (evaluating policy decisions)
 - Government SaaS Audit (government procurement technology mapping)
@@ -139,7 +139,7 @@ AI will commoditize the act of scraping websites and compiling vendor databases.
 
 **Ring 1 — The Data Layer (what we know)**
 Databases that map who controls what:
-- Canadian SaaS Sovereignty Index (DONE — 707 tools)
+- Canadian Technology Sovereignty Index (DONE — 715 tools)
 - Government Technology Dependency Map (TO BUILD)
 - Sector-specific maps: healthcare, banking, education (TO BUILD)
 - Canadian Alternative Directory — "what to switch to" (TO BUILD)
@@ -237,7 +237,7 @@ SHIELD (Securing Homegrown Innovation, Economic Leadership, and Defence) is:
 - **SecurityScorecard / BitSight** — cybersecurity ratings agencies. The model Upper Harbour should emulate (but for sovereignty, not cybersecurity).
 
 ### What Nobody Else Has
-No one has built a Canada-specific, vendor-level database mapping 707+ tools to their ultimate parent jurisdictions and CLOUD Act exposure. This is Upper Harbour's core moat right now — but it must stay current to remain valuable.
+No one has built a Canada-specific, vendor-level database mapping 715+ tools to their ultimate parent jurisdictions and CLOUD Act exposure. This is Upper Harbour's core moat right now — but it must stay current to remain valuable.
 
 ---
 
@@ -407,7 +407,7 @@ If these three transitions are managed, the strategy holds. If any one stalls, i
 4. **This master strategy document** (original version).
 
 ### Session 2 (February 28, 2026)
-5. **upperharbour.ca homepage implemented and refined** — Full production HTML. Key features: hero with animated counters (693 tools / 63% foreign / 89% CLOUD Act exposed / 11% Canadian), Microsoft CLOUD Act quote callout, interactive sovereignty checker (20-tool sample), methodology preview (6-step process), Sovereignty Score demo (Clio 92 / Shopify 44 / M365 12 / Slack 8), three-tier product arc with pricing, research cards grid (flagship Index highlighted), compliance obligation section with regulatory citations, Athena Collective case study, press bar, dual CTA (HarbourScan + scoping call) with Formspree form. Multiple rounds of strategic refinement applied.
+5. **upperharbour.ca homepage implemented and refined** — Full production HTML. Key features: hero with animated counters (715 tools / 63% foreign / 89% CLOUD Act exposed / 11% Canadian), Microsoft CLOUD Act quote callout, interactive sovereignty checker (20-tool sample), methodology preview (6-step process), Sovereignty Score demo (Clio 92 / Shopify 44 / M365 12 / Slack 8), three-tier product arc with pricing, research cards grid (flagship Index highlighted), compliance obligation section with regulatory citations, Athena Collective case study, press bar, dual CTA (HarbourScan + scoping call) with Formspree form. Multiple rounds of strategic refinement applied.
 
 6. **upperharbour.ca/methodology** — New standalone page. Open classification framework designed to be cited in procurement, compliance, and policy contexts. Includes: core principle (residency ≠ sovereignty), four classification tiers with definitions and examples, visual decision tree, compelled disclosure jurisdictions table (US CLOUD Act / UK IPA / AU AA Act) with extraterritoriality explanation, six-step classification process, Sovereignty Score factors (5 weighted dimensions), edge cases and precedents, update cycle, citation format. Article + Author schema for SEO.
 
@@ -425,7 +425,7 @@ If these three transitions are managed, the strategy holds. If any one stalls, i
 
 12. **HarbourScan page rebuilt for new pricing model** — Replaced old single-tier $2,500 report pricing with new four-tier structure matching pricing page. Landing: new hero ("Map your organization's sovereignty exposure"), four output cards (Free / $350 Snapshot / $2,000 Documentation / $200/mo Monitoring), updated process section, "What most organizations do next" funnel visualization. Wizard Step 3 results: personalized scan summary above tier cards ("Your scan flagged X tools with CLOUD Act exposure, Y critical gaps"), three side-by-side tier cards with "Most common" badge on Documentation, Monitoring risk-reframe line, updated intake form. Report template: updated Next Steps to reference new tiers, header changed to "Technology Sovereignty Intelligence."
 
-13. **Strategic copy refinements to HarbourScan** — Bridge line added ("HarbourScan is where most organizations first understand their exposure. From there, they decide how formal an answer they need."). Law 25 trigger line added ("Many organizations start here because Law 25 requires documented TIAs — HarbourScan identifies which tools trigger those obligations."). Monitoring reframed from convenience to risk. Credibility claim strengthened ("Built on the 693-tool Canadian SaaS Sovereignty Index — the most comprehensive jurisdictional dataset for Canadian SaaS."). Buyer-moment anchor added to both landing and wizard Step 1 ("Most organizations run HarbourScan after a regulator, partner, or procurement review asks where their data is stored."). ICP broadened from "20+ SaaS tools" to "organizations managing sensitive data, regulated operations, or cross-border vendors." "Nothing transmitted" softened to "The initial scan runs entirely in your browser" to future-proof for persistence layer.
+13. **Strategic copy refinements to HarbourScan** — Bridge line added ("HarbourScan is where most organizations first understand their exposure. From there, they decide how formal an answer they need."). Law 25 trigger line added ("Many organizations start here because Law 25 requires documented TIAs — HarbourScan identifies which tools trigger those obligations."). Monitoring reframed from convenience to risk. Credibility claim strengthened ("Built on the 715-tool Canadian Technology Sovereignty Index — the most comprehensive jurisdictional dataset for Canadian SaaS."). Buyer-moment anchor added to both landing and wizard Step 1 ("Most organizations run HarbourScan after a regulator, partner, or procurement review asks where their data is stored."). ICP broadened from "20+ SaaS tools" to "organizations managing sensitive data, regulated operations, or cross-border vendors." "Nothing transmitted" softened to "The initial scan runs entirely in your browser" to future-proof for persistence layer.
 
 14. **Upper Harbour homepage refinements** — Checker sample disclaimer strengthened ("This checker uses a 20-tool sample only"). "Canadian HQ" badge changed to "Canadian-controlled" (matches taxonomy). Shopify demo: "Canadian HQ" → "Canadian-founded." Compelled disclosure wording tightened ("three regimes with extraterritorial compelled-assistance powers that can reach data stored in Canada"). Kiteworks survey stats added to compliance obligation section.
 

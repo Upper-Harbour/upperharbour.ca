@@ -96,7 +96,7 @@ if (fs.existsSync(refPath)) {
 } else {
   // First run — these are the original hardcoded values in the schema blocks
   OLD = {
-    total: 693,
+    total: 715,
     catCount: 30,
     usCount: 453,
     usPct: 65,
@@ -142,9 +142,9 @@ function updateSchemaBlocks(filepath) {
   content = content.replace(schemaRegex, (fullMatch, jsonContent) => {
     let updated = jsonContent;
 
-    // Replace tool count: any "693" in schema that's clearly a tool count
-    // Broad match: 693 followed by any word (tools, SaaS, mapped, tracked, commonly, etc.)
-    // Also matches "of the 693" and "693+" patterns
+    // Replace tool count: any "715" in schema that's clearly a tool count
+    // Broad match: 715 followed by any word (tools, SaaS, mapped, tracked, commonly, etc.)
+    // Also matches "of the 715" and "715+" patterns
     const toolCountRegex = new RegExp(`\\b${OLD.total}\\b(?=\\+?\\s|\\+?-)`, 'g');
     updated = updated.replace(toolCountRegex, (m) => { changes++; return m.replace(String(OLD.total), String(stats.total)); });
 
@@ -189,13 +189,13 @@ function updateSchemaBlocks(filepath) {
     }
 
     // Simple number-only replacements for remaining patterns
-    // "maps 693 SaaS" in founder schema
+    // "maps 715 SaaS" in founder schema
     updated = updated.replace(
       new RegExp(`maps ${OLD.total} SaaS`, 'g'),
       (m) => { changes++; return `maps ${stats.total} SaaS`; }
     );
 
-    // "for 693 SaaS tools" in methodology
+    // "for 715 SaaS tools" in methodology
     updated = updated.replace(
       new RegExp(`for ${OLD.total} SaaS`, 'g'),  
       (m) => { changes++; return `for ${stats.total} SaaS`; }
