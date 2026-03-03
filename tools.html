@@ -327,7 +327,14 @@
       'DocuSign': '/tools/docusign',
       'OpenAI': '/tools/openai',
       'ChatGPT': '/tools/openai',
-      'Notion': '/tools/notion'
+      'Notion': '/tools/notion',
+      'ThinkOn': '/tools/thinkon',
+      'Micrologic': '/tools/micrologic',
+      'eStruxture': '/tools/estruxture',
+      'Hypertec Cloud': '/tools/hypertec-cloud',
+      'Bell Cloud / AI Fabric': '/tools/bell-cloud',
+      'TELUS Cloud': '/tools/telus-cloud',
+      'OpenText Sovereign Cloud': '/tools/opentext-sovereign-cloud'
     };
 
     function renderFeatured(){var g=document.getElementById('featGrid');var h='';FEATURED.forEach(function(n){var t=saasDB.find(function(x){return x.name===n});if(!t)return;var ne=t.name.replace(/'/g,"\\'");h+='<div class="feat-card" onclick="jumpToTool(\''+ne+'\')"><div class="feat-card-name">'+t.name+'</div><div class="feat-card-parent">'+t.parent+'</div><div class="feat-card-row"><span class="feat-card-juris">'+t.jurisdiction+(t.cloudAct?' · CLOUD Act':'')+'</span><span class="feat-card-risk risk-'+t.risk+'">'+t.risk+'</span></div></div>'});g.innerHTML=h}
