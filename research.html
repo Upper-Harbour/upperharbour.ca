@@ -240,6 +240,22 @@
     .rc-link { font-size: 13px; font-weight: 700; color: var(--teal); display: inline-flex; align-items: center; gap: 4px; margin-top: 16px; }
 
     /* METHODOLOGY STRIP */
+    .infra-banner{background:var(--surface);border:1px solid var(--border-md);border-radius:10px;padding:32px 36px;transition:border-color 0.3s,transform 0.2s;position:relative;overflow:hidden}
+    .infra-banner::before{content:'';position:absolute;top:-60px;right:-60px;width:300px;height:300px;background:radial-gradient(circle,rgba(60,184,176,0.05) 0%,transparent 70%);pointer-events:none}
+    .infra-banner:hover{border-color:rgba(60,184,176,0.3);transform:translateY(-2px)}
+    .infra-banner-label{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+    .infra-banner-content{display:flex;align-items:center;gap:36px}
+    .infra-banner-text{flex:1}
+    .infra-banner-title{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);line-height:1.2;margin-bottom:8px}
+    .infra-banner-desc{font-size:14px;color:var(--slate);line-height:1.6}
+    .infra-banner-desc strong{color:var(--teal);font-weight:700}
+    .infra-banner-stats{display:flex;gap:28px;flex-shrink:0}
+    .infra-stat{text-align:center}
+    .infra-stat-num{font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ice);display:block;line-height:1}
+    .infra-stat-label{font-size:10px;color:var(--muted);margin-top:4px;display:block}
+    .infra-banner-arrow{font-size:24px;color:var(--teal);flex-shrink:0;transition:transform 0.2s}
+    .infra-banner:hover .infra-banner-arrow{transform:translateX(4px)}
+    @media(max-width:700px){.infra-banner-content{flex-direction:column;align-items:flex-start;gap:20px}.infra-banner-stats{gap:20px}}
     .methodology { padding: 80px 52px; background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .methodology-inner { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
     .meth-item {}
@@ -482,23 +498,23 @@
   <section class="section" style="padding-top: 80px;">
     <div class="section-inner">
 
-      <div class="research-grid" style="margin-bottom: 60px;">
-        <a href="/research/cloud-infrastructure-sovereignty" class="research-card reveal" style="text-decoration:none;border-left:3px solid var(--teal);background:var(--surface-2)">
-          <div class="rc-top">
-            <div class="rc-icon gold-bg">☁</div>
-            <div class="rc-status status-new">New</div>
+      <a href="/research/cloud-infrastructure-sovereignty" class="infra-banner reveal" style="text-decoration:none;display:block;">
+        <div class="infra-banner-label">New Research</div>
+        <div class="infra-banner-content">
+          <div class="infra-banner-text">
+            <div class="infra-banner-title">Cloud Infrastructure Sovereignty: Who Actually Controls Your Stack?</div>
+            <div class="infra-banner-desc">Your SaaS tools run on infrastructure. We mapped 25 cloud providers to their parent jurisdictions. <strong>7 Canadian sovereign alternatives exist.</strong></div>
           </div>
-          <div class="rc-title">Cloud Infrastructure Sovereignty: Who Actually Controls Your Stack?</div>
-          <div class="rc-desc">Your SaaS tools run on infrastructure — and that infrastructure determines your baseline jurisdiction. We mapped 25 cloud providers used by Canadian organizations to their parent jurisdictions. 7 Canadian sovereign alternatives exist. Most organizations have never assessed this layer.</div>
-          <div class="rc-meta">
-            <div class="rc-meta-item"><strong>Providers mapped</strong> 25</div>
-            <div class="rc-meta-item"><strong>Canadian sovereign</strong> 7</div>
+          <div class="infra-banner-stats">
+            <div class="infra-stat"><span class="infra-stat-num">25</span><span class="infra-stat-label">providers</span></div>
+            <div class="infra-stat"><span class="infra-stat-num" style="color:var(--teal)">7</span><span class="infra-stat-label">Canadian</span></div>
+            <div class="infra-stat"><span class="infra-stat-num" style="color:var(--red)">5</span><span class="infra-stat-label">exposed</span></div>
           </div>
-          <span class="rc-link">Read the analysis →</span>
-        </a>
-      </div>
+          <div class="infra-banner-arrow">→</div>
+        </div>
+      </a>
 
-      <div class="section-label reveal">Research Projects</div>
+      <div class="section-label reveal" style="margin-top:60px;">Research Projects</div>
       <h2 class="section-title reveal">Active <strong>investigations</strong></h2>
       <p class="section-desc reveal">Original research across four dimensions of Canadian data sovereignty — each producing data and analysis not available anywhere else.</p>
 
