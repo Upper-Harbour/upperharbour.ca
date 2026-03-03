@@ -1,14 +1,14 @@
 # Upper Harbour — Site Bible
 
 **Internal reference document. Not published.**
-Last updated: February 2026
+Last updated: March 2026
 Founder: Joshua van Es
 
 ---
 
 ## What Upper Harbour Is
 
-Upper Harbour is a Canadian compliance intelligence firm. It maps the jurisdictional exposure of SaaS tools used by Canadian organizations — specifically, which tools are subject to the US CLOUD Act because their parent companies are US-incorporated, even when they offer Canadian data residency.
+Upper Harbour is a Canadian technology sovereignty intelligence platform. It maps the jurisdictional exposure of SaaS tools and cloud infrastructure used by Canadian organizations — specifically, which tools are subject to the US CLOUD Act because their parent companies are US-incorporated, even when they offer Canadian data residency.
 
 The core insight: **data residency ≠ data sovereignty.** A tool can store data in Canada while the parent company remains subject to US legal process. Law 25 (Quebec) already requires organizations to document this. PIPEDA reform (the CPPA) would make it mandatory federally.
 
@@ -19,8 +19,8 @@ Upper Harbour's research is public and free. The revenue model is compliance doc
 ## Product Architecture
 
 ### Free tier (acquisition)
-- **Tools page** (`/tools`) — lookup any of 324 SaaS tools for jurisdiction, CLOUD Act status, parent company. Branded as the "Canadian Technology Sovereignty Index."
-- **HarbourScan** (`/harbourscan`) — free browser-based assessment. User enters their tools, gets a jurisdictional map with CLOUD Act exposure, missing TIAs, DPA gaps. Takes ~10 minutes. Runs entirely client-side.
+- **Tools page** (`/tools`) — lookup any of 715 SaaS and cloud infrastructure tools for jurisdiction, CLOUD Act status, parent company. Branded as the "Canadian Technology Sovereignty Index."
+- **HarbourScan** (`/harbourscan`) — free browser-based assessment. User enters their tools, gets a jurisdictional exposure severity classification (Low, Moderate, High, or Critical), downloadable summary, CLOUD Act exposure breakdown, missing TIAs, DPA gaps. Takes ~10 minutes. Runs entirely client-side.
 - **Signals** (`/signals`) — automated feed of sovereignty-relevant events: enforcement actions, acquisitions, legislation, vendor updates.
 - **Research** (`/research`) and **Guides** (`/resources`) — public articles, templates, and analysis.
 
@@ -45,11 +45,13 @@ Every page should support this flow. CTAs point toward HarbourScan (primary) or 
 ```
 / (root)
 ├── index.html                  Homepage
-├── harbourscan.html            HarbourScan landing page
-├── tools.html                  Sovereignty Index / tool lookup
+├── harbourscan.html            HarbourScan landing page (severity rating + free export)
+├── tools.html                  Sovereignty Index / tool lookup (715 tools)
 ├── signals.html                Signals feed
-├── research.html               Research hub
+├── research.html               Research hub (6 research cards)
 ├── resources.html              Guides hub
+├── methodology.html            Classification methodology
+├── pricing.html                Four-tier pricing
 ├── founder.html                Joshua van Es bio
 ├── law25.html                  Law 25 landing page (standalone, own nav)
 ├── sovereignty.html            Sovereignty landing page (standalone, own nav)
@@ -58,6 +60,7 @@ Every page should support this flow. CTAs point toward HarbourScan (primary) or 
 ├── saas-db.js                  The database — 715 tools (loaded by every page via <script src="/saas-db.js">)
 ├── CLASSIFICATION-RUBRIC.md    Internal: classification logic
 ├── SITE-BIBLE.md               Internal: this document
+├── business-sherpa.md          Internal: master strategy document
 │
 ├── /assets/
 │   ├── uh-stats.js             Client-side dynamic stats (computes from saas-db.js, populates uh-stat spans)
@@ -65,21 +68,38 @@ Every page should support this flow. CTAs point toward HarbourScan (primary) or 
 │   └── site.css                Global stylesheet
 │
 ├── /research/
+│   ├── canadian-technology-sovereignty-index.html  (flagship — renamed from SaaS March 2026)
+│   ├── canadian-saas-sovereignty-index.html        (redirect to above)
+│   ├── cloud-infrastructure-sovereignty.html       (25 providers, 7 CA sovereign — March 2026)
 │   ├── government-saas-audit.html
-│   ├── model-tia-template.html
-│   ├── modele-efvp-loi-25.html          (French)
 │   ├── provincial-exposure-index.html
 │   ├── sovereignty-acquisition-tracker.html
-│   └── sovereignty-policy-scorecard.html
+│   ├── sovereignty-policy-scorecard.html
+│   └── athena-collective-law-25-compliance.html    (case study)
+│
+├── /tools/
+│   ├── aws.html                 (+ slack, zoom, microsoft-365, google-workspace, salesforce, etc.)
+│   ├── thinkon.html             Canadian sovereign cloud — March 2026
+│   ├── micrologic.html          Canadian sovereign cloud — March 2026
+│   ├── estruxture.html          Canadian data centres — March 2026
+│   ├── hypertec-cloud.html      Canadian sovereign cloud/AI — March 2026
+│   ├── bell-cloud.html          Canadian sovereign cloud — March 2026
+│   ├── telus-cloud.html         Canadian sovereign cloud — March 2026
+│   └── opentext-sovereign-cloud.html  Canadian sovereign cloud — March 2026
 │
 ├── /resources/
-│   ├── canadian-technology-sovereignty-index.html
 │   ├── canadian-data-residency-saas.html
 │   ├── cloud-act-canadian-data.html
 │   ├── data-residency-vs-data-sovereignty-canada.html
+│   ├── data-sovereignty-compliance-2026.html
 │   ├── data-sovereignty-government-procurement.html
+│   ├── foreign-jurisdiction-saas-action-guide.html
 │   ├── law-25-saas-compliance.html
+│   ├── minimum-compliance-documentation.html
+│   ├── model-tia-template.html
+│   ├── modele-efvp-loi-25.html          (French)
 │   ├── pipeda-vs-law-25.html
+│   ├── saas-inventory-compliance.html
 │   └── transfer-impact-assessments-law-25.html
 │
 └── /.github/workflows/
@@ -102,20 +122,24 @@ Logo links to `/`. All links use clean URLs (no `.html` extension).
 
 ### Footer (standard)
 ```
-Research column:          Resources column:
-- Sovereignty Index       - HarbourScan
-- Policy Scorecard        - Tools
-- Government SaaS Audit   - Guides
-- Provincial Exposure     - Signals
+Platform column:              About column:
+- HarbourScan                 - Founder
+- Sovereignty Index           - joshuavanes.ca
+- Signals                     - LinkedIn
+- Research                    - Contact
+- Methodology
+- Compliance Guides
+- Pricing
 ```
+Footer tagline: "Technology sovereignty intelligence for Canadian organizations."
 Footer includes founder credit linking to `/founder`.
 
 ---
 
 ## Design System
 
-### Status (February 2026)
-The site is in transition between two design systems. New/rebuilt pages use the current system. Older article pages use the legacy system. Both are dark theme.
+### Status (March 2026)
+The site is in transition between two design systems. New/rebuilt pages use the current system. Older article pages use the legacy system. Both are dark theme. Google Analytics (G-3KSW0FVBL1) is installed on all HTML files.
 
 ### Current design system (tools.html, harbourscan.html, admin-alerts.html, research hub pages)
 ```css
@@ -259,7 +283,7 @@ The original site had an `/engagements` page and "Engagements" in the nav. This 
 **If you see any remaining reference to "engagements" or `/engagements` anywhere on the site, it's a bug. Remove it.**
 
 ### Tools page UX: empty state on load
-The tools page does NOT show all 324 rows on load. It shows: the hero stat (173 of 324 exposed), a risk meter, a search bar, and clickable chips for common tools. The full list only appears when the user searches or filters. This was a deliberate decision — 324 rows on load is overwhelming and kills conversion.
+The tools page does NOT show all 715 rows on load. It shows: the hero stat, a risk meter, a search bar, and clickable chips for common tools. The full list only appears when the user searches or filters. This was a deliberate decision — hundreds of rows on load is overwhelming and kills conversion.
 
 ### Tools page: "Canadian Technology Sovereignty Index" branding
 The eyebrow on the tools page says "Canadian Technology Sovereignty Index." This brands the dataset as a named, citable reference. The nav still says "Tools" because that's what people search for. The page teaches them it's an index once they arrive.
@@ -296,6 +320,7 @@ The homepage and several articles cite Anton Carniaux (Microsoft France) from Fr
 
 | Service | Purpose | URL/ID |
 |---------|---------|--------|
+| Google Analytics | Site analytics | `G-3KSW0FVBL1` |
 | Formspree | Form submissions (CTA forms, pilot signups) | `https://formspree.io/f/mgolzdwe` |
 | Calendly | Scoping calls | `https://calendly.com/josh-upperharbour/30min` |
 | Cloudflare | Hosting, email protection, CDN | `upperharbour.ca` |

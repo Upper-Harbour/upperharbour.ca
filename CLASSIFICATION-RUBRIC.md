@@ -317,10 +317,12 @@ The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Trigger
 | Classification | Count | Percentage |
 |---------------|-------|------------|
 | EXPOSED | 384 | 54% |
-| REVIEW | 82 | 12% |
+| REVIEW | 83 | 12% |
 | NON_EXPOSED | 118 | 17% |
-| CANADIAN | 123 | 17% |
+| CANADIAN | 130 | 18% |
 | **Total** | **715** | **100%** |
+
+US-parented: 428 (60%). Cloud infrastructure entries: 25 (7 Canadian sovereign, 9 Review, 4 Non-exposed, 5 Exposed).
 
 *Note: These counts are approximate and should be regenerated from saas-db.js. Run `python3 update-schema-stats.py` to see current computed values.*
 
@@ -332,6 +334,8 @@ The signals pipeline monitors for triggers 1, 2, 3, and 7 automatically. Trigger
 |------|--------|--------|
 | Feb 2026 | Initial rubric created | Codify classification logic used since database creation |
 | Feb 2026 | Four-tier system implemented | Split "review" and "canadian" tiers to distinguish non-US/non-compelled-disclosure tools from Canadian-incorporated tools. Added compelled disclosure law tracking for UK (IPA) and Australia (AA Act). Added `category` and `industries` fields. |
+| Mar 2026 | Cloud infrastructure added | 25 cloud infrastructure providers added to database (7 Canadian sovereign: ThinkOn, Micrologic, eStruxture, Hypertec Cloud, Bell Cloud, TELUS Cloud, OpenText Sovereign Cloud). Same classification methodology applied. |
+| Mar 2026 | Renamed to Technology Sovereignty Index | "Canadian SaaS Sovereignty Index" renamed to "Canadian Technology Sovereignty Index" to reflect expanded scope beyond SaaS. |
 
 ---
 
@@ -390,4 +394,4 @@ This rubric should be reviewed:
 - When a classification decision is ambiguous or contested
 - When a new compelled disclosure law is enacted in any jurisdiction
 - Quarterly, as part of database maintenance
-- When the database exceeds 350 tools (may need to add subcategories)
+- When the database exceeds 750 tools (may need to add subcategories)

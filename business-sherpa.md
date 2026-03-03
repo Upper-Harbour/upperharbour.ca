@@ -1,5 +1,5 @@
 # UPPER HARBOUR & JOSHUA VAN ES — BUSINESS SHERPA
-## Last Updated: February 28, 2026
+## Last Updated: March 3, 2026
 
 ---
 
@@ -47,7 +47,7 @@ This document (the "Business Sherpa") captures the complete strategic context fo
 Upper Harbour is a technology sovereignty intelligence platform for Canadian organizations. It maps, measures, and documents Canada's technology dependency on foreign infrastructure — so organizations can prove compliance and policymakers can make informed decisions.
 
 ### Core Data Asset
-The central asset is a database of **715 SaaS tools** mapped to their:
+The central asset is a database of **715 SaaS and cloud infrastructure tools** mapped to their:
 - Parent company and ultimate parent entity
 - Jurisdiction of incorporation
 - Ownership structure (Canadian-owned, US-parented, etc.)
@@ -56,25 +56,29 @@ The central asset is a database of **715 SaaS tools** mapped to their:
 - Whether data residency actually changes jurisdictional status (usually it doesn't)
 
 ### Headline Findings
-- **63%** of mapped tools are under foreign jurisdiction
-- **89%** of tools offering Canadian data residency remain CLOUD Act exposed
-- **Only 11%** are truly Canadian-owned and operated
+- **60%** of mapped tools are US-parented and subject to the CLOUD Act
+- **54%** are classified as fully exposed (US-parented, no meaningful Canadian data residency)
+- **18%** are Canadian-owned and operated
+- **7** Canadian sovereign cloud infrastructure providers exist — most organizations have never heard of them
 - Canadian data residency ≠ Canadian data sovereignty (this is the core insight)
 
-### What's Been Built (as of Feb 2026)
+### What's Been Built (as of March 2026)
 The platform is more extensive than it might first appear:
 
 **Database & Research:**
-- Canadian Technology Sovereignty Index (715 tools mapped)
+- Canadian Technology Sovereignty Index (715 tools mapped across 32 categories — renamed from "SaaS Sovereignty Index" March 2026)
+- Cloud Infrastructure Sovereignty analysis (25 providers mapped, 7 Canadian sovereign — dedicated research page, March 2026)
+- 17 tool detail pages (10 foreign provider analyses: AWS, Slack, Zoom, etc. + 7 Canadian sovereign cloud providers: ThinkOn, Micrologic, eStruxture, Hypertec Cloud, Bell Cloud, TELUS Cloud, OpenText — all March 2026)
 - Provincial Exposure Index (province-by-province regulatory analysis)
 - Sovereignty Policy Scorecard (evaluating policy decisions)
 - Government SaaS Audit (government procurement technology mapping)
+- Sovereignty Acquisition Tracker
 
 **Products:**
-- HarbourScan (free, browser-based tool that checks an organization's SaaS stack against the database — takes ~10 minutes)
-- Sovereignty Snapshot (from $350 — professional sovereignty assessment: jurisdictional exposure map, CLOUD Act risk classification, Sovereignty Score for each tool, gap identification, executive summary PDF)
+- HarbourScan (free, browser-based tool that checks an organization's SaaS stack against the database — takes ~10 minutes, includes severity classification: Low/Moderate/High/Critical Exposure, downloadable summary export)
+- Sovereignty Snapshot (from $350 — professional sovereignty assessment: jurisdictional exposure map, severity classification, executive summary, time-bound remediation plan, board-ready format)
 - Compliance Documentation (from $2,000 — full compliance record: everything in the Snapshot plus TIA guidance, Register of Processing Activities, prioritized remediation roadmap, regulatory framework mapping, board-ready deliverables)
-- Sovereignty Monitoring (from $200/month — continuous vendor ownership monitoring, infrastructure change alerts, regulatory development tracking, Sovereignty Score updates, quarterly compliance status report)
+- Sovereignty Monitoring (from $200/month — continuous vendor ownership monitoring, infrastructure change alerts, regulatory development tracking, quarterly compliance status report)
 - Sovereignty Check (quick single-tool lookup on the homepage)
 
 **Content & Guides (12 comprehensive guides):**
@@ -203,7 +207,7 @@ SHIELD (Securing Homegrown Innovation, Economic Leadership, and Defence) is:
 
 **The fit:** SHIELD defines what sovereignty means at the policy level. Upper Harbour provides the data to measure it at scale. SHIELD needs concrete, citable data to make policy arguments. Upper Harbour needs institutional amplification to get the score adopted. This is a genuine partnership, not a pitch.
 
-**Status:** Outreach emails have been drafted (three variants — one to Benjamin Bergen, one shorter peer-to-peer, one to Vasiliki Bednar). Not yet sent. The plan is to get upperharbour.ca into its best possible shape first.
+**Status:** Vass Bednar (SHIELD Managing Director) responded to Joshua's direct outreach in March 2026 — enthusiastic, wants to support. Call being scheduled. Benjamin Bergen outreach email drafted but not yet sent. The relationship with SHIELD is now being built through Vass first.
 
 ---
 
@@ -232,7 +236,7 @@ SHIELD (Securing Homegrown Innovation, Economic Leadership, and Defence) is:
 ### Existing Players
 - **Nextcloud** published a Digital Sovereignty Index (August 2025) — country-level, focused on self-hosted tools. Different scope than Upper Harbour (which is Canada-specific, vendor-level, ownership-focused).
 - **ECFR** (European Council on Foreign Relations) published a European Sovereignty Index — covers defence, economy, health, migration, technology. Policy-focused, not vendor-specific.
-- **ThinkOn** — Canadian sovereign cloud provider. Competitor in messaging but not in data/intelligence.
+- **ThinkOn** — Canadian sovereign cloud provider. Not a competitor — now included in the database and has its own tool detail page. Recommended by Vass Bednar. Potential partnership or case study.
 - **Osler** — major law firm publishing extensively on data sovereignty. Potential referral source, not direct competitor.
 - **SecurityScorecard / BitSight** — cybersecurity ratings agencies. The model Upper Harbour should emulate (but for sovereignty, not cybersecurity).
 
@@ -439,6 +443,44 @@ If these three transitions are managed, the strategy holds. If any one stalls, i
 
 19. **Homepage spacing fix** — Restored `.hero-sub` margin-bottom from 20px to 40px (matching previous version's visual breathing room).
 
+### Sessions 4-5 (March 3-4, 2026 — LinkedIn launch, severity rating, GA, outreach strategy)
+
+20. **Personal LinkedIn posts drafted** — 4 posts for Joshua's personal LinkedIn (not the Upper Harbour company page). March 4: Policy Scorecard. March 7: SaaS jurisdiction mapping. March 11: Law 25 TIA requirements. March 14: Founder reveal (first time connecting Joshua publicly to Upper Harbour). All use "we" except Post 4. First post went live March 4.
+
+21. **Severity rating system built and integrated into HarbourScan** — Four levels: Low Exposure / Moderate Exposure / High Exposure / Critical Exposure. Three dimensions: jurisdictional exposure (primary driver), regulatory sensitivity, documentation readiness. Base tier from exposure ratio, escalators for sensitive data without CA residency, Quebec orgs with undocumented TIAs, 3+ foreign tools without DPA, no privacy officer AND no breach plan. Wired into both free results and paid report flows. Code: severity-rating.js functions, urgency-and-export.js, downloadable free export summary.
+
+22. **Sovereignty Snapshot template refined** — 3-page Word doc template (sovereignty-snapshot-template.docx). Cover page with severity block, executive summary, scope and limitations, exposure map table with classification legend (Exposed / Review / Canadian), time-bound actions (Immediate / Medium-term / Structural). Reviewed by external advisor — four tightenings applied: consequences line, classification legend, intended use sentence, closing paragraph about exposure being dynamic. Colors muted for professional appearance (teal #2A8F89, gold #A08838, red #B84A3C).
+
+23. **Google Analytics deployed** — GA4 property G-3KSW0FVBL1 added to all 45+ HTML files across the site via Python script. Tag inserted after `<meta charset>` in each file. Verified data flowing.
+
+24. **HarbourScan page copy updated** — Hero: "How exposed is your organization to foreign jurisdiction?" Free tier: "Receive a jurisdictional exposure classification — Low, Moderate, High, or Critical." Snapshot tier: mentions severity classification, executive summary, prioritized remediation plan. Bottom CTA: "Find out how exposed your organization is." Consistent severity framing across homepage and HarbourScan.
+
+25. **Homepage copy updated to match severity framing** — Hero CTA: "How exposed are you? — free scan." Product flow: "From exposure classification to ongoing sovereignty intelligence." Step 01 explicitly mentions four severity levels. Bottom CTA: "Get your jurisdictional exposure classification in under 10 minutes."
+
+26. **30-day gatekeeper outreach strategy built** — Detailed plan: Week 1 deploy + target list, Week 2 send first 8-10 emails, Week 3 remaining + follow-ups, Week 4 assess. 15 specific targets across 3 tiers: Tier 1 privacy law practices (Imran Ahmad, Éloïse Gratton, Adam Kardash, Hélène Deschamps Marquis, Charles Morgan/Daniel Glover, François Joli-Coeur), Tier 2 consultants (Ray Pathak, Noemi Chanda, Barry Appleton, Digital Governance Council, Fasken), Tier 3 procurement/sector (OSFI CISOs, Quebec healthcare/education IT, PSPC/TBS, provincial commissioners). Three email versions drafted.
+
+27. **Vass Bednar engagement** — Vass responded warmly to Joshua's outreach ("this is fascinating and awesome... how can we support you with this?"). Suggested ThinkOn for cloud architecture. Reply drafted and sent: call scheduled, site updates timing discussed, acknowledged ThinkOn suggestion. Vass is Managing Director at Canadian SHIELD Institute, writes for Globe and Mail, runs Regs to Riches Substack. Key relationship for policy credibility and platform amplification.
+
+28. **Jean-Sebastien Guy (Micrologic) engagement** — EVP/CRO at Micrologic commented on Joshua's LinkedIn post noting absence of Canadian providers in the cloud infrastructure category. Reply drafted: acknowledged the gap, confirmed infrastructure expansion underway, committed to reaching out before publishing. This interaction directly triggered the infrastructure expansion work.
+
+### Sessions 6-8 (March 3, 2026 — infrastructure expansion, rename, research page, tool pages)
+
+29. **Cloud infrastructure database expansion** — Added 25 cloud infrastructure entries to saas-db.js (was 690 SaaS + 17 incomplete infra entries → now 690 SaaS + 25 complete infra entries = 715 total). 7 Canadian sovereign (ThinkOn, Micrologic, eStruxture, Hypertec Cloud, Bell Cloud/AI Fabric, TELUS Cloud, OpenText Sovereign Cloud), 1 Review with Canadian HQ but US PE ownership (Aptum), 8 Review US-parented with Canadian regions (AWS, Azure, Google Cloud, Oracle, IBM, DigitalOcean, Vultr, Linode), 4 Non-exposed EU (Hetzner, OVHcloud, Civo, Scaleway), 5 Exposed US (Vercel, Cloudflare, Netlify, Heroku, Render).
+
+30. **Flagship research renamed** — "Canadian SaaS Sovereignty Index" → "Canadian Technology Sovereignty Index" across entire site. File renamed (redirect at old URL). 50+ references updated. Zero instances of old name remain.
+
+31. **All counts and percentages corrected site-wide** — 707→715 everywhere. US-parented: 61%→60%. Canadian-owned: 17%→18%. Non-Canadian: 83%→82%. Cloud infrastructure: "100% US-parented"→"68% US-parented." Schema, meta tags, structured data FAQ answers all updated. schema-stats-ref.json updated.
+
+32. **Cloud Infrastructure Sovereignty research page built** — `/research/cloud-infrastructure-sovereignty` ("Canadian Cloud Infrastructure: Who Actually Controls Your Stack?"). Full analysis with: stat strip (25 mapped / 7 Canadian / 5 exposed / 9 review), layered jurisdiction explanation with visual diagrams showing how SaaS-on-US-infra creates double exposure vs SaaS-on-Canadian-infra achieving full-stack sovereignty, complete 25-provider data table, detailed profiles of all 7 Canadian sovereign providers with links to tool detail pages, policy context (sovereign government cloud consortium, Budget 2024, PM directive), compliance implications, FAQ section, structured data (Article + FAQPage schema). This is the page to share with Vass and Jean-Sebastien.
+
+33. **7 Canadian sovereign cloud provider tool detail pages built** — `/tools/thinkon`, `/tools/micrologic`, `/tools/estruxture`, `/tools/hypertec-cloud`, `/tools/bell-cloud`, `/tools/telus-cloud`, `/tools/opentext-sovereign-cloud`. Each follows the existing tool page format (fact grid, article sections, related research callout, CTA). These become SEO landing pages for searches like "ThinkOn sovereignty" or "Micrologic CLOUD Act." Neutral third-party reference pages that build relationships with the providers.
+
+34. **Integration links added** — New "Cloud Infrastructure Sovereignty" research card added to research.html grid and homepage research grid. Structured data itemList updated. Sitemap updated. Every tool detail page links to the infrastructure research page. Research page links to each provider's tool detail page.
+
+### Session 8 (March 3, 2026 — documentation update)
+
+35. **Internal docs updated** — CLAUDE.md, SITE-BIBLE.md, llms.txt, CLASSIFICATION-RUBRIC.md, business-sherpa.md all brought current with March 2026 state. llms.txt rewritten (was referencing 324 tools and /engagements). SITE-BIBLE site map expanded with all new pages. CLASSIFICATION-RUBRIC stats corrected (Canadian: 130, Review: 83). CLAUDE.md expanded with new pages list and recent changes section.
+
 ---
 
 ## PART 12: DATABASE & SITE OPERATIONS
@@ -483,31 +525,42 @@ git push
 ## PART 11: IMMEDIATE NEXT ACTIONS (PRIORITY ORDER)
 
 1. ✅ **Deploy all updated files to upperharbour.ca GitHub repo** — DONE Feb 28 2026
-2. ☐ **Deploy joshuavanes.ca** to Netlify
-3. ☐ **Delete engagements.html** from repo
-4. ☐ **Send Laura Ayre email** (use ChatGPT's tightened version with retainer line)
-5. ☐ **LinkedIn post** (Tuesday/Wednesday morning — Kiteworks stat + Index data + HarbourScan link)
-6. ☐ **Vass Bednar outreach** (SHIELD data partnership pitch)
-7. ☐ **Benjamin Bergen outreach** (send SHIELD email from Session 1)
-8. ☐ **Imran Ahmad outreach** (CAI guidance hook — operationalizing Steps 1-2)
-9. ☐ **Sam Chicken / BetaKit pitch** (after LinkedIn post goes up)
-10. ☐ **Murad Hemmadi / The Logic pitch**
-11. ☐ Email Stikeman marketing team to update bio
-12. ☐ Begin direct outreach to Quebec organizations under Law 25 pressure
-13. ☐ Add Heidi Health to database (Australian jurisdiction, "review" tier, healthcare/ai category)
-14. ☐ Standardize dataResidency field in saas-db.js
-15. ☐ Add ownershipType, primaryJurisdiction, compelledDisclosure fields
-16. ☐ Compute sovereignty scores for all tools
+2. ✅ **LinkedIn posts drafted** — 4 posts ready; Post 1 went live March 4 2026
+3. ✅ **Google Analytics deployed** — G-3KSW0FVBL1 in all 45+ HTML files, verified
+4. ✅ **Vass Bednar outreach** — She responded warmly, call being scheduled
+5. ✅ **Infrastructure expansion** — 25 cloud infrastructure providers added, research page built, 7 Canadian provider tool pages built
+6. ✅ **Severity rating system** — Built and integrated into HarbourScan
+7. ✅ **Renamed SaaS → Technology Sovereignty Index** — Complete site-wide
+8. ☐ **Deploy March 2026 site update** to GitHub repo (site-technology-sovereignty.zip ready)
+9. ☐ **Schedule call with Vass Bednar** — Reply sent, awaiting her scheduling
+10. ☐ **Reply to Jean-Sebastien Guy (Micrologic)** — Draft ready, send after infrastructure pages are live
+11. ☐ **Post remaining LinkedIn posts** — March 7 (SaaS mapping), March 11 (Law 25 TIA), March 14 (founder reveal)
+12. ☐ **Send first batch of gatekeeper outreach emails** (8-10 targets, Tier 1 + Tier 2) — Week of March 10
+13. ☐ **Deploy joshuavanes.ca** to Netlify
+14. ☐ **Delete engagements.html** from repo
+15. ☐ **Benjamin Bergen outreach** (send SHIELD email from Session 1)
+16. ☐ **Send remaining outreach emails** (5-10 targets) — Week of March 17
+17. ☐ **Follow up with non-responders** — Week of March 17-21
+18. ☐ Email Stikeman marketing team to update bio
+19. ☐ **Sam Chicken / BetaKit pitch** (after LinkedIn posts generate traction)
+20. ☐ **Murad Hemmadi / The Logic pitch**
+21. ☐ Add Heidi Health to database (Australian jurisdiction, "review" tier, healthcare/ai category)
+22. ☐ Standardize dataResidency field in saas-db.js
+23. ☐ Add ownershipType, primaryJurisdiction, compelledDisclosure fields
+24. ☐ Compute sovereignty scores for all tools
 
 ---
 
 ## APPENDIX: KEY EXTERNAL REFERENCES
 
 - **Canadian SHIELD Institute:** canadianshieldinstitute.ca — Balsillie-backed policy institute, CCI-affiliated. Has published a Sovereignty Score framework applied to Cohere investment. Led by Benjamin Bergen (President) and Vasiliki Bednar (Managing Director). Registered lobbyist.
+- **Vasiliki (Vass) Bednar:** Managing Director at SHIELD Institute. Runs "Public Policy in the Digital Age" program at McMaster. Writes for Globe and Mail. Runs Regs to Riches Substack. **Responded warmly to Joshua's outreach March 2026** — wants to support the project, suggested ThinkOn, call being scheduled. Key relationship for policy credibility and distribution.
+- **Jean-Sebastien Guy (Micrologic):** EVP/CRO at Micrologic Inc. (Canadian sovereign cloud). Engaged on LinkedIn March 2026 — flagged absence of Canadian cloud providers in the index. Reply drafted. Potential ongoing relationship as infrastructure research develops. Micrologic is now in the database with a tool detail page.
 - **Kiteworks 2026 Data Sovereignty Report:** Published Feb 25, 2026. Surveyed 286 professionals. 40% of Canadians cite Canada-US data sharing as top concern. 23% migrating away from US cloud. 1 in 3 orgs experienced a sovereignty-related incident.
 - **Osler data sovereignty publications:** Multiple pieces (Nov-Dec 2025) on CLOUD Act, data sovereignty policy, 2026 privacy priorities. Key law firm voice in this space. Could be a referral source.
 - **Government of Canada digital sovereignty page:** canada.ca/digital-sovereignty. White paper on data sovereignty and public cloud. Treasury Board acknowledged achieving full digital sovereignty is impossible.
 - **Barry Appleton CLOUD Act working paper:** Published Jan 2026. Recommends 7-pillar framework including suspending CLOUD Act negotiations and migrating critical infrastructure to Canadian-controlled platforms.
+- **Sovereign Government Cloud Consortium:** ThinkOn + Hypertec + Aptum + eStruxture. Launched October 2025. Canada's first end-to-end sovereign AI-ready government cloud. All four companies are now in the database.
 
 ---
 

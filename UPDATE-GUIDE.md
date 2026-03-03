@@ -29,6 +29,7 @@ Pages with schema markup that gets updated:
 - methodology.html (schema description)
 - tools.html (schema description)
 - research/canadian-technology-sovereignty-index.html (6 FAQ answers with stats)
+- research/cloud-infrastructure-sovereignty.html (FAQ answers with provider counts)
 - research/athena-collective-law-25-compliance.html (FAQ answer)
 - research/sovereignty-policy-scorecard.html (FAQ answer)
 - resources/canadian-data-residency-saas.html (2 FAQ answers)
