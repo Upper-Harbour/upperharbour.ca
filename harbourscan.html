@@ -2,14 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3KSW0FVBL1');
-</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HarbourScan — Structured Compliance Assessment | Upper Harbour</title>
   <meta name="description" content="Free structured sovereignty assessment for Canadian organizations. Map your SaaS stack's jurisdictional exposure under Law 25, PIPEDA, and CLOUD Act compliance. Self-assessment wizard with board-ready report output." />
@@ -94,10 +86,10 @@
     /* ── Landing: Differentiators ───────────────────────────────────── */
     .landing-diff { background: var(--surface); border-top: 1px solid var(--border-md); border-bottom: 1px solid var(--border-md); padding: 80px 52px; }
     .landing-diff-inner { max-width: 960px; margin: 0 auto; }
-    .landing-diff-title { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ice); margin-bottom: 36px; }
-    .diff-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
-    .diff-item-title { font-size: 15px; font-weight: 700; color: var(--ice); margin-bottom: 10px; }
-    .diff-item-desc { font-size: 13.5px; color: var(--slate); line-height: 1.72; }
+    .landing-diff-title { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ice); margin-bottom: 32px; }
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+    .diff-item-title { font-size: 14px; font-weight: 700; color: var(--ice); margin-bottom: 6px; }
+    .diff-item-desc { font-size: 13px; color: var(--slate); line-height: 1.65; }
 
     /* ── Landing: Final CTA ────────────────────────────────────────── */
     .landing-cta { padding: 56px 52px 80px; text-align: center; }
@@ -133,7 +125,7 @@
       .output-grid { grid-template-columns: 1fr; gap: 24px; }
       .process-steps { grid-template-columns: 1fr 1fr; gap: 20px; }
       .landing-diff { padding: 60px 20px; }
-      .diff-grid { grid-template-columns: 1fr; gap: 28px; }
+      .diff-grid { grid-template-columns: 1fr; gap: 24px; }
       .landing-cta { padding: 60px 20px; }
       .footer-inner { grid-template-columns: 1fr; padding: 0 20px; }
       .footer-bottom { padding: 20px 20px 0; flex-direction: column; }
@@ -431,9 +423,9 @@
     <!-- HERO -->
     <section class="landing-hero">
       <div class="landing-eyebrow">HarbourScan</div>
-      <h1>How exposed is your organization to <em>foreign jurisdiction?</em></h1>
-      <p class="landing-hero-sub">HarbourScan classifies your organization's jurisdictional exposure &mdash; Low, Moderate, High, or Critical &mdash; based on your SaaS stack, regulatory environment, and documentation readiness. Built on the <span class="uh-stat" data-stat="totalTools">715</span>-tool <a href="/research/canadian-technology-sovereignty-index" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2);">Canadian Technology Sovereignty Index</a>. Free in your browser &mdash; then choose the level of documentation you need.</p>
-      <p class="landing-hero-sub" style="margin-top:16px; font-size:15px; color:var(--slate);">Most Canadian organizations are CLOUD Act exposed and don&rsquo;t know it. If a regulator, auditor, or procurement evaluator asked you today to produce a defensible record of your cross-border data exposure &mdash; could you?</p>
+      <h1>Map your organization's <em>sovereignty exposure</em></h1>
+      <p class="landing-hero-sub">HarbourScan maps your SaaS stack to parent jurisdictions, CLOUD Act exposure, and Canadian data residency status. Built on the <span class="uh-stat" data-stat="totalTools">707</span>-tool <a href="/research/canadian-saas-sovereignty-index" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2);">Canadian SaaS Sovereignty Index</a>. Start free in your browser &mdash; then choose the level of documentation you need.</p>
+      <p class="landing-hero-sub" style="margin-top:16px; font-size:15px; color:var(--slate);">If a regulator or procurement review asked you tomorrow where your SaaS vendors fall under foreign jurisdiction, could you produce a defensible answer? Most organizations can&rsquo;t &mdash; that&rsquo;s where HarbourScan starts.</p>
       <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;">Start Free Assessment &rarr;</a>
     </section>
 
@@ -471,8 +463,8 @@
         <div class="landing-diff-title">Why Upper Harbour</div>
         <div class="diff-grid">
           <div class="diff-item">
-            <div class="diff-item-title"><span class="uh-stat" data-stat="totalTools">715</span>-tool database</div>
-            <div class="diff-item-desc">Every assessment draws on the Canadian Technology Sovereignty Index — the most comprehensive jurisdictional dataset for Canadian SaaS. We don't start from scratch. We start from verified corporate registry data.</div>
+            <div class="diff-item-title"><span class="uh-stat" data-stat="totalTools">707</span>-tool database</div>
+            <div class="diff-item-desc">Every assessment draws on the Canadian SaaS Sovereignty Index — the most comprehensive jurisdictional dataset for Canadian SaaS. We don't start from scratch. We start from verified corporate registry data.</div>
           </div>
           <div class="diff-item">
             <div class="diff-item-title">Canadian-specific</div>
@@ -480,14 +472,14 @@
           </div>
           <div class="diff-item">
             <div class="diff-item-title">Independent</div>
-            <div class="diff-item-desc">No vendor affiliations. No paid placements. No commercial relationships with the tools we assess. Our analysis is independent because our business model doesn't depend on the vendors we're evaluating.</div>
+            <div class="diff-item-desc">No vendor affiliations. No paid placements. No commercial relationships with the SaaS tools we assess. Our analysis is independent because our business model doesn't depend on the vendors we're evaluating.</div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- CASE STUDY -->
-    <section style="padding:64px 52px 72px;max-width:860px;margin:0 auto;">
+    <section style="padding:0 52px 0;max-width:860px;margin:0 auto;">
       <div style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(60,184,176,0.7);margin-bottom:20px;">HarbourScan in action</div>
       <a href="/research/athena-collective-law-25-compliance" style="text-decoration:none;display:block;background:var(--surface);border:1px solid var(--border-md);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:32px 36px;transition:border-color 0.3s,transform 0.2s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-1px)'" onmouseout="this.style.borderColor='var(--border-md)';this.style.borderLeftColor='var(--gold)';this.style.transform='none'">
         <div style="display:flex;gap:24px;align-items:flex-start;">
@@ -521,7 +513,7 @@
         <div class="output-header">
           <div class="output-label output-label-teal">Free</div>
           <div class="output-title">HarbourScan</div>
-          <p class="output-summary">&ldquo;I need to know where we stand.&rdquo; &mdash; Enter your tools and receive a jurisdictional exposure classification &mdash; Low, Moderate, High, or Critical &mdash; with a downloadable summary you can share internally. Runs entirely in your browser.</p>
+          <p class="output-summary">&ldquo;I need to see what we&rsquo;re exposed to.&rdquo; &mdash; Enter your tools and see your jurisdictional exposure instantly. The initial scan runs entirely in your browser.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
@@ -555,7 +547,7 @@
           <div class="output-label output-label-teal">From $350</div>
           <div class="output-title">Sovereignty Snapshot</div>
           <div style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:10px;">A documented answer you can send immediately.</div>
-          <p class="output-summary">&ldquo;Someone asked and I need an answer.&rdquo; &mdash; A governance-ready jurisdictional exposure assessment with severity classification, executive summary, and prioritized remediation plan structured as Immediate, Medium-term, and Structural actions. The document you produce when a regulator, partner, or procurement officer asks. Delivered in 5 business days.</p>
+          <p class="output-summary">&ldquo;Someone asked and I need an answer.&rdquo; &mdash; A professional sovereignty assessment you can produce when a regulator, partner, or procurement officer asks about your cross-border data exposure. Delivered in 5 business days.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
@@ -653,8 +645,8 @@
 
     <!-- FINAL CTA -->
     <section class="landing-cta">
-      <h2>Find out how exposed your organization is.</h2>
-      <p>Get your jurisdictional exposure classification in under 10 minutes. No account required. Choose the level of documentation you need after you see your results.</p>
+      <h2>Map your stack. Understand your sovereignty exposure.</h2>
+      <p>Most organizations complete the scan in under 10 minutes. No account required. Choose the level of documentation you need after you see your results.</p>
       <button class="landing-cta-btn" onclick="startAssessment()">Start Free Assessment →</button>
       <p class="landing-cta-or">Want to discuss your situation first? <a href="https://calendly.com/josh-upperharbour/30min" target="_blank">Book a scoping call</a> · <a href="/pricing" style="color:var(--teal); text-decoration:none;">View pricing</a></p>
     </section>
@@ -685,8 +677,7 @@
           <div class="footer-col-title">About</div>
           <ul class="footer-links">
             <li><a href="/founder">Founder</a></li>
-          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
-            <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank" rel="noopener">LinkedIn</a></li>
             <li><a href="/cdn-cgi/l/email-protection#771d18041f3702070712051f160515180205591416">Contact</a></li>
           </ul>
         </div>
@@ -733,7 +724,7 @@
     <div class="step visible" id="step1">
       <div class="step-eyebrow">Step 1 of 3</div>
       <h1 class="step-title">Tell us about your <em>organization</em></h1>
-      <p class="step-sub">We'll use this to determine your regulatory framework and classify your exposure. Takes about 10 minutes. You'll receive a severity rating, jurisdictional breakdown, and a downloadable summary.</p>
+      <p class="step-sub">Most organizations start here when a regulator, partner, or procurement review asks how their SaaS vendors handle data. The initial scan runs entirely in your browser.</p>
 
       <div class="field">
         <label class="field-label">Organization Name</label>
@@ -832,7 +823,7 @@
     <div class="step" id="step2">
       <div class="step-eyebrow">Step 2 of 3</div>
       <h1 class="step-title">Select your <em>tools</em></h1>
-      <p class="step-sub">Search for the tools your organization uses. We'll map each one to its parent jurisdiction. Add as many as apply.</p>
+      <p class="step-sub">Search for the SaaS tools your organization uses. We'll map each one to its parent jurisdiction. Add as many as apply.</p>
 
       <div class="stack-tally" id="stackTally">
         <div class="tally-item"><div class="tally-num t-total" id="tallyTotal">0</div><div class="tally-label">Selected</div></div>
@@ -865,13 +856,10 @@
     <div class="step" id="step3">
       <div class="step-eyebrow">Your Results</div>
       <h1 class="step-title">Sovereignty <em>exposure map</em></h1>
-      <p class="step-sub">Based on the <span id="resultToolCount">0</span> tools you selected, here's your organization's jurisdictional exposure classification and stack breakdown.</p>
+      <p class="step-sub">Based on the <span id="resultToolCount">0</span> tools you selected, here's your organization's jurisdictional exposure.</p>
 
       <!-- ── FREE: Headline Stats ── -->
       <div class="dash-grid" id="dashStats"></div>
-
-      <!-- ── FREE: Severity Classification ── -->
-      <div id="severityBlock" style="margin-bottom:32px;"></div>
 
       <!-- ── FREE: Regulatory Framework ── -->
       <div id="regFramework" style="margin-bottom:32px;"></div>
@@ -898,7 +886,7 @@
         <div style="position:absolute; top:0; left:0; right:0; bottom:0; z-index:10; display:flex; flex-direction:column; align-items:center; justify-content:center; background:linear-gradient(180deg, rgba(6,9,14,0) 0%, rgba(6,9,14,0.8) 25%, rgba(6,9,14,0.95) 100%); border-radius:12px;" id="blurOverlay">
           <div style="text-align:center; max-width:480px; padding:48px 32px;">
             <div style="font-size:20px; font-weight:800; color:var(--ice); margin-bottom:10px; letter-spacing:-0.3px;">Your full report is ready</div>
-            <p style="font-size:14px; color:var(--slate); line-height:1.7; margin-bottom:24px;">Your free scan gives you a severity classification and jurisdictional breakdown. The full report adds compliance gaps, remediation priorities, TIA requirements, and a Register of Processing Activities &mdash; structured for legal, security, and procurement workflows.</p>
+            <p style="font-size:14px; color:var(--slate); line-height:1.7; margin-bottom:24px;">Compliance gaps, remediation priorities, and a Register of Processing Activities — structured for legal, security, and procurement workflows.</p>
             <button class="btn btn-primary" style="font-size:14px; padding:14px 28px;" onclick="revealReportPreview()">See what's in the full report →</button>
           </div>
         </div>
@@ -1322,260 +1310,6 @@
     });
   }
 
-  // ═══════════════════════════════════════════════════════════════════
-  // SEVERITY RATING — Jurisdictional Exposure Classification
-  // ═══════════════════════════════════════════════════════════════════
-
-  function calculateSeverity() {
-    const tools = state.selectedTools;
-    const o = state.org;
-    const isQuebec = o.province === 'QC';
-    const totalTools = tools.length;
-
-    if (totalTools === 0) {
-      return {
-        tier: 0, label: 'No Tools Assessed', color: 'var(--muted)', colorHex: '#7A92A8',
-        bgColor: 'rgba(122,146,168,0.08)', borderColor: 'rgba(122,146,168,0.2)',
-        explanation: 'No tools were included in this assessment.',
-        escalations: [], stats: { totalTools: 0, exposed: 0, foreignCount: 0, pctExposed: 0, pctForeign: 0, sensitiveExposed: 0, missingDPA: 0 }
-      };
-    }
-
-    const exposed = tools.filter(t => t.risk === 'exposed').length;
-    const foreignCount = tools.filter(t => t.jurisdiction !== 'Canada').length;
-    const exposedRatio = exposed / totalTools;
-    const foreignRatio = foreignCount / totalTools;
-    const primaryRatio = Math.max(exposedRatio, foreignRatio * 0.8);
-
-    let tier;
-    if (primaryRatio < 0.30)      tier = 0;
-    else if (primaryRatio < 0.55) tier = 1;
-    else if (primaryRatio < 0.75) tier = 2;
-    else                          tier = 3;
-
-    const escalations = [];
-
-    // Sensitivity escalation
-    const sensitiveExposed = tools.filter(t => {
-      if (t.jurisdiction === 'Canada') return false;
-      const d = state.toolData[t.name];
-      if (!d) return false;
-      return d.categories.some(c => {
-        const cat = dataCategories.find(dc => dc.id === c);
-        return cat && (cat.sensitivity === 'very_high' || cat.sensitivity === 'high');
-      }) && d.residency !== 'Yes';
-    });
-    if (sensitiveExposed.length > 0) {
-      tier = Math.min(tier + 1, 3);
-      escalations.push(sensitiveExposed.length + ' foreign-jurisdictioned tool' + (sensitiveExposed.length > 1 ? 's process' : ' processes') + ' high-sensitivity data without Canadian residency');
-    }
-
-    // Quebec TIA escalation
-    if (isQuebec) {
-      const tiaMissing = tools.filter(t => {
-        if (t.jurisdiction === 'Canada') return false;
-        const d = state.toolData[t.name];
-        return d && d.pia !== 'Yes';
-      });
-      if (tiaMissing.length > 0) {
-        tier = Math.min(tier + 1, 3);
-        escalations.push(tiaMissing.length + ' tool' + (tiaMissing.length > 1 ? 's require' : ' requires') + ' a Transfer Impact Assessment under Law 25');
-      }
-    }
-
-    // DPA escalation
-    const missingDPA = tools.filter(t => {
-      if (t.jurisdiction === 'Canada') return false;
-      const d = state.toolData[t.name];
-      return d && d.dpa !== 'Yes';
-    });
-    if (missingDPA.length >= 3) {
-      tier = Math.min(tier + 1, 3);
-      escalations.push(missingDPA.length + ' foreign-jurisdictioned tools lack a documented Data Processing Agreement');
-    }
-
-    // Governance escalation
-    const noDPO = (o.dpo === 'no' || o.dpo === 'unsure');
-    const noBreachPlan = (o.breachPlan === 'no' || o.breachPlan === 'unsure');
-    if (noDPO && noBreachPlan) {
-      tier = Math.min(tier + 1, 3);
-      escalations.push('no designated Privacy Officer and no documented breach response plan');
-    }
-
-    tier = Math.min(tier, 3);
-
-    const tiers = [
-      { label: 'Low Exposure', color: 'var(--teal)', colorHex: '#3CB8B0', bgColor: 'rgba(60,184,176,0.08)', borderColor: 'rgba(60,184,176,0.25)' },
-      { label: 'Moderate Exposure', color: 'var(--gold)', colorHex: '#C9A84C', bgColor: 'rgba(201,168,76,0.08)', borderColor: 'rgba(201,168,76,0.25)' },
-      { label: 'High Exposure', color: '#E08050', colorHex: '#E08050', bgColor: 'rgba(224,128,80,0.08)', borderColor: 'rgba(224,128,80,0.25)' },
-      { label: 'Critical Exposure', color: 'var(--red)', colorHex: '#E06050', bgColor: 'rgba(224,96,80,0.08)', borderColor: 'rgba(224,96,80,0.25)' }
-    ];
-
-    const t = tiers[tier];
-    const pctExposed = Math.round(exposedRatio * 100);
-    const pctForeign = Math.round(foreignRatio * 100);
-
-    let explanation = '';
-    if (tier === 0) {
-      explanation = pctForeign + '% of assessed tools operate under foreign jurisdiction. Jurisdictional exposure is limited. Governance documentation should still be maintained.';
-    } else if (tier === 1) {
-      explanation = pctExposed + '% of assessed tools are CLOUD Act exposed (' + pctForeign + '% under foreign jurisdiction). Documentation and contractual safeguards should be reviewed.';
-    } else if (tier === 2) {
-      explanation = pctExposed + '% of assessed tools are CLOUD Act exposed (' + pctForeign + '% under foreign jurisdiction). This level of exposure typically requires documented assessment and active remediation planning.';
-    } else {
-      explanation = pctExposed + '% of assessed tools are CLOUD Act exposed (' + pctForeign + '% under foreign jurisdiction). Immediate review of jurisdictional exposure and compliance documentation is recommended.';
-    }
-    if (escalations.length > 0) {
-      explanation += ' Severity reflects additional factors: ' + escalations.join('; ') + '.';
-    }
-
-    return {
-      tier: tier, label: t.label, color: t.color, colorHex: t.colorHex,
-      bgColor: t.bgColor, borderColor: t.borderColor,
-      explanation: explanation, escalations: escalations,
-      stats: { totalTools: totalTools, exposed: exposed, foreignCount: foreignCount, pctExposed: pctExposed, pctForeign: pctForeign, sensitiveExposed: sensitiveExposed.length, missingDPA: missingDPA.length }
-    };
-  }
-
-  function renderSeverityBlock(severity) {
-    return '<div style="background:' + severity.bgColor + ';border:1px solid ' + severity.borderColor + ';border-radius:8px;padding:28px 32px;margin-bottom:32px;">' +
-      '<div style="display:flex;align-items:center;gap:16px;margin-bottom:14px;">' +
-        '<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:' + severity.color + ';padding:5px 14px;border-radius:4px;border:1px solid ' + severity.borderColor + ';background:' + severity.bgColor + ';">' + severity.label + '</div>' +
-        '<div style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);">Jurisdictional Exposure Classification</div>' +
-      '</div>' +
-      '<p style="font-size:14px;color:var(--slate);line-height:1.7;margin:0;">' + severity.explanation + '</p>' +
-    '</div>';
-  }
-
-  function renderSeverityForReport(severity) {
-    var borderColors = { 0: '#3CB8B0', 1: '#C9A84C', 2: '#E08050', 3: '#E06050' };
-    var bgColors = { 0: '#e8f8f5', 1: '#fef9e7', 2: '#fdf0e8', 3: '#fde8e5' };
-    return '<div style="background:' + bgColors[severity.tier] + ';border-left:4px solid ' + borderColors[severity.tier] + ';padding:14px 18px;margin:16px 0;border-radius:0 4px 4px 0;">' +
-      '<div style="font-size:13px;font-weight:800;color:#1a1a2e;margin-bottom:4px;">' + severity.label + '</div>' +
-      '<div style="font-size:12px;color:#555;line-height:1.6;">' + severity.explanation + '</div>' +
-    '</div>';
-  }
-
-  // ═══════════════════════════════════════════════════════════════════
-  // DYNAMIC URGENCY LINE
-  // ═══════════════════════════════════════════════════════════════════
-
-  function generateUrgencyLine(severity) {
-    var s = severity.stats;
-    var tier = severity.tier;
-    var isQuebec = state.org.province === 'QC';
-
-    if (tier === 0) {
-      return 'Your stack has limited foreign jurisdictional exposure. Governance documentation \u2014 including a current processing inventory and vendor agreements \u2014 should still be maintained and periodically reviewed.';
-    }
-    if (tier === 1) {
-      return s.pctExposed + '% of your assessed tools are subject to the US CLOUD Act. If a regulator, auditor, or procurement evaluator asked how you manage cross-border data exposure, would you have documentation ready?';
-    }
-    if (tier === 2) {
-      var line = s.pctExposed + '% of your assessed tools are CLOUD Act exposed. ';
-      if (isQuebec) line += 'Under Law 25, each of these requires a Transfer Impact Assessment before continued use. ';
-      line += 'This level of jurisdictional exposure typically requires formal documentation and active remediation. If your organization were asked to produce a defensible compliance record today \u2014 could you?';
-      return line;
-    }
-    var line = s.pctExposed + '% of your assessed tools are CLOUD Act exposed';
-    if (s.sensitiveExposed > 0) line += ' and ' + s.sensitiveExposed + ' process high-sensitivity data without Canadian residency';
-    else line += ' and documentation gaps are widespread';
-    line += '. ';
-    if (isQuebec) line += 'Law 25 enforcement is active \u2014 the CAI processed 277 complaints and 444 incident notifications in 2023\u20132024. ';
-    line += 'This exposure profile requires immediate attention.';
-    return line;
-  }
-
-  // ═══════════════════════════════════════════════════════════════════
-  // UPGRADED FREE EXPORT
-  // ═══════════════════════════════════════════════════════════════════
-
-  function downloadFreeExport() {
-    var tools = state.selectedTools;
-    var o = state.org;
-    var severity = state.severity || calculateSeverity();
-    var s = severity.stats;
-    var gaps = state.gaps || [];
-    var critical = gaps.filter(function(g) { return g.severity === 'critical'; }).length;
-    var isQuebec = o.province === 'QC';
-    var tiaRequired = isQuebec ? tools.filter(function(t) { return t.jurisdiction !== 'Canada'; }).length : 0;
-    var now = new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' });
-
-    var severityColors = {
-      0: { bg: '#e8f8f5', border: '#3CB8B0', text: '#1a7a74' },
-      1: { bg: '#fef9e7', border: '#C9A84C', text: '#8a6d1b' },
-      2: { bg: '#fdf0e8', border: '#E08050', text: '#a85a2a' },
-      3: { bg: '#fde8e5', border: '#E06050', text: '#b33a2a' }
-    };
-    var sc = severityColors[severity.tier];
-
-    var toolRows = tools.map(function(t) {
-      var riskColor = { exposed: '#E06050', review: '#C9A84C', non_exposed: '#5B9BD5', canadian: '#3CB8B0' }[t.risk] || '#666';
-      var riskLabel = { exposed: 'Exposed', review: 'Review', non_exposed: 'Non-exposed', canadian: 'Canadian' }[t.risk] || t.risk;
-      return '<tr><td style="padding:8px 10px;border:1px solid #ddd;font-weight:600;">' + t.name + '</td><td style="padding:8px 10px;border:1px solid #ddd;color:#666;">' + t.parent + '</td><td style="padding:8px 10px;border:1px solid #ddd;">' + t.jurisdiction + '</td><td style="padding:8px 10px;border:1px solid #ddd;color:' + riskColor + ';font-weight:700;font-size:11px;text-transform:uppercase;">' + riskLabel + '</td></tr>';
-    }).join('');
-
-    var urgencyText = generateUrgencyLine(severity);
-
-    var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>HarbourScan Summary \u2014 ' + o.name + '</title>' +
-    '<style>' +
-    'body{font-family:"DM Sans","Inter",-apple-system,sans-serif;margin:0;padding:0;background:#fff;color:#1a1a2e}' +
-    '.container{max-width:800px;margin:0 auto;padding:48px 40px}' +
-    '.header{border-bottom:2px solid #0A1018;padding-bottom:20px;margin-bottom:28px}' +
-    '.logo{font-size:16px;color:#0A1018}.logo span{font-weight:400;color:#999}.logo strong{font-weight:700}' +
-    '.title{font-size:22px;font-weight:800;color:#0A1018;margin-top:12px}' +
-    '.meta{font-size:12px;color:#999;margin-top:4px}' +
-    '.severity{border-left:4px solid ' + sc.border + ';background:' + sc.bg + ';padding:16px 20px;margin-bottom:28px;border-radius:0 4px 4px 0}' +
-    '.severity-label{font-size:14px;font-weight:800;color:' + sc.text + ';margin-bottom:4px}' +
-    '.severity-text{font-size:13px;color:#555;line-height:1.6}' +
-    '.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px}' +
-    '.stat{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:6px;padding:16px;text-align:center}' +
-    '.stat-num{font-size:28px;font-weight:800}' +
-    '.stat-label{font-size:11px;color:#999;text-transform:uppercase;letter-spacing:0.06em;margin-top:4px}' +
-    '.section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#3CB8B0;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e0e0e0}' +
-    'table{width:100%;border-collapse:collapse;font-size:12px;margin-bottom:24px}' +
-    'th{background:#f5f5f5;color:#333;font-weight:700;text-align:left;padding:8px 10px;border:1px solid #ddd;font-size:10px;text-transform:uppercase;letter-spacing:0.04em}' +
-    '.urgency{background:#fdf2f2;border:1px solid #f0d0cc;border-radius:6px;padding:16px 20px;margin-bottom:28px}' +
-    '.urgency p{font-size:13px;color:#555;line-height:1.65;margin:0}' +
-    '.next-steps{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:6px;padding:20px 24px;margin-bottom:28px}' +
-    '.next-steps p{font-size:13px;color:#555;line-height:1.6;margin:0 0 8px}.next-steps p:last-child{margin-bottom:0}' +
-    '.footer{margin-top:32px;padding-top:16px;border-top:1px solid #ddd;font-size:11px;color:#999}' +
-    '@media print{.container{padding:24px}}' +
-    '</style></head><body>' +
-    '<div class="container">' +
-    '<div class="header"><div class="logo"><span>Upper </span><strong>Harbour</strong></div>' +
-    '<div class="title">HarbourScan Exposure Summary</div>' +
-    '<div class="meta">' + o.name + ' \u00B7 ' + now + '</div></div>' +
-    '<div class="severity"><div class="severity-label">' + severity.label + '</div>' +
-    '<div class="severity-text">' + severity.explanation + '</div></div>' +
-    '<div class="stats">' +
-    '<div class="stat"><div class="stat-num">' + tools.length + '</div><div class="stat-label">Tools Assessed</div></div>' +
-    '<div class="stat"><div class="stat-num" style="color:#E06050;">' + s.exposed + '</div><div class="stat-label">CLOUD Act Exposed</div></div>' +
-    '<div class="stat"><div class="stat-num" style="color:#3CB8B0;">' + (tools.length - s.foreignCount) + '</div><div class="stat-label">Canadian</div></div>' +
-    '</div>' +
-    (isQuebec ?
-      '<div class="stats" style="grid-template-columns:1fr 1fr;"><div class="stat"><div class="stat-num" style="color:#C9A84C;">' + tiaRequired + '</div><div class="stat-label">TIAs Required (Law 25)</div></div><div class="stat"><div class="stat-num" style="color:#E06050;">' + critical + '</div><div class="stat-label">Critical Gaps</div></div></div>' :
-      '<div class="stats" style="grid-template-columns:1fr 1fr;"><div class="stat"><div class="stat-num" style="color:#C9A84C;">' + gaps.length + '</div><div class="stat-label">Findings Identified</div></div><div class="stat"><div class="stat-num" style="color:#E06050;">' + critical + '</div><div class="stat-label">Critical Gaps</div></div></div>'
-    ) +
-    '<div class="section-title">Your Stack \u2014 Jurisdictional Exposure</div>' +
-    '<table><thead><tr><th>Tool</th><th>Parent Entity</th><th>Jurisdiction</th><th>Exposure Tier</th></tr></thead><tbody>' + toolRows + '</tbody></table>' +
-    '<div class="urgency"><p>' + urgencyText + '</p></div>' +
-    '<div class="next-steps"><div class="section-title" style="border-bottom:none;padding-bottom:0;margin-bottom:8px;">What Comes Next</div>' +
-    '<p><strong>Sovereignty Snapshot (from $350)</strong> \u2014 A professional jurisdictional exposure assessment with severity classification, prioritized remediation plan, and governance-ready executive summary. The document you produce when someone asks.</p>' +
-    '<p><strong>Compliance Documentation (from $2,000)</strong> \u2014 Full compliance record including TIA guidance, Register of Processing Activities, remediation roadmap, and regulatory framework mapping.</p>' +
-    '<p style="margin-top:12px;">Request a scoping call: <strong>josh@upperharbour.ca</strong> or visit <strong>upperharbour.ca/pricing</strong></p></div>' +
-    '<div class="footer"><strong>Upper Harbour</strong> \u00B7 Technology Sovereignty Intelligence for Canadian Organizations<br/>' +
-    'Generated ' + now + ' \u00B7 Classifications based on the Upper Harbour Sovereignty Index methodology (upperharbour.ca/methodology).<br/>' +
-    'This summary is indicative and does not constitute legal advice.</div>' +
-    '</div></body></html>';
-
-    var blob = new Blob([html], { type: 'text/html' });
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = 'HarbourScan-Summary-' + o.name.replace(/[^a-zA-Z0-9]/g, '-') + '-' + new Date().toISOString().split('T')[0] + '.html';
-    a.click();
-  }
-
   function buildFreeResults() {
     const tools = state.selectedTools;
     const o = state.org;
@@ -1607,12 +1341,6 @@
       <div class="dash-stat"><div class="dash-num">${cloudActCount}</div><div class="dash-label">Under CLOUD Act</div></div>
       <div class="dash-stat"><div class="dash-num">${foreignCount}</div><div class="dash-label">Foreign Jurisdiction</div></div>
     `;
-
-    // ── Severity Rating ──
-    const severity = calculateSeverity();
-    state.severity = severity;
-    document.getElementById('severityBlock').innerHTML = renderSeverityBlock(severity);
-    document.getElementById('urgencyLine').textContent = generateUrgencyLine(severity);
 
     // ── Regulatory framework ──
     let regHTML = '';
@@ -2081,8 +1809,7 @@
 
         <div class="r-section">
           <div class="r-section-title">Executive Summary</div>
-          <p class="r-text">This assessment evaluated <strong>${tools.length}</strong> tools used by ${o.name}. Of these, <strong>${exposed}</strong> are CLOUD Act exposed with no Canadian data residency, <strong>${review}</strong> require jurisdictional review, <strong>${nonExposed}</strong> are in non-compelled-disclosure foreign jurisdictions, and <strong>${canadian}</strong> are Canadian-headquartered. The assessment identified <strong>${critical}</strong> critical compliance gap${critical !== 1 ? 's' : ''} and <strong>${gaps.length - critical}</strong> additional finding${gaps.length - critical !== 1 ? 's' : ''} requiring attention.</p>
-          ${state.severity ? renderSeverityForReport(state.severity) : ''}
+          <p class="r-text">This assessment evaluated <strong>${tools.length}</strong> SaaS tools used by ${o.name}. Of these, <strong>${exposed}</strong> are CLOUD Act exposed with no Canadian data residency, <strong>${review}</strong> require jurisdictional review, <strong>${nonExposed}</strong> are in non-compelled-disclosure foreign jurisdictions, and <strong>${canadian}</strong> are Canadian-headquartered. The assessment identified <strong>${critical}</strong> critical compliance gap${critical !== 1 ? 's' : ''} and <strong>${gaps.length - critical}</strong> additional finding${gaps.length - critical !== 1 ? 's' : ''} requiring attention.</p>
           ${isQuebec ? `<p class="r-text">As a Quebec-based organization, ${o.name} is subject to <strong>Law 25</strong> (Act to modernize legislative provisions as regards the protection of personal information), which requires Transfer Impact Assessments for each cross-border data transfer, written agreements with foreign service providers, and Privacy Impact Assessments for new or modified information systems. Maximum penalties reach $25M or 4% of worldwide turnover.</p>` : ''}
           <p class="r-text">This is an indicative assessment based on self-reported information. A full HarbourScan deployment maps integration pathways, subprocessor chains, and contractual documentation in detail.</p>
         </div>
@@ -2247,9 +1974,54 @@
     return actions;
   }
 
-  // ── Download HTML (now uses upgraded export) ─────────────────────
+  // ── Download HTML ──────────────────────────────────────────────
   function downloadHTML() {
-    downloadFreeExport();
+    const content = document.getElementById('reportContent').outerHTML;
+    const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>HarbourScan Report — ${state.org.name}</title><style>
+      body{font-family:'Inter',sans-serif;margin:0;padding:0;background:#fff;color:#1a1a2e;}
+      .report-inner{max-width:900px;margin:0 auto;padding:48px;}
+      .r-header{border-bottom:2px solid #0A1018;padding-bottom:24px;margin-bottom:32px;}
+      .r-logo{font-size:18px;font-weight:800;color:#0A1018;margin-bottom:4px;} .r-logo span{font-weight:400;color:#7A92A8;}
+      .r-title{font-size:24px;font-weight:800;color:#0A1018;margin-top:16px;}
+      .r-meta{font-size:12px;color:#6B7B8D;margin-top:6px;}
+      .r-section{margin-bottom:28px;} .r-section-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:#3CB8B0;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #e0e0e0;}
+      .r-text{font-size:13px;color:#333;line-height:1.7;margin-bottom:8px;}
+      .r-table{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:16px;}
+      .r-table th{background:#f5f5f5;color:#333;font-weight:700;text-align:left;padding:8px 10px;border:1px solid #ddd;text-transform:uppercase;letter-spacing:0.04em;font-size:10px;}
+      .r-table td{padding:8px 10px;border:1px solid #ddd;color:#333;vertical-align:top;}
+      .r-table tr:nth-child(even) td{background:#fafafa;}
+      .r-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 6px;border-radius:2px;text-transform:uppercase;}
+      .r-badge.exposed{background:#fde8e5;color:#c0392b;} .r-badge.review{background:#fef9e7;color:#b7950b;} .r-badge.non_exposed{background:#e5f0fa;color:#2b6cb0;} .r-badge.canadian{background:#e8f8f5;color:#1abc9c;}
+      .r-gap{padding:10px 14px;border-left:3px solid;margin-bottom:8px;font-size:12px;}
+      .r-gap.critical{border-color:#e74c3c;background:#fdf2f2;} .r-gap.warning{border-color:#f39c12;background:#fef9e7;} .r-gap.info{border-color:#3CB8B0;background:#e8f8f5;}
+      .r-gap-title{font-weight:700;color:#1a1a2e;} .r-gap-desc{color:#555;margin-top:3px;line-height:1.5;}
+      .r-footer{margin-top:32px;padding-top:16px;border-top:1px solid #ddd;font-size:11px;color:#999;text-align:center;}
+  
+    /* ── Responsive Nav ─────────────── */
+    .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px;margin-left:auto}
+    .nav-hamburger svg{display:block}
+    .nav-mobile-overlay{display:none;position:fixed;inset:0;z-index:99;background:rgba(6,9,14,0.6);backdrop-filter:blur(4px)}
+    .nav-mobile-menu{display:none;position:fixed;top:66px;right:0;bottom:0;width:280px;z-index:101;background:#0C1219;border-left:1px solid rgba(234,240,244,0.06);padding:32px 28px;flex-direction:column;gap:8px;overflow-y:auto}
+    .nav-mobile-menu a{display:block;font-size:15px;font-weight:500;color:#8A9DB0;text-decoration:none;padding:14px 0;border-bottom:1px solid rgba(234,240,244,0.06);transition:color 0.2s}
+    .nav-mobile-menu a:last-child{border-bottom:none}
+    .nav-mobile-menu a:hover{color:#EAF0F4}
+    .nav-mobile-menu .mobile-cta{display:block;margin-top:16px;font-size:14px;font-weight:700;color:#06090E;background:#3CB8B0;padding:14px 24px;border-radius:4px;text-align:center;text-decoration:none;border-bottom:none}
+    .nav-mobile-menu .mobile-cta:hover{background:#47cec5;color:#06090E}
+    .nav-mobile-open .nav-mobile-overlay{display:block}
+    .nav-mobile-open .nav-mobile-menu{display:flex}
+    
+    @media(max-width:540px){ .nav-hamburger{display:block} }
+    @media(max-width:480px){
+      .nav-hamburger{display:block}
+      }
+
+  </style></head><body>${content}</body></html>`;
+
+    const blob = new Blob([html], { type: 'text/html' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `HarbourScan-Report-${state.org.name.replace(/[^a-zA-Z0-9]/g, '-')}-${new Date().toISOString().split('T')[0]}.html`;
+    a.click();
   }
 
   </script>
@@ -2288,4 +2060,10 @@
 
     // Handle back button
     window.addEventListener('popstate', function() {
-     
+           if (window.location.hash !== '#start') {
+        showLanding();
+      }
+    });
+  </script>
+</body>
+</html>
