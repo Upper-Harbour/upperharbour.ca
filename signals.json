@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 03, 2026 — 18:18 ET",
+    "lastUpdated": "Mar 04, 2026 — 12:05 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Euna Solutions achieves AEP certification and PCI DSS compliance for public sector procurement platform",
+      "summary": "Euna Solutions announced that its Euna Procurement platform has achieved AEP eProcurement Certification and PCI DSS Compliance. The certifications are relevant to Canadian public sector organizations evaluating procurement solutions, as they indicate adherence to security and transparency standards applicable to government purchasing.",
+      "type": "vendor",
+      "source": "Financial Post",
+      "sourceUrl": "https://financialpost.com/pmn/business-wire-news-releases-pmn/euna-solutions-achieves-aep-certification-and-pci-dss-compliance-advancing-trust-transparency-and-security-in-public-sector-procurement",
+      "date": "2026-03-04",
+      "impact": "Canadian federal and provincial procurement teams using or evaluating Euna Procurement should note the new certifications when assessing vendor compliance with procurement security requirements.",
+      "dbUpdate": true
+    },
     {
       "headline": "IRONSCALES Launches Canadian Data Residency Environment",
       "summary": "IRONSCALES deployed a dedicated Canadian data center on January 28, 2026, enabling customer data to remain stored and processed entirely within Canada. This addresses procurement requirements and privacy concerns for Canadian regulated industries seeking domestic data residency.",

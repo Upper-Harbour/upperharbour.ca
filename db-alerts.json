@@ -23,7 +23,19 @@
       "source_url": "https://securityboulevard.com/2026/03/canadas-data-sovereignty-question-answered-with-dedicated-data-center/",
       "flagged_at": "2026-03-03T06:24:26.639301",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Euna Procurement",
+      "change": "compliance_certifications",
+      "old_value": null,
+      "new_value": "AEP eProcurement Certification, PCI DSS Compliance",
+      "reason": "Platform achieved new security and transparency certifications relevant to Canadian public sector procurement",
+      "signal_headline": "Euna Solutions achieves AEP certification and PCI DSS compliance for public sector procurement platform",
+      "signal_date": "2026-03-04",
+      "source_url": "https://financialpost.com/pmn/business-wire-news-releases-pmn/euna-solutions-achieves-aep-certification-and-pci-dss-compliance-advancing-trust-transparency-and-security-in-public-sector-procurement",
+      "flagged_at": "2026-03-04T12:05:32.324884",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-03T06:24:26.640368"
+  "updated": "2026-03-04T12:05:32.325902"
 }
