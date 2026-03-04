@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FIPPA SaaS Compliance for BC Public Bodies: What Changed and What You Need to Do | Upper Harbour</title>
+  <meta name="description" content="BC's FIPPA was amended in 2021. Public bodies can now store data outside Canada — but must complete privacy impact assessments evaluating jurisdictional risk. Here's what that means for your SaaS stack." />
+  <link rel="canonical" href="https://upperharbour.ca/resources/fippa-saas-compliance-bc-public-bodies" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="FIPPA SaaS Compliance for BC Public Bodies" />
+  <meta property="og:description" content="BC's FIPPA was amended in 2021. Public bodies must now complete privacy impact assessments evaluating jurisdictional risk for SaaS tools storing data outside Canada." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/resources/fippa-saas-compliance-bc-public-bodies" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta property="article:published_time" content="2026-03-03" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="FIPPA SaaS Compliance for BC Public Bodies" />
+  <meta name="twitter:description" content="What the 2021 FIPPA amendment means for your SaaS stack." />
+  <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "FIPPA SaaS Compliance for BC Public Bodies: What Changed and What You Need to Do",
+    "description": "BC's FIPPA was amended in 2021. Public bodies can now store data outside Canada but must complete privacy impact assessments evaluating jurisdictional risk.",
+    "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca" },
+    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://upperharbour.ca" },
+    "datePublished": "2026-03-03",
+    "mainEntityOfPage": "https://upperharbour.ca/resources/fippa-saas-compliance-bc-public-bodies"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "Does FIPPA still require data to be stored in Canada?", "acceptedAnswer": { "@type": "Answer", "text": "Not as a blanket requirement. The 2021 amendment (Bill 22) removed the strict Canada-only storage mandate under section 30.1. BC public bodies can now store personal information outside Canada, but must conduct a privacy impact assessment for any initiative involving sensitive personal information stored in a foreign jurisdiction. The PIA must evaluate risks including foreign government access laws like the US CLOUD Act." } },
+      { "@type": "Question", "name": "What is a FIPPA privacy impact assessment for SaaS?", "acceptedAnswer": { "@type": "Answer", "text": "Under the amended FIPPA, BC public bodies must complete a privacy impact assessment before storing sensitive personal information outside Canada. For SaaS tools, this means evaluating: where the vendor stores data, the parent company jurisdiction, whether foreign laws like the CLOUD Act can compel access, the sensitivity of the data involved, and what technical and contractual mitigations are in place." } },
+      { "@type": "Question", "name": "Can BC public bodies use US cloud services?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but with conditions. The 2021 FIPPA amendment allows BC public bodies to use cloud services that store data outside Canada after completing a privacy impact assessment. For US-operated services like Microsoft 365, AWS, or Salesforce, the PIA must evaluate CLOUD Act exposure and assess whether the jurisdictional risk is acceptable given the sensitivity of the data and available mitigations like encryption." } },
+      { "@type": "Question", "name": "What SaaS tools are FIPPA compliant?", "acceptedAnswer": { "@type": "Answer", "text": "No SaaS tool is automatically FIPPA compliant. Compliance depends on how a BC public body uses the tool, what data flows through it, and whether a privacy impact assessment has been completed. Tools operated by Canadian-incorporated companies with Canadian data residency carry the lowest jurisdictional risk. Upper Harbour's Sovereignty Index classifies 292 tools by parent jurisdiction and data residency to help BC public bodies prioritize their PIA efforts." } },
+      { "@type": "Question", "name": "What changed about FIPPA data residency in 2021?", "acceptedAnswer": { "@type": "Answer", "text": "Bill 22 amended FIPPA to remove the blanket prohibition on storing and accessing personal information outside Canada. The old section 30.1 required all personal information to be stored only in Canada and accessed only in Canada. The new framework allows storage outside Canada but requires a privacy impact assessment for sensitive personal information, shifting from a geography-based rule to a risk-assessment model." } }
+    ]
+  }
+  </script>
+
+<style>
+    .article-read { font-size: 12px; color: var(--muted); }
+    .timeline { margin: 32px 0; }
+    .timeline-item { display: flex; gap: 20px; padding: 20px 0; border-left: 2px solid rgba(60,184,176,0.2); margin-left: 12px; padding-left: 24px; position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: -7px; top: 26px; width: 12px; height: 12px; border-radius: 50%; background: var(--teal); }
+    .timeline-year { font-family: var(--mono, 'JetBrains Mono', monospace); font-size: 13px; font-weight: 600; color: var(--teal); min-width: 50px; }
+    .timeline-text { font-size: 15px; color: var(--slate); line-height: 1.7; }
+    .pia-step { background: var(--surface); border: 1px solid var(--border-md, rgba(234,240,244,0.1)); border-radius: 8px; padding: 20px 24px; margin: 12px 0; }
+    .pia-step-num { font-family: var(--mono, 'JetBrains Mono', monospace); font-size: 12px; font-weight: 700; color: var(--teal); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .pia-step-title { font-size: 16px; font-weight: 700; color: var(--ice); margin-bottom: 8px; }
+    .pia-step-desc { font-size: 14px; color: var(--slate); line-height: 1.7; }
+    .tool-risk { display: grid; grid-template-columns: 1fr auto auto; gap: 12px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--border-md, rgba(234,240,244,0.06)); }
+    .tool-risk:first-child { border-top: 1px solid var(--border-md, rgba(234,240,244,0.06)); }
+    .tool-risk-name { font-size: 14px; font-weight: 600; color: var(--ice); }
+    .tool-risk-parent { font-size: 13px; color: var(--slate); }
+    .tool-risk-tag { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.05em; text-transform: uppercase; }
+    .tag-exposed { background: rgba(224,96,80,0.12); color: #E06050; }
+    .tag-low { background: rgba(123,198,126,0.12); color: #7BC67E; }
+    .tag-moderate { background: rgba(201,168,76,0.12); color: #C9A84C; }
+    @media (max-width: 600px) { .tool-risk { grid-template-columns: 1fr auto; } .tool-risk-parent { display: none; } }
+</style>
+</head>
+<body>
+    <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link active">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <header class="article-hero">
+    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/resources">Resources</a> → FIPPA SaaS Compliance</div>
+    <h1 class="article-h1">FIPPA SaaS Compliance for BC Public Bodies</h1>
+    <p class="article-subtitle">The 2021 amendment changed the rules. Here's what BC public bodies need to do now.</p>
+    <p class="article-read">Updated March 2026 · 10 min read</p>
+  </header>
+
+  <article class="article-body">
+
+    <p class="intro">British Columbia's Freedom of Information and Protection of Privacy Act (FIPPA) historically imposed the strictest data residency requirement in Canada. Section 30.1 required public bodies to store personal information "only in Canada" and ensure it was "accessed only in Canada." In 2021, Bill 22 fundamentally changed this framework. The blanket prohibition is gone. In its place is a risk-assessment model that creates more compliance work, not less — and most BC public bodies haven't caught up.</p>
+
+    <h2>What changed</h2>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">2004</div>
+        <div class="timeline-text">Section 30.1 enacted. BC becomes the only province to require public bodies to store and access personal information exclusively in Canada. The strictest data residency provision in the country.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2016</div>
+        <div class="timeline-text">Legislative review. Health authorities, universities, and school districts push for relaxation. The committee recommends no changes, citing "adequate alternatives" like Canadian cloud regions.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-text">COVID-19 emergency order temporarily lifts the Canada-only restriction so public bodies can use collaboration tools like Zoom and Teams for remote work. The temporary measure signals the government's intent to modernize.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-text">Bill 22 amends FIPPA. The blanket Canada-only storage prohibition is removed. Public bodies can now store sensitive personal information outside Canada — but must complete a privacy impact assessment that evaluates the jurisdictional risks of the receiving country.</div>
+      </div>
+    </div>
+
+    <p>The key shift: BC moved from a <strong>geography-based rule</strong> (data must stay in Canada) to a <strong>risk-assessment model</strong> (data can leave Canada if you've evaluated and documented the jurisdictional risk). This is conceptually similar to Quebec's Law 25, which requires Transfer Impact Assessments for cross-border data transfers.</p>
+
+    <h2>What BC public bodies must do now</h2>
+
+    <p>Under the amended FIPPA, any BC public body that uses — or plans to use — a SaaS tool that stores sensitive personal information outside Canada must complete a privacy impact assessment. The BC government has issued directions on how these assessments must be conducted. Here's what the process looks like for SaaS tools:</p>
+
+    <div class="pia-step">
+      <div class="pia-step-num">Step 1</div>
+      <div class="pia-step-title">Inventory your SaaS stack</div>
+      <div class="pia-step-desc">Identify every SaaS tool your organization uses that processes personal information. For each tool, determine: what personal information flows through it, where the data is stored, and whether any data is stored or accessed outside Canada. Most BC public bodies use 20-60 SaaS tools. <a href="/resources/saas-inventory-compliance" style="color:var(--teal);">See our SaaS inventory guide →</a></div>
+    </div>
+
+    <div class="pia-step">
+      <div class="pia-step-num">Step 2</div>
+      <div class="pia-step-title">Classify the data sensitivity</div>
+      <div class="pia-step-desc">The PIA requirement applies specifically to sensitive personal information stored outside Canada. FIPPA does not define "sensitive," but the BC Privacy Commissioner's guidance indicates that medical, financial, genetic, and biometric information is almost always sensitive. Contextual factors matter — even routine data can be sensitive depending on how it's used. Public bodies must make this determination for each tool.</div>
+    </div>
+
+    <div class="pia-step">
+      <div class="pia-step-num">Step 3</div>
+      <div class="pia-step-title">Assess the jurisdictional risk</div>
+      <div class="pia-step-desc">This is the core of the new framework. For each tool that stores sensitive data outside Canada, the PIA must evaluate: the legal protections (or lack thereof) in the foreign jurisdiction, whether foreign government access laws apply (e.g., the US CLOUD Act), the likelihood of unauthorized access, and the impact to individuals if it occurs. This is where jurisdictional intelligence matters — and where most public bodies get stuck. <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);">Understand the CLOUD Act →</a></div>
+    </div>
+
+    <div class="pia-step">
+      <div class="pia-step-num">Step 4</div>
+      <div class="pia-step-title">Evaluate mitigations</div>
+      <div class="pia-step-desc">If jurisdictional risk exists, the PIA must document what mitigations reduce it. Common mitigations include: customer-managed encryption keys, contractual restrictions on foreign government access, Canadian data residency where available, and minimizing the personal information stored in the tool. The effectiveness of these mitigations varies — for example, Canadian data residency does not eliminate CLOUD Act exposure if the vendor is US-parented. <a href="/resources/data-residency-vs-data-sovereignty-canada" style="color:var(--teal);">Data residency vs sovereignty →</a></div>
+    </div>
+
+    <div class="pia-step">
+      <div class="pia-step-num">Step 5</div>
+      <div class="pia-step-title">Document and maintain</div>
+      <div class="pia-step-desc">The PIA must be documented and maintained. Any significant change — a vendor acquisition, a change in data storage location, a new subprocessor — requires the PIA to be updated. This is not a one-time exercise. <a href="/resources/minimum-compliance-documentation" style="color:var(--teal);">Minimum compliance documentation →</a></div>
+    </div>
+
+    <h2>Common SaaS tools and their jurisdictional risk</h2>
+
+    <p>Most BC public bodies rely on a core set of SaaS tools. Here's a summary of their jurisdictional profile relevant to the FIPPA PIA requirement:</p>
+
+    <div style="margin:24px 0;">
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/microsoft-365" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">Microsoft 365</a></div>
+        <div class="tool-risk-parent">US parent (Microsoft Corp)</div>
+        <div><span class="tool-risk-tag tag-exposed">CLOUD Act exposed</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/google-workspace" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">Google Workspace</a></div>
+        <div class="tool-risk-parent">US parent (Alphabet Inc)</div>
+        <div><span class="tool-risk-tag tag-exposed">CLOUD Act exposed</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/salesforce" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">Salesforce</a></div>
+        <div class="tool-risk-parent">US parent (Salesforce Inc)</div>
+        <div><span class="tool-risk-tag tag-exposed">CLOUD Act exposed</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/zoom" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">Zoom</a></div>
+        <div class="tool-risk-parent">US parent (Zoom Video Comm)</div>
+        <div><span class="tool-risk-tag tag-exposed">CLOUD Act exposed</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/slack" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">Slack</a></div>
+        <div class="tool-risk-parent">US parent (Salesforce Inc)</div>
+        <div><span class="tool-risk-tag tag-exposed">CLOUD Act exposed</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/aws" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">AWS</a></div>
+        <div class="tool-risk-parent">US parent (Amazon.com Inc)</div>
+        <div><span class="tool-risk-tag tag-exposed">CLOUD Act exposed</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name">ServiceNow</div>
+        <div class="tool-risk-parent">US parent (ServiceNow Inc)</div>
+        <div><span class="tool-risk-tag tag-exposed">CLOUD Act exposed</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/telus-cloud" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">TELUS Cloud</a></div>
+        <div class="tool-risk-parent">Canadian parent (TELUS Corp)</div>
+        <div><span class="tool-risk-tag tag-low">Canadian controlled</span></div>
+      </div>
+      <div class="tool-risk">
+        <div class="tool-risk-name"><a href="/tools/opentext-sovereign-cloud" style="color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.2);">OpenText Sovereign Cloud</a></div>
+        <div class="tool-risk-parent">Canadian parent (OpenText Corp)</div>
+        <div><span class="tool-risk-tag tag-low">Canadian controlled</span></div>
+      </div>
+    </div>
+
+    <p>The majority of tools used by BC public bodies are operated by US-parented companies. This doesn't mean they can't be used — it means each one requires a PIA that evaluates the CLOUD Act risk and documents the mitigations in place. <a href="/tools" style="color:var(--teal);">Search the full Sovereignty Index for 292+ tools →</a></p>
+
+    <h2>Who this applies to</h2>
+
+    <p>FIPPA applies to all BC public bodies, which includes:</p>
+
+    <div class="callout" style="border-left:3px solid var(--teal);padding:16px 20px;margin:20px 0;background:var(--teal-dim);">
+      <p style="font-size:14px;color:var(--slate);line-height:1.8;margin:0;"><strong style="color:var(--ice);">Health authorities</strong> — Vancouver Coastal Health, Fraser Health, Interior Health, Island Health, Northern Health, PHSA, Providence Health Care<br/>
+      <strong style="color:var(--ice);">Universities and colleges</strong> — UBC, SFU, BCIT, UNBC, UVic, all BC colleges and institutes<br/>
+      <strong style="color:var(--ice);">School districts</strong> — all 60 BC school districts<br/>
+      <strong style="color:var(--ice);">Municipalities</strong> — City of Vancouver, City of Surrey, City of Burnaby, and all BC municipalities<br/>
+      <strong style="color:var(--ice);">Crown corporations</strong> — BC Hydro, ICBC, BC Housing, BC Lottery Corporation<br/>
+      <strong style="color:var(--ice);">Provincial ministries</strong> — all BC government ministries and agencies<br/>
+      <strong style="color:var(--ice);">Regulatory bodies</strong> — professional regulatory organizations under FIPPA jurisdiction</p>
+    </div>
+
+    <p>Each of these organizations uses SaaS tools. Each tool that stores sensitive personal information outside Canada requires a PIA under the amended FIPPA. The practical challenge is scale — a health authority with 40 SaaS tools needs 40 jurisdictional assessments, not one.</p>
+
+    <h2>The gap between requirement and reality</h2>
+
+    <p>The 2021 amendment created a more sophisticated compliance obligation, but most BC public bodies are still catching up. Common challenges include:</p>
+
+    <p><strong>No complete SaaS inventory.</strong> Most public bodies don't have a comprehensive list of every SaaS tool in use, let alone a jurisdictional map of each vendor's parent company and data storage locations.</p>
+
+    <p><strong>No standardized jurisdictional analysis.</strong> The PIA requires evaluating "the legal protections in the receiving jurisdiction." For most privacy officers, this means researching the CLOUD Act, understanding parent company jurisdiction, and evaluating subprocessor chains — from scratch, for each tool.</p>
+
+    <p><strong>No monitoring.</strong> Vendor ownership changes (acquisitions by foreign companies), data centre relocations, and new subprocessors can change a tool's jurisdictional risk overnight. Most PIAs are point-in-time documents that aren't updated.</p>
+
+    <p>This is the problem Upper Harbour's <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> and <a href="/harbourscan" style="color:var(--teal);">HarbourScan</a> are designed to solve — providing the jurisdictional intelligence layer that makes PIA completion systematic rather than manual.</p>
+
+    <h2>How to start</h2>
+
+    <p>If you're a privacy officer, IT director, or procurement lead at a BC public body, here's a practical starting point:</p>
+
+    <p><strong>1. Run a free HarbourScan.</strong> <a href="/harbourscan" style="color:var(--teal);">HarbourScan</a> maps your SaaS stack to parent jurisdictions in minutes. You'll see which tools are CLOUD Act exposed, which have Canadian data residency, and which require a PIA under the amended FIPPA.</p>
+
+    <p><strong>2. Prioritize by data sensitivity.</strong> Not every tool needs the same level of assessment. Start with tools that process health data, financial data, employee records, and student records — these are almost always "sensitive" under the PIA framework.</p>
+
+    <p><strong>3. Use the Sovereignty Index.</strong> <a href="/tools" style="color:var(--teal);">Search the Index</a> for any tool to see its parent jurisdiction, CLOUD Act status, data residency options, and Canadian alternatives.</p>
+
+    <p><strong>4. Document systematically.</strong> Use a consistent PIA template for each tool. Upper Harbour provides a free <a href="/resources/fippa-pia-template" style="color:var(--teal);">FIPPA PIA template</a> designed specifically for SaaS vendor assessments under the amended framework.</p>
+
+  </article>
+
+  <section class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">Does FIPPA still require data to be stored in Canada?</div>
+      <div class="faq-a">Not as a blanket requirement. The 2021 amendment (Bill 22) removed the strict Canada-only storage mandate. BC public bodies can now store personal information outside Canada, but must conduct a privacy impact assessment for any initiative involving sensitive personal information stored in a foreign jurisdiction. The PIA must evaluate risks including foreign government access laws like the US <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);">CLOUD Act</a>.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is a FIPPA privacy impact assessment for SaaS?</div>
+      <div class="faq-a">Under the amended FIPPA, BC public bodies must complete a privacy impact assessment before storing sensitive personal information outside Canada. For SaaS tools, this means evaluating: where the vendor stores data, the parent company jurisdiction, whether foreign laws like the CLOUD Act can compel access, the sensitivity of the data involved, and what technical and contractual mitigations are in place. Upper Harbour's <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> provides this jurisdictional intelligence for 292 tools.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can BC public bodies use US cloud services?</div>
+      <div class="faq-a">Yes, but with conditions. The 2021 FIPPA amendment allows BC public bodies to use cloud services that store data outside Canada after completing a privacy impact assessment. For US-operated services like <a href="/tools/microsoft-365" style="color:var(--teal);">Microsoft 365</a>, <a href="/tools/aws" style="color:var(--teal);">AWS</a>, or <a href="/tools/salesforce" style="color:var(--teal);">Salesforce</a>, the PIA must evaluate CLOUD Act exposure and assess whether the jurisdictional risk is acceptable given the sensitivity of the data and available mitigations.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What SaaS tools are FIPPA compliant?</div>
+      <div class="faq-a">No SaaS tool is automatically FIPPA compliant — compliance depends on how the tool is used, what data flows through it, and whether a privacy impact assessment has been completed. Tools operated by Canadian-incorporated companies with Canadian data residency carry the lowest jurisdictional risk. Upper Harbour's <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> classifies 292 tools by parent jurisdiction and data residency to help BC public bodies prioritize their PIA efforts.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What changed about FIPPA data residency in 2021?</div>
+      <div class="faq-a">Bill 22 amended FIPPA to remove the blanket prohibition on storing and accessing personal information outside Canada. The old section 30.1 required all personal information to be "stored only in Canada and accessed only in Canada." The new framework allows storage outside Canada but requires a privacy impact assessment for sensitive personal information, shifting from a geography-based rule to a risk-assessment model. See our guide on <a href="/resources/data-residency-vs-data-sovereignty-canada" style="color:var(--teal);">data residency vs data sovereignty</a>.</div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Map your organization's FIPPA exposure</h2>
+    <p>HarbourScan maps your SaaS stack to parent jurisdictions — identifying which tools require a privacy impact assessment under the amended FIPPA framework.</p>
+    <a href="/harbourscan" class="cta-btn">Run HarbourScan →</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Look up any tool's jurisdiction: <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index →</a></p>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">Need help with FIPPA PIAs? <a href="https://calendly.com/josh-upperharbour/30min" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Request a scoping call →</a></p>
+  </section>
+
+    <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+            <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+            <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+          </svg>
+          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span>
+        </div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+  <script>
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+</body>
+</html>

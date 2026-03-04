@@ -1,12 +1,478 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta http-equiv="refresh" content="0; url=/research/canadian-technology-sovereignty-index" />
-<link rel="canonical" href="https://upperharbour.ca/research/canadian-technology-sovereignty-index" />
-<title>Redirecting…</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canadian SaaS Sovereignty Index 2026 — Jurisdictional Data for 693 SaaS Tools | Upper Harbour</title>
+  <meta name="description" content="Upper Harbour's Canadian SaaS Sovereignty Index maps 693 SaaS tools to their parent jurisdictions, CLOUD Act exposure, and Canadian data residency availability. The definitive reference for Law 25 compliance and Canadian data sovereignty." />
+  <link rel="canonical" href="https://upperharbour.ca/research/canadian-saas-sovereignty-index" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Canadian SaaS Sovereignty Index 2026 — 693 Tools Mapped | Upper Harbour" />
+  <meta property="og:description" content="693 SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, and Canadian data residency. The definitive Canadian data sovereignty reference." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/research/canadian-saas-sovereignty-index" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta property="article:published_time" content="2026-02-20" />
+  <meta property="article:modified_time" content="2026-02-20" />
+  <meta property="article:author" content="Joshua van Es" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Canadian SaaS Sovereignty Index 2026 — 693 Tools Mapped" />
+  <meta name="twitter:description" content="693 SaaS tools mapped to parent jurisdictions, CLOUD Act exposure, and data residency." />
+  <meta name="twitter:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Canadian SaaS Sovereignty Index 2026: 693 Tools Mapped to Parent Jurisdictions",
+    "description": "Upper Harbour's Canadian SaaS Sovereignty Index maps 693 SaaS tools to their parent jurisdictions, CLOUD Act exposure, and Canadian data residency availability.",
+    "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://www.linkedin.com/in/joshuavanes", "jobTitle": "Founder", "worksFor": { "@type": "Organization", "name": "Upper Harbour" } },
+    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://upperharbour.ca" },
+    "datePublished": "2026-02-20",
+    "dateModified": "2026-02-20",
+    "mainEntityOfPage": "https://upperharbour.ca/research/canadian-saas-sovereignty-index"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is data sovereignty in Canada?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Data sovereignty in Canada refers to the principle that Canadian data should be subject exclusively to Canadian law. It is determined not by where data is physically stored (data residency), but by the legal jurisdiction of the entity that controls the platform. If a SaaS tool is operated by a US-incorporated parent company, Canadian data processed through that tool may be subject to US legal process under the CLOUD Act, regardless of where the data is physically stored. Upper Harbour's analysis of 693 commonly-used SaaS tools found that 65% are parented in the United States, making them subject to the CLOUD Act." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the CLOUD Act and how does it affect Canadian organizations?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Clarifying Lawful Overseas Use of Data Act (CLOUD Act) is a US federal law enacted in 2018 that allows US law enforcement to compel US-incorporated technology companies to produce data in their possession, regardless of where that data is physically stored. For Canadian organizations, this means data processed through US-parented SaaS tools — even with Canadian data residency configured — can be accessed by US authorities under legal process. According to Upper Harbour's Canadian SaaS Sovereignty Index, a typical Canadian organization using 15-20 SaaS tools will find that 60-80% of their stack falls under US jurisdiction through the CLOUD Act." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Law 25 in Quebec?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Law 25, formally the Act to modernize legislative provisions as regards the protection of personal information, is Quebec's provincial privacy law. It is the strictest privacy law in Canada, comparable to the EU's GDPR. Law 25 requires organizations to conduct Transfer Impact Assessments (TIAs) before communicating personal information outside Quebec, designate and publish a Privacy Officer, maintain an incident register for at least 5 years, and obtain express opt-in consent for data collection. Maximum penalties under Law 25 are $25 million or 4% of global turnover. Law 25 also provides a private right of action with minimum damages of $1,000 per violation." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between data residency and data sovereignty?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Data residency refers to the physical location where data is stored. Data sovereignty refers to which country's laws govern the data. A SaaS tool can offer Canadian data residency (servers in Canada) while the parent company remains subject to US jurisdiction through the CLOUD Act. Upper Harbour's research found that of the 693 SaaS tools in its Canadian SaaS Sovereignty Index, 91% of non-Canadian tools offering Canadian data residency are still CLOUD Act exposed because their parent companies are US-incorporated. Data residency is a geographic configuration; data sovereignty is a legal and corporate structure question." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Transfer Impact Assessment under Law 25?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A Transfer Impact Assessment (TIA) is a documented evaluation required under Quebec's Law 25 before personal information can be communicated outside Quebec. The TIA must evaluate the sensitivity of the information being transferred, the purposes of the transfer, the legal framework of the receiving jurisdiction (including CLOUD Act exposure for US-bound transfers), and the contractual and technical safeguards in place. This requirement has been in effect since September 22, 2023. Upper Harbour's HarbourScan assessment tool automates the jurisdictional mapping needed to begin TIA documentation." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many SaaS tools are CLOUD Act exposed?",
+        "acceptedAnswer": { "@type": "Answer", "text": "According to Upper Harbour's Canadian SaaS Sovereignty Index, which maps 693 commonly-used SaaS tools across 30 categories, 65% (approximately 453 tools) are parented in the United States and therefore subject to the CLOUD Act. A typical Canadian organization using 15-20 SaaS tools will find that 60-80% of their stack is CLOUD Act exposed. Categories with the highest US-jurisdiction concentration include cloud infrastructure (100% US-parented), communication (90% US-parented), and CRM (76% US-parented). Categories with more Canadian-headquartered alternatives include legal practice management and healthcare." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is PIPEDA and how does it compare to Law 25?",
+        "acceptedAnswer": { "@type": "Answer", "text": "PIPEDA (Personal Information Protection and Electronic Documents Act) is Canada's federal privacy law for private-sector organizations. Law 25 is Quebec's provincial privacy law. Law 25 is significantly stricter than PIPEDA in several areas: it requires express opt-in consent (vs. PIPEDA's implied consent in many contexts), mandatory Transfer Impact Assessments for cross-border data transfers (PIPEDA has no formal TIA requirement), maximum penalties of $25 million or 4% of global turnover (vs. PIPEDA's $100,000 per violation), and a private right of action with minimum $1,000 damages (PIPEDA has no private right of action). The proposed federal Consumer Privacy Protection Act (CPPA) would bring federal law closer to Law 25's standards." }
+      },
+      {
+        "@type": "Question",
+        "name": "What percentage of SaaS tools used in Canada are actually Canadian-owned?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Only 18% of the 693 SaaS tools in Upper Harbour's Canadian SaaS Sovereignty Index are Canadian-owned — meaning Canadian-headquartered, majority Canadian ownership, and no foreign parent company. Another 11% require review — Canadian-headquartered with foreign backing, or US-parented with Canadian residency available. 15% are non-US foreign vendors not subject to the CLOUD Act. The remaining 54% are CLOUD Act exposed. This means that a 'buy Canadian' policy applied to SaaS procurement would disqualify roughly 82% of the tools Canadian organizations currently rely on. Categories with the highest Canadian ownership include legal practice management and healthcare." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is HarbourScan?",
+        "acceptedAnswer": { "@type": "Answer", "text": "HarbourScan is a free, browser-based SaaS compliance assessment tool built by Upper Harbour. It maps an organization's SaaS tools to their parent jurisdictions, flags CLOUD Act exposure, identifies missing Transfer Impact Assessments and Data Processing Agreements, and generates a compliance gap report. HarbourScan draws on Upper Harbour's database of 693 mapped SaaS tools across 30 categories. The assessment takes approximately 10 minutes and runs entirely in the browser — no data is stored or transmitted. HarbourScan was created by Joshua van Es, founder of Upper Harbour, to provide Canadian organizations with an accessible entry point for Law 25 and PIPEDA compliance." }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is Joshua van Es?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Joshua van Es is the founder of Upper Harbour, a Canadian compliance intelligence firm focused on SaaS jurisdictional mapping and data sovereignty. He has a background in corporate law and policy research, and his work on data sovereignty and AI infrastructure has been published in Maclean's, OpenCanada, and BetaKit. He created the Canadian SaaS Sovereignty Index, which maps 693 SaaS tools to their parent jurisdictions, and HarbourScan, a free assessment tool for Law 25 and PIPEDA compliance. Van Es previously contributed to Landscapes of Injustice, a SSHRC-funded research collaboration across Canadian universities, and authored a chapter published by McGill-Queen's University Press." }
+      },
+      {
+        "@type": "Question",
+        "name": "What are the penalties for non-compliance with Law 25?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Law 25 penalties include administrative monetary penalties of up to $10 million or 2% of global turnover, penal fines of up to $25 million or 4% of global turnover for severe violations, and civil damages with a minimum of $1,000 per violation through private right of action. Class actions are explicitly permitted under Law 25. The Commission d'accès à l'information du Québec (CAI) is the enforcement body. Law 25's penalty structure is modelled on the EU's GDPR and represents a significant increase over PIPEDA's maximum of $100,000 per violation." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Canadian data residency protect against the CLOUD Act?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Canadian data residency means data is stored on servers physically located in Canada. However, if the SaaS vendor's parent company is US-incorporated, the data remains subject to the CLOUD Act regardless of where it is physically stored. A US court order can compel a US-headquartered company to produce data stored in Canadian data centres. In June 2025, Microsoft France's director of public and legal affairs confirmed under oath before the French Senate that if a legally valid US order is issued, Microsoft is obligated to comply regardless of where data is stored. According to Upper Harbour's analysis, 95% of non-Canadian SaaS tools that offer Canadian data residency are still CLOUD Act exposed because their parent companies are US-incorporated. To achieve true data sovereignty, organizations need Canadian-headquartered vendors — not just Canadian-hosted infrastructure." }
+      },
+      {
+        "@type": "Question",
+        "name": "What SaaS tools offer Canadian data residency?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Major SaaS tools offering Canadian data residency include Microsoft 365 (most business plans), Salesforce (via Hyperforce Canada region), AWS (ca-central-1 Montreal, ca-west-1 Calgary), Azure (Canada Central Toronto, Canada East Quebec City), and Google Cloud (Montreal and Toronto regions). Slack and Google Workspace offer partial Canadian residency on enterprise plans. Canadian-headquartered alternatives that provide both residency and sovereignty include Clio (legal practice management), FreshBooks and Wave (accounting), Jane App (healthcare), and TELUS Health. Upper Harbour's Canadian SaaS Sovereignty Index tracks residency and sovereignty status across 693 tools in 30 categories." }
+      }
+    ]
+  }
+  </script>
+
+<style>
+    /* Page-specific overrides */
+    .article-h1 em { color: var(--gold); }
+  </style>
 </head>
 <body>
-<p>This page has moved to <a href="/research/canadian-technology-sovereignty-index">Canadian Technology Sovereignty Index</a>.</p>
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/tools" class="nav-link">Tools</a>
+      <a href="/research" class="nav-link active">Research</a>
+      <a href="/resources" class="nav-link">Guides</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/signals">Signals</a><a href="/tools">Tools</a><a href="/research">Research</a><a href="/resources">Guides</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <header class="article-hero">
+    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/research">Research</a> → Sovereignty Index</div>
+    <div class="article-meta">
+      <span class="article-tag">Research</span>
+      <span class="article-tag"><span id="versionTag">2026</span> Index</span>
+      <span class="article-date">Updated <span id="articleDate">February 2026</span></span>
+    </div>
+    <h1 class="article-h1">Canadian SaaS <em>Sovereignty Index</em></h1>
+    <p class="article-author">By <a href="https://www.linkedin.com/in/joshuavanes">Joshua van Es</a>, Founder of <a href="/">Upper Harbour</a></p>
+    <p class="article-intro">Upper Harbour mapped <span id="introTotal">693</span> SaaS tools commonly used by Canadian organizations to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. This is what the data shows.</p>
+    <p style="font-size:11px;color:var(--muted);margin-top:4px;">Database last updated: <span id="lastUpdated">—</span></p>
+  </header>
+
+  <article class="article-body">
+
+    <h2>Key findings</h2>
+    <p>The Canadian SaaS Sovereignty Index is Upper Harbour's proprietary research database covering <span id="bodyTotal">693</span> SaaS tools across <span id="bodyCatCount">30</span> categories commonly used by Canadian organizations. Each tool has been mapped to its parent company, country of incorporation, CLOUD Act exposure status, and Canadian data residency availability.</p>
+
+    <div class="stat-grid">
+      <div class="stat-box"><div class="stat-num" id="statTools">693</div><div class="stat-label">SaaS tools mapped</div></div>
+      <div class="stat-box"><div class="stat-num red" id="statCloudAct">65%</div><div class="stat-label">US-parented (CLOUD Act exposed)</div></div>
+      <div class="stat-box"><div class="stat-num gold" id="statCaResExposed">89%</div><div class="stat-label">With CA residency still CLOUD Act exposed</div></div>
+      <div class="stat-box"><div class="stat-num" id="statCanadian">18%</div><div class="stat-label">Canadian-owned</div></div>
+    </div>
+
+    <p>Of the <span id="bodyTotal2">693</span> SaaS tools in the index, approximately <span id="bodyUSCount">453</span> (<span id="bodyUSPct">65</span>%) are parented in the United States and subject to the CLOUD Act. Among the tools that offer Canadian data residency as an option, <span id="bodyCaResPct">89</span>% are still CLOUD Act exposed because their parent companies are US-incorporated. Only <span id="bodyCdnPct">18</span>% of tools in the index are Canadian-headquartered, offering both data residency and data sovereignty.</p>
+
+    <h2>Jurisdiction breakdown by category</h2>
+    <p>CLOUD Act exposure varies significantly by SaaS category. Categories dominated by US vendors present the highest jurisdictional risk for Canadian organizations under Law 25:</p>
+
+    <table class="data-table">
+      <thead><tr><th>SaaS Category</th><th>Tools</th><th>US-Parented</th><th>Canadian-HQ</th><th>Other</th></tr></thead>
+      <tbody id="catTableBody"></tbody>
+    </table>
+
+    <p id="catSummaryText">Legal practice management and healthcare are the only categories where Canadian-headquartered alternatives represent a meaningful share of the market. In every other category, US-parented vendors dominate, meaning the majority of a typical Canadian organization's SaaS stack is CLOUD Act exposed.</p>
+
+    <h2>Sample data: <span id="sampleCount">50</span> of <span id="sampleTotal">693</span> tools</h2>
+    <p>The following table shows a representative sample of tools from the index. <a href="/tools">Search the full dataset</a> or run <a href="/harbourscan">HarbourScan</a> to map your specific stack.</p>
+
+    <table class="data-table" style="font-size:12px;">
+      <thead><tr><th>Tool</th><th>Category</th><th>Parent HQ</th><th>CLOUD Act</th><th>CA Residency</th></tr></thead>
+      <tbody id="sampleTableBody"></tbody>
+    </table>
+    <p style="font-size:12px;color:var(--muted);margin-top:8px;">Source: Upper Harbour Canadian SaaS Sovereignty Index. Parent jurisdiction determined through corporate registry filings and SEC disclosures. <a href="/tools">Browse all <span id="sampleBrowseCount">693</span> tools →</a></p>
+
+    <h2>What "buy Canadian" actually looks like</h2>
+    <p>Across the full <span id="ownerTotal">693</span>-tool index, we classify each tool into one of four ownership categories:</p>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0;" id="ownershipGrid">
+      <div style="background:var(--navy);border:1px solid var(--border-md);border-radius:8px;padding:20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#32A8A4;margin-bottom:8px;">Canadian-owned</div>
+        <div style="font-size:32px;font-weight:700;color:#32A8A4;line-height:1;" id="ownCdn">18%</div>
+        <div style="font-size:12px;color:var(--slate);margin-top:8px;line-height:1.5;">Canadian-headquartered, majority Canadian ownership, no foreign parent. Full sovereignty alignment. Examples: Shopify, Clio, Cohere, Hootsuite, Wealthsimple.</div>
+      </div>
+      <div style="background:var(--navy);border:1px solid var(--border-md);border-radius:8px;padding:20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Review · Caution</div>
+        <div style="font-size:32px;font-weight:700;color:var(--gold);line-height:1;" id="ownCdnFB">11%</div>
+        <div style="font-size:12px;color:var(--slate);margin-top:8px;line-height:1.5;">Canadian-HQ with foreign backing, or US-parented with Canadian residency available. Not fully sovereign but mitigating factors exist. Examples: 1Password, Microsoft 365 (CA region).</div>
+      </div>
+      <div style="background:var(--navy);border:1px solid var(--border-md);border-radius:8px;padding:20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--slate);margin-bottom:8px;">Non-exposed foreign</div>
+        <div style="font-size:32px;font-weight:700;color:var(--slate);line-height:1;" id="ownFormer">17%</div>
+        <div style="font-size:12px;color:var(--slate);margin-top:8px;line-height:1.5;">Foreign-headquartered but not subject to the CLOUD Act. EU, Australian, and other non-US vendors. Examples: SAP, Canva, Atlassian, monday.com.</div>
+      </div>
+      <div style="background:var(--navy);border:1px solid var(--border-md);border-radius:8px;padding:20px;">
+        <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#E06050;margin-bottom:8px;">CLOUD Act exposed</div>
+        <div style="font-size:32px;font-weight:700;color:#E06050;line-height:1;" id="ownForeign">54%</div>
+        <div style="font-size:12px;color:var(--slate);margin-top:8px;line-height:1.5;">US-parented, subject to US legal process. The highest-risk category. Examples: Google, Salesforce, AWS, ServiceNow, Zoom.</div>
+      </div>
+    </div>
+
+    <p>The numbers tell a clear story: only <strong><span id="ownCdnInline">21</span>% of the SaaS tools Canadian organizations rely on are fully Canadian-owned</strong>. Another <span id="ownFBInline">18</span>% require review — Canadian-headquartered but foreign-backed, or offering mitigations like Canadian data residency without resolving the underlying jurisdictional question. The remaining <span id="ownFormerInline">6</span>% are non-US foreign vendors, and the majority are CLOUD Act exposed.</p>
+
+    <p>This matters for three reasons.</p>
+
+    <p><strong>First, "buy Canadian" without a definition is unenforceable.</strong> When the Council of Canadian Innovators calls for Canadian-ownership requirements in government procurement, the question is: which category qualifies? Is 1Password — headquartered in Toronto, backed by US venture capital — Canadian enough? The answer has real procurement consequences, and no government has published a clear standard.</p>
+
+    <p><strong>Second, the Canadian-owned category is shrinking.</strong> The <a href="/research/sovereignty-acquisition-tracker">Sovereignty Acquisition Tracker</a> documents Canadian SaaS companies that have been acquired by foreign parents. This is not a one-time event — it is a pattern. Private equity roll-ups, strategic acquisitions, and Delaware reincorporations move companies out of the Canadian-owned category regularly. Without ongoing monitoring, any sovereignty assessment goes stale the moment an acquisition closes.</p>
+
+    <p><strong>Third, sovereignty and ownership are the same question.</strong> This is the point the Canadian SHIELD Institute has made in its Sovereignty Score framework: sovereignty isn't just about where data is stored — it's about who controls the infrastructure. A "buy Canadian" policy that accepts Canadian-headquartered, foreign-parented companies as sovereign is a policy that accepts CLOUD Act exposure as an acceptable tradeoff. Whether that's the right call is a political decision. But it should be a conscious one, not a default.</p>
+
+    <div class="callout">
+      <div class="callout-label">Ownership classification methodology</div>
+      <p>We classify tools based on corporate registry filings, SEC/SEDAR disclosures, and publicly reported funding rounds. "Canadian-owned" requires Canadian incorporation of the ultimate parent, majority Canadian ownership or public listing on a Canadian exchange, and no foreign parent company. "Canadian-HQ, foreign-backed" indicates Canadian headquarters with significant (>30%) foreign institutional investment. "Formerly Canadian" tracks companies that were Canadian-owned at founding and have since been acquired by foreign parents. Classifications are reviewed quarterly as part of the index update cycle.</p>
+    </div>
+
+    <h2>What this means for Canadian organizations</h2>
+    <p>A typical Canadian organization using 15–20 SaaS tools will find that 60–80% of their stack is CLOUD Act exposed. For Quebec organizations subject to Law 25, this means 10–16 Transfer Impact Assessments are likely required — each documenting the jurisdictional exposure, the legal framework of the receiving jurisdiction, and the contractual safeguards in place.</p>
+    <p>Most Canadian organizations have not completed a single TIA. This requirement has been in effect since September 22, 2023. Organizations that are using cross-border SaaS tools without documented assessments have been technically non-compliant for over two years.</p>
+
+    <div class="callout">
+      <div class="callout-label">About the methodology</div>
+      <p>The Canadian SaaS Sovereignty Index was compiled by <a href="https://www.linkedin.com/in/joshuavanes">Joshua van Es</a> at <a href="/">Upper Harbour</a> through primary research into corporate ownership structures, SEC filings, provincial and federal corporate registries, and vendor documentation. Each tool was evaluated for parent company jurisdiction, CLOUD Act applicability, Canadian data residency availability, and DPA availability. The index is updated quarterly. Last update: <span id="methDate">February 2026</span>.</p>
+    </div>
+
+    <h2>Compliance implications</h2>
+    <p><strong>Under Law 25 (Quebec):</strong> Every US-parented SaaS tool processing personal information of Quebec residents triggers a mandatory Transfer Impact Assessment. The assessment must evaluate the US legal framework — including the CLOUD Act — and document whether adequate protections exist. Canadian data residency does not eliminate this requirement.</p>
+    <p><strong>Under PIPEDA (Federal):</strong> While PIPEDA doesn't mandate formal TIAs, the Office of the Privacy Commissioner recommends organizations assess the legal framework of foreign jurisdictions. The proposed Consumer Privacy Protection Act (CPPA) would make this assessment mandatory at the federal level.</p>
+    <p><strong>For government procurement:</strong> Federal and provincial government RFPs increasingly include data sovereignty requirements. The Government of Canada's Digital Sovereignty Framework identifies foreign technology dependencies as a strategic risk. Vendors selling into government need documented sovereignty positioning across their SaaS stack.</p>
+
+    <h2>How to use this data</h2>
+    <p><strong><a href="/tools">Search the Sovereignty Index</a></strong> to look up any tool's parent jurisdiction, CLOUD Act status, and Canadian data residency — instant and free.</p>
+    <p><strong><a href="/harbourscan">HarbourScan</a></strong>, Upper Harbour's free assessment tool, draws on this database to map an organization's specific SaaS environment to jurisdictional exposure. It identifies which tools are CLOUD Act exposed, flags missing TIAs and DPAs, and generates a compliance gap report. The assessment runs entirely in the browser and takes approximately 10 minutes.</p>
+    <p>For a deeper dive into the compliance requirements these findings connect to, see Upper Harbour's guides on <a href="/resources/law-25-saas-compliance">Law 25 and your SaaS stack</a>, <a href="/resources/cloud-act-canadian-data">the CLOUD Act and Canadian data</a>, <a href="/resources/transfer-impact-assessments-law-25">Transfer Impact Assessments</a>, <a href="/resources/data-residency-vs-data-sovereignty-canada">data residency vs data sovereignty</a>, and <a href="/resources/pipeda-vs-law-25">PIPEDA vs Law 25</a>.</p>
+
+  </article>
+
+  <section class="faq-section">
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <div class="faq-q">What is data sovereignty in Canada?</div>
+      <div class="faq-a">Data sovereignty in Canada refers to the principle that Canadian data should be subject exclusively to Canadian law. It is determined not by where data is physically stored (data residency), but by the legal jurisdiction of the entity that controls the platform. Upper Harbour's analysis of 693 SaaS tools found that 65% are parented in the United States, making them subject to the CLOUD Act.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is the CLOUD Act and how does it affect Canadian organizations?</div>
+      <div class="faq-a">The CLOUD Act (2018) allows US law enforcement to compel US-incorporated companies to produce data regardless of where it's stored. For Canadian organizations, this means data processed through US-parented SaaS tools can be accessed by US authorities — even with Canadian data residency configured. A typical Canadian organization's stack is 60–80% CLOUD Act exposed.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is Law 25?</div>
+      <div class="faq-a">Law 25 is Quebec's provincial privacy law — the strictest in Canada, comparable to the EU's GDPR. It requires Transfer Impact Assessments for cross-border data transfers, a designated Privacy Officer, an incident register, and express opt-in consent. Maximum penalties are $25 million or 4% of global turnover.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does Canadian data residency protect against the CLOUD Act?</div>
+      <div class="faq-a">No. Canadian data residency means data is stored in Canada, but if the vendor's parent company is US-incorporated, the CLOUD Act still applies. Upper Harbour's research found that 91% of non-Canadian SaaS tools offering Canadian data residency are still CLOUD Act exposed. In June 2025, Microsoft France's director of public and legal affairs confirmed under oath before the French Senate that Microsoft cannot guarantee data sovereignty — if a valid US legal order is issued, the company must comply regardless of where data is stored.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How many SaaS tools are CLOUD Act exposed?</div>
+      <div class="faq-a">Of the 693 tools in Upper Harbour's Canadian SaaS Sovereignty Index, 65% (approximately 453 tools) are US-parented and CLOUD Act exposed. The highest-concentration categories are cloud infrastructure (100%), communication (90%), and CRM (76%).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What percentage of SaaS tools used in Canada are actually Canadian-owned?</div>
+      <div class="faq-a">Only 18%. We classify the 693 tools in the index into four categories: Canadian-owned (18%), review/caution (11%), non-exposed foreign (17%), and CLOUD Act exposed (54%). A "buy Canadian" policy applied to SaaS procurement would disqualify roughly 82% of the tools Canadian organizations currently rely on.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What is HarbourScan?</div>
+      <div class="faq-a">HarbourScan is Upper Harbour's free, browser-based SaaS compliance assessment tool. It maps your organization's SaaS tools to parent jurisdictions, flags CLOUD Act exposure, and generates a compliance gap report in approximately 10 minutes. Created by Joshua van Es to provide Canadian organizations with an accessible entry point for Law 25 and PIPEDA compliance.</div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Map your stack against the index</h2>
+    <p>HarbourScan uses the Canadian SaaS Sovereignty Index to assess your specific environment — free, in your browser.</p>
+    <a href="/harbourscan" class="cta-btn">Run HarbourScan →</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Look up any tool's jurisdiction: <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index →</a></p>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">Need compliance documentation? <a href="https://calendly.com/josh-upperharbour/30min" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Request a scoping call →</a></p>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+            <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+            <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+          </svg>
+          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span>
+        </div>
+        <p class="footer-desc">Jurisdictional compliance intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/resources">Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="/cdn-cgi/l/email-protection#c1abaeb2a981b4b1b1a4b3a9a0b3a3aeb4b3efa2a0">Contact us</a></li>
+          <li><a href="https://upperharbour.ca">upperharbour.ca</a></li>
+          <li><a href="https://www.linkedin.com/in/joshuavanes" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+  <script src="/assets/saas-db.js"></script>
+  <script>
+  (function() {
+    var total = saasDB.length;
+    var usCount = 0, cdnCount = 0, cloudActCount = 0;
+    var caResTotal = 0, caResExposed = 0;
+    var categories = {};
+
+    // Classification counts (matches four-tier risk model)
+    var ownCanadian = 0, ownReview = 0, ownNonExposed = 0, ownExposed = 0;
+
+    saasDB.forEach(function(t) {
+      if (t.jurisdiction === 'United States') usCount++;
+      if (t.jurisdiction === 'Canada') cdnCount++;
+      if (t.cloudAct) cloudActCount++;
+
+      var res = (t.dataResidency || '').toLowerCase();
+      if (t.risk !== 'canadian') {
+        if (res.indexOf('canada') > -1 || res.indexOf('ca-central') > -1 || res.indexOf('montreal') > -1 || res.indexOf('toronto') > -1) {
+          caResTotal++;
+          if (t.cloudAct) caResExposed++;
+        }
+      }
+
+      var c = t.category || 'other';
+      if (!categories[c]) categories[c] = { total:0, us:0, cdn:0, other:0 };
+      categories[c].total++;
+      if (t.jurisdiction === 'United States') categories[c].us++;
+      else if (t.jurisdiction === 'Canada') categories[c].cdn++;
+      else categories[c].other++;
+
+      // Four-tier ownership
+      if (t.risk === 'canadian') ownCanadian++;
+      else if (t.risk === 'review') ownReview++;
+      else if (t.risk === 'non_exposed') ownNonExposed++;
+      else ownExposed++;
+    });
+
+    var cloudActPct = Math.round(cloudActCount / total * 100);
+    var caResPct = caResTotal > 0 ? Math.round(caResExposed / caResTotal * 100) : 0;
+    var cdnPct = Math.round(cdnCount / total * 100);
+    var catCount = Object.keys(categories).length;
+
+    // Category display names
+    var catNames = {
+      communication:'Communication',cloud_infrastructure:'Cloud Infrastructure',
+      productivity:'Productivity',crm:'CRM & Sales',marketing:'Marketing',
+      analytics:'Analytics',hr:'HR & Payroll',finance:'Finance',
+      accounting:'Accounting',legal:'Legal',healthcare:'Healthcare',
+      education:'Education',ai:'AI & Data',security:'Security & Identity',
+      devops:'DevOps & Development',design:'Design',project_management:'Project Management',
+      file_storage:'File Storage',ecommerce:'E-commerce',erp:'ERP',
+      customer_support:'Customer Support',cms:'CMS & Web',integration:'Integration & iPaaS',
+      survey:'Survey & Forms',enterprise_it:'Enterprise IT',real_estate:'Real Estate',
+      hospitality:'Hospitality',mining:'Mining & Resources',government:'Government',other:'Other'
+    };
+
+    // ── Populate stats ──
+    function setText(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+    setText('introTotal', total);
+    setText('bodyTotal', total);
+    setText('bodyTotal2', total);
+    setText('bodyCatCount', catCount);
+    setText('statTools', total);
+    setText('statCloudAct', cloudActPct + '%');
+    setText('statCaResExposed', caResPct + '%');
+    setText('statCanadian', cdnPct + '%');
+    setText('bodyUSCount', cloudActCount);
+    setText('bodyUSPct', cloudActPct);
+    setText('bodyCaResPct', caResPct);
+    setText('bodyCdnPct', cdnPct);
+
+    // ── Timestamp ──
+    if (typeof saasDBMeta !== 'undefined' && saasDBMeta.lastUpdated) {
+      var d = new Date(saasDBMeta.lastUpdated);
+      var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var formatted = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+      var timeStr = d.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit', timeZoneName:'short' });
+      setText('lastUpdated', formatted + ' at ' + timeStr);
+      setText('articleDate', months[d.getMonth()] + ' ' + d.getFullYear());
+      setText('methDate', months[d.getMonth()] + ' ' + d.getFullYear());
+      setText('versionTag', d.getFullYear());
+    }
+
+    // ── Category table ──
+    var catBody = document.getElementById('catTableBody');
+    if (catBody) {
+      var sorted = Object.keys(categories).filter(function(c){ return categories[c].total >= 3; })
+        .sort(function(a,b){ return (categories[b].us/categories[b].total) - (categories[a].us/categories[a].total); });
+      sorted.forEach(function(c) {
+        var d = categories[c];
+        var row = '<tr><td><strong>' + (catNames[c] || c) + '</strong></td><td>' + d.total + '</td>';
+        row += '<td>' + Math.round(d.us/d.total*100) + '%</td>';
+        row += '<td>' + Math.round(d.cdn/d.total*100) + '%</td>';
+        row += '<td>' + Math.round(d.other/d.total*100) + '%</td></tr>';
+        catBody.innerHTML += row;
+      });
+    }
+
+    // ── Sample table (50 representative tools) ──
+    var sampleBody = document.getElementById('sampleTableBody');
+    if (sampleBody) {
+      // Pick a diverse sample: top tools from each risk category
+      var exposed = saasDB.filter(function(t){ return t.risk === 'exposed'; });
+      var review = saasDB.filter(function(t){ return t.risk === 'review'; });
+      var nonExposed = saasDB.filter(function(t){ return t.risk === 'non_exposed'; });
+      var canadian = saasDB.filter(function(t){ return t.risk === 'canadian'; });
+
+      var sample = exposed.slice(0,25).concat(review.slice(0,8)).concat(nonExposed.slice(0,7)).concat(canadian.slice(0,10));
+      sample = sample.slice(0,50);
+
+      setText('sampleCount', sample.length);
+      setText('sampleTotal', total);
+      setText('sampleBrowseCount', total);
+
+      sample.forEach(function(t) {
+        var hqColor = t.jurisdiction === 'Canada' ? 'var(--teal)' : (t.jurisdiction === 'United States' ? 'inherit' : 'inherit');
+        var actColor = t.cloudAct ? '#E06050' : 'var(--teal)';
+        var actText = t.cloudAct ? 'Exposed' : 'Not exposed';
+        var res = t.dataResidency || '—';
+        if (res.length > 30) res = res.substring(0,28) + '…';
+        var row = '<tr><td>' + t.name + '</td>';
+        row += '<td>' + (catNames[t.category] || t.category) + '</td>';
+        row += '<td style="color:' + hqColor + '">' + t.hq + '</td>';
+        row += '<td style="color:' + actColor + '">' + actText + '</td>';
+        row += '<td>' + res + '</td></tr>';
+        sampleBody.innerHTML += row;
+      });
+    }
+
+    // ── Ownership stats ──
+    var ownCdnPct = Math.round(ownCanadian / total * 100);
+    var ownRevPct = Math.round(ownReview / total * 100);
+    var ownNonExpPct = Math.round(ownNonExposed / total * 100);
+    var ownExpPct = Math.round(ownExposed / total * 100);
+
+    setText('ownerTotal', total);
+    setText('ownCdn', ownCdnPct + '%');
+    setText('ownCdnFB', ownRevPct + '%');
+    setText('ownFormer', ownNonExpPct + '%');
+    setText('ownForeign', ownExpPct + '%');
+    setText('ownCdnInline', ownCdnPct);
+    setText('ownFBInline', ownRevPct);
+    setText('ownFormerInline', ownNonExpPct);
+  })();
+  </script>
 </body>
 </html>
