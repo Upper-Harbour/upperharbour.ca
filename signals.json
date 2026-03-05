@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 04, 2026 — 12:05 ET",
+    "lastUpdated": "Mar 05, 2026 — 06:24 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Kiteworks 2026 Data Sovereignty Survey: 23% of Canadian Organizations Report Incidents",
+      "summary": "A Kiteworks survey of 286 Canadian, Middle Eastern, and European professionals found 23% of Canadian organizations experienced data sovereignty incidents in the past year despite 44% reporting high awareness of requirements. The research identifies a significant gap between policy knowledge and operational implementation, with technical infrastructure and legal expertise cited as primary resource constraints.",
+      "type": "policy",
+      "source": "Kiteworks",
+      "sourceUrl": "https://www.kiteworks.com/cybersecurity-risk-management/2026-data-sovereignty-report-findings-canada-middle-east-europe/",
+      "date": "2026-02-27",
+      "impact": "Canadian organizations should conduct operational audits of data sovereignty compliance infrastructure, particularly in technical controls and legal resource allocation, to close the awareness-to-execution gap.",
+      "dbUpdate": false
+    },
     {
       "headline": "Euna Solutions achieves AEP certification and PCI DSS compliance for public sector procurement platform",
       "summary": "Euna Solutions announced that its Euna Procurement platform has achieved AEP eProcurement Certification and PCI DSS Compliance. The certifications are relevant to Canadian public sector organizations evaluating procurement solutions, as they indicate adherence to security and transparency standards applicable to government purchasing.",
