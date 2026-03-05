@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 05, 2026 — 06:24 ET",
+    "lastUpdated": "Mar 05, 2026 — 12:08 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Info-Tech Research Group identifies critical gaps in government oversight of cloud infrastructure and encryption controls",
+      "summary": "Info-Tech Research Group published a blueprint revealing that Canadian public sector organizations lack clear operational frameworks to assess control over cloud infrastructure, encryption keys, and AI systems despite accelerating digital sovereignty mandates. This gap represents a systemic risk for government data protection under emerging sovereignty requirements.",
+      "type": "policy",
+      "source": "CNW/Newswire",
+      "sourceUrl": "https://www.newswire.ca/news-releases/digital-sovereignty-push-exposes-gaps-in-government-control-of-cloud-and-ai-infrastructure-says-info-tech-research-group-802904895.html",
+      "date": "2026-03-04",
+      "impact": "Canadian federal and provincial public sector organizations should urgently develop or acquire frameworks to assess and document control over cloud infrastructure, encryption keys, and AI systems to meet digital sovereignty compliance obligations.",
+      "dbUpdate": false
+    },
     {
       "headline": "Kiteworks 2026 Data Sovereignty Survey: 23% of Canadian Organizations Report Incidents",
       "summary": "A Kiteworks survey of 286 Canadian, Middle Eastern, and European professionals found 23% of Canadian organizations experienced data sovereignty incidents in the past year despite 44% reporting high awareness of requirements. The research identifies a significant gap between policy knowledge and operational implementation, with technical infrastructure and legal expertise cited as primary resource constraints.",
