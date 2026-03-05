@@ -543,15 +543,58 @@ def semantic_dedup(new_signals: list[dict], existing_signals: list[dict]) -> lis
     """
     Use Claude to detect when a new signal covers the same event as an
     existing signal (different source, same story). Returns only truly new signals.
+    Also deduplicates within the new batch itself (same story from multiple sources).
     """
     if not ANTHROPIC_API_KEY or not new_signals:
         return new_signals
 
-    # Build compact representations
-    new_list = [{"idx": i, "headline": s.get("headline", ""), "date": s.get("date", ""), "source": s.get("source", "")}
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+
+    # ── Phase 1: Intra-batch dedup (new signals against each other) ──
+    if len(new_signals) > 1:
+        try:
+            batch_list = [{"idx": i, "headline": s.get("headline", ""), "type": s.get("type", ""), "date": s.get("date", ""), "source": s.get("source", "")}
+                          for i, s in enumerate(new_signals)]
+
+            response = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=1000,
+                messages=[{
+                    "role": "user",
+                    "content": f"""You are a deduplication filter. Look at these signals and identify groups that cover the SAME underlying event, report, or announcement — even if they have different sources, angles, types, or wording.
+
+Signals:
+{json.dumps(batch_list, indent=2)}
+
+For each group of duplicates, keep the LOWEST idx (first one) and mark the rest as duplicates.
+
+Return a JSON array of the idx values that should be REMOVED as duplicates. If none are duplicates, return an empty array: []
+
+Return ONLY the JSON array, nothing else."""
+                }]
+            )
+
+            text = ""
+            for block in response.content:
+                if hasattr(block, 'text'):
+                    text += block.text
+
+            text = text.strip().strip('```json').strip('```').strip()
+            if text.startswith('['):
+                intra_dupes = set(json.loads(text))
+                if intra_dupes:
+                    new_signals = [s for i, s in enumerate(new_signals) if i not in intra_dupes]
+                    log.info(f"Intra-batch dedup removed {len(intra_dupes)} duplicate(s)")
+
+        except Exception as e:
+            log.warning(f"Intra-batch dedup failed (keeping all): {e}")
+
+    # ── Phase 2: Compare against existing published signals ──
+    # Build compact representations — include URLs and summaries for better matching
+    new_list = [{"idx": i, "headline": s.get("headline", ""), "date": s.get("date", ""), "source": s.get("source", ""), "summary": s.get("summary", "")[:150]}
                 for i, s in enumerate(new_signals)]
-    existing_list = [{"headline": s.get("headline", ""), "date": s.get("date", ""), "source": s.get("source", "")}
-                     for s in existing_signals[:30]]
+    existing_list = [{"headline": s.get("headline", ""), "date": s.get("date", ""), "source": s.get("source", ""), "summary": s.get("summary", "")[:150]}
+                     for s in existing_signals[:50]]
 
     if not existing_list:
         return new_signals
@@ -566,7 +609,13 @@ def semantic_dedup(new_signals: list[dict], existing_signals: list[dict]) -> lis
                 "role": "user",
                 "content": f"""You are a deduplication filter. Compare these NEW signals against EXISTING published signals.
 
-A signal is a DUPLICATE if it covers the same underlying event, announcement, or development as an existing signal — even if the source, wording, or angle is different.
+A signal is a DUPLICATE if it covers the same underlying event, announcement, report, study, or development as an existing signal — even if:
+- The source is different (e.g. vendor blog vs news outlet covering the same report)
+- The wording, angle, or type classification is different
+- One focuses on a specific finding while the other covers the broader report
+- They reference the same company, study, or dataset
+
+Be AGGRESSIVE about catching duplicates. If two signals are about the same report, product launch, policy announcement, or study — even from different sources — mark the new one as duplicate.
 
 NEW signals (candidates for publishing):
 {json.dumps(new_list, indent=2)}

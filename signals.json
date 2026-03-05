@@ -65,16 +65,6 @@
       "dbUpdate": false
     },
     {
-      "headline": "Kiteworks 2026 Data Sovereignty Report: 23% incident rate among Canadian organizations despite high awareness",
-      "summary": "Kiteworks released research showing Canadian organizations experienced a 23% data sovereignty incident rate in 2025, the lowest among surveyed regions, yet gaps persist between policy and architecture—particularly in mid-market firms. The report identifies Canada-U.S. data-sharing changes as the top concern for 40% of Canadian respondents, with 23% actively migrating from U.S. cloud providers.",
-      "type": "vendor",
-      "source": "Cybersecurity Insiders",
-      "sourceUrl": "https://www.cybersecurity-insiders.com/new-kiteworks-research-reveals-urgent-channel-opportunity-in-canadian-data-sovereignty-mid-market-organisations-left-exposed-at-the-border/",
-      "date": "2026-02-26",
-      "impact": "Mid-market Canadian organizations should conduct sovereignty readiness assessments and review cloud infrastructure alignment with evolving Canada-U.S. data-sharing frameworks.",
-      "dbUpdate": false
-    },
-    {
       "headline": "Micrologic partners with Cohesity to deliver sovereign cloud data protection for Canadian organizations",
       "summary": "Micrologic, a Canadian sovereign cloud provider, partnered with Cohesity to deliver AI-powered data protection solutions maintaining data residency within Canada. This partnership addresses demand for data protection tools certified for Canadian data sovereignty compliance.",
       "type": "vendor",
