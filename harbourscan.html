@@ -1163,6 +1163,14 @@
 
   // ── Init ───────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
+    // Track page load
+    if (typeof gtag === 'function') gtag('event', 'harbourscan_page_view', {event_category: 'harbourscan'});
+
+    // Track Stripe purchase completion (redirect back with ?purchased=true)
+    if (window.location.search.indexOf('purchased=true') > -1 && typeof gtag === 'function') {
+      gtag('event', 'snapshot_purchase_completed', {event_category: 'harbourscan', value: 350, currency: 'CAD'});
+    }
+
     // Populate industry dropdown
     const indSel = document.getElementById('orgIndustry');
     industryProfiles.forEach(p => {
