@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 06, 2026 — 06:21 ET",
+    "lastUpdated": "Mar 06, 2026 — 12:05 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian mid-market organizations lag large enterprises on data sovereignty readiness despite identical Quebec regulatory exposure",
+      "summary": "Kiteworks' 2026 survey of 286 professionals found Canadian mid-market organizations score 15-25 percentage points lower than large enterprises on sovereignty readiness metrics, despite facing identical regulatory requirements under Quebec's Law 25. This compliance gap represents a material risk for organizations operating in the mid-market segment across Canada.",
+      "type": "vendor",
+      "source": "Cybersecurity Insiders",
+      "sourceUrl": "https://www.cybersecurity-insiders.com/new-kiteworks-research-reveals-urgent-channel-opportunity-in-canadian-data-sovereignty-mid-market-organisations-left-exposed-at-the-border/",
+      "date": "2026-02-28",
+      "impact": "Canadian mid-market organizations should conduct compliance audits against Quebec Law 25 requirements and assess their data sovereignty readiness against large-enterprise benchmarks.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canada's privacy reform expected to include enhanced data sovereignty provisions",
       "summary": "Canada's privacy reform framework is anticipated to introduce enhanced data sovereignty provisions and stricter risk assessment requirements for cross-border data transfers, with new legislation potentially tabled in spring 2026. Organizations should prepare for regulatory changes affecting data handling and transfer protocols.",
