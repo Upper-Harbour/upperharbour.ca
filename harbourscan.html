@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HarbourScan — Structured Compliance Assessment | Upper Harbour</title>
@@ -426,6 +434,7 @@
       <h1>Map your organization's <em>sovereignty exposure</em></h1>
       <p class="landing-hero-sub">HarbourScan maps your SaaS stack to parent jurisdictions, CLOUD Act exposure, and Canadian data residency status. Built on the <span class="uh-stat" data-stat="totalTools">707</span>-tool <a href="/research/canadian-saas-sovereignty-index" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.2);">Canadian SaaS Sovereignty Index</a>. Start free in your browser &mdash; then choose the level of documentation you need.</p>
       <p class="landing-hero-sub" style="margin-top:16px; font-size:15px; color:var(--slate);">If a regulator or procurement review asked you tomorrow where your SaaS vendors fall under foreign jurisdiction, could you produce a defensible answer? Most organizations can&rsquo;t &mdash; that&rsquo;s where HarbourScan starts.</p>
+      <p class="landing-hero-sub" style="margin-top:12px; font-size:13px; color:var(--muted); letter-spacing:0.02em;">Used by privacy teams, procurement officers, and consultants assessing SaaS jurisdiction risk.</p>
       <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;">Start Free Assessment &rarr;</a>
     </section>
 
@@ -1164,10 +1173,28 @@
 
     // Stack search
     initStackSearch();
+
+    // Track Stripe button clicks
+    document.addEventListener('click', function(e) {
+      var link = e.target.closest('a[href*="buy.stripe.com"]');
+      if (link && typeof gtag === 'function') {
+        gtag('event', 'snapshot_purchase_clicked', {
+          event_category: 'harbourscan',
+          tools_selected: (state.selectedTools || []).length,
+          value: 350,
+          currency: 'CAD'
+        });
+      }
+    });
   });
 
   // ── Navigation ─────────────────────────────────────────────────
   function goToStep(n) {
+    // Track funnel steps
+    if (typeof gtag === 'function') {
+      var stepNames = {1: 'scan_profile', 2: 'scan_stack_selection', 3: 'scan_results_viewed'};
+      if (stepNames[n]) gtag('event', stepNames[n], {event_category: 'harbourscan', tools_selected: (state.selectedTools || []).length});
+    }
     // Collect data from current step if needed
     if (n === 2) collectOrgProfile();
     if (n === 3 && state.selectedTools.length === 0) return;
@@ -1231,6 +1258,8 @@
   }
 
   function revealReportPreview() {
+    // Track preview reveal
+    if (typeof gtag === 'function') gtag('event', 'report_preview_viewed', {event_category: 'harbourscan', tools_selected: (state.selectedTools || []).length});
     // Hide the paywall card
     document.getElementById('paywallCard').style.display = 'none';
     // Show the detailed preview + pricing
