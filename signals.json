@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 05, 2026 — 12:08 ET",
+    "lastUpdated": "Mar 06, 2026 — 06:21 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canada's privacy reform expected to include enhanced data sovereignty provisions",
+      "summary": "Canada's privacy reform framework is anticipated to introduce enhanced data sovereignty provisions and stricter risk assessment requirements for cross-border data transfers, with new legislation potentially tabled in spring 2026. Organizations should prepare for regulatory changes affecting data handling and transfer protocols.",
+      "type": "legislation",
+      "source": "IAPP",
+      "sourceUrl": "https://iapp.org/news/a/what-2026-may-bring-for-canadas-privacy-reform-efforts",
+      "date": "2026-02-27",
+      "impact": "All Canadian organizations handling personal data should monitor spring 2026 legislative developments and begin reviewing cross-border data transfer processes to ensure compliance with anticipated enhanced sovereignty requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "Info-Tech Research Group identifies critical gaps in government oversight of cloud infrastructure and encryption controls",
       "summary": "Info-Tech Research Group published a blueprint revealing that Canadian public sector organizations lack clear operational frameworks to assess control over cloud infrastructure, encryption keys, and AI systems despite accelerating digital sovereignty mandates. This gap represents a systemic risk for government data protection under emerging sovereignty requirements.",
