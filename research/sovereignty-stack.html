@@ -22,7 +22,7 @@
 
   /* ═══ HERO ═══ */
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 80px;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,.03) 0%,transparent 70%)}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,.025) 0%,transparent 70%)}
   .hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.006) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.006) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
   .hero-inner{position:relative;z-index:1;max-width:700px}
   .hero .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:32px;opacity:0;animation:fu .8s ease forwards .2s}
@@ -34,104 +34,100 @@
   @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-  /* ═══ SCROLL SEQUENCE — FULL WIDTH ═══ */
+  /* ═══ SCROLL SEQUENCE ═══ */
   .scroll-wrap{position:relative}
-  .scroll-track{min-height:100vh;position:sticky;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 32px}
+  .scroll-track{min-height:100vh;position:sticky;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px}
 
-  /* The scene holds the isometric stack centered */
-  .scene{position:relative;width:100%;max-width:1100px;height:520px;margin:0 auto}
+  .stack-and-narr{width:100%;max-width:900px;margin:0 auto}
 
-  /* Isometric container */
-  .iso{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);perspective:1000px}
-  .iso-inner{transform:rotateX(42deg) rotateZ(-28deg);transform-style:preserve-3d;width:380px;height:360px;position:relative}
+  /* ═══ THE STACK — flat wide bars ═══ */
+  .stack{display:flex;flex-direction:column;gap:6px;margin-bottom:40px}
 
-  /* Slabs */
-  .slab{position:absolute;left:0;width:360px;transform-style:preserve-3d;transition:all .7s cubic-bezier(.25,.46,.45,.94)}
-  .s-top{position:absolute;width:360px;height:220px;transform:translateZ(44px);border-radius:8px;transition:all .7s ease}
-  .s-front{position:absolute;width:360px;height:44px;transform:rotateX(-90deg);transform-origin:bottom;bottom:0;left:0;border-radius:0 0 8px 8px;transition:all .7s ease}
-  .s-right{position:absolute;width:220px;height:44px;transform:rotateY(90deg) rotateX(-90deg);transform-origin:bottom right;bottom:0;right:0;transition:all .7s ease}
+  .layer{display:flex;align-items:stretch;border-radius:10px;overflow:hidden;transition:all .6s cubic-bezier(.25,.46,.45,.94);position:relative}
+  .layer.dimmed{opacity:.12;transform:scale(.98)}
+  .layer.lit{box-shadow:0 0 0 1px rgba(234,240,244,.06)}
 
-  /* Slab positions */
-  .slab-1{bottom:0}
-  .slab-2{bottom:76px}
-  .slab-3{bottom:152px}
-  .slab-4{bottom:228px}
+  /* Left accent bar */
+  .l-accent{width:5px;flex-shrink:0;transition:background .6s ease}
 
-  /* Base fills — solid dark */
-  .s-top{background:linear-gradient(135deg,#111c28 0%,#0d1520 100%);border:1px solid rgba(234,240,244,.1)}
-  .s-front{background:linear-gradient(180deg,#0d1520 0%,#0a1018 100%);border-bottom:1px solid rgba(234,240,244,.06);border-left:1px solid rgba(234,240,244,.06)}
-  .s-right{background:linear-gradient(180deg,#0a1018 0%,#080c14 100%);border-bottom:1px solid rgba(234,240,244,.05);border-right:1px solid rgba(234,240,244,.05)}
+  /* Main content area */
+  .l-body{flex:1;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;transition:background .6s ease}
 
-  /* State: dimmed */
-  .slab.dimmed{opacity:.12;transform:scale(.96)}
+  /* Left side: label + name */
+  .l-info{flex-shrink:0}
+  .l-tag{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:4px;transition:color .6s}
+  .l-name{font-size:16px;font-weight:700;color:var(--ice);transition:color .6s}
 
-  /* State: teal */
-  .slab.teal .s-top{background:linear-gradient(135deg,#12302e 0%,#0e2624 100%);border-color:rgba(60,184,176,.35);box-shadow:0 0 40px rgba(60,184,176,.06)}
-  .slab.teal .s-front{background:linear-gradient(180deg,#0e2624 0%,#0b1e1c 100%);border-color:rgba(60,184,176,.2)}
-  .slab.teal .s-right{background:linear-gradient(180deg,#0b1e1c 0%,#091816 100%);border-color:rgba(60,184,176,.15)}
+  /* Right side: examples */
+  .l-examples{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
+  .l-ex{font-size:10px;font-weight:500;padding:4px 10px;border-radius:4px;white-space:nowrap;transition:all .6s}
 
-  .slab.teal-strong .s-top{background:linear-gradient(135deg,#163834 0%,#122e2c 100%);border-color:rgba(60,184,176,.45);box-shadow:0 0 64px rgba(60,184,176,.1)}
-  .slab.teal-strong .s-front{background:linear-gradient(180deg,#122e2c 0%,#0e2422 100%);border-color:rgba(60,184,176,.3)}
-  .slab.teal-strong .s-right{background:linear-gradient(180deg,#0e2422 0%,#0b1e1c 100%);border-color:rgba(60,184,176,.22)}
+  /* Status badge — far right */
+  .l-status{flex-shrink:0;width:120px;display:flex;align-items:center;justify-content:center;padding:12px;border-left:1px solid rgba(234,240,244,.04);transition:all .6s}
+  .l-status-inner{text-align:center}
+  .l-status-icon{font-size:18px;margin-bottom:2px;transition:color .6s}
+  .l-status-text{font-family:var(--mono);font-size:8px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:color .6s}
 
-  /* State: red */
-  .slab.red .s-top{background:linear-gradient(135deg,#2e1614 0%,#241210 100%);border-color:rgba(224,96,80,.35);box-shadow:0 0 50px rgba(224,96,80,.08)}
-  .slab.red .s-front{background:linear-gradient(180deg,#241210 0%,#1c0e0c 100%);border-color:rgba(224,96,80,.22)}
-  .slab.red .s-right{background:linear-gradient(180deg,#1c0e0c 0%,#160a09 100%);border-color:rgba(224,96,80,.16)}
+  /* ── Base neutral state ── */
+  .l-accent{background:rgba(234,240,244,.08)}
+  .l-body{background:rgba(234,240,244,.02)}
+  .l-tag{color:var(--muted)}
+  .l-ex{color:var(--muted);background:rgba(234,240,244,.03);border:1px solid rgba(234,240,244,.06)}
+  .l-status-icon{color:var(--muted)}
+  .l-status-text{color:var(--muted)}
 
-  /* State: gold */
-  .slab.gold .s-top{background:linear-gradient(135deg,#2a2210 0%,#221c0c 100%);border-color:rgba(201,168,76,.3);box-shadow:0 0 40px rgba(201,168,76,.06)}
-  .slab.gold .s-front{background:linear-gradient(180deg,#221c0c 0%,#1a160a 100%);border-color:rgba(201,168,76,.18)}
-  .slab.gold .s-right{background:linear-gradient(180deg,#1a160a 0%,#141008 100%);border-color:rgba(201,168,76,.12)}
+  /* ── Teal state ── */
+  .layer.c-teal .l-accent{background:var(--teal)}
+  .layer.c-teal .l-body{background:rgba(60,184,176,.04)}
+  .layer.c-teal .l-tag{color:var(--teal)}
+  .layer.c-teal .l-ex{color:rgba(60,184,176,.8);background:rgba(60,184,176,.06);border-color:rgba(60,184,176,.12)}
+  .layer.c-teal .l-status{border-color:rgba(60,184,176,.08)}
+  .layer.c-teal .l-status-icon{color:var(--teal)}
+  .layer.c-teal .l-status-text{color:var(--teal)}
+  .layer.c-teal.lit{box-shadow:0 0 48px rgba(60,184,176,.06),0 0 0 1px rgba(60,184,176,.15)}
 
-  /* State: lit — lifts slightly */
-  .slab.lit{transform:translateZ(6px)}
+  /* ── Teal strong ── */
+  .layer.c-teal-s .l-accent{background:var(--teal)}
+  .layer.c-teal-s .l-body{background:rgba(60,184,176,.06)}
+  .layer.c-teal-s .l-tag{color:var(--teal)}
+  .layer.c-teal-s .l-ex{color:rgba(60,184,176,.85);background:rgba(60,184,176,.08);border-color:rgba(60,184,176,.16)}
+  .layer.c-teal-s .l-status{border-color:rgba(60,184,176,.1)}
+  .layer.c-teal-s .l-status-icon{color:var(--teal)}
+  .layer.c-teal-s .l-status-text{color:var(--teal)}
+  .layer.c-teal-s.lit{box-shadow:0 0 64px rgba(60,184,176,.08),0 0 0 1px rgba(60,184,176,.2)}
 
-  /* ═══ ANNOTATION LABELS — flat, connected by lines ═══ */
-  .ann{position:absolute;transition:all .7s ease;pointer-events:none}
-  .ann-inner{padding:10px 16px;border-radius:6px;background:rgba(6,9,14,.8);border:1px solid rgba(234,240,244,.08);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-  .ann .a-tag{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:3px;color:var(--muted);transition:color .7s}
-  .ann .a-name{font-size:13px;font-weight:700;color:var(--ice);margin-bottom:2px}
-  .ann .a-detail{font-size:10px;color:var(--muted);line-height:1.4}
-  .ann .a-line{position:absolute;background:rgba(234,240,244,.08);transition:background .7s}
+  /* ── Red state ── */
+  .layer.c-red .l-accent{background:var(--red)}
+  .layer.c-red .l-body{background:rgba(224,96,80,.04)}
+  .layer.c-red .l-tag{color:var(--red)}
+  .layer.c-red .l-ex{color:rgba(224,96,80,.8);background:rgba(224,96,80,.06);border-color:rgba(224,96,80,.12)}
+  .layer.c-red .l-status{border-color:rgba(224,96,80,.08)}
+  .layer.c-red .l-status-icon{color:var(--red)}
+  .layer.c-red .l-status-text{color:var(--red)}
+  .layer.c-red.lit{box-shadow:0 0 48px rgba(224,96,80,.06),0 0 0 1px rgba(224,96,80,.15)}
 
-  /* Annotation positions — placed outside the isometric stack */
-  .ann-4{left:-10px;top:20px}
-  .ann-4 .a-line{width:80px;height:1px;right:-84px;top:50%}
-  .ann-3{right:-10px;top:110px}
-  .ann-3 .a-line{width:60px;height:1px;left:-64px;top:50%}
-  .ann-2{left:-10px;top:230px}
-  .ann-2 .a-line{width:80px;height:1px;right:-84px;top:50%}
-  .ann-1{right:-10px;top:330px}
-  .ann-1 .a-line{width:60px;height:1px;left:-64px;top:50%}
+  /* ── Gold state ── */
+  .layer.c-gold .l-accent{background:var(--gold)}
+  .layer.c-gold .l-body{background:rgba(201,168,76,.03)}
+  .layer.c-gold .l-tag{color:var(--gold)}
+  .layer.c-gold .l-ex{color:rgba(201,168,76,.8);background:rgba(201,168,76,.05);border-color:rgba(201,168,76,.1)}
+  .layer.c-gold .l-status{border-color:rgba(201,168,76,.06)}
+  .layer.c-gold .l-status-icon{color:var(--gold)}
+  .layer.c-gold .l-status-text{color:var(--gold)}
+  .layer.c-gold.lit{box-shadow:0 0 40px rgba(201,168,76,.05),0 0 0 1px rgba(201,168,76,.12)}
 
-  /* Annotation state colors */
-  .ann.a-teal .a-tag{color:var(--teal)}
-  .ann.a-teal .ann-inner{border-color:rgba(60,184,176,.2)}
-  .ann.a-teal .a-line{background:rgba(60,184,176,.25)}
-
-  .ann.a-red .a-tag{color:var(--red)}
-  .ann.a-red .ann-inner{border-color:rgba(224,96,80,.2)}
-  .ann.a-red .a-line{background:rgba(224,96,80,.25)}
-
-  .ann.a-gold .a-tag{color:var(--gold)}
-  .ann.a-gold .ann-inner{border-color:rgba(201,168,76,.2)}
-  .ann.a-gold .a-line{background:rgba(201,168,76,.25)}
-
-  .ann.a-dim{opacity:.12}
-
-  /* ═══ NARRATIVE OVERLAY — centered below stack ═══ */
-  .narr-box{position:absolute;bottom:0;left:50%;transform:translateX(-50%);text-align:center;width:100%;max-width:560px;padding:0 20px}
-  .narr-slide{position:absolute;bottom:0;left:0;right:0;opacity:0;transition:opacity .5s ease;pointer-events:none;text-align:center;padding:0 20px}
-  .narr-slide.active{opacity:1;pointer-events:auto}
-  .narr-slide .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:14px}
-  .narr-slide h2{font-family:var(--display);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--ice);line-height:1.1;letter-spacing:-.3px;margin-bottom:14px}
-  .narr-slide h2 em{font-style:italic;font-weight:700;color:var(--gold)}
-  .narr-slide h2 .red{color:var(--red)}
-  .narr-slide p{font-size:15px;color:var(--slate);line-height:1.65;max-width:480px;margin:0 auto}
-  .narr-slide .payoff{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ice);line-height:1.4;max-width:420px;margin:20px auto 0;padding-top:20px;border-top:1px solid rgba(224,96,80,.2)}
-  .narr-slide .mini-cta{display:inline-block;margin-top:24px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15)}
-  .narr-slide .mini-cta:hover{background:#47cec5;transform:translateY(-1px);box-shadow:0 0 32px rgba(60,184,176,.3)}
+  /* ═══ NARRATIVE — centered below stack ═══ */
+  .narr{position:relative;min-height:140px;text-align:center;padding:0 20px}
+  .narr-s{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;opacity:0;transition:opacity .45s ease;pointer-events:none;padding:0 20px}
+  .narr-s.active{opacity:1;pointer-events:auto}
+  .narr-s .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+  .narr-s h2{font-family:var(--display);font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--ice);line-height:1.12;letter-spacing:-.3px;margin-bottom:12px}
+  .narr-s h2 em{font-style:italic;font-weight:700;color:var(--gold)}
+  .narr-s h2 .red{color:var(--red)}
+  .narr-s p{font-size:14px;color:var(--slate);line-height:1.65;max-width:520px}
+  .narr-s .payoff{font-family:var(--display);font-style:italic;font-size:18px;color:var(--ice);line-height:1.4;max-width:440px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(224,96,80,.15)}
+  .narr-s .mini-cta{display:inline-block;margin-top:20px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15)}
+  .narr-s .mini-cta:hover{background:#47cec5;transform:translateY(-1px)}
 
   .scroll-spacer{height:500vh}
 
@@ -180,17 +176,12 @@
   .final-cta .btn{display:inline-block;font-size:14px;font-weight:800;color:var(--bg);background:var(--teal);padding:16px 36px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(60,184,176,.2)}
   .final-cta .btn:hover{background:#47cec5;transform:translateY(-2px);box-shadow:0 0 40px rgba(60,184,176,.35)}
 
-  @media(max-width:900px){
-    .scene{height:auto;min-height:600px}
-    .iso-inner{transform:rotateX(42deg) rotateZ(-28deg) scale(.65)}
-    .ann{display:none}
-    .narr-box{position:relative;left:auto;transform:none;margin-top:20px}
+  @media(max-width:700px){
+    .l-examples{display:none}
+    .l-status{width:80px}
+    .l-body{padding:16px 20px}
     .ev-grid{grid-template-columns:1fr 1fr}
     .pg-grid{grid-template-columns:1fr}
-  }
-  @media(max-width:600px){
-    .iso-inner{transform:rotateX(42deg) rotateZ(-28deg) scale(.5)}
-    .hero h1{letter-spacing:-1.5px}
   }
 </style>
 </head>
@@ -233,79 +224,95 @@
   <!-- ═══ SCROLL SEQUENCE ═══ -->
   <div class="scroll-wrap" id="scrollWrap">
     <div class="scroll-track">
-      <div class="scene">
+      <div class="stack-and-narr">
 
-        <!-- Isometric 3D stack -->
-        <div class="iso">
-          <div class="iso-inner">
-            <div class="slab slab-4" id="slab4"><div class="s-top"></div><div class="s-front"></div><div class="s-right"></div></div>
-            <div class="slab slab-3" id="slab3"><div class="s-top"></div><div class="s-front"></div><div class="s-right"></div></div>
-            <div class="slab slab-2" id="slab2"><div class="s-top"></div><div class="s-front"></div><div class="s-right"></div></div>
-            <div class="slab slab-1" id="slab1"><div class="s-top"></div><div class="s-front"></div><div class="s-right"></div></div>
+        <!-- THE STACK -->
+        <div class="stack">
+          <!-- Layer 4: SaaS -->
+          <div class="layer" id="ly4">
+            <div class="l-accent"></div>
+            <div class="l-body">
+              <div class="l-info">
+                <div class="l-tag">Layer 4 &mdash; SaaS Applications</div>
+                <div class="l-name">The software organizations use daily</div>
+              </div>
+              <div class="l-examples">
+                <span class="l-ex">Salesforce</span><span class="l-ex">Slack</span><span class="l-ex">Microsoft 365</span><span class="l-ex">Workday</span><span class="l-ex">Jira</span><span class="l-ex">Zendesk</span>
+              </div>
+            </div>
+            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">&#x2717;</div><div class="l-status-text">No policy</div></div></div>
+          </div>
+
+          <!-- Layer 3: PaaS -->
+          <div class="layer" id="ly3">
+            <div class="l-accent"></div>
+            <div class="l-body">
+              <div class="l-info">
+                <div class="l-tag">Layer 3 &mdash; Platforms</div>
+                <div class="l-name">Runtime &amp; development environments</div>
+              </div>
+              <div class="l-examples">
+                <span class="l-ex">Containers</span><span class="l-ex">Serverless</span><span class="l-ex">CI/CD</span><span class="l-ex">APIs</span>
+              </div>
+            </div>
+            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">~</div><div class="l-status-text">Partial</div></div></div>
+          </div>
+
+          <!-- Layer 2: IaaS -->
+          <div class="layer" id="ly2">
+            <div class="l-accent"></div>
+            <div class="l-body">
+              <div class="l-info">
+                <div class="l-tag">Layer 2 &mdash; Infrastructure</div>
+                <div class="l-name">Cloud compute &amp; storage</div>
+              </div>
+              <div class="l-examples">
+                <span class="l-ex">AWS</span><span class="l-ex">Azure</span><span class="l-ex">GCP</span><span class="l-ex">ThinkOn</span><span class="l-ex">Micrologic</span>
+              </div>
+            </div>
+            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">&#x2713;</div><div class="l-status-text">RFI active</div></div></div>
+          </div>
+
+          <!-- Layer 1: Hardware -->
+          <div class="layer" id="ly1">
+            <div class="l-accent"></div>
+            <div class="l-body">
+              <div class="l-info">
+                <div class="l-tag">Layer 1 &mdash; Hardware &amp; Data Centres</div>
+                <div class="l-name">Physical servers &amp; facilities</div>
+              </div>
+              <div class="l-examples">
+                <span class="l-ex">Bell-Hypertec</span><span class="l-ex">Equinix</span><span class="l-ex">Cologix</span><span class="l-ex">QScale</span>
+              </div>
+            </div>
+            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">&#x2713;</div><div class="l-status-text">Funded</div></div></div>
           </div>
         </div>
 
-        <!-- Annotation labels — flat, connected by lines to slabs -->
-        <div class="ann ann-4" id="ann4">
-          <div class="ann-inner">
-            <div class="a-tag">Layer 4 &mdash; SaaS</div>
-            <div class="a-name">Applications</div>
-            <div class="a-detail">CRM &middot; HR &middot; Messaging &middot; Analytics &middot; Finance &middot; Docs</div>
-          </div>
-          <div class="a-line"></div>
-        </div>
-
-        <div class="ann ann-3" id="ann3">
-          <div class="ann-inner">
-            <div class="a-tag">Layer 3 &mdash; Platforms</div>
-            <div class="a-name">Runtime &amp; Dev</div>
-            <div class="a-detail">Containers &middot; Serverless &middot; CI/CD</div>
-          </div>
-          <div class="a-line"></div>
-        </div>
-
-        <div class="ann ann-2" id="ann2">
-          <div class="ann-inner">
-            <div class="a-tag">Layer 2 &mdash; Infrastructure</div>
-            <div class="a-name">Cloud Compute</div>
-            <div class="a-detail">AWS &middot; Azure &middot; GCP &middot; ThinkOn</div>
-          </div>
-          <div class="a-line"></div>
-        </div>
-
-        <div class="ann ann-1" id="ann1">
-          <div class="ann-inner">
-            <div class="a-tag">Layer 1 &mdash; Hardware</div>
-            <div class="a-name">Data Centres</div>
-            <div class="a-detail">Bell-Hypertec &middot; Equinix &middot; Cologix</div>
-          </div>
-          <div class="a-line"></div>
-        </div>
-
-        <!-- Narrative text — centered below stack -->
-        <div class="narr-box">
-          <div class="narr-slide active" id="ns0">
+        <!-- NARRATIVE -->
+        <div class="narr">
+          <div class="narr-s active" id="ns0">
             <div class="ey">The full stack</div>
             <h2>Digital systems run on <em>four layers.</em></h2>
             <p>From physical servers to SaaS applications. Each layer has its own ownership, jurisdiction, and legal exposure.</p>
           </div>
-          <div class="narr-slide" id="ns1">
+          <div class="narr-s" id="ns1">
             <div class="ey">Where policy focuses</div>
             <h2>Sovereignty policy targets the <em>bottom two.</em></h2>
             <p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. The March 2026 RFI requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p>
           </div>
-          <div class="narr-slide" id="ns2">
+          <div class="narr-s" id="ns2">
             <div class="ey">Where exposure sits</div>
             <h2>The <em class="red">top two layers</em> have no equivalent policy.</h2>
             <p>82% of SaaS tools used by Canadian organizations are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p>
           </div>
-          <div class="narr-slide" id="ns3">
+          <div class="narr-s" id="ns3">
             <div class="ey">The jurisdiction question</div>
             <h2>Infrastructure can be domestic. Software remains <em class="red">governed abroad.</em></h2>
             <p>88% of tools advertising Canadian data residency are still under US parent jurisdiction.</p>
             <div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div>
           </div>
-          <div class="narr-slide" id="ns4">
+          <div class="narr-s" id="ns4">
             <div class="ey">Upper Harbour</div>
             <h2>We map <em>every layer.</em></h2>
             <p>715 tools traced to parent companies, jurisdictions, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s technology dependency.</p>
@@ -400,11 +407,9 @@
     const slides=[0,1,2,3,4].map(i=>document.getElementById('ns'+i));
     const dots=document.querySelectorAll('.scroll-dot');
     const dotsWrap=document.getElementById('dots');
-    const s4=document.getElementById('slab4'),s3=document.getElementById('slab3'),s2=document.getElementById('slab2'),s1=document.getElementById('slab1');
-    const a4=document.getElementById('ann4'),a3=document.getElementById('ann3'),a2=document.getElementById('ann2'),a1=document.getElementById('ann1');
-    const slabs=[s4,s3,s2,s1];
-    const anns=[a4,a3,a2,a1];
-    const cls=['dimmed','teal','teal-strong','red','gold','lit','a-teal','a-red','a-gold','a-dim'];
+    const ly4=document.getElementById('ly4'),ly3=document.getElementById('ly3'),ly2=document.getElementById('ly2'),ly1=document.getElementById('ly1');
+    const all=[ly4,ly3,ly2,ly1];
+    const cls=['dimmed','lit','c-teal','c-teal-s','c-red','c-gold'];
     let cur=-1;
 
     function reset(el){cls.forEach(c=>el.classList.remove(c))}
@@ -412,27 +417,15 @@
 
     const steps=[
       // 0: Full stack neutral
-      ()=>{slabs.forEach(reset);anns.forEach(reset)},
+      ()=>{all.forEach(reset)},
       // 1: Bottom two teal, top two dim
-      ()=>{
-        apply(s4,'dimmed');apply(s3,'dimmed');apply(s2,'teal','lit');apply(s1,'teal-strong','lit');
-        apply(a4,'a-dim');apply(a3,'a-dim');apply(a2,'a-teal');apply(a1,'a-teal');
-      },
+      ()=>{apply(ly4,'dimmed');apply(ly3,'dimmed');apply(ly2,'c-teal','lit');apply(ly1,'c-teal-s','lit')},
       // 2: Top two red/gold, bottom two dim
-      ()=>{
-        apply(s4,'red','lit');apply(s3,'gold','lit');apply(s2,'dimmed');apply(s1,'dimmed');
-        apply(a4,'a-red');apply(a3,'a-gold');apply(a2,'a-dim');apply(a1,'a-dim');
-      },
+      ()=>{apply(ly4,'c-red','lit');apply(ly3,'c-gold','lit');apply(ly2,'dimmed');apply(ly1,'dimmed')},
       // 3: Full jurisdiction overlay
-      ()=>{
-        apply(s4,'red','lit');apply(s3,'gold');apply(s2,'teal');apply(s1,'teal-strong');
-        apply(a4,'a-red');apply(a3,'a-gold');apply(a2,'a-teal');apply(a1,'a-teal');
-      },
+      ()=>{apply(ly4,'c-red','lit');apply(ly3,'c-gold');apply(ly2,'c-teal');apply(ly1,'c-teal-s')},
       // 4: All teal — Upper Harbour
-      ()=>{
-        apply(s4,'teal-strong','lit');apply(s3,'teal','lit');apply(s2,'teal','lit');apply(s1,'teal-strong','lit');
-        apply(a4,'a-teal');apply(a3,'a-teal');apply(a2,'a-teal');apply(a1,'a-teal');
-      },
+      ()=>{apply(ly4,'c-teal-s','lit');apply(ly3,'c-teal','lit');apply(ly2,'c-teal','lit');apply(ly1,'c-teal-s','lit')},
     ];
 
     function setStep(step){
