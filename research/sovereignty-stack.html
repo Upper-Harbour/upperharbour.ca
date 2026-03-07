@@ -109,7 +109,7 @@
   .narr-panel .mini-cta{display:inline-block;margin-top:28px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15);width:auto;max-width:fit-content}
   .narr-panel .mini-cta:hover{background:#47cec5;transform:translateY(-1px);box-shadow:0 0 32px rgba(60,184,176,.3)}
 
-  .scroll-spacer{height:600vh}
+  .scroll-spacer{height:500vh}
   .scroll-dots{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:14px;opacity:0;transition:opacity .4s}
   .scroll-dots.show{opacity:1}
   .scroll-dot{width:8px;height:8px;border-radius:50%;background:rgba(234,240,244,.12);transition:all .3s;cursor:pointer}
@@ -306,17 +306,16 @@
 
       <div class="narr-col">
         <div class="narr-panel active" id="panel0"><div class="ey">The full stack</div><h2>Digital systems run on <em>four layers.</em></h2><p>Hardware at the base. Infrastructure above it. Platforms. And at the top, the SaaS applications employees use every day. Each layer has its own ownership, jurisdiction, and legal exposure.</p></div>
-        <div class="narr-panel" id="panel1"><div class="ey">The key insight</div><h2>Independent sovereignty risks exist at <em>every level.</em></h2><p>Each layer is owned by different companies, incorporated in different countries, and subject to different legal regimes. Securing one layer does not secure the layers above it.</p></div>
-        <div class="narr-panel" id="panel2"><div class="ey">Where policy focuses</div><h2>Sovereignty policy is addressing <em>infrastructure.</em></h2><p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. Infrastructure has jurisdictional exposure too &mdash; but the March 2026 RFI now requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p></div>
-        <div class="narr-panel" id="panel3"><div class="ey">Where exposure sits</div><h2>The <em class="red">top two layers</em> have no equivalent policy.</h2><p><span class="uh-stat" data-stat="appForeignPct">82</span>% of the SaaS tools Canadian organizations use are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p></div>
-        <div class="narr-panel" id="panel4"><div class="ey">The jurisdiction question</div><h2>Infrastructure can be domestic. Software can remain <em class="red">governed abroad.</em></h2><p><span class="uh-stat" data-stat="appCaResExposedPct">90</span>% of application-layer tools advertising Canadian data residency are still under US parent jurisdiction.</p><div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div></div>
-        <div class="narr-panel" id="panel5"><div class="ey">Upper Harbour</div><h2>We map <em>every layer.</em></h2><p><span class="uh-stat" data-stat="totalTools">715</span> SaaS and infrastructure tools traced to parent companies, jurisdictions, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s technology dependency.</p><a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a></div>
+        <div class="narr-panel" id="panel1"><div class="ey">Where policy focuses</div><h2>Sovereignty policy is addressing <em>infrastructure.</em></h2><p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. Infrastructure has jurisdictional exposure too &mdash; but the March 2026 RFI now requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p></div>
+        <div class="narr-panel" id="panel2"><div class="ey">Where exposure sits</div><h2>The <em class="red">top two layers</em> have no equivalent policy.</h2><p><span class="uh-stat" data-stat="appForeignPct">82</span>% of the SaaS tools Canadian organizations use are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p></div>
+        <div class="narr-panel" id="panel3"><div class="ey">The jurisdiction question</div><h2>Infrastructure can be domestic. Software can remain <em class="red">governed abroad.</em></h2><p><span class="uh-stat" data-stat="appCaResExposedPct">90</span>% of application-layer tools advertising Canadian data residency are still under US parent jurisdiction.</p><div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div></div>
+        <div class="narr-panel" id="panel4"><div class="ey">Upper Harbour</div><h2>We map <em>every layer.</em></h2><p><span class="uh-stat" data-stat="totalTools">715</span> SaaS and infrastructure tools traced to parent companies, jurisdictions, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s technology dependency.</p><a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a></div>
       </div>
     </div>
     <div class="scroll-spacer"></div>
   </div>
 
-  <div class="scroll-dots" id="dots"><div class="scroll-dot active" data-step="0"></div><div class="scroll-dot" data-step="1"></div><div class="scroll-dot" data-step="2"></div><div class="scroll-dot" data-step="3"></div><div class="scroll-dot" data-step="4"></div><div class="scroll-dot" data-step="5"></div></div>
+  <div class="scroll-dots" id="dots"><div class="scroll-dot active" data-step="0"></div><div class="scroll-dot" data-step="1"></div><div class="scroll-dot" data-step="2"></div><div class="scroll-dot" data-step="3"></div><div class="scroll-dot" data-step="4"></div></div>
 
   <!-- ═══ THE QUOTE — full-width emotional anchor ═══ -->
   <section class="big-quote" id="bigQuote">
@@ -495,7 +494,7 @@
 
     // ═══ SVG STACK LOGIC ═══
     const wrap=document.getElementById('scrollWrap');
-    const panels=[0,1,2,3,4,5].map(i=>document.getElementById('panel'+i));
+    const panels=[0,1,2,3,4].map(i=>document.getElementById('panel'+i));
     const dots=document.querySelectorAll('.scroll-dot');
     const dotsWrap=document.getElementById('dots');
     const p4=document.getElementById('p4'),p3=document.getElementById('p3'),p2=document.getElementById('p2'),p1=document.getElementById('p1');
@@ -530,7 +529,6 @@
 
     const steps=[
       ()=>{all.forEach(el=>setPlate(el,neutral));},
-      ()=>{all.forEach(el=>setPlate(el,{...neutral,faceStroke:'rgba(201,168,76,.25)',filter:'url(#shL)'}));},
       ()=>{setPlate(p4,dimmed);setPlate(p3,dimmed);setPlate(p2,infraLit);setPlate(p1,hwLit);},
       ()=>{setPlate(p4,saasExposed);setPlate(p3,paasExposed);setPlate(p2,dimmed);setPlate(p1,dimmed);},
       ()=>{setPlate(p4,saasExposed);setPlate(p3,paasExposed);setPlate(p2,infraLit);setPlate(p1,hwLit);},
@@ -554,7 +552,7 @@
       dotsWrap.classList.toggle('show',inSeq);
       if(h<=0)return;
       const p=Math.max(0,Math.min(1,top/h));
-      setStep(Math.min(5,Math.floor(p*6)));
+      setStep(Math.min(4,Math.floor(p*5)));
     }
 
     window.addEventListener('scroll',onScroll,{passive:true});
@@ -563,7 +561,7 @@
     dots.forEach(d=>{
       d.addEventListener('click',()=>{
         const s=parseInt(d.dataset.step);
-        const t=wrap.offsetTop+(s/6)*(wrap.offsetHeight-window.innerHeight)+10;
+        const t=wrap.offsetTop+(s/5)*(wrap.offsetHeight-window.innerHeight)+10;
         window.scrollTo({top:t,behavior:'smooth'});
       });
     });
