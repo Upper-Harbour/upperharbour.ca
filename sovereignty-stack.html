@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Sovereignty Stack | Upper Harbour</title>
+  <meta name="description" content="Canada's sovereignty policy secures infrastructure. The application layer — where organizations encounter foreign jurisdiction daily — remains unaddressed." />
+  <link rel="canonical" href="https://upperharbour.ca/research/sovereignty-stack" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta property="og:title" content="The Sovereignty Stack" />
+  <meta property="og:description" content="Canada is securing the bottom of the stack. The top remains governed abroad." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/research/sovereignty-stack" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+<style>
+  html { scroll-behavior:auto; }
+
+  /* ═══ HERO ═══ */
+  .hero { min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:120px 32px 80px; position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 50% 40% at 50% 45%,rgba(224,96,80,.035) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 70% 70%,rgba(60,184,176,.025) 0%,transparent 50%); }
+  .hero::after { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(234,240,244,.008) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.008) 1px,transparent 1px); background-size:80px 80px; pointer-events:none; }
+  .hero-inner { position:relative; z-index:1; max-width:680px; }
+  .hero .ey { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:28px; opacity:0; animation:fu .7s ease forwards .2s; }
+  .hero h1 { font-family:var(--display); font-size:clamp(48px,8vw,88px); font-weight:900; color:var(--ice); line-height:1.0; letter-spacing:-2.5px; margin-bottom:28px; opacity:0; animation:fu .7s ease forwards .35s; }
+  .hero h1 em { font-style:italic; font-weight:700; color:var(--gold); }
+  .hero .sub { font-size:18px; color:var(--slate); line-height:1.65; max-width:520px; margin:0 auto 52px; opacity:0; animation:fu .7s ease forwards .5s; }
+  .hero .scroll-cue { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); opacity:0; animation:fu .7s ease forwards .7s; }
+  .hero .scroll-cue span { display:block; margin-top:10px; animation:bob 2.5s ease-in-out infinite; }
+  @keyframes fu { from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)} }
+  @keyframes bob { 0%,100%{transform:translateY(0)}50%{transform:translateY(8px)} }
+
+  /* ═══ SCROLL SEQUENCE ═══ */
+  .scroll-wrap { position:relative; }
+  .scroll-track { display:flex; min-height:100vh; position:sticky; top:0; overflow:hidden; }
+
+  /* Stack column */
+  .stack-col { width:52%; display:flex; align-items:center; justify-content:center; padding:40px 32px 40px 48px; }
+  .stack-canvas { width:100%; max-width:480px; position:relative; }
+
+  /* SVG stack */
+  .stack-svg { width:100%; height:auto; }
+  .stack-svg .plate { transition: all .7s cubic-bezier(.25,.46,.45,.94); }
+  .stack-svg .plate-face { transition: all .7s ease; }
+  .stack-svg .plate-top { transition: all .7s ease; }
+  .stack-svg .plate-side { transition: all .7s ease; }
+  .stack-svg .plate-label { transition: all .7s ease; font-family:'DM Sans',-apple-system,sans-serif; }
+  .stack-svg .plate-sublabel { transition: all .7s ease; font-family:'JetBrains Mono',monospace; }
+  .stack-svg .plate-glow { transition: all .7s ease; }
+
+  /* Narrative column */
+  .narr-col { width:48%; position:relative; }
+  .narr-panel { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:60px 48px 60px 40px; opacity:0; transition:opacity .45s ease; pointer-events:none; }
+  .narr-panel.active { opacity:1; pointer-events:auto; }
+  .narr-panel .ey { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); margin-bottom:20px; }
+  .narr-panel h2 { font-family:var(--display); font-size:clamp(26px,3vw,40px); font-weight:900; color:var(--ice); line-height:1.1; letter-spacing:-.4px; margin-bottom:18px; }
+  .narr-panel h2 em { font-style:italic; font-weight:700; color:var(--gold); }
+  .narr-panel h2 .red { color:var(--red); }
+  .narr-panel p { font-size:15px; color:var(--slate); line-height:1.7; max-width:380px; }
+  .narr-panel .payoff { font-family:var(--display); font-style:italic; font-size:20px; color:var(--ice); line-height:1.45; max-width:360px; border-left:3px solid var(--red); padding-left:24px; margin-top:24px; }
+  .narr-panel .mini-cta { display:inline-block; margin-top:28px; font-size:13px; font-weight:800; color:var(--bg); background:var(--teal); padding:14px 28px; border-radius:4px; text-decoration:none; transition:all .2s; box-shadow:0 0 20px rgba(60,184,176,.15); }
+  .narr-panel .mini-cta:hover { background:#47cec5; transform:translateY(-1px); box-shadow:0 0 32px rgba(60,184,176,.3); }
+
+  .scroll-spacer { height:500vh; }
+
+  /* Progress dots */
+  .scroll-dots { position:fixed; right:28px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:14px; opacity:0; transition:opacity .4s; }
+  .scroll-dots.show { opacity:1; }
+  .scroll-dot { width:8px; height:8px; border-radius:50%; background:rgba(234,240,244,.12); transition:all .3s; cursor:pointer; }
+  .scroll-dot.active { background:var(--teal); transform:scale(1.5); box-shadow:0 0 8px rgba(60,184,176,.4); }
+
+  /* ═══ EVIDENCE ═══ */
+  .evidence { max-width:960px; margin:0 auto; padding:120px 32px 80px; }
+  .evidence .ey { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:16px; }
+  .evidence h2 { font-family:var(--display); font-size:clamp(28px,3.5vw,42px); font-weight:700; color:var(--ice); line-height:1.12; margin-bottom:56px; }
+  .evidence h2 em { font-style:italic; color:var(--gold); }
+  .ev-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; border-radius:12px; overflow:hidden; margin-bottom:64px; }
+  .ev-stat { background:var(--surface); padding:44px 20px; text-align:center; }
+  .ev-num { font-family:var(--mono); font-size:clamp(48px,6vw,64px); font-weight:700; line-height:1; margin-bottom:12px; }
+  .ev-num.r { color:var(--red); } .ev-num.g { color:var(--gold); } .ev-num.t { color:var(--teal); }
+  .ev-label { font-size:12px; color:var(--muted); line-height:1.45; }
+  .ev-note { font-size:14px; color:var(--muted); line-height:1.7; max-width:640px; }
+  .ev-note strong { color:var(--ice); }
+  .ev-note a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,.3); }
+
+  /* ═══ POLICY GAP ═══ */
+  .policy-gap { max-width:960px; margin:0 auto; padding:64px 32px 80px; }
+  .pg-title { font-family:var(--display); font-size:clamp(28px,3.5vw,42px); font-weight:700; color:var(--ice); line-height:1.12; margin-bottom:16px; }
+  .pg-title em { font-style:italic; color:var(--gold); }
+  .pg-desc { font-size:15px; color:var(--slate); line-height:1.75; max-width:600px; margin-bottom:48px; }
+  .pg-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; border-radius:12px; overflow:hidden; }
+  .pg-card { background:var(--surface); padding:32px 28px; transition:background .3s; }
+  .pg-card:hover { background:var(--surface-2); }
+  .pg-card .tag { font-family:var(--mono); font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px; }
+  .pg-card h3 { font-family:var(--display); font-size:18px; font-weight:700; color:var(--ice); margin-bottom:8px; line-height:1.2; }
+  .pg-card p { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:10px; }
+  .pg-card .scope { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+  .pg-card .scope span { font-size:10px; font-weight:600; padding:3px 10px; border-radius:3px; }
+  .pg-card .scope .y { color:var(--teal); background:rgba(60,184,176,.08); border:1px solid rgba(60,184,176,.15); }
+  .pg-card .scope .n { color:var(--red); background:rgba(224,96,80,.08); border:1px solid rgba(224,96,80,.15); }
+  .pg-card .date { font-family:var(--mono); font-size:10px; color:var(--muted); opacity:.6; }
+
+  /* ═══ CTA ═══ */
+  .final-cta { text-align:center; padding:100px 32px; border-top:1px solid var(--border); }
+  .final-cta h2 { font-family:var(--display); font-size:32px; font-weight:700; color:var(--ice); margin-bottom:14px; }
+  .final-cta h2 em { font-style:italic; color:var(--gold); }
+  .final-cta p { font-size:15px; color:var(--slate); max-width:480px; margin:0 auto 28px; line-height:1.7; }
+  .final-cta .btn { display:inline-block; font-size:14px; font-weight:800; color:var(--bg); background:var(--teal); padding:16px 36px; border-radius:4px; text-decoration:none; transition:all .2s; box-shadow:0 0 24px rgba(60,184,176,.2); }
+  .final-cta .btn:hover { background:#47cec5; transform:translateY(-2px); box-shadow:0 0 40px rgba(60,184,176,.35); }
+
+  @media(max-width:800px) {
+    .scroll-track { flex-direction:column; }
+    .stack-col,.narr-col { width:100%; }
+    .stack-col { padding:20px; }
+    .narr-col { height:auto; }
+    .narr-panel { position:relative; padding:32px 20px; opacity:1; pointer-events:auto; }
+    .narr-panel:not(.active) { display:none; }
+    .scroll-spacer { height:auto; }
+    .scroll-dots { display:none; }
+    .ev-grid { grid-template-columns:1fr 1fr; }
+    .pg-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link active">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="ey">Upper Harbour Research &middot; March 2026</div>
+      <h1>The Sovereignty <em>Stack</em></h1>
+      <p class="sub">Canada is securing the bottom of the technology stack. The top &mdash; where organizations encounter foreign jurisdiction daily &mdash; remains unaddressed.</p>
+      <div class="scroll-cue">Scroll to explore<span>&darr;</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ SCROLL SEQUENCE ═══ -->
+  <div class="scroll-wrap" id="scrollWrap">
+    <div class="scroll-track">
+
+      <!-- LEFT: SVG Stack -->
+      <div class="stack-col">
+        <div class="stack-canvas">
+          <svg class="stack-svg" viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Plate gradients -->
+              <linearGradient id="gNeutral" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(234,240,244,.06)"/>
+                <stop offset="100%" stop-color="rgba(234,240,244,.02)"/>
+              </linearGradient>
+              <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(224,96,80,.12)"/>
+                <stop offset="100%" stop-color="rgba(224,96,80,.04)"/>
+              </linearGradient>
+              <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(201,168,76,.1)"/>
+                <stop offset="100%" stop-color="rgba(201,168,76,.03)"/>
+              </linearGradient>
+              <linearGradient id="gTeal" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(60,184,176,.1)"/>
+                <stop offset="100%" stop-color="rgba(60,184,176,.03)"/>
+              </linearGradient>
+              <linearGradient id="gTealStrong" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(60,184,176,.14)"/>
+                <stop offset="100%" stop-color="rgba(60,184,176,.05)"/>
+              </linearGradient>
+              <linearGradient id="gUH" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(60,184,176,.12)"/>
+                <stop offset="100%" stop-color="rgba(60,184,176,.04)"/>
+              </linearGradient>
+              <!-- Side gradients -->
+              <linearGradient id="sNeutral" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(234,240,244,.04)"/>
+                <stop offset="100%" stop-color="rgba(234,240,244,.01)"/>
+              </linearGradient>
+              <linearGradient id="sRed" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(224,96,80,.08)"/>
+                <stop offset="100%" stop-color="rgba(224,96,80,.02)"/>
+              </linearGradient>
+              <linearGradient id="sTeal" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(60,184,176,.08)"/>
+                <stop offset="100%" stop-color="rgba(60,184,176,.02)"/>
+              </linearGradient>
+              <!-- Glow filters -->
+              <filter id="glowRed" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+                <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0.88  0 0 0 0 0.38  0 0 0 0 0.31  0 0 0 0.3 0"/>
+                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="glowTeal" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur"/>
+                <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.24  0 0 0 0 0.72  0 0 0 0 0.69  0 0 0 0.3 0"/>
+                <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="shadowSoft" x="-5%" y="-5%" width="110%" height="120%">
+                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity=".25"/>
+              </filter>
+              <filter id="shadowLit" x="-8%" y="-8%" width="116%" height="130%">
+                <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity=".35"/>
+              </filter>
+            </defs>
+
+            <!--
+              Isometric-ish plates. Each plate is a parallelogram (top face) + side strip.
+              Skew gives perspective. Stack goes bottom-up in the SVG.
+            -->
+
+            <!-- LAYER 1: Hardware (bottom) -->
+            <g class="plate" id="p1" filter="url(#shadowSoft)">
+              <rect class="plate-glow" x="20" y="390" width="420" height="90" rx="10" fill="none" opacity="0"/>
+              <!-- Side -->
+              <path class="plate-side" d="M30,470 L30,480 Q30,490 40,490 L430,490 Q440,490 440,480 L440,470 Z" fill="url(#sNeutral)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <!-- Top face -->
+              <rect class="plate-face" x="30" y="400" width="410" height="70" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <!-- Highlight line -->
+              <line x1="40" y1="401" x2="430" y2="401" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <!-- Labels -->
+              <text class="plate-sublabel" x="48" y="424" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 1 — HARDWARE &amp; DATA CENTRES</text>
+              <text class="plate-label" x="48" y="445" fill="#EAF0F4" font-size="14" font-weight="700">Physical servers &amp; facilities</text>
+              <text class="plate-sublabel" x="48" y="462" fill="#566778" font-size="10">Bell-Hypertec · Equinix · Cologix · QScale</text>
+            </g>
+
+            <!-- LAYER 2: Infrastructure -->
+            <g class="plate" id="p2" filter="url(#shadowSoft)">
+              <rect class="plate-glow" x="20" y="270" width="420" height="90" rx="10" fill="none" opacity="0"/>
+              <path class="plate-side" d="M30,350 L30,360 Q30,370 40,370 L430,370 Q440,370 440,360 L440,350 Z" fill="url(#sNeutral)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <rect class="plate-face" x="30" y="280" width="410" height="70" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <line x1="40" y1="281" x2="430" y2="281" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <text class="plate-sublabel" x="48" y="304" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 2 — INFRASTRUCTURE (IAAS)</text>
+              <text class="plate-label" x="48" y="325" fill="#EAF0F4" font-size="14" font-weight="700">Cloud compute &amp; storage</text>
+              <text class="plate-sublabel" x="48" y="342" fill="#566778" font-size="10">AWS · Azure · GCP · ThinkOn · Micrologic</text>
+            </g>
+
+            <!-- LAYER 3: Platforms -->
+            <g class="plate" id="p3" filter="url(#shadowSoft)">
+              <rect class="plate-glow" x="20" y="150" width="420" height="90" rx="10" fill="none" opacity="0"/>
+              <path class="plate-side" d="M30,230 L30,240 Q30,250 40,250 L430,250 Q440,250 440,240 L440,230 Z" fill="url(#sNeutral)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <rect class="plate-face" x="30" y="160" width="410" height="70" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <line x1="40" y1="161" x2="430" y2="161" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <text class="plate-sublabel" x="48" y="184" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 3 — PLATFORMS (PAAS)</text>
+              <text class="plate-label" x="48" y="205" fill="#EAF0F4" font-size="14" font-weight="700">Runtime &amp; development</text>
+              <text class="plate-sublabel" x="48" y="222" fill="#566778" font-size="10">Containers · Serverless · APIs · CI/CD</text>
+            </g>
+
+            <!-- LAYER 4: SaaS (top) -->
+            <g class="plate" id="p4" filter="url(#shadowSoft)">
+              <rect class="plate-glow" x="15" y="20" width="430" height="110" rx="10" fill="none" opacity="0"/>
+              <path class="plate-side" d="M30,110 L30,120 Q30,130 40,130 L430,130 Q440,130 440,120 L440,110 Z" fill="url(#sNeutral)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <rect class="plate-face" x="30" y="30" width="410" height="80" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <line x1="40" y1="31" x2="430" y2="31" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <text class="plate-sublabel" x="48" y="54" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 4 — SAAS APPLICATIONS</text>
+              <text class="plate-label" x="48" y="75" fill="#EAF0F4" font-size="14" font-weight="700">The software organizations use daily</text>
+              <text class="plate-sublabel" x="48" y="97" fill="#566778" font-size="10">CRM · HR · Messaging · Analytics · Finance · Documents · DevOps</text>
+            </g>
+
+          </svg>
+        </div>
+      </div>
+
+      <!-- RIGHT: Narrative -->
+      <div class="narr-col">
+        <!-- Step 0: Introduce full stack -->
+        <div class="narr-panel active" id="panel0">
+          <div class="ey">The full stack</div>
+          <h2>Digital systems run on <em>four layers.</em></h2>
+          <p>Hardware at the base. Infrastructure above it. Platforms. And at the top, the SaaS applications employees use every day. Each layer has its own ownership, jurisdiction, and legal exposure.</p>
+        </div>
+
+        <!-- Step 1: Policy focuses on bottom two -->
+        <div class="narr-panel" id="panel1">
+          <div class="ey">Where policy focuses</div>
+          <h2>Sovereignty policy targets the <em>bottom two layers.</em></h2>
+          <p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec data centres. The March 2026 RFI requires that providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws. This covers infrastructure and hardware.</p>
+        </div>
+
+        <!-- Step 2: Top two layers unaddressed -->
+        <div class="narr-panel" id="panel2">
+          <div class="ey">Where exposure sits</div>
+          <h2>The <em class="red">top two layers</em> have no equivalent policy.</h2>
+          <p>No federal instrument applies a parent-jurisdiction test to SaaS vendors or the platforms they run on. 82% of the SaaS tools Canadian organizations use are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p>
+        </div>
+
+        <!-- Step 3: Jurisdiction overlay -->
+        <div class="narr-panel" id="panel3">
+          <div class="ey">The jurisdiction question</div>
+          <h2>Infrastructure can be domestic. Software can remain <em class="red">governed abroad.</em></h2>
+          <p>88% of tools advertising Canadian data residency are still under US parent jurisdiction.</p>
+          <div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div>
+        </div>
+
+        <!-- Step 4: Upper Harbour -->
+        <div class="narr-panel" id="panel4">
+          <div class="ey">Upper Harbour</div>
+          <h2>We map the <em>application layer.</em></h2>
+          <p>715 tools traced to parent companies, jurisdictions of incorporation, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s SaaS dependency.</p>
+          <a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="scroll-spacer"></div>
+  </div>
+
+  <!-- Progress dots -->
+  <div class="scroll-dots" id="dots">
+    <div class="scroll-dot active" data-step="0"></div>
+    <div class="scroll-dot" data-step="1"></div>
+    <div class="scroll-dot" data-step="2"></div>
+    <div class="scroll-dot" data-step="3"></div>
+    <div class="scroll-dot" data-step="4"></div>
+  </div>
+
+  <!-- ═══ EVIDENCE ═══ -->
+  <section class="evidence">
+    <div class="ey">What the data shows</div>
+    <h2>The application layer, <em>measured.</em></h2>
+    <div class="ev-grid">
+      <div class="ev-stat"><div class="ev-num r">82%</div><div class="ev-label">Under foreign<br/>jurisdiction</div></div>
+      <div class="ev-stat"><div class="ev-num r">63%</div><div class="ev-label">US-parented<br/>CLOUD Act exposed</div></div>
+      <div class="ev-stat"><div class="ev-num g">88%</div><div class="ev-label">CA-residency tools<br/>still US-parented</div></div>
+      <div class="ev-stat"><div class="ev-num t">18%</div><div class="ev-label">Truly Canadian<br/>owned &amp; operated</div></div>
+    </div>
+    <p class="ev-note"><strong>12 enterprise software categories</strong> &mdash; project management, analytics, customer support, ERP, CMS, DevOps &mdash; have zero Canadian-owned vendors. Based on the <a href="/research/canadian-technology-sovereignty-index">Canadian Technology Sovereignty Index</a> &mdash; 715 tools mapped.</p>
+  </section>
+
+  <!-- ═══ POLICY GAP ═══ -->
+  <section class="policy-gap">
+    <div class="ey" style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;">Policy landscape</div>
+    <h2 class="pg-title">Where Canada&rsquo;s policy <em>is and isn&rsquo;t</em></h2>
+    <p class="pg-desc">Four federal instruments address digital sovereignty. None apply a parent-jurisdiction test to SaaS vendors.</p>
+    <div class="pg-grid">
+      <div class="pg-card">
+        <div class="tag" style="color:var(--teal);">Infrastructure</div>
+        <h3>Sovereign Cloud RFI</h3>
+        <p>Requires ultimate parent corporations not subject to foreign compelled-disclosure laws.</p>
+        <div class="date">Updated March 3, 2026</div>
+        <div class="scope"><span class="y">IaaS</span><span class="y">PaaS</span><span class="n">SaaS not covered</span></div>
+      </div>
+      <div class="pg-card">
+        <div class="tag" style="color:var(--slate);">Framework</div>
+        <h3>Digital Sovereignty Framework</h3>
+        <p>Defines sovereignty. Explicitly &ldquo;distinct from procurement policies.&rdquo;</p>
+        <div class="date">November 2025</div>
+        <div class="scope"><span class="y">Policy direction</span><span class="n">No procurement mechanism</span></div>
+      </div>
+      <div class="pg-card">
+        <div class="tag" style="color:var(--gold);">Procurement</div>
+        <h3>Buy Canadian Framework</h3>
+        <p>Preferences Canadian suppliers. No field for parent jurisdiction.</p>
+        <div class="date">December 2025</div>
+        <div class="scope"><span class="y">Supplier preference</span><span class="n">No jurisdictional test</span></div>
+      </div>
+      <div class="pg-card">
+        <div class="tag" style="color:var(--gold);">AI &amp; Compute</div>
+        <h3>Sovereign AI Compute</h3>
+        <p>$2B for AI infrastructure. Bell-Hypertec, Cohere, university partnerships.</p>
+        <div class="date">Budget 2024&ndash;25</div>
+        <div class="scope"><span class="y">AI infrastructure</span><span class="n">AI SaaS not covered</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="final-cta">
+    <h2>See where your stack sits</h2>
+    <p>HarbourScan maps your SaaS tools to parent jurisdictions, CLOUD Act exposure, and compliance gaps. Free. Two minutes.</p>
+    <a href="/harbourscan" class="btn">Run HarbourScan &rarr;</a>
+  </section>
+
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Sovereignty Index</a></li><li><a href="/signals">Signals</a></li><li><a href="/research">Research</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/resources">Compliance Guides</a></li><li><a href="/pricing">Pricing</a></li></ul></div><div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li><li><a href="https://www.linkedin.com/in/joshuavanes">LinkedIn</a></li><li><a href="mailto:josh@upperharbour.ca">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></p></div></footer>
+
+  <script>
+  (function(){
+    const wrap = document.getElementById('scrollWrap');
+    const panels = [0,1,2,3,4].map(i => document.getElementById('panel'+i));
+    const dots = document.querySelectorAll('.scroll-dot');
+    const dotsWrap = document.getElementById('dots');
+    const p4 = document.getElementById('p4'); // SaaS
+    const p3 = document.getElementById('p3'); // PaaS
+    const p2 = document.getElementById('p2'); // IaaS
+    const p1 = document.getElementById('p1'); // Hardware
+    const all = [p4, p3, p2, p1];
+
+    let cur = -1;
+
+    function setPlate(el, opts) {
+      const face = el.querySelector('.plate-face');
+      const side = el.querySelector('.plate-side');
+      const glow = el.querySelector('.plate-glow');
+      const sublabels = el.querySelectorAll('.plate-sublabel');
+      const label = el.querySelector('.plate-label');
+
+      el.style.opacity = opts.opacity || '1';
+      el.style.transform = opts.transform || '';
+      el.setAttribute('filter', opts.filter || 'url(#shadowSoft)');
+
+      if (opts.faceFill) face.setAttribute('fill', opts.faceFill);
+      if (opts.faceStroke) face.setAttribute('stroke', opts.faceStroke);
+      if (opts.sideFill) side.setAttribute('fill', opts.sideFill);
+      if (opts.labelColor) label.setAttribute('fill', opts.labelColor);
+      if (opts.subColor) sublabels.forEach(s => s.setAttribute('fill', opts.subColor));
+      if (opts.glowFill) { glow.setAttribute('fill', opts.glowFill); glow.setAttribute('opacity', opts.glowOpacity || '0'); }
+      else { glow.setAttribute('opacity', '0'); }
+    }
+
+    const neutral = { faceFill:'url(#gNeutral)', faceStroke:'rgba(234,240,244,.08)', sideFill:'url(#sNeutral)', labelColor:'#EAF0F4', subColor:'#566778', filter:'url(#shadowSoft)' };
+    const dimmed = { ...neutral, opacity:'.15', transform:'translate(0,4)' };
+    const infraLit = { faceFill:'url(#gTeal)', faceStroke:'rgba(60,184,176,.3)', sideFill:'url(#sTeal)', labelColor:'#EAF0F4', subColor:'#3CB8B0', filter:'url(#shadowLit)', glowFill:'rgba(60,184,176,.06)', glowOpacity:'.6' };
+    const hwLit = { faceFill:'url(#gTealStrong)', faceStroke:'rgba(60,184,176,.35)', sideFill:'url(#sTeal)', labelColor:'#EAF0F4', subColor:'#3CB8B0', filter:'url(#shadowLit)', glowFill:'rgba(60,184,176,.08)', glowOpacity:'.7' };
+    const saasExposed = { faceFill:'url(#gRed)', faceStroke:'rgba(224,96,80,.3)', sideFill:'url(#sRed)', labelColor:'#EAF0F4', subColor:'#E06050', filter:'url(#shadowLit)', transform:'translate(0,-4)', glowFill:'rgba(224,96,80,.06)', glowOpacity:'.6' };
+    const paasExposed = { faceFill:'url(#gGold)', faceStroke:'rgba(201,168,76,.25)', sideFill:'url(#sNeutral)', labelColor:'#EAF0F4', subColor:'#C9A84C', filter:'url(#shadowLit)' };
+    const saasUH = { faceFill:'url(#gUH)', faceStroke:'rgba(60,184,176,.4)', sideFill:'url(#sTeal)', labelColor:'#EAF0F4', subColor:'#3CB8B0', filter:'url(#shadowLit)', transform:'translate(0,-6)', glowFill:'rgba(60,184,176,.08)', glowOpacity:'.8' };
+
+    // Step configs
+    const steps = [
+      // 0: Full stack — all neutral
+      () => { all.forEach(el => setPlate(el, neutral)); },
+      // 1: Infra + HW lit, top two dim
+      () => { setPlate(p4, dimmed); setPlate(p3, dimmed); setPlate(p2, infraLit); setPlate(p1, hwLit); },
+      // 2: Top two exposed, bottom two dim
+      () => { setPlate(p4, saasExposed); setPlate(p3, paasExposed); setPlate(p2, dimmed); setPlate(p1, dimmed); },
+      // 3: Full jurisdiction overlay — gradient red to teal
+      () => { setPlate(p4, saasExposed); setPlate(p3, paasExposed); setPlate(p2, infraLit); setPlate(p1, hwLit); },
+      // 4: Upper Harbour — SaaS teal, rest dim
+      () => { setPlate(p4, saasUH); setPlate(p3, dimmed); setPlate(p2, dimmed); setPlate(p1, dimmed); },
+    ];
+
+    function setStep(step) {
+      if (step === cur) return;
+      cur = step;
+      steps[step]();
+      panels.forEach((p,i) => p.classList.toggle('active', i===step));
+      dots.forEach((d,i) => d.classList.toggle('active', i===step));
+    }
+
+    function onScroll() {
+      const r = wrap.getBoundingClientRect();
+      const top = -r.top;
+      const h = wrap.offsetHeight - window.innerHeight;
+      const inSeq = r.top <= 0 && r.bottom >= window.innerHeight;
+      dotsWrap.classList.toggle('show', inSeq);
+      if (h <= 0) return;
+      const p = Math.max(0, Math.min(1, top / h));
+      setStep(Math.min(4, Math.floor(p * 5)));
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    dots.forEach(d => {
+      d.addEventListener('click', () => {
+        const s = parseInt(d.dataset.step);
+        const t = wrap.offsetTop + (s/5)*(wrap.offsetHeight - window.innerHeight) + 10;
+        window.scrollTo({top:t, behavior:'smooth'});
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
