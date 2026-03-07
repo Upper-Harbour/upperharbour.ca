@@ -11,19 +11,17 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta property="og:title" content="The Sovereignty Stack" />
   <meta property="og:description" content="Canada is securing the bottom of the stack. The top remains governed abroad." />
-  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
-  <meta property="og:url" content="https://upperharbour.ca/research/sovereignty-stack" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/site.css" />
 <style>
   html{scroll-behavior:auto}
+  body{overflow-x:hidden}
 
   /* ═══ HERO ═══ */
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 80px;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,.025) 0%,transparent 70%)}
-  .hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.006) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.006) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 60px;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.005) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.005) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
   .hero-inner{position:relative;z-index:1;max-width:700px}
   .hero .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:32px;opacity:0;animation:fu .8s ease forwards .2s}
   .hero h1{font-family:var(--display);font-size:clamp(52px,9vw,100px);font-weight:900;color:var(--ice);line-height:.98;letter-spacing:-3px;margin-bottom:32px;opacity:0;animation:fu .8s ease forwards .4s}
@@ -34,99 +32,24 @@
   @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-  /* ═══ SCROLL SEQUENCE ═══ */
+  /* ═══ SCROLL SECTION ═══ */
   .scroll-wrap{position:relative}
-  .scroll-track{min-height:100vh;position:sticky;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 32px}
+  .scroll-track{min-height:100vh;position:sticky;top:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
 
-  .stack-and-narr{width:100%;max-width:900px;margin:0 auto}
+  /* Canvas fills the sticky viewport */
+  #stackCanvas{position:absolute;inset:0;width:100%;height:100%}
 
-  /* ═══ THE STACK — flat wide bars ═══ */
-  .stack{display:flex;flex-direction:column;gap:6px;margin-bottom:40px}
-
-  .layer{display:flex;align-items:stretch;border-radius:10px;overflow:hidden;transition:all .6s cubic-bezier(.25,.46,.45,.94);position:relative}
-  .layer.dimmed{opacity:.12;transform:scale(.98)}
-  .layer.lit{box-shadow:0 0 0 1px rgba(234,240,244,.06)}
-
-  /* Left accent bar */
-  .l-accent{width:5px;flex-shrink:0;transition:background .6s ease}
-
-  /* Main content area */
-  .l-body{flex:1;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;transition:background .6s ease}
-
-  /* Left side: label + name */
-  .l-info{flex-shrink:0}
-  .l-tag{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:1.3px;text-transform:uppercase;margin-bottom:4px;transition:color .6s}
-  .l-name{font-size:16px;font-weight:700;color:var(--ice);transition:color .6s}
-
-  /* Right side: examples */
-  .l-examples{display:flex;flex-wrap:wrap;gap:5px;justify-content:flex-end}
-  .l-ex{font-size:10px;font-weight:500;padding:4px 10px;border-radius:4px;white-space:nowrap;transition:all .6s}
-
-  /* Status badge — far right */
-  .l-status{flex-shrink:0;width:120px;display:flex;align-items:center;justify-content:center;padding:12px;border-left:1px solid rgba(234,240,244,.04);transition:all .6s}
-  .l-status-inner{text-align:center}
-  .l-status-icon{font-size:18px;margin-bottom:2px;transition:color .6s}
-  .l-status-text{font-family:var(--mono);font-size:8px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:color .6s}
-
-  /* ── Base neutral state ── */
-  .l-accent{background:rgba(234,240,244,.08)}
-  .l-body{background:rgba(234,240,244,.02)}
-  .l-tag{color:var(--muted)}
-  .l-ex{color:var(--muted);background:rgba(234,240,244,.03);border:1px solid rgba(234,240,244,.06)}
-  .l-status-icon{color:var(--muted)}
-  .l-status-text{color:var(--muted)}
-
-  /* ── Teal state ── */
-  .layer.c-teal .l-accent{background:var(--teal)}
-  .layer.c-teal .l-body{background:rgba(60,184,176,.04)}
-  .layer.c-teal .l-tag{color:var(--teal)}
-  .layer.c-teal .l-ex{color:rgba(60,184,176,.8);background:rgba(60,184,176,.06);border-color:rgba(60,184,176,.12)}
-  .layer.c-teal .l-status{border-color:rgba(60,184,176,.08)}
-  .layer.c-teal .l-status-icon{color:var(--teal)}
-  .layer.c-teal .l-status-text{color:var(--teal)}
-  .layer.c-teal.lit{box-shadow:0 0 48px rgba(60,184,176,.06),0 0 0 1px rgba(60,184,176,.15)}
-
-  /* ── Teal strong ── */
-  .layer.c-teal-s .l-accent{background:var(--teal)}
-  .layer.c-teal-s .l-body{background:rgba(60,184,176,.06)}
-  .layer.c-teal-s .l-tag{color:var(--teal)}
-  .layer.c-teal-s .l-ex{color:rgba(60,184,176,.85);background:rgba(60,184,176,.08);border-color:rgba(60,184,176,.16)}
-  .layer.c-teal-s .l-status{border-color:rgba(60,184,176,.1)}
-  .layer.c-teal-s .l-status-icon{color:var(--teal)}
-  .layer.c-teal-s .l-status-text{color:var(--teal)}
-  .layer.c-teal-s.lit{box-shadow:0 0 64px rgba(60,184,176,.08),0 0 0 1px rgba(60,184,176,.2)}
-
-  /* ── Red state ── */
-  .layer.c-red .l-accent{background:var(--red)}
-  .layer.c-red .l-body{background:rgba(224,96,80,.04)}
-  .layer.c-red .l-tag{color:var(--red)}
-  .layer.c-red .l-ex{color:rgba(224,96,80,.8);background:rgba(224,96,80,.06);border-color:rgba(224,96,80,.12)}
-  .layer.c-red .l-status{border-color:rgba(224,96,80,.08)}
-  .layer.c-red .l-status-icon{color:var(--red)}
-  .layer.c-red .l-status-text{color:var(--red)}
-  .layer.c-red.lit{box-shadow:0 0 48px rgba(224,96,80,.06),0 0 0 1px rgba(224,96,80,.15)}
-
-  /* ── Gold state ── */
-  .layer.c-gold .l-accent{background:var(--gold)}
-  .layer.c-gold .l-body{background:rgba(201,168,76,.03)}
-  .layer.c-gold .l-tag{color:var(--gold)}
-  .layer.c-gold .l-ex{color:rgba(201,168,76,.8);background:rgba(201,168,76,.05);border-color:rgba(201,168,76,.1)}
-  .layer.c-gold .l-status{border-color:rgba(201,168,76,.06)}
-  .layer.c-gold .l-status-icon{color:var(--gold)}
-  .layer.c-gold .l-status-text{color:var(--gold)}
-  .layer.c-gold.lit{box-shadow:0 0 40px rgba(201,168,76,.05),0 0 0 1px rgba(201,168,76,.12)}
-
-  /* ═══ NARRATIVE — centered below stack ═══ */
-  .narr{position:relative;min-height:140px;text-align:center;padding:0 20px}
-  .narr-s{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;opacity:0;transition:opacity .45s ease;pointer-events:none;padding:0 20px}
+  /* Narrative overlay */
+  .narr-overlay{position:relative;z-index:2;text-align:center;padding:0 32px;pointer-events:none}
+  .narr-s{position:absolute;left:50%;transform:translateX(-50%);bottom:60px;width:100%;max-width:560px;opacity:0;transition:opacity .5s ease;pointer-events:none;padding:0 24px}
   .narr-s.active{opacity:1;pointer-events:auto}
   .narr-s .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-  .narr-s h2{font-family:var(--display);font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--ice);line-height:1.12;letter-spacing:-.3px;margin-bottom:12px}
+  .narr-s h2{font-family:var(--display);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--ice);line-height:1.1;letter-spacing:-.3px;margin-bottom:14px;text-shadow:0 2px 20px rgba(6,9,14,.8)}
   .narr-s h2 em{font-style:italic;font-weight:700;color:var(--gold)}
   .narr-s h2 .red{color:var(--red)}
-  .narr-s p{font-size:14px;color:var(--slate);line-height:1.65;max-width:520px}
-  .narr-s .payoff{font-family:var(--display);font-style:italic;font-size:18px;color:var(--ice);line-height:1.4;max-width:440px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(224,96,80,.15)}
-  .narr-s .mini-cta{display:inline-block;margin-top:20px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15)}
+  .narr-s p{font-size:14px;color:var(--slate);line-height:1.65;max-width:480px;margin:0 auto;text-shadow:0 1px 8px rgba(6,9,14,.9)}
+  .narr-s .payoff{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ice);line-height:1.4;max-width:440px;margin:18px auto 0;padding-top:18px;border-top:1px solid rgba(224,96,80,.2);text-shadow:0 2px 16px rgba(6,9,14,.8)}
+  .narr-s .mini-cta{display:inline-block;margin-top:22px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.2);pointer-events:auto}
   .narr-s .mini-cta:hover{background:#47cec5;transform:translateY(-1px)}
 
   .scroll-spacer{height:500vh}
@@ -168,7 +91,6 @@
   .pg-card .scope .n{color:var(--red);background:rgba(224,96,80,.08);border:1px solid rgba(224,96,80,.15)}
   .pg-card .date{font-family:var(--mono);font-size:10px;color:var(--muted);opacity:.6}
 
-  /* ═══ CTA ═══ */
   .final-cta{text-align:center;padding:100px 32px;border-top:1px solid var(--border)}
   .final-cta h2{font-family:var(--display);font-size:32px;font-weight:700;color:var(--ice);margin-bottom:14px}
   .final-cta h2 em{font-style:italic;color:var(--gold)}
@@ -177,11 +99,9 @@
   .final-cta .btn:hover{background:#47cec5;transform:translateY(-2px);box-shadow:0 0 40px rgba(60,184,176,.35)}
 
   @media(max-width:700px){
-    .l-examples{display:none}
-    .l-status{width:80px}
-    .l-body{padding:16px 20px}
     .ev-grid{grid-template-columns:1fr 1fr}
     .pg-grid{grid-template-columns:1fr}
+    .narr-s{bottom:40px}
   }
 </style>
 </head>
@@ -207,11 +127,8 @@
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
   </nav>
-  <div class="nav-mobile-menu">
-    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
-  </div>
+  <div class="nav-mobile-menu"><a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a></div>
 
-  <!-- ═══ HERO ═══ -->
   <section class="hero">
     <div class="hero-inner">
       <div class="ey">Upper Harbour Research &middot; March 2026</div>
@@ -221,119 +138,22 @@
     </div>
   </section>
 
-  <!-- ═══ SCROLL SEQUENCE ═══ -->
   <div class="scroll-wrap" id="scrollWrap">
     <div class="scroll-track">
-      <div class="stack-and-narr">
-
-        <!-- THE STACK -->
-        <div class="stack">
-          <!-- Layer 4: SaaS -->
-          <div class="layer" id="ly4">
-            <div class="l-accent"></div>
-            <div class="l-body">
-              <div class="l-info">
-                <div class="l-tag">Layer 4 &mdash; SaaS Applications</div>
-                <div class="l-name">The software organizations use daily</div>
-              </div>
-              <div class="l-examples">
-                <span class="l-ex">Salesforce</span><span class="l-ex">Slack</span><span class="l-ex">Microsoft 365</span><span class="l-ex">Workday</span><span class="l-ex">Jira</span><span class="l-ex">Zendesk</span>
-              </div>
-            </div>
-            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">&#x2717;</div><div class="l-status-text">No policy</div></div></div>
-          </div>
-
-          <!-- Layer 3: PaaS -->
-          <div class="layer" id="ly3">
-            <div class="l-accent"></div>
-            <div class="l-body">
-              <div class="l-info">
-                <div class="l-tag">Layer 3 &mdash; Platforms</div>
-                <div class="l-name">Runtime &amp; development environments</div>
-              </div>
-              <div class="l-examples">
-                <span class="l-ex">Containers</span><span class="l-ex">Serverless</span><span class="l-ex">CI/CD</span><span class="l-ex">APIs</span>
-              </div>
-            </div>
-            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">~</div><div class="l-status-text">Partial</div></div></div>
-          </div>
-
-          <!-- Layer 2: IaaS -->
-          <div class="layer" id="ly2">
-            <div class="l-accent"></div>
-            <div class="l-body">
-              <div class="l-info">
-                <div class="l-tag">Layer 2 &mdash; Infrastructure</div>
-                <div class="l-name">Cloud compute &amp; storage</div>
-              </div>
-              <div class="l-examples">
-                <span class="l-ex">AWS</span><span class="l-ex">Azure</span><span class="l-ex">GCP</span><span class="l-ex">ThinkOn</span><span class="l-ex">Micrologic</span>
-              </div>
-            </div>
-            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">&#x2713;</div><div class="l-status-text">RFI active</div></div></div>
-          </div>
-
-          <!-- Layer 1: Hardware -->
-          <div class="layer" id="ly1">
-            <div class="l-accent"></div>
-            <div class="l-body">
-              <div class="l-info">
-                <div class="l-tag">Layer 1 &mdash; Hardware &amp; Data Centres</div>
-                <div class="l-name">Physical servers &amp; facilities</div>
-              </div>
-              <div class="l-examples">
-                <span class="l-ex">Bell-Hypertec</span><span class="l-ex">Equinix</span><span class="l-ex">Cologix</span><span class="l-ex">QScale</span>
-              </div>
-            </div>
-            <div class="l-status"><div class="l-status-inner"><div class="l-status-icon">&#x2713;</div><div class="l-status-text">Funded</div></div></div>
-          </div>
-        </div>
-
-        <!-- NARRATIVE -->
-        <div class="narr">
-          <div class="narr-s active" id="ns0">
-            <div class="ey">The full stack</div>
-            <h2>Digital systems run on <em>four layers.</em></h2>
-            <p>From physical servers to SaaS applications. Each layer has its own ownership, jurisdiction, and legal exposure.</p>
-          </div>
-          <div class="narr-s" id="ns1">
-            <div class="ey">Where policy focuses</div>
-            <h2>Sovereignty policy targets the <em>bottom two.</em></h2>
-            <p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. The March 2026 RFI requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p>
-          </div>
-          <div class="narr-s" id="ns2">
-            <div class="ey">Where exposure sits</div>
-            <h2>The <em class="red">top two layers</em> have no equivalent policy.</h2>
-            <p>82% of SaaS tools used by Canadian organizations are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p>
-          </div>
-          <div class="narr-s" id="ns3">
-            <div class="ey">The jurisdiction question</div>
-            <h2>Infrastructure can be domestic. Software remains <em class="red">governed abroad.</em></h2>
-            <p>88% of tools advertising Canadian data residency are still under US parent jurisdiction.</p>
-            <div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div>
-          </div>
-          <div class="narr-s" id="ns4">
-            <div class="ey">Upper Harbour</div>
-            <h2>We map <em>every layer.</em></h2>
-            <p>715 tools traced to parent companies, jurisdictions, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s technology dependency.</p>
-            <a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a>
-          </div>
-        </div>
-
+      <canvas id="stackCanvas"></canvas>
+      <div class="narr-overlay">
+        <div class="narr-s active" id="ns0"><div class="ey">The full stack</div><h2>Digital systems run on <em>four layers.</em></h2><p>From physical servers to SaaS applications. Each layer has its own ownership, jurisdiction, and legal exposure.</p></div>
+        <div class="narr-s" id="ns1"><div class="ey">Where policy focuses</div><h2>Sovereignty policy targets the <em>bottom two.</em></h2><p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. The March 2026 RFI requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p></div>
+        <div class="narr-s" id="ns2"><div class="ey">Where exposure sits</div><h2>The <em class="red">top two layers</em> have no equivalent policy.</h2><p>82% of SaaS tools used by Canadian organizations are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p></div>
+        <div class="narr-s" id="ns3"><div class="ey">The jurisdiction question</div><h2>Infrastructure can be domestic. Software remains <em class="red">governed abroad.</em></h2><div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div></div>
+        <div class="narr-s" id="ns4"><div class="ey">Upper Harbour</div><h2>We map <em>every layer.</em></h2><p>715 tools traced to parent companies, jurisdictions, and compelled-disclosure exposure.</p><a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a></div>
       </div>
     </div>
     <div class="scroll-spacer"></div>
   </div>
 
-  <div class="scroll-dots" id="dots">
-    <div class="scroll-dot active" data-step="0"></div>
-    <div class="scroll-dot" data-step="1"></div>
-    <div class="scroll-dot" data-step="2"></div>
-    <div class="scroll-dot" data-step="3"></div>
-    <div class="scroll-dot" data-step="4"></div>
-  </div>
+  <div class="scroll-dots" id="dots"><div class="scroll-dot active" data-step="0"></div><div class="scroll-dot" data-step="1"></div><div class="scroll-dot" data-step="2"></div><div class="scroll-dot" data-step="3"></div><div class="scroll-dot" data-step="4"></div></div>
 
-  <!-- ═══ EVIDENCE ═══ -->
   <section class="evidence">
     <div class="ey">What the data shows</div>
     <h2>The application layer, <em>measured.</em></h2>
@@ -346,7 +166,6 @@
     <p class="ev-note"><strong>12 enterprise software categories</strong> &mdash; project management, analytics, customer support, ERP, CMS, DevOps &mdash; have zero Canadian-owned vendors. Based on the <a href="/research/canadian-technology-sovereignty-index">Canadian Technology Sovereignty Index</a> &mdash; 715 tools mapped.</p>
   </section>
 
-  <!-- ═══ POLICY GAP ═══ -->
   <section class="policy-gap">
     <div class="ey" style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">Policy landscape</div>
     <h2 class="pg-title">Where Canada&rsquo;s policy <em>is and isn&rsquo;t</em></h2>
@@ -367,72 +186,258 @@
 
   <footer>
     <div class="footer-inner">
-      <div>
-        <div class="footer-logo">
-          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg>
-          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span>
-        </div>
-        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Platform</div>
-        <ul class="footer-links">
-          <li><a href="/harbourscan">HarbourScan</a></li>
-          <li><a href="/tools">Sovereignty Index</a></li>
-          <li><a href="/signals">Signals</a></li>
-          <li><a href="/research">Research</a></li>
-          <li><a href="/methodology">Methodology</a></li>
-          <li><a href="/resources">Compliance Guides</a></li>
-          <li><a href="/pricing">Pricing</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">About</div>
-        <ul class="footer-links">
-          <li><a href="/founder">Founder</a></li>
-          <li><a href="https://www.linkedin.com/in/joshuavanes">LinkedIn</a></li>
-          <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
-        </ul>
-      </div>
+      <div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div>
+      <div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Sovereignty Index</a></li><li><a href="/signals">Signals</a></li><li><a href="/research">Research</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/resources">Compliance Guides</a></li><li><a href="/pricing">Pricing</a></li></ul></div>
+      <div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li><li><a href="https://www.linkedin.com/in/joshuavanes">LinkedIn</a></li><li><a href="mailto:josh@upperharbour.ca">Contact</a></li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved.</span>
-      <span class="footer-copy"><a href="/privacy" style="color:var(--muted);text-decoration:none">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none">Terms</a></span>
-    </div>
+    <div class="footer-bottom"><span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved.</span><span class="footer-copy"><a href="/privacy" style="color:var(--muted);text-decoration:none">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none">Terms</a></span></div>
   </footer>
 
   <script>
   (function(){
+    // ═══ CANVAS RENDERER ═══
+    const canvas = document.getElementById('stackCanvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, dpr;
+    let step = 0;
+    let targetStep = 0;
+    let animProgress = 0;
+
+    // Colors
+    const C = {
+      bg: '#06090E',
+      neutral: { fill:'#0F1820', stroke:'rgba(234,240,244,0.08)', text:'#566778', glow:'rgba(234,240,244,0.02)' },
+      teal: { fill:'#0E2624', stroke:'rgba(60,184,176,0.3)', text:'#3CB8B0', glow:'rgba(60,184,176,0.06)' },
+      tealS: { fill:'#123230', stroke:'rgba(60,184,176,0.4)', text:'#3CB8B0', glow:'rgba(60,184,176,0.1)' },
+      red: { fill:'#241210', stroke:'rgba(224,96,80,0.3)', text:'#E06050', glow:'rgba(224,96,80,0.06)' },
+      gold: { fill:'#221C0C', stroke:'rgba(201,168,76,0.25)', text:'#C9A84C', glow:'rgba(201,168,76,0.05)' },
+      dim: { fill:'#0A0E14', stroke:'rgba(234,240,244,0.03)', text:'rgba(234,240,244,0.1)', glow:'transparent' },
+    };
+
+    // Layer definitions
+    const layers = [
+      { label:'LAYER 4 — SAAS APPLICATIONS', name:'The software organizations use daily', examples:'Salesforce · Slack · Microsoft 365 · Workday · Jira · Zendesk', status:'✗ No policy' },
+      { label:'LAYER 3 — PLATFORMS', name:'Runtime & development', examples:'Containers · Serverless · CI/CD · APIs', status:'~ Partial' },
+      { label:'LAYER 2 — INFRASTRUCTURE', name:'Cloud compute & storage', examples:'AWS · Azure · GCP · ThinkOn · Micrologic', status:'✓ RFI active' },
+      { label:'LAYER 1 — HARDWARE & DATA CENTRES', name:'Physical servers & facilities', examples:'Bell-Hypertec · Equinix · Cologix · QScale', status:'✓ Funded' },
+    ];
+
+    // State per step: [layer4, layer3, layer2, layer1]
+    const stepStates = [
+      ['neutral','neutral','neutral','neutral'],
+      ['dim','dim','teal','tealS'],
+      ['red','gold','dim','dim'],
+      ['red','gold','teal','tealS'],
+      ['tealS','teal','teal','tealS'],
+    ];
+
+    // Particles
+    let particles = [];
+    class Particle {
+      constructor(x,y,color){
+        this.x=x; this.y=y; this.color=color;
+        this.vx=(Math.random()-.5)*.3;
+        this.vy=-Math.random()*.6-.2;
+        this.life=1; this.decay=.003+Math.random()*.004;
+        this.r=1.5+Math.random()*1.5;
+      }
+      update(){
+        this.x+=this.vx; this.y+=this.vy;
+        this.life-=this.decay;
+      }
+      draw(){
+        if(this.life<=0)return;
+        ctx.save();
+        ctx.globalAlpha=this.life*.6;
+        ctx.fillStyle=this.color;
+        ctx.shadowColor=this.color;
+        ctx.shadowBlur=8;
+        ctx.beginPath();
+        ctx.arc(this.x*dpr,this.y*dpr,this.r*dpr,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function resize(){
+      dpr = window.devicePixelRatio||1;
+      W = canvas.clientWidth;
+      H = canvas.clientHeight;
+      canvas.width = W*dpr;
+      canvas.height = H*dpr;
+    }
+
+    function getLayerRect(i){
+      const totalH = Math.min(H*.55, 400);
+      const barH = totalH/4 - 8;
+      const startY = (H - totalH)/2 - 20;
+      const barW = Math.min(W*.7, 700);
+      const x = (W-barW)/2;
+      const y = startY + i*(barH+8);
+      return {x,y,w:barW,h:barH};
+    }
+
+    function lerpColor(a,b,t){
+      // Simple object lerp — we'll use direct state
+      return t<.5?a:b;
+    }
+
+    function getColor(stateName){
+      return C[stateName]||C.neutral;
+    }
+
+    function drawLayer(i, state, highlight){
+      const r = getLayerRect(i);
+      const c = getColor(state);
+      const rad = 8*dpr;
+
+      // Glow
+      if(c.glow!=='transparent'){
+        ctx.save();
+        ctx.shadowColor=c.glow;
+        ctx.shadowBlur=40*dpr;
+        ctx.fillStyle=c.glow;
+        roundRect(r.x*dpr,r.y*dpr,r.w*dpr,r.h*dpr,rad);
+        ctx.fill();
+        ctx.restore();
+      }
+
+      // Fill
+      ctx.save();
+      ctx.fillStyle=c.fill;
+      roundRect(r.x*dpr,r.y*dpr,r.w*dpr,r.h*dpr,rad);
+      ctx.fill();
+
+      // Stroke
+      ctx.strokeStyle=c.stroke;
+      ctx.lineWidth=1*dpr;
+      roundRect(r.x*dpr,r.y*dpr,r.w*dpr,r.h*dpr,rad);
+      ctx.stroke();
+
+      // Accent bar
+      const accentColor = state==='red'?'#E06050':state==='gold'?'#C9A84C':(state==='teal'||state==='tealS')?'#3CB8B0':'rgba(234,240,244,0.08)';
+      if(state==='dim') ctx.fillStyle='rgba(234,240,244,0.03)';
+      else ctx.fillStyle=accentColor;
+      roundRectPartial(r.x*dpr,r.y*dpr,5*dpr,r.h*dpr,rad,true);
+      ctx.fill();
+
+      ctx.restore();
+
+      // Text
+      const textAlpha = state==='dim'?.1:1;
+      const tagColor = c.text;
+      const nameColor = state==='dim'?'rgba(234,240,244,0.1)':'#EAF0F4';
+      const exColor = state==='dim'?'rgba(234,240,244,0.06)':'#566778';
+
+      ctx.save();
+      ctx.globalAlpha=textAlpha<1?textAlpha:1;
+
+      // Tag
+      ctx.font=`600 ${9*dpr}px "JetBrains Mono",monospace`;
+      ctx.fillStyle=tagColor;
+      ctx.textBaseline='top';
+      ctx.fillText(layers[i].label, (r.x+20)*dpr, (r.y+14)*dpr);
+
+      // Name
+      ctx.font=`700 ${15*dpr}px "DM Sans",sans-serif`;
+      ctx.fillStyle=nameColor;
+      ctx.fillText(layers[i].name, (r.x+20)*dpr, (r.y+30)*dpr);
+
+      // Examples
+      ctx.font=`400 ${10*dpr}px "DM Sans",sans-serif`;
+      ctx.fillStyle=exColor;
+      ctx.fillText(layers[i].examples, (r.x+20)*dpr, (r.y+50)*dpr);
+
+      // Status — right aligned
+      ctx.font=`600 ${10*dpr}px "JetBrains Mono",monospace`;
+      ctx.fillStyle=tagColor;
+      ctx.textAlign='right';
+      ctx.fillText(layers[i].status, (r.x+r.w-16)*dpr, (r.y+r.h/2+3)*dpr);
+      ctx.textAlign='left';
+
+      ctx.restore();
+
+      // Spawn particles on active layers
+      if(state!=='dim'&&state!=='neutral'&&Math.random()<.15){
+        const px = r.x + Math.random()*r.w;
+        const py = r.y + r.h/2;
+        const pColor = state==='red'?'#E06050':state==='gold'?'#C9A84C':'#3CB8B0';
+        particles.push(new Particle(px,py,pColor));
+      }
+
+      // Connection lines between layers
+      if(i<3){
+        const r2 = getLayerRect(i+1);
+        const lineX = (r.x+r.w/2)*dpr;
+        ctx.save();
+        ctx.strokeStyle = state==='dim'?'rgba(234,240,244,0.02)':'rgba(234,240,244,0.04)';
+        ctx.lineWidth = 1*dpr;
+        ctx.setLineDash([4*dpr,4*dpr]);
+        ctx.beginPath();
+        ctx.moveTo(lineX,(r.y+r.h)*dpr);
+        ctx.lineTo(lineX,r2.y*dpr);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.restore();
+      }
+    }
+
+    function roundRect(x,y,w,h,r){
+      ctx.beginPath();
+      ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
+      ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+      ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+      ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);
+      ctx.closePath();
+    }
+
+    function roundRectPartial(x,y,w,h,r,leftOnly){
+      ctx.beginPath();
+      ctx.moveTo(x+r,y);ctx.lineTo(x+w,y);ctx.lineTo(x+w,y+h);
+      ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
+      ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);
+      ctx.closePath();
+    }
+
+    // Blueprint grid background
+    function drawGrid(){
+      ctx.save();
+      ctx.strokeStyle='rgba(234,240,244,0.012)';
+      ctx.lineWidth=1*dpr;
+      const s=60*dpr;
+      for(let x=0;x<W*dpr;x+=s){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H*dpr);ctx.stroke();}
+      for(let y=0;y<H*dpr;y+=s){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W*dpr,y);ctx.stroke();}
+      ctx.restore();
+    }
+
+    function render(){
+      ctx.clearRect(0,0,W*dpr,H*dpr);
+
+      drawGrid();
+
+      const states = stepStates[step];
+      // Draw connection lines first (behind)
+      for(let i=3;i>=0;i--){
+        drawLayer(i, states[i], false);
+      }
+
+      // Particles
+      particles.forEach(p=>{p.update();p.draw();});
+      particles=particles.filter(p=>p.life>0);
+
+      requestAnimationFrame(render);
+    }
+
+    // ═══ SCROLL LOGIC ═══
     const wrap=document.getElementById('scrollWrap');
     const slides=[0,1,2,3,4].map(i=>document.getElementById('ns'+i));
     const dots=document.querySelectorAll('.scroll-dot');
     const dotsWrap=document.getElementById('dots');
-    const ly4=document.getElementById('ly4'),ly3=document.getElementById('ly3'),ly2=document.getElementById('ly2'),ly1=document.getElementById('ly1');
-    const all=[ly4,ly3,ly2,ly1];
-    const cls=['dimmed','lit','c-teal','c-teal-s','c-red','c-gold'];
-    let cur=-1;
 
-    function reset(el){cls.forEach(c=>el.classList.remove(c))}
-    function apply(el,...c){reset(el);c.forEach(x=>el.classList.add(x))}
-
-    const steps=[
-      // 0: Full stack neutral
-      ()=>{all.forEach(reset)},
-      // 1: Bottom two teal, top two dim
-      ()=>{apply(ly4,'dimmed');apply(ly3,'dimmed');apply(ly2,'c-teal','lit');apply(ly1,'c-teal-s','lit')},
-      // 2: Top two red/gold, bottom two dim
-      ()=>{apply(ly4,'c-red','lit');apply(ly3,'c-gold','lit');apply(ly2,'dimmed');apply(ly1,'dimmed')},
-      // 3: Full jurisdiction overlay
-      ()=>{apply(ly4,'c-red','lit');apply(ly3,'c-gold');apply(ly2,'c-teal');apply(ly1,'c-teal-s')},
-      // 4: All teal — Upper Harbour
-      ()=>{apply(ly4,'c-teal-s','lit');apply(ly3,'c-teal','lit');apply(ly2,'c-teal','lit');apply(ly1,'c-teal-s','lit')},
-    ];
-
-    function setStep(step){
-      if(step===cur)return;cur=step;
-      steps[step]();
-      slides.forEach((s,i)=>s.classList.toggle('active',i===step));
-      dots.forEach((d,i)=>d.classList.toggle('active',i===step));
+    function setStep(s){
+      if(s===step)return;step=s;
+      slides.forEach((sl,i)=>sl.classList.toggle('active',i===s));
+      dots.forEach((d,i)=>d.classList.toggle('active',i===s));
     }
 
     function onScroll(){
@@ -446,7 +451,7 @@
     }
 
     window.addEventListener('scroll',onScroll,{passive:true});
-    onScroll();
+    window.addEventListener('resize',()=>{resize();});
 
     dots.forEach(d=>{
       d.addEventListener('click',()=>{
@@ -455,6 +460,10 @@
         window.scrollTo({top:t,behavior:'smooth'});
       });
     });
+
+    resize();
+    onScroll();
+    render();
   })();
   </script>
 </body>
