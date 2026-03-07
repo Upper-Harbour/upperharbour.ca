@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 06, 2026 — 12:05 ET",
+    "lastUpdated": "Mar 07, 2026 — 00:03 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian businesses drive data sovereignty demand independent of legislation",
+      "summary": "According to IAPP Canada, Canadian data sovereignty has become mainstream with private-sector organizations pressuring U.S.-based vendors to maintain data and AI tools domestically, driven by grassroots business concerns rather than regulatory requirements. This reflects a market shift toward de facto data localization expectations ahead of formal legislative changes.",
+      "type": "policy",
+      "source": "IAPP",
+      "sourceUrl": "https://iapp.org/news/a/notes-from-the-iapp-canda-canadians-data-sovereignty-philosophies-are-shifting",
+      "date": "2026-03-06",
+      "impact": "Canadian SaaS vendors and their customers should prepare for increasing contractual demands regarding data residency, even where current law does not mandate localization.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian mid-market organizations lag large enterprises on data sovereignty readiness despite identical Quebec regulatory exposure",
       "summary": "Kiteworks' 2026 survey of 286 professionals found Canadian mid-market organizations score 15-25 percentage points lower than large enterprises on sovereignty readiness metrics, despite facing identical regulatory requirements under Quebec's Law 25. This compliance gap represents a material risk for organizations operating in the mid-market segment across Canada.",
