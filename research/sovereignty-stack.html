@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Sovereignty Stack | Upper Harbour</title>
+  <meta name="description" content="Canada's sovereignty policy secures infrastructure. The application layer — where organizations encounter foreign jurisdiction daily — remains unaddressed." />
+  <link rel="canonical" href="https://upperharbour.ca/research/sovereignty-stack" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <meta property="og:title" content="The Sovereignty Stack" />
+  <meta property="og:description" content="Canada is securing the bottom of the stack. The top remains governed abroad." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/research/sovereignty-stack" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+<style>
+  html { scroll-behavior: auto; }
+
+  /* ═══ HERO ═══ */
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 32px 80px; position: relative; overflow: hidden; }
+  .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 50% 40% at 50% 45%, rgba(224,96,80,0.035) 0%, transparent 60%), radial-gradient(ellipse 40% 50% at 70% 70%, rgba(60,184,176,0.025) 0%, transparent 50%); }
+  .hero::after { content:''; position:absolute; inset:0; background-image: linear-gradient(rgba(234,240,244,0.008) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.008) 1px, transparent 1px); background-size:80px 80px; pointer-events:none; }
+  .hero-inner { position:relative; z-index:1; max-width:680px; }
+  .hero .ey { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:28px; opacity:0; animation:fu .7s ease forwards .2s; }
+  .hero h1 { font-family:var(--display); font-size:clamp(48px,8vw,88px); font-weight:900; color:var(--ice); line-height:1.0; letter-spacing:-2.5px; margin-bottom:28px; opacity:0; animation:fu .7s ease forwards .35s; }
+  .hero h1 em { font-style:italic; font-weight:700; color:var(--gold); }
+  .hero .sub { font-size:18px; color:var(--slate); line-height:1.65; max-width:520px; margin:0 auto 52px; opacity:0; animation:fu .7s ease forwards .5s; }
+  .hero .scroll-cue { font-family:var(--mono); font-size:10px; letter-spacing:.15em; text-transform:uppercase; color:var(--muted); opacity:0; animation:fu .7s ease forwards .7s; }
+  .hero .scroll-cue span { display:block; margin-top:10px; animation:bob 2.5s ease-in-out infinite; }
+  @keyframes fu { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes bob { 0%,100% { transform:translateY(0); } 50% { transform:translateY(8px); } }
+
+  /* ═══ SCROLL SEQUENCE ═══ */
+  .scroll-wrap { position:relative; }
+  .scroll-track { display:flex; min-height:100vh; position:sticky; top:0; }
+
+  /* Left: persistent stack — dominant visual */
+  .stack-col { width:55%; display:flex; align-items:center; justify-content:center; padding:40px 48px; }
+  .stack-vis { width:100%; max-width:440px; display:flex; flex-direction:column; gap:16px;
+    perspective:1200px; transform-style:preserve-3d;
+  }
+
+  /* Layers — floating architectural slabs */
+  .sl { border-radius:14px; padding:28px 28px 24px; position:relative; overflow:hidden;
+    transition: all .65s cubic-bezier(.25,.46,.45,.94);
+    box-shadow: 0 4px 12px rgba(0,0,0,.25), 0 1px 2px rgba(0,0,0,.15), inset 0 1px 0 rgba(234,240,244,.04);
+    transform: rotateX(2deg);
+    transform-origin: center bottom;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+  .sl::after { content:''; position:absolute; inset:0; border-radius:14px; background:linear-gradient(180deg, rgba(234,240,244,.03) 0%, transparent 40%); pointer-events:none; }
+  .sl .sl-bar { position:absolute; top:0; left:0; bottom:0; width:4px; transition: all .65s ease; border-radius:4px 0 0 4px; }
+  .sl .sl-tag { font-family:var(--mono); font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; margin-bottom:8px; transition: color .65s ease; position:relative; z-index:1; }
+  .sl .sl-name { font-size:16px; font-weight:700; color:var(--ice); margin-bottom:6px; transition: all .65s ease; position:relative; z-index:1; }
+  .sl .sl-examples { font-size:11.5px; color:var(--muted); line-height:1.55; transition: all .65s ease; position:relative; z-index:1; }
+
+  /* Base neutral */
+  .sl { background: linear-gradient(180deg, rgba(234,240,244,.03) 0%, rgba(234,240,244,.015) 100%); border: 1px solid rgba(234,240,244,.07); }
+  .sl .sl-tag { color: var(--muted); }
+  .sl .sl-bar { background: var(--muted); opacity: .15; }
+
+  /* States */
+  .sl.dimmed { opacity:.15; transform:rotateX(2deg) scale(.96) translateZ(-20px); filter:blur(1px); }
+  .sl.lit { transform:rotateX(1deg) scale(1.03) translateZ(12px); box-shadow: 0 12px 40px rgba(0,0,0,.35), 0 2px 4px rgba(0,0,0,.2), inset 0 1px 0 rgba(234,240,244,.06); }
+
+  /* Exposed — SaaS warm jurisdictional tint */
+  .sl.exposed { background: linear-gradient(180deg, rgba(224,116,100,.07) 0%, rgba(224,116,100,.03) 100%); border-color: rgba(224,116,100,.25); box-shadow: 0 6px 28px rgba(224,96,80,.07), 0 0 60px rgba(224,96,80,.03), inset 0 1px 0 rgba(224,116,100,.06); }
+  .sl.exposed .sl-tag { color: #d4806e; } .sl.exposed .sl-bar { background: #d4806e; opacity:1; }
+
+  /* Partial — PaaS gold */
+  .sl.partial { background: linear-gradient(180deg, rgba(201,168,76,.06) 0%, rgba(201,168,76,.02) 100%); border-color: rgba(201,168,76,.25); box-shadow: 0 4px 20px rgba(201,168,76,.07), inset 0 1px 0 rgba(201,168,76,.06); }
+  .sl.partial .sl-tag { color: var(--gold); } .sl.partial .sl-bar { background: var(--gold); opacity:1; }
+
+  /* Covered — IaaS teal */
+  .sl.covered { background: linear-gradient(180deg, rgba(60,184,176,.06) 0%, rgba(60,184,176,.02) 100%); border-color: rgba(60,184,176,.25); box-shadow: 0 4px 20px rgba(60,184,176,.07), inset 0 1px 0 rgba(60,184,176,.06); }
+  .sl.covered .sl-tag { color: var(--teal); } .sl.covered .sl-bar { background: var(--teal); opacity:1; }
+
+  /* Covered strong — Hardware deeper teal */
+  .sl.covered-strong { background: linear-gradient(180deg, rgba(60,184,176,.08) 0%, rgba(60,184,176,.03) 100%); border-color: rgba(60,184,176,.35); box-shadow: 0 6px 28px rgba(60,184,176,.1), 0 0 80px rgba(60,184,176,.05), inset 0 1px 0 rgba(60,184,176,.08); }
+  .sl.covered-strong .sl-tag { color: var(--teal); } .sl.covered-strong .sl-bar { background: var(--teal); opacity:1; }
+
+  /* Upper Harbour — teal focus glow */
+  .sl.uh { background: linear-gradient(180deg, rgba(60,184,176,.07) 0%, rgba(60,184,176,.03) 100%); border-color: rgba(60,184,176,.4); box-shadow: 0 0 60px rgba(60,184,176,.12), 0 12px 40px rgba(0,0,0,.3), inset 0 1px 0 rgba(60,184,176,.1); }
+  .sl.uh .sl-tag { color: var(--teal); } .sl.uh .sl-bar { background: var(--teal); opacity:1; }
+
+  /* Right: narrative panels */
+  .narr-col { width:45%; position:relative; }
+  .narr-panel { position:absolute; inset:0; display:flex; flex-direction:column; justify-content:center; padding:60px 64px 60px 48px; opacity:0; transition:opacity .45s ease; pointer-events:none; }
+  .narr-panel.active { opacity:1; pointer-events:auto; }
+  .narr-panel .ey { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--teal); margin-bottom:20px; }
+  .narr-panel h2 { font-family:var(--display); font-size:clamp(26px,3vw,40px); font-weight:900; color:var(--ice); line-height:1.1; letter-spacing:-.4px; margin-bottom:18px; }
+  .narr-panel h2 em { font-style:italic; font-weight:700; color:var(--gold); }
+  .narr-panel h2 .red { color:var(--red); }
+  .narr-panel p { font-size:15px; color:var(--slate); line-height:1.7; max-width:400px; }
+  .narr-panel .payoff { font-family:var(--display); font-style:italic; font-size:20px; color:var(--ice); line-height:1.45; max-width:380px; border-left:3px solid var(--red); padding-left:24px; margin-top:24px; }
+  .narr-panel .mini-cta { display:inline-block; margin-top:28px; font-size:13px; font-weight:800; color:var(--bg); background:var(--teal); padding:14px 28px; border-radius:4px; text-decoration:none; transition:all .2s; box-shadow:0 0 20px rgba(60,184,176,.15); }
+  .narr-panel .mini-cta:hover { background:#47cec5; transform:translateY(-1px); box-shadow:0 0 32px rgba(60,184,176,.3); }
+
+  /* Scroll spacer */
+  .scroll-spacer { height:500vh; }
+
+  /* Progress dots */
+  .scroll-dots { position:fixed; right:28px; top:50%; transform:translateY(-50%); z-index:50; display:flex; flex-direction:column; gap:14px; opacity:0; transition:opacity .4s; }
+  .scroll-dots.show { opacity:1; }
+  .scroll-dot { width:8px; height:8px; border-radius:50%; background:rgba(234,240,244,.12); transition:all .3s; cursor:pointer; }
+  .scroll-dot.active { background:var(--teal); transform:scale(1.5); box-shadow:0 0 8px rgba(60,184,176,.4); }
+
+  /* ═══ EVIDENCE ═══ */
+  .evidence { max-width:960px; margin:0 auto; padding:120px 32px 80px; }
+  .evidence .ey { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:.2em; text-transform:uppercase; color:var(--teal); margin-bottom:16px; }
+  .evidence h2 { font-family:var(--display); font-size:clamp(28px,3.5vw,42px); font-weight:700; color:var(--ice); line-height:1.12; margin-bottom:56px; }
+  .evidence h2 em { font-style:italic; color:var(--gold); }
+
+  .ev-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; border-radius:12px; overflow:hidden; margin-bottom:64px; }
+  .ev-stat { background:var(--surface); padding:44px 20px; text-align:center; }
+  .ev-num { font-family:var(--mono); font-size:clamp(48px,6vw,64px); font-weight:700; line-height:1; margin-bottom:12px; }
+  .ev-num.r { color:var(--red); } .ev-num.g { color:var(--gold); } .ev-num.t { color:var(--teal); }
+  .ev-label { font-size:12px; color:var(--muted); line-height:1.45; }
+  .ev-note { font-size:14px; color:var(--muted); line-height:1.7; max-width:640px; margin-bottom:64px; }
+  .ev-note strong { color:var(--ice); }
+  .ev-note a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,.3); }
+
+  /* ═══ POLICY GAP ═══ */
+  .policy-gap { max-width:960px; margin:0 auto; padding:0 32px 80px; }
+  .pg-title { font-family:var(--display); font-size:clamp(28px,3.5vw,42px); font-weight:700; color:var(--ice); line-height:1.12; margin-bottom:16px; }
+  .pg-title em { font-style:italic; color:var(--gold); }
+  .pg-desc { font-size:15px; color:var(--slate); line-height:1.75; max-width:600px; margin-bottom:48px; }
+  .pg-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; border-radius:12px; overflow:hidden; margin-bottom:48px; }
+  .pg-card { background:var(--surface); padding:32px 28px; transition:background .3s; }
+  .pg-card:hover { background:var(--surface-2); }
+  .pg-card .tag { font-family:var(--mono); font-size:9px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; margin-bottom:10px; }
+  .pg-card h3 { font-family:var(--display); font-size:18px; font-weight:700; color:var(--ice); margin-bottom:8px; line-height:1.2; }
+  .pg-card p { font-size:13px; color:var(--muted); line-height:1.6; margin-bottom:10px; }
+  .pg-card .scope { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; padding-top:14px; border-top:1px solid var(--border); }
+  .pg-card .scope span { font-size:10px; font-weight:600; padding:3px 10px; border-radius:3px; }
+  .pg-card .scope .y { color:var(--teal); background:rgba(60,184,176,.08); border:1px solid rgba(60,184,176,.15); }
+  .pg-card .scope .n { color:var(--red); background:rgba(224,96,80,.08); border:1px solid rgba(224,96,80,.15); }
+  .pg-card .date { font-family:var(--mono); font-size:10px; color:var(--muted); opacity:.6; }
+
+  /* ═══ CTA ═══ */
+  .final-cta { text-align:center; padding:100px 32px; border-top:1px solid var(--border); }
+  .final-cta h2 { font-family:var(--display); font-size:32px; font-weight:700; color:var(--ice); margin-bottom:14px; }
+  .final-cta h2 em { font-style:italic; color:var(--gold); }
+  .final-cta p { font-size:15px; color:var(--slate); max-width:480px; margin:0 auto 28px; line-height:1.7; }
+  .final-cta .btn { display:inline-block; font-size:14px; font-weight:800; color:var(--bg); background:var(--teal); padding:16px 36px; border-radius:4px; text-decoration:none; transition:all .2s; box-shadow:0 0 24px rgba(60,184,176,.2); }
+  .final-cta .btn:hover { background:#47cec5; transform:translateY(-2px); box-shadow:0 0 40px rgba(60,184,176,.35); }
+
+  @media (max-width:800px) {
+    .scroll-track { flex-direction:column; }
+    .stack-col, .narr-col { width:100%; }
+    .stack-col { height:auto; padding:20px; }
+    .narr-col { height:auto; }
+    .narr-panel { position:relative; padding:32px 20px; opacity:1; pointer-events:auto; }
+    .narr-panel:not(.active) { display:none; }
+    .scroll-spacer { height:auto; }
+    .scroll-dots { display:none; }
+    .ev-grid { grid-template-columns:1fr 1fr; }
+    .pg-grid { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link active">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="ey">Upper Harbour Research &middot; March 2026</div>
+      <h1>The Sovereignty <em>Stack</em></h1>
+      <p class="sub">Canada is securing the bottom of the technology stack. The top &mdash; where organizations encounter foreign jurisdiction daily &mdash; remains unaddressed.</p>
+      <div class="scroll-cue">Scroll to explore<span>&darr;</span></div>
+    </div>
+  </section>
+
+  <!-- ═══ SCROLL SEQUENCE ═══ -->
+  <div class="scroll-wrap" id="scrollWrap">
+    <div class="scroll-track">
+
+      <!-- LEFT: Stack diagram -->
+      <div class="stack-col">
+        <div class="stack-vis">
+          <div class="sl" id="layer4">
+            <div class="sl-bar"></div>
+            <div class="sl-tag">Layer 4 &mdash; SaaS Applications</div>
+            <div class="sl-name">The software organizations use daily</div>
+            <div class="sl-examples">CRM &middot; HR &middot; Messaging &middot; Analytics &middot; Finance &middot; Documents &middot; Support &middot; DevOps</div>
+            <div class="sl-cats" style="display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;">
+              <span style="font-size:10px;font-weight:600;color:var(--slate);padding:3px 9px;background:rgba(234,240,244,.04);border:1px solid rgba(234,240,244,.08);border-radius:3px;">Salesforce</span>
+              <span style="font-size:10px;font-weight:600;color:var(--slate);padding:3px 9px;background:rgba(234,240,244,.04);border:1px solid rgba(234,240,244,.08);border-radius:3px;">Slack</span>
+              <span style="font-size:10px;font-weight:600;color:var(--slate);padding:3px 9px;background:rgba(234,240,244,.04);border:1px solid rgba(234,240,244,.08);border-radius:3px;">Microsoft 365</span>
+              <span style="font-size:10px;font-weight:600;color:var(--slate);padding:3px 9px;background:rgba(234,240,244,.04);border:1px solid rgba(234,240,244,.08);border-radius:3px;">Workday</span>
+              <span style="font-size:10px;font-weight:600;color:var(--slate);padding:3px 9px;background:rgba(234,240,244,.04);border:1px solid rgba(234,240,244,.08);border-radius:3px;">Jira</span>
+              <span style="font-size:10px;font-weight:600;color:var(--slate);padding:3px 9px;background:rgba(234,240,244,.04);border:1px solid rgba(234,240,244,.08);border-radius:3px;">Zendesk</span>
+              <span style="font-size:10px;font-weight:600;color:var(--slate);padding:3px 9px;background:rgba(234,240,244,.04);border:1px solid rgba(234,240,244,.08);border-radius:3px;">Notion</span>
+            </div>
+          </div>
+          <div class="sl" id="layer3">
+            <div class="sl-bar"></div>
+            <div class="sl-tag">Layer 3 &mdash; Platforms</div>
+            <div class="sl-name">Runtime &amp; development environments</div>
+            <div class="sl-examples">Containers &middot; Serverless &middot; APIs &middot; CI/CD</div>
+          </div>
+          <div class="sl" id="layer2">
+            <div class="sl-bar"></div>
+            <div class="sl-tag">Layer 2 &mdash; Infrastructure</div>
+            <div class="sl-name">Cloud compute &amp; storage</div>
+            <div class="sl-examples">AWS &middot; Azure &middot; GCP &middot; ThinkOn &middot; Micrologic</div>
+          </div>
+          <div class="sl" id="layer1">
+            <div class="sl-bar"></div>
+            <div class="sl-tag">Layer 1 &mdash; Hardware &amp; Data Centres</div>
+            <div class="sl-name">Physical servers &amp; facilities</div>
+            <div class="sl-examples">Bell-Hypertec &middot; Equinix &middot; Cologix &middot; QScale</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Narrative panels -->
+      <div class="narr-col">
+        <!-- Step 0: Full stack -->
+        <div class="narr-panel active" id="panel0">
+          <div class="ey">The full stack</div>
+          <h2>Digital systems run on <em>multiple layers.</em></h2>
+          <p>From physical servers to the SaaS applications employees use every day. Each layer has its own ownership, jurisdiction, and legal exposure.</p>
+        </div>
+
+        <!-- Step 1: Infra focus -->
+        <div class="narr-panel" id="panel1">
+          <div class="ey">Where policy focuses</div>
+          <h2>Most sovereignty policy targets <em>infrastructure.</em></h2>
+          <p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. The March 2026 RFI now requires that providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p>
+        </div>
+
+        <!-- Step 2: SaaS exposure -->
+        <div class="narr-panel" id="panel2">
+          <div class="ey">Where exposure sits</div>
+          <h2>Jurisdictional exposure sits <em class="red">one layer up.</em></h2>
+          <p>82% of the SaaS tools Canadian organizations use are under foreign jurisdiction. 63% are US-parented and CLOUD Act exposed. 12 entire categories have zero Canadian-owned vendors.</p>
+        </div>
+
+        <!-- Step 3: Jurisdiction overlay -->
+        <div class="narr-panel" id="panel3">
+          <div class="ey">The jurisdiction question</div>
+          <h2>Infrastructure can be domestic. Software can remain <em class="red">governed abroad.</em></h2>
+          <p>88% of tools advertising Canadian data residency are still under US parent jurisdiction.</p>
+          <div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div>
+        </div>
+
+        <!-- Step 4: Upper Harbour -->
+        <div class="narr-panel" id="panel4">
+          <div class="ey">Upper Harbour</div>
+          <h2>We map the <em>application layer.</em></h2>
+          <p>715 tools traced to parent companies, jurisdictions of incorporation, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s SaaS dependency.</p>
+          <a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="scroll-spacer"></div>
+  </div>
+
+  <!-- Progress dots -->
+  <div class="scroll-dots" id="dots">
+    <div class="scroll-dot active" data-step="0"></div>
+    <div class="scroll-dot" data-step="1"></div>
+    <div class="scroll-dot" data-step="2"></div>
+    <div class="scroll-dot" data-step="3"></div>
+    <div class="scroll-dot" data-step="4"></div>
+  </div>
+
+  <!-- ═══ EVIDENCE ═══ -->
+  <section class="evidence">
+    <div class="ey">What the data shows</div>
+    <h2>The application layer, <em>measured.</em></h2>
+    <div class="ev-grid">
+      <div class="ev-stat"><div class="ev-num r">82%</div><div class="ev-label">Under foreign<br/>jurisdiction</div></div>
+      <div class="ev-stat"><div class="ev-num r">63%</div><div class="ev-label">US-parented<br/>CLOUD Act exposed</div></div>
+      <div class="ev-stat"><div class="ev-num g">88%</div><div class="ev-label">CA-residency tools<br/>still US-parented</div></div>
+      <div class="ev-stat"><div class="ev-num t">18%</div><div class="ev-label">Truly Canadian<br/>owned &amp; operated</div></div>
+    </div>
+    <p class="ev-note"><strong>12 enterprise software categories</strong> &mdash; project management, analytics, customer support, ERP, CMS, DevOps &mdash; have zero Canadian-owned vendors. Based on the <a href="/research/canadian-technology-sovereignty-index">Canadian Technology Sovereignty Index</a> &mdash; 715 tools mapped.</p>
+  </section>
+
+  <!-- ═══ POLICY GAP ═══ -->
+  <section class="policy-gap">
+    <div class="ey" style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;">Policy landscape</div>
+    <h2 class="pg-title">Where Canada&rsquo;s policy <em>is and isn&rsquo;t</em></h2>
+    <p class="pg-desc">Four federal instruments address digital sovereignty. None apply a parent-jurisdiction test to SaaS vendors.</p>
+    <div class="pg-grid">
+      <div class="pg-card">
+        <div class="tag" style="color:var(--teal);">Infrastructure</div>
+        <h3>Sovereign Cloud RFI</h3>
+        <p>Requires ultimate parent corporations not subject to foreign compelled-disclosure laws.</p>
+        <div class="date">Updated March 3, 2026</div>
+        <div class="scope"><span class="y">IaaS</span><span class="y">PaaS</span><span class="n">SaaS not covered</span></div>
+      </div>
+      <div class="pg-card">
+        <div class="tag" style="color:var(--slate);">Framework</div>
+        <h3>Digital Sovereignty Framework</h3>
+        <p>Defines sovereignty. Explicitly &ldquo;distinct from procurement policies.&rdquo;</p>
+        <div class="date">November 2025</div>
+        <div class="scope"><span class="y">Policy direction</span><span class="n">No procurement mechanism</span></div>
+      </div>
+      <div class="pg-card">
+        <div class="tag" style="color:var(--gold);">Procurement</div>
+        <h3>Buy Canadian Framework</h3>
+        <p>Preferences Canadian suppliers. No field for parent jurisdiction.</p>
+        <div class="date">December 2025</div>
+        <div class="scope"><span class="y">Supplier preference</span><span class="n">No jurisdictional test</span></div>
+      </div>
+      <div class="pg-card">
+        <div class="tag" style="color:var(--gold);">AI &amp; Compute</div>
+        <h3>Sovereign AI Compute</h3>
+        <p>$2B for AI infrastructure. Bell-Hypertec, Cohere, university partnerships.</p>
+        <div class="date">Budget 2024&ndash;25</div>
+        <div class="scope"><span class="y">AI infrastructure</span><span class="n">AI SaaS not covered</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="final-cta">
+    <h2>See where your stack sits</h2>
+    <p>HarbourScan maps your SaaS tools to parent jurisdictions, CLOUD Act exposure, and compliance gaps. Free. Two minutes.</p>
+    <a href="/harbourscan" class="btn">Run HarbourScan &rarr;</a>
+  </section>
+
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Sovereignty Index</a></li><li><a href="/signals">Signals</a></li><li><a href="/research">Research</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/resources">Compliance Guides</a></li><li><a href="/pricing">Pricing</a></li></ul></div><div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li><li><a href="https://www.linkedin.com/in/joshuavanes">LinkedIn</a></li><li><a href="mailto:josh@upperharbour.ca">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy">Privacy</a> &middot; <a href="/terms">Terms</a></p></div></footer>
+
+  <script>
+  (function(){
+    const wrap = document.getElementById('scrollWrap');
+    const panels = [0,1,2,3,4].map(i => document.getElementById('panel'+i));
+    const dots = document.querySelectorAll('.scroll-dot');
+    const dotsWrap = document.getElementById('dots');
+    const l4 = document.getElementById('layer4');
+    const l3 = document.getElementById('layer3');
+    const l2 = document.getElementById('layer2');
+    const l1 = document.getElementById('layer1');
+    const all = [l4,l3,l2,l1];
+
+    let cur = -1;
+
+    // State definitions per step
+    const steps = [
+      // 0: Full stack — neutral
+      () => { all.forEach(l => reset(l)); },
+      // 1: Infra focus — l2+l1 glow, l4+l3 dim
+      () => {
+        dim(l4); dim(l3);
+        apply(l2,'covered','lit'); apply(l1,'covered-strong','lit');
+      },
+      // 2: SaaS exposed — l4 red+lit, rest dim
+      () => {
+        apply(l4,'exposed','lit');
+        dim(l3); dim(l2); dim(l1);
+      },
+      // 3: Jurisdiction overlay — full gradient
+      () => {
+        apply(l4,'exposed','lit');
+        apply(l3,'partial');
+        apply(l2,'covered');
+        apply(l1,'covered-strong');
+      },
+      // 4: Upper Harbour — l4 teal glow, rest dim
+      () => {
+        apply(l4,'uh','lit');
+        dim(l3); dim(l2); dim(l1);
+      },
+    ];
+
+    const stateClasses = ['exposed','partial','covered','covered-strong','uh','lit','dimmed'];
+
+    function reset(el) { stateClasses.forEach(c => el.classList.remove(c)); }
+    function dim(el) { reset(el); el.classList.add('dimmed'); }
+    function apply(el, ...classes) { reset(el); classes.forEach(c => el.classList.add(c)); }
+
+    function setStep(step) {
+      if (step === cur) return;
+      cur = step;
+      // Reset all first
+      all.forEach(reset);
+      // Apply step
+      steps[step]();
+      // Panels
+      panels.forEach((p,i) => p.classList.toggle('active', i===step));
+      // Dots
+      dots.forEach((d,i) => d.classList.toggle('active', i===step));
+    }
+
+    function onScroll() {
+      const r = wrap.getBoundingClientRect();
+      const top = -r.top;
+      const h = wrap.offsetHeight - window.innerHeight;
+      const inSeq = r.top <= 0 && r.bottom >= window.innerHeight;
+      dotsWrap.classList.toggle('show', inSeq);
+      if (h <= 0) return;
+      const p = Math.max(0, Math.min(1, top / h));
+      setStep(Math.min(4, Math.floor(p * 5)));
+    }
+
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    dots.forEach(d => {
+      d.addEventListener('click', () => {
+        const s = parseInt(d.dataset.step);
+        const t = wrap.offsetTop + (s/5) * (wrap.offsetHeight - window.innerHeight) + 10;
+        window.scrollTo({top:t, behavior:'smooth'});
+      });
+    });
+  })();
+  </script>
+</body>
+</html>
