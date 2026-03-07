@@ -122,4 +122,49 @@
 
   // Expose globally for pages that need custom logic
   window.uhStats = stats;
+
+  // ═══ Application-layer-only stats (excludes cloud_infrastructure) ═══
+  var appTools = saasDB.filter(function(t) { return t.category !== 'cloud_infrastructure'; });
+  var appTotal = appTools.length;
+  var appUS = 0, appCdn = 0, appCloudAct = 0, appCanadian = 0;
+  var appCaResTotal = 0, appCaResExposed = 0;
+
+  appTools.forEach(function(t) {
+    if (t.jurisdiction === 'United States') appUS++;
+    if (t.jurisdiction === 'Canada') appCdn++;
+    if (t.cloudAct) appCloudAct++;
+    if (t.risk === 'canadian') appCanadian++;
+
+    var res = (t.dataResidency || '').toLowerCase();
+    if (t.risk !== 'canadian') {
+      if (res.indexOf('canada') > -1 || res.indexOf('ca-central') > -1 ||
+          res.indexOf('montreal') > -1 || res.indexOf('toronto') > -1 ||
+          res.indexOf('montréal') > -1) {
+        appCaResTotal++;
+        if (t.cloudAct) appCaResExposed++;
+      }
+    }
+  });
+
+  var appForeign = appTotal - appCdn;
+
+  stats.appTotal = appTotal;
+  stats.appForeignPct = Math.round(appForeign / appTotal * 100);
+  stats.appCloudActPct = Math.round(appCloudAct / appTotal * 100);
+  stats.appCanadianPct = Math.round(appCanadian / appTotal * 100);
+  stats.appCaResExposedPct = appCaResTotal > 0 ? Math.round(appCaResExposed / appCaResTotal * 100) : 0;
+
+  // Re-populate after adding new stats
+  document.querySelectorAll('.uh-stat').forEach(function(el) {
+    var key = el.getAttribute('data-stat');
+    if (key && stats[key] !== undefined) {
+      el.textContent = stats[key];
+    }
+  });
+  document.querySelectorAll('[data-stat][data-target]').forEach(function(el) {
+    var key = el.getAttribute('data-stat');
+    if (key && stats[key] !== undefined) {
+      el.setAttribute('data-target', stats[key]);
+    }
+  });
 })();
