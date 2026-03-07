@@ -260,38 +260,51 @@
 
       <div class="stack-teaser-grid reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:32px;">
 
-        <!-- Left: unmistakable stack diagram -->
-        <div style="font-family:var(--mono);max-width:400px;">
+        <!-- Left: unmistakable stack diagram with annotation -->
+        <div style="font-family:var(--mono);max-width:480px;position:relative;">
           <!-- Stack frame -->
-          <div style="border:1px solid rgba(234,240,244,0.1);border-radius:10px;overflow:hidden;">
+          <div style="margin-right:60px;">
             <!-- SaaS layer -->
-            <div style="padding:20px 24px;background:rgba(224,96,80,0.05);">
+            <div style="padding:20px 24px;background:rgba(224,96,80,0.05);position:relative;">
               <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
                 <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--red);">Applications (SaaS)</span>
                 <span style="font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:0.5px;">&#x2718; NO POLICY</span>
               </div>
-              <div style="font-family:var(--body);font-size:13px;color:var(--ice);margin-bottom:4px;">CRM &middot; HR &middot; Messaging &middot; Analytics &middot; Finance</div>
+              <div style="font-family:var(--body);font-size:13px;color:var(--ice);margin-bottom:4px;">Slack &middot; Salesforce &middot; Microsoft 365 &middot; Zoom &middot; Workday &middot; Jira</div>
               <div style="font-size:10px;color:var(--muted);">82% under foreign jurisdiction</div>
+              <!-- Line to bracket -->
+              <div style="position:absolute;right:-60px;top:50%;width:52px;height:1px;background:rgba(234,240,244,0.12);"></div>
+              <div style="position:absolute;right:-64px;top:50%;width:5px;height:5px;border-radius:50%;background:rgba(234,240,244,0.2);transform:translate(50%,-50%);"></div>
             </div>
             <div style="background:var(--bg);padding:6px 0;text-align:center;border-top:1px solid rgba(234,240,244,0.06);border-bottom:1px solid rgba(234,240,244,0.06);"><span style="font-size:10px;color:rgba(234,240,244,0.25);letter-spacing:3px;">&#x25B2;&#x25BC;</span></div>
             <!-- PaaS layer -->
-            <div style="padding:14px 24px;background:rgba(201,168,76,0.03);display:flex;align-items:center;justify-content:space-between;">
+            <div style="padding:14px 24px;background:rgba(201,168,76,0.03);display:flex;align-items:center;justify-content:space-between;position:relative;">
               <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">Platforms</span>
               <span style="font-family:var(--mono);font-size:9px;color:var(--gold);letter-spacing:0.5px;">~ PARTIAL</span>
+              <div style="position:absolute;right:-60px;top:50%;width:52px;height:1px;background:rgba(234,240,244,0.12);"></div>
+              <div style="position:absolute;right:-64px;top:50%;width:5px;height:5px;border-radius:50%;background:rgba(234,240,244,0.2);transform:translate(50%,-50%);"></div>
             </div>
             <div style="background:var(--bg);padding:6px 0;text-align:center;border-top:1px solid rgba(234,240,244,0.06);border-bottom:1px solid rgba(234,240,244,0.06);"><span style="font-size:10px;color:rgba(234,240,244,0.25);letter-spacing:3px;">&#x25B2;&#x25BC;</span></div>
             <!-- IaaS layer -->
-            <div style="padding:14px 24px;background:rgba(60,184,176,0.03);display:flex;align-items:center;justify-content:space-between;">
+            <div style="padding:14px 24px;background:rgba(60,184,176,0.03);display:flex;align-items:center;justify-content:space-between;position:relative;">
               <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--teal);">Infrastructure</span>
               <span style="font-family:var(--mono);font-size:9px;color:var(--teal);letter-spacing:0.5px;">&#x2714; RFI ACTIVE</span>
+              <div style="position:absolute;right:-60px;top:50%;width:52px;height:1px;background:rgba(234,240,244,0.12);"></div>
+              <div style="position:absolute;right:-64px;top:50%;width:5px;height:5px;border-radius:50%;background:rgba(234,240,244,0.2);transform:translate(50%,-50%);"></div>
             </div>
             <div style="background:var(--bg);padding:6px 0;text-align:center;border-top:1px solid rgba(234,240,244,0.06);border-bottom:1px solid rgba(234,240,244,0.06);"><span style="font-size:10px;color:rgba(234,240,244,0.25);letter-spacing:3px;">&#x25B2;&#x25BC;</span></div>
             <!-- Hardware layer -->
-            <div style="padding:14px 24px;background:rgba(60,184,176,0.04);display:flex;align-items:center;justify-content:space-between;">
+            <div style="padding:14px 24px;background:rgba(60,184,176,0.04);display:flex;align-items:center;justify-content:space-between;position:relative;">
               <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--teal);">Hardware &amp; Data Centres</span>
               <span style="font-family:var(--mono);font-size:9px;color:var(--teal);letter-spacing:0.5px;">&#x2714; $2B INVESTED</span>
+              <div style="position:absolute;right:-60px;top:50%;width:52px;height:1px;background:rgba(234,240,244,0.12);"></div>
+              <div style="position:absolute;right:-64px;top:50%;width:5px;height:5px;border-radius:50%;background:rgba(234,240,244,0.2);transform:translate(50%,-50%);"></div>
             </div>
           </div>
+          <!-- Vertical bracket line -->
+          <div style="position:absolute;right:-8px;top:30px;bottom:18px;width:1px;background:rgba(234,240,244,0.12);"></div>
+          <!-- Annotation label -->
+          <div style="position:absolute;right:-12px;top:50%;transform:rotate(-90deg) translateX(50%);transform-origin:right center;white-space:nowrap;font-size:8px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);opacity:0.6;">Independent jurisdiction risk at every layer</div>
         </div>
 
         <!-- Right: text + CTA -->
