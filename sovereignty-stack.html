@@ -19,126 +19,70 @@
   html{scroll-behavior:auto}
   body{overflow-x:hidden}
 
+  /* ═══ FULL-SCREEN PARTICLE CANVAS ═══ */
+  #bgCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+  /* Everything else above canvas */
+  nav,.nav-mobile-menu,.hero,.scroll-wrap,.evidence,.policy-gap,.final-cta,footer,.scroll-dots{position:relative;z-index:1}
+
   /* ═══ HERO ═══ */
-  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 60px;position:relative;overflow:hidden}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,.025) 0%,transparent 70%)}
-  .hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.005) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.005) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
-  .hero-inner{position:relative;z-index:1;max-width:700px}
-  .hero .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:32px;opacity:0;animation:fu .8s ease forwards .2s}
-  .hero h1{font-family:var(--display);font-size:clamp(52px,9vw,100px);font-weight:900;color:var(--ice);line-height:.98;letter-spacing:-3px;margin-bottom:32px;opacity:0;animation:fu .8s ease forwards .4s}
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 80px;position:relative;overflow:hidden}
+  .hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.006) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.006) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+  .hero-inner{position:relative;z-index:1;max-width:680px}
+  .hero .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:28px;opacity:0;animation:fu .7s ease forwards .2s}
+  .hero h1{font-family:var(--display);font-size:clamp(48px,8vw,88px);font-weight:900;color:var(--ice);line-height:1.0;letter-spacing:-2.5px;margin-bottom:28px;opacity:0;animation:fu .7s ease forwards .35s}
   .hero h1 em{font-style:italic;font-weight:700;color:var(--gold)}
-  .hero .sub{font-size:19px;color:var(--slate);line-height:1.6;max-width:500px;margin:0 auto 56px;opacity:0;animation:fu .8s ease forwards .55s}
-  .hero .scroll-cue{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fu .8s ease forwards .7s}
-  .hero .scroll-cue span{display:block;margin-top:12px;animation:bob 2.5s ease-in-out infinite}
-  @keyframes fu{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .hero .sub{font-size:18px;color:var(--slate);line-height:1.65;max-width:520px;margin:0 auto 52px;opacity:0;animation:fu .7s ease forwards .5s}
+  .hero .scroll-cue{font-family:var(--mono);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);opacity:0;animation:fu .7s ease forwards .7s}
+  .hero .scroll-cue span{display:block;margin-top:10px;animation:bob 2.5s ease-in-out infinite}
+  @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
 
-  /* ═══ SCROLL SECTION ═══ */
+  /* ═══ SCROLL SEQUENCE ═══ */
   .scroll-wrap{position:relative}
-  .scroll-track{min-height:100vh;position:sticky;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 32px}
-  .scroll-track::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.006) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.006) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
+  .scroll-track{display:flex;min-height:100vh;position:sticky;top:0;overflow:hidden}
 
-  /* Canvas sits behind HTML layers — particles only */
-  #particleCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+  .stack-col{width:52%;display:flex;align-items:center;justify-content:center;padding:40px 32px 40px 48px}
+  .stack-canvas{width:100%;max-width:480px;position:relative}
+  .stack-svg{width:100%;height:auto}
+  .stack-svg .plate{transition:all .7s cubic-bezier(.25,.46,.45,.94)}
+  .stack-svg .plate-face{transition:all .7s ease}
+  .stack-svg .plate-side{transition:all .7s ease}
+  .stack-svg .plate-label{transition:all .7s ease;font-family:'DM Sans',-apple-system,sans-serif}
+  .stack-svg .plate-sublabel{transition:all .7s ease;font-family:'JetBrains Mono',monospace}
+  .stack-svg .plate-glow{transition:all .7s ease}
 
-  /* HTML stack sits on top of canvas */
-  .stack-container{position:relative;z-index:2;width:100%;max-width:800px;display:flex;flex-direction:column;align-items:center}
-
-  /* ═══ LAYERS ═══ */
-  .stack-layers{display:flex;flex-direction:column;gap:14px;margin-bottom:8px;width:100%}
-
-  .ly{display:flex;align-items:stretch;border-radius:12px;overflow:hidden;transition:all .65s cubic-bezier(.25,.46,.45,.94);position:relative;height:72px}
-  .ly::before{content:'';position:absolute;inset:-1px;border-radius:13px;pointer-events:none;transition:box-shadow .65s ease;z-index:0}
-  .ly::after{content:'';position:absolute;inset:0;border-radius:12px;background:linear-gradient(180deg,rgba(234,240,244,.03) 0%,transparent 50%);pointer-events:none;z-index:1}
-
-  .ly-bar{width:5px;flex-shrink:0;transition:background .6s;position:relative;z-index:2}
-  .ly-body{flex:1;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .6s;position:relative;z-index:2;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  .ly-info{flex-shrink:0;min-width:0}
-  .ly-tag{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:3px;transition:color .6s}
-  .ly-name{font-size:14px;font-weight:700;color:var(--ice);transition:all .6s;white-space:nowrap}
-  .ly-ex{display:flex;flex-wrap:nowrap;gap:4px;overflow:hidden}
-  .ly-chip{font-size:9px;font-weight:500;padding:3px 8px;border-radius:3px;white-space:nowrap;transition:all .6s}
-  .ly-status{flex-shrink:0;padding:8px 16px;border-left:1px solid rgba(234,240,244,.04);display:flex;align-items:center;gap:6px;transition:all .6s;z-index:2}
-  .ly-status-icon{font-size:14px;transition:color .6s}
-  .ly-status-text{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:color .6s}
-
-  /* Dashed connectors between layers */
-  .connector{width:1px;height:6px;margin:0 auto;border-left:1px dashed rgba(234,240,244,.06)}
-
-  /* ── Base neutral — glass ── */
-  .ly-bar{background:rgba(234,240,244,.08)}
-  .ly-body{background:rgba(234,240,244,.025)}
-  .ly::before{box-shadow:0 0 0 1px rgba(234,240,244,.06),0 4px 16px rgba(0,0,0,.2)}
-  .ly-tag{color:var(--muted)}
-  .ly-chip{color:var(--muted);background:rgba(234,240,244,.03);border:1px solid rgba(234,240,244,.06)}
-  .ly-status-icon,.ly-status-text{color:var(--muted)}
-
-  /* ── Dimmed ── */
-  .ly.dim{opacity:.1;transform:scale(.985)}
-
-  /* ── Teal ── */
-  .ly.ct .ly-bar{background:#3CB8B0}
-  .ly.ct .ly-body{background:rgba(60,184,176,.035)}
-  .ly.ct .ly-tag,.ly.ct .ly-status-icon,.ly.ct .ly-status-text{color:#3CB8B0}
-  .ly.ct .ly-chip{color:rgba(60,184,176,.75);background:rgba(60,184,176,.05);border-color:rgba(60,184,176,.1)}
-  .ly.ct::before{box-shadow:0 0 50px rgba(60,184,176,.08),0 0 0 1px rgba(60,184,176,.2),inset 0 0 30px rgba(60,184,176,.03)}
-
-  /* ── Teal strong ── */
-  .ly.cts .ly-bar{background:#3CB8B0}
-  .ly.cts .ly-body{background:rgba(60,184,176,.05)}
-  .ly.cts .ly-tag,.ly.cts .ly-status-icon,.ly.cts .ly-status-text{color:#3CB8B0}
-  .ly.cts .ly-chip{color:rgba(60,184,176,.8);background:rgba(60,184,176,.06);border-color:rgba(60,184,176,.14)}
-  .ly.cts::before{box-shadow:0 0 70px rgba(60,184,176,.1),0 0 0 1px rgba(60,184,176,.25),inset 0 0 40px rgba(60,184,176,.04)}
-
-  /* ── Red ── */
-  .ly.cr .ly-bar{background:#E06050}
-  .ly.cr .ly-body{background:rgba(224,96,80,.035)}
-  .ly.cr .ly-tag,.ly.cr .ly-status-icon,.ly.cr .ly-status-text{color:#E06050}
-  .ly.cr .ly-chip{color:rgba(224,96,80,.75);background:rgba(224,96,80,.04);border-color:rgba(224,96,80,.1)}
-  .ly.cr::before{box-shadow:0 0 60px rgba(224,96,80,.1),0 0 0 1px rgba(224,96,80,.2),inset 0 0 30px rgba(224,96,80,.03)}
-
-  /* ── Gold ── */
-  .ly.cg .ly-bar{background:#C9A84C}
-  .ly.cg .ly-body{background:rgba(201,168,76,.03)}
-  .ly.cg .ly-tag,.ly.cg .ly-status-icon,.ly.cg .ly-status-text{color:#C9A84C}
-  .ly.cg .ly-chip{color:rgba(201,168,76,.7);background:rgba(201,168,76,.04);border-color:rgba(201,168,76,.09)}
-  .ly.cg::before{box-shadow:0 0 50px rgba(201,168,76,.07),0 0 0 1px rgba(201,168,76,.15),inset 0 0 30px rgba(201,168,76,.03)}
-
-  /* ═══ NARRATIVE ═══ */
-  .narr{position:relative;min-height:120px;text-align:center;margin-top:32px}
-  .ns{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;opacity:0;transition:opacity .45s;pointer-events:none}
-  .ns.active{opacity:1;pointer-events:auto}
-  .ns .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
-  .ns h2{font-family:var(--display);font-size:clamp(22px,2.8vw,32px);font-weight:900;color:var(--ice);line-height:1.12;margin-bottom:10px}
-  .ns h2 em{font-style:italic;font-weight:700;color:var(--gold)}
-  .ns h2 .red{color:var(--red)}
-  .ns p{font-size:14px;color:var(--slate);line-height:1.6;max-width:480px}
-  .ns .payoff{font-family:var(--display);font-style:italic;font-size:18px;color:var(--ice);line-height:1.4;max-width:420px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(224,96,80,.15)}
-  .ns .mini-cta{display:inline-block;margin-top:18px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15);pointer-events:auto}
-  .ns .mini-cta:hover{background:#47cec5;transform:translateY(-1px)}
+  .narr-col{width:48%;position:relative}
+  .narr-panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:60px 48px 60px 40px;opacity:0;transition:opacity .45s ease;pointer-events:none}
+  .narr-panel.active{opacity:1;pointer-events:auto}
+  .narr-panel .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:20px}
+  .narr-panel h2{font-family:var(--display);font-size:clamp(26px,3vw,40px);font-weight:900;color:var(--ice);line-height:1.1;letter-spacing:-.4px;margin-bottom:18px}
+  .narr-panel h2 em{font-style:italic;font-weight:700;color:var(--gold)}
+  .narr-panel h2 .red{color:var(--red)}
+  .narr-panel p{font-size:15px;color:var(--slate);line-height:1.7;max-width:380px}
+  .narr-panel .payoff{font-family:var(--display);font-style:italic;font-size:20px;color:var(--ice);line-height:1.45;max-width:360px;border-left:3px solid var(--red);padding-left:24px;margin-top:24px}
+  .narr-panel .mini-cta{display:inline-block;margin-top:28px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15)}
+  .narr-panel .mini-cta:hover{background:#47cec5;transform:translateY(-1px);box-shadow:0 0 32px rgba(60,184,176,.3)}
 
   .scroll-spacer{height:500vh}
-
   .scroll-dots{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:14px;opacity:0;transition:opacity .4s}
   .scroll-dots.show{opacity:1}
-  .scroll-dot{width:8px;height:8px;border-radius:50%;background:rgba(234,240,244,.1);transition:all .3s;cursor:pointer}
+  .scroll-dot{width:8px;height:8px;border-radius:50%;background:rgba(234,240,244,.12);transition:all .3s;cursor:pointer}
   .scroll-dot.active{background:var(--teal);transform:scale(1.5);box-shadow:0 0 8px rgba(60,184,176,.4)}
 
-  /* ═══ EVIDENCE ═══ */
   .evidence{max-width:960px;margin:0 auto;padding:120px 32px 80px}
   .evidence .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
   .evidence h2{font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--ice);line-height:1.12;margin-bottom:56px}
   .evidence h2 em{font-style:italic;color:var(--gold)}
   .ev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-radius:12px;overflow:hidden;margin-bottom:64px}
-  .ev-stat{background:var(--surface);padding:48px 20px;text-align:center}
-  .ev-num{font-family:var(--mono);font-size:clamp(52px,7vw,72px);font-weight:700;line-height:1;margin-bottom:12px}
+  .ev-stat{background:var(--surface);padding:44px 20px;text-align:center}
+  .ev-num{font-family:var(--mono);font-size:clamp(48px,6vw,64px);font-weight:700;line-height:1;margin-bottom:12px}
   .ev-num.r{color:var(--red)}.ev-num.g{color:var(--gold)}.ev-num.t{color:var(--teal)}
   .ev-label{font-size:12px;color:var(--muted);line-height:1.45}
   .ev-note{font-size:14px;color:var(--muted);line-height:1.7;max-width:640px}
   .ev-note strong{color:var(--ice)}
   .ev-note a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,.3)}
 
-  /* ═══ POLICY ═══ */
   .policy-gap{max-width:960px;margin:0 auto;padding:64px 32px 80px}
   .pg-title{font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--ice);line-height:1.12;margin-bottom:16px}
   .pg-title em{font-style:italic;color:var(--gold)}
@@ -162,15 +106,24 @@
   .final-cta .btn{display:inline-block;font-size:14px;font-weight:800;color:var(--bg);background:var(--teal);padding:16px 36px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 24px rgba(60,184,176,.2)}
   .final-cta .btn:hover{background:#47cec5;transform:translateY(-2px);box-shadow:0 0 40px rgba(60,184,176,.35)}
 
-  @media(max-width:700px){
-    .ly-ex{display:none}
-    .ly-body{padding:14px 18px}
+  @media(max-width:800px){
+    .scroll-track{flex-direction:column}
+    .stack-col,.narr-col{width:100%}
+    .stack-col{padding:20px}
+    .narr-col{height:auto}
+    .narr-panel{position:relative;padding:32px 20px;opacity:1;pointer-events:auto}
+    .narr-panel:not(.active){display:none}
+    .scroll-spacer{height:auto}
+    .scroll-dots{display:none}
     .ev-grid{grid-template-columns:1fr 1fr}
     .pg-grid{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
+
+  <!-- Full-screen particle canvas -->
+  <canvas id="bgCanvas"></canvas>
 
   <nav>
     <a href="/" class="nav-logo" aria-label="Upper Harbour home">
@@ -199,51 +152,72 @@
 
   <div class="scroll-wrap" id="scrollWrap">
     <div class="scroll-track">
-      <canvas id="particleCanvas"></canvas>
-
-      <div class="stack-container">
-        <div class="stack-layers">
-          <div class="ly" id="ly4">
-            <div class="ly-bar"></div>
-            <div class="ly-body">
-              <div class="ly-info"><div class="ly-tag">Layer 4 &mdash; SaaS Applications</div><div class="ly-name">The software organizations use daily</div></div>
-              <div class="ly-ex"><span class="ly-chip">Salesforce</span><span class="ly-chip">Slack</span><span class="ly-chip">Microsoft 365</span><span class="ly-chip">Workday</span><span class="ly-chip">Jira</span><span class="ly-chip">Zendesk</span></div>
-            </div>
-            <div class="ly-status"><span class="ly-status-icon">&#x2717;</span><span class="ly-status-text">No policy</span></div>
-          </div>
-          <div class="ly" id="ly3">
-            <div class="ly-bar"></div>
-            <div class="ly-body">
-              <div class="ly-info"><div class="ly-tag">Layer 3 &mdash; Platforms</div><div class="ly-name">Runtime &amp; development environments</div></div>
-              <div class="ly-ex"><span class="ly-chip">Containers</span><span class="ly-chip">Serverless</span><span class="ly-chip">CI/CD</span><span class="ly-chip">APIs</span></div>
-            </div>
-            <div class="ly-status"><span class="ly-status-icon">~</span><span class="ly-status-text">Partial</span></div>
-          </div>
-          <div class="ly" id="ly2">
-            <div class="ly-bar"></div>
-            <div class="ly-body">
-              <div class="ly-info"><div class="ly-tag">Layer 2 &mdash; Infrastructure</div><div class="ly-name">Cloud compute &amp; storage</div></div>
-              <div class="ly-ex"><span class="ly-chip">AWS</span><span class="ly-chip">Azure</span><span class="ly-chip">GCP</span><span class="ly-chip">ThinkOn</span><span class="ly-chip">Micrologic</span></div>
-            </div>
-            <div class="ly-status"><span class="ly-status-icon">&#x2713;</span><span class="ly-status-text">RFI active</span></div>
-          </div>
-          <div class="ly" id="ly1">
-            <div class="ly-bar"></div>
-            <div class="ly-body">
-              <div class="ly-info"><div class="ly-tag">Layer 1 &mdash; Hardware &amp; Data Centres</div><div class="ly-name">Physical servers &amp; facilities</div></div>
-              <div class="ly-ex"><span class="ly-chip">Bell-Hypertec</span><span class="ly-chip">Equinix</span><span class="ly-chip">Cologix</span><span class="ly-chip">QScale</span></div>
-            </div>
-            <div class="ly-status"><span class="ly-status-icon">&#x2713;</span><span class="ly-status-text">Funded</span></div>
-          </div>
+      <div class="stack-col">
+        <div class="stack-canvas">
+          <svg class="stack-svg" viewBox="0 0 480 520" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="gNeutral" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(234,240,244,.06)"/><stop offset="100%" stop-color="rgba(234,240,244,.02)"/></linearGradient>
+              <linearGradient id="gRed" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(224,96,80,.12)"/><stop offset="100%" stop-color="rgba(224,96,80,.04)"/></linearGradient>
+              <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(201,168,76,.1)"/><stop offset="100%" stop-color="rgba(201,168,76,.03)"/></linearGradient>
+              <linearGradient id="gTeal" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(60,184,176,.1)"/><stop offset="100%" stop-color="rgba(60,184,176,.03)"/></linearGradient>
+              <linearGradient id="gTealS" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(60,184,176,.14)"/><stop offset="100%" stop-color="rgba(60,184,176,.05)"/></linearGradient>
+              <linearGradient id="gUH" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(60,184,176,.12)"/><stop offset="100%" stop-color="rgba(60,184,176,.04)"/></linearGradient>
+              <linearGradient id="sN" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(234,240,244,.04)"/><stop offset="100%" stop-color="rgba(234,240,244,.01)"/></linearGradient>
+              <linearGradient id="sR" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(224,96,80,.08)"/><stop offset="100%" stop-color="rgba(224,96,80,.02)"/></linearGradient>
+              <linearGradient id="sT" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="rgba(60,184,176,.08)"/><stop offset="100%" stop-color="rgba(60,184,176,.02)"/></linearGradient>
+              <filter id="shS" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000" flood-opacity=".25"/></filter>
+              <filter id="shL" x="-8%" y="-8%" width="116%" height="130%"><feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#000" flood-opacity=".35"/></filter>
+            </defs>
+            <!-- Layer 1: Hardware -->
+            <g class="plate" id="p1" filter="url(#shS)">
+              <rect class="plate-glow" x="20" y="390" width="420" height="90" rx="10" fill="none" opacity="0"/>
+              <path class="plate-side" d="M30,470 L30,480 Q30,490 40,490 L430,490 Q440,490 440,480 L440,470 Z" fill="url(#sN)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <rect class="plate-face" x="30" y="400" width="410" height="70" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <line x1="40" y1="401" x2="430" y2="401" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <text class="plate-sublabel" x="48" y="424" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 1 — HARDWARE &amp; DATA CENTRES</text>
+              <text class="plate-label" x="48" y="445" fill="#EAF0F4" font-size="14" font-weight="700">Physical servers &amp; facilities</text>
+              <text class="plate-sublabel" x="48" y="462" fill="#566778" font-size="10">Bell-Hypertec · Equinix · Cologix · QScale</text>
+            </g>
+            <!-- Layer 2: Infrastructure -->
+            <g class="plate" id="p2" filter="url(#shS)">
+              <rect class="plate-glow" x="20" y="270" width="420" height="90" rx="10" fill="none" opacity="0"/>
+              <path class="plate-side" d="M30,350 L30,360 Q30,370 40,370 L430,370 Q440,370 440,360 L440,350 Z" fill="url(#sN)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <rect class="plate-face" x="30" y="280" width="410" height="70" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <line x1="40" y1="281" x2="430" y2="281" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <text class="plate-sublabel" x="48" y="304" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 2 — INFRASTRUCTURE (IAAS)</text>
+              <text class="plate-label" x="48" y="325" fill="#EAF0F4" font-size="14" font-weight="700">Cloud compute &amp; storage</text>
+              <text class="plate-sublabel" x="48" y="342" fill="#566778" font-size="10">AWS · Azure · GCP · ThinkOn · Micrologic</text>
+            </g>
+            <!-- Layer 3: Platforms -->
+            <g class="plate" id="p3" filter="url(#shS)">
+              <rect class="plate-glow" x="20" y="150" width="420" height="90" rx="10" fill="none" opacity="0"/>
+              <path class="plate-side" d="M30,230 L30,240 Q30,250 40,250 L430,250 Q440,250 440,240 L440,230 Z" fill="url(#sN)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <rect class="plate-face" x="30" y="160" width="410" height="70" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <line x1="40" y1="161" x2="430" y2="161" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <text class="plate-sublabel" x="48" y="184" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 3 — PLATFORMS (PAAS)</text>
+              <text class="plate-label" x="48" y="205" fill="#EAF0F4" font-size="14" font-weight="700">Runtime &amp; development</text>
+              <text class="plate-sublabel" x="48" y="222" fill="#566778" font-size="10">Containers · Serverless · APIs · CI/CD</text>
+            </g>
+            <!-- Layer 4: SaaS -->
+            <g class="plate" id="p4" filter="url(#shS)">
+              <rect class="plate-glow" x="15" y="20" width="430" height="110" rx="10" fill="none" opacity="0"/>
+              <path class="plate-side" d="M30,110 L30,120 Q30,130 40,130 L430,130 Q440,130 440,120 L440,110 Z" fill="url(#sN)" stroke="rgba(234,240,244,.06)" stroke-width=".5"/>
+              <rect class="plate-face" x="30" y="30" width="410" height="80" rx="10" fill="url(#gNeutral)" stroke="rgba(234,240,244,.08)" stroke-width="1"/>
+              <line x1="40" y1="31" x2="430" y2="31" stroke="rgba(234,240,244,.04)" stroke-width=".5"/>
+              <text class="plate-sublabel" x="48" y="54" fill="#566778" font-size="9" letter-spacing="1.5">LAYER 4 — SAAS APPLICATIONS</text>
+              <text class="plate-label" x="48" y="75" fill="#EAF0F4" font-size="14" font-weight="700">The software organizations use daily</text>
+              <text class="plate-sublabel" x="48" y="97" fill="#566778" font-size="10">CRM · HR · Messaging · Analytics · Finance · Documents · DevOps</text>
+            </g>
+          </svg>
         </div>
+      </div>
 
-        <div class="narr">
-          <div class="ns active" id="ns0"><div class="ey">The full stack</div><h2>Digital systems run on <em>four layers.</em></h2><p>From physical servers to SaaS applications. Each layer has its own ownership, jurisdiction, and legal exposure.</p></div>
-          <div class="ns" id="ns1"><div class="ey">Where policy focuses</div><h2>Sovereignty policy targets the <em>bottom two.</em></h2><p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. The March 2026 RFI requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p></div>
-          <div class="ns" id="ns2"><div class="ey">Where exposure sits</div><h2>The <em class="red">top two layers</em> have no equivalent policy.</h2><p>82% of SaaS tools used by Canadian organizations are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p></div>
-          <div class="ns" id="ns3"><div class="ey">The jurisdiction question</div><h2>Infrastructure can be domestic. Software remains <em class="red">governed abroad.</em></h2><div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div></div>
-          <div class="ns" id="ns4"><div class="ey">Upper Harbour</div><h2>We map <em>every layer.</em></h2><p>715 tools traced to parent companies, jurisdictions, and compelled-disclosure exposure.</p><a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a></div>
-        </div>
+      <div class="narr-col">
+        <div class="narr-panel active" id="panel0"><div class="ey">The full stack</div><h2>Digital systems run on <em>four layers.</em></h2><p>Hardware at the base. Infrastructure above it. Platforms. And at the top, the SaaS applications employees use every day. Each layer has its own ownership, jurisdiction, and legal exposure.</p></div>
+        <div class="narr-panel" id="panel1"><div class="ey">Where policy focuses</div><h2>Sovereignty policy targets the <em>bottom two layers.</em></h2><p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec data centres. The March 2026 RFI requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p></div>
+        <div class="narr-panel" id="panel2"><div class="ey">Where exposure sits</div><h2>The <em class="red">top two layers</em> have no equivalent policy.</h2><p>No federal instrument applies a parent-jurisdiction test to SaaS vendors or the platforms they run on. 82% of the SaaS tools Canadian organizations use are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p></div>
+        <div class="narr-panel" id="panel3"><div class="ey">The jurisdiction question</div><h2>Infrastructure can be domestic. Software can remain <em class="red">governed abroad.</em></h2><p>88% of tools advertising Canadian data residency are still under US parent jurisdiction.</p><div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div></div>
+        <div class="narr-panel" id="panel4"><div class="ey">Upper Harbour</div><h2>We map <em>every layer.</em></h2><p>715 SaaS and infrastructure tools traced to parent companies, jurisdictions, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s technology dependency.</p><a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a></div>
       </div>
     </div>
     <div class="scroll-spacer"></div>
@@ -292,119 +266,153 @@
 
   <script>
   (function(){
-    // ═══ PARTICLE CANVAS ═══
-    const cv=document.getElementById('particleCanvas');
+    // ═══ FULL-SCREEN PARTICLES ═══
+    const cv=document.getElementById('bgCanvas');
     const cx=cv.getContext('2d');
+    let W,H,dpr;
     let particles=[];
-    let curStep=0;
+    let currentStep=0;
 
-    function resizeCanvas(){
-      const d=window.devicePixelRatio||1;
-      cv.width=cv.clientWidth*d;
-      cv.height=cv.clientHeight*d;
-      cx.scale(d,d);
-    }
+    // Color per step: [primary, secondary]
+    const stepColors=[
+      ['rgba(234,240,244,0.15)','rgba(234,240,244,0.08)'],  // 0: neutral
+      ['rgba(60,184,176,0.25)','rgba(60,184,176,0.1)'],     // 1: teal
+      ['rgba(224,96,80,0.25)','rgba(201,168,76,0.15)'],     // 2: red/gold
+      ['rgba(224,96,80,0.2)','rgba(60,184,176,0.15)'],      // 3: gradient
+      ['rgba(60,184,176,0.3)','rgba(60,184,176,0.12)'],     // 4: UH teal
+    ];
 
-    class P{
-      constructor(x,y,color){
-        this.x=x;this.y=y;this.color=color;
-        this.vx=(Math.random()-.5)*.4;
-        this.vy=-Math.random()*.5-.15;
-        this.life=1;this.decay=.004+Math.random()*.005;
-        this.r=1.2+Math.random()*1.8;
+    class Dot{
+      constructor(){this.reset(true);}
+      reset(init){
+        this.x=Math.random()*W;
+        this.y=init?Math.random()*H:H+10;
+        this.r=Math.random()*2+0.5;
+        this.vy=-(Math.random()*0.3+0.08);
+        this.vx=(Math.random()-0.5)*0.15;
+        this.life=1;
+        this.decay=0.0008+Math.random()*0.001;
+        this.flicker=Math.random()*Math.PI*2;
       }
-      update(){this.x+=this.vx;this.y+=this.vy;this.life-=this.decay;}
+      update(){
+        this.x+=this.vx;
+        this.y+=this.vy;
+        this.life-=this.decay;
+        this.flicker+=0.02;
+        if(this.life<=0||this.y<-10)this.reset(false);
+      }
       draw(){
-        if(this.life<=0)return;
+        const cols=stepColors[currentStep];
+        const col=Math.random()>0.3?cols[0]:cols[1];
+        const alpha=this.life*0.6*(0.5+0.5*Math.sin(this.flicker));
         cx.save();
-        cx.globalAlpha=this.life*.5;
-        cx.fillStyle=this.color;
-        cx.shadowColor=this.color;
-        cx.shadowBlur=6;
+        cx.globalAlpha=alpha;
+        cx.fillStyle=col;
+        cx.shadowColor=col;
+        cx.shadowBlur=this.r*4;
         cx.beginPath();
-        cx.arc(this.x,this.y,this.r,0,Math.PI*2);
+        cx.arc(this.x*dpr,this.y*dpr,this.r*dpr,0,Math.PI*2);
         cx.fill();
         cx.restore();
       }
     }
 
-    // Spawn particles from active layers
-    const layerEls=[document.getElementById('ly4'),document.getElementById('ly3'),document.getElementById('ly2'),document.getElementById('ly1')];
-    const stateMap=[
-      ['','','',''],
-      ['dim','dim','ct','cts'],
-      ['cr','cg','dim','dim'],
-      ['cr','cg','ct','cts'],
-      ['cts','ct','ct','cts'],
-    ];
-    const colorMap={cr:'#E06050',cg:'#C9A84C',ct:'#3CB8B0',cts:'#3CB8B0'};
+    function resizeCanvas(){
+      dpr=window.devicePixelRatio||1;
+      W=window.innerWidth;
+      H=window.innerHeight;
+      cv.width=W*dpr;
+      cv.height=H*dpr;
+    }
 
-    function spawnParticles(){
-      const states=stateMap[curStep];
-      layerEls.forEach((el,i)=>{
-        const s=states[i];
-        if(s&&s!=='dim'&&colorMap[s]&&Math.random()<.03){
-          const rect=el.getBoundingClientRect();
-          const trackRect=cv.getBoundingClientRect();
-          const px=rect.left-trackRect.left+Math.random()*rect.width;
-          const py=rect.top-trackRect.top+rect.height*.5;
-          particles.push(new P(px,py,colorMap[s]));
-        }
-      });
+    function initParticles(){
+      particles=[];
+      const count=Math.min(120,Math.floor(W*H/8000));
+      for(let i=0;i<count;i++)particles.push(new Dot());
     }
 
     function renderParticles(){
-      cx.clearRect(0,0,cv.clientWidth,cv.clientHeight);
-      spawnParticles();
+      cx.clearRect(0,0,W*dpr,H*dpr);
       particles.forEach(p=>{p.update();p.draw();});
-      particles=particles.filter(p=>p.life>0);
       requestAnimationFrame(renderParticles);
     }
 
-    // ═══ SCROLL LOGIC ═══
+    // ═══ SVG STACK LOGIC ═══
     const wrap=document.getElementById('scrollWrap');
-    const slides=[0,1,2,3,4].map(i=>document.getElementById('ns'+i));
+    const panels=[0,1,2,3,4].map(i=>document.getElementById('panel'+i));
     const dots=document.querySelectorAll('.scroll-dot');
     const dotsWrap=document.getElementById('dots');
-    const cls=['dim','ct','cts','cr','cg'];
+    const p4=document.getElementById('p4'),p3=document.getElementById('p3'),p2=document.getElementById('p2'),p1=document.getElementById('p1');
+    const all=[p4,p3,p2,p1];
+    let cur=-1;
 
-    function reset(el){cls.forEach(c=>el.classList.remove(c))}
-    function apply(el,...c){reset(el);c.forEach(x=>el.classList.add(x))}
+    function setPlate(el,opts){
+      const face=el.querySelector('.plate-face');
+      const side=el.querySelector('.plate-side');
+      const glow=el.querySelector('.plate-glow');
+      const sublabels=el.querySelectorAll('.plate-sublabel');
+      const label=el.querySelector('.plate-label');
+      el.style.opacity=opts.opacity||'1';
+      el.style.transform=opts.transform||'';
+      el.setAttribute('filter',opts.filter||'url(#shS)');
+      if(opts.faceFill)face.setAttribute('fill',opts.faceFill);
+      if(opts.faceStroke)face.setAttribute('stroke',opts.faceStroke);
+      if(opts.sideFill)side.setAttribute('fill',opts.sideFill);
+      if(opts.labelColor)label.setAttribute('fill',opts.labelColor);
+      if(opts.subColor)sublabels.forEach(s=>s.setAttribute('fill',opts.subColor));
+      if(opts.glowFill){glow.setAttribute('fill',opts.glowFill);glow.setAttribute('opacity',opts.glowOpacity||'0');}
+      else{glow.setAttribute('opacity','0');}
+    }
+
+    const neutral={faceFill:'url(#gNeutral)',faceStroke:'rgba(234,240,244,.08)',sideFill:'url(#sN)',labelColor:'#EAF0F4',subColor:'#566778',filter:'url(#shS)'};
+    const dimmed={...neutral,opacity:'.15',transform:'translate(0,4)'};
+    const infraLit={faceFill:'url(#gTeal)',faceStroke:'rgba(60,184,176,.3)',sideFill:'url(#sT)',labelColor:'#EAF0F4',subColor:'#3CB8B0',filter:'url(#shL)',glowFill:'rgba(60,184,176,.06)',glowOpacity:'.6'};
+    const hwLit={faceFill:'url(#gTealS)',faceStroke:'rgba(60,184,176,.35)',sideFill:'url(#sT)',labelColor:'#EAF0F4',subColor:'#3CB8B0',filter:'url(#shL)',glowFill:'rgba(60,184,176,.08)',glowOpacity:'.7'};
+    const saasExposed={faceFill:'url(#gRed)',faceStroke:'rgba(224,96,80,.3)',sideFill:'url(#sR)',labelColor:'#EAF0F4',subColor:'#E06050',filter:'url(#shL)',transform:'translate(0,-4)',glowFill:'rgba(224,96,80,.06)',glowOpacity:'.6'};
+    const paasExposed={faceFill:'url(#gGold)',faceStroke:'rgba(201,168,76,.25)',sideFill:'url(#sN)',labelColor:'#EAF0F4',subColor:'#C9A84C',filter:'url(#shL)'};
+    const saasUH={faceFill:'url(#gUH)',faceStroke:'rgba(60,184,176,.4)',sideFill:'url(#sT)',labelColor:'#EAF0F4',subColor:'#3CB8B0',filter:'url(#shL)',transform:'translate(0,-6)',glowFill:'rgba(60,184,176,.08)',glowOpacity:'.8'};
 
     const steps=[
-      ()=>{layerEls.forEach(reset)},
-      ()=>{apply(layerEls[0],'dim');apply(layerEls[1],'dim');apply(layerEls[2],'ct');apply(layerEls[3],'cts')},
-      ()=>{apply(layerEls[0],'cr');apply(layerEls[1],'cg');apply(layerEls[2],'dim');apply(layerEls[3],'dim')},
-      ()=>{apply(layerEls[0],'cr');apply(layerEls[1],'cg');apply(layerEls[2],'ct');apply(layerEls[3],'cts')},
-      ()=>{apply(layerEls[0],'cts');apply(layerEls[1],'ct');apply(layerEls[2],'ct');apply(layerEls[3],'cts')},
+      ()=>{all.forEach(el=>setPlate(el,neutral));},
+      ()=>{setPlate(p4,dimmed);setPlate(p3,dimmed);setPlate(p2,infraLit);setPlate(p1,hwLit);},
+      ()=>{setPlate(p4,saasExposed);setPlate(p3,paasExposed);setPlate(p2,dimmed);setPlate(p1,dimmed);},
+      ()=>{setPlate(p4,saasExposed);setPlate(p3,paasExposed);setPlate(p2,infraLit);setPlate(p1,hwLit);},
+      ()=>{setPlate(p4,saasUH);setPlate(p3,{...infraLit,transform:'translate(0,-2)'});setPlate(p2,infraLit);setPlate(p1,hwLit);},
     ];
 
-    function setStep(s){
-      if(s===curStep)return;curStep=s;
-      steps[s]();
-      slides.forEach((sl,i)=>sl.classList.toggle('active',i===s));
-      dots.forEach((d,i)=>d.classList.toggle('active',i===s));
+    function setStep(step){
+      if(step===cur)return;
+      cur=step;
+      currentStep=step; // Update particle colors
+      steps[step]();
+      panels.forEach((p,i)=>p.classList.toggle('active',i===step));
+      dots.forEach((d,i)=>d.classList.toggle('active',i===step));
     }
 
     function onScroll(){
       const r=wrap.getBoundingClientRect();
       const top=-r.top;
       const h=wrap.offsetHeight-window.innerHeight;
-      dotsWrap.classList.toggle('show',r.top<=0&&r.bottom>=window.innerHeight);
+      const inSeq=r.top<=0&&r.bottom>=window.innerHeight;
+      dotsWrap.classList.toggle('show',inSeq);
       if(h<=0)return;
       const p=Math.max(0,Math.min(1,top/h));
       setStep(Math.min(4,Math.floor(p*5)));
     }
 
     window.addEventListener('scroll',onScroll,{passive:true});
-    window.addEventListener('resize',resizeCanvas);
-    dots.forEach(d=>d.addEventListener('click',()=>{
-      const s=parseInt(d.dataset.step);
-      const t=wrap.offsetTop+(s/5)*(wrap.offsetHeight-window.innerHeight)+10;
-      window.scrollTo({top:t,behavior:'smooth'});
-    }));
+    window.addEventListener('resize',()=>{resizeCanvas();initParticles();});
+
+    dots.forEach(d=>{
+      d.addEventListener('click',()=>{
+        const s=parseInt(d.dataset.step);
+        const t=wrap.offsetTop+(s/5)*(wrap.offsetHeight-window.innerHeight)+10;
+        window.scrollTo({top:t,behavior:'smooth'});
+      });
+    });
 
     resizeCanvas();
+    initParticles();
     onScroll();
     renderParticles();
   })();
