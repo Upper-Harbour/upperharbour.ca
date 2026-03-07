@@ -23,7 +23,7 @@
   #bgCanvas{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
 
   /* Everything else above canvas */
-  nav,.nav-mobile-menu,.hero,.scroll-wrap,.evidence,.policy-gap,.final-cta,footer,.scroll-dots{position:relative;z-index:1}
+  nav,.nav-mobile-menu,.hero,.scroll-wrap,.big-quote,.evidence,.uh-layer,.policy-gap,.final-cta,footer,.scroll-dots{position:relative;z-index:1}
 
   /* ═══ HERO ═══ */
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 80px;position:relative;overflow:hidden}
@@ -61,7 +61,7 @@
   .narr-panel h2 .red{color:var(--red)}
   .narr-panel p{font-size:15px;color:var(--slate);line-height:1.7;max-width:380px}
   .narr-panel .payoff{font-family:var(--display);font-style:italic;font-size:20px;color:var(--ice);line-height:1.45;max-width:360px;border-left:3px solid var(--red);padding-left:24px;margin-top:24px}
-  .narr-panel .mini-cta{display:inline-block;margin-top:28px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15)}
+  .narr-panel .mini-cta{display:inline-block;margin-top:28px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15);width:auto;max-width:fit-content}
   .narr-panel .mini-cta:hover{background:#47cec5;transform:translateY(-1px);box-shadow:0 0 32px rgba(60,184,176,.3)}
 
   .scroll-spacer{height:500vh}
@@ -70,24 +70,62 @@
   .scroll-dot{width:8px;height:8px;border-radius:50%;background:rgba(234,240,244,.12);transition:all .3s;cursor:pointer}
   .scroll-dot.active{background:var(--teal);transform:scale(1.5);box-shadow:0 0 8px rgba(60,184,176,.4)}
 
-  .evidence{max-width:960px;margin:0 auto;padding:120px 32px 80px}
+  /* ═══ BIG QUOTE ═══ */
+  .big-quote{padding:120px 32px;text-align:center;position:relative;overflow:hidden}
+  .big-quote::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(224,96,80,.03) 0%,transparent 70%)}
+  .bq-inner{max-width:740px;margin:0 auto;position:relative;opacity:0;transform:translateY(32px);transition:all .9s ease}
+  .bq-inner.visible{opacity:1;transform:translateY(0)}
+  .bq-line{width:48px;height:3px;background:var(--red);margin:0 auto 40px;border-radius:2px}
+  .big-quote blockquote{font-family:var(--display);font-size:clamp(28px,4.5vw,52px);font-weight:900;color:var(--ice);line-height:1.1;letter-spacing:-1px;margin:0 0 32px;font-style:italic}
+  .bq-sub{font-size:16px;color:var(--slate);line-height:1.7;max-width:560px;margin:0 auto}
+
+  /* ═══ EVIDENCE — enhanced ═══ */
+  .evidence{max-width:960px;margin:0 auto;padding:100px 32px 80px}
+  .ev-inner{opacity:0;transform:translateY(32px);transition:all .8s ease}
+  .ev-inner.visible{opacity:1;transform:translateY(0)}
   .evidence .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
   .evidence h2{font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--ice);line-height:1.12;margin-bottom:56px}
   .evidence h2 em{font-style:italic;color:var(--gold)}
-  .ev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-radius:12px;overflow:hidden;margin-bottom:64px}
-  .ev-stat{background:var(--surface);padding:44px 20px;text-align:center}
-  .ev-num{font-family:var(--mono);font-size:clamp(48px,6vw,64px);font-weight:700;line-height:1;margin-bottom:12px}
+  .ev-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;border-radius:12px;overflow:hidden;margin-bottom:48px}
+  .ev-stat{background:var(--surface);padding:48px 20px;text-align:center}
+  .ev-num{font-family:var(--mono);font-size:clamp(52px,7vw,72px);font-weight:700;line-height:1;margin-bottom:12px}
   .ev-num.r{color:var(--red)}.ev-num.g{color:var(--gold)}.ev-num.t{color:var(--teal)}
   .ev-label{font-size:12px;color:var(--muted);line-height:1.45}
-  .ev-note{font-size:14px;color:var(--muted);line-height:1.7;max-width:640px}
-  .ev-note strong{color:var(--ice)}
-  .ev-note a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,.3)}
+  .ev-zero{display:flex;align-items:flex-start;gap:20px;padding:32px;background:var(--surface);border:1px solid var(--border-md);border-radius:10px;margin-bottom:32px}
+  .ev-zero-num{font-family:var(--mono);font-size:56px;font-weight:700;color:var(--red);line-height:1;flex-shrink:0}
+  .ev-zero-text{font-size:15px;color:var(--slate);line-height:1.7;padding-top:8px}
+  .ev-zero-text strong{color:var(--ice)}
+  .ev-source{font-size:13px;color:var(--muted);line-height:1.6}
+  .ev-source a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,.3)}
+
+  /* ═══ UH LAYER SECTION ═══ */
+  .uh-layer{padding:100px 32px;border-top:1px solid var(--border)}
+  .uh-inner{max-width:740px;margin:0 auto;opacity:0;transform:translateY(32px);transition:all .8s ease}
+  .uh-inner.visible{opacity:1;transform:translateY(0)}
+  .uh-layer .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px}
+  .uh-layer h2{font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--ice);line-height:1.12;margin-bottom:40px}
+  .uh-layer h2 em{font-style:italic;color:var(--gold)}
+  .uh-stack-mini{display:flex;flex-direction:column;gap:4px;margin-bottom:32px}
+  .uh-row{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-radius:8px;transition:all .4s}
+  .uh-row-label{font-size:14px;font-weight:600;color:var(--ice)}
+  .uh-row-badge{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);padding:6px 14px;background:rgba(60,184,176,.08);border:1px solid rgba(60,184,176,.2);border-radius:4px}
+  .uh-row-tag{font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.08em}
+  .uh-row-tag.teal{color:var(--teal)}
+  .uh-top{background:rgba(60,184,176,.05);border:1px solid rgba(60,184,176,.2);box-shadow:0 0 32px rgba(60,184,176,.04)}
+  .uh-mid{background:rgba(234,240,244,.02);border:1px solid rgba(234,240,244,.06)}
+  .uh-bot{background:rgba(234,240,244,.015);border:1px solid rgba(234,240,244,.04)}
+  .uh-desc{font-size:15px;color:var(--slate);line-height:1.7}
+
+  /* ═══ Scroll reveal utility ═══ */
+  .reveal{opacity:0;transform:translateY(32px);transition:all .8s cubic-bezier(.25,.46,.45,.94)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
 
   .policy-gap{max-width:960px;margin:0 auto;padding:64px 32px 80px}
   .pg-title{font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--ice);line-height:1.12;margin-bottom:16px}
   .pg-title em{font-style:italic;color:var(--gold)}
   .pg-desc{font-size:15px;color:var(--slate);line-height:1.75;max-width:600px;margin-bottom:48px}
-  .pg-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:12px;overflow:hidden}
+  .pg-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:12px;overflow:hidden;opacity:0;transform:translateY(24px);transition:all .8s ease}
+  .pg-grid.visible{opacity:1;transform:translateY(0)}
   .pg-card{background:var(--surface);padding:32px 28px;transition:background .3s}
   .pg-card:hover{background:var(--surface-2)}
   .pg-card .tag{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px}
@@ -117,6 +155,8 @@
     .scroll-dots{display:none}
     .ev-grid{grid-template-columns:1fr 1fr}
     .pg-grid{grid-template-columns:1fr}
+    .ev-zero{flex-direction:column;gap:12px}
+    .ev-zero-num{font-size:40px}
   }
 </style>
 </head>
@@ -225,19 +265,54 @@
 
   <div class="scroll-dots" id="dots"><div class="scroll-dot active" data-step="0"></div><div class="scroll-dot" data-step="1"></div><div class="scroll-dot" data-step="2"></div><div class="scroll-dot" data-step="3"></div><div class="scroll-dot" data-step="4"></div></div>
 
-  <section class="evidence">
-    <div class="ey">What the data shows</div>
-    <h2>The application layer, <em>measured.</em></h2>
-    <div class="ev-grid">
-      <div class="ev-stat"><div class="ev-num r">82%</div><div class="ev-label">Under foreign<br/>jurisdiction</div></div>
-      <div class="ev-stat"><div class="ev-num r">63%</div><div class="ev-label">US-parented<br/>CLOUD Act exposed</div></div>
-      <div class="ev-stat"><div class="ev-num g">88%</div><div class="ev-label">CA-residency tools<br/>still US-parented</div></div>
-      <div class="ev-stat"><div class="ev-num t">18%</div><div class="ev-label">Truly Canadian<br/>owned &amp; operated</div></div>
+  <!-- ═══ THE QUOTE — full-width emotional anchor ═══ -->
+  <section class="big-quote" id="bigQuote">
+    <div class="bq-inner">
+      <div class="bq-line"></div>
+      <blockquote>Sovereign infrastructure does not automatically produce sovereign systems.</blockquote>
+      <p class="bq-sub">Canada&rsquo;s sovereign cloud strategy secures the bottom of the stack. 82% of the SaaS tools organizations use daily remain under foreign jurisdiction. The server is in Canada. The legal authority often isn&rsquo;t.</p>
     </div>
-    <p class="ev-note"><strong>12 enterprise software categories</strong> &mdash; project management, analytics, customer support, ERP, CMS, DevOps &mdash; have zero Canadian-owned vendors. Based on the <a href="/research/canadian-technology-sovereignty-index">Canadian Technology Sovereignty Index</a> &mdash; 715 tools mapped.</p>
   </section>
 
-  <section class="policy-gap">
+  <!-- ═══ EVIDENCE — animated counters ═══ -->
+  <section class="evidence" id="evidenceSection">
+    <div class="ev-inner">
+      <div class="ey">What the data shows</div>
+      <h2>The application layer, <em>measured.</em></h2>
+      <div class="ev-grid">
+        <div class="ev-stat"><div class="ev-num r" data-target="82">0%</div><div class="ev-label">Under foreign<br/>jurisdiction</div></div>
+        <div class="ev-stat"><div class="ev-num r" data-target="63">0%</div><div class="ev-label">US-parented<br/>CLOUD Act exposed</div></div>
+        <div class="ev-stat"><div class="ev-num g" data-target="88">0%</div><div class="ev-label">CA-residency tools<br/>still US-parented</div></div>
+        <div class="ev-stat"><div class="ev-num t" data-target="18">0%</div><div class="ev-label">Truly Canadian<br/>owned &amp; operated</div></div>
+      </div>
+      <div class="ev-zero">
+        <span class="ev-zero-num">12</span>
+        <span class="ev-zero-text">enterprise software categories &mdash; project management, analytics, customer support, ERP, CMS, DevOps &mdash; have <strong>zero</strong> Canadian-owned vendors. Not underrepresented. Zero.</span>
+      </div>
+      <p class="ev-source">Based on the <a href="/research/canadian-technology-sovereignty-index">Canadian Technology Sovereignty Index</a> &mdash; 715 tools mapped to parent jurisdictions.</p>
+    </div>
+  </section>
+
+  <!-- ═══ WHERE UPPER HARBOUR FITS ═══ -->
+  <section class="uh-layer" id="uhLayer">
+    <div class="uh-inner">
+      <div class="ey">Where Upper Harbour fits</div>
+      <h2>We map the layer <em>no one else measures.</em></h2>
+      <div class="uh-stack-mini">
+        <div class="uh-row uh-top">
+          <div class="uh-row-label">Applications (SaaS)</div>
+          <div class="uh-row-badge">Upper Harbour maps this layer</div>
+        </div>
+        <div class="uh-row uh-mid"><div class="uh-row-label">Platforms (PaaS)</div><div class="uh-row-tag">Partially addressed</div></div>
+        <div class="uh-row uh-bot"><div class="uh-row-label">Infrastructure (IaaS)</div><div class="uh-row-tag teal">Sovereign cloud RFI</div></div>
+        <div class="uh-row uh-bot"><div class="uh-row-label">Hardware &amp; Data Centres</div><div class="uh-row-tag teal">$2B investment</div></div>
+      </div>
+      <p class="uh-desc">715 SaaS and infrastructure tools traced to parent companies, jurisdictions of incorporation, and compelled-disclosure exposure. The first structured map of Canada&rsquo;s technology dependency &mdash; from cloud providers to the applications running on top of them.</p>
+    </div>
+  </section>
+
+  <!-- ═══ POLICY GAP ═══ -->
+  <section class="policy-gap" id="policySection">
     <div class="ey" style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);margin-bottom:16px">Policy landscape</div>
     <h2 class="pg-title">Where Canada&rsquo;s policy <em>is and isn&rsquo;t</em></h2>
     <p class="pg-desc">Four federal instruments address digital sovereignty. None apply a parent-jurisdiction test to SaaS vendors.</p>
@@ -249,6 +324,7 @@
     </div>
   </section>
 
+  <!-- ═══ CTA ═══ -->
   <section class="final-cta">
     <h2>See where your stack sits</h2>
     <p>HarbourScan maps your SaaS tools to parent jurisdictions, CLOUD Act exposure, and compliance gaps. Free. Two minutes.</p>
@@ -415,6 +491,38 @@
     initParticles();
     onScroll();
     renderParticles();
+
+    // ═══ SCROLL REVEALS ═══
+    const revealEls=document.querySelectorAll('.ev-inner,.uh-inner,.bq-inner,.pg-grid,.reveal');
+    const revObs=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){e.target.classList.add('visible');revObs.unobserve(e.target);}
+      });
+    },{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(el=>revObs.observe(el));
+
+    // ═══ COUNTER ANIMATION ═══
+    let counted=false;
+    const evSection=document.getElementById('evidenceSection');
+    const cObs=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting&&!counted){
+          counted=true;
+          document.querySelectorAll('[data-target]').forEach(el=>{
+            const target=parseInt(el.dataset.target);
+            let current=0;
+            const step=Math.ceil(target/45);
+            const interval=setInterval(()=>{
+              current+=step;
+              if(current>=target){current=target;clearInterval(interval);}
+              el.textContent=current+'%';
+            },25);
+          });
+          cObs.unobserve(e.target);
+        }
+      });
+    },{threshold:.3});
+    cObs.observe(evSection);
   })();
   </script>
 </body>
