@@ -21,6 +21,7 @@
 
   /* ═══ HERO ═══ */
   .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 32px 60px;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(60,184,176,.025) 0%,transparent 70%)}
   .hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.005) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.005) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
   .hero-inner{position:relative;z-index:1;max-width:700px}
   .hero .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);margin-bottom:32px;opacity:0;animation:fu .8s ease forwards .2s}
@@ -34,27 +35,88 @@
 
   /* ═══ SCROLL SECTION ═══ */
   .scroll-wrap{position:relative}
-  .scroll-track{min-height:100vh;position:sticky;top:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .scroll-track{min-height:100vh;position:sticky;top:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 32px 160px}
+  .scroll-track::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(234,240,244,.006) 1px,transparent 1px),linear-gradient(90deg,rgba(234,240,244,.006) 1px,transparent 1px);background-size:60px 60px;pointer-events:none}
 
-  /* Canvas fills the sticky viewport */
-  #stackCanvas{position:absolute;inset:0;width:100%;height:100%}
+  /* Canvas sits behind HTML layers — particles only */
+  #particleCanvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
 
-  /* Narrative overlay */
-  .narr-overlay{position:relative;z-index:2;text-align:center;padding:0 32px;pointer-events:none}
-  .narr-s{position:absolute;left:50%;transform:translateX(-50%);bottom:60px;width:100%;max-width:560px;opacity:0;transition:opacity .5s ease;pointer-events:none;padding:0 24px}
-  .narr-s.active{opacity:1;pointer-events:auto}
-  .narr-s .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
-  .narr-s h2{font-family:var(--display);font-size:clamp(24px,3vw,36px);font-weight:900;color:var(--ice);line-height:1.1;letter-spacing:-.3px;margin-bottom:14px;text-shadow:0 2px 20px rgba(6,9,14,.8)}
-  .narr-s h2 em{font-style:italic;font-weight:700;color:var(--gold)}
-  .narr-s h2 .red{color:var(--red)}
-  .narr-s p{font-size:14px;color:var(--slate);line-height:1.65;max-width:480px;margin:0 auto;text-shadow:0 1px 8px rgba(6,9,14,.9)}
-  .narr-s .payoff{font-family:var(--display);font-style:italic;font-size:19px;color:var(--ice);line-height:1.4;max-width:440px;margin:18px auto 0;padding-top:18px;border-top:1px solid rgba(224,96,80,.2);text-shadow:0 2px 16px rgba(6,9,14,.8)}
-  .narr-s .mini-cta{display:inline-block;margin-top:22px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.2);pointer-events:auto}
-  .narr-s .mini-cta:hover{background:#47cec5;transform:translateY(-1px)}
+  /* HTML stack sits on top of canvas */
+  .stack-container{position:relative;z-index:2;width:100%;max-width:800px}
+
+  /* ═══ LAYERS ═══ */
+  .stack-layers{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+
+  .ly{display:flex;align-items:stretch;border-radius:10px;overflow:hidden;transition:all .65s cubic-bezier(.25,.46,.45,.94);position:relative}
+  .ly::before{content:'';position:absolute;inset:-1px;border-radius:11px;pointer-events:none;transition:box-shadow .65s ease;z-index:0}
+
+  .ly-bar{width:5px;flex-shrink:0;transition:background .6s;position:relative;z-index:1}
+  .ly-body{flex:1;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:background .6s;position:relative;z-index:1}
+  .ly-info{}
+  .ly-tag{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:3px;transition:color .6s}
+  .ly-name{font-size:15px;font-weight:700;color:var(--ice);transition:all .6s}
+  .ly-ex{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end}
+  .ly-chip{font-size:9.5px;font-weight:500;padding:3px 9px;border-radius:3px;white-space:nowrap;transition:all .6s}
+  .ly-status{flex-shrink:0;padding:8px 16px;border-left:1px solid rgba(234,240,244,.04);display:flex;align-items:center;gap:6px;transition:all .6s}
+  .ly-status-icon{font-size:14px;transition:color .6s}
+  .ly-status-text{font-family:var(--mono);font-size:8.5px;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:color .6s}
+
+  /* Dashed connectors between layers */
+  .connector{width:1px;height:6px;margin:0 auto;border-left:1px dashed rgba(234,240,244,.06)}
+
+  /* ── Base neutral ── */
+  .ly-bar{background:rgba(234,240,244,.06)}
+  .ly-body{background:rgba(234,240,244,.018)}
+  .ly-tag{color:var(--muted)}
+  .ly-chip{color:var(--muted);background:rgba(234,240,244,.025);border:1px solid rgba(234,240,244,.05)}
+  .ly-status-icon,.ly-status-text{color:var(--muted)}
+
+  /* ── Dimmed ── */
+  .ly.dim{opacity:.1;transform:scale(.985)}
+
+  /* ── Teal ── */
+  .ly.ct .ly-bar{background:#3CB8B0}
+  .ly.ct .ly-body{background:rgba(60,184,176,.035)}
+  .ly.ct .ly-tag,.ly.ct .ly-status-icon,.ly.ct .ly-status-text{color:#3CB8B0}
+  .ly.ct .ly-chip{color:rgba(60,184,176,.75);background:rgba(60,184,176,.05);border-color:rgba(60,184,176,.1)}
+  .ly.ct::before{box-shadow:0 0 40px rgba(60,184,176,.05),inset 0 0 40px rgba(60,184,176,.02)}
+
+  /* ── Teal strong ── */
+  .ly.cts .ly-bar{background:#3CB8B0}
+  .ly.cts .ly-body{background:rgba(60,184,176,.05)}
+  .ly.cts .ly-tag,.ly.cts .ly-status-icon,.ly.cts .ly-status-text{color:#3CB8B0}
+  .ly.cts .ly-chip{color:rgba(60,184,176,.8);background:rgba(60,184,176,.06);border-color:rgba(60,184,176,.14)}
+  .ly.cts::before{box-shadow:0 0 60px rgba(60,184,176,.07),inset 0 0 60px rgba(60,184,176,.03)}
+
+  /* ── Red ── */
+  .ly.cr .ly-bar{background:#E06050}
+  .ly.cr .ly-body{background:rgba(224,96,80,.035)}
+  .ly.cr .ly-tag,.ly.cr .ly-status-icon,.ly.cr .ly-status-text{color:#E06050}
+  .ly.cr .ly-chip{color:rgba(224,96,80,.75);background:rgba(224,96,80,.04);border-color:rgba(224,96,80,.1)}
+  .ly.cr::before{box-shadow:0 0 50px rgba(224,96,80,.06),inset 0 0 50px rgba(224,96,80,.02)}
+
+  /* ── Gold ── */
+  .ly.cg .ly-bar{background:#C9A84C}
+  .ly.cg .ly-body{background:rgba(201,168,76,.03)}
+  .ly.cg .ly-tag,.ly.cg .ly-status-icon,.ly.cg .ly-status-text{color:#C9A84C}
+  .ly.cg .ly-chip{color:rgba(201,168,76,.7);background:rgba(201,168,76,.04);border-color:rgba(201,168,76,.09)}
+  .ly.cg::before{box-shadow:0 0 40px rgba(201,168,76,.04),inset 0 0 40px rgba(201,168,76,.02)}
+
+  /* ═══ NARRATIVE ═══ */
+  .narr{position:relative;min-height:120px;text-align:center;margin-top:32px}
+  .ns{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;opacity:0;transition:opacity .45s;pointer-events:none}
+  .ns.active{opacity:1;pointer-events:auto}
+  .ns .ey{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);margin-bottom:10px}
+  .ns h2{font-family:var(--display);font-size:clamp(22px,2.8vw,32px);font-weight:900;color:var(--ice);line-height:1.12;margin-bottom:10px}
+  .ns h2 em{font-style:italic;font-weight:700;color:var(--gold)}
+  .ns h2 .red{color:var(--red)}
+  .ns p{font-size:14px;color:var(--slate);line-height:1.6;max-width:480px}
+  .ns .payoff{font-family:var(--display);font-style:italic;font-size:18px;color:var(--ice);line-height:1.4;max-width:420px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(224,96,80,.15)}
+  .ns .mini-cta{display:inline-block;margin-top:18px;font-size:13px;font-weight:800;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:all .2s;box-shadow:0 0 20px rgba(60,184,176,.15);pointer-events:auto}
+  .ns .mini-cta:hover{background:#47cec5;transform:translateY(-1px)}
 
   .scroll-spacer{height:500vh}
 
-  /* Progress dots */
   .scroll-dots{position:fixed;right:28px;top:50%;transform:translateY(-50%);z-index:50;display:flex;flex-direction:column;gap:14px;opacity:0;transition:opacity .4s}
   .scroll-dots.show{opacity:1}
   .scroll-dot{width:8px;height:8px;border-radius:50%;background:rgba(234,240,244,.1);transition:all .3s;cursor:pointer}
@@ -74,7 +136,7 @@
   .ev-note strong{color:var(--ice)}
   .ev-note a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,.3)}
 
-  /* ═══ POLICY GAP ═══ */
+  /* ═══ POLICY ═══ */
   .policy-gap{max-width:960px;margin:0 auto;padding:64px 32px 80px}
   .pg-title{font-family:var(--display);font-size:clamp(28px,3.5vw,42px);font-weight:700;color:var(--ice);line-height:1.12;margin-bottom:16px}
   .pg-title em{font-style:italic;color:var(--gold)}
@@ -99,9 +161,10 @@
   .final-cta .btn:hover{background:#47cec5;transform:translateY(-2px);box-shadow:0 0 40px rgba(60,184,176,.35)}
 
   @media(max-width:700px){
+    .ly-ex{display:none}
+    .ly-body{padding:14px 18px}
     .ev-grid{grid-template-columns:1fr 1fr}
     .pg-grid{grid-template-columns:1fr}
-    .narr-s{bottom:40px}
   }
 </style>
 </head>
@@ -109,11 +172,7 @@
 
   <nav>
     <a href="/" class="nav-logo" aria-label="Upper Harbour home">
-      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
-        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
-        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
-      </svg>
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg>
       <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
     </a>
     <div class="nav-links">
@@ -123,9 +182,7 @@
       <a href="/resources" class="nav-link">Compliance</a>
       <a href="/harbourscan" class="nav-cta">Run HarbourScan</a>
     </div>
-    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </nav>
   <div class="nav-mobile-menu"><a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Run HarbourScan</a></div>
 
@@ -140,13 +197,51 @@
 
   <div class="scroll-wrap" id="scrollWrap">
     <div class="scroll-track">
-      <canvas id="stackCanvas"></canvas>
-      <div class="narr-overlay">
-        <div class="narr-s active" id="ns0"><div class="ey">The full stack</div><h2>Digital systems run on <em>four layers.</em></h2><p>From physical servers to SaaS applications. Each layer has its own ownership, jurisdiction, and legal exposure.</p></div>
-        <div class="narr-s" id="ns1"><div class="ey">Where policy focuses</div><h2>Sovereignty policy targets the <em>bottom two.</em></h2><p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. The March 2026 RFI requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p></div>
-        <div class="narr-s" id="ns2"><div class="ey">Where exposure sits</div><h2>The <em class="red">top two layers</em> have no equivalent policy.</h2><p>82% of SaaS tools used by Canadian organizations are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p></div>
-        <div class="narr-s" id="ns3"><div class="ey">The jurisdiction question</div><h2>Infrastructure can be domestic. Software remains <em class="red">governed abroad.</em></h2><div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div></div>
-        <div class="narr-s" id="ns4"><div class="ey">Upper Harbour</div><h2>We map <em>every layer.</em></h2><p>715 tools traced to parent companies, jurisdictions, and compelled-disclosure exposure.</p><a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a></div>
+      <canvas id="particleCanvas"></canvas>
+
+      <div class="stack-container">
+        <div class="stack-layers">
+          <div class="ly" id="ly4">
+            <div class="ly-bar"></div>
+            <div class="ly-body">
+              <div class="ly-info"><div class="ly-tag">Layer 4 &mdash; SaaS Applications</div><div class="ly-name">The software organizations use daily</div></div>
+              <div class="ly-ex"><span class="ly-chip">Salesforce</span><span class="ly-chip">Slack</span><span class="ly-chip">Microsoft 365</span><span class="ly-chip">Workday</span><span class="ly-chip">Jira</span><span class="ly-chip">Zendesk</span></div>
+            </div>
+            <div class="ly-status"><span class="ly-status-icon">&#x2717;</span><span class="ly-status-text">No policy</span></div>
+          </div>
+          <div class="ly" id="ly3">
+            <div class="ly-bar"></div>
+            <div class="ly-body">
+              <div class="ly-info"><div class="ly-tag">Layer 3 &mdash; Platforms</div><div class="ly-name">Runtime &amp; development environments</div></div>
+              <div class="ly-ex"><span class="ly-chip">Containers</span><span class="ly-chip">Serverless</span><span class="ly-chip">CI/CD</span><span class="ly-chip">APIs</span></div>
+            </div>
+            <div class="ly-status"><span class="ly-status-icon">~</span><span class="ly-status-text">Partial</span></div>
+          </div>
+          <div class="ly" id="ly2">
+            <div class="ly-bar"></div>
+            <div class="ly-body">
+              <div class="ly-info"><div class="ly-tag">Layer 2 &mdash; Infrastructure</div><div class="ly-name">Cloud compute &amp; storage</div></div>
+              <div class="ly-ex"><span class="ly-chip">AWS</span><span class="ly-chip">Azure</span><span class="ly-chip">GCP</span><span class="ly-chip">ThinkOn</span><span class="ly-chip">Micrologic</span></div>
+            </div>
+            <div class="ly-status"><span class="ly-status-icon">&#x2713;</span><span class="ly-status-text">RFI active</span></div>
+          </div>
+          <div class="ly" id="ly1">
+            <div class="ly-bar"></div>
+            <div class="ly-body">
+              <div class="ly-info"><div class="ly-tag">Layer 1 &mdash; Hardware &amp; Data Centres</div><div class="ly-name">Physical servers &amp; facilities</div></div>
+              <div class="ly-ex"><span class="ly-chip">Bell-Hypertec</span><span class="ly-chip">Equinix</span><span class="ly-chip">Cologix</span><span class="ly-chip">QScale</span></div>
+            </div>
+            <div class="ly-status"><span class="ly-status-icon">&#x2713;</span><span class="ly-status-text">Funded</span></div>
+          </div>
+        </div>
+
+        <div class="narr">
+          <div class="ns active" id="ns0"><div class="ey">The full stack</div><h2>Digital systems run on <em>four layers.</em></h2><p>From physical servers to SaaS applications. Each layer has its own ownership, jurisdiction, and legal exposure.</p></div>
+          <div class="ns" id="ns1"><div class="ey">Where policy focuses</div><h2>Sovereignty policy targets the <em>bottom two.</em></h2><p>Sovereign cloud RFI. $2B AI compute. Bell-Hypertec. The March 2026 RFI requires providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws.</p></div>
+          <div class="ns" id="ns2"><div class="ey">Where exposure sits</div><h2>The <em class="red">top two layers</em> have no equivalent policy.</h2><p>82% of SaaS tools used by Canadian organizations are under foreign jurisdiction. 12 entire categories have zero Canadian-owned vendors.</p></div>
+          <div class="ns" id="ns3"><div class="ey">The jurisdiction question</div><h2>Infrastructure can be domestic. Software remains <em class="red">governed abroad.</em></h2><div class="payoff">Sovereign infrastructure does not automatically produce sovereign systems.</div></div>
+          <div class="ns" id="ns4"><div class="ey">Upper Harbour</div><h2>We map <em>every layer.</em></h2><p>715 tools traced to parent companies, jurisdictions, and compelled-disclosure exposure.</p><a href="/harbourscan" class="mini-cta">Run HarbourScan &rarr;</a></div>
+        </div>
       </div>
     </div>
     <div class="scroll-spacer"></div>
@@ -195,237 +290,73 @@
 
   <script>
   (function(){
-    // ═══ CANVAS RENDERER ═══
-    const canvas = document.getElementById('stackCanvas');
-    const ctx = canvas.getContext('2d');
-    let W, H, dpr;
-    let step = 0;
-    let targetStep = 0;
-    let animProgress = 0;
+    // ═══ PARTICLE CANVAS ═══
+    const cv=document.getElementById('particleCanvas');
+    const cx=cv.getContext('2d');
+    let particles=[];
+    let curStep=0;
 
-    // Colors
-    const C = {
-      bg: '#06090E',
-      neutral: { fill:'#0F1820', stroke:'rgba(234,240,244,0.08)', text:'#566778', glow:'rgba(234,240,244,0.02)' },
-      teal: { fill:'#0E2624', stroke:'rgba(60,184,176,0.3)', text:'#3CB8B0', glow:'rgba(60,184,176,0.06)' },
-      tealS: { fill:'#123230', stroke:'rgba(60,184,176,0.4)', text:'#3CB8B0', glow:'rgba(60,184,176,0.1)' },
-      red: { fill:'#241210', stroke:'rgba(224,96,80,0.3)', text:'#E06050', glow:'rgba(224,96,80,0.06)' },
-      gold: { fill:'#221C0C', stroke:'rgba(201,168,76,0.25)', text:'#C9A84C', glow:'rgba(201,168,76,0.05)' },
-      dim: { fill:'#0A0E14', stroke:'rgba(234,240,244,0.03)', text:'rgba(234,240,244,0.1)', glow:'transparent' },
-    };
+    function resizeCanvas(){
+      const d=window.devicePixelRatio||1;
+      cv.width=cv.clientWidth*d;
+      cv.height=cv.clientHeight*d;
+      cx.scale(d,d);
+    }
 
-    // Layer definitions
-    const layers = [
-      { label:'LAYER 4 — SAAS APPLICATIONS', name:'The software organizations use daily', examples:'Salesforce · Slack · Microsoft 365 · Workday · Jira · Zendesk', status:'✗ No policy' },
-      { label:'LAYER 3 — PLATFORMS', name:'Runtime & development', examples:'Containers · Serverless · CI/CD · APIs', status:'~ Partial' },
-      { label:'LAYER 2 — INFRASTRUCTURE', name:'Cloud compute & storage', examples:'AWS · Azure · GCP · ThinkOn · Micrologic', status:'✓ RFI active' },
-      { label:'LAYER 1 — HARDWARE & DATA CENTRES', name:'Physical servers & facilities', examples:'Bell-Hypertec · Equinix · Cologix · QScale', status:'✓ Funded' },
-    ];
-
-    // State per step: [layer4, layer3, layer2, layer1]
-    const stepStates = [
-      ['neutral','neutral','neutral','neutral'],
-      ['dim','dim','teal','tealS'],
-      ['red','gold','dim','dim'],
-      ['red','gold','teal','tealS'],
-      ['tealS','teal','teal','tealS'],
-    ];
-
-    // Particles
-    let particles = [];
-    class Particle {
+    class P{
       constructor(x,y,color){
-        this.x=x; this.y=y; this.color=color;
-        this.vx=(Math.random()-.5)*.3;
-        this.vy=-Math.random()*.6-.2;
-        this.life=1; this.decay=.003+Math.random()*.004;
-        this.r=1.5+Math.random()*1.5;
+        this.x=x;this.y=y;this.color=color;
+        this.vx=(Math.random()-.5)*.4;
+        this.vy=-Math.random()*.5-.15;
+        this.life=1;this.decay=.004+Math.random()*.005;
+        this.r=1.2+Math.random()*1.8;
       }
-      update(){
-        this.x+=this.vx; this.y+=this.vy;
-        this.life-=this.decay;
-      }
+      update(){this.x+=this.vx;this.y+=this.vy;this.life-=this.decay;}
       draw(){
         if(this.life<=0)return;
-        ctx.save();
-        ctx.globalAlpha=this.life*.6;
-        ctx.fillStyle=this.color;
-        ctx.shadowColor=this.color;
-        ctx.shadowBlur=8;
-        ctx.beginPath();
-        ctx.arc(this.x*dpr,this.y*dpr,this.r*dpr,0,Math.PI*2);
-        ctx.fill();
-        ctx.restore();
+        cx.save();
+        cx.globalAlpha=this.life*.5;
+        cx.fillStyle=this.color;
+        cx.shadowColor=this.color;
+        cx.shadowBlur=6;
+        cx.beginPath();
+        cx.arc(this.x,this.y,this.r,0,Math.PI*2);
+        cx.fill();
+        cx.restore();
       }
     }
 
-    function resize(){
-      dpr = window.devicePixelRatio||1;
-      W = canvas.clientWidth;
-      H = canvas.clientHeight;
-      canvas.width = W*dpr;
-      canvas.height = H*dpr;
+    // Spawn particles from active layers
+    const layerEls=[document.getElementById('ly4'),document.getElementById('ly3'),document.getElementById('ly2'),document.getElementById('ly1')];
+    const stateMap=[
+      ['','','',''],
+      ['dim','dim','ct','cts'],
+      ['cr','cg','dim','dim'],
+      ['cr','cg','ct','cts'],
+      ['cts','ct','ct','cts'],
+    ];
+    const colorMap={cr:'#E06050',cg:'#C9A84C',ct:'#3CB8B0',cts:'#3CB8B0'};
+
+    function spawnParticles(){
+      const states=stateMap[curStep];
+      layerEls.forEach((el,i)=>{
+        const s=states[i];
+        if(s&&s!=='dim'&&colorMap[s]&&Math.random()<.12){
+          const rect=el.getBoundingClientRect();
+          const trackRect=cv.getBoundingClientRect();
+          const px=rect.left-trackRect.left+Math.random()*rect.width;
+          const py=rect.top-trackRect.top+rect.height*.5;
+          particles.push(new P(px,py,colorMap[s]));
+        }
+      });
     }
 
-    function getLayerRect(i){
-      const totalH = Math.min(H*.55, 400);
-      const barH = totalH/4 - 8;
-      const startY = (H - totalH)/2 - 20;
-      const barW = Math.min(W*.7, 700);
-      const x = (W-barW)/2;
-      const y = startY + i*(barH+8);
-      return {x,y,w:barW,h:barH};
-    }
-
-    function lerpColor(a,b,t){
-      // Simple object lerp — we'll use direct state
-      return t<.5?a:b;
-    }
-
-    function getColor(stateName){
-      return C[stateName]||C.neutral;
-    }
-
-    function drawLayer(i, state, highlight){
-      const r = getLayerRect(i);
-      const c = getColor(state);
-      const rad = 8*dpr;
-
-      // Glow
-      if(c.glow!=='transparent'){
-        ctx.save();
-        ctx.shadowColor=c.glow;
-        ctx.shadowBlur=40*dpr;
-        ctx.fillStyle=c.glow;
-        roundRect(r.x*dpr,r.y*dpr,r.w*dpr,r.h*dpr,rad);
-        ctx.fill();
-        ctx.restore();
-      }
-
-      // Fill
-      ctx.save();
-      ctx.fillStyle=c.fill;
-      roundRect(r.x*dpr,r.y*dpr,r.w*dpr,r.h*dpr,rad);
-      ctx.fill();
-
-      // Stroke
-      ctx.strokeStyle=c.stroke;
-      ctx.lineWidth=1*dpr;
-      roundRect(r.x*dpr,r.y*dpr,r.w*dpr,r.h*dpr,rad);
-      ctx.stroke();
-
-      // Accent bar
-      const accentColor = state==='red'?'#E06050':state==='gold'?'#C9A84C':(state==='teal'||state==='tealS')?'#3CB8B0':'rgba(234,240,244,0.08)';
-      if(state==='dim') ctx.fillStyle='rgba(234,240,244,0.03)';
-      else ctx.fillStyle=accentColor;
-      roundRectPartial(r.x*dpr,r.y*dpr,5*dpr,r.h*dpr,rad,true);
-      ctx.fill();
-
-      ctx.restore();
-
-      // Text
-      const textAlpha = state==='dim'?.1:1;
-      const tagColor = c.text;
-      const nameColor = state==='dim'?'rgba(234,240,244,0.1)':'#EAF0F4';
-      const exColor = state==='dim'?'rgba(234,240,244,0.06)':'#566778';
-
-      ctx.save();
-      ctx.globalAlpha=textAlpha<1?textAlpha:1;
-
-      // Tag
-      ctx.font=`600 ${9*dpr}px "JetBrains Mono",monospace`;
-      ctx.fillStyle=tagColor;
-      ctx.textBaseline='top';
-      ctx.fillText(layers[i].label, (r.x+20)*dpr, (r.y+14)*dpr);
-
-      // Name
-      ctx.font=`700 ${15*dpr}px "DM Sans",sans-serif`;
-      ctx.fillStyle=nameColor;
-      ctx.fillText(layers[i].name, (r.x+20)*dpr, (r.y+30)*dpr);
-
-      // Examples
-      ctx.font=`400 ${10*dpr}px "DM Sans",sans-serif`;
-      ctx.fillStyle=exColor;
-      ctx.fillText(layers[i].examples, (r.x+20)*dpr, (r.y+50)*dpr);
-
-      // Status — right aligned
-      ctx.font=`600 ${10*dpr}px "JetBrains Mono",monospace`;
-      ctx.fillStyle=tagColor;
-      ctx.textAlign='right';
-      ctx.fillText(layers[i].status, (r.x+r.w-16)*dpr, (r.y+r.h/2+3)*dpr);
-      ctx.textAlign='left';
-
-      ctx.restore();
-
-      // Spawn particles on active layers
-      if(state!=='dim'&&state!=='neutral'&&Math.random()<.15){
-        const px = r.x + Math.random()*r.w;
-        const py = r.y + r.h/2;
-        const pColor = state==='red'?'#E06050':state==='gold'?'#C9A84C':'#3CB8B0';
-        particles.push(new Particle(px,py,pColor));
-      }
-
-      // Connection lines between layers
-      if(i<3){
-        const r2 = getLayerRect(i+1);
-        const lineX = (r.x+r.w/2)*dpr;
-        ctx.save();
-        ctx.strokeStyle = state==='dim'?'rgba(234,240,244,0.02)':'rgba(234,240,244,0.04)';
-        ctx.lineWidth = 1*dpr;
-        ctx.setLineDash([4*dpr,4*dpr]);
-        ctx.beginPath();
-        ctx.moveTo(lineX,(r.y+r.h)*dpr);
-        ctx.lineTo(lineX,r2.y*dpr);
-        ctx.stroke();
-        ctx.setLineDash([]);
-        ctx.restore();
-      }
-    }
-
-    function roundRect(x,y,w,h,r){
-      ctx.beginPath();
-      ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);
-      ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
-      ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
-      ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);
-      ctx.closePath();
-    }
-
-    function roundRectPartial(x,y,w,h,r,leftOnly){
-      ctx.beginPath();
-      ctx.moveTo(x+r,y);ctx.lineTo(x+w,y);ctx.lineTo(x+w,y+h);
-      ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);
-      ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);
-      ctx.closePath();
-    }
-
-    // Blueprint grid background
-    function drawGrid(){
-      ctx.save();
-      ctx.strokeStyle='rgba(234,240,244,0.012)';
-      ctx.lineWidth=1*dpr;
-      const s=60*dpr;
-      for(let x=0;x<W*dpr;x+=s){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,H*dpr);ctx.stroke();}
-      for(let y=0;y<H*dpr;y+=s){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(W*dpr,y);ctx.stroke();}
-      ctx.restore();
-    }
-
-    function render(){
-      ctx.clearRect(0,0,W*dpr,H*dpr);
-
-      drawGrid();
-
-      const states = stepStates[step];
-      // Draw connection lines first (behind)
-      for(let i=3;i>=0;i--){
-        drawLayer(i, states[i], false);
-      }
-
-      // Particles
+    function renderParticles(){
+      cx.clearRect(0,0,cv.clientWidth,cv.clientHeight);
+      spawnParticles();
       particles.forEach(p=>{p.update();p.draw();});
       particles=particles.filter(p=>p.life>0);
-
-      requestAnimationFrame(render);
+      requestAnimationFrame(renderParticles);
     }
 
     // ═══ SCROLL LOGIC ═══
@@ -433,9 +364,22 @@
     const slides=[0,1,2,3,4].map(i=>document.getElementById('ns'+i));
     const dots=document.querySelectorAll('.scroll-dot');
     const dotsWrap=document.getElementById('dots');
+    const cls=['dim','ct','cts','cr','cg'];
+
+    function reset(el){cls.forEach(c=>el.classList.remove(c))}
+    function apply(el,...c){reset(el);c.forEach(x=>el.classList.add(x))}
+
+    const steps=[
+      ()=>{layerEls.forEach(reset)},
+      ()=>{apply(layerEls[0],'dim');apply(layerEls[1],'dim');apply(layerEls[2],'ct');apply(layerEls[3],'cts')},
+      ()=>{apply(layerEls[0],'cr');apply(layerEls[1],'cg');apply(layerEls[2],'dim');apply(layerEls[3],'dim')},
+      ()=>{apply(layerEls[0],'cr');apply(layerEls[1],'cg');apply(layerEls[2],'ct');apply(layerEls[3],'cts')},
+      ()=>{apply(layerEls[0],'cts');apply(layerEls[1],'ct');apply(layerEls[2],'ct');apply(layerEls[3],'cts')},
+    ];
 
     function setStep(s){
-      if(s===step)return;step=s;
+      if(s===curStep)return;curStep=s;
+      steps[s]();
       slides.forEach((sl,i)=>sl.classList.toggle('active',i===s));
       dots.forEach((d,i)=>d.classList.toggle('active',i===s));
     }
@@ -451,19 +395,16 @@
     }
 
     window.addEventListener('scroll',onScroll,{passive:true});
-    window.addEventListener('resize',()=>{resize();});
+    window.addEventListener('resize',resizeCanvas);
+    dots.forEach(d=>d.addEventListener('click',()=>{
+      const s=parseInt(d.dataset.step);
+      const t=wrap.offsetTop+(s/5)*(wrap.offsetHeight-window.innerHeight)+10;
+      window.scrollTo({top:t,behavior:'smooth'});
+    }));
 
-    dots.forEach(d=>{
-      d.addEventListener('click',()=>{
-        const s=parseInt(d.dataset.step);
-        const t=wrap.offsetTop+(s/5)*(wrap.offsetHeight-window.innerHeight)+10;
-        window.scrollTo({top:t,behavior:'smooth'});
-      });
-    });
-
-    resize();
+    resizeCanvas();
     onScroll();
-    render();
+    renderParticles();
   })();
   </script>
 </body>
