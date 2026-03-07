@@ -5,12 +5,57 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Sovereignty Stack | Upper Harbour</title>
-  <meta name="description" content="Canada's sovereignty policy secures infrastructure. The application layer — where organizations encounter foreign jurisdiction daily — remains unaddressed." />
+  <title>The Sovereignty Stack: Where Canada's SaaS Jurisdiction Risk Actually Sits | Upper Harbour</title>
+  <meta name="description" content="Canada's sovereignty policy targets infrastructure. 82% of SaaS tools remain under foreign jurisdiction. A visual guide to the gap between sovereign cloud and sovereign software." />
   <link rel="canonical" href="https://upperharbour.ca/research/sovereignty-stack" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <meta property="og:title" content="The Sovereignty Stack" />
-  <meta property="og:description" content="Canada is securing the bottom of the stack. The top remains governed abroad." />
+  <meta property="og:title" content="The Sovereignty Stack: Where Canada's SaaS Jurisdiction Risk Actually Sits" />
+  <meta property="og:description" content="Canada is investing billions in sovereign cloud infrastructure. 82% of the SaaS tools organizations use daily remain under foreign jurisdiction. The gap between sovereign infrastructure and sovereign software, visualized." />
+  <meta property="og:image" content="https://upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://upperharbour.ca/research/sovereignty-stack" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the Sovereignty Stack?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Sovereignty Stack is a framework developed by Upper Harbour that maps where jurisdictional exposure sits across the four layers of a technology stack: hardware, infrastructure, platforms, and SaaS applications. Canada's sovereignty policy focuses on the bottom two layers (infrastructure and hardware), while 82% of the SaaS applications organizations use daily remain under foreign jurisdiction. The framework shows the gap between sovereign infrastructure and sovereign software." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Canadian data residency protect against the CLOUD Act?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Upper Harbour's data shows that 90% of application-layer tools advertising Canadian data residency are still operated by companies under US parent jurisdiction. The CLOUD Act grants US authorities the ability to compel access to data held by US-parented companies regardless of where that data is physically stored. Data residency is a server configuration; sovereignty is a legal and corporate structure question." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many SaaS categories have zero Canadian-owned vendors?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Nine enterprise software categories with three or more tools have zero Canadian-owned vendors, including project management, analytics, customer support, ERP, CMS, DevOps, design, integration, and productivity. This means Canadian organizations have no domestically controlled option in these categories." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between the sovereign cloud RFI and SaaS sovereignty?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Government of Canada's sovereign cloud RFI (updated March 2026) requires that cloud infrastructure providers and their ultimate parent corporations are not subject to foreign compelled-disclosure laws. This covers IaaS and PaaS. No equivalent policy instrument applies a parent-jurisdiction test to SaaS vendors — the application layer where most organizations encounter foreign jurisdiction daily." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a technology stack?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A technology stack is the combination of software and infrastructure an organization uses to operate. It consists of four layers: hardware and data centres at the base, cloud infrastructure (IaaS) above that, platforms (PaaS), and software applications (SaaS) at the top. Each layer has different ownership, jurisdiction, and legal exposure. In Canada, most sovereignty policy addresses the lower layers while the application layer — CRM, HR, messaging, analytics, finance — remains largely under foreign jurisdiction." }
+      },
+      {
+        "@type": "Question",
+        "name": "What does a Canadian tech stack look like?",
+        "acceptedAnswer": { "@type": "Answer", "text": "A fully Canadian tech stack would use Canadian-owned and operated tools at every layer — from data centres (Bell-Hypertec, Equinix Canada, Cologix) to cloud infrastructure (ThinkOn, Micrologic) to SaaS applications (Clio, FreshBooks, Jane App). In practice, Upper Harbour's data shows only 18% of SaaS tools used by Canadian organizations are truly Canadian-owned. Nine entire enterprise software categories have zero Canadian-owned vendors, including project management, analytics, customer support, and ERP." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I make my organization's tech stack more Canadian?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Start by mapping your current stack to parent jurisdictions. Upper Harbour's free HarbourScan tool identifies which of your SaaS tools are under foreign jurisdiction and CLOUD Act exposure. From there, prioritize replacing tools in high-sensitivity categories (HR, finance, legal, healthcare) with Canadian-controlled alternatives where they exist. For categories with no Canadian option, document the jurisdictional exposure with Transfer Impact Assessments as required by Law 25 and recommended under PIPEDA. The goal is informed risk management, not replacing every tool." }
+      }
+    ]
+  }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
@@ -145,18 +190,25 @@
   .final-cta .btn:hover{background:#47cec5;transform:translateY(-2px);box-shadow:0 0 40px rgba(60,184,176,.35)}
 
   @media(max-width:800px){
-    .scroll-track{flex-direction:column}
-    .stack-col,.narr-col{width:100%}
-    .stack-col{padding:20px}
-    .narr-col{height:auto}
-    .narr-panel{position:relative;padding:32px 20px;opacity:1;pointer-events:auto}
-    .narr-panel:not(.active){display:none}
-    .scroll-spacer{height:auto}
+    .scroll-wrap{position:relative}
+    .scroll-track{flex-direction:column;position:relative;min-height:auto}
+    .stack-col{width:100%;padding:20px}
+    .stack-canvas{max-width:100%}
+    .narr-col{width:100%;position:relative;height:auto;display:flex;flex-direction:column;gap:48px;padding:20px 20px 40px}
+    .narr-panel{position:relative;opacity:1;pointer-events:auto;padding:0;text-align:left}
+    .narr-panel h2{font-size:24px}
+    .narr-panel p{font-size:14px;max-width:100%}
+    .narr-panel .payoff{font-size:17px;max-width:100%}
+    .scroll-spacer{display:none}
     .scroll-dots{display:none}
+    #bgCanvas{display:none}
     .ev-grid{grid-template-columns:1fr 1fr}
     .pg-grid{grid-template-columns:1fr}
     .ev-zero{flex-direction:column;gap:12px}
     .ev-zero-num{font-size:40px}
+    .hero h1{font-size:48px;letter-spacing:-1.5px}
+    .hero .sub{font-size:16px}
+    .big-quote blockquote{font-size:24px}
   }
 </style>
 </head>
