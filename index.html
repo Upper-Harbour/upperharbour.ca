@@ -253,39 +253,44 @@
   <!-- ═══════════════ CHECKER (moved up for engagement) ═══════════════ -->
 
   <!-- ═══════════════ SOVEREIGNTY STACK TEASER ═══════════════ -->
-  <section style="padding:72px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <section style="padding:48px 0 64px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
     <div style="max-width:1120px;margin:0 auto;padding:0 52px;">
       <div class="section-label reveal">The Sovereignty Stack</div>
       <h2 class="section-title reveal">Where sovereignty risk <em>actually sits.</em></h2>
 
       <div class="stack-teaser-grid reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:32px;">
 
-        <!-- Left: two-layer contrast -->
-        <div style="display:flex;flex-direction:column;gap:24px;">
-          <!-- SaaS — red -->
-          <div>
-            <div style="display:flex;align-items:center;gap:0;border-radius:10px;overflow:hidden;background:rgba(200,57,43,0.04);border:1px solid rgba(200,57,43,0.18);">
-              <div style="width:4px;align-self:stretch;background:var(--red);flex-shrink:0;"></div>
-              <div style="padding:20px 24px;flex:1;">
-                <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--red);margin-bottom:4px;">Applications (SaaS)</div>
-                <div style="font-size:14px;font-weight:600;color:var(--ice);margin-bottom:4px;">CRM &middot; HR &middot; Messaging &middot; Analytics &middot; Finance</div>
-                <div style="font-size:12px;color:var(--muted);">82% under foreign jurisdiction</div>
+        <!-- Left: unmistakable stack diagram -->
+        <div style="font-family:var(--mono);max-width:400px;">
+          <!-- Stack frame -->
+          <div style="border:1px solid rgba(234,240,244,0.1);border-radius:10px;overflow:hidden;">
+            <!-- SaaS layer -->
+            <div style="padding:20px 24px;background:rgba(224,96,80,0.05);">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--red);">Applications (SaaS)</span>
+                <span style="font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:0.5px;">&#x2718; NO POLICY</span>
               </div>
+              <div style="font-family:var(--body);font-size:13px;color:var(--ice);margin-bottom:4px;">CRM &middot; HR &middot; Messaging &middot; Analytics &middot; Finance</div>
+              <div style="font-size:10px;color:var(--muted);">82% under foreign jurisdiction</div>
             </div>
-            <div style="font-family:var(--mono);font-size:9px;color:var(--red);letter-spacing:0.8px;text-transform:uppercase;margin-top:8px;padding-left:20px;">&#x2191; Jurisdictional exposure sits here</div>
-          </div>
-
-          <!-- Infrastructure — teal -->
-          <div>
-            <div style="display:flex;align-items:center;gap:0;border-radius:10px;overflow:hidden;background:rgba(60,184,176,0.03);border:1px solid rgba(60,184,176,0.15);">
-              <div style="width:4px;align-self:stretch;background:var(--teal);flex-shrink:0;"></div>
-              <div style="padding:20px 24px;flex:1;">
-                <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;color:var(--teal);margin-bottom:4px;">Infrastructure &amp; Hardware</div>
-                <div style="font-size:14px;font-weight:600;color:var(--ice);margin-bottom:4px;">Cloud compute &middot; Data centres &middot; AI capacity</div>
-                <div style="font-size:12px;color:var(--muted);">Sovereign cloud RFI &middot; $2B investment</div>
-              </div>
+            <div style="text-align:center;padding:3px 0;background:rgba(234,240,244,0.015);font-size:11px;color:rgba(234,240,244,0.2);letter-spacing:2px;">&#x25B2; &#x25BC;</div>
+            <!-- PaaS layer -->
+            <div style="padding:12px 24px;background:rgba(201,168,76,0.03);display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--gold);">Platforms</span>
+              <span style="font-family:var(--mono);font-size:9px;color:var(--gold);letter-spacing:0.5px;">~ PARTIAL</span>
             </div>
-            <div style="font-family:var(--mono);font-size:9px;color:var(--teal);letter-spacing:0.8px;text-transform:uppercase;margin-top:8px;padding-left:20px;">&#x2193; Sovereignty policy focuses here</div>
+            <div style="text-align:center;padding:3px 0;background:rgba(234,240,244,0.015);font-size:11px;color:rgba(234,240,244,0.2);letter-spacing:2px;">&#x25B2; &#x25BC;</div>
+            <!-- IaaS layer -->
+            <div style="padding:12px 24px;background:rgba(60,184,176,0.03);display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--teal);">Infrastructure</span>
+              <span style="font-family:var(--mono);font-size:9px;color:var(--teal);letter-spacing:0.5px;">&#x2714; RFI ACTIVE</span>
+            </div>
+            <div style="text-align:center;padding:3px 0;background:rgba(234,240,244,0.015);font-size:11px;color:rgba(234,240,244,0.2);letter-spacing:2px;">&#x25B2; &#x25BC;</div>
+            <!-- Hardware layer -->
+            <div style="padding:12px 24px;background:rgba(60,184,176,0.04);display:flex;align-items:center;justify-content:space-between;">
+              <span style="font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--teal);">Hardware &amp; Data Centres</span>
+              <span style="font-family:var(--mono);font-size:9px;color:var(--teal);letter-spacing:0.5px;">&#x2714; $2B INVESTED</span>
+            </div>
           </div>
         </div>
 
