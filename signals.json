@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Mar 07, 2026 — 00:03 ET",
+    "lastUpdated": "Mar 07, 2026 — 11:56 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "BC Court of Appeal Confirms Broad Territorial Reach of Provincial Privacy Laws Against Multinational Organizations",
+      "summary": "The British Columbia Court of Appeal ruled that multinational organizations cannot use the borderless nature of the internet to evade provincial privacy enforcement, even without physical presence in the province. This decision clarifies that Canadian privacy laws apply extraterritorially to foreign entities processing data of BC residents, with direct implications for vendor selection and data processing agreements.",
+      "type": "enforcement",
+      "source": "BLG (Borden Ladner Gervais)",
+      "sourceUrl": "https://www.blg.com/en/insights/2026/03/court-of-appeal-upholds-broad-reach-of-provincial-privacy-laws",
+      "date": "2026-03-02",
+      "impact": "Canadian organizations and procurement teams should review contracts with multinational vendors to ensure compliance with provincial privacy laws, particularly regarding data localization and cross-border transfer restrictions.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Analysis: Federal Procurement Barriers for Canadian SaaS Vendors",
+      "summary": "An analysis identifies Contract Security Program requirements as a significant compliance burden for Canadian technology vendors seeking federal government contracts. The piece examines how procurement barriers may disadvantage domestic SaaS providers relative to established foreign vendors, with implications for government data sovereignty objectives.",
+      "type": "procurement",
+      "source": "Mondaq",
+      "sourceUrl": "https://www.mondaq.com/canada/government-contracts-procurement-ppp/1753346/modernizing-federal-procurement-a-path-forward-for-canadian-tech",
+      "date": "2026-03-05",
+      "impact": "Federal procurement teams should review whether current Contract Security Program requirements create unintended barriers to Canadian SaaS adoption and consider streamlining compliance pathways for domestic vendors.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian businesses drive data sovereignty demand independent of legislation",
       "summary": "According to IAPP Canada, Canadian data sovereignty has become mainstream with private-sector organizations pressuring U.S.-based vendors to maintain data and AI tools domestically, driven by grassroots business concerns rather than regulatory requirements. This reflects a market shift toward de facto data localization expectations ahead of formal legislative changes.",
