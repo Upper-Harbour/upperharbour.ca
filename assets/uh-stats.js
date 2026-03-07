@@ -154,6 +154,20 @@
   stats.appCanadianPct = Math.round(appCanadian / appTotal * 100);
   stats.appCaResExposedPct = appCaResTotal > 0 ? Math.round(appCaResExposed / appCaResTotal * 100) : 0;
 
+  // Zero-Canadian categories (app-layer, 3+ tools — matches research page filter)
+  var appCats = {};
+  appTools.forEach(function(t) {
+    var c = t.category || 'other';
+    if (!appCats[c]) appCats[c] = { total:0, canadian:0 };
+    appCats[c].total++;
+    if (t.risk === 'canadian') appCats[c].canadian++;
+  });
+  var zeroCatCount = 0;
+  Object.keys(appCats).forEach(function(c) {
+    if (appCats[c].total >= 3 && appCats[c].canadian === 0) zeroCatCount++;
+  });
+  stats.zeroCatCount = zeroCatCount;
+
   // Re-populate after adding new stats
   document.querySelectorAll('.uh-stat').forEach(function(el) {
     var key = el.getAttribute('data-stat');
