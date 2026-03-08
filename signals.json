@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 07, 2026 — 11:56 ET",
+    "lastUpdated": "Mar 08, 2026 — 11:56 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian Government Advances Sovereign Cloud Procurement Framework",
+      "summary": "Shared Services Canada and Public Services and Procurement Canada are refining the definition of sovereign cloud services and assessing current market capabilities to address procurement gaps. This reflects ongoing federal efforts to establish procurement criteria aligned with data sovereignty requirements for government operations.",
+      "type": "policy",
+      "source": "Cyber in Context",
+      "sourceUrl": "https://www.cyberincontext.ca/p/canadian-government-provides-next",
+      "date": "2026-03-06",
+      "impact": "Federal departments and crown corporations should monitor updates to sovereign cloud procurement definitions and prepare compliance assessments against revised criteria.",
+      "dbUpdate": false
+    },
     {
       "headline": "BC Court of Appeal Confirms Broad Territorial Reach of Provincial Privacy Laws Against Multinational Organizations",
       "summary": "The British Columbia Court of Appeal ruled that multinational organizations cannot use the borderless nature of the internet to evade provincial privacy enforcement, even without physical presence in the province. This decision clarifies that Canadian privacy laws apply extraterritorially to foreign entities processing data of BC residents, with direct implications for vendor selection and data processing agreements.",
