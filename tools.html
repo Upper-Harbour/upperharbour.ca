@@ -29,7 +29,7 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     :root{--midnight:#0A1018;--navy:#0F1C2E;--surface:#131E2D;--teal:#3CB8B0;--ice:#EAF0F4;--slate:#7A92A8;--gold:#C9A84C;--red:#E06050;--muted:#6B7B8D;--border:rgba(234,240,244,0.07);--border-md:rgba(234,240,244,0.13);--serif:'Newsreader',Georgia,serif;--font:'DM Sans',-apple-system,'Segoe UI',Helvetica,Arial,sans-serif;--mono:'JetBrains Mono','SF Mono','Consolas',monospace}
     html{scroll-behavior:smooth}body{font-family:var(--font);background:var(--midnight);color:var(--ice);line-height:1.6;overflow-x:hidden}
-    .hero{padding:130px 52px 48px;max-width:1120px;margin:0 auto}
+    .hero{padding:150px 52px 48px;max-width:1120px;margin:0 auto}
     .hero-eyebrow{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#2A8A84;margin-bottom:20px;display:inline-flex;align-items:center;gap:10px}
     .hero-eyebrow::before{content:'';width:24px;height:1px;background:var(--teal);opacity:0.5}
     .hero h1{font-family:var(--serif);font-size:clamp(32px,4.5vw,52px);font-weight:900;color:var(--ice);line-height:1.08;letter-spacing:-0.5px;margin-bottom:16px}
@@ -38,7 +38,7 @@
     .hero-connector{font-size:13px;color:var(--teal);line-height:1.72;max-width:620px;margin-bottom:32px}
     .hero-connector a{color:var(--teal);text-decoration:underline}
     .hero-meta{display:flex;gap:32px;flex-wrap:wrap}
-    .hero-meta-item{font-family:var(--mono);font-size:11px;color:var(--muted)}
+    .hero-meta-item{font-family:var(--mono);font-size:11px;color:#A8B3C2}
     .hero-meta-item strong{color:var(--ice);font-weight:600}
     .search-section{max-width:1120px;margin:0 auto;padding:24px 52px 16px}
     .search-wrap{position:relative;max-width:580px}
@@ -186,7 +186,7 @@
   <div class="hero">
     <div class="hero-eyebrow">Canadian Technology Sovereignty Index</div>
     <h1>Every tool. Every jurisdiction. <em>Every risk.</em></h1>
-    <p class="hero-sub"><span id="heroTotal">715</span> SaaS and infrastructure tools mapped to parent companies, legal jurisdictions, CLOUD Act exposure, and Canadian data residency. The definitive sovereignty reference for Canadian organizations.</p>
+    <p class="hero-sub"><span id="heroTotal">715</span> SaaS and infrastructure tools mapped to ownership, jurisdiction, and CLOUD Act exposure. The sovereignty reference for Canadian organizations.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">Tools tracked: <strong id="metaTotal">—</strong></div>
       <div class="hero-meta-item">Last updated: <strong id="metaUpdated">—</strong></div>
@@ -194,7 +194,7 @@
   </div>
 
   <!-- Stats + Search combined -->
-  <div style="max-width:1120px;margin:0 auto;padding:0 52px 32px;">
+  <div style="max-width:1120px;margin:0 auto;padding:0 52px 32px;margin-top:16px;">
     <!-- Stats -->
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-md);border:1px solid var(--border-md);border-radius:8px 8px 0 0;overflow:hidden;">
       <div class="stat-cell"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Tools tracked</div></div>
