@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 08, 2026 — 18:00 ET",
+    "lastUpdated": "Mar 10, 2026 — 00:15 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "TikTok permitted to operate in Canada under enhanced data protection measures",
+      "summary": "Canada's Industry Minister announced that TikTok will be allowed to continue operating in Canada following a national security review, with enhanced privacy protections and data protection rules implemented. This represents a policy resolution affecting a major platform used by Canadian organizations and citizens, establishing precedent for how foreign-owned social media platforms can operate within Canadian jurisdiction.",
+      "type": "policy",
+      "source": "Global News",
+      "sourceUrl": "https://globalnews.ca/news/11722985/tiktok-canada-national-security-rules/",
+      "date": "2026-03-09",
+      "impact": "Canadian organizations and public sector agencies should review the specific enhanced data protection requirements to understand compliance obligations if they use TikTok services or handle user data from the platform.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian Government Advances Sovereign Cloud Procurement Framework",
       "summary": "Shared Services Canada and Public Services and Procurement Canada are refining the definition of sovereign cloud services and assessing current market capabilities to address procurement gaps. This reflects ongoing federal efforts to establish procurement criteria aligned with data sovereignty requirements for government operations.",
