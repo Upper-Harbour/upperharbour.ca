@@ -235,6 +235,7 @@
         <ul class="footer-links">
           <li><a href="/founder">Founder</a></li>
           <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://upperharbour.ca">upperharbour.ca</a></li>
           <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
           <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
         </ul>
@@ -245,7 +246,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // ── Render signals from JSON ────────────────────────────────
     const TYPE_MAP = {
       enforcement: { label: 'Enforcement', cls: 'type-enforcement' },
@@ -368,8 +369,4 @@
 
     // Reveal animations for scroll
     document.querySelectorAll('.reveal').forEach(el => {
-      new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 }).observe(el);
-    });
-  </script>
-</body>
-</html>
+      new IntersectionObserver(entries => { entri
