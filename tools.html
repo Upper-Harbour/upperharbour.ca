@@ -219,11 +219,14 @@
     </div>
   </div>
 
-  <div class="featured" id="featuredSection" style="display:none;">
+  <div class="featured" id="featuredSection">
     <div class="featured-title">Notable tools in the database</div>
     <div class="feat-grid" id="featGrid"></div>
+    <div style="text-align:center;margin-top:24px;">
+      <button onclick="showFullList()" style="font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);background:transparent;border:1px solid var(--border-md);padding:12px 28px;border-radius:6px;cursor:pointer;transition:all 0.2s;">Browse all tools &darr;</button>
+    </div>
   </div>
-  <div class="tool-grid" id="toolGridWrap">
+  <div class="tool-grid" id="toolGridWrap" style="display:none;">
     <div class="tool-list" id="toolList"></div>
     <div class="no-results" id="noResults" style="display:none">No tools match your search.</div>
   </div>
@@ -343,7 +346,7 @@
     function renderFeatured(){var g=document.getElementById('featGrid');var h='';FEATURED.forEach(function(n){var t=saasDB.find(function(x){return x.name===n});if(!t)return;var ne=t.name.replace(/'/g,"\\'");h+='<div class="feat-card" onclick="jumpToTool(\''+ne+'\')"><div class="feat-card-name">'+t.name+'</div><div class="feat-card-parent">'+t.parent+'</div><div class="feat-card-row"><span class="feat-card-juris">'+t.jurisdiction+(t.cloudAct?' · CLOUD Act':'')+'</span><span class="feat-card-risk risk-'+t.risk+'">'+t.risk+'</span></div></div>'});g.innerHTML=h}
     function jumpToTool(n){showFullList();expandedTool=n;currentSearch=n;document.getElementById('toolSearch').value=n;render();setTimeout(function(){var e=document.querySelector('.tool-card.expanded');if(e)e.scrollIntoView({behavior:'smooth',block:'center'})},100)}
     function showFullList(){fullListVisible=true;document.getElementById('toolGridWrap').style.display='';document.getElementById('featuredSection').style.display='none';render()}
-    function showDefaultView(){fullListVisible=true;document.getElementById('toolGridWrap').style.display='';document.getElementById('featuredSection').style.display='none';render()}
+    function showDefaultView(){fullListVisible=false;document.getElementById('toolGridWrap').style.display='none';document.getElementById('featuredSection').style.display='';expandedTool=null}
 
     function getHashTool() {
       return decodeURIComponent(window.location.hash.replace('#', '')) || null;
@@ -470,7 +473,7 @@
       new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
 
     renderFeatured();
-    showFullList();
+    render();
 
     // Handle direct links via hash
     var ht = getHashTool();
