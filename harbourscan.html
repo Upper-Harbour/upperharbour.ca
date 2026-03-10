@@ -100,7 +100,7 @@
     .diff-item-desc { font-size: 13px; color: var(--slate); line-height: 1.65; }
 
     /* ── Landing: Final CTA ────────────────────────────────────────── */
-    .landing-cta { padding: 56px 52px 80px; text-align: center; }
+    .landing-cta { padding: 80px 52px 80px; max-width: 960px; margin: 0 auto; text-align: center; }
     .landing-cta h2 { font-family: var(--display); font-size: 36px; font-weight: 700; color: var(--ice); margin-bottom: 16px; }
     .landing-cta p { font-size: 15px; color: var(--muted); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
     .landing-cta-btn { display: inline-block; font-size: 14px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 16px 36px; border-radius: 4px; text-decoration: none; cursor: pointer; border: none; transition: background 0.2s; }
@@ -128,6 +128,7 @@
     /* ── Responsive: Landing ────────────────────────────────────────── */
     @media(max-width:768px) {
       .landing-hero { padding: 110px 20px 60px; }
+      .harbourscan-hero-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
       .landing-outputs, .landing-process { padding: 0 20px 60px; }
       .output-header, .output-body { padding-left: 24px; padding-right: 24px; }
       .output-grid { grid-template-columns: 1fr; gap: 24px; }
@@ -429,36 +430,55 @@
   <div id="landingSection">
 
     <!-- HERO -->
-    <section class="landing-hero" style="padding:140px 52px 48px;">
-      <div class="landing-eyebrow"><span style="display:inline-block;width:6px;height:6px;background:var(--teal);border-radius:50%;margin-right:8px;animation:pulse 2s infinite;"></span>HarbourScan</div>
-      <h1>Map your organization's <em>sovereignty exposure</em></h1>
-      <p class="landing-hero-sub">Enter your SaaS tools. See which fall under foreign jurisdiction, CLOUD Act exposure, and compliance gaps. Free. 2 minutes. No account required.</p>
-      <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;">Check Your Stack &rarr;</a>
-      <p style="font-size:11px;color:var(--muted);margin-top:10px;letter-spacing:0.03em;">Free &middot; Browser-based &middot; No signup required</p>
-      <p style="font-size:12px;color:var(--muted);margin-top:16px;">Built on the <span class="uh-stat" data-stat="totalTools">715</span>-tool <a href="/research/canadian-technology-sovereignty-index" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border-md);">Canadian Technology Sovereignty Index</a> &middot; Used by privacy teams, procurement officers, and consultants</p>
-    </section>
-
-    <!-- EXAMPLE OUTPUT -->
-    <section style="max-width:680px;margin:0 auto;padding:0 52px 48px;">
-      <div style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;">Example scan output</div>
-      <div style="background:var(--surface);border:1px solid var(--border-md);border-radius:10px;overflow:hidden;">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);">
-          <div style="display:flex;align-items:center;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--red);"></div><span style="font-size:13px;font-weight:600;color:var(--ice);">Slack</span></div>
-          <div style="font-size:11px;color:var(--red);">US-parented &middot; CLOUD Act exposed &middot; No CA residency</div>
+    <section style="max-width:960px;margin:0 auto;padding:160px 52px 56px;">
+      <div class="harbourscan-hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+        <!-- Left: text -->
+        <div>
+          <div class="landing-eyebrow"><span style="display:inline-block;width:6px;height:6px;background:var(--teal);border-radius:50%;margin-right:8px;animation:pulse 2s infinite;"></span>HarbourScan</div>
+          <h1 style="font-family:var(--display);font-size:clamp(32px,4vw,44px);font-weight:700;color:var(--ice);line-height:1.08;letter-spacing:-1px;margin-bottom:20px;">Map your organization's <em style="font-style:italic;color:var(--gold);">sovereignty exposure</em></h1>
+          <p style="font-size:15px;color:var(--slate);line-height:1.72;margin-bottom:24px;">Enter your SaaS tools. See which fall under foreign jurisdiction, CLOUD Act exposure, and compliance gaps. Free. 2 minutes. No account required.</p>
+          <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;" style="margin-top:0;">Check Your Stack &rarr;</a>
+          <p style="font-size:11px;color:var(--muted);margin-top:12px;">Free &middot; Browser-based &middot; No signup required</p>
         </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--border);">
-          <div style="display:flex;align-items:center;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--gold);"></div><span style="font-size:13px;font-weight:600;color:var(--ice);">Microsoft 365</span></div>
-          <div style="font-size:11px;color:var(--gold);">US-parented &middot; CLOUD Act exposed &middot; CA residency available</div>
-        </div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;">
-          <div style="display:flex;align-items:center;gap:10px;"><div style="width:8px;height:8px;border-radius:50%;background:var(--teal);"></div><span style="font-size:13px;font-weight:600;color:var(--ice);">Clio</span></div>
-          <div style="font-size:11px;color:var(--teal);">Canadian-owned &middot; No compelled disclosure &middot; CA residency default</div>
+        <!-- Right: mini scan preview -->
+        <div>
+          <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Example scan output</div>
+          <div style="background:var(--surface);border:1px solid var(--border-md);border-radius:8px;overflow:hidden;">
+            <!-- Mini stat bar -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid var(--border);">
+              <div style="padding:14px 12px;text-align:center;border-right:1px solid var(--border);"><div style="font-family:var(--mono);font-size:22px;font-weight:800;color:var(--red);line-height:1;">3</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">CLOUD Act</div></div>
+              <div style="padding:14px 12px;text-align:center;border-right:1px solid var(--border);"><div style="font-family:var(--mono);font-size:22px;font-weight:800;color:var(--gold);line-height:1;">1</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">Review</div></div>
+              <div style="padding:14px 12px;text-align:center;"><div style="font-family:var(--mono);font-size:22px;font-weight:800;color:var(--teal);line-height:1;">1</div><div style="font-size:9px;color:var(--muted);margin-top:4px;">Canadian</div></div>
+            </div>
+            <!-- Tool rows -->
+            <div style="padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
+              <div style="display:flex;align-items:center;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></div><span style="font-size:11px;font-weight:600;color:var(--ice);">Slack</span></div>
+              <span style="font-family:var(--mono);font-size:9px;padding:2px 6px;background:var(--red-dim);color:var(--red);border-radius:3px;">US · CLOUD Act</span>
+            </div>
+            <div style="padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
+              <div style="display:flex;align-items:center;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></div><span style="font-size:11px;font-weight:600;color:var(--ice);">Salesforce</span></div>
+              <span style="font-family:var(--mono);font-size:9px;padding:2px 6px;background:var(--red-dim);color:var(--red);border-radius:3px;">US · CLOUD Act</span>
+            </div>
+            <div style="padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
+              <div style="display:flex;align-items:center;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;"></div><span style="font-size:11px;font-weight:600;color:var(--ice);">Microsoft 365</span></div>
+              <span style="font-family:var(--mono);font-size:9px;padding:2px 6px;background:var(--gold-dim);color:var(--gold);border-radius:3px;">US · CA res. available</span>
+            </div>
+            <div style="padding:10px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);">
+              <div style="display:flex;align-items:center;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--red);flex-shrink:0;"></div><span style="font-size:11px;font-weight:600;color:var(--ice);">Notion</span></div>
+              <span style="font-family:var(--mono);font-size:9px;padding:2px 6px;background:var(--red-dim);color:var(--red);border-radius:3px;">US · CLOUD Act</span>
+            </div>
+            <div style="padding:10px 14px;display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:8px;"><div style="width:6px;height:6px;border-radius:50%;background:var(--teal);flex-shrink:0;"></div><span style="font-size:11px;font-weight:600;color:var(--ice);">Clio</span></div>
+              <span style="font-family:var(--mono);font-size:9px;padding:2px 6px;background:var(--teal-dim);color:var(--teal);border-radius:3px;">Canadian</span>
+            </div>
+          </div>
+          <p style="font-size:10px;color:var(--muted);margin-top:10px;">Built on the <span class="uh-stat" data-stat="totalTools">715</span>-tool <a href="/research/canadian-technology-sovereignty-index" style="color:var(--slate);text-decoration:none;border-bottom:1px solid var(--border-md);">Canadian Technology Sovereignty Index</a></p>
         </div>
       </div>
     </section>
 
     <!-- URGENCY CALLOUT -->
-    <section style="max-width:680px;margin:0 auto;padding:0 52px 56px;">
+    <section style="max-width:960px;margin:0 auto;padding:0 52px 64px;">
       <div style="border-left:3px solid var(--red);padding:20px 24px;background:rgba(224,96,80,0.03);border-radius:0 8px 8px 0;">
         <p style="font-size:15px;color:var(--ice);line-height:1.6;margin-bottom:0;">When a regulator, procurement officer, or partner asks <em style="color:var(--gold);">&ldquo;which of your SaaS vendors are subject to foreign jurisdiction?&rdquo;</em> &mdash; most organizations cannot answer. HarbourScan produces that answer in minutes.</p>
       </div>
@@ -514,7 +534,7 @@
     </section>
 
     <!-- CASE STUDY -->
-    <section style="padding:96px 52px 64px;max-width:860px;margin:0 auto;">
+    <section style="padding:96px 52px 64px;max-width:960px;margin:0 auto;">
       <div style="font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:rgba(60,184,176,0.7);margin-bottom:20px;">HarbourScan in action</div>
       <a href="/research/athena-collective-law-25-compliance" style="text-decoration:none;display:block;background:var(--surface);border:1px solid var(--border-md);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:32px 36px;transition:border-color 0.3s,transform 0.2s;" onmouseover="this.style.borderColor='rgba(201,168,76,0.4)';this.style.transform='translateY(-1px)'" onmouseout="this.style.borderColor='var(--border-md)';this.style.borderLeftColor='var(--gold)';this.style.transform='none'">
         <div style="display:flex;gap:24px;align-items:flex-start;">
