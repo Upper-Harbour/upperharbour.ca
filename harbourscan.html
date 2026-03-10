@@ -609,7 +609,7 @@
         <div class="output-header">
           <div class="output-label output-label-teal">From $350</div>
           <div class="output-title">Sovereignty Snapshot</div>
-          <div style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:10px;">A documented answer you can send immediately.</div>
+          <div style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:10px;">A documented answer you can send when it matters.</div>
           <p class="output-summary">&ldquo;Someone asked and I need an answer.&rdquo; &mdash; A professional sovereignty assessment you can produce when a regulator, partner, or procurement officer asks about your cross-border data exposure. Delivered in 5 business days.</p>
         </div>
         <div class="output-body">
@@ -853,16 +853,6 @@
             <option value="no">No — not yet addressed</option>
             <option value="unsure">Not sure</option>
           </select>
-        </div>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label class="field-label">Contact Name (for report)</label>
-          <input type="text" class="field-input" id="orgContact" placeholder="e.g. Marie Tremblay" />
-        </div>
-        <div class="field">
-          <label class="field-label">Contact Email</label>
-          <input type="email" class="field-input" id="orgEmail" placeholder="e.g. marie@tremblay.ca" />
         </div>
       </div>
       <div class="field-row">
@@ -1182,7 +1172,7 @@
             <button onclick="submitReportRequest()" class="btn btn-primary" style="width:100%; font-size:14px; padding:16px 32px; text-decoration:none; cursor:pointer; border:none;">Request Scoping Call →</button>
             <p style="font-size:12px; color:var(--muted); text-align:center; margin-top:12px; line-height:1.6;">We&rsquo;ll review your scan results and reach out within 24 hours.<br/>No obligation until your team confirms the engagement.</p>
             <div style="text-align:center; margin-top:16px;">
-              <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="font-size:13px; color:var(--muted); text-decoration:none; border-bottom:1px solid var(--border-md);">Prefer to talk first? Book a 15-minute call</a>
+
             </div>
           </div>
 
@@ -1655,8 +1645,8 @@
       industry: document.getElementById('orgIndustry').value,
       size: document.getElementById('orgSize').value,
       dpo: document.getElementById('orgDPO').value,
-      contact: document.getElementById('orgContact').value,
-      email: document.getElementById('orgEmail').value,
+      contact: '',
+      email: '',
       breachPlan: document.getElementById('orgBreach').value,
       incidentLog: document.getElementById('orgIncidentLog').value
     };
