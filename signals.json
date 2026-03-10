@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 10, 2026 — 00:15 ET",
+    "lastUpdated": "Mar 10, 2026 — 12:06 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Telesat establishes landing stations in Quebec and Saskatchewan for domestic satellite network",
+      "summary": "Telesat announced acquisition and lease of land in Quebec and Saskatchewan to establish new terrestrial landing stations for its Telesat Lightspeed satellite network, enabling domestic routing of data between Canada and external networks. This infrastructure development supports Canadian data residency objectives for satellite-based connectivity.",
+      "type": "vendor",
+      "source": "Financial Post",
+      "sourceUrl": "https://financialpost.com/globe-newswire/telesat-advances-telesat-lightspeed-terrestrial-network-with-new-quebec-and-saskatchewan-landing-station-sites",
+      "date": "2026-03-10",
+      "impact": "Canadian organizations evaluating satellite connectivity for data sovereignty compliance should monitor Telesat Lightspeed's landing station deployment timeline and data routing capabilities.",
+      "dbUpdate": true
+    },
     {
       "headline": "TikTok permitted to operate in Canada under enhanced data protection measures",
       "summary": "Canada's Industry Minister announced that TikTok will be allowed to continue operating in Canada following a national security review, with enhanced privacy protections and data protection rules implemented. This represents a policy resolution affecting a major platform used by Canadian organizations and citizens, establishing precedent for how foreign-owned social media platforms can operate within Canadian jurisdiction.",

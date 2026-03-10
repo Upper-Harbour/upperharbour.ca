@@ -35,7 +35,19 @@
       "source_url": "https://financialpost.com/pmn/business-wire-news-releases-pmn/euna-solutions-achieves-aep-certification-and-pci-dss-compliance-advancing-trust-transparency-and-security-in-public-sector-procurement",
       "flagged_at": "2026-03-04T12:05:32.324884",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Telesat Lightspeed",
+      "change": "data_residency",
+      "old_value": "Limited domestic landing station infrastructure",
+      "new_value": "Expanded landing stations in Quebec and Saskatchewan for domestic data routing",
+      "reason": "New terrestrial infrastructure enables Canadian data residency for satellite-based services",
+      "signal_headline": "Telesat establishes landing stations in Quebec and Saskatchewan for domestic satellite network",
+      "signal_date": "2026-03-10",
+      "source_url": "https://financialpost.com/globe-newswire/telesat-advances-telesat-lightspeed-terrestrial-network-with-new-quebec-and-saskatchewan-landing-station-sites",
+      "flagged_at": "2026-03-10T12:06:56.543735",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-04T12:05:32.325902"
+  "updated": "2026-03-10T12:06:56.544551"
 }
