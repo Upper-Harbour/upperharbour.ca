@@ -56,22 +56,28 @@
     .stat-num{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ice);margin-bottom:3px}
     .stat-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em}
     .tool-grid{max-width:1120px;margin:0 auto;padding:0 52px 80px}
-    .tool-list{display:flex;flex-direction:column;border:1px solid var(--border-md);border-radius:8px;overflow:hidden}
-    .tool-header{display:grid;grid-template-columns:200px 200px 140px 80px 140px 1fr;gap:0;padding:10px 20px;background:var(--navy)}
-    .tool-header span{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
-    .tool-row{display:grid;grid-template-columns:200px 200px 140px 80px 140px 1fr;gap:0;background:var(--midnight);padding:14px 20px;align-items:center;cursor:pointer;transition:background 0.15s;border-top:1px solid var(--border)}
-    .tool-row:hover{background:var(--surface)}.tool-row.expanded{background:var(--surface)}
-    .tool-name{font-size:14px;font-weight:700;color:var(--ice)}
-    .tool-parent{font-size:12px;color:var(--slate)}
-    .tool-jurisdiction{font-size:12px;color:var(--slate)}
-    .tool-cloudact{font-family:var(--mono);font-size:11px;font-weight:600}
-    .tool-cloudact.yes{color:var(--red)}.tool-cloudact.no{color:var(--teal)}
-    .tool-residency{font-size:12px;color:var(--slate)}
-    .tool-risk{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:3px;text-align:center;white-space:nowrap;display:inline-block}
+    .tool-list{display:flex;flex-direction:column;gap:6px}
+    .tool-card{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:16px 20px;cursor:pointer;transition:border-color 0.2s,background 0.15s}
+    .tool-card:hover{border-color:rgba(60,184,176,0.2)}
+    .tool-card.expanded{border-color:rgba(60,184,176,0.25)}
+    .tool-card-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .tool-card-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+    .tool-card-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .dot-exposed{background:var(--red)}.dot-review{background:var(--gold)}.dot-non_exposed{background:#5B9BD5}.dot-canadian{background:var(--teal)}
+    .tool-card-info{min-width:0;flex:1}
+    .tool-card-name{font-size:15px;font-weight:700;color:var(--ice);margin-bottom:2px}
+    .tool-card-parent{font-size:12px;color:var(--muted)}
+    .tool-card-pills{display:flex;gap:6px;align-items:center;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end}
+    .tool-pill{font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;padding:3px 8px;border-radius:3px;white-space:nowrap}
+    .pill-juris{color:var(--slate);background:rgba(234,240,244,0.04);border:1px solid var(--border-md)}
+    .pill-cloudact{color:var(--red);background:rgba(224,96,80,0.08);border:1px solid rgba(224,96,80,0.15)}
+    .pill-residency{color:var(--teal);background:rgba(60,184,176,0.06);border:1px solid rgba(60,184,176,0.12)}
+    .tool-card-risk{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:3px;white-space:nowrap}
     .risk-exposed{color:var(--red);background:rgba(224,96,80,0.1);border:1px solid rgba(224,96,80,0.2)}
     .risk-review{color:var(--gold);background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.2)}
     .risk-canadian{color:var(--teal);background:rgba(60,184,176,0.1);border:1px solid rgba(60,184,176,0.2)}
-    .tool-detail{display:none;background:var(--surface);padding:0 20px 20px;border-top:1px solid var(--border)}
+    .risk-non_exposed{color:#5B9BD5;background:rgba(91,155,213,0.1);border:1px solid rgba(91,155,213,0.2)}
+    .tool-detail{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
     .tool-detail.visible{display:block}
     .tool-detail-inner{background:var(--midnight);border:1px solid var(--border-md);border-radius:6px;padding:20px 24px}
     .tool-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 32px}
@@ -87,7 +93,7 @@
     .share-link{font-family:var(--mono);font-size:10px;color:var(--muted)}
     .no-results{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
     .cta-strip{max-width:1120px;margin:0 auto;padding:0 52px 80px}
-    .cta-inner{background:var(--surface);border:1px solid var(--border-md);border-radius:8px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:32px}
+    .cta-inner{background:transparent;border-top:1px solid var(--border-md);border-bottom:1px solid var(--border-md);border-left:3px solid var(--teal);border-right:none;border-radius:0;padding:40px 40px 40px 36px;display:flex;align-items:center;justify-content:space-between;gap:32px}
     .cta-text h3{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ice);margin-bottom:6px}
     .cta-text p{font-size:14px;color:var(--muted)}
     .btn-teal{font-family:var(--font);font-size:13px;font-weight:700;color:var(--midnight);background:var(--teal);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;white-space:nowrap}.btn-teal:hover{background:#47cec5}
@@ -116,22 +122,19 @@
     .browse-btn{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--slate);background:var(--surface);border:1px solid var(--border-md);padding:12px 28px;border-radius:6px;cursor:pointer;transition:all 0.2s}
     .browse-btn:hover{color:var(--ice);border-color:var(--slate)}
     @media(max-width:960px){
-      .hero{padding:120px 28px 28px}.search-section{padding:20px 28px 12px}.filter-row{padding:8px 28px 24px}
-      .stats-row{padding:0 28px 24px;grid-template-columns:repeat(2,1fr)}.tool-grid{padding:0 28px 60px}
-      .tool-header{grid-template-columns:1fr 1fr 100px}.tool-header span:nth-child(n+4){display:none}
-      .tool-row{grid-template-columns:1fr 1fr 100px;gap:8px}
-      .tool-row .tool-cloudact,.tool-row .tool-residency,.tool-row .tool-jurisdiction{display:none}
+      .hero{padding:120px 28px 28px}
+      .tool-grid{padding:0 28px 60px}
+      .tool-card-pills{gap:4px}
       .tool-detail-grid{grid-template-columns:1fr}
       .cta-strip{padding:0 28px 60px}.cta-inner{flex-direction:column;text-align:center;padding:32px 24px}
       .footer-inner{padding:0 28px}.footer-bottom{padding:20px 28px 0}
     }
     @media(max-width:768px){
       .hero{padding:100px 20px 24px}.hero h1{font-size:28px}
-      .search-section{padding:16px 20px 10px}.filter-row{padding:6px 20px 20px}
-      .stats-row{padding:0 20px 20px;grid-template-columns:1fr 1fr}.tool-grid{padding:0 20px 48px}
-      .tool-header{display:none}
-      .tool-row{grid-template-columns:1fr auto;gap:4px;padding:14px 16px}
-      .tool-row .tool-parent{grid-column:1/-1;font-size:11px}
+      .tool-grid{padding:0 20px 48px}
+      .tool-card-top{flex-direction:column;align-items:flex-start;gap:10px}
+      .tool-card-pills{justify-content:flex-start}
+      .feat-grid{grid-template-columns:1fr 1fr}
       .tool-row .tool-jurisdiction,.tool-row .tool-cloudact,.tool-row .tool-residency{display:none}
       .cta-strip{padding:0 20px 48px}.cta-inner{padding:28px 20px}
       .footer-inner{grid-template-columns:1fr;padding:0 20px}.footer-bottom{padding:20px 20px 0;flex-direction:column}
@@ -182,45 +185,45 @@
   </div>
   <div class="hero">
     <div class="hero-eyebrow">Canadian Technology Sovereignty Index</div>
-    <h1>Sovereignty <em>lookup.</em></h1>
-    <p class="hero-sub">Search <span id="heroTotal">715</span> SaaS and cloud infrastructure tools mapped to parent jurisdiction, CLOUD Act exposure, and Canadian data residency — the definitive sovereignty reference for Canadian compliance.</p>
-    <p class="hero-connector">This directory reflects the vendor intelligence layer used in <a href="/harbourscan">HarbourScan</a> assessments.</p>
+    <h1>Every tool. Every jurisdiction. <em>Every risk.</em></h1>
+    <p class="hero-sub"><span id="heroTotal">715</span> SaaS and infrastructure tools mapped to parent companies, legal jurisdictions, CLOUD Act exposure, and Canadian data residency. The definitive sovereignty reference for Canadian organizations.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">Tools tracked: <strong id="metaTotal">—</strong></div>
       <div class="hero-meta-item">Last updated: <strong id="metaUpdated">—</strong></div>
     </div>
   </div>
 
-  <div class="search-section">
-    <div class="search-wrap">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="toolSearch" aria-label="Search tools" placeholder="Search tools — Slack, Clio, QuickBooks, Zoom…" autocomplete="off" />
+  <!-- Stats + Search combined -->
+  <div style="max-width:1120px;margin:0 auto;padding:0 52px 32px;">
+    <!-- Stats -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-md);border:1px solid var(--border-md);border-radius:8px 8px 0 0;overflow:hidden;">
+      <div class="stat-cell"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Tools tracked</div></div>
+      <div class="stat-cell"><div class="stat-num" id="statExposed" style="color:var(--red)">—</div><div class="stat-label">CLOUD Act Exposed</div></div>
+      <div class="stat-cell"><div class="stat-num" id="statReview" style="color:var(--gold)">—</div><div class="stat-label">Review Required</div></div>
+      <div class="stat-cell"><div class="stat-num" id="statCanadian" style="color:var(--teal)">—</div><div class="stat-label">Canadian-Owned</div></div>
     </div>
-    <div class="search-count" id="searchCount"></div>
+    <!-- Search + filters unified bar -->
+    <div style="background:var(--surface);border:1px solid var(--border-md);border-top:none;border-radius:0 0 8px 8px;padding:24px;">
+      <div class="search-wrap" style="max-width:100%;margin-bottom:14px;">
+        <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="left:20px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="toolSearch" aria-label="Search tools" placeholder="Search 715 tools — try Slack, Salesforce, Clio, Zoom…" autocomplete="off" style="font-size:18px;padding:20px 24px 20px 56px;background:var(--midnight);border:1px solid rgba(60,184,176,0.2);border-radius:8px;width:100%;" />
+      </div>
+      <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
+        <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+        <button class="filter-btn" onclick="setFilter('exposed',this)">Exposed</button>
+        <button class="filter-btn" onclick="setFilter('review',this)">Review</button>
+        <button class="filter-btn" onclick="setFilter('non_exposed',this)">Non-exposed</button>
+        <button class="filter-btn" onclick="setFilter('canadian',this)">Canadian</button>
+        <div class="search-count" id="searchCount" style="margin-left:auto;"></div>
+      </div>
+    </div>
   </div>
 
-  <div class="filter-row">
-    <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
-    <button class="filter-btn" onclick="setFilter('exposed',this)">Exposed</button>
-    <button class="filter-btn" onclick="setFilter('review',this)">Review</button>
-    <button class="filter-btn" onclick="setFilter('canadian',this)">Canadian</button>
-  </div>
-
-  <div class="stats-row">
-    <div class="stat-cell"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Tools tracked</div></div>
-    <div class="stat-cell"><div class="stat-num" id="statExposed" style="color:var(--red)">—</div><div class="stat-label">Exposed</div></div>
-    <div class="stat-cell"><div class="stat-num" id="statReview" style="color:var(--gold)">—</div><div class="stat-label">Review</div></div>
-    <div class="stat-cell"><div class="stat-num" id="statCanadian" style="color:var(--teal)">—</div><div class="stat-label">Canadian</div></div>
-  </div>
-
-  <div class="featured" id="featuredSection">
+  <div class="featured" id="featuredSection" style="display:none;">
     <div class="featured-title">Notable tools in the database</div>
     <div class="feat-grid" id="featGrid"></div>
   </div>
-  <div class="browse-all" id="browseAllSection">
-    <button class="browse-btn" onclick="showFullList()">Browse all tools ↓</button>
-  </div>
-  <div class="tool-grid" style="display:none;" id="toolGridWrap">
+  <div class="tool-grid" id="toolGridWrap">
     <div class="tool-list" id="toolList"></div>
     <div class="no-results" id="noResults" style="display:none">No tools match your search.</div>
   </div>
@@ -338,9 +341,9 @@
     };
 
     function renderFeatured(){var g=document.getElementById('featGrid');var h='';FEATURED.forEach(function(n){var t=saasDB.find(function(x){return x.name===n});if(!t)return;var ne=t.name.replace(/'/g,"\\'");h+='<div class="feat-card" onclick="jumpToTool(\''+ne+'\')"><div class="feat-card-name">'+t.name+'</div><div class="feat-card-parent">'+t.parent+'</div><div class="feat-card-row"><span class="feat-card-juris">'+t.jurisdiction+(t.cloudAct?' · CLOUD Act':'')+'</span><span class="feat-card-risk risk-'+t.risk+'">'+t.risk+'</span></div></div>'});g.innerHTML=h}
-    function jumpToTool(n){showFullList();expandedTool=n;currentSearch=n;document.getElementById('toolSearch').value=n;render();setTimeout(function(){var e=document.querySelector('.tool-row.expanded');if(e)e.scrollIntoView({behavior:'smooth',block:'center'})},100)}
-    function showFullList(){fullListVisible=true;document.getElementById('toolGridWrap').style.display='';document.getElementById('featuredSection').style.display='none';document.getElementById('browseAllSection').style.display='none';render()}
-    function showDefaultView(){fullListVisible=false;document.getElementById('toolGridWrap').style.display='none';document.getElementById('featuredSection').style.display='';document.getElementById('browseAllSection').style.display='';expandedTool=null}
+    function jumpToTool(n){showFullList();expandedTool=n;currentSearch=n;document.getElementById('toolSearch').value=n;render();setTimeout(function(){var e=document.querySelector('.tool-card.expanded');if(e)e.scrollIntoView({behavior:'smooth',block:'center'})},100)}
+    function showFullList(){fullListVisible=true;document.getElementById('toolGridWrap').style.display='';document.getElementById('featuredSection').style.display='none';render()}
+    function showDefaultView(){fullListVisible=true;document.getElementById('toolGridWrap').style.display='';document.getElementById('featuredSection').style.display='none';render()}
 
     function getHashTool() {
       return decodeURIComponent(window.location.hash.replace('#', '')) || null;
@@ -399,22 +402,28 @@
           ? tools.length + ' of ' + total + ' tools'
           : total + ' tools tracked';
 
-      let h = '<div class="tool-header"><span>Tool</span><span>Parent Company</span><span>Jurisdiction</span><span>CLOUD Act</span><span>Data Residency</span><span>Risk</span></div>';
+      let h = '';
 
-      if (!tools.length) { list.innerHTML = h; noR.style.display = 'block'; if (currentSearch) logUnmatchedSearch(currentSearch, 'tools'); return; }
+      if (!tools.length) { list.innerHTML = ''; noR.style.display = 'block'; if (currentSearch) logUnmatchedSearch(currentSearch, 'tools'); return; }
       noR.style.display = 'none';
 
       tools.forEach(function(t) {
         var ex = expandedTool === t.name;
         var ne = t.name.replace(/'/g, "\\'");
-        h += '<div class="tool-row' + (ex ? ' expanded' : '') + '" onclick="toggleDetail(\'' + ne + '\')">' +
-          '<div class="tool-name">' + t.name + '</div>' +
-          '<div class="tool-parent">' + t.parent + '</div>' +
-          '<div class="tool-jurisdiction">' + t.jurisdiction + '</div>' +
-          '<div class="tool-cloudact ' + (t.cloudAct ? 'yes' : 'no') + '">' + (t.cloudAct ? 'Yes' : 'No') + '</div>' +
-          '<div class="tool-residency">' + (t.dataResidency || '\u2014') + '</div>' +
-          '<div><span class="tool-risk risk-' + t.risk + '">' + t.risk + '</span></div>' +
-          '</div>';
+        var residencyShort = t.dataResidency ? (t.dataResidency.toLowerCase().indexOf('canada') > -1 ? 'CA res.' : t.dataResidency.split('/')[0].split(',')[0].trim()) : '';
+
+        h += '<div class="tool-card' + (ex ? ' expanded' : '') + '" onclick="toggleDetail(\'' + ne + '\')">';
+        h += '<div class="tool-card-top">';
+        h += '<div class="tool-card-left">';
+        h += '<div class="tool-card-dot dot-' + t.risk + '"></div>';
+        h += '<div class="tool-card-info"><div class="tool-card-name">' + t.name + '</div><div class="tool-card-parent">' + t.parent + '</div></div>';
+        h += '</div>';
+        h += '<div class="tool-card-pills">';
+        h += '<span class="tool-pill pill-juris">' + t.jurisdiction + '</span>';
+        if (t.cloudAct) h += '<span class="tool-pill pill-cloudact">CLOUD Act</span>';
+        if (residencyShort) h += '<span class="tool-pill pill-residency">' + residencyShort + '</span>';
+        h += '<span class="tool-card-risk risk-' + t.risk + '">' + t.risk + '</span>';
+        h += '</div></div>';
 
         if (ex) {
           h += '<div class="tool-detail visible"><div class="tool-detail-inner"><div class="tool-detail-grid">' +
@@ -423,7 +432,7 @@
             '<div class="detail-field"><span class="detail-label">Jurisdiction</span><span class="detail-value">' + t.jurisdiction + '</span></div>' +
             '<div class="detail-field"><span class="detail-label">CLOUD Act Exposure</span><span class="detail-value" style="color:' + (t.cloudAct ? 'var(--red)' : 'var(--teal)') + '">' + (t.cloudAct ? 'Yes \u2014 subject to US legal process' : 'No') + '</span></div>' +
             '<div class="detail-field"><span class="detail-label">Data Residency</span><span class="detail-value">' + (t.dataResidency || 'Not specified') + '</span></div>' +
-            '<div class="detail-field"><span class="detail-label">Risk Classification</span><span class="detail-value"><span class="tool-risk risk-' + t.risk + '">' + t.risk + '</span></span></div>' +
+            '<div class="detail-field"><span class="detail-label">Risk Classification</span><span class="detail-value"><span class="tool-card-risk risk-' + t.risk + '">' + t.risk + '</span></span></div>' +
             (t.note ? '<div class="tool-note"><p>' + t.note + '</p></div>' : '') +
             '</div>' +
             '<div class="tool-detail-actions">' +
@@ -433,6 +442,7 @@
             '<span class="share-link">upperharbour.ca/tools#' + slugify(t.name) + '</span>' +
             '</div></div></div>';
         }
+        h += '</div>';
       });
       list.innerHTML = h;
     }
@@ -460,7 +470,7 @@
       new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
 
     renderFeatured();
-    render();
+    showFullList();
 
     // Handle direct links via hash
     var ht = getHashTool();
