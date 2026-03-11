@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 11, 2026 — 06:24 ET",
+    "lastUpdated": "Mar 11, 2026 — 12:08 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "OpenAI establishes safety standards following Canadian government engagement",
+      "summary": "OpenAI announced new safety standards following a meeting with Canadian Innovation Minister Evan Solomon and in response to concerns raised regarding the Tumbler Ridge incident. The development indicates active engagement between the Canadian government and major AI vendors on safety and compliance matters relevant to Canadian operations.",
+      "type": "policy",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/openai-sets-new-safety-standards-following-solomon-meeting-and-pressure-over-tumbler-ridge-response/",
+      "date": "2026-03-05",
+      "impact": "Canadian organizations using OpenAI services should review the newly established safety standards to ensure alignment with their compliance obligations and government expectations for AI systems operating in Canada.",
+      "dbUpdate": false
+    },
     {
       "headline": "Telesat establishes landing stations in Quebec and Saskatchewan for domestic satellite network",
       "summary": "Telesat announced acquisition and lease of land in Quebec and Saskatchewan to establish new terrestrial landing stations for its Telesat Lightspeed satellite network, enabling domestic routing of data between Canada and external networks. This infrastructure development supports Canadian data residency objectives for satellite-based connectivity.",
