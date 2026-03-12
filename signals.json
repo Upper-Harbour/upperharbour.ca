@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Mar 12, 2026 — 06:25 ET",
+    "lastUpdated": "Mar 12, 2026 — 18:22 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Nutanix Report Identifies Data Sovereignty as Top Infrastructure Priority for Canadian Organizations",
+      "summary": "Nutanix's Enterprise Cloud Index reveals that Canadian organizations now prioritize data sovereignty as a top-tier infrastructure concern, alongside shadow AI deployment risks. The report indicates infrastructure decision-makers are actively reassessing cloud and data residency strategies.",
+      "type": "vendor",
+      "source": "ChannelBuzz",
+      "sourceUrl": "https://channelbuzz.ca/2026/03/what-nutanixs-latest-enterprise-cloud-index-tells-msps-about-shadow-ai-sovereignty-and-the-infrastructure-shift-ahead-45995/",
+      "date": "2026-03-12",
+      "impact": "Canadian managed service providers and enterprise IT teams should use this market data to inform client conversations about data residency requirements and infrastructure modernization strategies.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Bill C-22 Expands Police Powers for Online Data Access",
+      "summary": "Canada's federal government tabled Bill C-22, which provides law enforcement with new authorities to pursue online data for investigative purposes while addressing privacy concerns from earlier lawful access proposals. The legislation creates new obligations for organizations handling citizen data in Canada.",
+      "type": "legislation",
+      "source": "Global News",
+      "sourceUrl": "https://globalnews.ca/news/11727555/canada-lawful-access-bill-liberals/",
+      "date": "2026-03-12",
+      "impact": "All Canadian organizations storing personal or communications data should review Bill C-22 obligations regarding law enforcement requests and update incident response and disclosure protocols accordingly.",
+      "dbUpdate": false
+    },
     {
       "headline": "AWS Publishes Practical Digital Sovereignty Framework for Canadian Public Sector Workloads",
       "summary": "AWS has published guidance on implementing digital sovereignty practices across compliance, continuity, and control pillars specifically for workloads in Canadian environments. This vendor guidance addresses how organizations can structure AWS deployments to meet Canadian data sovereignty requirements and represents a major cloud provider's formal documentation of Canadian compliance pathways.",
