@@ -47,7 +47,19 @@
       "source_url": "https://financialpost.com/globe-newswire/telesat-advances-telesat-lightspeed-terrestrial-network-with-new-quebec-and-saskatchewan-landing-station-sites",
       "flagged_at": "2026-03-10T12:06:56.543735",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Kiro",
+      "change": "new_vendor_tool",
+      "old_value": null,
+      "new_value": "AWS GovTech compliance acceleration platform",
+      "reason": "New AWS tool released to support Canadian federal compliance and GovTech development",
+      "signal_headline": "AWS Releases GovTech Acceleration Tool Addressing Canadian Federal Compliance Requirements",
+      "signal_date": "2026-03-08",
+      "source_url": "https://aws.amazon.com/blogs/publicsector/accelerating-govtech-development-with-kiro/",
+      "flagged_at": "2026-03-12T06:25:40.111077",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-10T12:06:56.544551"
+  "updated": "2026-03-12T06:25:40.112351"
 }

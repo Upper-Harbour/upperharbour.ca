@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Mar 11, 2026 — 18:21 ET",
+    "lastUpdated": "Mar 12, 2026 — 06:25 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "AWS Publishes Practical Digital Sovereignty Framework for Canadian Public Sector Workloads",
+      "summary": "AWS has published guidance on implementing digital sovereignty practices across compliance, continuity, and control pillars specifically for workloads in Canadian environments. This vendor guidance addresses how organizations can structure AWS deployments to meet Canadian data sovereignty requirements and represents a major cloud provider's formal documentation of Canadian compliance pathways.",
+      "type": "vendor",
+      "source": "AWS Public Sector",
+      "sourceUrl": "https://aws.amazon.com/blogs/publicsector/practical-digital-sovereignty-navigating-the-pillars-of-compliance-continuity-and-control/",
+      "date": "2026-03-11",
+      "impact": "Federal departments and Canadian public sector organizations using AWS should review this framework to validate their current compliance posture and identify any gaps in sovereignty implementation.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "AWS Releases GovTech Acceleration Tool Addressing Canadian Federal Compliance Requirements",
+      "summary": "AWS has introduced Kiro, a tool designed to accelerate government technology development while navigating Federal Risk and Authorization Management Program (FedRAMP) and other compliance requirements. The tool specifically addresses challenges faced by Canadian government agencies, educational institutions, and GovTech vendors in delivering compliant AI applications under budget and timeline constraints.",
+      "type": "vendor",
+      "source": "AWS Public Sector",
+      "sourceUrl": "https://aws.amazon.com/blogs/publicsector/accelerating-govtech-development-with-kiro/",
+      "date": "2026-03-08",
+      "impact": "Federal departments and Canadian GovTech vendors should evaluate Kiro as a tool to streamline FedRAMP assessment cycles and reduce compliance preparation timelines for new services.",
+      "dbUpdate": true
+    },
     {
       "headline": "2026 CIAM Data Residency and Sovereignty Compliance Guide Published",
       "summary": "Security Boulevard published guidance documenting Canada's evolving data residency and sovereignty requirements for 2026, identifying that CIAM vendors with dedicated Canadian data centers compliant with PIPEDA and Quebec Law 25 are now critical for enterprise procurement decisions. The guide reflects accelerating demand for vendors meeting domestic data control requirements.",
