@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 13, 2026 — 12:05 ET",
+    "lastUpdated": "Mar 13, 2026 — 18:10 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Privacy Commissioner releases findings on ArriveCAN app federal contracting practices",
+      "summary": "The Privacy Commissioner of Canada released a special report investigating CBSA's contracting practices for the ArriveCAN application, finding no evidence of personal information misuse but recommending stronger privacy and security requirements in federal IT procurement. This establishes baseline expectations for how Canadian government agencies should structure vendor relationships and data handling in border-critical systems.",
+      "type": "enforcement",
+      "source": "Office of the Privacy Commissioner of Canada",
+      "sourceUrl": "https://www.priv.gc.ca/en/opc-news/news-and-announcements/2026/nr-c_260312/",
+      "date": "2026-03-12",
+      "impact": "Federal departments and border agencies should review their IT vendor contracts and data handling practices against the Privacy Commissioner's recommendations to ensure compliance with strengthened privacy and security requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "Munk School Report Identifies Canada's AI Sovereignty Gaps and Strategic Options",
       "summary": "The Munk School released a comprehensive assessment on March 10, 2026 identifying critical vulnerabilities in Canada's AI technology stack, including gaps in cloud infrastructure and compute hardware capabilities. The report recommends procurement reform and government consolidation of digital governance as strategic responses to strengthen Canadian technological autonomy.",
