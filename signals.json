@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 13, 2026 — 00:03 ET",
+    "lastUpdated": "Mar 13, 2026 — 12:05 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Munk School Report Identifies Canada's AI Sovereignty Gaps and Strategic Options",
+      "summary": "The Munk School released a comprehensive assessment on March 10, 2026 identifying critical vulnerabilities in Canada's AI technology stack, including gaps in cloud infrastructure and compute hardware capabilities. The report recommends procurement reform and government consolidation of digital governance as strategic responses to strengthen Canadian technological autonomy.",
+      "type": "policy",
+      "source": "CNW (Canadian Newswire)",
+      "sourceUrl": "https://www.newswire.ca/news-releases/new-munk-school-report-maps-canada-s-ai-sovereignty-vulnerabilities-offers-strategic-options-for-action-872511205.html",
+      "date": "2026-03-10",
+      "impact": "Federal and provincial government procurement officials should review this report's recommendations regarding digital governance consolidation and cloud infrastructure requirements for future technology acquisitions.",
+      "dbUpdate": false
+    },
     {
       "headline": "SAP Completes CCCS Cloud Assessment for SAP Sovereign Cloud for Canada",
       "summary": "SAP has completed Canadian Centre for Cyber Security (CCCS) cloud assessments for its SAP Sovereign Cloud for Canada portfolio, covering Cloud Medium (Protected B) and Protected B High Value Asset overlay requirements. This demonstrates vendor compliance with federal government security standards and expands certified sovereign cloud options available to Canadian public-sector organizations.",
