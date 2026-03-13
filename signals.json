@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 12, 2026 — 18:22 ET",
+    "lastUpdated": "Mar 13, 2026 — 00:03 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "SAP Completes CCCS Cloud Assessment for SAP Sovereign Cloud for Canada",
+      "summary": "SAP has completed Canadian Centre for Cyber Security (CCCS) cloud assessments for its SAP Sovereign Cloud for Canada portfolio, covering Cloud Medium (Protected B) and Protected B High Value Asset overlay requirements. This demonstrates vendor compliance with federal government security standards and expands certified sovereign cloud options available to Canadian public-sector organizations.",
+      "type": "vendor",
+      "source": "SAP Canada News Center",
+      "sourceUrl": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
+      "date": "2026-03-12",
+      "impact": "Federal and provincial government agencies evaluating enterprise resource planning solutions should update vendor assessments to include SAP Sovereign Cloud for Canada as a CCCS-assessed option for Protected B workloads.",
+      "dbUpdate": true
+    },
     {
       "headline": "Nutanix Report Identifies Data Sovereignty as Top Infrastructure Priority for Canadian Organizations",
       "summary": "Nutanix's Enterprise Cloud Index reveals that Canadian organizations now prioritize data sovereignty as a top-tier infrastructure concern, alongside shadow AI deployment risks. The report indicates infrastructure decision-makers are actively reassessing cloud and data residency strategies.",

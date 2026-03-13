@@ -59,7 +59,19 @@
       "source_url": "https://aws.amazon.com/blogs/publicsector/accelerating-govtech-development-with-kiro/",
       "flagged_at": "2026-03-12T06:25:40.111077",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "SAP Sovereign Cloud for Canada",
+      "change": "compliance_certification",
+      "old_value": "CCCS assessment pending",
+      "new_value": "CCCS Cloud Assessment completed (Cloud Medium Protected B and Protected B High Value Asset)",
+      "reason": "Vendor completed mandatory Canadian government security assessment",
+      "signal_headline": "SAP Completes CCCS Cloud Assessment for SAP Sovereign Cloud for Canada",
+      "signal_date": "2026-03-12",
+      "source_url": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
+      "flagged_at": "2026-03-13T00:03:52.987202",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-12T06:25:40.112351"
+  "updated": "2026-03-13T00:03:52.988086"
 }
