@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 13, 2026 — 18:10 ET",
+    "lastUpdated": "Mar 14, 2026 — 00:05 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Federal Government Implements Buy Canadian Framework with Reciprocal Procurement Policies",
+      "summary": "The Canadian federal government has implemented reciprocal procurement policies under the Buy Canadian Framework and Defence Industrial Strategy, establishing criteria for what qualifies as 'Canadian enough' in federal contracting. This directly affects vendor eligibility and data residency requirements for organizations bidding on federal contracts.",
+      "type": "procurement",
+      "source": "Lexology",
+      "sourceUrl": "https://www.lexology.com/library/detail.aspx?g=1fecc3ee-f5e0-4e6c-b793-26ddcfa5af12",
+      "date": "2026-03-09",
+      "impact": "SaaS vendors and technology service providers should review updated federal procurement criteria to ensure their offerings meet 'Canadian enough' standards for contract eligibility.",
+      "dbUpdate": false
+    },
     {
       "headline": "Privacy Commissioner releases findings on ArriveCAN app federal contracting practices",
       "summary": "The Privacy Commissioner of Canada released a special report investigating CBSA's contracting practices for the ArriveCAN application, finding no evidence of personal information misuse but recommending stronger privacy and security requirements in federal IT procurement. This establishes baseline expectations for how Canadian government agencies should structure vendor relationships and data handling in border-critical systems.",
