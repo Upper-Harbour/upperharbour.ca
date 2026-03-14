@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Mar 14, 2026 — 00:05 ET",
+    "lastUpdated": "Mar 14, 2026 — 12:00 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Walter acquired by Swedish legaltech firm Legora, raising data residency questions for Canadian legal sector",
+      "summary": "Canadian legaltech company Walter has been acquired by Swedish firm Legora. The acquisition introduces potential data residency and cross-border data transfer considerations for Canadian law firms and legal departments using Walter's platform, requiring assessment of how client data will be handled under the new ownership structure.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/walter-acquired-by-legora-as-legaltech-sector-consolidation-intensifies/",
+      "date": "2026-03-12",
+      "impact": "Canadian law firms and legal departments using Walter should conduct due diligence on Legora's data residency commitments and review their data processing agreements to ensure compliance with provincial legal privilege and privacy obligations.",
+      "dbUpdate": true
+    },
+    {
+      "headline": "Modall publishes guidance on Canadian data residency as procurement requirement",
+      "summary": "Modall has published updated guidance distinguishing between data hosting location and data sovereignty in the context of Canadian procurement requirements. The resource addresses implications for government and regulated sector organizations evaluating software solutions against data residency criteria.",
+      "type": "policy",
+      "source": "Modall",
+      "sourceUrl": "https://modall.ca/blog/canadian-data-residency-software-development",
+      "date": "2026-03-12",
+      "impact": "Government procurement teams and regulated sector organizations should review this guidance when developing or updating data residency requirements in RFPs and vendor evaluation frameworks.",
+      "dbUpdate": false
+    },
     {
       "headline": "Federal Government Implements Buy Canadian Framework with Reciprocal Procurement Policies",
       "summary": "The Canadian federal government has implemented reciprocal procurement policies under the Buy Canadian Framework and Defence Industrial Strategy, establishing criteria for what qualifies as 'Canadian enough' in federal contracting. This directly affects vendor eligibility and data residency requirements for organizations bidding on federal contracts.",

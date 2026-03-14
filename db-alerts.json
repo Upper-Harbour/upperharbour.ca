@@ -71,7 +71,19 @@
       "source_url": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
       "flagged_at": "2026-03-13T00:03:52.987202",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Walter",
+      "change": "parent_company",
+      "old_value": "Canadian independent",
+      "new_value": "Legora (Sweden)",
+      "reason": "Ownership change to foreign entity may affect data residency and sovereignty profile",
+      "signal_headline": "Walter acquired by Swedish legaltech firm Legora, raising data residency questions for Canadian legal sector",
+      "signal_date": "2026-03-12",
+      "source_url": "https://betakit.com/walter-acquired-by-legora-as-legaltech-sector-consolidation-intensifies/",
+      "flagged_at": "2026-03-14T12:00:36.752427",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-13T00:03:52.988086"
+  "updated": "2026-03-14T12:00:36.753629"
 }
