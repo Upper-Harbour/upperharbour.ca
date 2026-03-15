@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 14, 2026 — 12:00 ET",
+    "lastUpdated": "Mar 15, 2026 — 12:02 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Ontario government proposes freedom of information exemptions for premier and cabinet",
+      "summary": "Ontario's Minister of Public and Business Service Delivery and Procurement announced plans to shield the premier, cabinet ministers, and their staff from freedom of information law requirements. This change affects government transparency and data access frameworks that impact Canadian organizations' understanding of government data practices and procurement decisions.",
+      "type": "policy",
+      "source": "Global News",
+      "sourceUrl": "https://globalnews.ca/news/11730443/taxpayer-federation-foi-law-changes/",
+      "date": "2026-03-15",
+      "impact": "Ontario-based organizations and advocacy groups relying on government transparency should monitor this policy change and consider submissions during consultation periods.",
+      "dbUpdate": false
+    },
     {
       "headline": "Walter acquired by Swedish legaltech firm Legora, raising data residency questions for Canadian legal sector",
       "summary": "Canadian legaltech company Walter has been acquired by Swedish firm Legora. The acquisition introduces potential data residency and cross-border data transfer considerations for Canadian law firms and legal departments using Walter's platform, requiring assessment of how client data will be handled under the new ownership structure.",
