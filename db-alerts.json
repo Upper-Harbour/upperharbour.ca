@@ -29,12 +29,14 @@
     "signal_date": "2026-03-02",
     "source_url": "https://securityboulevard.com/2026/03/canadas-data-sovereignty-question-answered-with-dedicated-data-center/",
     "flagged_at": "2026-03-03T06:24:26.639301",
-    "status": "approved",
+    "status": "failed",
     "approvedAt": "2026-03-16T04:22:32.870Z",
     "reviewedBy": "admin",
     "updates": {
       "data_residency": "Canada (dedicated data center)"
-    }
+    },
+    "failedAt": "2026-03-16T04:46:59.457994+00:00",
+    "failureReason": "Tool 'IRONSCALES' not found in saas-db.js — skipping"
   },
   {
     "tool_name": "Euna Procurement",
