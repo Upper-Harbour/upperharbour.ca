@@ -70,7 +70,12 @@
     "signal_date": "2026-03-08",
     "source_url": "https://aws.amazon.com/blogs/publicsector/accelerating-govtech-development-with-kiro/",
     "flagged_at": "2026-03-12T06:25:40.111077",
-    "status": "pending_review"
+    "status": "approved",
+    "approvedAt": "2026-03-16T04:46:59.356Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "new_vendor_tool": "AWS GovTech compliance acceleration platform"
+    }
   },
   {
     "tool_name": "SAP Sovereign Cloud for Canada",
