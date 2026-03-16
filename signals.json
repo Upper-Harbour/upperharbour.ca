@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 15, 2026 — 12:02 ET",
+    "lastUpdated": "Mar 16, 2026 — 18:31 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Check Point adds Canadian data residency region",
+      "summary": "Check Point Software Technologies has established a data residency region in Canada, addressing growing demand among Canadian organizations for vendor infrastructure located within Canadian jurisdiction. This development supports Canadian organizations seeking to meet domestic data sovereignty requirements without changing security vendors.",
+      "type": "vendor",
+      "source": "ChannelBuzz",
+      "sourceUrl": "https://channelbuzz.ca/2026/03/icymi-nearly-60-of-channel-partners-expect-a-q1-profit-crash-check-point-adds-canadian-data-region-46068/",
+      "date": "2026-03-16",
+      "impact": "Canadian organizations using Check Point products should review whether this new data residency option aligns with their sovereignty requirements and procurement policies.",
+      "dbUpdate": true
+    },
     {
       "headline": "Ontario government proposes freedom of information exemptions for premier and cabinet",
       "summary": "Ontario's Minister of Public and Business Service Delivery and Procurement announced plans to shield the premier, cabinet ministers, and their staff from freedom of information law requirements. This change affects government transparency and data access frameworks that impact Canadian organizations' understanding of government data practices and procurement decisions.",

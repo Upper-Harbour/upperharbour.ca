@@ -1,115 +1,53 @@
-[
-  {
-    "tool_name": "ThinkOn Sovereign Cloud",
-    "change": "data_residency",
-    "old_value": null,
-    "new_value": "Canadian-owned and operated cloud infrastructure provider",
-    "reason": "Confirmed Canadian provider with explicit sovereign infrastructure positioning",
-    "signal_headline": "Kanata North Business Association provides sovereign cloud infrastructure access through Canadian providers",
-    "signal_date": "2026-02-23",
-    "source_url": "https://www.thenewswire.com/press-releases/1AMqF8rnj-kanata-north-fueling-data-centre-promises-of-government-with-sovereign-and-secure-canadian-cloud-infrastructure.html",
-    "flagged_at": "2026-02-26T06:33:26.730960",
-    "status": "dismissed",
-    "approvedAt": "2026-03-16T04:22:27.770Z",
-    "reviewedBy": "admin",
-    "updates": {
-      "data_residency": "Canadian-owned and operated cloud infrastructure provider"
+{
+  "alerts": [
+    {
+      "tool_name": "Euna Procurement",
+      "change": "compliance_certifications",
+      "old_value": null,
+      "new_value": "AEP eProcurement Certification, PCI DSS Compliance",
+      "reason": "Platform achieved new security and transparency certifications relevant to Canadian public sector procurement",
+      "signal_headline": "Euna Solutions achieves AEP certification and PCI DSS compliance for public sector procurement platform",
+      "signal_date": "2026-03-04",
+      "source_url": "https://financialpost.com/pmn/business-wire-news-releases-pmn/euna-solutions-achieves-aep-certification-and-pci-dss-compliance-advancing-trust-transparency-and-security-in-public-sector-procurement",
+      "flagged_at": "2026-03-04T12:05:32.324884",
+      "status": "pending_review"
     },
-    "failedAt": "2026-03-16T04:22:38.748030+00:00",
-    "failureReason": "Tool 'ThinkOn Sovereign Cloud' not found in saas-db.js â skipping",
-    "dismissedAt": "2026-03-16T04:46:46.194Z"
-  },
-  {
-    "tool_name": "IRONSCALES",
-    "change": "data_residency",
-    "old_value": null,
-    "new_value": "Canada (dedicated data center)",
-    "reason": "Vendor launched dedicated Canadian data residency environment",
-    "signal_headline": "IRONSCALES Launches Canadian Data Residency Environment",
-    "signal_date": "2026-03-02",
-    "source_url": "https://securityboulevard.com/2026/03/canadas-data-sovereignty-question-answered-with-dedicated-data-center/",
-    "flagged_at": "2026-03-03T06:24:26.639301",
-    "status": "failed",
-    "approvedAt": "2026-03-16T04:22:32.870Z",
-    "reviewedBy": "admin",
-    "updates": {
-      "data_residency": "Canada (dedicated data center)"
+    {
+      "tool_name": "Telesat Lightspeed",
+      "change": "data_residency",
+      "old_value": "Limited domestic landing station infrastructure",
+      "new_value": "Expanded landing stations in Quebec and Saskatchewan for domestic data routing",
+      "reason": "New terrestrial infrastructure enables Canadian data residency for satellite-based services",
+      "signal_headline": "Telesat establishes landing stations in Quebec and Saskatchewan for domestic satellite network",
+      "signal_date": "2026-03-10",
+      "source_url": "https://financialpost.com/globe-newswire/telesat-advances-telesat-lightspeed-terrestrial-network-with-new-quebec-and-saskatchewan-landing-station-sites",
+      "flagged_at": "2026-03-10T12:06:56.543735",
+      "status": "pending_review"
     },
-    "failedAt": "2026-03-16T04:46:59.457994+00:00",
-    "failureReason": "Tool 'IRONSCALES' not found in saas-db.js — skipping"
-  },
-  {
-    "tool_name": "Euna Procurement",
-    "change": "compliance_certifications",
-    "old_value": null,
-    "new_value": "AEP eProcurement Certification, PCI DSS Compliance",
-    "reason": "Platform achieved new security and transparency certifications relevant to Canadian public sector procurement",
-    "signal_headline": "Euna Solutions achieves AEP certification and PCI DSS compliance for public sector procurement platform",
-    "signal_date": "2026-03-04",
-    "source_url": "https://financialpost.com/pmn/business-wire-news-releases-pmn/euna-solutions-achieves-aep-certification-and-pci-dss-compliance-advancing-trust-transparency-and-security-in-public-sector-procurement",
-    "flagged_at": "2026-03-04T12:05:32.324884",
-    "status": "pending_review"
-  },
-  {
-    "tool_name": "Telesat Lightspeed",
-    "change": "data_residency",
-    "old_value": "Limited domestic landing station infrastructure",
-    "new_value": "Expanded landing stations in Quebec and Saskatchewan for domestic data routing",
-    "reason": "New terrestrial infrastructure enables Canadian data residency for satellite-based services",
-    "signal_headline": "Telesat establishes landing stations in Quebec and Saskatchewan for domestic satellite network",
-    "signal_date": "2026-03-10",
-    "source_url": "https://financialpost.com/globe-newswire/telesat-advances-telesat-lightspeed-terrestrial-network-with-new-quebec-and-saskatchewan-landing-station-sites",
-    "flagged_at": "2026-03-10T12:06:56.543735",
-    "status": "pending_review"
-  },
-  {
-    "tool_name": "Kiro",
-    "change": "new_vendor_tool",
-    "old_value": null,
-    "new_value": "AWS GovTech compliance acceleration platform",
-    "reason": "New AWS tool released to support Canadian federal compliance and GovTech development",
-    "signal_headline": "AWS Releases GovTech Acceleration Tool Addressing Canadian Federal Compliance Requirements",
-    "signal_date": "2026-03-08",
-    "source_url": "https://aws.amazon.com/blogs/publicsector/accelerating-govtech-development-with-kiro/",
-    "flagged_at": "2026-03-12T06:25:40.111077",
-    "status": "failed",
-    "approvedAt": "2026-03-16T04:46:59.356Z",
-    "reviewedBy": "admin",
-    "updates": {
-      "new_vendor_tool": "AWS GovTech compliance acceleration platform"
+    {
+      "tool_name": "SAP Sovereign Cloud for Canada",
+      "change": "compliance_certification",
+      "old_value": "CCCS assessment pending",
+      "new_value": "CCCS Cloud Assessment completed (Cloud Medium Protected B and Protected B High Value Asset)",
+      "reason": "Vendor completed mandatory Canadian government security assessment",
+      "signal_headline": "SAP Completes CCCS Cloud Assessment for SAP Sovereign Cloud for Canada",
+      "signal_date": "2026-03-12",
+      "source_url": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
+      "flagged_at": "2026-03-13T00:03:52.987202",
+      "status": "pending_review"
     },
-    "failedAt": "2026-03-16T04:58:57.125885+00:00",
-    "failureReason": "Tool 'Kiro' not found in saas-db.js — skipping"
-  },
-  {
-    "tool_name": "SAP Sovereign Cloud for Canada",
-    "change": "compliance_certification",
-    "old_value": "CCCS assessment pending",
-    "new_value": "CCCS Cloud Assessment completed (Cloud Medium Protected B and Protected B High Value Asset)",
-    "reason": "Vendor completed mandatory Canadian government security assessment",
-    "signal_headline": "SAP Completes CCCS Cloud Assessment for SAP Sovereign Cloud for Canada",
-    "signal_date": "2026-03-12",
-    "source_url": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
-    "flagged_at": "2026-03-13T00:03:52.987202",
-    "status": "pending_review"
-  },
-  {
-    "tool_name": "Walter",
-    "change": "parent_company",
-    "old_value": "Canadian independent",
-    "new_value": "Legora (Sweden)",
-    "reason": "Ownership change to foreign entity may affect data residency and sovereignty profile",
-    "signal_headline": "Walter acquired by Swedish legaltech firm Legora, raising data residency questions for Canadian legal sector",
-    "signal_date": "2026-03-12",
-    "source_url": "https://betakit.com/walter-acquired-by-legora-as-legaltech-sector-consolidation-intensifies/",
-    "flagged_at": "2026-03-14T12:00:36.752427",
-    "status": "failed",
-    "approvedAt": "2026-03-16T04:46:49.939Z",
-    "reviewedBy": "admin",
-    "updates": {
-      "parent_company": "Legora (Sweden)"
-    },
-    "failedAt": "2026-03-16T04:58:57.125885+00:00",
-    "failureReason": "Tool 'Walter' not found in saas-db.js — skipping"
-  }
-]
+    {
+      "tool_name": "Check Point Software Technologies",
+      "change": "data_residency",
+      "old_value": "Unknown/Not specified",
+      "new_value": "Canadian data region available",
+      "reason": "Check Point has added Canadian data residency capability",
+      "signal_headline": "Check Point adds Canadian data residency region",
+      "signal_date": "2026-03-16",
+      "source_url": "https://channelbuzz.ca/2026/03/icymi-nearly-60-of-channel-partners-expect-a-q1-profit-crash-check-point-adds-canadian-data-region-46068/",
+      "flagged_at": "2026-03-16T18:31:35.662688",
+      "status": "pending_review"
+    }
+  ],
+  "updated": "2026-03-16T18:31:35.663795"
+}
