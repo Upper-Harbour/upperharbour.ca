@@ -50,7 +50,7 @@
     .auth-error { font-size: 12px; color: var(--red); margin-top: 10px; display: none; }
 
     /* ── Main ─────────────────────────────────────── */
-    .main { max-width: 900px; margin: 0 auto; padding: 110px 32px 80px; }
+    .main { max-width: 900px; margin: 0 auto; padding: 110px 32px 80px; display: none; }
     .main.visible { display: block; }
     .page-header { margin-bottom: 40px; }
     .page-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; display: inline-flex; align-items: center; gap: 10px; }
@@ -141,10 +141,10 @@
   </nav>
 
   <!-- ── Auth Gate ────────────────────────────────── -->
-  <div class="auth-gate" id="authGate" style="display:none;">
+  <div class="auth-gate" id="authGate">
     <h2>Pipeline Admin</h2>
     <p>Enter your admin key to review database alerts.</p>
-    <input type="password" class="auth-input" id="authInput" placeholder="Admin key" autofocus />
+    <input type="password" class="auth-input" id="authInput" placeholder="Passphrase" autofocus />
     <div class="auth-error" id="authError">Invalid key. Try again.</div>
   </div>
 
@@ -217,7 +217,8 @@
     // The admin key hash (SHA-256 of your chosen passphrase)
     // Generate with: echo -n "your-passphrase" | shasum -a 256
     // Replace this with your own hash:
-    adminKeyHash: '423edb3aff452f697c5dc29961802a3ba0a65bd399a2979a9b75a10e019397c5',
+    adminKeyHash: 'a711a99446784c220c8d69138522e518dad919a162be991277d29a35d1ab3109',
+    ghToken: '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',
 
     // Local path to fetch alerts (for display before auth)
     alertsUrl: '/db-alerts.json',
@@ -242,8 +243,6 @@
       .map(b => b.toString(16).padStart(2, '0')).join('');
   }
 
-  document.addEventListener('DOMContentLoaded', () => loadAlerts());
-
   document.getElementById('authInput').addEventListener('keydown', async (e) => {
     if (e.key !== 'Enter') return;
     const input = e.target.value.trim();
@@ -251,22 +250,15 @@
 
     // The input format is: adminkey:github_pat_xxxxx
     // First part is the admin passphrase, second is GitHub PAT
-    const parts = input.split(':');
-    if (parts.length < 2) {
-      showAuthError('Format: passphrase:github_token');
-      return;
-    }
-
-    const passphrase = parts[0];
-    const token = parts.slice(1).join(':'); // PAT may contain colons
+    const passphrase = input;
 
     const hash = await hashString(passphrase);
     if (hash !== CONFIG.adminKeyHash) {
-      showAuthError('Invalid admin key.');
+      showAuthError('Invalid key.');
       return;
     }
 
-    githubToken = token;
+    githubToken = CONFIG.ghToken;
 
     // Verify the GitHub token works
     try {
