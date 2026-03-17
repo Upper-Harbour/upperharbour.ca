@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 17, 2026 — 06:32 ET",
+    "lastUpdated": "Mar 17, 2026 — 18:31 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Bell Canada announces 300-megawatt data centre in Saskatchewan to strengthen Canadian data sovereignty",
+      "summary": "BCE Inc. announced construction of a 300-megawatt data centre in rural Saskatchewan, positioned as Canada's largest facility of its kind. The facility will be Canadian-managed under Canadian law, directly addressing domestic data residency and sovereignty requirements for AI and data-intensive workloads.",
+      "type": "vendor",
+      "source": "Global News",
+      "sourceUrl": "https://globalnews.ca/news/11734297/bell-canada-data-centre-regina/",
+      "date": "2026-03-17",
+      "impact": "Canadian organizations requiring domestic data residency should monitor this facility's availability and integration options; federal and provincial procurement teams should evaluate this as a domestic infrastructure alternative.",
+      "dbUpdate": true
+    },
     {
       "headline": "Updated analysis of CLOUD Act implications for Canadian data sovereignty",
       "summary": "The Balsillie Papers has published updated analysis examining the extraterritorial reach of the US CLOUD Act on Canadian data, with specific focus on systemic exposure through cloud infrastructure dependency and implications for critical government systems. The analysis highlights risks to Canadian defense and government digital infrastructure relying on US cloud providers.",
