@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 17, 2026 — 00:06 ET",
+    "lastUpdated": "Mar 17, 2026 — 06:32 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Updated analysis of CLOUD Act implications for Canadian data sovereignty",
+      "summary": "The Balsillie Papers has published updated analysis examining the extraterritorial reach of the US CLOUD Act on Canadian data, with specific focus on systemic exposure through cloud infrastructure dependency and implications for critical government systems. The analysis highlights risks to Canadian defense and government digital infrastructure relying on US cloud providers.",
+      "type": "policy",
+      "source": "Balsillie Papers",
+      "sourceUrl": "https://balsilliepapers.ca/canadian-data/us-cloud-act/",
+      "date": "2026-03-11",
+      "impact": "Canadian federal departments and critical infrastructure operators should review this analysis to assess their exposure to CLOUD Act jurisdiction and evaluate alternatives for hosting sensitive government systems.",
+      "dbUpdate": false
+    },
     {
       "headline": "Xanadu and TELUS Sign MOU for Sovereign Quantum-Classical Computing Infrastructure in Canada",
       "summary": "Xanadu and TELUS announced a memorandum of understanding to develop quantum-classical computing infrastructure in Canada, integrating quantum capabilities with TELUS' Canadian-controlled sovereign infrastructure. This initiative addresses emerging compute sovereignty requirements for quantum-enabled applications within Canada's borders.",
