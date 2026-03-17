@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 16, 2026 — 18:31 ET",
+    "lastUpdated": "Mar 17, 2026 — 00:06 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Xanadu and TELUS Sign MOU for Sovereign Quantum-Classical Computing Infrastructure in Canada",
+      "summary": "Xanadu and TELUS announced a memorandum of understanding to develop quantum-classical computing infrastructure in Canada, integrating quantum capabilities with TELUS' Canadian-controlled sovereign infrastructure. This initiative addresses emerging compute sovereignty requirements for quantum-enabled applications within Canada's borders.",
+      "type": "vendor",
+      "source": "GlobeNewswire",
+      "sourceUrl": "https://www.globenewswire.com/news-release/2026/03/16/3256121/0/en/Xanadu-and-TELUS-Collaborate-to-Advance-Quantum-Data-Centre-Infrastructure-in-Canada.html",
+      "date": "2026-03-16",
+      "impact": "Canadian research institutions and organizations with emerging quantum computing requirements should monitor this initiative's development for domestic sovereign compute options.",
+      "dbUpdate": false
+    },
     {
       "headline": "Check Point adds Canadian data residency region",
       "summary": "Check Point Software Technologies has established a data residency region in Canada, addressing growing demand among Canadian organizations for vendor infrastructure located within Canadian jurisdiction. This development supports Canadian organizations seeking to meet domestic data sovereignty requirements without changing security vendors.",
