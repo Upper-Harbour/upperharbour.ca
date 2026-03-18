@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 18, 2026 — 06:35 ET",
+    "lastUpdated": "Mar 18, 2026 — 18:32 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Federal government announces digital sovereignty and AI infrastructure investment strategy",
+      "summary": "The federal government released a comprehensive analysis of Canada's digital sovereignty challenges in AI, identifying vulnerabilities in cloud infrastructure and compute capacity, and signaling major investment in sovereign AI infrastructure and domestic compute centers. This represents a direct policy intervention to reduce Canadian dependence on foreign compute and cloud resources for critical AI applications.",
+      "type": "policy",
+      "source": "Research Money",
+      "sourceUrl": "https://researchmoneyinc.com/article/the-short-report-march-18-2026",
+      "date": "2026-03-18",
+      "impact": "Federal departments and crown corporations should monitor procurement requirements for alignment with this strategy; organizations relying on foreign cloud infrastructure should assess whether domestic alternatives will become mandated.",
+      "dbUpdate": false
+    },
     {
       "headline": "Tailscale acquires Border0, expands Vancouver operations",
       "summary": "Tailscale, a VPN and secure networking company, acquired Border0 and is expanding its Vancouver footprint by absorbing the Border0 team. This consolidation affects Canadian organizations using either platform, as the merged entity will have increased Canadian presence and engineering capacity.",
