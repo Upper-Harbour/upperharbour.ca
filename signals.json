@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 17, 2026 — 18:31 ET",
+    "lastUpdated": "Mar 18, 2026 — 00:08 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Federal Private-Sector Privacy Legislation Expected in 2026 with Enhanced Enforcement and Data Sovereignty Requirements",
+      "summary": "A new federal private-sector privacy statute is expected in 2026 to replace PIPEDA, introducing significantly enhanced enforcement mechanisms including potential fines of up to C$25 million or 5% of gross global revenue, alongside new data sovereignty measures. Canadian organizations should prepare for stricter compliance obligations and evaluate how the new regime will affect their data handling practices and cross-border data transfers.",
+      "type": "legislation",
+      "source": "GAM Tech",
+      "sourceUrl": "https://www.gamtech.ca/category/blog/canada-privacy-law-changes-2026-complete-business-guide",
+      "date": "2026-03-13",
+      "impact": "All Canadian private-sector organizations should review their data handling practices, privacy policies, and cross-border data transfer mechanisms to prepare for compliance with the new federal regime and its enhanced penalties.",
+      "dbUpdate": false
+    },
     {
       "headline": "Bell Canada announces 300-megawatt data centre in Saskatchewan to strengthen Canadian data sovereignty",
       "summary": "BCE Inc. announced construction of a 300-megawatt data centre in rural Saskatchewan, positioned as Canada's largest facility of its kind. The facility will be Canadian-managed under Canadian law, directly addressing domestic data residency and sovereignty requirements for AI and data-intensive workloads.",
