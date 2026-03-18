@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://upperharbour.ca/sitemap.xml
+Sitemap: https://www.upperharbour.ca/sitemap.xml
