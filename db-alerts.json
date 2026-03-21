@@ -47,7 +47,19 @@
       "source_url": "https://globalnews.ca/news/11734297/bell-canada-data-centre-regina/",
       "flagged_at": "2026-03-17T18:31:27.157370",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Border0",
+      "change": "parent_company",
+      "old_value": "Independent",
+      "new_value": "Tailscale",
+      "reason": "Tailscale acquisition of Border0 changes ownership and governance structure",
+      "signal_headline": "Tailscale acquires Border0, expanding Vancouver operations",
+      "signal_date": "2026-03-17",
+      "source_url": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
+      "flagged_at": "2026-03-21T06:16:58.919336",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-17T18:31:27.158416"
+  "updated": "2026-03-21T06:16:58.920386"
 }

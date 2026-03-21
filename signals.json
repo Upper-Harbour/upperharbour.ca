@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 18, 2026 — 00:08 ET",
+    "lastUpdated": "Mar 21, 2026 — 06:16 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Tailscale acquires Border0, expanding Vancouver operations",
+      "summary": "Tailscale, a corporate VPN startup, has acquired Border0 and is expanding its Vancouver presence by integrating the Border0 team. This acquisition consolidates VPN and network access control capabilities within a Canadian-headquartered company, with potential implications for organizations evaluating secure access solutions and Canadian tech sector M&A activity.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
+      "date": "2026-03-17",
+      "impact": "Organizations currently using Border0 or evaluating Tailscale should confirm data residency and support continuity post-acquisition.",
+      "dbUpdate": true
+    },
     {
       "headline": "Federal Private-Sector Privacy Legislation Expected in 2026 with Enhanced Enforcement and Data Sovereignty Requirements",
       "summary": "A new federal private-sector privacy statute is expected in 2026 to replace PIPEDA, introducing significantly enhanced enforcement mechanisms including potential fines of up to C$25 million or 5% of gross global revenue, alongside new data sovereignty measures. Canadian organizations should prepare for stricter compliance obligations and evaluate how the new regime will affect their data handling practices and cross-border data transfers.",
