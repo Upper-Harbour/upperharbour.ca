@@ -45,7 +45,9 @@
     "signal_date": "2026-03-17",
     "source_url": "https://globalnews.ca/news/11734297/bell-canada-data-centre-regina/",
     "flagged_at": "2026-03-17T18:31:27.157370",
-    "status": "pending_review"
+    "status": "dismissed",
+    "dismissedAt": "2026-03-21T00:29:48.781Z",
+    "reviewedBy": "admin"
   },
   {
     "tool_name": "Border0",
