@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>US CLOUD Act Impact on Canadian Data Sovereignty | Upper Harbour</title>
+  <meta name="description" content="How the US CLOUD Act undermines data sovereignty for Canadian organizations — even when data is stored in Canada. Practical impact, legal exposure, and what to do about it." />
+  <link rel="canonical" href="https://www.upperharbour.ca/resources/us-cloud-act-impact-data-sovereignty-canadian-organizations" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Impact of the US CLOUD Act on Data Sovereignty for Canadian Organizations" />
+  <meta property="og:description" content="The US CLOUD Act lets federal authorities compel access to data held by US companies — even data stored in Canada. Here's what that means for your organization." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://www.upperharbour.ca/resources/us-cloud-act-impact-data-sovereignty-canadian-organizations" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta property="article:published_time" content="2026-03-20" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Impact of the US CLOUD Act on Data Sovereignty for Canadian Organizations" />
+  <meta name="twitter:description" content="The US CLOUD Act lets federal authorities compel access to Canadian data held by US companies. Here's the practical impact." />
+  <meta name="twitter:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Impact of the US CLOUD Act on Data Sovereignty for Canadian Organizations",
+    "description": "How the US CLOUD Act undermines data sovereignty for Canadian organizations, even when data is stored in Canada.",
+    "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca" },
+    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" },
+    "datePublished": "2026-03-20",
+    "mainEntityOfPage": "https://www.upperharbour.ca/resources/us-cloud-act-impact-data-sovereignty-canadian-organizations"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the impact of the US CLOUD Act on data sovereignty for Canadian organizations?", "acceptedAnswer": { "@type": "Answer", "text": "The US CLOUD Act allows American authorities to compel US-incorporated companies to hand over data regardless of where it is stored. For Canadian organizations using US-parented SaaS tools, this means their data is subject to US legal process even if it is physically stored in Canada. This fundamentally undermines data sovereignty because the controlling jurisdiction is American, not Canadian." } },
+      { "@type": "Question", "name": "Does storing data in Canada protect it from the CLOUD Act?", "acceptedAnswer": { "@type": "Answer", "text": "No. Data residency (where data is physically stored) does not determine data sovereignty (whose laws apply). If the company operating your Canadian data centre is US-incorporated, the CLOUD Act gives US authorities jurisdiction over that data regardless of its physical location." } },
+      { "@type": "Question", "name": "Which Canadian organizations are most affected by the CLOUD Act?", "acceptedAnswer": { "@type": "Answer", "text": "Any Canadian organization using SaaS tools from US-parented companies is affected. This includes organizations using Microsoft 365, Google Workspace, Salesforce, Slack, Zoom, AWS, and hundreds of other common tools. Organizations in regulated sectors like healthcare, legal, financial services, education, and government face the highest compliance risk." } },
+      { "@type": "Question", "name": "What can Canadian organizations do to mitigate CLOUD Act exposure?", "acceptedAnswer": { "@type": "Answer", "text": "Organizations should map their SaaS stack to identify which tools are US-parented, complete Transfer Impact Assessments for each exposed tool, evaluate Canadian-headquartered alternatives for the most sensitive data categories, and ensure their privacy documentation addresses jurisdictional exposure explicitly." } },
+      { "@type": "Question", "name": "Is there a Canadian equivalent to the CLOUD Act?", "acceptedAnswer": { "@type": "Answer", "text": "No. Canada does not have an equivalent law that allows it to compel foreign companies to produce data stored outside Canada. Canadian law enforcement must use Mutual Legal Assistance Treaties (MLATs) to request data from foreign jurisdictions, a process that is slower and more constrained than what the CLOUD Act enables." } }
+    ]
+  }
+  </script>
+
+<style>
+    .article-h1 em { color: var(--gold); }
+    .article-read { font-size: 12px; color: var(--muted); }
+    .article-body h3 { font-size: 18px; font-weight: 700; color: var(--ice); margin: 32px 0 12px; }
+    .article-body a:hover { border-color: var(--teal); }
+    .article-breadcrumb a:hover { text-decoration: underline; }
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+    .impact-card { background: var(--surface); border: 1px solid var(--border-md); border-radius: 6px; padding: 20px; }
+    .impact-card-label { font-family: var(--mono); font-size: 9px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 8px; }
+    .impact-card-label.exposed { color: var(--red); }
+    .impact-card-label.sovereign { color: var(--teal); }
+    .impact-card h4 { font-size: 15px; font-weight: 700; color: var(--ice); margin-bottom: 6px; }
+    .impact-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .stat-row { display: flex; gap: 16px; margin: 28px 0; }
+    .stat-block { flex: 1; text-align: center; padding: 20px 16px; background: var(--surface); border: 1px solid var(--border-md); border-radius: 6px; }
+    .stat-num { font-family: var(--display); font-size: 32px; font-weight: 900; color: var(--red); line-height: 1; }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 6px; }
+    @media (max-width: 640px) {
+      .impact-grid { grid-template-columns: 1fr; }
+      .stat-row { flex-direction: column; }
+    }
+  </style>
+<body>
+    <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link active">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Scan Your Stack</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Scan Your Stack</a>
+  </div>
+
+  <header class="article-hero">
+    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/resources">Resources</a> → CLOUD Act Impact</div>
+    <div class="article-meta">
+      <span class="article-tag">CLOUD Act</span>
+      <span class="article-tag">Sovereignty</span>
+      <span class="article-tag">Canada</span>
+      <span class="article-date">March 2026</span>
+      <span class="article-read">12 min read</span>
+    </div>
+    <h1 class="article-h1">The Impact of the US CLOUD Act on <em>Data Sovereignty</em> for Canadian Organizations</h1>
+    <p class="article-author">By <a href="https://joshuavanes.ca">Joshua van Es</a>, Founder of <a href="/">Upper Harbour</a></p>
+    <p class="article-intro">The US CLOUD Act fundamentally changes what data sovereignty means for any Canadian organization that uses American software. If your SaaS vendor is US-incorporated, your data is subject to US jurisdiction — regardless of where it's stored, what your contract says, or what data residency options you've enabled.</p>
+  </header>
+
+  <article class="article-body">
+
+    <h2>The short answer</h2>
+    <p>The impact is direct and significant. The CLOUD Act gives US authorities the legal power to compel any US-incorporated company to produce data in its possession, custody, or control — regardless of where that data is physically stored. For Canadian organizations, this means that every SaaS tool operated by a US-parented company represents a point of jurisdictional exposure. Your data may sit in a Toronto data centre, but the legal authority over that data runs through Washington.</p>
+    <p>This is not a theoretical risk. It is the explicit design of the law. And for Canadian organizations subject to provincial or federal privacy obligations — PIPEDA, Law 25, FIPPA, PHIPA, and others — this exposure creates a compliance gap that must be documented and addressed.</p>
+
+    <h2>What the CLOUD Act actually does</h2>
+    <p>The Clarifying Lawful Overseas Use of Data Act was signed into US law on March 23, 2018. It resolved a jurisdictional ambiguity that had been building for years: whether the US government could compel an American technology company to hand over data stored on servers outside the United States.</p>
+    <p>The answer, after the CLOUD Act, is unambiguously yes.</p>
+    <p>The law was prompted by <em>United States v. Microsoft Corp.</em>, a case in which Microsoft challenged a US government warrant seeking email data stored on its servers in Ireland. The case reached the Supreme Court but was rendered moot when Congress passed the CLOUD Act, which explicitly granted this extraterritorial authority.</p>
+    <p>Under the CLOUD Act, a US warrant served to Microsoft for data stored in Montreal is just as enforceable as one for data stored in Redmond. The physical location of the server is legally irrelevant.</p>
+
+    <h2>Why this matters for Canadian data sovereignty</h2>
+    <p>Data sovereignty, at its core, means that data is subject only to the laws of the jurisdiction in which it was collected. For Canadian organizations, this means Canadian data should be governed by Canadian law — PIPEDA, provincial privacy statutes, and the Canadian Charter of Rights and Freedoms.</p>
+    <p>The CLOUD Act breaks this assumption. When a Canadian organization stores data with a US-parented provider, that data becomes subject to two legal regimes simultaneously: Canadian privacy law, which governs how the organization collects and uses the data, and US law, which can compel the provider to disclose it — without notifying the Canadian organization or obtaining Canadian judicial authorization.</p>
+    <p>The Government of Canada's own white paper on data sovereignty acknowledged this directly: as long as a cloud service provider operating in Canada is subject to the laws of a foreign country, Canada will not have full sovereignty over its data.</p>
+
+    <div class="stat-row">
+      <div class="stat-block">
+        <div class="stat-num">748</div>
+        <div class="stat-label">SaaS tools tracked by Upper Harbour</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">398</div>
+        <div class="stat-label">classified as CLOUD Act exposed</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-num">53%</div>
+        <div class="stat-label">of tracked tools under US jurisdiction</div>
+      </div>
+    </div>
+
+    <h2>Data residency does not equal data sovereignty</h2>
+    <p>This is the most widely misunderstood aspect of the CLOUD Act's impact on Canadian organizations. Many vendors offer "Canadian data residency" — the ability to configure your account so that data is physically stored on servers located in Canada. Microsoft 365, Google Workspace, AWS, and Salesforce all offer some version of this.</p>
+    <p>Data residency addresses where your data sits. Data sovereignty addresses whose laws apply to it. These are fundamentally different questions, and the CLOUD Act makes the distinction unavoidable.</p>
+
+    <div class="impact-grid">
+      <div class="impact-card">
+        <div class="impact-card-label exposed">Data residency only</div>
+        <h4>Microsoft 365 with Canadian data centre</h4>
+        <p>Data is physically in Canada. Microsoft is US-incorporated. A US warrant can compel disclosure without Canadian authorization. You have residency but not sovereignty.</p>
+      </div>
+      <div class="impact-card">
+        <div class="impact-card-label sovereign">Data sovereignty</div>
+        <h4>Canadian-incorporated provider, Canadian data centre</h4>
+        <p>Data is physically in Canada. Provider is Canadian-incorporated with no US parent. US authorities have no direct legal mechanism to compel disclosure. You have both residency and sovereignty.</p>
+      </div>
+    </div>
+
+    <p>In June 2025, this distinction was confirmed publicly when Microsoft France's director of public and legal affairs, Anton Carniaux, testified before the French Senate and was asked directly whether he could guarantee that data stored in France would not be transmitted to US authorities. He could not. This applies identically to Canadian data stored with Microsoft or any other US-parented provider.</p>
+
+    <h2>Five specific impacts on Canadian organizations</h2>
+
+    <h3>1. Compliance documentation requirements</h3>
+    <p>Quebec's Law 25 requires organizations to conduct a Privacy Impact Assessment before transferring personal information outside Quebec or to a third party. The existence of CLOUD Act exposure is directly relevant to these assessments. If you use a US-parented SaaS tool, your PIA must address the possibility that US authorities could access the data — and document why the transfer is justified despite this risk.</p>
+    <p>PIPEDA's accountability principle creates a similar obligation at the federal level. Organizations must ensure "comparable protection" when data is handled by third-party processors, and the CLOUD Act introduces a jurisdictional variable that must be assessed.</p>
+
+    <h3>2. Sector-specific regulatory exposure</h3>
+    <p>For organizations in regulated sectors, the impact is amplified. BC's FIPPA requires public bodies to conduct privacy impact assessments for any SaaS tool storing sensitive personal information outside Canada — and CLOUD Act exposure is a key factor. Healthcare organizations subject to provincial health privacy acts (PHIPA in Ontario, HIA in Alberta) face additional scrutiny when patient data is held by US-parented vendors. Law firms must consider whether client-matter data stored in US-jurisdictional tools could be subject to compelled disclosure, potentially breaching solicitor-client privilege.</p>
+
+    <h3>3. Contractual limitations</h3>
+    <p>Many US SaaS vendors include contractual commitments to "challenge unfounded requests" from law enforcement. Microsoft, Google, and Salesforce all have versions of this language. However, when a valid US court order is issued under the CLOUD Act, these companies are legally obligated to comply. Contractual commitments cannot override statutory obligations. The contract may slow the process, but it cannot stop it.</p>
+
+    <h3>4. Insurance and liability implications</h3>
+    <p>Cyber insurance policies increasingly ask about data sovereignty posture. If a Canadian organization suffers a data exposure event that is traced to a CLOUD Act compulsion, the question of whether the organization documented the risk and took reasonable steps to mitigate it becomes central to any insurance claim or liability assessment.</p>
+
+    <h3>5. Procurement and vendor selection</h3>
+    <p>For organizations that take sovereignty seriously, the CLOUD Act forces a re-evaluation of vendor selection criteria. The question is no longer just "does this tool have a Canadian data centre?" but "is the company that operates this tool subject to US jurisdiction?" This changes the procurement conversation fundamentally — and in many categories, there are Canadian-headquartered alternatives that eliminate the exposure entirely.</p>
+
+    <div class="callout" style="border-left-color:var(--red); margin-top:40px;">
+      <div class="callout-label" style="color:var(--red);">Find out if you're exposed</div>
+      <p><strong>HarbourScan</strong> maps every tool in your SaaS stack to its parent jurisdiction and flags CLOUD Act exposure automatically. Free, browser-based, takes 10 minutes. <a href="/harbourscan">Run a free assessment →</a></p>
+    </div>
+
+    <div class="callout" style="margin-top:16px;">
+      <div class="callout-label">Get your compliance documentation</div>
+      <p>Upper Harbour's <a href="/comply">Law 25 Compliance Assessments</a> include Transfer Impact Assessments for every SaaS tool in your industry, with CLOUD Act exposure documented for each. 10 industry verticals. From $99.</p>
+    </div>
+
+    <div class="callout" style="border-left-color:var(--gold); margin-top:16px;">
+      <div class="callout-label" style="color:var(--gold);">Need help migrating to sovereign alternatives?</div>
+      <p>If you've identified high-risk tools in your stack and want help evaluating and migrating to Canadian-headquartered alternatives, we can help. We map your exposure, identify sovereign replacements, and build a migration plan that satisfies your compliance obligations. <a href="https://calendly.com/josh-upperharbour/30min">Book a scoping call →</a></p>
+    </div>
+
+    <h2>What Canadian organizations should do</h2>
+    <p><strong>Map your SaaS stack to parent jurisdictions.</strong> Identify every SaaS tool your organization uses. For each one, determine the parent company's jurisdiction of incorporation. Flag which tools are operated by US-parented companies and are therefore CLOUD Act exposed. Upper Harbour's <a href="/harbourscan">HarbourScan</a> automates this process.</p>
+    <p><strong>Complete Transfer Impact Assessments.</strong> For Quebec organizations, this is a legal requirement under Law 25. For organizations elsewhere in Canada, it is increasingly considered best practice under PIPEDA. Each TIA should address CLOUD Act exposure specifically — not as a footnote, but as a primary risk factor.</p>
+    <p><strong>Review vendor contracts for jurisdictional provisions.</strong> Check whether your agreements with US SaaS vendors include provisions about government access requests, data subject notification, and the vendor's obligations when they receive legal process affecting your data. Document what the contract says and, critically, what it cannot guarantee.</p>
+    <p><strong>Evaluate Canadian alternatives for sensitive data categories.</strong> For the most sensitive data — legal files, health records, financial data, student information — evaluate whether a Canadian-headquartered alternative exists. This doesn't mean replacing your entire stack. It means making deliberate, documented choices about where your highest-risk data resides.</p>
+    <p><strong>Document everything.</strong> The goal is not to eliminate all US-jurisdictional tools from your stack — for most organizations, that isn't practical. The goal is to demonstrate that you've assessed the risk, made informed decisions, and documented your rationale. This is what a regulator or auditor will look for.</p>
+
+    <div class="callout" style="border-left-color:var(--gold);">
+      <div class="callout-label" style="color:var(--gold);">Need compliance documentation?</div>
+      <p>Upper Harbour's <a href="/comply">Law 25 Compliance Assessments</a> include Transfer Impact Assessments for every SaaS tool in your industry, with CLOUD Act exposure documented for each. Available for 10 industry verticals.</p>
+    </div>
+
+    <h2>The bigger picture</h2>
+    <p>The CLOUD Act is not going away. The trend globally is toward more jurisdictional assertion over data — the EU has proposed its own framework, China has data localization requirements, and India's DPDP Act introduces similar concepts. Canada and the US have discussed a bilateral agreement under the CLOUD Act framework that would allow Canadian law enforcement to directly request data from US companies, but as of early 2026, this agreement has not been finalized.</p>
+    <p>In the meantime, the practical reality for Canadian organizations is clear: digital sovereignty requires understanding not just where your data is stored, but whose laws apply to the company that stores it. The CLOUD Act makes this a question that every Canadian organization must answer — and document.</p>
+    <p>For most organizations, the path forward is not abandoning US tools entirely. It is understanding the exposure, documenting it, making deliberate choices about where the most sensitive data goes, and building a compliance posture that demonstrates due diligence. That is what regulators expect, and it is what good governance demands.</p>
+
+    <div class="callout" style="margin-top:40px;">
+      <div class="callout-label">Related guides</div>
+      <div class="callout-links">
+        <a href="/resources/cloud-act-canadian-data">The CLOUD Act and Canadian Data: What You Need to Know →</a>
+        <a href="/resources/data-residency-vs-data-sovereignty-canada">Data Residency vs Data Sovereignty in Canada →</a>
+        <a href="/resources/transfer-impact-assessments-law-25">Transfer Impact Assessments Under Law 25 →</a>
+        <a href="/resources/foreign-jurisdiction-saas-action-guide">What to Do When Your Vendors Are Under Foreign Jurisdiction →</a>
+      </div>
+    </div>
+
+  </article>
+
+  <section class="faq-section">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-item">
+      <div class="faq-q">What is the impact of the US CLOUD Act on data sovereignty for Canadian organizations?</div>
+      <div class="faq-a">The US CLOUD Act allows American authorities to compel US-incorporated companies to hand over data regardless of where it is stored. For Canadian organizations using US-parented SaaS tools, this means their data is subject to US legal process even if it is physically stored in Canada. This fundamentally undermines data sovereignty because the controlling jurisdiction is American, not Canadian. Organizations must document this exposure and address it in their privacy compliance frameworks.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Does storing data in Canada protect it from the CLOUD Act?</div>
+      <div class="faq-a">No. Data residency — where data is physically stored — does not determine data sovereignty, which is about whose laws apply to the data. If the company operating your Canadian data centre is US-incorporated, the CLOUD Act gives US authorities jurisdiction over that data regardless of its physical location. Canadian data residency is necessary but not sufficient for sovereignty.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Which Canadian organizations are most affected by the CLOUD Act?</div>
+      <div class="faq-a">Any Canadian organization using SaaS tools from US-parented companies is affected. This includes organizations using Microsoft 365, Google Workspace, Salesforce, Slack, Zoom, AWS, and hundreds of other common tools. Organizations in regulated sectors — healthcare, legal, financial services, education, and government — face the highest compliance risk because they handle sensitive personal information subject to stricter provincial and federal privacy requirements.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What can Canadian organizations do to mitigate CLOUD Act exposure?</div>
+      <div class="faq-a">Organizations should map their SaaS stack to identify which tools are US-parented, complete Transfer Impact Assessments for each exposed tool, evaluate Canadian-headquartered alternatives for the most sensitive data categories, and ensure their privacy documentation addresses jurisdictional exposure explicitly. Upper Harbour's <a href="/harbourscan" style="color:var(--teal);">HarbourScan</a> automates the stack mapping and exposure identification process.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is there a Canadian equivalent to the CLOUD Act?</div>
+      <div class="faq-a">No. Canada does not have an equivalent law that allows it to compel foreign companies to produce data stored outside Canada. Canadian law enforcement must use Mutual Legal Assistance Treaties (MLATs) to request data from foreign jurisdictions — a process that is slower and more constrained than the direct compulsion the CLOUD Act enables. Canada and the US have discussed a bilateral agreement under the CLOUD Act framework, but it has not been finalized as of early 2026.</div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Know where your data stands</h2>
+    <p>HarbourScan identifies CLOUD Act exposure across your entire SaaS stack and generates a jurisdictional risk report — free, in your browser.</p>
+    <a href="/harbourscan" class="cta-btn">Scan Your Stack →</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Need compliance documentation? <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Law 25 Compliance Assessments from $99 →</a></p>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">Ready to migrate to sovereign alternatives? <a href="https://calendly.com/josh-upperharbour/30min" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Book a scoping call →</a></p>
+  </section>
+
+    <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+            <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+            <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+          </svg>
+          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span>
+        </div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#fa90958992ba8f8a8a9f88929b8898958f88d4999b">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 }).observe(el);
+    });
+  </script>
+
+</body>
+</html>
