@@ -1,65 +1,67 @@
-{
-  "alerts": [
-    {
-      "tool_name": "Telesat Lightspeed",
-      "change": "data_residency",
-      "old_value": "Limited domestic landing station infrastructure",
-      "new_value": "Expanded landing stations in Quebec and Saskatchewan for domestic data routing",
-      "reason": "New terrestrial infrastructure enables Canadian data residency for satellite-based services",
-      "signal_headline": "Telesat establishes landing stations in Quebec and Saskatchewan for domestic satellite network",
-      "signal_date": "2026-03-10",
-      "source_url": "https://financialpost.com/globe-newswire/telesat-advances-telesat-lightspeed-terrestrial-network-with-new-quebec-and-saskatchewan-landing-station-sites",
-      "flagged_at": "2026-03-10T12:06:56.543735",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "SAP Sovereign Cloud for Canada",
-      "change": "compliance_certification",
-      "old_value": "CCCS assessment pending",
-      "new_value": "CCCS Cloud Assessment completed (Cloud Medium Protected B and Protected B High Value Asset)",
-      "reason": "Vendor completed mandatory Canadian government security assessment",
-      "signal_headline": "SAP Completes CCCS Cloud Assessment for SAP Sovereign Cloud for Canada",
-      "signal_date": "2026-03-12",
-      "source_url": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
-      "flagged_at": "2026-03-13T00:03:52.987202",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "Check Point Software Technologies",
-      "change": "data_residency",
-      "old_value": "Unknown/Not specified",
-      "new_value": "Canadian data region available",
-      "reason": "Check Point has added Canadian data residency capability",
-      "signal_headline": "Check Point adds Canadian data residency region",
-      "signal_date": "2026-03-16",
-      "source_url": "https://channelbuzz.ca/2026/03/icymi-nearly-60-of-channel-partners-expect-a-q1-profit-crash-check-point-adds-canadian-data-region-46068/",
-      "flagged_at": "2026-03-16T18:31:35.662688",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "Bell Canada Data Centre (Saskatchewan)",
-      "change": "data_residency",
-      "old_value": null,
-      "new_value": "Canada - Saskatchewan",
-      "reason": "New Canadian-managed data centre facility announced for domestic data processing and storage",
-      "signal_headline": "Bell Canada announces 300-megawatt data centre in Saskatchewan to strengthen Canadian data sovereignty",
-      "signal_date": "2026-03-17",
-      "source_url": "https://globalnews.ca/news/11734297/bell-canada-data-centre-regina/",
-      "flagged_at": "2026-03-17T18:31:27.157370",
-      "status": "pending_review"
-    },
-    {
-      "tool_name": "Border0",
-      "change": "parent_company",
-      "old_value": "independent",
-      "new_value": "Tailscale",
-      "reason": "Border0 acquired by Tailscale",
-      "signal_headline": "Tailscale acquires Border0, expands Vancouver operations",
-      "signal_date": "2026-03-17",
-      "source_url": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
-      "flagged_at": "2026-03-18T06:35:11.971613",
-      "status": "pending_review"
+[
+  {
+    "tool_name": "Telesat Lightspeed",
+    "change": "data_residency",
+    "old_value": "Limited domestic landing station infrastructure",
+    "new_value": "Expanded landing stations in Quebec and Saskatchewan for domestic data routing",
+    "reason": "New terrestrial infrastructure enables Canadian data residency for satellite-based services",
+    "signal_headline": "Telesat establishes landing stations in Quebec and Saskatchewan for domestic satellite network",
+    "signal_date": "2026-03-10",
+    "source_url": "https://financialpost.com/globe-newswire/telesat-advances-telesat-lightspeed-terrestrial-network-with-new-quebec-and-saskatchewan-landing-station-sites",
+    "flagged_at": "2026-03-10T12:06:56.543735",
+    "status": "pending_review"
+  },
+  {
+    "tool_name": "SAP Sovereign Cloud for Canada",
+    "change": "compliance_certification",
+    "old_value": "CCCS assessment pending",
+    "new_value": "CCCS Cloud Assessment completed (Cloud Medium Protected B and Protected B High Value Asset)",
+    "reason": "Vendor completed mandatory Canadian government security assessment",
+    "signal_headline": "SAP Completes CCCS Cloud Assessment for SAP Sovereign Cloud for Canada",
+    "signal_date": "2026-03-12",
+    "source_url": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
+    "flagged_at": "2026-03-13T00:03:52.987202",
+    "status": "pending_review"
+  },
+  {
+    "tool_name": "Check Point Software Technologies",
+    "change": "data_residency",
+    "old_value": "Unknown/Not specified",
+    "new_value": "Canadian data region available",
+    "reason": "Check Point has added Canadian data residency capability",
+    "signal_headline": "Check Point adds Canadian data residency region",
+    "signal_date": "2026-03-16",
+    "source_url": "https://channelbuzz.ca/2026/03/icymi-nearly-60-of-channel-partners-expect-a-q1-profit-crash-check-point-adds-canadian-data-region-46068/",
+    "flagged_at": "2026-03-16T18:31:35.662688",
+    "status": "pending_review"
+  },
+  {
+    "tool_name": "Bell Canada Data Centre (Saskatchewan)",
+    "change": "data_residency",
+    "old_value": null,
+    "new_value": "Canada - Saskatchewan",
+    "reason": "New Canadian-managed data centre facility announced for domestic data processing and storage",
+    "signal_headline": "Bell Canada announces 300-megawatt data centre in Saskatchewan to strengthen Canadian data sovereignty",
+    "signal_date": "2026-03-17",
+    "source_url": "https://globalnews.ca/news/11734297/bell-canada-data-centre-regina/",
+    "flagged_at": "2026-03-17T18:31:27.157370",
+    "status": "pending_review"
+  },
+  {
+    "tool_name": "Border0",
+    "change": "parent_company",
+    "old_value": "independent",
+    "new_value": "Tailscale",
+    "reason": "Border0 acquired by Tailscale",
+    "signal_headline": "Tailscale acquires Border0, expands Vancouver operations",
+    "signal_date": "2026-03-17",
+    "source_url": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
+    "flagged_at": "2026-03-18T06:35:11.971613",
+    "status": "approved",
+    "approvedAt": "2026-03-21T00:29:42.049Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "parent_company": "Tailscale"
     }
-  ],
-  "updated": "2026-03-18T06:35:11.972949"
-}
+  }
+]
