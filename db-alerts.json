@@ -59,11 +59,13 @@
     "signal_date": "2026-03-17",
     "source_url": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
     "flagged_at": "2026-03-18T06:35:11.971613",
-    "status": "approved",
+    "status": "failed",
     "approvedAt": "2026-03-21T00:29:42.049Z",
     "reviewedBy": "admin",
     "updates": {
       "parent_company": "Tailscale"
-    }
+    },
+    "failedAt": "2026-03-21T00:29:52.272094+00:00",
+    "failureReason": "Tool 'Border0' not found in saas-db.js — skipping"
   }
 ]
