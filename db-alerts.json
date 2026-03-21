@@ -59,7 +59,19 @@
       "source_url": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
       "flagged_at": "2026-03-21T06:16:58.919336",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Edilex",
+      "change": "parent_company",
+      "old_value": "Independent Quebec-based company",
+      "new_value": "SOVRA subsidiary",
+      "reason": "Edilex acquired by SOVRA; integration into North American public sector procurement platform",
+      "signal_headline": "SOVRA Acquires Edilex, Quebec-Based Public Sector Procurement SaaS",
+      "signal_date": "2026-03-15",
+      "source_url": "https://www.privsource.com/acquisitions/cloud-saas/2026",
+      "flagged_at": "2026-03-21T11:58:34.163854",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-21T06:16:58.920386"
+  "updated": "2026-03-21T11:58:34.165053"
 }

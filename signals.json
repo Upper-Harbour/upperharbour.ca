@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 21, 2026 — 06:16 ET",
+    "lastUpdated": "Mar 21, 2026 — 11:58 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "SOVRA Acquires Edilex, Quebec-Based Public Sector Procurement SaaS",
+      "summary": "SOVRA, North America's public sector procurement platform, has acquired Edilex, a Quebec-based contract authoring automation provider. Edilex's technology will be integrated into SOVRA's AI-powered Contract Lifecycle Management platform serving Canadian and U.S. public sector buyers.",
+      "type": "acquisition",
+      "source": "PrivSource",
+      "sourceUrl": "https://www.privsource.com/acquisitions/cloud-saas/2026",
+      "date": "2026-03-15",
+      "impact": "Canadian public sector procurement teams using Edilex should confirm data handling and residency practices post-acquisition to ensure continued compliance with Treasury Board and provincial procurement standards.",
+      "dbUpdate": true
+    },
     {
       "headline": "Tailscale acquires Border0, expanding Vancouver operations",
       "summary": "Tailscale, a corporate VPN startup, has acquired Border0 and is expanding its Vancouver presence by integrating the Border0 team. This acquisition consolidates VPN and network access control capabilities within a Canadian-headquartered company, with potential implications for organizations evaluating secure access solutions and Canadian tech sector M&A activity.",
