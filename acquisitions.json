@@ -18,14 +18,14 @@
         },
         {
           "label": "CLOUD Act status change",
-          "value": "Not exposed â Exposed"
+          "value": "Not exposed Ã¢ÂÂ Exposed"
         },
         {
           "label": "Affected sectors",
           "value": "Law enforcement, government, digital forensics"
         }
       ],
-      "impact": "Magnet Forensics' digital forensics tools are used by Canadian law enforcement and government agencies â organizations handling some of the most sensitive data imaginable. The acquisition by Thoma Bravo, a US private equity firm, shifted the corporate jurisdiction from Canadian to US. Canadian police forces using Magnet's tools now have their forensic data subject to US legal process. The irony is acute: tools used to investigate crime are now jurisdictionally exposed to foreign government access.",
+      "impact": "Magnet Forensics' digital forensics tools are used by Canadian law enforcement and government agencies Ã¢ÂÂ organizations handling some of the most sensitive data imaginable. The acquisition by Thoma Bravo, a US private equity firm, shifted the corporate jurisdiction from Canadian to US. Canadian police forces using Magnet's tools now have their forensic data subject to US legal process. The irony is acute: tools used to investigate crime are now jurisdictionally exposed to foreign government access.",
       "source": "editorial",
       "featured": true
     },
@@ -51,7 +51,7 @@
         },
         {
           "label": "Risk factor",
-          "value": "Significant US VC backing â acquisition possible"
+          "value": "Significant US VC backing Ã¢ÂÂ acquisition possible"
         }
       ],
       "impact": "Cohere is one of the most significant Canadian-headquartered AI companies, positioning itself as a sovereign AI alternative for Canadian and international organizations. It has raised significant US venture capital. If Cohere were to be acquired by a US company, every Canadian organization using Cohere as a \"sovereign AI\" option would lose that sovereignty status. We monitor Cohere's ownership structure because it represents one of the most consequential sovereignty dependencies in the Canadian AI ecosystem.",
@@ -76,7 +76,7 @@
         },
         {
           "label": "CLOUD Act status change",
-          "value": "Not exposed â Exposed"
+          "value": "Not exposed Ã¢ÂÂ Exposed"
         },
         {
           "label": "Affected sectors",
@@ -97,7 +97,7 @@
       "details": [
         {
           "label": "Founded",
-          "value": "Vancouver, BC â incorporated Delaware pre-IPO"
+          "value": "Vancouver, BC Ã¢ÂÂ incorporated Delaware pre-IPO"
         },
         {
           "label": "Post-acquisition parent",
@@ -105,11 +105,11 @@
         },
         {
           "label": "CLOUD Act status change",
-          "value": "Exposed â Exposed (no change)"
+          "value": "Exposed Ã¢ÂÂ Exposed (no change)"
         },
         {
           "label": "Key lesson",
-          "value": "Canadian origin â  Canadian jurisdiction"
+          "value": "Canadian origin Ã¢ÂÂ  Canadian jurisdiction"
         }
       ],
       "impact": "Slack was founded in Vancouver by Stewart Butterfield but incorporated in the US (Delaware) before its IPO. The Salesforce acquisition didn't change Slack's CLOUD Act status (it was already US-incorporated), but it illustrates the broader pattern: Canadian-founded SaaS companies typically incorporate in the US for capital market access, meaning Canadian users were CLOUD Act exposed from the start. The Canadian origin story creates a false sense of sovereignty.",
@@ -163,21 +163,21 @@
         },
         {
           "label": "CLOUD Act status change",
-          "value": "Not exposed â Exposed"
+          "value": "Not exposed Ã¢ÂÂ Exposed"
         },
         {
           "label": "Affected sectors",
           "value": "Banking, financial crime, AML"
         }
       ],
-      "impact": "Verafin provided anti-money-laundering and fraud detection to Canadian financial institutions â processing some of the most sensitive financial data in the country. The Nasdaq acquisition shifted this data to US jurisdiction. Canadian banks and credit unions using Verafin now have their transaction monitoring data subject to CLOUD Act access. This is particularly significant given the sensitivity of financial crime investigation data.",
+      "impact": "Verafin provided anti-money-laundering and fraud detection to Canadian financial institutions Ã¢ÂÂ processing some of the most sensitive financial data in the country. The Nasdaq acquisition shifted this data to US jurisdiction. Canadian banks and credit unions using Verafin now have their transaction monitoring data subject to CLOUD Act access. This is particularly significant given the sensitivity of financial crime investigation data.",
       "source": "editorial",
       "featured": true
     },
     {
       "target": "Iotum / FreeConference.com",
-      "acquirer": "Vast Conference â StartMeeting (US)",
-      "date": "2020 â 2022",
+      "acquirer": "Vast Conference Ã¢ÂÂ StartMeeting (US)",
+      "date": "2020 Ã¢ÂÂ 2022",
       "status": "completed",
       "jurisdictionBefore": "Canada",
       "jurisdictionAfter": "United States",
@@ -188,20 +188,43 @@
         },
         {
           "label": "Acquisition chain",
-          "value": "Vast Conference (US) â StartMeeting (US)"
+          "value": "Vast Conference (US) Ã¢ÂÂ StartMeeting (US)"
         },
         {
           "label": "CLOUD Act status change",
-          "value": "Not exposed â Exposed"
+          "value": "Not exposed Ã¢ÂÂ Exposed"
         },
         {
           "label": "Pattern",
-          "value": "Chain acquisition â multiple US acquirers in sequence"
+          "value": "Chain acquisition Ã¢ÂÂ multiple US acquirers in sequence"
         }
       ],
-      "impact": "This illustrates the \"chain acquisition\" pattern â a Canadian company acquired by a US company, which is then acquired by another US company. With each transaction, the original Canadian sovereignty connection becomes more distant. Clients who evaluated the vendor at the time of the first acquisition may not have reassessed through subsequent ownership changes. Each transaction should trigger a new compliance review.",
+      "impact": "This illustrates the \"chain acquisition\" pattern Ã¢ÂÂ a Canadian company acquired by a US company, which is then acquired by another US company. With each transaction, the original Canadian sovereignty connection becomes more distant. Clients who evaluated the vendor at the time of the first acquisition may not have reassessed through subsequent ownership changes. Each transaction should trigger a new compliance review.",
       "source": "editorial",
       "featured": true
+    },
+    {
+      "target": "Border0",
+      "acquirer": "Tailscale",
+      "date": "2026-03-17",
+      "status": "completed",
+      "jurisdictionBefore": "independent",
+      "jurisdictionAfter": "Tailscale",
+      "details": [
+        {
+          "label": "Change",
+          "value": "parent_company: independent → Tailscale"
+        },
+        {
+          "label": "Source",
+          "value": "Tailscale acquires Border0, expands Vancouver operations"
+        }
+      ],
+      "impact": "Border0 acquired by Tailscale",
+      "source": "pipeline",
+      "sourceUrl": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
+      "addedAt": "2026-03-21T00:29:43.576Z",
+      "featured": false
     },
     {
       "target": "Walter",
@@ -213,7 +236,7 @@
       "details": [
         {
           "label": "Change",
-          "value": "parent_company: Canadian independent → Legora (Sweden)"
+          "value": "parent_company: Canadian independent â Legora (Sweden)"
         },
         {
           "label": "Source",
@@ -227,5 +250,5 @@
       "featured": false
     }
   ],
-  "lastUpdated": "2026-03-16"
+  "lastUpdated": "2026-03-21"
 }
