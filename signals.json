@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Mar 21, 2026 — 11:58 ET",
+    "lastUpdated": "Mar 23, 2026 — 06:41 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Report: Only 17% of Canadian software tools have Canadian ownership",
+      "summary": "A March 2026 analysis found that 63% of software tools used by Canadian organizations are U.S.-owned, while only 17% have Canadian parent companies. The report identifies cloud infrastructure as Canada's most acute controllable vulnerability in the AI era, highlighting systemic exposure to foreign corporate control of critical digital infrastructure.",
+      "type": "policy",
+      "source": "Research Money",
+      "sourceUrl": "https://researchmoneyinc.com/article/the-short-report-march-18-2026",
+      "date": "2026-03-18",
+      "impact": "Canadian public and private sector organizations should conduct software supply chain audits to map ownership and jurisdictional control of their tools, with particular attention to cloud infrastructure and AI-enabled platforms.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "KPMG examines AI adoption and data sovereignty in Canadian public sector",
+      "summary": "A KPMG report analyzes AI adoption patterns across Canadian public sector organizations, emphasizing data sovereignty as a foundational element of public legitimacy and establishing governance requirements for government agencies implementing AI systems. The report connects responsible AI adoption to data sovereignty obligations.",
+      "type": "policy",
+      "source": "KPMG",
+      "sourceUrl": "https://kpmg.com/ca/en/insights/2026/03/responsible-ai-adoption-in-canadian-public-sector.html",
+      "date": "2026-03-20",
+      "impact": "Canadian federal and provincial government agencies should review this framework when evaluating AI system procurements and implementations to ensure alignment with data sovereignty and governance requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "SOVRA Acquires Edilex, Quebec-Based Public Sector Procurement SaaS",
       "summary": "SOVRA, North America's public sector procurement platform, has acquired Edilex, a Quebec-based contract authoring automation provider. Edilex's technology will be integrated into SOVRA's AI-powered Contract Lifecycle Management platform serving Canadian and U.S. public sector buyers.",
