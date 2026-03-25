@@ -59,12 +59,14 @@
     "signal_date": "2026-03-17",
     "source_url": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
     "flagged_at": "2026-03-21T06:16:58.919336",
-    "status": "approved",
+    "status": "failed",
     "approvedAt": "2026-03-25T20:50:44.728Z",
     "reviewedBy": "admin",
     "updates": {
       "parent_company": "Tailscale"
-    }
+    },
+    "failedAt": "2026-03-25T20:50:55.528740+00:00",
+    "failureReason": "No valid fields to update for 'Border0'"
   },
   {
     "tool_name": "Edilex",
@@ -76,12 +78,14 @@
     "signal_date": "2026-03-15",
     "source_url": "https://www.privsource.com/acquisitions/cloud-saas/2026",
     "flagged_at": "2026-03-21T11:58:34.163854",
-    "status": "approved",
+    "status": "failed",
     "approvedAt": "2026-03-25T20:50:51.457Z",
     "reviewedBy": "admin",
     "updates": {
       "parent_company": "SOVRA subsidiary"
-    }
+    },
+    "failedAt": "2026-03-25T20:50:55.528740+00:00",
+    "failureReason": "Tool 'Edilex' not found in saas-db.js — skipping"
   },
   {
     "tool_name": "CoolIT Systems",
@@ -93,11 +97,6 @@
     "signal_date": "2026-03-20",
     "source_url": "https://betakit.com/ecolab-to-acquire-coolit-systems-for-4-75-billion-usd/",
     "flagged_at": "2026-03-25T18:33:32.726352",
-    "status": "approved",
-    "approvedAt": "2026-03-25T20:50:54.938Z",
-    "reviewedBy": "admin",
-    "updates": {
-      "parent_company": "Ecolab (US-based parent company)"
-    }
+    "status": "pending_review"
   }
 ]
