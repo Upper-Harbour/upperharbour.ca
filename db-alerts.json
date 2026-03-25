@@ -59,7 +59,12 @@
     "signal_date": "2026-03-17",
     "source_url": "https://betakit.com/tailscale-makes-first-acquisition-with-border0-purchase/",
     "flagged_at": "2026-03-21T06:16:58.919336",
-    "status": "pending_review"
+    "status": "approved",
+    "approvedAt": "2026-03-25T20:50:44.728Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "parent_company": "Tailscale"
+    }
   },
   {
     "tool_name": "Edilex",
