@@ -1,9 +1,39 @@
 {
   "meta": {
-    "lastUpdated": "Mar 23, 2026 — 12:17 ET",
+    "lastUpdated": "Mar 25, 2026 — 18:33 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Alberta Information and Privacy Commissioner participates in GPEN global privacy sweep on children's digital services",
+      "summary": "The Office of the Alberta Information and Privacy Commissioner has joined the Global Privacy Enforcement Network (GPEN) in examining websites, games, and apps used by children. The sweep identified both improvements and new concerns in privacy practices across these services, establishing a Canadian enforcement perspective on child-focused digital privacy.",
+      "type": "enforcement",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/office-of-the-alberta-information-and-privacy-commissioner-participates-in-global-privacy-sweep-examining-websites-games-and-apps-used-by-children/",
+      "date": "2026-03-25",
+      "impact": "Organizations in Alberta offering websites, games, or apps targeting children should review their privacy practices against GPEN findings and Alberta's privacy standards.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Ecolab to acquire Calgary-based CoolIT Systems in $4.75 billion USD transaction",
+      "summary": "US-based Ecolab has announced the acquisition of CoolIT Systems, a Calgary-based cooling systems manufacturer, with completion expected in Q3 2026. This represents a significant shift in control of a Canadian technology company to foreign ownership, with potential implications for data handling and operational jurisdiction.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/ecolab-to-acquire-coolit-systems-for-4-75-billion-usd/",
+      "date": "2026-03-20",
+      "impact": "Canadian government and private-sector organizations using CoolIT Systems should monitor the transition for changes in data residency, support jurisdiction, and compliance obligations post-acquisition.",
+      "dbUpdate": true
+    },
+    {
+      "headline": "Nova Scotia Power strengthens security measures following customer data breach and privacy commissioner oversight",
+      "summary": "Following a cyberattack that exposed customer data, Canada's privacy commissioner has secured Nova Scotia Power's agreement to enhance its security practices. This enforcement action demonstrates ongoing federal privacy oversight of critical infrastructure operators and establishes security baseline expectations for utilities.",
+      "type": "enforcement",
+      "source": "Global News",
+      "sourceUrl": "https://globalnews.ca/news/11745761/nova-scotia-power-security-customer-data/",
+      "date": "2026-03-25",
+      "impact": "Canadian critical infrastructure operators and utilities should review their security postures against federal privacy commissioner expectations and strengthen breach response protocols.",
+      "dbUpdate": false
+    },
     {
       "headline": "Report: Only 17% of Canadian software tools have Canadian ownership",
       "summary": "A March 2026 analysis found that 63% of software tools used by Canadian organizations are U.S.-owned, while only 17% have Canadian parent companies. The report identifies cloud infrastructure as Canada's most acute controllable vulnerability in the AI era, highlighting systemic exposure to foreign corporate control of critical digital infrastructure.",

@@ -71,7 +71,19 @@
       "source_url": "https://www.privsource.com/acquisitions/cloud-saas/2026",
       "flagged_at": "2026-03-21T11:58:34.163854",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "CoolIT Systems",
+      "change": "parent_company",
+      "old_value": "Independent Canadian company",
+      "new_value": "Ecolab (US-based parent company)",
+      "reason": "Acquisition by US multinational may affect data handling practices and jurisdictional control",
+      "signal_headline": "Ecolab to acquire Calgary-based CoolIT Systems in $4.75 billion USD transaction",
+      "signal_date": "2026-03-20",
+      "source_url": "https://betakit.com/ecolab-to-acquire-coolit-systems-for-4-75-billion-usd/",
+      "flagged_at": "2026-03-25T18:33:32.726352",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-03-21T11:58:34.165053"
+  "updated": "2026-03-25T18:33:32.727404"
 }
