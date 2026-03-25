@@ -76,7 +76,12 @@
     "signal_date": "2026-03-15",
     "source_url": "https://www.privsource.com/acquisitions/cloud-saas/2026",
     "flagged_at": "2026-03-21T11:58:34.163854",
-    "status": "pending_review"
+    "status": "approved",
+    "approvedAt": "2026-03-25T20:50:51.457Z",
+    "reviewedBy": "admin",
+    "updates": {
+      "parent_company": "SOVRA subsidiary"
+    }
   },
   {
     "tool_name": "CoolIT Systems",
