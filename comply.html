@@ -485,8 +485,26 @@
             alert('Please fill in all fields.');
             return;
         }
-        // TODO: integrate with Stripe or payment processor
-        alert('Payment integration coming soon. Contact info@upperharbour.com to purchase.');
+
+        const paymentLinks = {
+            'healthcare': 'https://buy.stripe.com/dRm6oH54f6XtfQWdxQ6Zy02',
+            'mental-health': 'https://buy.stripe.com/bJefZhaoz1D98ouctM6Zy0b',
+            'law': 'https://buy.stripe.com/fZuaEX54f81x5ci1P86Zy0a',
+            'accounting': 'https://buy.stripe.com/aFadR9fITgy3awCalE6Zy09',
+            'insurance': 'https://buy.stripe.com/fZu28raozchN0W2bpI6Zy08',
+            'real-estate': 'https://buy.stripe.com/00w9AT54f81x34a65o6Zy07',
+            'nonprofit': 'https://buy.stripe.com/dRmeVd0NZ0z5fQW1P86Zy06',
+            'developer': 'https://buy.stripe.com/14A14n54fchN5cidxQ6Zy05',
+            'fitness': 'https://buy.stripe.com/8x2eVd40b0z520679s6Zy04',
+            'general': 'https://buy.stripe.com/cNibJ17cn1D97kq1P86Zy03'
+        };
+
+        const link = paymentLinks[industry];
+        if (link) {
+            // Pass company name and email as prefilled fields
+            const url = link + '?prefilled_email=' + encodeURIComponent(email) + '&client_reference_id=' + encodeURIComponent(name);
+            window.location.href = url;
+        }
     }
 
     // Reveal animations
