@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 25, 2026 — 18:33 ET",
+    "lastUpdated": "Mar 26, 2026 — 06:45 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Globe and Mail examines Canadian digital sovereignty amid Microsoft's $7.5-billion data center expansion",
+      "summary": "The Globe and Mail published analysis arguing that digital sovereignty is determined by jurisdictional control over data access rather than physical storage location, examining this framework in context of Microsoft's $7.5-billion data center expansion in Canada. The commentary reflects ongoing Canadian policy debate about the relationship between infrastructure location and actual data governance authority.",
+      "type": "policy",
+      "source": "The Globe and Mail",
+      "sourceUrl": "https://www.theglobeandmail.com/business/commentary/article-digital-sovereignty-data-tech/",
+      "date": "2026-03-26",
+      "impact": "Federal policymakers should consider access control and data governance as core sovereignty requirements alongside data residency mandates in cloud computing and SaaS procurement frameworks.",
+      "dbUpdate": false
+    },
     {
       "headline": "Alberta Information and Privacy Commissioner participates in GPEN global privacy sweep on children's digital services",
       "summary": "The Office of the Alberta Information and Privacy Commissioner has joined the Global Privacy Enforcement Network (GPEN) in examining websites, games, and apps used by children. The sweep identified both improvements and new concerns in privacy practices across these services, establishing a Canadian enforcement perspective on child-focused digital privacy.",
