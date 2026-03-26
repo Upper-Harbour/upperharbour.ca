@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 26, 2026 — 06:45 ET",
+    "lastUpdated": "Mar 26, 2026 — 18:34 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Survey identifies CLOUD Act compliance risks in Canadian AI infrastructure adoption",
+      "summary": "An analysis of Canadian AI infrastructure options identifies compliance risks associated with US-controlled cloud platforms (AWS, Google Cloud) and surveys sovereign Canadian alternatives available in 2026. The assessment directly addresses the legal and regulatory implications of selecting cloud infrastructure subject to US government data access provisions.",
+      "type": "vendor",
+      "source": "Augure AI",
+      "sourceUrl": "https://augureai.ca/blog/canadian-ai-infrastructure-whats-available-in-2026",
+      "date": "2026-03-26",
+      "impact": "Federal and provincial organizations, as well as regulated sectors handling sensitive data, should review this analysis when evaluating AI infrastructure options to understand CLOUD Act exposure and identify compliant alternatives.",
+      "dbUpdate": false
+    },
     {
       "headline": "Globe and Mail examines Canadian digital sovereignty amid Microsoft's $7.5-billion data center expansion",
       "summary": "The Globe and Mail published analysis arguing that digital sovereignty is determined by jurisdictional control over data access rather than physical storage location, examining this framework in context of Microsoft's $7.5-billion data center expansion in Canada. The commentary reflects ongoing Canadian policy debate about the relationship between infrastructure location and actual data governance authority.",
