@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 26, 2026 — 18:34 ET",
+    "lastUpdated": "Mar 27, 2026 — 00:10 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Alberta OIPC releases privacy impact assessment template and guide for public bodies",
+      "summary": "The Office of the Alberta Information and Privacy Commissioner has developed new PIA templates and guidance documents to assist public bodies in conducting privacy impact assessments under Alberta's Protection of Personal Information Act. The resources are intended for use across Alberta's public sector and may serve as reference material for other Canadian jurisdictions.",
+      "type": "policy",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/office-of-the-alberta-information-and-privacy-commissioner-develops-new-template-and-guide-to-assist-public-bodies-with-privacy-impact-assessments/",
+      "date": "2026-03-26",
+      "impact": "Alberta public bodies should adopt these templates to standardize and strengthen their privacy impact assessment processes in compliance with provincial legislation.",
+      "dbUpdate": false
+    },
     {
       "headline": "Survey identifies CLOUD Act compliance risks in Canadian AI infrastructure adoption",
       "summary": "An analysis of Canadian AI infrastructure options identifies compliance risks associated with US-controlled cloud platforms (AWS, Google Cloud) and surveys sovereign Canadian alternatives available in 2026. The assessment directly addresses the legal and regulatory implications of selecting cloud infrastructure subject to US government data access provisions.",
