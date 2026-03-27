@@ -7,7 +7,7 @@ name: Signals Pipeline
 on:
   schedule:
     # Every 6 hours: midnight, 6am, noon, 6pm ET (UTC-5)
-    - cron: '0 5,11,17,23 * * *'
+    - cron: '0 6 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
