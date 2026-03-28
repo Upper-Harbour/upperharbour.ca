@@ -191,6 +191,16 @@ footer {
 .faq-q { font-size: 15px; font-weight: 700; color: var(--ice); margin-bottom: 8px; }
 .faq-a { font-size: 14px; color: var(--slate); line-height: 1.75; }
 
+/* ── Author card ───────────────────────────────────────────────── */
+.author-card { display: flex; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--border-md); border-radius: 6px; padding: 20px 24px; margin: 0 0 32px; }
+.author-card img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.author-card-info { font-size: 13px; color: var(--slate); line-height: 1.6; }
+.author-card-name { font-weight: 700; color: var(--ice); font-size: 14px; }
+.author-card-name a { color: var(--ice); text-decoration: none; border-bottom: 1px solid rgba(60,184,176,0.3); }
+.author-card-name a:hover { color: var(--teal); }
+.author-card-role { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.author-card-pubs { font-size: 11px; color: var(--muted); margin-top: 4px; }
+
 /* ── CTA section ────────────────────────────────────────────────── */
 .cta-section { background: var(--surface); border-top: 1px solid var(--border-md); padding: 64px 52px; text-align: center; }
 .cta-section h2 { font-family: var(--display); font-size: 32px; font-weight: 700; color: var(--ice); margin-bottom: 12px; }
