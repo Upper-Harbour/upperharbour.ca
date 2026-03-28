@@ -177,8 +177,7 @@
     /* ── Risk Gauge ──────────────────────────────────── */
     .risk-gauge{display:flex;flex-direction:column;align-items:center;margin:28px 0 4px}
     .risk-gauge-svg{width:220px;height:auto}
-    .gauge-needle{transform-origin:100px 110px;transform:rotate(-80deg)}
-    .reveal.in-view .gauge-needle{animation:needleSwing 1.8s cubic-bezier(0.34,1.56,0.64,1) 0.3s both}
+    .gauge-needle{transform-origin:100px 110px;animation:needleSwing 1.8s cubic-bezier(0.34,1.56,0.64,1) 0.6s both}
     @keyframes needleSwing{from{transform:rotate(-80deg)}to{transform:rotate(62deg)}}
     .risk-gauge-meta{text-align:center;margin-top:-4px}
     .risk-gauge-score{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
@@ -238,7 +237,7 @@
       .reveal{opacity:1;transform:none;transition:none}
       .bento-cell,.compare-card,.mid-cta-btn,.cta-btn{transition:none}
       .bento-cell:hover,.compare-card:hover{transform:none}
-      .gauge-needle{animation:none !important;transform:rotate(62deg) !important}
+      .gauge-needle{animation:none !important;transform:rotate(62deg)}
       .jf-arrow-line{animation:none !important}
       .bento-cell::after{animation:none !important;opacity:0}
       .bento-cell .bento-value{animation:none !important;opacity:1;transform:none}
@@ -274,26 +273,23 @@
       </div>
     </div>
 
-    <!-- Verdict text -->
-    <p class="anim-4" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#EF4444;font-weight:700;font-size:19px;">✗ High Risk</span> — Dropbox is US-incorporated, stores all data in the United States, offers no Canadian data residency, and uses vendor-managed encryption. All data is accessible under US legal process including the CLOUD Act.</p>
-  </header>
-
-  <article class="article-body">
-
-    <!-- Scan status — makes it feel like a live tool, not a static article -->
-    <div class="scan-console"><div class="scan-status"><span class="scan-dot"></span> <span id="scan-msg">Connecting to sovereignty database...</span></div><div class="scan-progress"><div class="scan-progress-fill" id="scan-bar"></div></div></div>
-
-    <!-- Risk Gauge — reveals on scroll -->
-    <div class="risk-gauge reveal" id="risk-gauge">
+    <!-- Risk Gauge — the visual centerpiece. Answers the question before they read a word. -->
+    <div class="risk-gauge anim-4">
       <svg viewBox="0 0 200 130" class="risk-gauge-svg gauge-glow" aria-label="Risk gauge showing high risk">
+        <!-- Arc track -->
         <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="14" stroke-linecap="round"/>
+        <!-- Green (low risk) -->
         <path d="M 20 110 A 80 80 0 0 1 53 45" fill="none" stroke="#10B981" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <!-- Amber (medium risk) -->
         <path d="M 57 42 A 80 80 0 0 1 143 42" fill="none" stroke="#F59E0B" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <!-- Red (high risk) -->
         <path d="M 147 45 A 80 80 0 0 1 180 110" fill="none" stroke="#EF4444" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
-        <g class="gauge-needle" style="transform:rotate(-80deg)">
+        <!-- Needle — animated from green to red -->
+        <g class="gauge-needle">
           <line x1="100" y1="110" x2="100" y2="42" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
           <circle cx="100" cy="110" r="5" fill="#EF4444"/>
         </g>
+        <!-- LOW / HIGH labels -->
         <text x="16" y="126" fill="var(--muted,#6B7B8D)" font-size="7.5" font-family="sans-serif" letter-spacing="0.08em">LOW</text>
         <text x="166" y="126" fill="#EF4444" font-size="7.5" font-family="sans-serif" font-weight="700" letter-spacing="0.08em">HIGH</text>
       </svg>
@@ -303,6 +299,15 @@
         <div style="margin-top:8px;"><a href="/methodology" style="font-size:10px;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(138,157,176,0.3);letter-spacing:0.05em;">How we score →</a></div>
       </div>
     </div>
+
+    <!-- Verdict text — reinforces what the gauge just showed -->
+    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#EF4444;font-weight:700;font-size:19px;">✗ High Risk</span> — Dropbox is US-incorporated, stores all data in the United States, offers no Canadian data residency, and uses vendor-managed encryption. All data is accessible under US legal process including the CLOUD Act.</p>
+  </header>
+
+  <article class="article-body">
+
+    <!-- Scan status — makes it feel like a live tool, not a static article -->
+    <div class="scan-console reveal" id="scan-console-wrap"><div class="scan-status"><span class="scan-dot"></span> <span id="scan-msg">Connecting to sovereignty database...</span></div><div class="scan-progress"><div class="scan-progress-fill" id="scan-bar"></div></div></div>
 
     <!-- Data Cards — the evidence backing the verdict -->
     <div class="bento">
@@ -523,7 +528,7 @@
   var c=document.getElementById('counter-753');
   if(c)counterObs.observe(c);
 
-  // ── Theatrical Scan Effect ──────────────────────────
+  // ── Theatrical Scan Effect — triggers on scroll ──
   var reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
   var scanMsg=document.getElementById('scan-msg');
   var scanBar=document.getElementById('scan-bar');
@@ -531,8 +536,11 @@
   var scanStatus=document.querySelector('.scan-status');
   var scanConsole=document.querySelector('.scan-console');
   var cells=document.querySelectorAll('.bento-cell');
+  var scanStarted=false;
 
-  if(scanMsg&&scanBar&&!reducedMotion){
+  function startScan(){
+    if(scanStarted)return;
+    scanStarted=true;
     var steps=[
       {msg:'Connecting to sovereignty database...',pct:8,delay:600},
       {msg:'Analyzing corporate jurisdiction...',pct:20,delay:700,cell:0},
@@ -546,7 +554,6 @@
     var i=0;
     function runStep(){
       if(i>=steps.length){
-        // Done — fade out the console
         scanDot.classList.add('done');
         scanStatus.classList.add('done');
         setTimeout(function(){
@@ -564,10 +571,20 @@
       i++;
       setTimeout(runStep,s.delay);
     }
-    // Start the scan after a brief pause so the page settles
-    setTimeout(runStep,500);
+    setTimeout(runStep,300);
+  }
+
+  if(scanMsg&&scanBar&&!reducedMotion){
+    var scanWrap=document.getElementById('scan-console-wrap');
+    if(scanWrap){
+      var scanObs=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){startScan();scanObs.unobserve(e.target);}
+        });
+      },{threshold:0.3});
+      scanObs.observe(scanWrap);
+    }
   } else if(reducedMotion){
-    // Show all values immediately, hide scan UI
     cells.forEach(function(c){c.classList.add('scanned');});
     if(scanConsole)scanConsole.style.display='none';
   }
