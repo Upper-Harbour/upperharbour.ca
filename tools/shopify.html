@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Is Shopify Safe for Canadian Data? 2.1/10 Risk Score</title>
+  <meta name="description" content="Shopify is Canadian-owned (Ottawa) and not CLOUD Act exposed. Risk score: 2.1/10. Full sovereignty analysis — what works, what to watch, and how it compares." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <link rel="canonical" href="https://www.upperharbour.ca/tools/shopify" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" /><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Is Shopify Safe for Canadian Data? 2.1/10 Risk Score" />
+  <meta property="og:description" content="Shopify is Canadian-owned and not CLOUD Act exposed. Risk score: 2.1/10. See what makes it strong and where caveats remain." />
+  <meta property="og:url" content="https://www.upperharbour.ca/tools/shopify" /><meta property="og:type" content="article" /><meta property="og:site_name" content="Upper Harbour" /><meta property="article:published_time" content="2026-03-29" /><meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Is Shopify Safe for Canadian Data? 2.1/10 Risk Score","author":{"@type":"Person","name":"Joshua van Es","url":"https://joshuavanes.ca","jobTitle":"Corporate Lawyer","worksFor":{"@type":"Organization","name":"Upper Harbour"}},"publisher":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"datePublished":"2026-03-29","dateModified":"2026-03-29","mainEntityOfPage":"https://www.upperharbour.ca/tools/shopify"}</script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Shopify subject to the CLOUD Act?","acceptedAnswer":{"@type":"Answer","text":"No. Shopify Inc. is incorporated and headquartered in Canada (Ottawa, Ontario). As a Canadian company, it is not subject to the US CLOUD Act. US authorities cannot compel Shopify to produce data under CLOUD Act orders."}},{"@type":"Question","name":"Where does Shopify store data?","acceptedAnswer":{"@type":"Answer","text":"Shopify runs on Google Cloud Platform and dynamically rebalances storage across multiple GCP regions including Canada. Data may move geographically for performance and reliability. Shopify states it complies with applicable data residency laws when transferring data."}},{"@type":"Question","name":"Does Shopify offer customer-managed encryption?","acceptedAnswer":{"@type":"Answer","text":"No. Shopify uses AES-256 encryption at rest and TLS in transit, but Shopify manages all encryption keys. Customer-managed encryption keys are not available. However, because Shopify is Canadian-incorporated, the jurisdictional risk of vendor-managed encryption is significantly lower than with a US provider."}},{"@type":"Question","name":"Is Shopify a good choice for Canadian data sovereignty?","acceptedAnswer":{"@type":"Answer","text":"Yes, with caveats. Shopify is one of the strongest options for Canadian e-commerce from a sovereignty perspective: Canadian-owned, not CLOUD Act exposed, and recognized by the EU as operating under adequate privacy protections. The main caveats are vendor-managed encryption and the dynamic rebalancing of data across global GCP regions, which means data may not always reside in Canada."}},{"@type":"Question","name":"How does Shopify compare to BigCommerce for Canadian sovereignty?","acceptedAnswer":{"@type":"Answer","text":"Shopify (Canadian-owned, Ottawa) is significantly stronger from a sovereignty perspective than BigCommerce (US-incorporated, Austin TX, CLOUD Act exposed). Lightspeed (Montreal) is a comparable Canadian-owned alternative in the point-of-sale and e-commerce space."}}]}</script>
+
+  <style>
+    .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 40px;padding-top:8px}
+    .bento-cell{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:20px;border-left:4px solid #6B7280}
+    .bento-cell.b-red{border-left-color:#EF4444}
+    .bento-cell.b-amber{border-left-color:#F59E0B}
+    .bento-cell.b-green{border-left-color:#10B981}
+    .bento-cell.b-grey{border-left-color:#6B7280}
+    .bento-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .bento-value{font-size:15px;font-weight:600;color:var(--ice)}
+    .badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:3px}
+    .badge.red{background:rgba(239,68,68,0.12);color:#EF4444}
+    .badge.amber{background:rgba(245,158,11,0.12);color:#F59E0B}
+    .badge.green{background:rgba(16,185,129,0.12);color:#10B981}
+    .badge-sm{font-size:11px;padding:2px 7px}
+
+    .expand-section{border-top:1px solid var(--border-md);margin-top:0}
+    .expand-section:first-of-type{margin-top:20px}
+    .expand-header{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;user-select:none}
+    .expand-header h2{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:0;line-height:1.3}
+    .expand-arrow{color:var(--muted);font-size:18px;transition:transform 0.2s;flex-shrink:0;margin-left:12px}
+    .expand-section.open .expand-arrow{transform:rotate(180deg)}
+    .expand-content{display:none;padding-bottom:24px}
+    .expand-section.open .expand-content{display:block}
+    .expand-content p{font-size:15px;color:var(--slate);line-height:1.8;margin-bottom:16px}
+    .expand-content p:last-child{margin-bottom:0}
+    .expand-content h3{font-size:16px;font-weight:700;color:var(--ice);margin:16px 0 8px}
+    .expand-content h3:first-child{margin-top:0}
+    .expand-content a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+    .expand-content ul{padding-left:20px;margin-bottom:16px}
+    .expand-content li{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:6px}
+    .expand-content li:last-child{margin-bottom:0}
+
+    .compare-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+    .compare-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--border-md)}
+    .compare-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate)}
+    .compare-table tr:hover td{background:rgba(60,184,176,0.03)}
+    .compare-table .current td{background:rgba(16,185,129,0.06);border-bottom-color:rgba(16,185,129,0.2)}
+    .compare-table .current td:first-child{box-shadow:inset 3px 0 0 #10B981}
+    .compare-table .exposed td{background:rgba(239,68,68,0.04)}
+    .ct-yes{color:#10B981;font-weight:600}.ct-no{color:#EF4444;font-weight:600}.ct-partial{color:#F59E0B;font-weight:600}
+
+    .mid-cta{background:rgba(20,30,42,0.95);border:1px solid rgba(60,184,176,0.15);border-radius:8px;padding:32px 28px;margin:28px 0;text-align:center}
+    .mid-cta-text{font-size:14px;color:var(--ice);line-height:1.6;margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto}
+    .mid-cta-text strong{color:var(--ice)}
+    .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s}
+    .mid-cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
+
+    .notify-box{background:rgba(20,30,42,0.95);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:28px;margin:24px 0 32px}
+    .notify-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+    .notify-icon{font-size:16px}.notify-title{font-size:14px;font-weight:700;color:var(--ice)}
+    .notify-box p{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+    .notify-form{display:flex;gap:8px}
+    .notify-input{flex:1;padding:11px 14px;font-size:13px;background:var(--bg);border:1px solid var(--border-md);border-radius:4px;color:var(--ice);font-family:var(--body);outline:none;transition:border-color 0.2s}
+    .notify-input:focus{border-color:var(--teal)}
+    .notify-input::placeholder{color:var(--muted)}
+    .notify-submit{padding:11px 22px;font-size:12px;font-weight:700;background:var(--teal);color:#fff;border:none;border-radius:4px;cursor:pointer;white-space:nowrap;transition:opacity 0.2s}
+    .notify-submit:hover{opacity:0.9}
+
+    .verified{font-size:11px;color:var(--muted);margin-top:40px;padding-top:20px;border-top:1px solid var(--border-md);line-height:1.7}
+    .verified a{font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+
+    .faq-item-inline{border-bottom:1px solid var(--border);padding:14px 0}
+    .faq-item-inline:first-child{padding-top:0}
+    .faq-item-inline:last-child{border-bottom:none;padding-bottom:0}
+    .faq-item-inline h3{margin-top:0}
+    .faq-item-inline p{margin-bottom:0}
+
+    @media(max-width:768px){.bento{grid-template-columns:1fr 1fr}.mid-cta{padding:28px 20px}.notify-form{flex-direction:column}.expand-header h2{font-size:18px}.compare-table{font-size:12px}.compare-table th,.compare-table td{padding:8px}}
+    @media(max-width:480px){.bento{grid-template-columns:1fr}}
+
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .anim-1{animation:fadeInUp 0.6s ease-out both}
+    .anim-2{animation:fadeInUp 0.6s ease-out 0.12s both}
+    .anim-3{animation:fadeInUp 0.6s ease-out 0.24s both}
+    .anim-4{animation:fadeInUp 0.6s ease-out 0.36s both}
+    .anim-5{animation:fadeInUp 0.6s ease-out 0.48s both}
+
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease-out,transform 0.55s ease-out}
+    .reveal.in-view{opacity:1;transform:translateY(0)}
+
+    .article-hero{position:relative;overflow:visible}
+    .article-hero::before{content:'';position:absolute;top:-60px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(16,185,129,0.06) 0%,transparent 70%);pointer-events:none;z-index:0}
+    .article-hero>*{position:relative;z-index:1}
+
+    .bento-cell{transition:transform 0.25s ease-out,box-shadow 0.25s ease-out,border-color 0.25s ease-out}
+    .bento-cell:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+    .bento-cell.b-red:hover{border-left-color:#F87171;box-shadow:0 8px 24px rgba(239,68,68,0.12)}
+    .bento-cell.b-amber:hover{border-left-color:#FBBF24;box-shadow:0 8px 24px rgba(245,158,11,0.12)}
+    .bento-cell.b-green:hover{border-left-color:#34D399;box-shadow:0 8px 24px rgba(16,185,129,0.12)}
+
+    .mid-cta-btn{box-shadow:0 0 20px rgba(60,184,176,0.25),0 0 40px rgba(60,184,176,0.1)}
+    .mid-cta-btn:hover{box-shadow:0 0 28px rgba(60,184,176,0.4),0 0 56px rgba(60,184,176,0.15);background:#47cec5;transform:translateY(-2px)}
+    .compare-table tbody tr{transition:background 0.2s ease-out}
+    .compare-table tbody tr:hover td{background:rgba(60,184,176,0.06)}
+    .notify-box{transition:border-color 0.3s ease-out}
+    .notify-box:hover{border-color:rgba(245,158,11,0.35)}
+    .cta-btn{transition:background 0.2s,transform 0.2s,box-shadow 0.2s;color:#fff !important}
+    .cta-btn:hover{box-shadow:0 0 24px rgba(60,184,176,0.35),0 0 48px rgba(60,184,176,0.12);transform:translateY(-2px)}
+
+    .risk-gauge{display:flex;flex-direction:column;align-items:center;margin:28px 0 4px}
+    .risk-gauge-svg{width:220px;height:auto}
+    .gauge-needle{transform-origin:100px 110px;animation:needleSwing 4.5s cubic-bezier(0.25,0.1,0.25,1) 0.6s both}
+    @keyframes needleSwing{from{transform:rotate(-80deg)}to{transform:rotate(-60deg)}}
+    .risk-gauge-meta{text-align:center;margin-top:-4px}
+    .risk-gauge-score{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+    .risk-gauge-score strong{font-size:26px;color:#10B981;letter-spacing:-0.02em;display:block;line-height:1.1;margin:2px 0}
+    .risk-gauge-label{font-size:11px;font-weight:700;color:#10B981;letter-spacing:0.12em;text-transform:uppercase;background:rgba(16,185,129,0.1);padding:3px 10px;border-radius:3px;display:inline-block;margin-top:4px}
+    .gauge-glow{animation:gaugeGlow 2s ease-in-out 5s both}
+    @keyframes gaugeGlow{0%{filter:drop-shadow(0 0 0 transparent)}100%{filter:drop-shadow(0 0 12px rgba(16,185,129,0.2))}}
+
+    .jurisdiction-flow{display:flex;align-items:stretch;justify-content:center;gap:0;margin:28px 0 8px;padding:20px 0}
+    .jf-node{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 18px;border-radius:8px;background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);flex:1;max-width:180px;text-align:center;transition:border-color 0.3s,box-shadow 0.3s}
+    .jf-node:hover{box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+    .jf-node.jf-safe{border-left:3px solid #10B981}.jf-node.jf-safe:hover{border-color:rgba(16,185,129,0.4)}
+    .jf-node.jf-warn{border-left:3px solid #F59E0B}.jf-node.jf-warn:hover{border-color:rgba(245,158,11,0.4)}
+    .jf-node.jf-danger{border-left:3px solid #EF4444}.jf-node.jf-danger:hover{border-color:rgba(239,68,68,0.4)}
+    .jf-icon{font-size:22px}.jf-label{font-size:12px;font-weight:700;color:var(--ice);line-height:1.3}
+    .jf-sub{font-size:10px;color:var(--muted);line-height:1.4}
+    .jf-arrow{display:flex;align-items:center;padding:0 6px;flex-shrink:0}
+    .jf-arrow svg{width:36px;height:20px}
+    .jf-arrow-line{stroke-dasharray:4 3;animation:flowDash 0.8s linear infinite}
+    @keyframes flowDash{to{stroke-dashoffset:-7}}
+
+    .scan-console{animation:fadeInUp 0.4s ease-out 0.3s both;transition:opacity 0.4s ease-out}
+    .scan-status{font-size:11px;color:var(--teal);display:flex;align-items:center;gap:6px;height:18px;transition:opacity 0.15s}
+    .scan-status.done{color:var(--muted)}
+    .scan-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:dotPulse 0.5s ease-in-out infinite;flex-shrink:0}
+    .scan-dot.done{animation:none;background:var(--teal);opacity:0.5}
+    @keyframes dotPulse{0%,100%{opacity:1}50%{opacity:0.2}}
+    .scan-progress{height:2px;background:rgba(255,255,255,0.04);border-radius:1px;margin-top:6px;overflow:hidden}
+    .scan-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),rgba(60,184,176,0.5));border-radius:1px;transition:width 0.3s ease-out}
+    .bento-cell{position:relative;overflow:hidden}
+    .bento-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(60,184,176,0.05) 50%,transparent 70%);background-size:200% 100%;border-radius:7px;pointer-events:none;opacity:0}
+    @keyframes scanShimmer{0%{background-position:200% 0;opacity:1}80%{opacity:1}100%{background-position:-200% 0;opacity:0}}
+    @keyframes dataReveal{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes cardFlash{0%{box-shadow:inset 0 0 0 1px rgba(60,184,176,0)}30%{box-shadow:inset 0 0 0 1px rgba(60,184,176,0.25)}100%{box-shadow:inset 0 0 0 1px rgba(60,184,176,0)}}
+    .bento-cell .bento-value{opacity:0}
+    .bento-cell.scanned .bento-value{animation:dataReveal 0.3s ease-out forwards}
+    .bento-cell.scanned{animation:cardFlash 0.6s ease-out}
+    .bento-cell.scanned::after{animation:scanShimmer 0.5s ease-in-out forwards}
+
+    @media(max-width:768px){.jurisdiction-flow{flex-direction:column;align-items:center}.jf-arrow{transform:rotate(90deg);padding:4px 0}.jf-node{max-width:100%;width:100%}.risk-gauge-svg{width:180px}}
+    @media(prefers-reduced-motion:reduce){.anim-1,.anim-2,.anim-3,.anim-4,.anim-5{animation:none !important;opacity:1;transform:none}.reveal{opacity:1;transform:none;transition:none}.bento-cell,.mid-cta-btn,.cta-btn{transition:none}.bento-cell:hover{transform:none}.gauge-needle{animation:none !important;transform:rotate(-60deg)}.jf-arrow-line{animation:none !important}.bento-cell::after{animation:none !important;opacity:0}.bento-cell .bento-value{animation:none !important;opacity:1;transform:none}.scan-console{animation:none !important;opacity:1}.scan-status{display:none}.scan-progress{display:none}.bento-cell .bento-value{animation:none !important;opacity:1 !important;transform:none !important}.bento-cell.scanned{animation:none !important}.bento-cell.scanned::after{animation:none !important;opacity:0 !important}.gauge-glow{animation:none !important}}
+  </style>
+</head>
+<body>
+
+  <nav><a href="/" class="nav-logo" aria-label="Upper Harbour home"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link active">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Map Your Stack</a></div><button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></nav>
+  <div class="nav-mobile-menu"><a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a></div>
+
+  <header class="article-hero">
+    <div class="article-breadcrumb anim-1"><a href="/">Home</a> → <a href="/tools">Sovereignty Index</a> → Shopify</div>
+
+    <h1 class="article-h1 anim-2">Shopify <em>Canadian Data Sovereignty</em> Analysis</h1>
+
+    <div class="anim-3" style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> · Corporate law · Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, and <em>BetaKit</em> · Updated March 2026</span>
+      </div>
+    </div>
+
+    <div class="risk-gauge anim-4">
+      <svg viewBox="0 0 200 130" class="risk-gauge-svg gauge-glow" aria-label="Risk gauge showing low risk">
+        <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="14" stroke-linecap="round"/>
+        <path d="M 20 110 A 80 80 0 0 1 53 45" fill="none" stroke="#10B981" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
+        <path d="M 57 42 A 80 80 0 0 1 143 42" fill="none" stroke="#F59E0B" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <path d="M 147 45 A 80 80 0 0 1 180 110" fill="none" stroke="#EF4444" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <g class="gauge-needle">
+          <line x1="100" y1="110" x2="100" y2="42" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="100" cy="110" r="5" fill="#10B981"/>
+        </g>
+        <text x="16" y="126" fill="#10B981" font-size="7.5" font-family="sans-serif" font-weight="700" letter-spacing="0.08em">LOW</text>
+        <text x="166" y="126" fill="var(--muted,#6B7B8D)" font-size="7.5" font-family="sans-serif" letter-spacing="0.08em">HIGH</text>
+      </svg>
+      <div class="risk-gauge-meta">
+        <div class="risk-gauge-score">Risk Score<strong id="risk-score">0.0 / 10</strong></div>
+        <span class="risk-gauge-label">Low Risk</span>
+        <div class="scan-console anim-4" id="scan-console-wrap" style="margin-top:12px;width:100%;"><div class="scan-status"><span class="scan-dot"></span> <span id="scan-msg">Connecting to sovereignty database...</span></div><div class="scan-progress"><div class="scan-progress-fill" id="scan-bar"></div></div></div>
+        <div style="margin-top:8px;"><a href="/methodology" style="font-size:10px;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(138,157,176,0.3);letter-spacing:0.05em;">How we score →</a></div>
+      </div>
+    </div>
+
+    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#10B981;font-weight:700;font-size:19px;">✓ Low Risk</span> — Shopify is Canadian-incorporated (Ottawa, Ontario), listed on the TSX, and not subject to the US CLOUD Act. It is one of the strongest sovereignty options for Canadian e-commerce. Two caveats: Shopify manages all encryption keys, and data may move across global GCP regions for performance.</p>
+  </header>
+
+  <article class="article-body">
+
+    <div class="bento">
+      <div class="bento-cell b-green"><div class="bento-label">Parent Company</div><div class="bento-value">Shopify Inc. (Canada 🍁)</div></div>
+      <div class="bento-cell b-green"><div class="bento-label">CLOUD Act Status</div><div class="bento-value"><span class="badge green">✓ Not Exposed</span></div></div>
+      <div class="bento-cell b-green"><div class="bento-label">Canadian Data Residency</div><div class="bento-value"><span class="badge green">✓ Available (GCP)</span></div></div>
+      <div class="bento-cell b-amber"><div class="bento-label">Encryption</div><div class="bento-value"><span class="badge amber">⚠ Vendor-Managed</span></div></div>
+      <div class="bento-cell b-green"><div class="bento-label">TIA / PIA Required</div><div class="bento-value"><span class="badge green">Reduced scope</span></div></div>
+      <div class="bento-cell b-grey"><div class="bento-label">Canadian Alternative</div><div class="bento-value">This is one</div></div>
+    </div>
+
+    <h2 class="reveal">Is Shopify safe for Canadian organizations?</h2>
+    <p>Yes — with caveats. Shopify Inc. is incorporated in Canada, headquartered in Ottawa, and listed on the Toronto Stock Exchange (TSX: SHOP). It is not subject to the US CLOUD Act. US authorities cannot compel Shopify to produce data under American legal process. The European Commission has recognized Canada's privacy framework as providing adequate protection — a status that further insulates Shopify from the cross-border data challenges that affect US-based competitors.</p>
+    <p>This makes Shopify one of the strongest options for Canadian e-commerce from a data sovereignty perspective. For organizations that have been evaluating tools like <a href="/tools/quickbooks" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">QuickBooks</a> (US, 8.3/10 risk) or considering whether their SaaS stack exposes them to foreign jurisdiction, Shopify is a meaningful data point: a world-class platform that happens to be Canadian-controlled.</p>
+    <p>The caveats are real but manageable. Shopify runs on Google Cloud Platform and <strong>dynamically rebalances storage across multiple GCP regions</strong>, which means data may not always reside in Canada. And Shopify manages all encryption keys — customer-managed encryption is not available. These are worth understanding, but neither changes the fundamental jurisdictional advantage of a Canadian parent company.</p>
+
+
+    <div class="expand-section open reveal" id="regulatory">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Regulatory Analysis</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <h3>CLOUD Act status</h3>
+        <p>Shopify is not subject to the US CLOUD Act. As a Canadian-incorporated company, <strong>US authorities have no direct legal mechanism to compel Shopify to produce data</strong>. This is the single most important distinction from US-based e-commerce platforms like BigCommerce or Squarespace.</p>
+
+        <div class="jurisdiction-flow">
+          <div class="jf-node jf-safe">
+            <div class="jf-icon">🍁</div>
+            <div class="jf-label">Your E-Commerce Data</div>
+            <div class="jf-sub">Customer orders, addresses<br>Payment data · Analytics</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#10B981" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#10B981"/></svg>
+          </div>
+          <div class="jf-node jf-safe">
+            <div class="jf-icon">🏢</div>
+            <div class="jf-label">Shopify Inc.</div>
+            <div class="jf-sub">Ottawa, Canada<br>TSX: SHOP · Canadian law</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#10B981" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#10B981"/></svg>
+          </div>
+          <div class="jf-node jf-safe">
+            <div class="jf-icon">🛡️</div>
+            <div class="jf-label">Canadian Jurisdiction</div>
+            <div class="jf-sub">PIPEDA · Law 25<br><strong style="color:#10B981;">Protected from CLOUD Act</strong></div>
+          </div>
+        </div>
+
+        <h3>Quebec Law 25</h3>
+        <p>Because Shopify is Canadian-incorporated, the TIA requirements for Quebec organizations are significantly reduced compared to US-based tools. <strong>If data remains within Canada, a cross-border TIA may not be required.</strong> However, Shopify's dynamic data rebalancing across GCP regions means data may temporarily reside outside Canada. Organizations handling sensitive personal data should confirm their data routing with Shopify and document their assessment.</p>
+
+        <h3>BC FIPPA</h3>
+        <p>Shopify's Canadian incorporation and data residency options make it a <strong>substantially lower risk</strong> for BC public bodies compared to US-based alternatives. A PIA is still recommended for any tool processing personal information, but the jurisdictional analysis is straightforward.</p>
+
+        <h3>PIPEDA</h3>
+        <p>Shopify operates under PIPEDA as a Canadian company. <strong>There is no cross-border transfer concern when data remains within Canada.</strong> Shopify's privacy practices are subject to oversight by the Office of the Privacy Commissioner of Canada — the same regulator that oversees your organization.</p>
+      </div>
+    </div>
+
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Shopify is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. It is also one of only <strong>132 Canadian-owned tools</strong> in the index — 17% of the total. Most Canadian organizations rely on a mix of Canadian and foreign-controlled SaaS. Understanding which tools in your stack are Canadian-controlled and which are not is the foundation of any sovereignty assessment.</p>
+
+    <div class="mid-cta reveal">
+      <div class="mid-cta-text">See which of your other tools share Shopify's sovereignty profile — and which don't.</div>
+      <a href="/harbourscan" class="mid-cta-btn">Map Your Stack →</a>
+    </div>
+
+
+    <div class="expand-section open reveal" id="alternatives">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Alternatives &amp; Comparison</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <p>How Shopify compares to other e-commerce platforms on sovereignty criteria:</p>
+        <table class="compare-table">
+          <thead><tr><th>Tool</th><th>Ownership</th><th>CLOUD Act</th><th>CDN Residency</th><th>Customer Keys</th></tr></thead>
+          <tbody>
+            <tr class="current"><td><strong>Shopify</strong></td><td class="ct-yes">Canadian</td><td class="ct-yes">Not exposed</td><td class="ct-yes">Available</td><td class="ct-no">No</td></tr>
+            <tr><td>Lightspeed</td><td class="ct-yes">Canadian</td><td class="ct-yes">Not exposed</td><td class="ct-yes">Available</td><td class="ct-no">No</td></tr>
+            <tr class="exposed"><td>BigCommerce</td><td>US</td><td class="ct-no">Exposed</td><td class="ct-partial">Available</td><td class="ct-no">No</td></tr>
+            <tr class="exposed"><td>WooCommerce</td><td>US (Automattic)</td><td class="ct-no">Exposed</td><td class="ct-partial">Self-hosted option</td><td class="ct-partial">If self-hosted</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:13px;color:var(--muted);">Based on <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a> data. Other Canadian e-commerce tools: Bold Commerce (Winnipeg), Tulip (Toronto), Smile.io (Kitchener), Stamped.io (Vancouver).</p>
+      </div>
+    </div>
+
+
+    <div class="notify-box reveal">
+      <div class="notify-header"><span class="notify-icon">🔔</span><span class="notify-title">Get notified when Shopify's compliance status changes</span></div>
+      <p>We monitor vendor ownership, data residency options, and regulatory changes. Enter your email to receive an alert if Shopify's sovereignty profile changes — including any ownership or infrastructure shifts.</p>
+      <div class="notify-form"><input type="email" class="notify-input" placeholder="your@email.com" id="notifyEmail" /><button class="notify-submit" onclick="alert('Thanks — we\'ll notify you of any changes to Shopify\'s sovereignty status.')">Notify Me</button></div>
+    </div>
+
+
+    <div class="expand-section" id="technical">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Technical Architecture</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <h3>Infrastructure</h3>
+        <p>Shopify runs primarily on Google Cloud Platform (GCP), with infrastructure spanning multiple regions including Canada, the US, Europe, and Asia-Pacific. Shopify uses a multi-region architecture for performance and redundancy, and <strong>dynamically rebalances storage across GCP regions</strong>. This means merchant data may not always reside in a single fixed location.</p>
+        <h3>Encryption</h3>
+        <p>Shopify uses AES-256 encryption at rest and TLS in transit. For apps handling "Protected Customer Data," Shopify mandates encryption at rest as a Level 1 requirement. <strong>However, Shopify manages all encryption keys.</strong> Customer-managed encryption keys are not available. Because Shopify is Canadian-incorporated, the jurisdictional risk of vendor-managed keys is lower than with a US provider — but the technical limitation remains.</p>
+        <h3>Subprocessors</h3>
+        <p>Shopify uses subprocessors for cloud hosting, error logging, load balancing, content delivery, and data analysis. Some subprocessors may be US-based. Shopify's DPA includes Standard Contractual Clauses and protections for cross-border transfers. Organizations with strict residency requirements should review Shopify's published subprocessor list.</p>
+        <h3>Payment data</h3>
+        <p>Shopify maintains PCI DSS Level 1 compliance — the highest security standard for payment processing. Payment card data is handled through Shopify Payments (powered by Stripe) and is subject to its own data handling and residency rules separate from the main Shopify platform.</p>
+      </div>
+    </div>
+
+
+    <div class="expand-section" id="caveats">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>What to Watch</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <p>Shopify is a strong sovereignty choice, but no tool is perfect. Things to monitor:</p>
+        <ul>
+          <li><strong>Dynamic data rebalancing:</strong> Shopify moves data across GCP regions for performance. If strict data residency is required (e.g., for certain government contracts), confirm with Shopify that data can be restricted to Canadian regions.</li>
+          <li><strong>Vendor-managed encryption:</strong> Shopify holds the keys. For most e-commerce use cases this is acceptable, but organizations handling highly sensitive data should be aware.</li>
+          <li><strong>US-listed stock:</strong> Shopify trades on both the TSX and NYSE. While this does not change its Canadian incorporation or jurisdiction, some organizations may want to monitor whether any future corporate restructuring could affect its jurisdictional status.</li>
+          <li><strong>App ecosystem:</strong> Third-party Shopify apps may have their own data handling practices. An app installed from the Shopify App Store may be operated by a US company with different sovereignty characteristics than Shopify itself.</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="expand-section" id="faq">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Frequently Asked Questions</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <div class="faq-item-inline"><h3>Is Shopify subject to the CLOUD Act?</h3><p>No. Shopify is Canadian-incorporated (Ottawa). US authorities cannot compel Shopify to produce data under the CLOUD Act.</p></div>
+        <div class="faq-item-inline"><h3>Where does Shopify store data?</h3><p>Shopify runs on Google Cloud Platform and dynamically rebalances storage across GCP regions including Canada. Data may move geographically for performance and reliability.</p></div>
+        <div class="faq-item-inline"><h3>Does Shopify offer customer-managed encryption?</h3><p>No. Shopify uses AES-256 at rest and TLS in transit, but manages all encryption keys. Because Shopify is Canadian, the jurisdictional risk of this is lower than with a US provider.</p></div>
+        <div class="faq-item-inline"><h3>How does Shopify compare to BigCommerce?</h3><p>Shopify (Canadian, not CLOUD Act exposed) is significantly stronger from a sovereignty perspective than BigCommerce (US, CLOUD Act exposed). Lightspeed (Montreal) is a comparable Canadian alternative.</p></div>
+        <div class="faq-item-inline"><h3>Do I need a TIA for Shopify under Law 25?</h3><p>If data stays within Canada, a cross-border TIA may not be required. However, Shopify's dynamic data rebalancing means data may temporarily reside outside Canada. Document your assessment and confirm data routing with Shopify.</p></div>
+      </div>
+    </div>
+
+
+    <div class="verified">
+      <strong>Methodology:</strong> This assessment is based on Shopify's corporate filings (TSX/NYSE), published privacy policy, DPA, subprocessor disclosures, and the <a href="/methodology">Upper Harbour classification methodology</a>. Data verified March 2026. Updated quarterly. Part of the <a href="/tools">Canadian Technology Sovereignty Index</a>.
+    </div>
+  </article>
+
+  <section class="cta-section reveal">
+    <h2>What about the rest of your stack?</h2>
+    <p>Shopify is one of the good ones. Most Canadian organizations use 15–30 SaaS products — and the majority aren't Canadian-owned. See which ones send data outside of Canadian jurisdiction.</p>
+    <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Need compliance documentation? <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">TIA and PIA reports from $99 →</a></p>
+  </section>
+
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Sovereignty Index</a></li><li><a href="/signals">Signals</a></li><li><a href="/research">Research</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/resources">Compliance Guides</a></li><li><a href="/comply">Compliance Reports</a></li></ul></div><div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li><li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li><li><a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351">Contact us</a></li><li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li></ul></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Upper Harbour. All rights reserved. · <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> · <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span><span class="footer-copy">Canadian-owned and operated. Data stays in Canada.</span></div></footer>
+
+<script>
+(function(){
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target);}});},{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+  // Risk score counter — counts to 2.1
+  var scoreEl=document.getElementById('risk-score');
+  if(scoreEl&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var targetScore=2.1,dur=4500,delay=600,t0=null;
+    setTimeout(function(){
+      requestAnimationFrame(function step(ts){
+        if(!t0)t0=ts;
+        var p=Math.min((ts-t0)/dur,1);
+        var ease=p<0.5?2*p*p:(1-Math.pow(-2*p+2,2)/2);
+        var val=(targetScore*ease).toFixed(1);
+        scoreEl.textContent=val+' / 10';
+        if(p<1)requestAnimationFrame(step);else scoreEl.textContent=targetScore.toFixed(1)+' / 10';
+      });
+    },delay);
+  } else if(scoreEl){scoreEl.textContent='2.1 / 10';}
+
+  var counted=false;
+  var counterObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!counted){counted=true;var el=e.target,target=753,start=0,dur=1600,t0=null;function step(ts){if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1);var ease=1-Math.pow(1-p,3);el.textContent=Math.floor(start+(target-start)*ease);if(p<1)requestAnimationFrame(step);else el.textContent='753';}requestAnimationFrame(step);counterObs.unobserve(e.target);}});},{threshold:0.3});
+  var c=document.getElementById('counter-753');if(c)counterObs.observe(c);
+
+  var reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var scanMsg=document.getElementById('scan-msg');
+  var scanBar=document.getElementById('scan-bar');
+  var scanDot=document.querySelector('.scan-dot');
+  var scanStatus=document.querySelector('.scan-status');
+  var scanConsole=document.querySelector('.scan-console');
+  var cells=document.querySelectorAll('.bento-cell');
+
+  if(scanMsg&&scanBar&&!reducedMotion){
+    var steps=[
+      {msg:'Connecting to sovereignty database...',pct:8,delay:600},
+      {msg:'Analyzing corporate jurisdiction...',pct:20,delay:700,cell:0},
+      {msg:'Checking CLOUD Act exposure...',pct:36,delay:650,cell:1},
+      {msg:'Evaluating data residency options...',pct:50,delay:600,cell:2},
+      {msg:'Scanning encryption architecture...',pct:65,delay:650,cell:3},
+      {msg:'Checking regulatory requirements...',pct:78,delay:600,cell:4},
+      {msg:'Identifying Canadian alternatives...',pct:90,delay:650,cell:5},
+      {msg:'Analysis complete — 6 risk factors identified',pct:100,delay:900}
+    ];
+    var i=0;
+    function runStep(){
+      if(i>=steps.length){scanDot.classList.add('done');scanStatus.classList.add('done');setTimeout(function(){scanConsole.style.opacity='0';setTimeout(function(){scanConsole.style.display='none';},400);},800);return;}
+      var s=steps[i];scanMsg.textContent=s.msg;scanBar.style.width=s.pct+'%';
+      if(typeof s.cell==='number'&&cells[s.cell]){cells[s.cell].classList.add('scanned');}
+      i++;setTimeout(runStep,s.delay);
+    }
+    setTimeout(runStep,500);
+  } else if(reducedMotion){
+    cells.forEach(function(c){c.classList.add('scanned');});
+    if(scanConsole)scanConsole.style.display='none';
+  }
+})();
+</script>
+</body>
+</html>
