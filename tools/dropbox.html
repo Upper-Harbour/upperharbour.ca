@@ -22,18 +22,16 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Dropbox CLOUD Act compliant for Canadian organizations?","acceptedAnswer":{"@type":"Answer","text":"Dropbox is a US-incorporated company subject to the CLOUD Act. US authorities can compel Dropbox to produce data regardless of where it is stored. There is no Canadian data residency option. Canadian organizations using Dropbox for personal information should complete a Transfer Impact Assessment under Law 25 or a Privacy Impact Assessment under FIPPA."}},{"@type":"Question","name":"Does Dropbox offer Canadian data residency?","acceptedAnswer":{"@type":"Answer","text":"No. Dropbox stores all data in the United States. There is no option to restrict data to Canadian servers. All files are subject to US jurisdiction and legal process."}},{"@type":"Question","name":"What are the Canadian alternatives to Dropbox?","acceptedAnswer":{"@type":"Answer","text":"Canadian-owned file storage alternatives include Sync.com (Toronto, zero-knowledge encryption, Canadian data residency). Microsoft OneDrive and Google Drive offer Canadian regions but remain subject to the CLOUD Act."}},{"@type":"Question","name":"Do I need a Transfer Impact Assessment for Dropbox under Law 25?","acceptedAnswer":{"@type":"Answer","text":"Yes. Quebec's Law 25 requires a Transfer Impact Assessment for any personal information transferred outside Quebec. Since Dropbox stores all data in the United States, any Quebec organization storing personal information in Dropbox must complete and document a TIA."}},{"@type":"Question","name":"Can Dropbox encryption protect my data from US authorities?","acceptedAnswer":{"@type":"Answer","text":"No. Dropbox uses vendor-managed encryption — Dropbox holds the keys. Under a CLOUD Act order, Dropbox can produce data in readable form. Customer-managed encryption is not available."}}]}</script>
 
   <style>
-    /* ── Verdict ─────────────────────────────────────── */
-    .verdict{max-width:820px;margin:0 auto;padding:0 52px 20px}
-    .verdict-box{display:flex;align-items:flex-start;gap:16px;padding:22px 24px;border-radius:6px}
-    .verdict-box.exposed{background:rgba(224,96,80,0.08);border:1px solid rgba(224,96,80,0.3)}
-    .verdict-box.review{background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.3)}
-    .verdict-box.canadian{background:rgba(60,184,176,0.08);border:1px solid rgba(60,184,176,0.3)}
-    .verdict-icon{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:18px;font-weight:800;margin-top:1px}
-    .verdict-box.exposed .verdict-icon{background:rgba(224,96,80,0.18);color:#EF4444}
-    .verdict-box.review .verdict-icon{background:rgba(201,168,76,0.18);color:#F59E0B}
-    .verdict-box.canadian .verdict-icon{background:rgba(60,184,176,0.18);color:#10B981}
-    .verdict-text{font-size:14px;color:var(--slate);line-height:1.6}
-    .verdict-text strong{color:var(--ice);font-weight:700}
+    /* ── Verdict badge (compact, not a box) ──────── */
+    .verdict{max-width:820px;margin:0 auto;padding:0 52px 16px}
+    .verdict-badge{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:6px;font-size:14px;color:var(--slate);line-height:1.5}
+    .verdict-badge.exposed{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25)}
+    .verdict-badge.review{background:rgba(245,158,11,0.08);border:1px solid rgba(245,158,11,0.25)}
+    .verdict-badge.canadian{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25)}
+    .verdict-badge strong{font-weight:700}
+    .verdict-badge.exposed strong{color:#EF4444}
+    .verdict-badge.review strong{color:#F59E0B}
+    .verdict-badge.canadian strong{color:#10B981}
 
     /* ── Bento data cards ───────────────────────────── */
     .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 36px}
@@ -157,21 +155,16 @@
     <p class="article-intro">Is Dropbox safe for Canadian organizations handling personal information? Here's what the jurisdictional data shows.</p>
   </header>
 
-  <!-- Verdict -->
+  <!-- Verdict badge -->
   <div class="verdict">
-    <div class="verdict-box exposed">
-      <div class="verdict-icon">✗</div>
-      <div class="verdict-text"><strong>High Risk — Full US Jurisdiction.</strong> Dropbox is US-incorporated, stores all data in the United States, offers no Canadian data residency, and uses vendor-managed encryption. All data is accessible under US legal process including the CLOUD Act.</div>
-    </div>
+    <span class="verdict-badge exposed"><strong>⚠ High Risk</strong> — Full US jurisdiction. CLOUD Act exposed. No Canadian data residency. Vendor-managed encryption.</span>
   </div>
 
-  <!-- Author -->
-  <div class="author-card" style="max-width:820px;margin:0 auto 40px;padding:0 52px;">
-    <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="56" height="56">
-    <div class="author-card-info">
-      <div class="author-card-name"><a href="/founder">Joshua van Es</a></div>
-      <div class="author-card-role">Corporate law · Founder, Upper Harbour</div>
-      <div class="author-card-pubs">Published in The Globe and Mail, Maclean's, OpenCanada, and BetaKit</div>
+  <!-- Author — small inline byline, not a box -->
+  <div style="max-width:820px;margin:0 auto 32px;padding:0 52px;display:flex;align-items:center;gap:12px;">
+    <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="36" height="36" style="border-radius:50%;object-fit:cover;">
+    <div style="font-size:13px;color:var(--slate);line-height:1.4;">
+      <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> · Corporate law · Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a>
     </div>
   </div>
 
@@ -301,7 +294,7 @@
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <p>Unlike <a href="/tools/microsoft-365">Microsoft 365</a> <span class="badge green badge-sm">✓ CDN residency</span> or <a href="/tools/aws">AWS</a> <span class="badge green badge-sm">✓ customer keys</span>, Dropbox provides no built-in sovereignty controls:</p>
+        <p>Unlike <a href="/tools/microsoft-365">Microsoft 365</a> (which offers Canadian data residency and Customer Key encryption) or <a href="/tools/aws">AWS</a> (which offers customer-managed encryption in Canadian regions), Dropbox provides no built-in sovereignty controls:</p>
         <ul>
           <li><strong>Organizational policy:</strong> Restrict which data categories can be stored. Acceptable for non-sensitive files; unsuitable for personal information or regulated data.</li>
           <li><strong>Third-party encryption:</strong> Encrypt before uploading (Boxcryptor, Cryptomator). Provides protection but breaks search, sharing, preview, and collaboration.</li>
@@ -353,7 +346,7 @@
   <!-- ═══ SECTION 12: FINAL BOTTOM CTA ═══ -->
   <section class="cta-section">
     <h2>Map your full stack exposure</h2>
-    <p>Dropbox is one tool. Most Canadian organizations use 15–30 SaaS products. Map your entire stack to parent jurisdictions and CLOUD Act exposure.</p>
+    <p>Dropbox is one tool. Most Canadian organizations use 15–30 SaaS products. See which ones send data outside of Canadian jurisdiction.</p>
     <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
     <p style="font-size:13px;color:var(--muted);margin-top:16px;">Need compliance documentation? <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Get your compliance documents from $99 →</a></p>
   </section>
