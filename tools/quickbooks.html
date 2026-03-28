@@ -55,7 +55,8 @@
     .expand-content li{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:6px}
     .expand-content li:last-child{margin-bottom:0}
 
-    .compare-table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px}
+    .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0}
+    .compare-table{width:100%;min-width:480px;border-collapse:collapse;font-size:13px}
     .compare-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--border-md)}
     .compare-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate)}
     .compare-table tr:hover td{background:rgba(60,184,176,0.03)}
@@ -90,8 +91,15 @@
     .faq-item-inline h3{margin-top:0}
     .faq-item-inline p{margin-bottom:0}
 
-    @media(max-width:768px){.bento{grid-template-columns:1fr 1fr}.mid-cta{padding:28px 20px}.notify-form{flex-direction:column}.expand-header h2{font-size:18px}.compare-table{font-size:12px}.compare-table th,.compare-table td{padding:8px}}
-    @media(max-width:480px){.bento{grid-template-columns:1fr}}
+    @media(max-width:768px){
+      .article-hero .anim-3 span{font-size:12px !important}
+      .article-hero .anim-3 span+br+span{font-size:10px !important}
+      .article-hero .anim-5,.article-hero .anim-4+p{font-size:15px !important}
+      .scan-console{max-width:100% !important}.bento{grid-template-columns:1fr 1fr}.mid-cta{padding:28px 20px}.notify-form{flex-direction:column}.expand-header h2{font-size:18px}.compare-table{font-size:12px}.compare-table th,.compare-table td{padding:8px}}
+    @media(max-width:480px){
+      .risk-gauge-svg{width:160px !important}
+      .risk-gauge-score strong{font-size:22px !important}
+      .article-h1{font-size:28px !important}.bento{grid-template-columns:1fr}}
 
     @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
     .anim-1{animation:fadeInUp 0.6s ease-out both}
@@ -288,7 +296,7 @@
       </div>
       <div class="expand-content">
         <p>For organizations that need accounting software with reduced jurisdictional exposure, several alternatives offer different sovereignty profiles.</p>
-        <table class="compare-table">
+        <div class="compare-wrap"><table class="compare-table">
           <thead><tr><th>Tool</th><th>Ownership</th><th>CLOUD Act</th><th>CDN Residency</th><th>Customer Keys</th></tr></thead>
           <tbody>
             <tr class="current"><td><strong>QuickBooks</strong></td><td>US (Intuit)</td><td class="ct-no">Exposed</td><td class="ct-partial">Backup only</td><td class="ct-no">No</td></tr>
@@ -296,7 +304,7 @@
             <tr><td>Xero</td><td>New Zealand</td><td class="ct-yes">Not exposed</td><td class="ct-partial">Available</td><td class="ct-no">No</td></tr>
             <tr class="recommended"><td><strong>FreshBooks</strong></td><td class="ct-yes">Canadian</td><td class="ct-yes">Not exposed</td><td class="ct-yes">Yes</td><td class="ct-partial">Contact vendor</td></tr>
           </tbody>
-        </table>
+        </table></div>
         <p style="font-size:13px;color:var(--muted);">Based on <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a> data. Note: Wave was Canadian-founded but acquired by H&R Block (US) in 2019.</p>
       </div>
     </div>
