@@ -176,20 +176,15 @@
 
     /* ── Risk Gauge ──────────────────────────────────── */
     .risk-gauge{display:flex;flex-direction:column;align-items:center;margin:28px 0 4px}
-    .risk-gauge-svg{width:220px;height:auto;opacity:0.25;transition:opacity 0.8s ease-out,filter 0.8s ease-out;filter:saturate(0)}
-    .risk-gauge.gauge-active .risk-gauge-svg{opacity:1;filter:saturate(1)}
-    .gauge-needle{transform-origin:100px 110px;transform:rotate(-80deg);transition:none}
-    .risk-gauge.gauge-active .gauge-needle{animation:needleSwing 1.8s cubic-bezier(0.34,1.56,0.64,1) 0.1s both}
+    .risk-gauge-svg{width:220px;height:auto}
+    .gauge-needle{transform-origin:100px 110px;animation:needleSwing 4.5s cubic-bezier(0.25,0.1,0.25,1) 0.6s both}
     @keyframes needleSwing{from{transform:rotate(-80deg)}to{transform:rotate(62deg)}}
     .risk-gauge-meta{text-align:center;margin-top:-4px}
     .risk-gauge-score{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
-    .risk-gauge-score strong{font-size:26px;color:#EF4444;letter-spacing:-0.02em;display:block;line-height:1.1;margin:2px 0;opacity:0;transition:opacity 0.5s ease-out}
-    .risk-gauge.gauge-active .risk-gauge-score strong{opacity:1}
-    .risk-gauge-label{font-size:11px;font-weight:700;color:#EF4444;letter-spacing:0.12em;text-transform:uppercase;background:rgba(239,68,68,0.1);padding:3px 10px;border-radius:3px;display:inline-block;margin-top:4px;opacity:0;transition:opacity 0.5s ease-out 0.3s}
-    .risk-gauge.gauge-active .risk-gauge-label{opacity:1}
-    .gauge-glow{}
-    .risk-gauge.gauge-active .gauge-glow{animation:gaugeGlow 2s ease-in-out 1.5s both}
-    @keyframes gaugeGlow{0%{filter:drop-shadow(0 0 0 transparent) saturate(1)}100%{filter:drop-shadow(0 0 12px rgba(239,68,68,0.2)) saturate(1)}}
+    .risk-gauge-score strong{font-size:26px;color:#EF4444;letter-spacing:-0.02em;display:block;line-height:1.1;margin:2px 0}
+    .risk-gauge-label{font-size:11px;font-weight:700;color:#EF4444;letter-spacing:0.12em;text-transform:uppercase;background:rgba(239,68,68,0.1);padding:3px 10px;border-radius:3px;display:inline-block;margin-top:4px}
+    .gauge-glow{animation:gaugeGlow 2s ease-in-out 5s both}
+    @keyframes gaugeGlow{0%{filter:drop-shadow(0 0 0 transparent)}100%{filter:drop-shadow(0 0 12px rgba(239,68,68,0.2))}}
 
     /* ── Jurisdiction Flow ────────────────────────────── */
     .jurisdiction-flow{display:flex;align-items:stretch;justify-content:center;gap:0;margin:28px 0 8px;padding:20px 0}
@@ -210,7 +205,7 @@
     @keyframes flowDash{to{stroke-dashoffset:-7}}
 
     /* ── Scan Effect ─────────────────────────────────── */
-    .scan-console{margin-bottom:4px;animation:fadeInUp 0.4s ease-out 0.3s both;transition:opacity 0.4s ease-out}
+    .scan-console{animation:fadeInUp 0.4s ease-out 0.3s both;transition:opacity 0.4s ease-out}
     .scan-status{font-size:11px;color:var(--teal);display:flex;align-items:center;gap:6px;height:18px;transition:opacity 0.15s}
     .scan-status.done{color:var(--muted)}
     .scan-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:dotPulse 0.5s ease-in-out infinite;flex-shrink:0}
@@ -278,9 +273,7 @@
       </div>
     </div>
 
-    <!-- Scan console + Risk Gauge — scan runs, then gauge activates -->
-    <div class="scan-console anim-4" id="scan-console-wrap"><div class="scan-status"><span class="scan-dot"></span> <span id="scan-msg">Connecting to sovereignty database...</span></div><div class="scan-progress"><div class="scan-progress-fill" id="scan-bar"></div></div></div>
-
+    <!-- Risk Gauge -->
     <div class="risk-gauge anim-4" id="risk-gauge">
       <svg viewBox="0 0 200 130" class="risk-gauge-svg gauge-glow" aria-label="Risk gauge showing high risk">
         <!-- Arc track -->
@@ -303,6 +296,7 @@
       <div class="risk-gauge-meta">
         <div class="risk-gauge-score">Risk Score<strong>8.8 / 10</strong></div>
         <span class="risk-gauge-label">High Risk</span>
+        <div class="scan-console anim-4" id="scan-console-wrap" style="margin-top:12px;width:220px;"><div class="scan-status"><span class="scan-dot"></span> <span id="scan-msg">Connecting to sovereignty database...</span></div><div class="scan-progress"><div class="scan-progress-fill" id="scan-bar"></div></div></div>
         <div style="margin-top:8px;"><a href="/methodology" style="font-size:10px;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(138,157,176,0.3);letter-spacing:0.05em;">How we score →</a></div>
       </div>
     </div>
@@ -539,7 +533,6 @@
   var scanDot=document.querySelector('.scan-dot');
   var scanStatus=document.querySelector('.scan-status');
   var scanConsole=document.querySelector('.scan-console');
-  var riskGauge=document.getElementById('risk-gauge');
   var cells=document.querySelectorAll('.bento-cell');
 
   if(scanMsg&&scanBar&&!reducedMotion){
@@ -556,10 +549,8 @@
     var i=0;
     function runStep(){
       if(i>=steps.length){
-        // Scan done — activate the gauge and fade out the console
         scanDot.classList.add('done');
         scanStatus.classList.add('done');
-        if(riskGauge)riskGauge.classList.add('gauge-active');
         setTimeout(function(){
           scanConsole.style.opacity='0';
           setTimeout(function(){scanConsole.style.display='none';},400);
@@ -579,7 +570,6 @@
   } else if(reducedMotion){
     cells.forEach(function(c){c.classList.add('scanned');});
     if(scanConsole)scanConsole.style.display='none';
-    if(riskGauge)riskGauge.classList.add('gauge-active');
   }
 })();
 </script>
