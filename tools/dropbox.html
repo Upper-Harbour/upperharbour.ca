@@ -63,6 +63,8 @@
     .compare-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate)}
     .compare-table tr:hover td{background:rgba(60,184,176,0.03)}
     .compare-table .current{background:rgba(239,68,68,0.04)}
+    .compare-table .recommended td{background:rgba(16,185,129,0.06);border-bottom-color:rgba(16,185,129,0.2)}
+    .compare-table .recommended td:first-child{box-shadow:inset 3px 0 0 #10B981}
     .ct-yes{color:#10B981;font-weight:600}
     .ct-no{color:#EF4444;font-weight:600}
     .ct-partial{color:#F59E0B;font-weight:600}
@@ -85,20 +87,20 @@
     .mid-cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
 
     /* ── Email notify ─────────────────────────────────── */
-    .notify-box{background:rgba(20,30,42,0.95);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:28px;margin:24px 0 0}
+    .notify-box{background:rgba(20,30,42,0.95);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:28px;margin:24px 0 32px}
     .notify-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
     .notify-icon{font-size:16px}
     .notify-title{font-size:14px;font-weight:700;color:var(--ice)}
     .notify-box p{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6}
     .notify-form{display:flex;gap:8px}
     .notify-input{flex:1;padding:11px 14px;font-size:13px;background:var(--bg);border:1px solid var(--border-md);border-radius:4px;color:var(--ice);font-family:var(--body);outline:none;transition:border-color 0.2s}
-    .notify-input:focus{border-color:#F59E0B}
+    .notify-input:focus{border-color:var(--teal)}
     .notify-input::placeholder{color:var(--muted)}
-    .notify-submit{padding:11px 22px;font-size:12px;font-weight:700;background:#F59E0B;color:var(--bg);border:none;border-radius:4px;cursor:pointer;white-space:nowrap;transition:opacity 0.2s}
+    .notify-submit{padding:11px 22px;font-size:12px;font-weight:700;background:var(--teal);color:#fff;border:none;border-radius:4px;cursor:pointer;white-space:nowrap;transition:opacity 0.2s}
     .notify-submit:hover{opacity:0.9}
 
     /* ── Verified ──────────────────────────────────────── */
-    .verified{font-size:11px;color:var(--muted);margin-top:36px;padding-top:16px;border-top:1px solid var(--border);line-height:1.7}
+    .verified{font-size:11px;color:var(--muted);margin-top:40px;padding-top:20px;border-top:1px solid var(--border-md);line-height:1.7}
     .verified a{font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
 
     /* ── FAQ items ─────────────────────────────────────── */
@@ -282,7 +284,7 @@
         <text x="166" y="126" fill="#EF4444" font-size="7.5" font-family="sans-serif" font-weight="700" letter-spacing="0.08em">HIGH</text>
       </svg>
       <div class="risk-gauge-meta">
-        <div class="risk-gauge-score">Sovereignty Score<strong>1.2 / 10</strong></div>
+        <div class="risk-gauge-score">Risk Score<strong>8.8 / 10</strong></div>
         <span class="risk-gauge-label">High Risk</span>
       </div>
     </div>
@@ -316,31 +318,6 @@
     </div>
 
 
-    <!-- ═══ JURISDICTION FLOW — visual "aha moment" ═══ -->
-    <div class="jurisdiction-flow reveal">
-      <div class="jf-node jf-safe">
-        <div class="jf-icon">🍁</div>
-        <div class="jf-label">Your Canadian Data</div>
-        <div class="jf-sub">Personal information<br>under PIPEDA / Law 25</div>
-      </div>
-      <div class="jf-arrow">
-        <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#F59E0B" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#F59E0B"/></svg>
-      </div>
-      <div class="jf-node jf-warn">
-        <div class="jf-icon">🏢</div>
-        <div class="jf-label">Dropbox, Inc.</div>
-        <div class="jf-sub">Delaware, USA<br>US servers · Vendor keys</div>
-      </div>
-      <div class="jf-arrow">
-        <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#EF4444" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#EF4444"/></svg>
-      </div>
-      <div class="jf-node jf-danger">
-        <div class="jf-icon">⚖️</div>
-        <div class="jf-label">US Legal Process</div>
-        <div class="jf-sub">CLOUD Act · Subpoena<br><strong style="color:#EF4444;">Full data access</strong></div>
-      </div>
-    </div>
-
     <!-- ═══ SECTION 2: MAIN ANALYSIS ═══ -->
     <h2 class="reveal">Is Dropbox CLOUD Act compliant for Canadian organizations?</h2>
     <p>No. Dropbox is fully exposed to the CLOUD Act. As a <strong>US-incorporated</strong> company, US authorities can compel access to all Dropbox data regardless of where it's stored. Dropbox offers no Canadian data residency and no customer-managed encryption, meaning there are no technical barriers to US government data access.</p>
@@ -357,6 +334,31 @@
       <div class="expand-content">
         <h3>CLOUD Act exposure</h3>
         <p>The <a href="/resources/cloud-act-canadian-data">Clarifying Lawful Overseas Use of Data Act</a> (2018) requires US companies to produce data in response to valid US legal process, regardless of where that data is physically stored. Dropbox, as a Delaware-incorporated company, is <strong>squarely within scope</strong>. <strong>Since Dropbox holds all encryption keys, it can be compelled to produce data in readable form.</strong></p>
+
+        <!-- Jurisdiction flow — visualizes the chain they just read about -->
+        <div class="jurisdiction-flow">
+          <div class="jf-node jf-safe">
+            <div class="jf-icon">🍁</div>
+            <div class="jf-label">Your Canadian Data</div>
+            <div class="jf-sub">Personal information<br>under PIPEDA / Law 25</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#F59E0B" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#F59E0B"/></svg>
+          </div>
+          <div class="jf-node jf-warn">
+            <div class="jf-icon">🏢</div>
+            <div class="jf-label">Dropbox, Inc.</div>
+            <div class="jf-sub">Delaware, USA<br>US servers · Vendor keys</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#EF4444" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#EF4444"/></svg>
+          </div>
+          <div class="jf-node jf-danger">
+            <div class="jf-icon">⚖️</div>
+            <div class="jf-label">US Legal Process</div>
+            <div class="jf-sub">CLOUD Act · Subpoena<br><strong style="color:#EF4444;">Full data access</strong></div>
+          </div>
+        </div>
 
         <h3>Quebec Law 25</h3>
         <p>Quebec organizations storing personal information in Dropbox must complete a <a href="/resources/transfer-impact-assessments-law-25">Transfer Impact Assessment</a> — <strong>required</strong>. The assessment is straightforward: US jurisdiction, CLOUD Act exposed, US-only storage, no customer encryption. <strong>Penalties for non-compliance can reach $25 million or 4% of worldwide turnover.</strong> Upper Harbour provides <a href="/comply">compliance-ready TIA documentation</a> starting at $99.</p>
@@ -388,25 +390,6 @@
       <div class="expand-content">
         <p>For organizations that need file storage with reduced jurisdictional exposure, several alternatives offer Canadian data residency or Canadian ownership.</p>
 
-        <!-- Comparison mini-cards — placed HERE where they make sense -->
-        <div class="compare-cards">
-          <a href="/tools/google-workspace" class="compare-card">
-            <div class="compare-card-name">Google Drive</div>
-            <div class="compare-card-badges"><span class="badge red badge-sm">✗ CLOUD Act</span> <span class="badge green badge-sm">✓ CDN residency</span></div>
-            <div class="compare-card-link">View analysis →</div>
-          </a>
-          <a href="/tools/microsoft-365" class="compare-card">
-            <div class="compare-card-name">OneDrive</div>
-            <div class="compare-card-badges"><span class="badge red badge-sm">✗ CLOUD Act</span> <span class="badge green badge-sm">✓ CDN residency</span></div>
-            <div class="compare-card-link">View analysis →</div>
-          </a>
-          <a class="compare-card highlight" style="cursor:default;">
-            <div class="compare-card-name">Sync.com</div>
-            <div class="compare-card-badges"><span class="badge green badge-sm">✓ Canadian-owned</span> <span class="badge green badge-sm">✓ Zero-knowledge</span></div>
-            <div class="compare-card-link" style="color:#10B981;">Canadian alternative</div>
-          </a>
-        </div>
-
         <!-- Comparison table -->
         <table class="compare-table">
           <thead><tr><th>Tool</th><th>Ownership</th><th>CLOUD Act</th><th>CDN Residency</th><th>Customer Keys</th></tr></thead>
@@ -414,10 +397,10 @@
             <tr class="current"><td><strong>Dropbox</strong></td><td>US</td><td class="ct-no">Exposed</td><td class="ct-no">No</td><td class="ct-no">No</td></tr>
             <tr><td><a href="/tools/google-workspace">Google Drive</a></td><td>US</td><td class="ct-no">Exposed</td><td class="ct-partial">Available</td><td class="ct-partial">Available</td></tr>
             <tr><td><a href="/tools/microsoft-365">OneDrive</a></td><td>US</td><td class="ct-no">Exposed</td><td class="ct-partial">Available</td><td class="ct-partial">Available</td></tr>
-            <tr><td>Sync.com</td><td>Canadian</td><td class="ct-yes">Not exposed</td><td class="ct-yes">Yes</td><td class="ct-yes">Zero-knowledge</td></tr>
+            <tr class="recommended"><td><strong>Sync.com</strong></td><td class="ct-yes">Canadian</td><td class="ct-yes">Not exposed</td><td class="ct-yes">Yes</td><td class="ct-yes">Zero-knowledge</td></tr>
           </tbody>
         </table>
-        <p style="font-size:13px;color:var(--muted);">Based on Upper Harbour Sovereignty Index data. <a href="/tools">View all 753 tools →</a></p>
+        <p style="font-size:13px;color:var(--muted);">Based on <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a> data.</p>
       </div>
     </div>
 
@@ -492,7 +475,7 @@
 
     <!-- ═══ SECTION 11: METHODOLOGY ═══ -->
     <div class="verified">
-      <strong>Methodology:</strong> This assessment is based on Dropbox's corporate filings (SEC), vendor documentation, published DPA terms, and the <a href="/methodology">Upper Harbour classification methodology</a>. Data verified March 2026. Updated quarterly. Part of the <a href="/tools">Canadian Technology Sovereignty Index</a> (753 tools).
+      <strong>Methodology:</strong> This assessment is based on Dropbox's corporate filings (SEC), vendor documentation, published DPA terms, and the <a href="/methodology">Upper Harbour classification methodology</a>. Data verified March 2026. Updated quarterly. Part of the <a href="/tools">Canadian Technology Sovereignty Index</a>.
     </div>
 
   </article>
@@ -500,10 +483,10 @@
 
   <!-- ═══ SECTION 12: FINAL BOTTOM CTA ═══ -->
   <section class="cta-section reveal">
-    <h2>Map your full stack exposure</h2>
-    <p>Dropbox is one tool. Most Canadian organizations use 15–30 SaaS products. See which ones send data outside of Canadian jurisdiction.</p>
+    <h2>What about the rest of your stack?</h2>
+    <p>HarbourScan maps every tool your organization uses to its parent jurisdiction, CLOUD Act exposure, and Canadian data residency options. Takes 10 minutes.</p>
     <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
-    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Need compliance documentation? <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Get your compliance documents from $99 →</a></p>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Need compliance documentation? <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">TIA and PIA reports from $99 →</a></p>
   </section>
 
 
