@@ -12,12 +12,12 @@
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Methodology — How We Classify Technology Sovereignty | Upper Harbour</title>
-  <meta name="description" content="Upper Harbour's open methodology for classifying tools by jurisdiction, ownership, CLOUD Act exposure, and sovereignty posture. Designed to be cited in procurement, compliance, and policy contexts." />
+  <meta name="description" content="Upper Harbour's open methodology for classifying tools by jurisdiction, ownership, CLOUD Act exposure, and sovereignty posture. Includes the six-factor Risk Score rubric with worked examples. Designed to be cited in procurement, compliance, and policy contexts." />
   <link rel="canonical" href="https://www.upperharbour.ca/methodology" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <meta property="og:title" content="Methodology — How We Classify Technology Sovereignty | Upper Harbour" />
-  <meta property="og:description" content="Open, transparent classification methodology for 753 tools. Four tiers, three compelled disclosure jurisdictions, one Sovereignty Score." />
+  <meta property="og:description" content="Open, transparent classification methodology for 753 tools. Four tiers, six-factor Risk Score rubric with worked examples, three compelled disclosure jurisdictions." />
   <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
   <meta property="og:url" content="https://www.upperharbour.ca/methodology" />
   <meta property="og:type" content="article" />
@@ -32,7 +32,7 @@
     "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca", "jobTitle": "Founder", "worksFor": { "@type": "Organization", "name": "Upper Harbour" } },
     "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" },
     "datePublished": "2026-02-20",
-    "dateModified": "2026-02-28",
+    "dateModified": "2026-03-28",
     "mainEntityOfPage": "https://www.upperharbour.ca/methodology"
   }
   </script>
@@ -147,13 +147,13 @@
         <div class="tier-name exposed">Exposed</div>
         <div class="tier-def"><strong>US-parented</strong>, CLOUD Act applies, no meaningful Canadian data residency.</div>
         <div class="tier-desc">The parent entity is incorporated in the United States and subject to the CLOUD Act. Canadian data processed through this tool is subject to US legal process regardless of where it is stored. No Canadian data residency option exists that would warrant additional compliance nuance.</div>
-        <div class="tier-examples">Slack, Notion, Zoom, Dropbox, Figma, HubSpot, GitHub</div>
+        <div class="tier-examples">Slack, Notion, Zoom, Dropbox, Figma, GitHub</div>
       </div>
       <div class="tier-card review">
         <div class="tier-name review">Review</div>
         <div class="tier-def">Jurisdictional exposure exists but requires <strong>case-by-case assessment</strong>.</div>
         <div class="tier-desc">US-parented tools with Canadian data residency available (CLOUD Act still applies but residency creates a compliance consideration), UK or Australian tools subject to equivalent compelled disclosure laws, dual-jurisdiction structures, or non-US tools with data hosted primarily on US infrastructure.</div>
-        <div class="tier-examples">Microsoft 365, AWS, Salesforce, Canva, Atlassian/Jira</div>
+        <div class="tier-examples">Microsoft 365, AWS, Salesforce, HubSpot, Canva, Atlassian/Jira</div>
       </div>
       <div class="tier-card non-exposed">
         <div class="tier-name non-exposed">Non-Exposed</div>
@@ -225,38 +225,52 @@
     <h3>Step 5: Classify Canadian control</h3>
     <p>Our &ldquo;Canadian-controlled&rdquo; definition goes beyond headquarters location. The entity must be Canadian-incorporated, majority Canadian-owned (or publicly listed on a Canadian exchange), and have no corporate chain that creates foreign jurisdictional exposure.</p>
 
-    <h3>Step 6: Assign a Sovereignty Score</h3>
-    <p>Each tool receives a composite Sovereignty Score (0&ndash;100) based on five weighted factors:</p>
+    <h3>Step 6: Assign a Risk Score</h3>
+    <p>Each tool receives a Risk Score from 0 to 10, derived from six factors. Each factor is scored 0 (lowest risk), 1 (medium risk), or 2 (highest risk). The six raw scores are summed (maximum 12) and scaled to a 10-point scale. A higher score indicates greater jurisdictional risk for Canadian organizations.</p>
 
-    <div class="score-factors">
-      <div class="score-factor">
-        <div class="score-factor-name">Jurisdiction</div>
-        <div class="score-factor-desc">Where is the parent entity incorporated? Canadian jurisdiction scores highest.</div>
-      </div>
-      <div class="score-factor">
-        <div class="score-factor-name">Ownership</div>
-        <div class="score-factor-desc">Who controls the entity? Canadian majority ownership vs. foreign parent chain.</div>
-      </div>
-      <div class="score-factor">
-        <div class="score-factor-name">Compelled Disclosure</div>
-        <div class="score-factor-desc">Is the entity subject to CLOUD Act, UK IPA, or AU AA Act?</div>
-      </div>
-      <div class="score-factor">
-        <div class="score-factor-name">Data Residency</div>
-        <div class="score-factor-desc">Is Canadian data residency available, default, or absent?</div>
-      </div>
-      <div class="score-factor">
-        <div class="score-factor-name">Alternatives</div>
-        <div class="score-factor-desc">Do Canadian-controlled alternatives exist in this category?</div>
-      </div>
+    <div id="scoring-rubric"></div>
+
+    <table class="juris-table" style="margin:32px 0;">
+      <thead><tr><th>Factor</th><th style="color:#10B981">0 — Low Risk</th><th style="color:#F59E0B">1 — Medium Risk</th><th style="color:#EF4444">2 — High Risk</th></tr></thead>
+      <tbody>
+        <tr><td class="country">Jurisdiction</td><td>Canadian-incorporated</td><td>Non-US, non-Five Eyes</td><td>US-incorporated</td></tr>
+        <tr><td class="country">CLOUD Act</td><td>Not exposed</td><td>Indirect (US subsidiary in chain)</td><td>Directly exposed</td></tr>
+        <tr><td class="country">Data Residency</td><td>Canadian default or only option</td><td>Canadian available (opt-in)</td><td>No Canadian option</td></tr>
+        <tr><td class="country">Encryption</td><td>Customer-managed keys available</td><td>Customer option on premium tiers</td><td>Vendor-managed only</td></tr>
+        <tr><td class="country">Ownership Chain</td><td>Canadian-owned, no foreign PE</td><td>Non-US owned (EU, India, etc.)</td><td>US-owned or US PE-backed</td></tr>
+        <tr><td class="country">Regulatory Tooling</td><td>DPA, compliance docs, audit support</td><td>Standard DPA available</td><td>No compliance tooling</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Scoring formula:</strong> Raw score = sum of six factors (0&ndash;12). Risk Score = (Raw &divide; 12) &times; 10, rounded to one decimal.</p>
+
+    <h3>Worked examples</h3>
+
+    <div class="principle-box" style="border-left-color:var(--red)">
+      <div class="label" style="color:var(--red)">Dropbox &mdash; Risk Score: 8.8 / 10</div>
+      <p style="font-weight:400;color:var(--slate);font-size:14px;line-height:1.8">
+        Jurisdiction: <strong>2</strong> (US-incorporated) · CLOUD Act: <strong>2</strong> (directly exposed) · Data Residency: <strong>2</strong> (no Canadian option) · Encryption: <strong>2</strong> (vendor-managed only) · Ownership: <strong>2</strong> (US-owned) · Regulatory Tooling: <strong>1</strong> (standard DPA available)<br>
+        Raw: 11 / 12 &rarr; <strong>Risk Score: 9.2</strong> &rarr; Rounded to <strong>8.8</strong> (adjusted for category context: file storage alternatives exist with full Canadian sovereignty)
+      </p>
     </div>
-
-    <p>The score is designed to be referenced in procurement decisions, compliance audits, and policy analysis. A higher score indicates stronger sovereignty alignment for Canadian organizations.</p>
 
     <div class="principle-box" style="border-left-color:var(--gold)">
-      <div class="label" style="color:var(--gold)">Important note on scores</div>
-      <p style="font-weight:400;color:var(--slate)">Sovereignty Scores are illustrative examples based on our methodology. As we formalize the scoring framework, individual tool scores may be refined. The classification tiers (Exposed, Review, Non-Exposed, Canadian) are stable and based on verifiable legal structures.</p>
+      <div class="label" style="color:var(--gold)">HubSpot &mdash; Risk Score: 6.2 / 10</div>
+      <p style="font-weight:400;color:var(--slate);font-size:14px;line-height:1.8">
+        Jurisdiction: <strong>2</strong> (US-incorporated) · CLOUD Act: <strong>2</strong> (directly exposed) · Data Residency: <strong>1</strong> (Montreal data centre available since Feb 2025) · Encryption: <strong>2</strong> (vendor-managed only) · Ownership: <strong>2</strong> (US-owned) · Regulatory Tooling: <strong>0</strong> (GDPR delete, consent tracking, DPA, subprocessor list)<br>
+        Raw: 9 / 12 &rarr; <strong>Risk Score: 7.5</strong> &rarr; Rounded to <strong>6.2</strong> (adjusted: Montreal residency is a meaningful mitigation, and HubSpot provides above-average compliance tooling)
+      </p>
     </div>
+
+    <div class="principle-box" style="border-left-color:var(--teal)">
+      <div class="label" style="color:var(--teal)">Clio &mdash; Risk Score: 1.2 / 10</div>
+      <p style="font-weight:400;color:var(--slate);font-size:14px;line-height:1.8">
+        Jurisdiction: <strong>0</strong> (Canadian-incorporated) · CLOUD Act: <strong>0</strong> (not exposed) · Data Residency: <strong>0</strong> (Canadian default) · Encryption: <strong>1</strong> (customer option on premium tier) · Ownership: <strong>0</strong> (Canadian-owned) · Regulatory Tooling: <strong>0</strong> (compliance-focused legal tech)<br>
+        Raw: 1 / 12 &rarr; <strong>Risk Score: 0.8</strong> &rarr; Rounded to <strong>1.2</strong> (adjusted: encryption is not fully customer-managed on all tiers)
+      </p>
+    </div>
+
+    <p><strong>A note on adjustments:</strong> The formula produces a raw score, but the final published Risk Score may be adjusted up or down by up to 1.5 points based on category-specific context. Factors that can trigger adjustment include: the availability of Canadian-owned alternatives in the same category, the sensitivity of data typically processed by tools in that category (e.g., legal or health data), the quality and transparency of the vendor&rsquo;s compliance documentation, and recent changes in the vendor&rsquo;s ownership or infrastructure. All adjustments are documented in the tool&rsquo;s individual analysis page.</p>
 
     <h2>Edge cases and precedents</h2>
     <p><strong>Canadian company with US VC backing:</strong> Classified as Canadian. VC investment does not change the legal jurisdiction of the corporate entity. However, the note field documents the VC structure as a risk factor for future acquisition.</p>
