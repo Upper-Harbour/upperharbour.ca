@@ -294,7 +294,7 @@
         <text x="166" y="126" fill="#EF4444" font-size="7.5" font-family="sans-serif" font-weight="700" letter-spacing="0.08em">HIGH</text>
       </svg>
       <div class="risk-gauge-meta">
-        <div class="risk-gauge-score">Risk Score<strong>8.8 / 10</strong></div>
+        <div class="risk-gauge-score">Risk Score<strong id="risk-score">0.0 / 10</strong></div>
         <span class="risk-gauge-label">High Risk</span>
         <div class="scan-console anim-4" id="scan-console-wrap" style="margin-top:12px;width:220px;"><div class="scan-status"><span class="scan-dot"></span> <span id="scan-msg">Connecting to sovereignty database...</span></div><div class="scan-progress"><div class="scan-progress-fill" id="scan-bar"></div></div></div>
         <div style="margin-top:8px;"><a href="/methodology" style="font-size:10px;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(138,157,176,0.3);letter-spacing:0.05em;">How we score →</a></div>
@@ -503,6 +503,22 @@
     });
   },{threshold:0.12});
   document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+  // Risk score counter — counts up in sync with needle (0.6s delay, 4.5s duration)
+  var scoreEl=document.getElementById('risk-score');
+  if(scoreEl&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var targetScore=8.8,dur=4500,delay=600,t0=null;
+    setTimeout(function(){
+      requestAnimationFrame(function step(ts){
+        if(!t0)t0=ts;
+        var p=Math.min((ts-t0)/dur,1);
+        var ease=p<0.5?2*p*p:(1-Math.pow(-2*p+2,2)/2);
+        var val=(targetScore*ease).toFixed(1);
+        scoreEl.textContent=val+' / 10';
+        if(p<1)requestAnimationFrame(step);else scoreEl.textContent=targetScore.toFixed(1)+' / 10';
+      });
+    },delay);
+  } else if(scoreEl){scoreEl.textContent='8.8 / 10';}
 
   // Counter animation — "753" counts up on scroll
   var counted=false;
