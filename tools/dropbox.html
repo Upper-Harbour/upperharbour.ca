@@ -81,9 +81,9 @@
 
     /* ── Mid-page CTA ────────────────────────────────── */
     .mid-cta{background:rgba(20,30,42,0.95);border:1px solid rgba(60,184,176,0.15);border-radius:8px;padding:32px 28px;margin:28px 0;text-align:center}
-    .mid-cta-text{font-size:14px;color:var(--slate);line-height:1.6;margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto}
+    .mid-cta-text{font-size:14px;color:var(--ice);line-height:1.6;margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto}
     .mid-cta-text strong{color:var(--ice)}
-    .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s}
+    .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s}
     .mid-cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
 
     /* ── Email notify ─────────────────────────────────── */
@@ -171,7 +171,7 @@
     .notify-box:hover{border-color:rgba(245,158,11,0.35)}
 
     /* ── Bottom CTA Glow ─────────────────────────────── */
-    .cta-btn{transition:background 0.2s,transform 0.2s,box-shadow 0.2s}
+    .cta-btn{transition:background 0.2s,transform 0.2s,box-shadow 0.2s;color:#fff !important}
     .cta-btn:hover{box-shadow:0 0 24px rgba(60,184,176,0.35),0 0 48px rgba(60,184,176,0.12);transform:translateY(-2px)}
 
     /* ── Risk Gauge ──────────────────────────────────── */
@@ -264,8 +264,17 @@
 
     <h1 class="article-h1 anim-2">Dropbox <em>Canadian Data Sovereignty</em> Analysis</h1>
 
+    <!-- Author byline — right under the title for immediate credibility -->
+    <div class="anim-3" style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> · Corporate law · Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">Published in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>OpenCanada</em>, and <em>BetaKit</em> · Updated March 2026</span>
+      </div>
+    </div>
+
     <!-- Risk Gauge — the visual centerpiece. Answers the question before they read a word. -->
-    <div class="risk-gauge anim-3">
+    <div class="risk-gauge anim-4">
       <svg viewBox="0 0 200 130" class="risk-gauge-svg gauge-glow" aria-label="Risk gauge showing high risk">
         <!-- Arc track -->
         <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="14" stroke-linecap="round"/>
@@ -291,16 +300,7 @@
     </div>
 
     <!-- Verdict text — reinforces what the gauge just showed -->
-    <p class="anim-4" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#EF4444;font-weight:700;font-size:19px;">✗ High Risk</span> — Dropbox is US-incorporated, stores all data in the United States, offers no Canadian data residency, and uses vendor-managed encryption. All data is accessible under US legal process including the CLOUD Act.</p>
-
-    <!-- Author byline — credibility for the verdict they just read -->
-    <div class="anim-5" style="display:flex;align-items:center;gap:10px;margin-top:20px;">
-      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
-      <div style="line-height:1.4;">
-        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> · Corporate law · Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
-        <span style="font-size:11px;color:var(--muted);">Published in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>OpenCanada</em>, and <em>BetaKit</em> · Updated March 2026</span>
-      </div>
-    </div>
+    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#EF4444;font-weight:700;font-size:19px;">✗ High Risk</span> — Dropbox is US-incorporated, stores all data in the United States, offers no Canadian data residency, and uses vendor-managed encryption. All data is accessible under US legal process including the CLOUD Act.</p>
   </header>
 
   <article class="article-body">
