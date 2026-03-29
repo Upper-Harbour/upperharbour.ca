@@ -125,11 +125,35 @@
     <div class="selected-tools" id="selectedTools"></div>
     <div class="selected-count" id="selectedCount"></div>
     <div style="text-align:center;">
-      <button class="generate-btn" id="generateBtn" disabled onclick="generateOutput()">Generate PIA Research →</button>
+      <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()">See Your Exposure →</button>
+      <div class="sub" style="margin-top:8px;">Free · No signup required</div>
     </div>
   </div>
 
+  <!-- Free preview -->
+  <div class="output" id="preview">
+    <div class="output-summary" id="previewSummary"></div>
 
+    <div id="previewTools" style="margin-bottom:24px;"></div>
+
+    <!-- Paywall -->
+    <div style="background:rgba(20,30,42,0.95);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:32px;text-align:center;margin-bottom:32px;">
+      <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">PIA Research Package</div>
+      <div style="font-family:var(--display);font-size:28px;font-weight:900;color:var(--ice);margin-bottom:4px;">$199</div>
+      <p style="font-size:14px;color:var(--slate);line-height:1.6;margin-bottom:6px;max-width:480px;margin-left:auto;margin-right:auto;">Get pre-written answers for Sections F, G, and H2 of the mandatory OIPC PIA template — for every tool you selected. Click any field to copy directly into your submission.</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">Jurisdictional research · CLOUD Act risk assessment · Security classification · Copy-paste ready</p>
+      <div id="paywallDynamic" style="font-size:13px;color:var(--ice);margin-bottom:20px;font-weight:600;"></div>
+      <a id="purchaseBtn" href="#" target="_blank" style="display:inline-block;font-size:14px;font-weight:800;color:#fff;background:var(--gold);padding:16px 36px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(201,168,76,0.25);" onmouseover="this.style.background='#D4B55C'" onmouseout="this.style.background='#C9A84C'">Purchase PIA Research — $199 →</a>
+      <p style="font-size:11px;color:var(--muted);margin-top:12px;">PDF delivery within 24 hours · Formatted for OIPC template</p>
+    </div>
+
+    <div style="text-align:center;margin-bottom:32px;">
+      <p style="font-size:14px;color:var(--slate);line-height:1.6;margin-bottom:16px;">Need help completing the rest of the template? Sections A–E and H1 require information specific to your organization.</p>
+      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:13px;font-weight:700;color:var(--teal);background:transparent;border:1px solid rgba(60,184,176,0.3);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Book a Call →</a>
+    </div>
+  </div>
+
+  <!-- Full output (hidden until purchased — future integration) -->
   <div class="output" id="output">
 
     <div class="output-summary" id="outputSummary"></div>
@@ -256,6 +280,41 @@
     window.removeTool = function(i){
       selected.splice(i, 1);
       renderSelected();
+    };
+
+    window.showPreview = function(){
+      var previewDiv = document.getElementById('preview');
+      var summaryDiv = document.getElementById('previewSummary');
+      var toolsDiv = document.getElementById('previewTools');
+      var paywallDyn = document.getElementById('paywallDynamic');
+
+      var exposed = selected.filter(function(t){ return t.cloudAct; });
+      var canadian = selected.filter(function(t){ return t.jurisdiction==='Canada'; });
+      var other = selected.length - exposed.length - canadian.length;
+
+      summaryDiv.innerHTML = '<p><strong>'+selected.length+' tools assessed</strong> · <span style="color:#EF4444;font-weight:700;">'+exposed.length+' subject to the US CLOUD Act</span> · <span style="color:#10B981;font-weight:700;">'+canadian.length+' Canadian-controlled</span>'+(other>0?' · '+other+' other jurisdictions':'')+'</p>';
+
+      toolsDiv.innerHTML = selected.map(function(t){
+        var dotColor = getDotColor(t);
+        var status = t.cloudAct ? '<span style="color:#EF4444;font-weight:600;">CLOUD Act exposed</span>' : (t.jurisdiction==='Canada' ? '<span style="color:#10B981;font-weight:600;">Canadian</span>' : '<span style="color:#F59E0B;font-weight:600;">'+t.jurisdiction+'</span>');
+        return '<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04);">'
+          +'<span style="display:flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:'+(dotColor==='red'?'#EF4444':dotColor==='amber'?'#F59E0B':'#10B981')+';flex-shrink:0;"></span><span style="font-size:13px;color:var(--ice);">'+t.name+'</span></span>'
+          +'<span style="font-size:12px;">'+status+' · '+t.parent+'</span>'
+          +'</div>';
+      }).join('');
+      toolsDiv.style.background = 'rgba(15,23,32,0.9)';
+      toolsDiv.style.border = '1px solid rgba(255,255,255,0.06)';
+      toolsDiv.style.borderRadius = '8px';
+      toolsDiv.style.overflow = 'hidden';
+
+      if(exposed.length > 0){
+        paywallDyn.innerHTML = 'Your scan found <strong style="color:#EF4444;">'+exposed.length+' CLOUD Act-exposed tool'+(exposed.length>1?'s':'')+'</strong> requiring jurisdictional analysis for the OIPC template.';
+      } else {
+        paywallDyn.innerHTML = 'Your scan assessed <strong>'+selected.length+' tools</strong>. The PIA Research Package documents the jurisdictional analysis for each one.';
+      }
+
+      previewDiv.classList.add('visible');
+      previewDiv.scrollIntoView({behavior:'smooth'});
     };
 
     window.generateOutput = function(){
