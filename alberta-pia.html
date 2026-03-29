@@ -417,8 +417,9 @@ html{scroll-padding-top:100px}
 
 
 <!-- ═══ STEP 1 — FREE: TOOL SELECTOR ═══ -->
+<div id="selectorSection" style="height:0;visibility:hidden;"></div>
 <section style="max-width:760px;margin:0 auto;padding:0 52px 32px;">
-  <div id="selectorSection" style="background:rgba(15,23,32,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:40px 36px 32px;">
+  <div style="background:rgba(15,23,32,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:40px 36px 32px;">
     <div style="text-align:center;margin-bottom:20px;">
       <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#10B981;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);padding:4px 14px;border-radius:4px;display:inline-block;">Step 1 &mdash; Free</span>
     </div>
@@ -568,14 +569,12 @@ html{scroll-padding-top:100px}
 
 <!-- ═══ BOTTOM CTA ═══ -->
 <section style="background:var(--surface);border-top:1px solid var(--border);padding:48px 52px;margin-top:32px;">
-  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
-    <div>
-      <h2 style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:0 0 6px;">Not sure if you need a PIA?</h2>
-      <p style="font-size:14px;color:var(--slate);margin:0;line-height:1.5;">If your Alberta public body uses any SaaS tool that processes personal information, the answer is almost certainly yes.</p>
-    </div>
-    <div style="display:flex;gap:12px;flex-shrink:0;">
-      <a href="javascript:void(0)" onclick="document.getElementById('selectorSection').scrollIntoView({behavior:'smooth'})" style="font-size:13px;font-weight:700;color:#fff;background:var(--teal);padding:12px 24px;border-radius:6px;text-decoration:none;white-space:nowrap;">Free Exposure Check &rarr;</a>
-      <a href="/resources/cloud-act-canadian-data" style="font-size:13px;font-weight:700;color:var(--teal);border:1px solid rgba(60,184,176,0.3);padding:12px 24px;border-radius:6px;text-decoration:none;white-space:nowrap;">CLOUD Act Guide</a>
+  <div style="max-width:720px;margin:0 auto;text-align:center;">
+    <h2 style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:0 0 8px;">Not sure if you need a PIA?</h2>
+    <p style="font-size:14px;color:var(--slate);margin:0 0 24px;line-height:1.6;">If your Alberta public body uses any SaaS tool that processes personal information, the answer is almost certainly yes.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a href="javascript:void(0)" onclick="document.getElementById('selectorSection').scrollIntoView({behavior:'smooth'})" style="font-size:13px;font-weight:700;color:#fff;background:var(--teal);padding:12px 24px;border-radius:6px;text-decoration:none;">Free Exposure Check &rarr;</a>
+      <a href="/resources/cloud-act-canadian-data" style="font-size:13px;font-weight:700;color:var(--teal);border:1px solid rgba(60,184,176,0.3);padding:12px 24px;border-radius:6px;text-decoration:none;">CLOUD Act Guide</a>
     </div>
   </div>
 </section>
