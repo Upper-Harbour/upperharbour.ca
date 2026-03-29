@@ -444,14 +444,14 @@ html{scroll-padding-top:100px}
 
   <!-- Free scan results -->
   <div id="previewSummary" class="output-summary" style="margin-bottom:0;border-radius:8px 8px 0 0;border-bottom:none;"></div>
-  <div id="previewTools" style="margin-bottom:48px"></div>
+  <div id="previewTools"></div>
 
   <!-- Pricing card -->
   <div class="pricing-inner" style="margin-bottom:24px">
-    <div class="pricing-eyebrow">PIA Research Package</div>
     <div class="pricing-price">$199</div>
-    <div class="pricing-anchor">Privacy consultants charge <span class="highlight">$5,000–$15,000</span> per PIA</div>
-    <p class="pricing-desc" id="paywallDynamic">Pre-written answers for Sections F, G, and H2 of the mandatory OIPC template — for every tool you selected. Copy-paste ready with PDF download.</p>
+    <div style="font-family:var(--display);font-size:18px;font-weight:700;color:var(--ice);margin-bottom:12px;">Complete jurisdictional research for every tool — ready to paste into the OIPC template.</div>
+    <p class="pricing-desc" id="paywallDynamic" style="margin-bottom:16px;">Pre-written answers for Sections F, G, and H2 — ready to copy into your submission.</p>
+    <div class="pricing-anchor" style="margin-bottom:20px;">Privacy consultants charge <span class="highlight">$5,000–$15,000</span> for this work</div>
     <!-- Stripe inline checkout -->
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
     <stripe-buy-button
@@ -459,7 +459,7 @@ html{scroll-padding-top:100px}
       publishable-key="pk_live_51T7jm1HacAqcnAkVNz7quTDA5wMMmlzdS0GtumcVDy2XNAbone5VCl7eqklWgfhVlgA9PRa7T4F3G7aj3nLbJ2Vz004QLuyxlP"
     >
     </stripe-buy-button>
-    <div style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;">Replaces 20+ hours of research per tool · Instant delivery · <span style="color:var(--slate);">Not satisfied? Full refund.</span></div>
+    <div style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;">Instant delivery · PDF download · <span style="color:var(--slate);">Not satisfied? Full refund.</span></div>
   </div>
 
   <!-- Consulting upsell -->
@@ -639,12 +639,30 @@ html{scroll-padding-top:100px}
     var ex=selected.filter(function(t){return t.cloudAct}),
         cn=selected.filter(function(t){return t.jurisdiction==='Canada'});
     s.innerHTML='<p><strong>'+selected.length+' tools assessed</strong> \u00b7 <span style="color:#EF4444;font-weight:700">'+ex.length+' CLOUD Act exposed</span> \u00b7 <span style="color:#10B981;font-weight:700">'+cn.length+' Canadian</span></p>';
-    td.innerHTML=selected.map(function(t){
+
+    // Build tools list
+    var toolsHtml=selected.map(function(t){
       var st=t.cloudAct?'<span style="color:#EF4444;font-weight:600">CLOUD Act exposed</span>':t.jurisdiction==='Canada'?'<span style="color:#10B981;font-weight:600">Canadian</span>':'<span style="color:#F59E0B;font-weight:600">'+t.jurisdiction+'</span>';
       return'<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:'+gdh(t)+'"></span><span style="font-size:13px;color:var(--ice)">'+t.name+'</span></span><span style="font-size:12px">'+st+' \u00b7 '+t.parent+'</span></div>';
     }).join('');
+
+    // Add blurred preview of first CLOUD Act tool's Section G output
+    var previewTool=ex.length>0?ex[0]:selected[0];
+    var previewText=previewTool.cloudAct
+      ?'Yes. '+previewTool.parent+' is incorporated in the United States and is subject to the US CLOUD Act (2018). Under the CLOUD Act, US authorities can compel '+previewTool.parent+' to produce data in its possession, custody, or control \u2014 regardless of where that data is physically stored. This includes data hosted in Canadian data centres...'
+      :previewTool.parent+' is incorporated in '+previewTool.jurisdiction+'. The public body should assess whether the jurisdictional framework provides adequate protection under POPA...';
+
+    toolsHtml+='<div style="padding:20px 16px;border-top:1px solid rgba(60,184,176,0.1);background:rgba(42,157,143,0.03);">'
+      +'<div style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px;">Preview \u2014 Section G for '+previewTool.name+'</div>'
+      +'<div style="font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;">Q42\u201343: CLOUD Act Status</div>'
+      +'<div style="font-size:13px;color:var(--slate);line-height:1.55;position:relative;max-height:60px;overflow:hidden;">'+previewText
+      +'<div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:linear-gradient(transparent,rgba(15,23,32,0.95));"></div></div>'
+      +'<div style="font-size:12px;color:var(--teal);font-weight:600;margin-top:8px;">Full analysis for all '+selected.length+' tools \u2014 $199 \u2193</div>'
+      +'</div>';
+
+    td.innerHTML=toolsHtml;
     td.style.cssText='background:rgba(15,23,32,0.9);border:1px solid rgba(255,255,255,0.06);border-top:none;border-radius:0 0 8px 8px;overflow:hidden;margin-bottom:48px';
-    pw.innerHTML=ex.length>0?'Your scan found <strong style="color:#EF4444">'+ex.length+' CLOUD Act-exposed tool'+(ex.length>1?'s':'')+'</strong> requiring jurisdictional analysis for your PIA submission.':'Your scan assessed <strong>'+selected.length+' tools</strong>. Get pre-written PIA answers for all of them.';
+    pw.innerHTML=ex.length>0?'Your scan found <strong style="color:#EF4444">'+ex.length+' CLOUD Act-exposed tool'+(ex.length>1?'s':'')+'</strong>. Each one needs jurisdictional analysis in Sections G and H2 of your OIPC submission.':'Your scan assessed <strong>'+selected.length+' tools</strong>. Each one needs jurisdictional analysis in your OIPC submission.';
     p.classList.add('visible');
     p.scrollIntoView({behavior:'smooth'});
   };
