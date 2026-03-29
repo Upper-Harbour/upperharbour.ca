@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alberta POPA PIA Tool — Auto-Fill Your OIPC Template</title>
+  <meta name="description" content="Select your SaaS tools. Get pre-written jurisdictional answers for Sections F, G, and H2 of the mandatory OIPC PIA template. Copy directly into your submission." />
+  <link rel="canonical" href="https://www.upperharbour.ca/alberta-pia" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" /><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Alberta POPA PIA Tool — Auto-Fill Your OIPC Template" />
+  <meta property="og:description" content="Select your SaaS tools. Get pre-written jurisdictional answers for the mandatory OIPC PIA template. Built on 753 mapped tools." />
+  <meta property="og:url" content="https://www.upperharbour.ca/alberta-pia" />
+  <meta property="og:type" content="website" /><meta property="og:site_name" content="Upper Harbour" />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <style>
+    .pia-hero{padding:40px 0 32px;text-align:center;max-width:720px;margin:0 auto}
+    .pia-hero h1{font-family:var(--display);font-size:clamp(26px,4vw,36px);font-weight:900;color:var(--ice);line-height:1.15;margin:0 0 12px}
+    .pia-hero h1 em{font-style:italic;color:var(--gold)}
+    .pia-hero p{font-size:15px;color:var(--slate);line-height:1.65;margin:0 0 8px}
+    .pia-hero .sub{font-size:12px;color:var(--muted)}
+
+    /* Tool selector */
+    .selector{max-width:680px;margin:0 auto;padding:0 20px 40px}
+    .selector-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+    .selector-wrap{position:relative}
+    .selector-input{width:100%;padding:14px 16px;font-size:14px;background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.1);border-radius:6px;color:var(--ice);font-family:var(--body);outline:none;transition:border-color 0.2s}
+    .selector-input:focus{border-color:var(--teal)}
+    .selector-input::placeholder{color:var(--muted)}
+    .selector-dropdown{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,23,32,0.98);border:1px solid rgba(255,255,255,0.1);border-top:none;border-radius:0 0 6px 6px;max-height:240px;overflow-y:auto;z-index:100}
+    .selector-dropdown.open{display:block}
+    .selector-option{padding:10px 16px;font-size:13px;color:var(--slate);cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.1s}
+    .selector-option:hover{background:rgba(60,184,176,0.08);color:var(--ice)}
+    .selector-option .jurisdiction{font-size:10px;font-family:monospace;padding:2px 6px;border-radius:3px}
+    .selector-option .jurisdiction.us{background:rgba(239,68,68,0.1);color:#EF4444}
+    .selector-option .jurisdiction.ca{background:rgba(16,185,129,0.1);color:#10B981}
+    .selector-option .jurisdiction.other{background:rgba(245,158,11,0.1);color:#F59E0B}
+
+    /* Selected tools */
+    .selected-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;min-height:20px}
+    .tool-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;transition:opacity 0.2s}
+    .tool-chip:hover{opacity:0.8}
+    .tool-chip.risk-exposed{background:rgba(239,68,68,0.12);color:#EF4444;border:1px solid rgba(239,68,68,0.2)}
+    .tool-chip.risk-review{background:rgba(245,158,11,0.12);color:#F59E0B;border:1px solid rgba(245,158,11,0.2)}
+    .tool-chip.risk-canadian{background:rgba(16,185,129,0.12);color:#10B981;border:1px solid rgba(16,185,129,0.2)}
+    .tool-chip.risk-non_exposed{background:rgba(96,165,250,0.12);color:#60A5FA;border:1px solid rgba(96,165,250,0.2)}
+    .tool-chip .remove{font-size:14px;line-height:1;opacity:0.6}
+    .tool-chip .remove:hover{opacity:1}
+
+    .selected-count{font-size:12px;color:var(--muted);margin-top:8px}
+    .selected-count strong{color:var(--ice)}
+
+    /* Generate button */
+    .generate-btn{display:inline-block;font-size:14px;font-weight:800;color:#fff;background:var(--teal);padding:16px 36px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;margin-top:20px;box-shadow:0 0 20px rgba(60,184,176,0.25)}
+    .generate-btn:hover{background:#47cec5;transform:translateY(-1px)}
+    .generate-btn:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+
+    /* Output */
+    .output{max-width:720px;margin:0 auto;padding:0 20px 60px;display:none}
+    .output.visible{display:block}
+    .output-section{margin-bottom:32px}
+    .output-section-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:4px}
+    .output-section-title{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin-bottom:6px}
+    .output-section-desc{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+
+    .output-tool{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:24px;margin-bottom:16px}
+    .output-tool-name{font-size:16px;font-weight:700;color:var(--ice);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+    .output-tool-name .risk-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+    .output-tool-name .risk-dot.red{background:#EF4444}
+    .output-tool-name .risk-dot.amber{background:#F59E0B}
+    .output-tool-name .risk-dot.green{background:#10B981}
+    .output-tool-parent{font-size:13px;color:var(--muted);margin-bottom:16px}
+
+    .output-field{margin-bottom:14px}
+    .output-field-label{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+    .output-field-value{font-size:13px;color:var(--slate);line-height:1.6;background:rgba(15,23,32,0.6);border:1px solid rgba(255,255,255,0.04);border-radius:4px;padding:10px 14px;cursor:pointer;transition:border-color 0.2s;position:relative}
+    .output-field-value:hover{border-color:rgba(60,184,176,0.3)}
+    .output-field-value.copied{border-color:var(--teal)}
+    .output-field-value.copied::after{content:'Copied';position:absolute;top:8px;right:10px;font-size:10px;font-weight:700;color:var(--teal);letter-spacing:0.08em;text-transform:uppercase}
+
+    .copy-all-btn{display:inline-block;font-size:12px;font-weight:700;color:var(--teal);background:transparent;border:1px solid rgba(60,184,176,0.3);padding:10px 20px;border-radius:4px;cursor:pointer;transition:background 0.2s}
+    .copy-all-btn:hover{background:rgba(60,184,176,0.08)}
+
+    .output-summary{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-left:3px solid var(--teal);border-radius:0 8px 8px 0;padding:20px 24px;margin-bottom:24px}
+    .output-summary p{font-size:14px;color:var(--slate);line-height:1.6;margin:0}
+    .output-summary strong{color:var(--ice)}
+
+    /* CTA */
+    .pia-cta{text-align:center;padding:40px 20px 60px;max-width:680px;margin:0 auto}
+    .pia-cta h2{font-family:var(--display);font-size:22px;font-weight:700;color:var(--ice);margin:0 0 12px}
+    .pia-cta p{font-size:14px;color:var(--muted);margin:0 0 20px;line-height:1.6}
+
+    @media(max-width:600px){
+      .pia-hero{padding:30px 20px 24px}
+      .output-tool{padding:16px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav><a href="/" class="nav-logo" aria-label="Upper Harbour home"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link">Sovereignty Index</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Map Your Stack</a></div><button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></nav>
+  <div class="nav-mobile-menu"><a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a></div>
+
+
+  <section class="pia-hero">
+    <div style="font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;">Alberta POPA · PIA Research Tool</div>
+    <h1>The OIPC requires the template. <em>We provide the answers.</em></h1>
+    <p>Select the SaaS tools your organization uses. We'll generate the jurisdictional research you need for <strong style="color:var(--ice);">Sections F, G, and H2</strong> of the mandatory OIPC PIA template — ready to copy directly into your submission.</p>
+    <p class="sub">Built on the <strong style="color:var(--ice);">753</strong>-tool Upper Harbour Sovereignty Index · <a href="/resources/alberta-popa-pia-saas-compliance" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">What is POPA? →</a></p>
+  </section>
+
+
+  <div class="selector">
+    <div class="selector-label">Select your tools</div>
+    <div class="selector-wrap">
+      <input type="text" class="selector-input" id="toolInput" placeholder="Search tools — e.g. Microsoft 365, Slack, Zoom, Salesforce…" autocomplete="off" />
+      <div class="selector-dropdown" id="toolDropdown"></div>
+    </div>
+    <div class="selected-tools" id="selectedTools"></div>
+    <div class="selected-count" id="selectedCount"></div>
+    <div style="text-align:center;">
+      <button class="generate-btn" id="generateBtn" disabled onclick="generateOutput()">Generate PIA Research →</button>
+    </div>
+  </div>
+
+
+  <div class="output" id="output">
+
+    <div class="output-summary" id="outputSummary"></div>
+
+    <!-- Section G output -->
+    <div class="output-section">
+      <div class="output-section-label">OIPC PIA Template — Section G</div>
+      <div class="output-section-title">Service Providers</div>
+      <div class="output-section-desc">For each SaaS tool, the following answers address Questions 42–47 of the OIPC template regarding service provider jurisdiction, data custody, and POPA compliance obligations.</div>
+      <div id="sectionG"></div>
+    </div>
+
+    <!-- Section H2 output -->
+    <div class="output-section">
+      <div class="output-section-label">OIPC PIA Template — Section H2</div>
+      <div class="output-section-title">Cloud Computing Risks</div>
+      <div class="output-section-desc">Pre-written risk assessments for Risks 1–11 in the Cloud Computing section, with specific details for each tool's jurisdictional exposure.</div>
+      <div id="sectionH2"></div>
+    </div>
+
+    <!-- Section F output -->
+    <div class="output-section">
+      <div class="output-section-label">OIPC PIA Template — Section F</div>
+      <div class="output-section-title">Protection of Information</div>
+      <div class="output-section-desc">Security classification and encryption details for Questions 29–30 of the OIPC template.</div>
+      <div id="sectionF"></div>
+    </div>
+
+    <div style="text-align:center;margin-top:24px;">
+      <button class="copy-all-btn" onclick="copyAll()">Copy All Sections to Clipboard</button>
+    </div>
+
+    <div class="pia-cta">
+      <h2>Need help completing the rest of the template?</h2>
+      <p>Sections A–E and H1 require information specific to your organization — your privacy management program, data flows, access controls, and retention policies. We can help scope and complete the full PIA.</p>
+      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:13px;font-weight:800;color:#fff;background:var(--gold);padding:14px 28px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Book a Call →</a>
+    </div>
+  </div>
+
+
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Sovereignty Index</a></li><li><a href="/signals">Signals</a></li><li><a href="/research">Research</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/resources">Compliance Guides</a></li><li><a href="/comply">Compliance Reports</a></li></ul></div><div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li><li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li><li><a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351">Contact us</a></li><li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li></ul></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Upper Harbour. All rights reserved. · <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> · <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span><span class="footer-copy">Canadian-owned and operated. Data stays in Canada.</span></div></footer>
+
+
+  <script src="/saas-db.js"></script>
+  <script>
+  (function(){
+    var input = document.getElementById('toolInput');
+    var dropdown = document.getElementById('toolDropdown');
+    var selectedDiv = document.getElementById('selectedTools');
+    var countDiv = document.getElementById('selectedCount');
+    var genBtn = document.getElementById('generateBtn');
+    var selected = [];
+
+    function getJurisdictionClass(t){
+      if(t.jurisdiction==='Canada') return 'ca';
+      if(t.jurisdiction==='United States') return 'us';
+      return 'other';
+    }
+    function getJurisdictionLabel(t){
+      if(t.cloudAct) return 'US · CLOUD Act';
+      if(t.jurisdiction==='Canada') return 'Canadian';
+      return t.jurisdiction;
+    }
+    function getRiskClass(t){
+      if(t.risk==='exposed') return 'risk-exposed';
+      if(t.risk==='review') return 'risk-review';
+      if(t.risk==='canadian') return 'risk-canadian';
+      return 'risk-non_exposed';
+    }
+    function getDotColor(t){
+      if(t.risk==='exposed') return 'red';
+      if(t.risk==='review') return 'amber';
+      return 'green';
+    }
+
+    input.addEventListener('input', function(){
+      var q = this.value.toLowerCase().trim();
+      if(q.length < 1){ dropdown.classList.remove('open'); return; }
+      var matches = saasDB.filter(function(t){
+        return t.name.toLowerCase().indexOf(q) > -1 && !selected.find(function(s){ return s.name === t.name; });
+      }).slice(0, 10);
+      if(matches.length === 0){ dropdown.classList.remove('open'); return; }
+      dropdown.innerHTML = matches.map(function(t){
+        var jc = getJurisdictionClass(t);
+        var jl = getJurisdictionLabel(t);
+        return '<div class="selector-option" data-name="'+t.name+'"><span>'+t.name+'</span><span class="jurisdiction '+jc+'">'+jl+'</span></div>';
+      }).join('');
+      dropdown.classList.add('open');
+    });
+
+    dropdown.addEventListener('click', function(e){
+      var opt = e.target.closest('.selector-option');
+      if(!opt) return;
+      var name = opt.getAttribute('data-name');
+      var tool = saasDB.find(function(t){ return t.name === name; });
+      if(tool && !selected.find(function(s){ return s.name === name; })){
+        selected.push(tool);
+        renderSelected();
+      }
+      input.value = '';
+      dropdown.classList.remove('open');
+      input.focus();
+    });
+
+    document.addEventListener('click', function(e){
+      if(!e.target.closest('.selector-wrap')) dropdown.classList.remove('open');
+    });
+
+    function renderSelected(){
+      selectedDiv.innerHTML = selected.map(function(t, i){
+        return '<span class="tool-chip '+getRiskClass(t)+'" onclick="removeTool('+i+')">'+t.name+' <span class="remove">×</span></span>';
+      }).join('');
+      var exposed = selected.filter(function(t){ return t.cloudAct; }).length;
+      var cdn = selected.filter(function(t){ return t.jurisdiction==='Canada'; }).length;
+      if(selected.length > 0){
+        countDiv.innerHTML = '<strong>'+selected.length+'</strong> tools selected · <span style="color:#EF4444;font-weight:600;">'+exposed+' CLOUD Act exposed</span> · <span style="color:#10B981;font-weight:600;">'+cdn+' Canadian</span>';
+        genBtn.disabled = false;
+      } else {
+        countDiv.innerHTML = '';
+        genBtn.disabled = true;
+      }
+    }
+
+    window.removeTool = function(i){
+      selected.splice(i, 1);
+      renderSelected();
+    };
+
+    window.generateOutput = function(){
+      var outputDiv = document.getElementById('output');
+      var sectionG = document.getElementById('sectionG');
+      var sectionH2 = document.getElementById('sectionH2');
+      var sectionF = document.getElementById('sectionF');
+      var summaryDiv = document.getElementById('outputSummary');
+
+      var exposed = selected.filter(function(t){ return t.cloudAct; });
+      var canadian = selected.filter(function(t){ return t.jurisdiction==='Canada'; });
+
+      summaryDiv.innerHTML = '<p><strong>'+selected.length+' tools assessed</strong> · '+exposed.length+' subject to the US CLOUD Act · '+canadian.length+' Canadian-controlled · Generated '+new Date().toLocaleDateString('en-CA')+' · Source: <a href="/tools" style="color:var(--teal);text-decoration:none;">Upper Harbour Sovereignty Index</a> (753 tools)</p>';
+
+      // Section G: Service Providers
+      sectionG.innerHTML = selected.map(function(t){
+        var cloudActText = t.cloudAct
+          ? 'Yes. '+t.parent+' is incorporated in the United States and is subject to the US CLOUD Act (Clarifying Lawful Overseas Use of Data Act, 2018). Under the CLOUD Act, US authorities can compel '+t.parent+' to produce data in its possession, custody, or control — regardless of where that data is physically stored. This includes data hosted in Canadian data centres. The public body should be aware that configuring Canadian data residency does not remove this jurisdictional exposure.'
+          : 'No. '+t.parent+' is not incorporated in or subject to US jurisdiction. '+t.name+' is not subject to the US CLOUD Act.';
+
+        var custodyText = t.cloudAct
+          ? 'The public body should ensure its agreement with '+t.parent+' explicitly addresses custody and control of personal information under POPA. Given that '+t.parent+' is subject to the US CLOUD Act, the public body cannot fully guarantee that personal information will remain under its control in all circumstances. A valid US legal order could compel '+t.parent+' to produce data without the public body\'s knowledge or consent.'
+          : t.jurisdiction==='Canada'
+            ? 'As a Canadian-incorporated company, '+t.parent+' operates under Canadian privacy law. The public body should ensure its agreement explicitly addresses custody and control under POPA.'
+            : t.parent+' is incorporated in '+t.jurisdiction+'. While not subject to the US CLOUD Act, the public body should assess whether '+t.jurisdiction+'\'s legal framework provides adequate protection for personal information under POPA.';
+
+        var residencyText = t.dataResidency || 'Contact vendor for data residency options.';
+
+        return '<div class="output-tool">'
+          +'<div class="output-tool-name"><span class="risk-dot '+getDotColor(t)+'"></span>'+t.name+'</div>'
+          +'<div class="output-tool-parent">Parent: '+t.parent+' · HQ: '+t.hq+' · Jurisdiction: '+t.jurisdiction+'</div>'
+          +'<div class="output-field"><div class="output-field-label">Q42–43: Service Provider & CLOUD Act Status</div><div class="output-field-value" onclick="copyField(this)">'+cloudActText+'</div></div>'
+          +'<div class="output-field"><div class="output-field-label">Q45: Custody & Control of Personal Information</div><div class="output-field-value" onclick="copyField(this)">'+custodyText+'</div></div>'
+          +'<div class="output-field"><div class="output-field-label">Data Residency</div><div class="output-field-value" onclick="copyField(this)">'+residencyText+'</div></div>'
+          +'</div>';
+      }).join('');
+
+      // Section H2: Cloud Computing Risks
+      var cloudActTools = exposed.map(function(t){ return t.name+' ('+t.parent+')'; }).join(', ');
+      var h2Content = '';
+
+      if(exposed.length > 0){
+        h2Content += '<div class="output-tool">'
+          +'<div class="output-tool-name"><span class="risk-dot red"></span>H2 Risk 7: US CLOUD Act & PATRIOT Act Exposure</div>'
+          +'<div class="output-field"><div class="output-field-label">Risk Description</div><div class="output-field-value" onclick="copyField(this)">The US CLOUD Act (2018) and USA PATRIOT Act allow the US government to compel US-incorporated companies to produce data in their possession, custody, or control — regardless of where that data is physically stored. This risk applies to '+exposed.length+' of the '+selected.length+' tools assessed in this PIA: '+cloudActTools+'. For each of these tools, US authorities can compel the service provider to produce personal information held on behalf of the public body, including personal information stored in Canadian data centres. The public body cannot prevent this through contractual arrangements, as US law overrides contractual commitments.</div></div>'
+          +'<div class="output-field"><div class="output-field-label">Mitigation</div><div class="output-field-value" onclick="copyField(this)">The CLOUD Act jurisdictional risk cannot be fully mitigated through contractual or technical means while continuing to use US-parented service providers. Partial mitigations include: (1) Configuring Canadian data residency where available to address residency requirements; (2) Reviewing vendor transparency reports for volume and nature of US legal process requests; (3) Minimizing the personal information stored in US-parented tools to what is strictly necessary; (4) Ensuring vendor agreements require notification to the public body when legal process is received, where legally permitted; (5) Evaluating Canadian-incorporated alternatives for the most sensitive data categories. The public body should document its acceptance of this residual risk.</div></div>'
+          +'</div>';
+      }
+
+      h2Content += '<div class="output-tool">'
+        +'<div class="output-tool-name"><span class="risk-dot amber"></span>H2 Risk 11: Encryption</div>'
+        +'<div class="output-field"><div class="output-field-label">Risk Description</div><div class="output-field-value" onclick="copyField(this)">Weak or absent encryption could lead to unauthorized access to and disclosure of personal information in transit and at rest. Of the '+selected.length+' tools assessed: all encrypt data in transit (TLS) and at rest (typically AES-256). However, in most cases encryption keys are managed by the service provider, not the public body. For US-parented tools, this means that under a valid CLOUD Act order, the service provider can decrypt and produce data in readable form. Customer-managed encryption keys (CMEK) are not widely available and where offered, do not fully protect against jurisdictional compulsion as metadata, account information, and access logs remain accessible to the provider.</div></div>'
+        +'</div>';
+
+      h2Content += '<div class="output-tool">'
+        +'<div class="output-tool-name"><span class="risk-dot amber"></span>H2 Risk 2: Contractual Arrangements</div>'
+        +'<div class="output-field"><div class="output-field-label">Risk Description</div><div class="output-field-value" onclick="copyField(this)">Lack of formalized contractual arrangements that specifically address POPA requirements could lead to loss of custody and/or control of personal information stored in cloud environments. The public body must ensure that agreements with each service provider address: (1) POPA compliance obligations including section 10(1) security requirements; (2) breach notification under section 10(2); (3) retention and disposition; (4) the public body\'s right to audit; (5) restrictions on secondary use of personal information. For US-parented service providers, contracts should also address the provider\'s obligations when it receives US legal process affecting the public body\'s data.</div></div>'
+        +'</div>';
+
+      h2Content += '<div class="output-tool">'
+        +'<div class="output-tool-name"><span class="risk-dot amber"></span>H2 Risk 8: Secondary Use of Personal Information</div>'
+        +'<div class="output-field"><div class="output-field-label">Risk Description</div><div class="output-field-value" onclick="copyField(this)">A cloud provider may use personal information for their own purposes, such as de-identifying personal information and/or using it for training AI models. The public body must ensure that contractual agreements with each service provider explicitly prohibit the use of the public body\'s data for purposes other than providing the contracted service. This is particularly relevant for tools that incorporate AI features, as training data practices may not be transparent. The public body should review each vendor\'s terms of service and data processing agreements for clauses permitting secondary use.</div></div>'
+        +'</div>';
+
+      sectionH2.innerHTML = h2Content;
+
+      // Section F: Protection of Information
+      sectionF.innerHTML = selected.map(function(t){
+        var classification = t.cloudAct ? 'High' : (t.risk==='review' ? 'Medium' : 'Standard');
+        var classReason = t.cloudAct
+          ? 'This tool is operated by a US-parented company ('+t.parent+') subject to the CLOUD Act. Personal information processed by this tool is subject to potential compelled disclosure to US authorities. Security classification should reflect this jurisdictional exposure.'
+          : t.jurisdiction==='Canada'
+            ? 'This tool is operated by a Canadian-incorporated company ('+t.parent+'). Personal information is not subject to the CLOUD Act. Standard security classification is appropriate unless the nature of the personal information warrants higher classification.'
+            : 'This tool is operated by '+t.parent+' ('+t.jurisdiction+'). While not subject to the US CLOUD Act, the public body should assess whether the jurisdictional framework of '+t.jurisdiction+' provides adequate protection.';
+
+        return '<div class="output-tool">'
+          +'<div class="output-tool-name"><span class="risk-dot '+getDotColor(t)+'"></span>'+t.name+'</div>'
+          +'<div class="output-tool-parent">Parent: '+t.parent+' · Jurisdiction: '+t.jurisdiction+'</div>'
+          +'<div class="output-field"><div class="output-field-label">Q29–30: Security Classification & Safeguards</div><div class="output-field-value" onclick="copyField(this)">Recommended security classification: '+classification+'. '+classReason+'</div></div>'
+          +'</div>';
+      }).join('');
+
+      outputDiv.classList.add('visible');
+      outputDiv.scrollIntoView({behavior:'smooth'});
+    };
+
+    window.copyField = function(el){
+      navigator.clipboard.writeText(el.textContent).then(function(){
+        el.classList.add('copied');
+        setTimeout(function(){ el.classList.remove('copied'); }, 1500);
+      });
+    };
+
+    window.copyAll = function(){
+      var output = document.getElementById('output');
+      var fields = output.querySelectorAll('.output-field-value');
+      var text = '';
+      fields.forEach(function(f){
+        var label = f.previousElementSibling ? f.previousElementSibling.textContent : '';
+        text += label + '\n' + f.textContent + '\n\n';
+      });
+      navigator.clipboard.writeText(text).then(function(){
+        var btn = document.querySelector('.copy-all-btn');
+        btn.textContent = 'Copied to clipboard ✓';
+        setTimeout(function(){ btn.textContent = 'Copy All Sections to Clipboard'; }, 2000);
+      });
+    };
+  })();
+  </script>
+</body>
+</html>
