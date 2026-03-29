@@ -23,6 +23,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Upper Harbour" />
   <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my data stored when I run a HarbourScan?","acceptedAnswer":{"@type":"Answer","text":"No. The scan runs entirely in your browser. Nothing is sent to our servers or stored anywhere."}},{"@type":"Question","name":"How long does a HarbourScan take?","acceptedAnswer":{"@type":"Answer","text":"Most organizations complete the scan in under 10 minutes. You select your tools from a database of 753 mapped SaaS products."}},{"@type":"Question","name":"What do I need to run a scan?","acceptedAnswer":{"@type":"Answer","text":"Just a list of the SaaS tools your organization uses. No login, no account, no access to your systems."}},{"@type":"Question","name":"What format are the paid deliverables?","acceptedAnswer":{"@type":"Answer","text":"The Sovereignty Snapshot is delivered as a PDF report within 5 business days. The Compliance Documentation package includes TIA guidance, remediation roadmap, and board-ready documents."}},{"@type":"Question","name":"Do I need a Sovereignty Snapshot if I already ran the free scan?","acceptedAnswer":{"@type":"Answer","text":"The free scan shows your exposure. The Snapshot documents it. If a board member, regulator, or partner asks about your data sovereignty posture, the Snapshot is the PDF you hand them."}}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -439,6 +440,11 @@
           <p style="font-size:15px;color:var(--slate);line-height:1.72;margin-bottom:24px;"><strong style="color:var(--red);">67% of SaaS tools used by Canadian organizations are US-owned</strong> and CLOUD Act exposed. Enter your tools. See which fall under foreign jurisdiction, where your compliance gaps are, and what to do about it. <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">What is the CLOUD Act? →</a></p>
           <a href="#" class="landing-hero-cta" onclick="startAssessment(); return false;" style="margin-top:0;">Check Your Stack &rarr;</a>
           <p style="font-size:11px;color:var(--muted);margin-top:12px;">Free &middot; Browser-based &middot; No signup required</p>
+          <div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap;">
+            <div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:var(--ice);line-height:1.2;">753</div><div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Tools mapped</div></div>
+            <div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:var(--ice);line-height:1.2;">CA</div><div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Built for Canada</div></div>
+            <div style="text-align:center;"><div style="font-size:18px;font-weight:800;color:var(--ice);line-height:1.2;">100%</div><div style="font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Independent</div></div>
+          </div>
         </div>
         <!-- Right: mini scan preview -->
         <div>
@@ -489,54 +495,11 @@
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="landing-process">
-      <div class="landing-process-title">How it works</div>
-      <p class="landing-process-sub">Four steps &mdash; from free self-assessment to ongoing compliance intelligence.</p>
-      <div class="process-steps">
-        <div class="process-step">
-          <div class="process-num">01</div>
-          <div class="process-step-title">Free scan</div>
-          <div class="process-step-desc">Scan your stack in your browser. Select your tools, see your jurisdictional exposure map. Free, private, nothing stored.</div>
-        </div>
-        <div class="process-step">
-          <div class="process-num">02</div>
-          <div class="process-step-title">Snapshot</div>
-          <div class="process-step-desc">Need a formal answer? The Sovereignty Snapshot delivers a professional assessment with Sovereignty Scores and an executive summary. From $350.</div>
-        </div>
-        <div class="process-step">
-          <div class="process-num">03</div>
-          <div class="process-step-title">Documentation</div>
-          <div class="process-step-desc">Need to prove compliance? Full documentation package with TIA guidance, remediation roadmap, and board-ready deliverables. From $2,000.</div>
-        </div>
-        <div class="process-step">
-          <div class="process-num">04</div>
-          <div class="process-step-title">Monitoring</div>
-          <div class="process-step-desc">Need to stay compliant? Continuous vendor ownership monitoring, regulatory tracking, and quarterly sovereignty status reports. From $200/mo.</div>
-        </div>
-      </div>
+    <!-- HOW IT WORKS — collapsed to single line -->
+    <section style="max-width:960px;margin:0 auto;padding:0 52px 32px;text-align:center;">
+      <p style="font-size:14px;color:var(--muted);line-height:1.6;">Start with a free scan. Add documentation when you need it.</p>
     </section>
 
-    <!-- WHY UPPER HARBOUR -->
-    <section class="landing-diff">
-      <div class="landing-diff-inner">
-        <div class="landing-diff-title">Why Upper Harbour</div>
-        <div class="diff-grid">
-          <div class="diff-item">
-            <div class="diff-item-title"><span class="uh-stat" data-stat="totalTools">715</span>-tool database</div>
-            <div class="diff-item-desc">Every assessment draws on the Canadian Technology Sovereignty Index — the most comprehensive jurisdictional dataset for Canadian technology. We don't start from scratch. We start from verified corporate registry data.</div>
-          </div>
-          <div class="diff-item">
-            <div class="diff-item-title">Canadian-specific</div>
-            <div class="diff-item-desc">Built for Law 25, PIPEDA, and Canadian procurement requirements. Not a US GRC platform repurposed for the Canadian market. The analysis accounts for the CLOUD Act, provincial variations, and the regulatory landscape that actually governs your data.</div>
-          </div>
-          <div class="diff-item">
-            <div class="diff-item-title">Independent</div>
-            <div class="diff-item-desc">No vendor affiliations. No paid placements. No commercial relationships with the SaaS tools we assess. Our analysis is independent because our business model doesn't depend on the vendors we're evaluating.</div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- CASE STUDY -->
     <section style="padding:96px 52px 64px;max-width:960px;margin:0 auto;">
@@ -715,6 +678,36 @@
             <span style="font-size:12px;color:var(--muted);margin-left:12px;">Usually added after a Snapshot or Documentation engagement</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section style="max-width:680px;margin:0 auto;padding:40px 52px;">
+      <h2 style="font-family:var(--display);font-size:24px;font-weight:700;color:var(--ice);margin:0 0 24px;">Frequently asked questions</h2>
+
+      <div style="border-top:1px solid var(--border-md);padding:18px 0;">
+        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">Is my data stored when I run a HarbourScan?</div>
+        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">No. The scan runs entirely in your browser. Nothing is sent to our servers or stored anywhere. You can optionally email yourself a summary of your results, but the scan itself is completely private.</p>
+      </div>
+
+      <div style="border-top:1px solid var(--border-md);padding:18px 0;">
+        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">How long does a HarbourScan take?</div>
+        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">Most organizations complete the scan in under 10 minutes. You select your tools from a database of 753 mapped SaaS products, and HarbourScan instantly maps each one to its parent jurisdiction and CLOUD Act status.</p>
+      </div>
+
+      <div style="border-top:1px solid var(--border-md);padding:18px 0;">
+        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">What do I need to run a scan?</div>
+        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">Just a list of the SaaS tools your organization uses. No login, no account, no access to your systems. You select tools from our database and HarbourScan does the rest.</p>
+      </div>
+
+      <div style="border-top:1px solid var(--border-md);padding:18px 0;">
+        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">What format are the paid deliverables?</div>
+        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">The Sovereignty Snapshot is delivered as a PDF report within 5 business days. The Compliance Documentation package includes all Snapshot deliverables plus TIA guidance, a Register of Processing Activities, remediation roadmap, and board-ready compliance documents.</p>
+      </div>
+
+      <div style="border-top:1px solid var(--border-md);padding:18px 0;">
+        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">Do I need a Sovereignty Snapshot if I already ran the free scan?</div>
+        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">The free scan shows your exposure. The Snapshot documents it. If a board member, regulator, procurement officer, or partner asks about your data sovereignty posture, the Snapshot is the PDF you hand them.</p>
       </div>
     </section>
 
