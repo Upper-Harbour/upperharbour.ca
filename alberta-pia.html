@@ -407,14 +407,20 @@ html{scroll-padding-top:100px}
   </div>
 </section>
 
+<!-- ═══ REGULATORY CONTEXT ═══ -->
+<section style="max-width:720px;margin:0 auto;padding:0 52px 48px;">
+  <div style="border-left:3px solid var(--gold);padding:16px 24px;background:rgba(201,168,76,0.03);border-radius:0 8px 8px 0;">
+    <p style="font-size:14px;color:var(--ice);line-height:1.65;margin:0 0 8px;font-weight:600;">New for 2026: The OIPC released a mandatory PIA template on March 26, 2026.</p>
+    <p style="font-size:13px;color:var(--slate);line-height:1.6;margin:0;">Government ministries, municipalities, school boards, post-secondary institutions, health authorities, and police services must use this template when deploying SaaS tools that process personal information. <a href="/resources/alberta-popa-pia-saas-compliance" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Full POPA guide →</a></p>
+  </div>
+</section>
+
 
 <!-- ═══ STEP 1 — FREE: TOOL SELECTOR ═══ -->
 <div id="selectorSection" class="selector">
-  <div class="section-label"><span class="free">Step 1 &mdash; Free</span></div>
-  <h2 class="section-heading">Select your tools and see your exposure</h2>
-  <p class="section-sub">This step is free. See which tools are CLOUD Act exposed before you purchase.</p>
+  <h2 class="section-heading">Select your tools</h2>
+  <p class="section-sub">Search our 753-tool database. We'll show you which are CLOUD Act exposed before you purchase.</p>
 
-  <div style="font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:8px">Search tools</div>
   <div class="selector-wrap">
     <input type="text" id="toolInput" class="selector-input" placeholder="Search &mdash; e.g. Microsoft 365, Slack, Zoom, Salesforce..." autocomplete="off">
     <div class="selector-dropdown" id="toolDropdown"></div>
@@ -424,7 +430,6 @@ html{scroll-padding-top:100px}
 
   <div style="text-align:center">
     <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()">See Your Exposure &rarr;</button>
-    <div style="font-size:11px;color:var(--muted);margin-top:8px">Free &middot; No signup required</div>
   </div>
 </div>
 
