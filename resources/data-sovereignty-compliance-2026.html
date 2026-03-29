@@ -62,7 +62,7 @@
     .stat-card { background: var(--surface); border: 1px solid var(--border-md); border-radius: 6px; padding: 24px; text-align: center; }
     .stat-num { font-family: var(--mono); font-size: 36px; font-weight: 800; line-height: 1; }
     .stat-label { font-size: 12px; color: var(--muted); margin-top: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
-    .stat-source { font-size: 11px; color: var(--muted); margin-top: 16px; text-align: center; font-style: italic; }
+    .stat-source { font-size: 11px; color: var(--muted); margin-top: 16px; margin-bottom: 28px; text-align: center; font-style: italic; }
     .article-h1 em { color: var(--gold); }
     .article-read { font-size: 12px; color: var(--muted); }
     .article-body h3 { font-size: 18px; font-weight: 700; color: var(--ice); margin: 32px 0 12px; }
@@ -110,12 +110,11 @@
       <span class="article-read">15 min read</span>
     </div>
     <h1 class="article-h1">Canadian Data Sovereignty in 2026: What Organizations Need to <em>Prove</em></h1>
-    <div class="author-card">
-      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="56" height="56">
-      <div class="author-card-info">
-        <div class="author-card-name"><a href="/founder">Joshua van Es</a></div>
-        <div class="author-card-role">Corporate law · Founder, Upper Harbour</div>
-        <div class="author-card-pubs">Published in The Globe and Mail, Maclean's, OpenCanada, and BetaKit</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> · Corporate law · Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, and <em>BetaKit</em> · March 2026</span>
       </div>
     </div>
     <p class="article-intro">Most Canadian organizations now understand the concept of data sovereignty. The problem isn&rsquo;t awareness &mdash; it&rsquo;s proof. When a regulator, procurement officer, or client asks how your organization manages cross-border data exposure, can you produce a defensible answer?</p>
