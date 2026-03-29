@@ -195,6 +195,7 @@ html{scroll-padding-top:100px}
 .jurisdiction.ca{background:rgba(16,185,129,0.12);color:#10B981}
 .jurisdiction.other{background:rgba(245,158,11,0.12);color:#F59E0B}
 .selected-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.selected-tools:empty{margin:0}
 .tool-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:4px;font-size:12px;font-weight:600;cursor:pointer;transition:opacity 0.2s}
 .tool-chip:hover{opacity:0.8}
 .tool-chip.risk-exposed{background:rgba(239,68,68,0.12);color:#EF4444;border:1px solid rgba(239,68,68,0.2)}
@@ -203,6 +204,7 @@ html{scroll-padding-top:100px}
 .tool-chip.risk-non_exposed{background:rgba(96,165,250,0.12);color:#60A5FA;border:1px solid rgba(96,165,250,0.2)}
 .tool-chip .remove{font-size:14px;line-height:1;opacity:0.6}
 .selected-count{font-size:12px;color:var(--muted);margin-top:8px}
+.selected-count:empty{margin:0}
 .selected-count strong{color:var(--ice)}
 .generate-btn{display:inline-block;font-size:14px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 48px;border-radius:6px;border:none;cursor:pointer;letter-spacing:0.02em;font-family:var(--body);transition:transform 0.15s,box-shadow 0.15s;margin-top:20px;box-shadow:0 0 20px rgba(42,157,143,0.3)}
 .generate-btn:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 0 30px rgba(42,157,143,0.5)}
