@@ -140,20 +140,27 @@
     <div style="background:rgba(20,30,42,0.95);border:1px solid rgba(201,168,76,0.25);border-radius:8px;padding:32px;text-align:center;margin-bottom:32px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">PIA Research Package</div>
       <div style="font-family:var(--display);font-size:28px;font-weight:900;color:var(--ice);margin-bottom:4px;">$199</div>
-      <p style="font-size:14px;color:var(--slate);line-height:1.6;margin-bottom:6px;max-width:480px;margin-left:auto;margin-right:auto;">Get pre-written answers for Sections F, G, and H2 of the mandatory OIPC PIA template — for every tool you selected. Click any field to copy directly into your submission.</p>
-      <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">Jurisdictional research · CLOUD Act risk assessment · Security classification · Copy-paste ready</p>
+      <p style="font-size:14px;color:var(--slate);line-height:1.6;margin-bottom:6px;max-width:480px;margin-left:auto;margin-right:auto;">Get pre-written answers for Sections F, G, and H2 of the mandatory OIPC PIA template — for every tool you selected. Copy each field directly into your submission, or download the complete package as a PDF.</p>
+      <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">Jurisdictional research · CLOUD Act risk assessment · Security classification · Copy-paste ready · PDF download</p>
       <div id="paywallDynamic" style="font-size:13px;color:var(--ice);margin-bottom:20px;font-weight:600;"></div>
-      <a id="purchaseBtn" href="#" target="_blank" style="display:inline-block;font-size:14px;font-weight:800;color:#fff;background:var(--gold);padding:16px 36px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(201,168,76,0.25);" onmouseover="this.style.background='#D4B55C'" onmouseout="this.style.background='#C9A84C'">Purchase PIA Research — $199 →</a>
-      <p style="font-size:11px;color:var(--muted);margin-top:12px;">PDF delivery within 24 hours · Formatted for OIPC template</p>
+
+      <!-- Stripe inline checkout button — replace PRICE_ID with actual Stripe price -->
+      <div id="stripeContainer">
+        <button onclick="handlePurchase()" style="display:inline-block;font-size:14px;font-weight:800;color:#fff;background:var(--gold);padding:16px 36px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(201,168,76,0.25);" onmouseover="this.style.background='#D4B55C'" onmouseout="this.style.background='#C9A84C'">Purchase PIA Research — $199 →</button>
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:12px;">Instant access · Generated in your browser · PDF download included</p>
     </div>
 
     <div style="text-align:center;margin-bottom:32px;">
       <p style="font-size:14px;color:var(--slate);line-height:1.6;margin-bottom:16px;">Need help completing the rest of the template? Sections A–E and H1 require information specific to your organization.</p>
-      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:13px;font-weight:700;color:var(--teal);background:transparent;border:1px solid rgba(60,184,176,0.3);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Book a Call →</a>
+      <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+        <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:13px;font-weight:700;color:var(--teal);background:transparent;border:1px solid rgba(60,184,176,0.3);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Book a Call →</a>
+        <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:13px;font-weight:700;color:var(--muted);background:transparent;border:1px solid rgba(255,255,255,0.1);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Email Us →</a>
+      </div>
     </div>
   </div>
 
-  <!-- Full output (hidden until purchased — future integration) -->
+  <!-- Full output (shown after purchase) -->
   <div class="output" id="output">
 
     <div class="output-summary" id="outputSummary"></div>
@@ -182,8 +189,9 @@
       <div id="sectionF"></div>
     </div>
 
-    <div style="text-align:center;margin-top:24px;">
+    <div style="text-align:center;margin-top:24px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
       <button class="copy-all-btn" onclick="copyAll()">Copy All Sections to Clipboard</button>
+      <button class="copy-all-btn" onclick="downloadPDF()" style="background:var(--teal);color:#fff;border-color:var(--teal);">Download as PDF ↓</button>
     </div>
 
     <div class="pia-cta">
@@ -417,10 +425,114 @@
         text += label + '\n' + f.textContent + '\n\n';
       });
       navigator.clipboard.writeText(text).then(function(){
-        var btn = document.querySelector('.copy-all-btn');
-        btn.textContent = 'Copied to clipboard ✓';
-        setTimeout(function(){ btn.textContent = 'Copy All Sections to Clipboard'; }, 2000);
+        var btns = document.querySelectorAll('.copy-all-btn');
+        btns[0].textContent = 'Copied ✓';
+        setTimeout(function(){ btns[0].textContent = 'Copy All Sections to Clipboard'; }, 2000);
       });
+    };
+
+    window.handlePurchase = function(){
+      // TODO: Replace with actual Stripe payment link or inline checkout
+      // For now, redirect to Stripe payment link
+      // After payment, Stripe redirects back with ?paid=true which triggers generateOutput()
+      var stripeLink = 'https://buy.stripe.com/REPLACE_WITH_ACTUAL_LINK';
+      if(stripeLink.indexOf('REPLACE') > -1){
+        // Dev mode: show output directly for testing
+        if(confirm('Stripe payment link not configured yet. Show output for testing?')){
+          generateOutput();
+          document.getElementById('preview').classList.remove('visible');
+        }
+        return;
+      }
+      // Store selected tools in sessionStorage so we can restore after redirect
+      sessionStorage.setItem('pia_tools', JSON.stringify(selected.map(function(t){ return t.name; })));
+      window.location.href = stripeLink;
+    };
+
+    // Check if returning from Stripe payment
+    if(window.location.search.indexOf('paid=true') > -1 || window.location.search.indexOf('success') > -1){
+      // Restore tools from sessionStorage and auto-generate
+      var stored = sessionStorage.getItem('pia_tools');
+      if(stored){
+        var toolNames = JSON.parse(stored);
+        toolNames.forEach(function(name){
+          var tool = saasDB.find(function(t){ return t.name === name; });
+          if(tool) selected.push(tool);
+        });
+        renderSelected();
+        generateOutput();
+        sessionStorage.removeItem('pia_tools');
+      }
+    }
+
+    window.downloadPDF = function(){
+      var output = document.getElementById('output');
+      var fields = output.querySelectorAll('.output-field-value');
+      var toolCards = output.querySelectorAll('.output-tool');
+
+      // Build clean HTML for PDF
+      var html = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Alberta POPA PIA Research Package</title><style>';
+      html += 'body{font-family:-apple-system,Helvetica,Arial,sans-serif;font-size:13px;color:#1a1a1a;max-width:720px;margin:0 auto;padding:40px 32px;line-height:1.6}';
+      html += 'h1{font-size:22px;font-weight:700;margin:0 0 4px}h2{font-size:16px;font-weight:700;margin:32px 0 8px;color:#0A1420;border-bottom:2px solid #2A9D8F;padding-bottom:6px}';
+      html += 'h3{font-size:14px;font-weight:700;margin:20px 0 6px;color:#333}';
+      html += '.meta{font-size:11px;color:#666;margin-bottom:24px}';
+      html += '.tool{border:1px solid #ddd;border-radius:6px;padding:16px;margin-bottom:14px;page-break-inside:avoid}';
+      html += '.tool-name{font-size:15px;font-weight:700;margin-bottom:2px}.tool-parent{font-size:11px;color:#666;margin-bottom:12px}';
+      html += '.field-label{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#999;margin-bottom:3px}';
+      html += '.field-value{font-size:12px;color:#333;margin-bottom:12px;line-height:1.55}';
+      html += '.exposed{border-left:3px solid #EF4444}.canadian{border-left:3px solid #10B981}.review{border-left:3px solid #F59E0B}';
+      html += '.footer{margin-top:40px;padding-top:16px;border-top:1px solid #ddd;font-size:10px;color:#999}';
+      html += '</style></head><body>';
+      html += '<h1>Alberta POPA PIA Research Package</h1>';
+      html += '<div class="meta">Generated '+new Date().toLocaleDateString('en-CA')+' · Source: Upper Harbour Sovereignty Index (753 tools) · upperharbour.ca</div>';
+
+      // Gather sections
+      var sections = output.querySelectorAll('.output-section');
+      sections.forEach(function(sec){
+        var label = sec.querySelector('.output-section-label');
+        var title = sec.querySelector('.output-section-title');
+        var desc = sec.querySelector('.output-section-desc');
+        if(title) html += '<h2>'+(label?label.textContent+' — ':'')+title.textContent+'</h2>';
+        if(desc) html += '<p style="font-size:12px;color:#666;margin-bottom:16px;">'+desc.textContent+'</p>';
+
+        var tools = sec.querySelectorAll('.output-tool');
+        tools.forEach(function(tool){
+          var nameEl = tool.querySelector('.output-tool-name');
+          var parentEl = tool.querySelector('.output-tool-parent');
+          var name = nameEl ? nameEl.textContent : '';
+          var parent = parentEl ? parentEl.textContent : '';
+
+          // Determine border class
+          var borderClass = 'review';
+          if(name.indexOf('CLOUD Act') > -1 || name.indexOf('Risk') > -1) borderClass = 'exposed';
+          else if(parent.indexOf('Canada') > -1) borderClass = 'canadian';
+          else if(parent.indexOf('United States') > -1) borderClass = 'exposed';
+
+          html += '<div class="tool '+borderClass+'">';
+          html += '<div class="tool-name">'+name+'</div>';
+          if(parent) html += '<div class="tool-parent">'+parent+'</div>';
+
+          var toolFields = tool.querySelectorAll('.output-field');
+          toolFields.forEach(function(field){
+            var flabel = field.querySelector('.output-field-label');
+            var fval = field.querySelector('.output-field-value');
+            if(flabel) html += '<div class="field-label">'+flabel.textContent+'</div>';
+            if(fval) html += '<div class="field-value">'+fval.textContent+'</div>';
+          });
+          html += '</div>';
+        });
+      });
+
+      html += '<div class="footer">This document was generated by Upper Harbour (upperharbour.ca) using the Canadian Technology Sovereignty Index. ';
+      html += 'The jurisdictional research is intended to assist Alberta public bodies in completing Sections F, G, and H2 of the mandatory OIPC PIA template under POPA. ';
+      html += 'This document does not constitute legal advice. Organizations should review the content and consult with their privacy officer before submission to the OIPC.</div>';
+      html += '</body></html>';
+
+      // Open in new window for printing as PDF
+      var win = window.open('', '_blank');
+      win.document.write(html);
+      win.document.close();
+      setTimeout(function(){ win.print(); }, 500);
     };
   })();
   </script>
