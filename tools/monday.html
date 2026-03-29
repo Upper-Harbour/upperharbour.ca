@@ -19,7 +19,7 @@
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Is Monday.com Safe for Canadian Data? Sovereignty Analysis","author":{"@type":"Person","name":"Joshua van Es","url":"https://joshuavanes.ca","jobTitle":"Corporate Lawyer","worksFor":{"@type":"Organization","name":"Upper Harbour"}},"publisher":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"datePublished":"2026-02-23","dateModified":"2026-03-27","mainEntityOfPage":"https://www.upperharbour.ca/tools/monday"}</script>
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Monday.com subject to the CLOUD Act?","acceptedAnswer":{"@type":"Answer","text":"Not directly. monday.com Ltd. is Israeli-incorporated and not a US entity. However, data is hosted on AWS in the US, creating indirect exposure through the US cloud infrastructure provider."}},{"@type":"Question","name":"Does Monday.com offer Canadian data residency?","acceptedAnswer":{"@type":"Answer","text":"No. Data is hosted in the US and EU. No Canadian data residency option is currently available."}},{"@type":"Question","name":"Do I need a TIA for Monday.com under Law 25?","acceptedAnswer":{"@type":"Answer","text":"Yes. Data leaves Quebec and is stored in the US. A TIA is required regardless of Monday.com's Israeli incorporation."}},{"@type":"Question","name":"Is Monday.com better than Jira or Asana for sovereignty?","acceptedAnswer":{"@type":"Answer","text":"Yes, from a CLOUD Act perspective. Monday.com is not directly subject to the CLOUD Act (Israeli company), while Jira (Atlassian, US-incorporated) and Asana (US-incorporated) are both fully exposed."}},{"@type":"Question","name":"Why is Monday.com listed as medium risk instead of low?","acceptedAnswer":{"@type":"Answer","text":"Because data is hosted on US infrastructure (AWS) with no Canadian data residency. The Israeli incorporation provides structural advantage, but US hosting creates indirect jurisdictional exposure."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is Monday.com subject to the US CLOUD Act?","acceptedAnswer":{"@type":"Answer","text":"Not directly. monday.com Ltd. is incorporated in Israel and files with the SEC as a foreign private issuer. The CLOUD Act applies to US-based technology companies. However, Monday.com's NASDAQ listing, US offices, and US-hosted data create minimum contacts that could theoretically support US jurisdiction. The legal position is uncertain — meaningfully different from the clear exposure of US-incorporated competitors."}},{"@type":"Question","name":"Does Monday.com offer Canadian data residency?","acceptedAnswer":{"@type":"Answer","text":"No. Monday.com offers data hosting in the US (default), EU (Germany), and Australia (Sydney). Canadian data residency is not available. Account-level data including user credentials and profiles is always stored in the US regardless of region selection."}},{"@type":"Question","name":"Can the US government access Monday.com data through AWS?","acceptedAnswer":{"@type":"Answer","text":"Theoretically yes. AWS is a US company subject to the CLOUD Act. While AWS states it has never disclosed enterprise customer data stored outside the US, the legal authority exists. This two-pathways risk is unique to the Israeli-company-on-US-infrastructure configuration."}},{"@type":"Question","name":"How does Monday.com compare to Jira for Canadian data sovereignty?","acceptedAnswer":{"@type":"Answer","text":"Monday.com has better corporate jurisdiction (Israeli, not directly CLOUD Act exposed) but no Canadian data residency. Jira has worse corporate jurisdiction (US-incorporated, fully CLOUD Act exposed) but offers Canadian data residency and customer-managed encryption. Neither gives you both advantages."}},{"@type":"Question","name":"Do I need a TIA for Monday.com under Quebec's Law 25?","acceptedAnswer":{"@type":"Answer","text":"Yes. Data leaves Quebec and is stored in the US or EU. A TIA is required regardless of Monday.com's Israeli incorporation. The TIA should document the Israeli incorporation as a meaningful jurisdictional advantage while noting the US hosting risk."}},{"@type":"Question","name":"Does Monday.com offer customer-managed encryption?","acceptedAnswer":{"@type":"Answer","text":"Yes — through BYOK (Bring Your Own Key) on the Enterprise Guardian add-on. Keys can be stored in AWS KMS or Azure Key Vault, providing key lifecycle control and revocation capability."}}]}</script>
 
   <style>
     /* ── Verdict styles removed — verdict is now plain text, no box ── */
@@ -317,20 +317,22 @@
 
     <!-- Data Cards — the evidence backing the verdict -->
     <div class="bento">
-      <div class="bento-cell b-grey"><div class="bento-label">Parent Company</div><div class="bento-value">monday.com Ltd. (Israel)</div></div>
-      <div class="bento-cell b-green"><div class="bento-label">CLOUD Act Status</div><div class="bento-value"><span class="badge green">✓ Not Directly Exposed</span></div></div>
-      <div class="bento-cell b-red"><div class="bento-label">Canadian Data Residency</div><div class="bento-value"><span class="badge amber">⚠ US/EU Only</span></div></div>
-      <div class="bento-cell b-amber"><div class="bento-label">Encryption</div><div class="bento-value"><span class="badge amber">⚠ Vendor-Managed</span></div></div>
-      <div class="bento-cell b-grey"><div class="bento-label">TIA / PIA Required</div><div class="bento-value"><span class="badge red">Yes — Law 25 &amp; FIPPA</span></div></div>
-      <div class="bento-cell b-green"><div class="bento-label">Canadian Alternative</div><div class="bento-value"><span class="badge amber">⚠ Indirect Exposure</span></div></div>
+      <div class="bento-cell b-green"><div class="bento-label">Parent Company</div><div class="bento-value">monday.com Ltd. (Israel)</div></div>
+      <div class="bento-cell b-amber"><div class="bento-label">CLOUD Act Status</div><div class="bento-value"><span class="badge amber">⚠ Indirect Exposure</span></div></div>
+      <div class="bento-cell b-red"><div class="bento-label">Canadian Data Residency</div><div class="bento-value"><span class="badge red">✗ Not Available</span></div></div>
+      <div class="bento-cell b-amber"><div class="bento-label">Encryption</div><div class="bento-value"><span class="badge amber">⚠ BYOK (Guardian add-on)</span></div></div>
+      <div class="bento-cell b-grey"><div class="bento-label">TIA / PIA Required</div><div class="bento-value"><span class="badge red">Yes — Law 25 &amp; POPA</span></div></div>
+      <div class="bento-cell b-green"><div class="bento-label">Incorporation</div><div class="bento-value">Israeli Companies Law, 2012</div></div>
     </div>
 
 
     <!-- ═══ SECTION 2: MAIN ANALYSIS ═══ -->
-    <h2 class="reveal">Is Dropbox CLOUD Act compliant for Canadian organizations?</h2>
-    <p>No. Dropbox is fully exposed to the CLOUD Act. As a <strong>US-incorporated</strong> company, US authorities can compel access to all Dropbox data regardless of where it's stored. Dropbox offers no Canadian data residency and no customer-managed encryption, meaning there are no technical barriers to US government data access.</p>
-    <p>For Canadian organizations, every file stored in Dropbox — HR documents, client contracts, financial records, patient files, legal correspondence — is accessible under US legal process. There is <strong>no Canadian data residency</strong> and <strong>no customer-managed encryption</strong> to limit this exposure.</p>
-    <p>This makes Dropbox the most straightforward sovereignty case in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>: full US jurisdictional exposure with no available mitigation.</p>
+    <h2 class="reveal">Is Monday.com CLOUD Act exposed for Canadian organizations?</h2>
+    <p><strong>Not directly — and this matters.</strong> monday.com Ltd. was incorporated in Israel in 2012 (originally as DaPulse Labs Ltd.) under the Israeli Companies Law. It is headquartered in Tel Aviv-Yafo. Unlike Jira (Atlassian, Delaware) and Asana (Delaware), Monday.com is not a US company. It files with the SEC as a <strong>foreign private issuer</strong> — a fundamentally different legal classification that affects how the CLOUD Act applies.</p>
+    <p>The CLOUD Act compels <em>US-based technology companies</em> to produce data. Monday.com is not US-based. A US court cannot directly compel monday.com Ltd. to produce data under the Stored Communications Act the way it can compel Microsoft, Atlassian, or Asana.</p>
+    <p><strong>However, the picture is more complex than "Israeli = safe."</strong> Monday.com has significant US presence: it's listed on NASDAQ (MNDY), has US sales offices and employees, and hosts data primarily on AWS infrastructure in the United States. US courts can exercise jurisdiction over foreign companies with sufficient "minimum contacts" in the US — and Monday.com clearly has substantial US contacts. Whether this is enough for a US court to enforce a CLOUD Act order against Monday.com is an evolving legal question without definitive case law.</p>
+    <p>Additionally, while Monday.com itself may resist a US legal order, <strong>the data sits on AWS — a US company that is directly subject to the CLOUD Act.</strong> This creates a second pathway for US government access: a court order directed at Amazon Web Services for data stored on its US infrastructure. AWS has stated it has never disclosed enterprise customer data stored outside the US to the US government — but the legal authority exists.</p>
+    <p>The bottom line: Monday.com has the <strong>strongest jurisdictional positioning</strong> of any major project management platform for Canadian organizations. Israeli incorporation provides a structural barrier that US-incorporated competitors simply don't have. But US data hosting and significant US business presence create indirect exposure that prevents a clean sovereignty bill of health.</p>
 
 
     <!-- ═══ SECTION 3: REGULATORY ANALYSIS (expanded) ═══ -->
@@ -340,7 +342,102 @@
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <h3>CLOUD Act exposure — indirect, not direct</h3><p>monday.com Ltd. is not a US company and is not directly subject to the CLOUD Act. However, US hosting through AWS creates a pathway for US legal process to reach the data. The legal question of whether the CLOUD Act applies to data held by a US cloud provider on behalf of a foreign company is complex and evolving.</p><h3>Law 25 (Quebec)</h3><p>Quebec organizations using Monday.com must still complete a Transfer Impact Assessment. Data leaves Quebec and is stored in the US — the TIA requirement is triggered regardless of whether the vendor itself is US-incorporated. The TIA should document Monday.com's Israeli incorporation as a partial mitigation.</p><h3>Alberta POPA</h3><p>Alberta public bodies deploying Monday.com must complete a PIA. The OIPC template Section G should document Monday.com's Israeli incorporation and note that it is not directly CLOUD Act exposed, while documenting that data is hosted on US infrastructure. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically.</p><h3>Israeli privacy law</h3><p>Israel has been recognized by the European Commission as providing adequate protection for personal data. While Canada has not made a similar adequacy determination, Israel's privacy framework (Protection of Privacy Law, 1981) provides stronger data protection than many jurisdictions.</p></div>
+        <h3>CLOUD Act — the nuanced case</h3>
+        <p>The CLOUD Act applies to providers of electronic communication or remote computing services "subject to US jurisdiction." Monday.com is not a US company, but the question of whether it is "subject to US jurisdiction" for CLOUD Act purposes turns on the "minimum contacts" analysis under US constitutional law.</p>
+        <p>Monday.com's US contacts include: NASDAQ listing (MNDY), US sales and marketing offices, significant US customer base, and US-hosted data infrastructure (AWS Northern Virginia). US courts have held that even a single act creating a "substantial connection" with the US can support jurisdiction. Monday.com's contacts are far more extensive than any single act.</p>
+        <p>This doesn't mean the CLOUD Act definitively applies to Monday.com. It means the legal position is <strong>uncertain</strong> — which for compliance documentation purposes is importantly different from both "exposed" (like Atlassian) and "not exposed" (like a Canadian-owned tool with Canadian hosting). Your TIA or PIA should document this uncertainty honestly.</p>
+
+        <!-- Jurisdiction flow -->
+        <div class="jurisdiction-flow">
+          <div class="jf-node jf-safe">
+            <div class="jf-icon">🍁</div>
+            <div class="jf-label">Your Canadian Data</div>
+            <div class="jf-sub">Tasks, projects, boards<br>under PIPEDA / Law 25</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#F59E0B" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#F59E0B"/></svg>
+          </div>
+          <div class="jf-node jf-safe">
+            <div class="jf-icon">🏢</div>
+            <div class="jf-label">monday.com Ltd.</div>
+            <div class="jf-sub">Tel Aviv, Israel (since 2012)<br>Not a US company</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#F59E0B" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#F59E0B"/></svg>
+          </div>
+          <div class="jf-node jf-warn">
+            <div class="jf-icon">☁️</div>
+            <div class="jf-label">AWS (US Infrastructure)</div>
+            <div class="jf-sub">Northern Virginia<br><strong style="color:#F59E0B;">AWS is CLOUD Act exposed</strong></div>
+          </div>
+        </div>
+
+        <h3>The "two pathways" problem</h3>
+        <p>Even if Monday.com itself is not directly reachable under the CLOUD Act, there's a second pathway: a US court order directed at AWS. Amazon Web Services is a US company that controls the physical infrastructure where Monday.com's data sits. While AWS has published strong transparency commitments, the legal authority for the US government to compel AWS to produce data hosted on its infrastructure exists under the CLOUD Act. This is a theoretical pathway — AWS states it has never disclosed enterprise customer data stored outside the US — but it represents a structural risk that doesn't exist with Canadian-hosted infrastructure.</p>
+
+        <h3>Israeli privacy law</h3>
+        <p>Israel has been recognized by the European Commission as providing "adequate" data protection — one of only 17 countries with this designation. Israel's Protection of Privacy Law (1981) and Privacy Protection Regulations provide a framework that, while different from Canadian law, offers meaningful privacy protections. For TIA purposes, this is a relevant factor: the vendor's home jurisdiction has strong privacy norms, even if the data is hosted on US infrastructure.</p>
+
+        <h3>Quebec Law 25</h3>
+        <p>Quebec organizations using Monday.com must complete a <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Transfer Impact Assessment</a>. The TIA must document: data is hosted in the US (or EU if configured), Monday.com is Israeli-incorporated (not directly CLOUD Act exposed), but data sits on US infrastructure operated by a CLOUD Act-subject company (AWS). The Israeli incorporation should be documented as a meaningful jurisdictional mitigation. Upper Harbour provides <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">compliance-ready TIA documentation</a> starting at $99.</p>
+
+        <h3>Alberta POPA</h3>
+        <p>Alberta public bodies deploying Monday.com must complete a PIA using the mandatory OIPC template. Section G should document Monday.com's Israeli incorporation and the indirect nature of the CLOUD Act exposure — this is genuinely different from documenting a US-incorporated tool. Section H2, Risk 7 should note that the parent company is not directly subject to the CLOUD Act, while the hosting infrastructure is. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 753-tool database.</p>
+
+        <h3>BC FIPPA</h3>
+        <p>BC public bodies should note that Monday.com's Israeli incorporation provides better jurisdictional positioning than US-incorporated alternatives. However, data is still hosted on US infrastructure with no Canadian data residency option. <a href="/resources/fippa-saas-compliance-bc-public-bodies" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Full FIPPA SaaS compliance guide →</a></p>
+
+        <h3>No Canadian data residency — a significant gap</h3>
+        <p>Despite Monday.com's strong jurisdictional positioning, it offers <strong>no Canadian data residency</strong>. Data can be hosted in the US (default), EU (Germany, available on Enterprise and for Standard/Pro accounts created after January 2023), or Australia (APAC). Canadian organizations cannot pin their data to Canadian servers. And account-level data — user credentials, profiles, usage analytics, and metadata — <strong>is always stored in the US</strong> regardless of which data region is selected.</p>
+      </div>
+    </div>
+
+    <!-- ═══ URGENCY BRIDGE ═══ -->
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Monday.com is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. It has the best jurisdictional positioning of any major PM tool — but your stack doesn't stop at project management. If you use Monday.com alongside Microsoft 365, Slack, Zoom, or Salesforce, those tools are all US-incorporated and fully CLOUD Act exposed. <strong>Sovereignty compliance requires assessing every tool, not just the one with the best story.</strong></p>
+
+    <!-- ═══ MID-PAGE CTA ═══ -->
+    <div class="mid-cta reveal">
+      <div class="mid-cta-text">Map your entire SaaS stack to parent jurisdictions and CLOUD Act exposure in 10 minutes.</div>
+      <a href="/harbourscan" class="mid-cta-btn">Map Your Stack →</a>
+    </div>
+
+    <!-- ═══ ALTERNATIVES & COMPARISON ═══ -->
+    <div class="expand-section open reveal" id="alternatives">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Alternatives &amp; Comparison</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <p>Monday.com occupies a unique position: the best jurisdictional status of any major PM tool, but without Canadian data residency. Here's how it compares:</p>
+
+        <div class="compare-wrap"><table class="compare-table">
+          <thead><tr><th>Tool</th><th>Ownership</th><th>CLOUD Act</th><th>CDN Residency</th><th>Customer Keys</th></tr></thead>
+          <tbody>
+            <tr class="current"><td><strong>Monday.com</strong></td><td class="ct-yes">Israel</td><td class="ct-partial">Indirect</td><td class="ct-no">No</td><td class="ct-partial">BYOK (Guardian)</td></tr>
+            <tr><td><a href="/tools/jira">Jira</a></td><td>US (Delaware)</td><td class="ct-no">Exposed</td><td class="ct-partial">Available</td><td class="ct-partial">CMK add-on</td></tr>
+            <tr><td><a href="/tools/asana">Asana</a></td><td>US (Delaware)</td><td class="ct-no">Exposed</td><td class="ct-no">No</td><td class="ct-partial">EKM (Ent+ only)</td></tr>
+            <tr><td>ClickUp</td><td>US</td><td class="ct-no">Exposed</td><td class="ct-no">No</td><td class="ct-no">No</td></tr>
+            <tr><td>Wrike</td><td>US (Citrix)</td><td class="ct-no">Exposed</td><td class="ct-partial">EU available</td><td class="ct-no">No</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:13px;color:var(--muted);">Based on <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a> data. March 2026.</p>
+
+        <p><strong>The sovereignty paradox:</strong> Monday.com has the best corporate jurisdiction (Israeli, not directly CLOUD Act exposed) but lacks Canadian data residency. <a href="/tools/jira" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Jira</a> has the worst corporate jurisdiction (US-incorporated) but offers Canadian data residency. Neither gives you both. The "best" choice depends on whether your compliance framework prioritizes corporate jurisdiction or data location — document your reasoning.</p>
+      </div>
+    </div>
+
+
+    <!-- ═══ CONTACT ═══ -->
+    <div class="notify-box reveal">
+      <div class="notify-header">
+        <span class="notify-icon">💬</span>
+        <span class="notify-title">Questions about Monday.com and Canadian compliance?</span>
+      </div>
+      <p>We help organizations assess jurisdictional risk across their SaaS stack. Book a call or send us a message.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);padding:11px 22px;border-radius:4px;text-decoration:none;">Book a Call →</a>
+        <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:12px;font-weight:700;color:var(--ice);background:transparent;border:1px solid var(--border-md);padding:11px 22px;border-radius:4px;text-decoration:none;">Email Us →</a>
+      </div>
     </div>
 
 
@@ -353,35 +450,63 @@
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <h3>Data storage</h3><p>Monday.com hosts data primarily in the United States and EU through AWS. No Canadian data residency option is available. EU data residency is available for EU customers.</p><h3>Encryption</h3><p>Monday.com encrypts data at rest (AES-256) and in transit (TLS 1.2+). Encryption keys are managed by Monday.com. Customer-managed encryption is not available.</p><h3>US listing</h3><p>Monday.com is listed on NASDAQ (MNDY). While US stock exchange listing does not make a company subject to the CLOUD Act (which applies based on incorporation, not listing), it does create US regulatory reporting obligations and increases US government visibility into the company's operations.</p>
+        <h3>Data storage and regions</h3>
+        <p>Monday.com hosts data on AWS across three regions: US (Northern Virginia, default), EU (Frankfurt, Germany), and APAC (Sydney, Australia — launched 2023). <strong>No Canadian data residency is available.</strong> Your account's data region is set automatically based on the location of the first user who opens the account — and once set, it cannot be easily changed. A new account must be created in the desired region.</p>
+        <p>EU data residency is available on Enterprise plans, and on Standard and Pro plans created on or after January 23, 2023. For APAC accounts, some data processed by sub-processors may still be hosted outside the APAC region.</p>
+        <p><strong>Critical limitation:</strong> Account-level data — including user credentials, profiles, usage analytics, and metadata from automations and integrations — is <strong>always stored in the US</strong> regardless of which data region is selected. Only "customer data" (boards, items, updates, files) follows the data region setting. This means even with EU data residency enabled, some data about your users remains on US infrastructure.</p>
+
+        <h3>Encryption</h3>
+        <p>Monday.com encrypts data at rest (AES-256) and in transit (TLS 1.3, minimum TLS 1.2). Encryption keys are stored in AWS KMS with annually rotated customer master keys. Two encryption tiers:</p>
+        <ul>
+          <li><strong>Default (monday.com-managed keys):</strong> Standard on all plans. Monday.com manages encryption keys in AWS KMS. Under a legal order, Monday.com (or AWS) could produce data in readable form.</li>
+          <li><strong>BYOK (Bring Your Own Key):</strong> Available with the Enterprise Guardian add-on. Allows organizations to store encryption keys in their own AWS KMS or Azure Key Vault. Provides revocation capability and audit independence through CloudTrail/Azure logs. Does not prevent legal compulsion but gives the customer a kill switch.</li>
+        </ul>
+
+        <h3>Infrastructure architecture</h3>
+        <p>Monday.com uses a multi-tenant architecture with logical separation between customers. Databases include MySQL, Elasticsearch, and Redis. API keys for external integrations are stored in a dedicated HashiCorp Vault cluster. All engineering access to production servers requires VPN authenticated against the enterprise identity provider with MFA enforced. The infrastructure runs across multiple AWS Availability Zones with disaster recovery in a separate region.</p>
+
+        <h3>AI features</h3>
+        <p>Monday.com has stated that it does not use customer data to train its AI models. AI features follow the same security protocols as the core platform. For organizations concerned about AI data processing, Monday.com's AI Trust Center provides details on how AI features interact with customer data.</p>
+
+        <h3>Marketplace apps</h3>
+        <p>Monday.com's app marketplace allows third-party integrations. Apps can support multi-region deployment through Monday.com's developer framework. However, not all apps support data residency — each app must be individually assessed. Monday.com requires app developers to have documented mechanisms for security breach notification.</p>
       </div>
     </div>
 
 
-    <!-- ═══ SECTION 8: MITIGATION OPTIONS (collapsed) ═══ -->
+    <!-- ═══ MITIGATION OPTIONS (collapsed) ═══ -->
     <div class="expand-section" id="mitigation">
       <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
         <h2>Mitigation Options</h2>
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <p>Monday.com's Israeli incorporation provides a structural advantage over US-incorporated competitors:</p><ul><li><strong>Not directly CLOUD Act exposed:</strong> This is a meaningful distinction. Document it in your TIA or PIA as a factor in your vendor assessment.</li><li><strong>US hosting risk:</strong> Data sits on AWS US servers. Request EU data residency if available for your plan. Monitor for Canadian data residency availability.</li><li><strong>DPA enforcement:</strong> Execute Monday.com's Data Processing Agreement. Review against Law 25 or PIPEDA requirements.</li><li><strong>Compare alternatives:</strong> If CLOUD Act avoidance is critical, Monday.com is better positioned than Asana, Jira, or Trello — but a Canadian-owned tool would be strongest.</li></ul><p><strong>Monday.com is the best-positioned major project management tool for Canadian sovereignty — but US hosting means it's not risk-free.</strong></p>
+        <p>Monday.com's Israeli incorporation is itself the primary sovereignty mitigation — a structural advantage that no US-incorporated competitor offers. Additional steps to strengthen your position:</p>
+        <ul>
+          <li><strong>Enable EU data residency (if no Canadian option):</strong> EU hosting removes customer data from US soil, although account data remains in the US. EU hosting through an Israeli company on European infrastructure represents the strongest available data residency configuration — your data is physically in the EU, controlled by an Israeli company, with no US corporate parent in the chain.</li>
+          <li><strong>Enable BYOK encryption (Enterprise Guardian):</strong> If available on your plan, BYOK via AWS KMS or Azure Key Vault gives you control over encryption keys and the ability to revoke access. Choose a key region that aligns with your data residency preferences.</li>
+          <li><strong>Document the jurisdictional advantage:</strong> Your TIA or PIA should explicitly note that Monday.com is not a US company, not directly subject to the CLOUD Act, and that this represents a meaningfully different jurisdictional profile than US-incorporated alternatives. This distinction matters to regulators and procurement officers.</li>
+          <li><strong>Acknowledge the residual risk:</strong> Document that data is hosted on AWS US infrastructure (unless EU residency is configured), that account-level data remains in the US regardless, and that the CLOUD Act could potentially reach Monday.com through indirect jurisdiction. Be honest about the uncertainty — it's more credible than claiming zero risk.</li>
+          <li><strong>Monitor for Canadian data residency:</strong> Monday.com has been expanding regions (EU in 2021, APAC in 2023, UAE discussed). Canadian data residency may be added in the future. When it is, the combination of Israeli incorporation + Canadian data hosting + BYOK would create the strongest sovereignty posture of any major PM tool.</li>
+        </ul>
+        <p><strong>Bottom line:</strong> Monday.com is the best-positioned major project management tool for Canadian sovereignty — not because it's perfect, but because Israeli incorporation removes the most direct CLOUD Act pathway. If you must use a major PM platform, Monday.com + EU data residency + BYOK is a defensible choice. Document your reasoning and the residual risks.</p>
       </div>
     </div>
 
 
-    <!-- ═══ SECTION 9: FAQ (collapsed) ═══ -->
+    <!-- ═══ FAQ (collapsed) ═══ -->
     <div class="expand-section" id="faq">
       <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
         <h2>Frequently Asked Questions</h2>
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <div class="faq-item-inline"><h3>Is Monday.com subject to the CLOUD Act?</h3><p>Not directly. monday.com Ltd. is Israeli-incorporated and not a US entity. However, data is hosted on AWS in the US, creating indirect exposure through the US cloud infrastructure provider.</p></div>
-        <div class="faq-item-inline"><h3>Does Monday.com offer Canadian data residency?</h3><p>No. Data is hosted in the US and EU. No Canadian data residency option is currently available.</p></div>
-        <div class="faq-item-inline"><h3>Do I need a TIA for Monday.com under Law 25?</h3><p>Yes. Data leaves Quebec and is stored in the US. A TIA is required regardless of Monday.com's Israeli incorporation.</p></div>
-        <div class="faq-item-inline"><h3>Is Monday.com better than Jira or Asana for sovereignty?</h3><p>Yes, from a CLOUD Act perspective. Monday.com is not directly subject to the CLOUD Act (Israeli company), while Jira (Atlassian, US-incorporated) and Asana (US-incorporated) are both fully exposed.</p></div>
-        <div class="faq-item-inline"><h3>Why is Monday.com listed as medium risk instead of low?</h3><p>Because data is hosted on US infrastructure (AWS) with no Canadian data residency. The Israeli incorporation provides structural advantage, but US hosting creates indirect jurisdictional exposure.</p></div>
+        <div class="faq-item-inline"><h3>Is Monday.com subject to the US CLOUD Act?</h3><p>Not directly. monday.com Ltd. is incorporated in Israel and files with the SEC as a foreign private issuer. The CLOUD Act applies to US-based technology companies — Monday.com is not US-based. However, its NASDAQ listing, US offices, and US-hosted data create "minimum contacts" that could theoretically support US jurisdiction. The legal position is uncertain, which is meaningfully different from the clear exposure of US-incorporated competitors.</p></div>
+        <div class="faq-item-inline"><h3>Does Monday.com offer Canadian data residency?</h3><p>No. Monday.com offers data hosting in the US (default), EU (Germany), and Australia (Sydney). Canadian data residency is not available. Account-level data (user credentials, profiles, analytics) is always stored in the US regardless of which region is selected.</p></div>
+        <div class="faq-item-inline"><h3>Can the US government access Monday.com data through AWS?</h3><p>Theoretically, yes. AWS is a US company subject to the CLOUD Act. While AWS has stated it has never disclosed enterprise customer data stored outside the US to the US government, the legal authority exists. This "two pathways" risk — through Monday.com directly (uncertain) or through AWS (technically possible) — is unique to the Israeli-company-on-US-infrastructure configuration.</p></div>
+        <div class="faq-item-inline"><h3>Do I need a TIA for Monday.com under Law 25?</h3><p>Yes. Data leaves Quebec and is stored in the US (or EU if configured). A TIA is required regardless of Monday.com's Israeli incorporation. The TIA should document the Israeli incorporation as a meaningful jurisdictional advantage while noting the US hosting risk.</p></div>
+        <div class="faq-item-inline"><h3>How does Monday.com compare to Jira for sovereignty?</h3><p>It depends on what you prioritize. Monday.com has better corporate jurisdiction (Israeli, not directly CLOUD Act exposed) but no Canadian data residency. Jira has worse corporate jurisdiction (US-incorporated, fully CLOUD Act exposed) but offers Canadian data residency and customer-managed encryption. Neither gives you both advantages.</p></div>
+        <div class="faq-item-inline"><h3>Does Monday.com offer customer-managed encryption?</h3><p>Yes — through BYOK (Bring Your Own Key) on the Enterprise Guardian add-on. Keys can be stored in AWS KMS or Azure Key Vault. This provides key lifecycle control and revocation capability. It does not prevent legal compulsion but provides operational control and audit visibility.</p></div>
       </div>
     </div>
 
