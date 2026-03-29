@@ -411,24 +411,32 @@ html{scroll-padding-top:100px}
 
 <!-- ═══ STEP 1 — FREE: TOOL SELECTOR ═══ -->
 <div id="toolArea" style="height:0;visibility:hidden;"></div>
-<section style="max-width:760px;margin:0 auto;padding:0 52px 32px;">
-  <div style="background:rgba(15,23,32,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:40px 36px 32px;">
-    <div style="text-align:center;margin-bottom:20px;">
-      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#10B981;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);padding:4px 14px;border-radius:4px;display:inline-block;">Step 1 &mdash; Free</span>
+<section style="max-width:800px;margin:0 auto;padding:0 52px 40px;">
+  <div style="border:1px solid rgba(60,184,176,0.2);border-radius:12px;overflow:hidden;">
+    <!-- Header bar -->
+    <div style="background:rgba(42,157,143,0.06);border-bottom:1px solid rgba(60,184,176,0.12);padding:20px 32px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+      <div>
+        <div style="font-size:18px;font-weight:700;color:var(--ice);margin-bottom:2px;">PIA Research Tool</div>
+        <div style="font-size:12px;color:var(--muted);">Select your tools below. Free exposure check — no signup required.</div>
+      </div>
+      <div style="display:flex;gap:16px;">
+        <div style="text-align:center;"><div style="font-size:16px;font-weight:800;color:var(--teal);line-height:1.2;">753</div><div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Tools</div></div>
+        <div style="text-align:center;"><div style="font-size:16px;font-weight:800;color:#EF4444;line-height:1.2;">67%</div><div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">US-owned</div></div>
+        <div style="text-align:center;"><div style="font-size:16px;font-weight:800;color:var(--gold);line-height:1.2;">$199</div><div style="font-size:8px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">Full report</div></div>
+      </div>
     </div>
-    <h2 class="section-heading">Select your tools</h2>
-    <p class="section-sub">Search our 753-tool database. We&rsquo;ll show you which are CLOUD Act exposed.</p>
+    <!-- Tool input area -->
+    <div style="padding:28px 32px 24px;">
+      <div class="selector-wrap">
+        <input type="text" id="toolInput" class="selector-input" placeholder="Search — e.g. Microsoft 365, Slack, Zoom, Salesforce..." autocomplete="off" style="border-color:rgba(60,184,176,0.2);font-size:15px;padding:16px 18px;">
+        <div class="selector-dropdown" id="toolDropdown"></div>
+      </div>
+      <div class="selected-tools" id="selectedTools"></div>
+      <div class="selected-count" id="selectedCount"></div>
 
-    <div class="selector-wrap">
-      <input type="text" id="toolInput" class="selector-input" placeholder="Search &mdash; e.g. Microsoft 365, Slack, Zoom, Salesforce..." autocomplete="off">
-      <div class="selector-dropdown" id="toolDropdown"></div>
-    </div>
-    <div class="selected-tools" id="selectedTools"></div>
-    <div class="selected-count" id="selectedCount"></div>
-
-    <div style="text-align:center">
-      <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()">See Your Exposure &rarr;</button>
-      <div style="font-size:11px;color:var(--muted);margin-top:8px">Free &middot; No signup required</div>
+      <div style="text-align:center;margin-top:24px;">
+        <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()">See Your Exposure &rarr;</button>
+      </div>
     </div>
   </div>
 </section>
