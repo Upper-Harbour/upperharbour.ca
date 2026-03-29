@@ -144,9 +144,14 @@
       <p style="font-size:12px;color:var(--muted);margin-bottom:20px;">Jurisdictional research · CLOUD Act risk assessment · Security classification · Copy-paste ready · PDF download</p>
       <div id="paywallDynamic" style="font-size:13px;color:var(--ice);margin-bottom:20px;font-weight:600;"></div>
 
-      <!-- Stripe inline checkout button — replace PRICE_ID with actual Stripe price -->
+      <!-- Stripe inline checkout -->
       <div id="stripeContainer">
-        <button onclick="handlePurchase()" style="display:inline-block;font-size:14px;font-weight:800;color:#fff;background:var(--gold);padding:16px 36px;border-radius:4px;border:none;cursor:pointer;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(201,168,76,0.25);" onmouseover="this.style.background='#D4B55C'" onmouseout="this.style.background='#C9A84C'">Purchase PIA Research — $199 →</button>
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+        <stripe-buy-button
+          buy-button-id="buy_btn_1TGB6eHacAqcnAkVEOryP5ce"
+          publishable-key="pk_live_51T7jm1HacAqcnAkVNz7quTDA5wMMmlzdS0GtumcVDy2XNAbone5VCl7eqklWgfhVlgA9PRa7T4F3G7aj3nLbJ2Vz004QLuyxlP"
+        >
+        </stripe-buy-button>
       </div>
       <p style="font-size:11px;color:var(--muted);margin-top:12px;">Instant access · Generated in your browser · PDF download included</p>
     </div>
@@ -260,6 +265,7 @@
       if(tool && !selected.find(function(s){ return s.name === name; })){
         selected.push(tool);
         renderSelected();
+        saveSelection();
       }
       input.value = '';
       dropdown.classList.remove('open');
@@ -288,6 +294,7 @@
     window.removeTool = function(i){
       selected.splice(i, 1);
       renderSelected();
+      saveSelection();
     };
 
     window.showPreview = function(){
@@ -431,27 +438,9 @@
       });
     };
 
-    window.handlePurchase = function(){
-      // TODO: Replace with actual Stripe payment link or inline checkout
-      // For now, redirect to Stripe payment link
-      // After payment, Stripe redirects back with ?paid=true which triggers generateOutput()
-      var stripeLink = 'https://buy.stripe.com/REPLACE_WITH_ACTUAL_LINK';
-      if(stripeLink.indexOf('REPLACE') > -1){
-        // Dev mode: show output directly for testing
-        if(confirm('Stripe payment link not configured yet. Show output for testing?')){
-          generateOutput();
-          document.getElementById('preview').classList.remove('visible');
-        }
-        return;
-      }
-      // Store selected tools in sessionStorage so we can restore after redirect
-      sessionStorage.setItem('pia_tools', JSON.stringify(selected.map(function(t){ return t.name; })));
-      window.location.href = stripeLink;
-    };
-
-    // Check if returning from Stripe payment
+    // After Stripe payment, user is redirected back with ?paid=true
+    // Restore their selected tools and auto-generate the output
     if(window.location.search.indexOf('paid=true') > -1 || window.location.search.indexOf('success') > -1){
-      // Restore tools from sessionStorage and auto-generate
       var stored = sessionStorage.getItem('pia_tools');
       if(stored){
         var toolNames = JSON.parse(stored);
@@ -463,6 +452,12 @@
         generateOutput();
         sessionStorage.removeItem('pia_tools');
       }
+    }
+
+    // Save selected tools to sessionStorage whenever they change,
+    // so they persist through Stripe redirect
+    function saveSelection(){
+      sessionStorage.setItem('pia_tools', JSON.stringify(selected.map(function(t){ return t.name; })));
     }
 
     window.downloadPDF = function(){
