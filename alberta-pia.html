@@ -417,21 +417,27 @@ html{scroll-padding-top:100px}
 
 
 <!-- ═══ STEP 1 — FREE: TOOL SELECTOR ═══ -->
-<div id="selectorSection" class="selector">
-  <h2 class="section-heading">Select your tools</h2>
-  <p class="section-sub">Search our 753-tool database. We'll show you which are CLOUD Act exposed before you purchase.</p>
+<section style="max-width:760px;margin:0 auto;padding:0 52px 32px;">
+  <div id="selectorSection" style="background:rgba(15,23,32,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:12px;padding:40px 36px 32px;">
+    <div style="text-align:center;margin-bottom:20px;">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#10B981;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);padding:4px 14px;border-radius:4px;display:inline-block;">Step 1 &mdash; Free</span>
+    </div>
+    <h2 class="section-heading">Select your tools</h2>
+    <p class="section-sub">Search our 753-tool database. We&rsquo;ll show you which are CLOUD Act exposed.</p>
 
-  <div class="selector-wrap">
-    <input type="text" id="toolInput" class="selector-input" placeholder="Search &mdash; e.g. Microsoft 365, Slack, Zoom, Salesforce..." autocomplete="off">
-    <div class="selector-dropdown" id="toolDropdown"></div>
-  </div>
-  <div class="selected-tools" id="selectedTools"></div>
-  <div class="selected-count" id="selectedCount"></div>
+    <div class="selector-wrap">
+      <input type="text" id="toolInput" class="selector-input" placeholder="Search &mdash; e.g. Microsoft 365, Slack, Zoom, Salesforce..." autocomplete="off">
+      <div class="selector-dropdown" id="toolDropdown"></div>
+    </div>
+    <div class="selected-tools" id="selectedTools"></div>
+    <div class="selected-count" id="selectedCount"></div>
 
-  <div style="text-align:center">
-    <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()">See Your Exposure &rarr;</button>
+    <div style="text-align:center">
+      <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()">See Your Exposure &rarr;</button>
+      <div style="font-size:11px;color:var(--muted);margin-top:8px">Free &middot; No signup required</div>
+    </div>
   </div>
-</div>
+</section>
 
 
 <!-- ═══ PREVIEW / PAYWALL (appears after free scan) ═══ -->
@@ -522,6 +528,7 @@ html{scroll-padding-top:100px}
   <a href="https://oipc.ab.ca/privacy-impact-assessments/" target="_blank" rel="noopener">View the official OIPC PIA template &rarr;</a>
 </div>
 
+<div style="max-width:720px;margin:0 auto;padding:0 52px;"><div style="border-top:1px solid rgba(255,255,255,0.06);"></div></div>
 
 <!-- ═══ FAQ ═══ -->
 <section class="faq-section">
@@ -560,12 +567,16 @@ html{scroll-padding-top:100px}
 
 
 <!-- ═══ BOTTOM CTA ═══ -->
-<section class="bottom-cta">
-  <h2 class="bottom-cta-title">Not sure if you need a PIA?</h2>
-  <p class="bottom-cta-desc">If your Alberta public body uses any SaaS tool that processes personal information, the answer is almost certainly yes. Start with a free exposure check or read our CLOUD Act guide.</p>
-  <div class="bottom-cta-links">
-    <a href="javascript:void(0)" onclick="document.getElementById('selectorSection').scrollIntoView({behavior:'smooth'})" class="primary">Start Free Exposure Check &rarr;</a>
-    <a href="/resources/cloud-act-canadian-data" class="secondary">Read the CLOUD Act Guide</a>
+<section style="background:var(--surface);border-top:1px solid var(--border);padding:48px 52px;margin-top:32px;">
+  <div style="max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div>
+      <h2 style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:0 0 6px;">Not sure if you need a PIA?</h2>
+      <p style="font-size:14px;color:var(--slate);margin:0;line-height:1.5;">If your Alberta public body uses any SaaS tool that processes personal information, the answer is almost certainly yes.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-shrink:0;">
+      <a href="javascript:void(0)" onclick="document.getElementById('selectorSection').scrollIntoView({behavior:'smooth'})" style="font-size:13px;font-weight:700;color:#fff;background:var(--teal);padding:12px 24px;border-radius:6px;text-decoration:none;white-space:nowrap;">Free Exposure Check &rarr;</a>
+      <a href="/resources/cloud-act-canadian-data" style="font-size:13px;font-weight:700;color:var(--teal);border:1px solid rgba(60,184,176,0.3);padding:12px 24px;border-radius:6px;text-decoration:none;white-space:nowrap;">CLOUD Act Guide</a>
+    </div>
   </div>
 </section>
 
