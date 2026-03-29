@@ -643,7 +643,7 @@ html{scroll-padding-top:100px}
       var st=t.cloudAct?'<span style="color:#EF4444;font-weight:600">CLOUD Act exposed</span>':t.jurisdiction==='Canada'?'<span style="color:#10B981;font-weight:600">Canadian</span>':'<span style="color:#F59E0B;font-weight:600">'+t.jurisdiction+'</span>';
       return'<div style="display:flex;justify-content:space-between;align-items:center;padding:10px 16px;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="display:flex;align-items:center;gap:8px"><span style="width:6px;height:6px;border-radius:50%;background:'+gdh(t)+'"></span><span style="font-size:13px;color:var(--ice)">'+t.name+'</span></span><span style="font-size:12px">'+st+' \u00b7 '+t.parent+'</span></div>';
     }).join('');
-    td.style.cssText='background:rgba(15,23,32,0.9);border:1px solid rgba(255,255,255,0.06);border-top:none;border-radius:0 0 8px 8px;overflow:hidden';
+    td.style.cssText='background:rgba(15,23,32,0.9);border:1px solid rgba(255,255,255,0.06);border-top:none;border-radius:0 0 8px 8px;overflow:hidden;margin-bottom:48px';
     pw.innerHTML=ex.length>0?'Your scan found <strong style="color:#EF4444">'+ex.length+' CLOUD Act-exposed tool'+(ex.length>1?'s':'')+'</strong> requiring jurisdictional analysis for your PIA submission.':'Your scan assessed <strong>'+selected.length+' tools</strong>. Get pre-written PIA answers for all of them.';
     p.classList.add('visible');
     p.scrollIntoView({behavior:'smooth'});
