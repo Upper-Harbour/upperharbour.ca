@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alberta POPA PIA Requirements for SaaS — What You Need</title>
+  <meta name="description" content="Alberta's POPA requires public bodies to complete Privacy Impact Assessments for SaaS tools. The OIPC just released a mandatory template. Here's what it means for your stack." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <link rel="canonical" href="https://www.upperharbour.ca/resources/alberta-popa-pia-saas-compliance" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" /><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Alberta POPA PIA Requirements for SaaS — What You Need" />
+  <meta property="og:description" content="Alberta's POPA requires PIAs for SaaS tools used by public bodies. The OIPC released a mandatory template in March 2026. Here's how it applies to your stack." />
+  <meta property="og:url" content="https://www.upperharbour.ca/resources/alberta-popa-pia-saas-compliance" />
+  <meta property="og:type" content="article" /><meta property="og:site_name" content="Upper Harbour" />
+  <meta property="article:published_time" content="2026-03-29" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Alberta POPA PIA Requirements for SaaS — What You Need","author":{"@type":"Person","name":"Joshua van Es","url":"https://joshuavanes.ca","jobTitle":"Corporate Lawyer","worksFor":{"@type":"Organization","name":"Upper Harbour"}},"publisher":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"datePublished":"2026-03-29","dateModified":"2026-03-29","mainEntityOfPage":"https://www.upperharbour.ca/resources/alberta-popa-pia-saas-compliance"}</script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is POPA and when did it take effect?","acceptedAnswer":{"@type":"Answer","text":"The Protection of Privacy Act (POPA) is Alberta's new public sector privacy law, replacing FOIP. It came into effect in 2025 and requires public bodies to complete Privacy Impact Assessments for projects involving personal information, including SaaS tool deployments."}},{"@type":"Question","name":"Do Alberta public bodies need PIAs for SaaS tools?","acceptedAnswer":{"@type":"Answer","text":"Yes. POPA requires a PIA for any project that involves the collection, use, or disclosure of personal information. Deploying or renewing a SaaS tool that processes personal information qualifies. Some PIAs must be submitted to the OIPC for review."}},{"@type":"Question","name":"Is the OIPC PIA template mandatory?","acceptedAnswer":{"@type":"Answer","text":"Yes. The OIPC released a mandatory PIA template in March 2026. Any public body submitting a PIA to the OIPC under POPA must use this template."}},{"@type":"Question","name":"Does POPA address the CLOUD Act?","acceptedAnswer":{"@type":"Answer","text":"POPA requires public bodies to assess risks related to cross-border data transfers and foreign jurisdiction. The CLOUD Act — which allows US authorities to compel data from US companies regardless of where data is stored — is directly relevant to this assessment for any US-parented SaaS tool."}},{"@type":"Question","name":"How does POPA compare to BC's FIPPA and Quebec's Law 25?","acceptedAnswer":{"@type":"Answer","text":"Alberta is now the third province with formalized PIA requirements for public sector SaaS use. BC's FIPPA requires PIAs for tools storing data outside Canada. Quebec's Law 25 requires Transfer Impact Assessments for cross-border data transfers. POPA adds mandatory PIA submissions to the OIPC, with a standardized template."}}]}</script>
+
+  <style>
+    .article-h1 em { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <nav><a href="/" class="nav-logo" aria-label="Upper Harbour home"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link active">Guides</a><a href="/harbourscan" class="nav-cta">Map Your Stack</a></div><button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></nav>
+  <div class="nav-mobile-menu"><a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a></div>
+
+
+  <header class="article-hero">
+    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/resources">Resources</a> → Alberta POPA</div>
+
+    <h1 class="article-h1">Alberta's POPA and <em>SaaS Compliance</em></h1>
+
+    <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> · Corporate law · Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, and <em>BetaKit</em> · Published March 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <article class="article-body">
+
+    <h2>What happened</h2>
+    <p>On March 26, 2026, the Office of the Information and Privacy Commissioner (OIPC) of Alberta released a <strong>mandatory Privacy Impact Assessment template and completion guide</strong> under the Protection of Privacy Act (POPA). Any Alberta public body submitting a PIA to the OIPC must now use this template. POPA replaced Alberta's previous FOIP Act in 2025.</p>
+    <p>Alberta is now the <strong>third province</strong> to formalize PIA requirements that directly affect how public bodies select and use SaaS tools — joining <a href="/resources/fippa-saas-compliance-bc-public-bodies">British Columbia (FIPPA)</a> and <a href="/resources/law-25-saas-compliance">Quebec (Law 25)</a>. The trend is clear: provincial regulators are increasingly demanding documented privacy assessments for cloud-based tools that process personal information.</p>
+
+    <h2>Who this applies to</h2>
+    <p>POPA applies to Alberta <strong>public bodies</strong>: provincial government ministries, municipalities, school boards, post-secondary institutions, health authorities, police services, and other bodies defined under the Act. If your organization is an Alberta public body and you use SaaS tools that collect, use, or disclose personal information, you are likely required to complete PIAs.</p>
+    <p>Private sector organizations in Alberta are governed by the Personal Information Protection Act (PIPA), not POPA. However, OIPC Commissioner Diane McLeod has indicated that similar PIA resources for PIPA will follow once amendments are proclaimed in force. Private sector organizations should be tracking this development.</p>
+
+    <h2>What POPA requires</h2>
+    <p>Under POPA, a Privacy Impact Assessment is required for projects involving the collection, use, or disclosure of personal information. Deploying a new SaaS tool — or renewing an existing one — qualifies as a "project" if it processes personal information. Key requirements:</p>
+
+    <div class="callout" style="border-left-color:var(--gold);">
+      <div class="callout-label" style="color:var(--gold);">Mandatory PIA template</div>
+      <p>The OIPC's PIA template is mandatory for any PIA submitted to the Commissioner. The template and completion guide are available on the <a href="https://oipc.ab.ca/resource/popa-pia-template-completion-guide/" target="_blank" rel="noopener">OIPC website</a>. The completion guide aligns with the template question-by-question and provides additional context on what is expected.</p>
+    </div>
+
+    <h3>What the PIA must address</h3>
+    <p>The OIPC template requires public bodies to document the purpose and scope of the project, the types of personal information collected, how it flows through the system, who has access, and — critically for SaaS tools — <strong>where data is stored, who controls it, and what jurisdiction governs the company managing it</strong>.</p>
+    <p>For any US-parented SaaS tool, this means the PIA must address CLOUD Act exposure. Under the <a href="/resources/cloud-act-canadian-data">CLOUD Act</a>, US authorities can compel a US-incorporated company to produce data regardless of where it is stored — including data hosted in Canadian data centres. A PIA that does not address this jurisdictional risk is incomplete.</p>
+
+    <h2>How this connects to the CLOUD Act</h2>
+    <p>Most SaaS tools used by Alberta public bodies are US-parented. Microsoft 365, Google Workspace, Salesforce, Zoom, Slack, Dropbox — all are US-incorporated and subject to the CLOUD Act. The Upper Harbour <a href="/tools">Sovereignty Index</a> tracks 753 tools by parent jurisdiction, and approximately <strong>67% are US-owned</strong>.</p>
+    <p>When completing a PIA under POPA, public bodies must evaluate the risks of cross-border data access. The CLOUD Act is the mechanism by which that access can occur — and it applies regardless of whether the public body has configured Canadian data residency. <a href="/resources/data-residency-vs-data-sovereignty-canada">Data residency is not data sovereignty</a>.</p>
+
+    <h2>How Alberta compares to BC and Quebec</h2>
+    <p>Three provinces now have formalized privacy assessment requirements that affect SaaS procurement and use:</p>
+
+    <div style="overflow-x:auto;margin:20px 0;">
+      <table style="width:100%;border-collapse:collapse;font-size:14px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:12px;border-bottom:2px solid var(--border-md);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);"></th>
+            <th style="text-align:left;padding:12px;border-bottom:2px solid var(--border-md);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">Alberta (POPA)</th>
+            <th style="text-align:left;padding:12px;border-bottom:2px solid var(--border-md);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">BC (FIPPA)</th>
+            <th style="text-align:left;padding:12px;border-bottom:2px solid var(--border-md);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);">Quebec (Law 25)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ice);font-weight:600;">Assessment type</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Privacy Impact Assessment</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Privacy Impact Assessment</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Transfer Impact Assessment</td></tr>
+          <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ice);font-weight:600;">Mandatory template</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:#10B981;font-weight:600;">Yes (OIPC)</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">No standard template</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">No standard template</td></tr>
+          <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ice);font-weight:600;">Regulator submission</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:#10B981;font-weight:600;">Required (some PIAs)</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Not required</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Not required</td></tr>
+          <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ice);font-weight:600;">Applies to</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Public bodies</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Public bodies</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">All organizations</td></tr>
+          <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--ice);font-weight:600;">Penalties</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Commissioner orders</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate);">Commissioner orders</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);color:#EF4444;font-weight:600;">$25M or 4% turnover</td></tr>
+          <tr><td style="padding:10px 12px;color:var(--ice);font-weight:600;">Upper Harbour guide</td><td style="padding:10px 12px;color:var(--teal);">This page</td><td style="padding:10px 12px;color:var(--slate);"><a href="/resources/fippa-saas-compliance-bc-public-bodies" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">FIPPA guide →</a></td><td style="padding:10px 12px;color:var(--slate);"><a href="/resources/law-25-saas-compliance" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Law 25 guide →</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>Alberta's approach is notable for requiring a <strong>mandatory template</strong> and <strong>regulator submission</strong> — neither BC nor Quebec mandate a specific format or require PIAs to be filed with the commissioner. This means Alberta public bodies face the most structured compliance obligation of the three provinces.</p>
+
+    <h2>What Alberta public bodies should do now</h2>
+
+    <p><strong>1. Inventory your SaaS tools.</strong> Identify every tool your organization uses that collects, uses, or discloses personal information. This includes email (Microsoft 365, Google Workspace), CRM (Salesforce), file storage (Dropbox, OneDrive, SharePoint), video conferencing (Zoom, Teams), HR systems, finance tools, and any specialized applications.</p>
+
+    <p><strong>2. Map each tool to its parent jurisdiction.</strong> For each tool, determine the parent company and its country of incorporation. A tool with a Canadian brand name may have a US parent — and that changes the jurisdictional analysis entirely. Upper Harbour's <a href="/harbourscan">free exposure scan</a> maps your entire stack in 10 minutes.</p>
+
+    <p><strong>3. Complete PIAs using the OIPC template.</strong> For each tool that requires a PIA, complete the mandatory OIPC template. The jurisdictional analysis — particularly CLOUD Act exposure for US-parented tools — is a critical section. The OIPC will be reviewing these submissions.</p>
+
+    <p><strong>4. Document your risk assessment.</strong> Even for tools that don't require OIPC submission, maintaining a documented risk assessment demonstrates due diligence. If a privacy incident occurs, having a PIA on file shows your organization evaluated the risks before deploying the tool.</p>
+
+    <p><strong>5. Review existing deployments.</strong> POPA applies to new projects, but public bodies should also review existing SaaS deployments. If you've been using a US-parented tool without a PIA, now is the time to complete one. The OIPC template provides the framework.</p>
+
+
+    <div class="cta-section">
+      <h2>Start with your jurisdictional exposure</h2>
+      <p>Before you can complete a PIA, you need to know which tools are under foreign jurisdiction. HarbourScan maps your stack to parent companies and CLOUD Act status in 10 minutes.</p>
+      <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
+    </div>
+
+
+    <h2>What's next</h2>
+    <p>The OIPC has indicated this is the first of three sets of PIA resources. Similar templates will be released for Alberta's health information law and private sector privacy law (PIPA) once amendments are proclaimed. Private sector organizations in Alberta should be preparing now — the framework is coming.</p>
+    <p>At the federal level, the proposed Consumer Privacy Protection Act (CPPA) would introduce similar requirements nationally if enacted. The direction across Canada is clear: privacy assessments for SaaS tools are becoming mandatory, not optional.</p>
+
+    <div class="callout">
+      <div class="callout-label">Related guides</div>
+      <p><a href="/resources/fippa-saas-compliance-bc-public-bodies">BC FIPPA SaaS compliance guide →</a> · <a href="/resources/law-25-saas-compliance">Quebec Law 25 SaaS compliance guide →</a> · <a href="/resources/cloud-act-canadian-data">The CLOUD Act and Canadian data →</a> · <a href="/resources/data-residency-vs-data-sovereignty-canada">Data residency vs data sovereignty →</a></p>
+    </div>
+
+    <div style="font-size:11px;color:var(--muted);margin-top:40px;padding-top:20px;border-top:1px solid var(--border-md);line-height:1.7;">
+      <strong>Sources:</strong> <a href="https://oipc.ab.ca/office-of-the-alberta-information-and-privacy-commissioner-develops-new-template-and-guide-to-assist-public-bodies-with-privacy-impact-assessments/" target="_blank" rel="noopener" style="font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">OIPC Alberta news release, March 26, 2026</a> · <a href="https://oipc.ab.ca/resource/popa-pia-template-completion-guide/" target="_blank" rel="noopener" style="font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA template and completion guide</a> · Upper Harbour <a href="/methodology" style="font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">classification methodology</a>.
+    </div>
+
+  </article>
+
+
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Sovereignty Index</a></li><li><a href="/signals">Signals</a></li><li><a href="/research">Research</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/resources">Compliance Guides</a></li><li><a href="/comply">Compliance Reports</a></li></ul></div><div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li><li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li><li><a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351">Contact us</a></li><li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li></ul></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Upper Harbour. All rights reserved. · <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> · <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span><span class="footer-copy">Canadian-owned and operated. Data stays in Canada.</span></div></footer>
+
+</body>
+</html>
