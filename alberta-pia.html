@@ -112,7 +112,8 @@
 
 <style>
 /* ── Page-specific styles ── */
-.pia-hero{max-width:960px;margin:0 auto;padding:140px 52px 48px}
+html{scroll-padding-top:100px}
+.pia-hero{max-width:960px;margin:0 auto;padding:140px 52px 56px}
 .pia-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .pia-eyebrow{font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .pia-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:dotPulse 2s ease-in-out infinite}
@@ -126,7 +127,7 @@
 /* Example card */
 .example-card{background:rgba(15,23,32,0.9);border:1px solid rgba(255,255,255,0.06);border-radius:8px;overflow:hidden}
 .example-card-label{font-size:10px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
-.example-card-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.04)}
+.example-card-header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,0.04);flex-wrap:wrap;gap:4px}
 .example-card-header .tool-name{font-size:15px;font-weight:700;color:var(--ice);display:flex;align-items:center;gap:8px}
 .example-card-header .tool-name .dot{width:8px;height:8px;border-radius:50%;background:#EF4444}
 .example-card-header .tool-parent{font-size:12px;color:var(--muted)}
@@ -134,7 +135,7 @@
 .example-field:last-child{border-bottom:none}
 .example-field-label{font-size:9px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
 .example-field-value{font-size:13px;color:var(--slate);line-height:1.55}
-.example-card-footer{padding:10px 20px;font-size:11px;color:var(--muted);display:flex;gap:12px;align-items:center;border-top:1px solid rgba(255,255,255,0.04)}
+.example-card-footer{padding:10px 20px;font-size:10px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.04);line-height:1.6}
 .example-card-footer strong{color:var(--ice)}
 .example-card-footer a{color:var(--teal);text-decoration:none}
 
@@ -389,7 +390,7 @@
           <div class="example-field-value">The public body should ensure its agreement explicitly addresses custody and control under POPA. Given CLOUD Act exposure, full control cannot be guaranteed&hellip;</div>
         </div>
         <div class="example-card-footer">
-          Built on the <strong>753</strong>-tool <a href="/sovereignty-index">Sovereignty Index</a> &middot; <a href="/resources/cloud-act-canadian-data">What is the CLOUD Act? &rarr;</a>
+          Built on the <strong>753</strong>-tool <a href="/tools">Sovereignty Index</a> · <a href="/resources/cloud-act-canadian-data">What is the CLOUD Act? →</a>
         </div>
       </div>
     </div>
@@ -397,81 +398,20 @@
 </section>
 
 
-<!-- ═══ WHO NEEDS THIS ═══ -->
-<section class="who-needs">
-  <h2 class="who-needs-title">Who is required to submit a PIA?</h2>
-  <div class="who-needs-grid">
-    <div class="who-card">
-      <div class="who-card-icon">&#127963;</div>
-      <div class="who-card-title">Government Ministries</div>
-      <div class="who-card-desc">Alberta government departments adopting or renewing SaaS tools that process personal information.</div>
-    </div>
-    <div class="who-card">
-      <div class="who-card-icon">&#127979;</div>
-      <div class="who-card-title">School Boards &amp; Post-Secondary</div>
-      <div class="who-card-desc">School divisions, colleges, and universities implementing cloud-based student or HR systems.</div>
-    </div>
-    <div class="who-card">
-      <div class="who-card-icon">&#127973;</div>
-      <div class="who-card-title">Health Authorities &amp; Municipalities</div>
-      <div class="who-card-desc">AHS, municipal governments, police services, and agencies using any SaaS tool that touches personal data.</div>
-    </div>
-  </div>
-</section>
+<!-- ═══ WHAT THE PACKAGE COVERS ═══ -->
+<section style="max-width:720px;margin:0 auto;padding:0 52px 48px;">
+  <h2 style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin-bottom:20px;text-align:center;">What the $199 package includes</h2>
+  <div style="background:rgba(20,30,42,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:24px 28px;">
+    <div style="display:grid;grid-template-columns:auto 1fr;gap:12px 16px;align-items:start;">
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);padding-top:2px;">Section G</span>
+      <span style="font-size:14px;color:var(--slate);line-height:1.5;"><strong style="color:var(--ice);">Service Providers</strong> — Parent company, jurisdiction, CLOUD Act status, custody &amp; control, data residency for each tool. Questions 42–47.</span>
 
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);padding-top:2px;">Section H2</span>
+      <span style="font-size:14px;color:var(--slate);line-height:1.5;"><strong style="color:var(--ice);">Cloud Computing Risks</strong> — CLOUD Act &amp; PATRIOT Act (Risk 7), encryption (Risk 11), contractual arrangements (Risk 2), secondary use (Risk 8).</span>
 
-<!-- ═══ 3-STEP PROCESS ═══ -->
-<section class="steps-section">
-  <h2 class="steps-section-title">How it works</h2>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-title">Select your tools</div>
-      <div class="step-desc">Search our 753-tool database for every SaaS tool your organization uses. We know the parent company, jurisdiction, and CLOUD Act status of each one.</div>
+      <span style="font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--teal);padding-top:2px;">Section F</span>
+      <span style="font-size:14px;color:var(--slate);line-height:1.5;"><strong style="color:var(--ice);">Protection of Information</strong> — Security classification based on jurisdictional exposure. Questions 29–30.</span>
     </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-title">We generate the answers</div>
-      <div class="step-desc">For each tool, we produce pre-written responses for Sections F, G, and H2 of the OIPC's mandatory PIA template &mdash; including CLOUD Act Risk 7.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-title">Copy into your submission</div>
-      <div class="step-desc">Click any field to copy it to your clipboard, or download the complete package as a PDF. Paste directly into the OIPC template and submit.</div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ WHAT YOU GET (Section explainer) ═══ -->
-<section class="what-you-get">
-  <h2 class="what-you-get-title">What the $199 package includes</h2>
-
-  <div class="deliverable">
-    <div class="deliverable-header">
-      <span class="deliverable-label">Section G</span>
-    </div>
-    <div class="deliverable-title">Service Providers</div>
-    <div class="deliverable-desc">For each SaaS tool, pre-written answers identifying the parent company, headquarters, jurisdiction of incorporation, CLOUD Act status, custody and control assessment, and data residency options.</div>
-    <div class="deliverable-questions">Covers OIPC template questions 42&ndash;47</div>
-  </div>
-
-  <div class="deliverable">
-    <div class="deliverable-header">
-      <span class="deliverable-label">Section H2</span>
-    </div>
-    <div class="deliverable-title">Cloud Computing Risks</div>
-    <div class="deliverable-desc">Pre-written risk assessments covering CLOUD Act &amp; PATRIOT Act exposure (Risk 7), encryption architecture (Risk 11), contractual arrangements (Risk 2), and secondary use restrictions (Risk 8).</div>
-    <div class="deliverable-questions">Covers the cloud computing risk matrix</div>
-  </div>
-
-  <div class="deliverable">
-    <div class="deliverable-header">
-      <span class="deliverable-label">Section F</span>
-    </div>
-    <div class="deliverable-title">Protection of Information</div>
-    <div class="deliverable-desc">Security classification recommendations based on jurisdictional exposure and encryption details for each tool.</div>
-    <div class="deliverable-questions">Covers OIPC template questions 29&ndash;30</div>
   </div>
 </section>
 
@@ -537,20 +477,15 @@
       publishable-key="pk_live_51T7jm1HacAqcnAkVNz7quTDA5wMMmlzdS0GtumcVDy2XNAbone5VCl7eqklWgfhVlgA9PRa7T4F3G7aj3nLbJ2Vz004QLuyxlP"
     >
     </stripe-buy-button>
-    <div class="pricing-sub">Instant access &middot; Generated in your browser &middot; PDF download included</div>
+    <div class="pricing-sub">Instant access · Generated in your browser · PDF download included</div>
   </div>
 
-  <!-- Cost anchor comparison -->
-  <div class="anchor-inner">
-    <div class="anchor-card them">
-      <div class="anchor-label">Privacy Consultant</div>
-      <div class="anchor-price">$5,000&ndash;$15,000+</div>
-      <div class="anchor-desc">Per PIA engagement. Weeks of back-and-forth. Still requires your team's time for Sections A&ndash;E.</div>
-    </div>
-    <div class="anchor-card us">
-      <div class="anchor-label">Upper Harbour</div>
-      <div class="anchor-price">$199</div>
-      <div class="anchor-desc">Instant answers for Sections F, G &amp; H2. Copy directly into your OIPC template. Ready in minutes.</div>
+  <!-- Consulting upsell -->
+  <div style="text-align:center;margin-bottom:32px;">
+    <p style="font-size:14px;color:var(--slate);line-height:1.6;margin-bottom:16px;">Need help completing the rest of the template? Sections A–E and H1 require information specific to your organization.</p>
+    <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:13px;font-weight:700;color:var(--teal);background:transparent;border:1px solid rgba(60,184,176,0.3);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Book a Call →</a>
+      <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:13px;font-weight:700;color:var(--muted);background:transparent;border:1px solid rgba(255,255,255,0.1);padding:12px 24px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Email Us →</a>
     </div>
   </div>
 </div>
