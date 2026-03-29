@@ -317,20 +317,21 @@
 
     <!-- Data Cards — the evidence backing the verdict -->
     <div class="bento">
-      <div class="bento-cell b-grey"><div class="bento-label">Parent Company</div><div class="bento-value">Atlassian Corporation (United States)</div></div>
+      <div class="bento-cell b-grey"><div class="bento-label">Parent Company</div><div class="bento-value">Atlassian Corporation (Delaware, US)</div></div>
       <div class="bento-cell b-red"><div class="bento-label">CLOUD Act Status</div><div class="bento-value"><span class="badge red">✗ Exposed</span></div></div>
-      <div class="bento-cell b-red"><div class="bento-label">Canadian Data Residency</div><div class="bento-value"><span class="badge amber">⚠ Available (CLOUD Act applies)</span></div></div>
-      <div class="bento-cell b-amber"><div class="bento-label">Encryption</div><div class="bento-value"><span class="badge amber">⚠ Vendor-Managed</span></div></div>
-      <div class="bento-cell b-grey"><div class="bento-label">TIA / PIA Required</div><div class="bento-value"><span class="badge red">Yes — Law 25 &amp; FIPPA</span></div></div>
-      <div class="bento-cell b-green"><div class="bento-label">Canadian Alternative</div><div class="bento-value"><span class="badge green">✓ Available</span></div></div>
+      <div class="bento-cell b-green"><div class="bento-label">Canadian Data Residency</div><div class="bento-value"><span class="badge amber">⚠ Available</span></div></div>
+      <div class="bento-cell b-amber"><div class="bento-label">Encryption</div><div class="bento-value"><span class="badge amber">⚠ CMK Available (add-on)</span></div></div>
+      <div class="bento-cell b-grey"><div class="bento-label">TIA / PIA Required</div><div class="bento-value"><span class="badge red">Yes — Law 25 &amp; POPA</span></div></div>
+      <div class="bento-cell b-amber"><div class="bento-label">Previously Non-US</div><div class="bento-value"><span class="badge amber">⚠ Redomiciled 2022</span></div></div>
     </div>
 
 
     <!-- ═══ SECTION 2: MAIN ANALYSIS ═══ -->
-    <h2 class="reveal">Is Dropbox CLOUD Act compliant for Canadian organizations?</h2>
-    <p>No. Dropbox is fully exposed to the CLOUD Act. As a <strong>US-incorporated</strong> company, US authorities can compel access to all Dropbox data regardless of where it's stored. Dropbox offers no Canadian data residency and no customer-managed encryption, meaning there are no technical barriers to US government data access.</p>
-    <p>For Canadian organizations, every file stored in Dropbox — HR documents, client contracts, financial records, patient files, legal correspondence — is accessible under US legal process. There is <strong>no Canadian data residency</strong> and <strong>no customer-managed encryption</strong> to limit this exposure.</p>
-    <p>This makes Dropbox the most straightforward sovereignty case in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>: full US jurisdictional exposure with no available mitigation.</p>
+    <h2 class="reveal">Is Jira CLOUD Act exposed for Canadian organizations?</h2>
+    <p>Yes — but the answer is more nuanced than most tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Sovereignty Index</a>. Atlassian Corporation is incorporated in <strong>Delaware</strong> and headquartered in San Francisco, which places it squarely within CLOUD Act scope. US authorities can compel Atlassian to produce data regardless of where it is stored.</p>
+    <p>What makes Jira unusual is that Atlassian offers <strong>Canadian data residency</strong> — you can pin your Jira issues, Confluence pages, comments, and attachments to the Canada (Central) AWS region. Atlassian also offers <strong>Customer-managed keys (CMK)</strong> as a paid add-on, allowing you to host encryption keys in your own AWS KMS account. These are real, meaningful mitigations that most US-parented tools don't offer.</p>
+    <p>But neither eliminates CLOUD Act exposure. Canadian data residency controls where data sits at rest — not which government can compel the company to produce it. And customer-managed keys give you a "kill switch" (revoke access), but under a valid US court order, Atlassian could be compelled to require you to restore access. The jurisdictional risk is structural, not technical.</p>
+    <p>There's also a sovereignty story worth understanding: <strong>Atlassian was not always a US company.</strong> Founded in Sydney, Australia, it was incorporated in England and Wales until September 2022, when it <a href="https://www.businesswire.com/news/home/20221003005143/en/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">redomiciled to the United States as a Delaware corporation</a>. Every Atlassian Cloud customer's CLOUD Act exposure changed overnight — a case study in how corporate decisions alter sovereignty risk for millions of users.</p>
 
 
     <!-- ═══ SECTION 3: REGULATORY ANALYSIS (expanded) ═══ -->
@@ -340,7 +341,107 @@
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <h3>CLOUD Act exposure</h3><p>Atlassian Corporation is incorporated in Delaware and headquartered in San Francisco. Despite its Australian origins, the company <a href="https://www.businesswire.com/news/home/20221003005143/en/" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">completed redomiciliation to the US in October 2022</a>. All Atlassian Cloud products are now fully within CLOUD Act scope.</p><h3>Canadian data residency — what it does and doesn't protect</h3><p>Jira offers data residency in the Canada (Central) AWS region for Standard, Premium, and Enterprise plans. This pins your "in-scope data" (issues, pages, attachments) to Canadian servers at rest. However, some data categories — including analytics, app data from Marketplace apps, and certain platform features — may remain outside the pinned region.</p><p>Critically, Canadian data residency does not prevent a valid US legal order from compelling Atlassian to produce data. The data residency configuration controls where data sits physically, not which government can access it legally.</p><h3>Law 25 (Quebec)</h3><p>Quebec organizations using Jira must complete a Transfer Impact Assessment documenting that project data — which often includes employee names, task assignments, and potentially sensitive project details — is accessible by a US-jurisdictional entity. The availability of Canadian data residency should be documented as a partial mitigation, not a complete one.</p><h3>Alberta POPA</h3><p>Alberta public bodies deploying Jira must complete a PIA using the mandatory OIPC template. Section G requires documentation of Atlassian's US incorporation and CLOUD Act status. Section H2, Risk 7 requires explicit assessment of CLOUD Act exposure. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically.</p></div>
+        <h3>CLOUD Act exposure</h3>
+        <p>The <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Clarifying Lawful Overseas Use of Data Act</a> (2018) requires US companies to produce data in response to valid US legal process, regardless of where that data is physically stored. Atlassian Corporation, as a Delaware-incorporated entity (since October 2022), is within scope.</p>
+        <p>This is particularly notable because Atlassian was previously incorporated in England and Wales — outside direct US CLOUD Act jurisdiction. The company's decision to redomicile was driven by investor access and stock index eligibility, not sovereignty considerations. But the legal consequence was immediate: every Atlassian Cloud instance worldwide became subject to US legal process.</p>
+
+        <!-- Jurisdiction flow -->
+        <div class="jurisdiction-flow">
+          <div class="jf-node jf-safe">
+            <div class="jf-icon">🍁</div>
+            <div class="jf-label">Your Canadian Data</div>
+            <div class="jf-sub">Jira issues, Confluence pages<br>pinned to Canada (Central)</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#F59E0B" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#F59E0B"/></svg>
+          </div>
+          <div class="jf-node jf-warn">
+            <div class="jf-icon">🏢</div>
+            <div class="jf-label">Atlassian Corporation</div>
+            <div class="jf-sub">Delaware, USA (since 2022)<br>Previously UK-incorporated</div>
+          </div>
+          <div class="jf-arrow">
+            <svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#EF4444" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#EF4444"/></svg>
+          </div>
+          <div class="jf-node jf-danger">
+            <div class="jf-icon">⚖️</div>
+            <div class="jf-label">US Legal Process</div>
+            <div class="jf-sub">CLOUD Act · Subpoena<br><strong style="color:#EF4444;">Data access despite CDN residency</strong></div>
+          </div>
+        </div>
+
+        <h3>Canadian data residency — what it does and doesn't protect</h3>
+        <p>Atlassian offers data residency across 11 regions, including Canada (Central). Available on Standard, Premium, and Enterprise plans at no additional cost. When enabled, your "in-scope data" — Jira issues, comments, attachments, Confluence pages, and JSM tickets — is pinned at rest to the Canada (Central) AWS region.</p>
+        <p>However, some data categories are not covered by data residency:</p>
+        <ul>
+          <li><strong>Marketplace app data:</strong> Third-party apps from the Atlassian Marketplace store data independently. Apps built on Atlassian's Forge platform support data residency; Connect apps may not. Each app must be evaluated individually.</li>
+          <li><strong>Analytics and reporting:</strong> Atlassian Analytics dashboards, Opsgenie reports, and Assets reports have limitations in certain regions including Canada.</li>
+          <li><strong>User account data:</strong> Account profiles and identity information are managed globally and not pinned to a specific region.</li>
+          <li><strong>Platform experiences:</strong> If installed before January 2025, platform experience data defaults to US storage.</li>
+        </ul>
+        <p><strong>The critical point:</strong> data residency controls where data sits physically. It does not change which government can legally compel Atlassian to produce it. A US court order under the CLOUD Act applies to Atlassian Corporation regardless of which AWS region hosts the data.</p>
+
+        <h3>Customer-managed keys (CMK)</h3>
+        <p>Atlassian now offers Customer-managed keys as a paid add-on for Jira, Confluence, and Jira Service Management. CMK allows you to host encryption keys in your own AWS KMS account. This provides cryptographic separation from other cloud tenants and the ability to revoke Atlassian's access to your encryption keys at any time.</p>
+        <p>CMK is currently available for new cloud sites only — existing sites cannot yet enable CMK (Atlassian targets 2026 for existing site support). BYOK (Bring Your Own Key), the predecessor to CMK, supports Canadian data residency — keys and app data can both be hosted in Canada.</p>
+        <p><strong>Sovereignty limitation:</strong> CMK gives you a "kill switch" — you can revoke key access to suspend Atlassian's ability to read your data. However, under a valid US court order, Atlassian could be compelled to require you to restore key access. The keys prevent unauthorized access; they do not override legal compulsion.</p>
+
+        <h3>Quebec Law 25</h3>
+        <p>Quebec organizations using Jira must complete a <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Transfer Impact Assessment</a>. The TIA should document: Atlassian's US incorporation and CLOUD Act status, the availability and configuration of Canadian data residency as a partial mitigation, whether CMK or BYOK encryption is enabled, and the data residency status of each Marketplace app in use. Upper Harbour provides <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">compliance-ready TIA documentation</a> starting at $99.</p>
+
+        <h3>Alberta POPA</h3>
+        <p>Alberta public bodies deploying Jira must complete a PIA using the mandatory OIPC template. Section G requires documentation of Atlassian's corporate jurisdiction and CLOUD Act status. Section H2, Risk 7 explicitly asks about CLOUD Act and USA PATRIOT Act exposure. The availability of Canadian data residency should be documented as a mitigation, along with its limitations. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 753-tool database.</p>
+
+        <h3>BC FIPPA</h3>
+        <p>BC public bodies using Jira for personal information must complete a <a href="/resources/fippa-pia-template" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Privacy Impact Assessment</a>. The availability of Canadian data residency in Jira is a meaningful factor — it reduces data residency risk but does not eliminate jurisdictional risk. <a href="/resources/fippa-saas-compliance-bc-public-bodies" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Full FIPPA SaaS compliance guide →</a></p>
+      </div>
+    </div>
+
+    <!-- ═══ URGENCY BRIDGE ═══ -->
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Jira is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. If you use Jira, you almost certainly use other Atlassian products (Confluence, Jira Service Management, Trello, Bitbucket) — all under the same US parent. And your stack likely includes another 15–30 SaaS tools from other vendors. Each one carries its own jurisdictional exposure.</p>
+
+    <!-- ═══ MID-PAGE CTA ═══ -->
+    <div class="mid-cta reveal">
+      <div class="mid-cta-text">Map your entire SaaS stack to parent jurisdictions and CLOUD Act exposure in 10 minutes.</div>
+      <a href="/harbourscan" class="mid-cta-btn">Map Your Stack →</a>
+    </div>
+
+    <!-- ═══ ALTERNATIVES & COMPARISON ═══ -->
+    <div class="expand-section open reveal" id="alternatives">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Alternatives &amp; Comparison</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <p>For organizations evaluating project management tools through a sovereignty lens, here's how the major options compare:</p>
+
+        <div class="compare-wrap"><table class="compare-table">
+          <thead><tr><th>Tool</th><th>Ownership</th><th>CLOUD Act</th><th>CDN Residency</th><th>Customer Keys</th></tr></thead>
+          <tbody>
+            <tr class="current"><td><strong>Jira</strong></td><td>US (Delaware)</td><td class="ct-no">Exposed</td><td class="ct-partial">Available</td><td class="ct-partial">CMK add-on</td></tr>
+            <tr><td><a href="/tools/asana">Asana</a></td><td>US</td><td class="ct-no">Exposed</td><td class="ct-no">No</td><td class="ct-no">No</td></tr>
+            <tr><td><a href="/tools/monday">Monday.com</a></td><td>Israel</td><td class="ct-partial">Indirect</td><td class="ct-no">US/EU only</td><td class="ct-no">No</td></tr>
+            <tr><td>Wrike</td><td>US (Citrix)</td><td class="ct-no">Exposed</td><td class="ct-partial">EU available</td><td class="ct-no">No</td></tr>
+            <tr><td>ClickUp</td><td>US</td><td class="ct-no">Exposed</td><td class="ct-no">No</td><td class="ct-no">No</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:13px;color:var(--muted);">Based on <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a> data. March 2026.</p>
+
+        <p><strong>Key finding:</strong> Among major project management platforms, Jira offers the strongest sovereignty controls (Canadian data residency + CMK encryption). Monday.com has the best jurisdictional positioning (Israeli-incorporated, not directly CLOUD Act exposed). No major PM tool offers both Canadian ownership and Canadian data residency.</p>
+      </div>
+    </div>
+
+    <!-- ═══ CONTACT ═══ -->
+    <div class="notify-box reveal">
+      <div class="notify-header">
+        <span class="notify-icon">💬</span>
+        <span class="notify-title">Questions about Jira and Canadian compliance?</span>
+      </div>
+      <p>We help organizations assess jurisdictional risk across their SaaS stack. Book a call or send us a message.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);padding:11px 22px;border-radius:4px;text-decoration:none;">Book a Call →</a>
+        <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:12px;font-weight:700;color:var(--ice);background:transparent;border:1px solid var(--border-md);padding:11px 22px;border-radius:4px;text-decoration:none;">Email Us →</a>
+      </div>
     </div>
 
 
@@ -353,7 +454,30 @@
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <h3>Data storage</h3><p>Jira Cloud data can be pinned to Canada (Central), US, EU, Australia, Germany, Singapore, Japan, India, South Korea, or Switzerland regions. In-scope data includes issues, comments, attachments, and pages. Some data categories (Analytics, Opsgenie reports in certain regions) have limitations.</p><h3>Encryption</h3><p>Atlassian encrypts data at rest (AES-256) and in transit (TLS 1.2+). Encryption keys are managed by Atlassian — customer-managed encryption keys are not available for Jira Cloud. Under a CLOUD Act order, Atlassian can produce data in readable form.</p><h3>Marketplace apps</h3><p>Third-party Marketplace apps may store data independently of Jira's data residency settings. Each app must be evaluated separately for data residency compliance. Not all apps support regional data pinning.</p>
+        <h3>Data storage and residency</h3>
+        <p>Atlassian Cloud products run on AWS. By default, data is distributed globally — Atlassian determines hosting location based on user proximity for performance optimization. When data residency is enabled, in-scope data is pinned to one of 11 supported regions: US, EU (Frankfurt & Dublin), Germany, UK, Australia, Canada (Central), Singapore, Japan, India, South Korea, and Switzerland.</p>
+        <p>The Canada (Central) region pins data to the AWS ca-central-1 region. Available for Jira Software, Jira Service Management, Jira Product Discovery, and Confluence on Standard, Premium, and Enterprise plans at no additional cost. Loom data residency is limited to Germany and US only as of May 2026.</p>
+        <p><strong>What's in scope:</strong> Issues, comments, attachments, pages, spaces, service desk tickets, project settings. <strong>What's not:</strong> User account profiles (managed globally), Atlassian Analytics in certain regions, Opsgenie reports in certain regions, Assets reports and dashboards in certain regions.</p>
+
+        <h3>Encryption architecture</h3>
+        <p>Atlassian encrypts data at rest using AES-256 and in transit using TLS 1.2+. Three encryption tiers are available:</p>
+        <ul>
+          <li><strong>Default (Atlassian-managed keys):</strong> Keys provisioned in Atlassian-owned AWS accounts. Shared key infrastructure across tenants. This is what most customers use.</li>
+          <li><strong>BYOK (Bring Your Own Key):</strong> Encryption keys hosted in the customer's own AWS KMS account. Available for Jira, Confluence, and JSM. Supports Canadian data residency — keys and data can both reside in Canada.</li>
+          <li><strong>CMK (Customer-managed keys):</strong> The successor to BYOK. Available as a paid add-on since April 2025. Provides cryptographic separation, full key lifecycle control, and the ability to revoke Atlassian's access. Currently available for new sites only — existing site support planned for 2026.</li>
+        </ul>
+        <p>With CMK or BYOK enabled, revoking key access suspends Atlassian's ability to decrypt your data. This provides a meaningful technical control — but it is a business continuity tool, not a legal shield against CLOUD Act orders.</p>
+
+        <h3>Marketplace apps and the data residency gap</h3>
+        <p>Atlassian's Marketplace has thousands of third-party apps. Their data residency compliance varies by architecture:</p>
+        <ul>
+          <li><strong>Forge apps:</strong> Run on Atlassian's infrastructure. Data stored within the same region as the host product. These automatically follow your data residency settings.</li>
+          <li><strong>Connect apps:</strong> Run on the app vendor's own infrastructure. Must explicitly implement "realm pinning" and "realm migration" to support data residency. Many Connect apps do not yet support this.</li>
+        </ul>
+        <p>This means your core Jira data can be pinned to Canada, but a time-tracking app or a reporting plugin might store its data in the US or EU. <strong>Each Marketplace app must be individually assessed</strong> — check the Privacy & Security tab on each app's Marketplace listing.</p>
+
+        <h3>Atlassian Government Cloud and Cloud Isolated</h3>
+        <p>At Team '25 Anaheim, Atlassian announced two additional cloud tiers: Atlassian Government Cloud (for US government customers, FedRAMP authorized) and Atlassian Cloud Isolated (planned for 2026, offering dedicated infrastructure). Cloud Isolated may provide stronger sovereignty controls in the future — but neither offering changes the fundamental CLOUD Act status of a US-incorporated company.</p>
       </div>
     </div>
 
@@ -365,7 +489,15 @@
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-        <p>Jira offers more sovereignty controls than many US-parented tools, but none eliminate CLOUD Act exposure:</p><ul><li><strong>Enable Canadian data residency:</strong> Pin in-scope data to Canada (Central) region. This is the single most important configuration step.</li><li><strong>Audit Marketplace apps:</strong> Verify each app supports data residency or evaluate whether non-compliant apps can be removed.</li><li><strong>DPA enforcement:</strong> Execute Atlassian's Data Processing Addendum and review against Law 25 or PIPEDA requirements.</li><li><strong>Evaluate alternatives:</strong> For the most sensitive data, consider Canadian-owned project management tools not subject to the CLOUD Act.</li></ul><p><strong>Canadian data residency is a meaningful partial mitigation. It does not eliminate CLOUD Act exposure.</strong> Document this determination in your compliance records.</p>
+        <p>Jira offers the most comprehensive sovereignty controls of any major US-parented project management tool. None eliminate CLOUD Act exposure, but in combination they represent substantial risk reduction:</p>
+        <ul>
+          <li><strong>Enable Canadian data residency (critical):</strong> Pin in-scope data to the Canada (Central) region via admin.atlassian.com → Security → Data Residency. This is the single most impactful step. Available on all paid plans at no additional cost.</li>
+          <li><strong>Enable CMK or BYOK encryption (recommended for regulated industries):</strong> Host encryption keys in your own AWS KMS account with the Canada region selected. This provides cryptographic isolation and the ability to revoke Atlassian's access. CMK is available as a paid add-on for new sites; BYOK supports existing sites. Contact Atlassian support to provision.</li>
+          <li><strong>Audit Marketplace apps (required for compliance):</strong> Review every installed app's Privacy & Security tab on the Marketplace listing. Remove or replace apps that don't support data residency in Canada. Prefer Forge-built apps (look for the "Runs on Atlassian" badge) over Connect apps.</li>
+          <li><strong>Execute the DPA:</strong> Atlassian's Data Processing Addendum is available through the admin console. Review against Law 25 or PIPEDA requirements. Ensure it covers data residency commitments.</li>
+          <li><strong>Document everything:</strong> Your TIA or PIA should document: Canadian data residency is enabled, CMK/BYOK status, Marketplace app audit results, and the residual CLOUD Act risk that cannot be technically mitigated. This is the documentation regulators and procurement officers want to see.</li>
+        </ul>
+        <p><strong>Bottom line:</strong> Jira with Canadian data residency + CMK encryption + Marketplace app audit is the strongest sovereignty posture available from any major US-parented project management tool. It is not equivalent to a Canadian-owned tool — the CLOUD Act exposure remains — but it represents a defensible, documented position for most organizations.</p>
       </div>
     </div>
 
