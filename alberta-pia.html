@@ -458,10 +458,14 @@ html{scroll-padding-top:100px}
     </div>
     <p class="pricing-desc" id="paywallDynamic" style="margin-bottom:16px;"></p>
     <div class="pricing-anchor" style="margin-bottom:20px;">Privacy consultants charge <span class="highlight">$5,000–$15,000</span> for this work</div>
-    <!-- Embedded Stripe Checkout -->
-    <div id="checkoutContainer" style="margin-top:20px;"></div>
-    <button id="payBtn" onclick="startCheckout()" style="display:inline-block;font-size:15px;font-weight:800;color:#0A1420;background:var(--gold);padding:16px 48px;border-radius:8px;border:none;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 0 20px rgba(201,168,76,0.3);font-family:var(--body);" onmouseover="this.style.transform='translateY(-1px)'" onmouseout="this.style.transform='none'">Purchase — $199 CAD →</button>
-    <div style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;">Instant delivery · Not satisfied? Full refund.</div>
+    <!-- Stripe Buy Button -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <stripe-buy-button
+      buy-button-id="buy_btn_1TGB6eHacAqcnAkVEOryP5ce"
+      publishable-key="pk_live_51T7jm1HacAqcnAkVNz7quTDA5wMMmlzdS0GtumcVDy2XNAbone5VCl7eqklWgfhVlgA9PRa7T4F3G7aj3nLbJ2Vz004QLuyxlP"
+    >
+    </stripe-buy-button>
+    <div style="font-size:11px;color:var(--muted);margin-top:12px;line-height:1.6;">Secure checkout via Stripe · Instant delivery · Not satisfied? Full refund.</div>
   </div>
 
   <!-- Consulting upsell -->
@@ -574,50 +578,7 @@ html{scroll-padding-top:100px}
 <!-- ═══ SAAS DATABASE ═══ -->
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/saas-db.js"></script>
 
-<!-- Stripe.js for Embedded Checkout -->
-<script src="https://js.stripe.com/v3/"></script>
-
 <!-- ═══ APPLICATION LOGIC ═══ -->
-<script>
-// Embedded Checkout
-var stripeInstance = Stripe('pk_live_51T7jm1HacAqcnAkVNz7quTDA5wMMmlzdS0GtumcVDy2XNAbone5VCl7eqklWgfhVlgA9PRa7T4F3G7aj3nLbJ2Vz004QLuyxlP');
-
-window.startCheckout = async function(){
-  var btn = document.getElementById('payBtn');
-  var container = document.getElementById('checkoutContainer');
-  btn.disabled = true;
-  btn.textContent = 'Loading checkout...';
-
-  try {
-    var resp = await fetch('/create-checkout', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'}
-    });
-    var data = await resp.json();
-
-    if(data.error){
-      btn.textContent = 'Error — try again';
-      btn.disabled = false;
-      console.error(data.error);
-      return;
-    }
-
-    // Hide the button, show embedded checkout
-    btn.style.display = 'none';
-    container.style.minHeight = '400px';
-
-    var checkout = await stripeInstance.initEmbeddedCheckout({
-      clientSecret: data.clientSecret
-    });
-    checkout.mount('#checkoutContainer');
-  } catch(err){
-    console.error(err);
-    btn.textContent = 'Purchase — $199 CAD →';
-    btn.disabled = false;
-  }
-};
-</script>
-
 <script>
 (function(){
   var input=document.getElementById('toolInput'),
