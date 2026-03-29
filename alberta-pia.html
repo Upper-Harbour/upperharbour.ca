@@ -6,7 +6,7 @@
 <title>Alberta PIA Template Auto-Fill Tool | Upper Harbour</title>
 <meta name="description" content="Auto-fill Alberta's mandatory OIPC PIA template with pre-researched answers for 753+ cloud tools. Free exposure check. $199 for complete Sections F, G & H2.">
 <link rel="canonical" href="https://www.upperharbour.ca/alberta-pia">
-<link rel="stylesheet" href="/site.css">
+<link rel="stylesheet" href="/assets/site.css">
 
 <!-- FAQPage Schema -->
 <script type="application/ld+json">
@@ -524,8 +524,13 @@
       <span class="pricing-feature">Copy-paste ready</span>
       <span class="pricing-feature">PDF download</span>
     </div>
-    <!-- Purchase button placeholder — integrate with your payment flow -->
-    <button class="generate-btn" onclick="generateOutput()" style="background:var(--gold);color:#0A1420 !important;font-weight:800;box-shadow:0 0 20px rgba(218,165,32,0.3)">Unlock PIA Research Package &rarr;</button>
+    <!-- Stripe inline checkout -->
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <stripe-buy-button
+      buy-button-id="buy_btn_1TGB6eHacAqcnAkVEOryP5ce"
+      publishable-key="pk_live_51T7jm1HacAqcnAkVNz7quTDA5wMMmlzdS0GtumcVDy2XNAbone5VCl7eqklWgfhVlgA9PRa7T4F3G7aj3nLbJ2Vz004QLuyxlP"
+    >
+    </stripe-buy-button>
     <div class="pricing-sub">Instant access &middot; Generated in your browser &middot; PDF download included</div>
   </div>
 
@@ -844,4 +849,17 @@
   if(window.location.search.indexOf('paid=true')>-1||window.location.search.indexOf('success')>-1){
     var st=sessionStorage.getItem('pia_tools');
     if(st){
-      var tn=JSON.pars
+      var tn=JSON.parse(st);
+      tn.forEach(function(name){
+        var tool=saasDB.find(function(t){return t.name===name});
+        if(tool)selected.push(tool);
+      });
+      render();
+      generateOutput();
+      sessionStorage.removeItem('pia_tools');
+    }
+  }
+})();
+</script>
+</body>
+</html>
