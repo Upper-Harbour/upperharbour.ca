@@ -409,24 +409,35 @@ html{scroll-padding-top:100px}
 
 
 
-<!-- ═══ TOOL SELECTOR — FULL WIDTH APP SECTION ═══ -->
+<!-- ═══ TOOL SELECTOR ═══ -->
 <div id="toolArea" style="height:0;visibility:hidden;"></div>
-<section style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 52px;margin-top:24px;">
-  <div style="max-width:680px;margin:0 auto;">
-    <div style="text-align:center;margin-bottom:32px;">
-      <div style="font-family:var(--display);font-size:clamp(22px,3vw,28px);font-weight:700;color:var(--ice);margin-bottom:8px;">Select your tools. See your exposure.</div>
-      <p style="font-size:14px;color:var(--muted);margin:0;">Search our 753-tool database. The exposure check is free — no signup required.</p>
+<section style="max-width:640px;margin:0 auto;padding:48px 52px 56px;">
+  <!-- Product container with elevated card feel -->
+  <div style="background:linear-gradient(180deg, rgba(42,157,143,0.04) 0%, rgba(15,23,32,0.95) 100%);border:1px solid rgba(60,184,176,0.18);border-radius:16px;padding:0;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,0.3),0 0 0 1px rgba(60,184,176,0.06);">
+    
+    <!-- App header -->
+    <div style="padding:24px 28px 20px;border-bottom:1px solid rgba(60,184,176,0.08);">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+        <div style="width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px rgba(60,184,176,0.4);"></div>
+        <span style="font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);">PIA Research Tool</span>
+        <span style="font-size:10px;color:var(--muted);margin-left:auto;">753 tools · Free check</span>
+      </div>
+      <div style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);line-height:1.2;">Which tools does your organization use?</div>
     </div>
 
-    <div class="selector-wrap">
-      <input type="text" id="toolInput" class="selector-input" placeholder="Start typing — e.g. Microsoft 365, Slack, Zoom, Salesforce..." autocomplete="off" style="font-size:16px;padding:18px 20px;border-color:rgba(60,184,176,0.25);background:rgba(10,20,32,0.8);">
-      <div class="selector-dropdown" id="toolDropdown"></div>
+    <!-- Search input -->
+    <div style="padding:20px 28px;">
+      <div class="selector-wrap">
+        <input type="text" id="toolInput" class="selector-input" placeholder="Start typing — Microsoft 365, Slack, Zoom..." autocomplete="off" style="font-size:15px;padding:16px 18px;background:rgba(6,9,14,0.6);border-color:rgba(60,184,176,0.15);border-radius:8px;">
+        <div class="selector-dropdown" id="toolDropdown"></div>
+      </div>
+      <div class="selected-tools" id="selectedTools"></div>
+      <div class="selected-count" id="selectedCount"></div>
     </div>
-    <div class="selected-tools" id="selectedTools"></div>
-    <div class="selected-count" id="selectedCount"></div>
 
-    <div style="text-align:center;margin-top:24px;">
-      <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()" style="font-size:15px;padding:16px 48px;">See Your Exposure &rarr;</button>
+    <!-- Action bar -->
+    <div style="padding:16px 28px 20px;border-top:1px solid rgba(255,255,255,0.03);text-align:center;">
+      <button class="generate-btn" id="generateBtn" disabled onclick="showPreview()" style="width:100%;padding:14px;font-size:14px;border-radius:8px;">See Your Exposure →</button>
     </div>
   </div>
 </section>
