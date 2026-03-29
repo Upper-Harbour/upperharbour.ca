@@ -23,7 +23,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Upper Harbour" />
   <meta name="twitter:card" content="summary_large_image" />
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my data stored when I run a HarbourScan?","acceptedAnswer":{"@type":"Answer","text":"No. The scan runs entirely in your browser. Nothing is sent to our servers or stored anywhere."}},{"@type":"Question","name":"How long does a HarbourScan take?","acceptedAnswer":{"@type":"Answer","text":"Most organizations complete the scan in under 10 minutes. You select your tools from a database of 753 mapped SaaS products."}},{"@type":"Question","name":"What do I need to run a scan?","acceptedAnswer":{"@type":"Answer","text":"Just a list of the SaaS tools your organization uses. No login, no account, no access to your systems."}},{"@type":"Question","name":"What format are the paid deliverables?","acceptedAnswer":{"@type":"Answer","text":"The Sovereignty Snapshot is delivered as a PDF report within 5 business days. The Compliance Documentation package includes TIA guidance, remediation roadmap, and board-ready documents."}},{"@type":"Question","name":"Do I need a Sovereignty Snapshot if I already ran the free scan?","acceptedAnswer":{"@type":"Answer","text":"The free scan shows your exposure. The Snapshot documents it. If a board member, regulator, or partner asks about your data sovereignty posture, the Snapshot is the PDF you hand them."}}]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my data stored when I run a scan?","acceptedAnswer":{"@type":"Answer","text":"No. The scan runs entirely in your browser. Nothing is sent to our servers or stored anywhere."}},{"@type":"Question","name":"How long does the scan take?","acceptedAnswer":{"@type":"Answer","text":"Most organizations complete the scan in under 10 minutes. You select your tools from a database of 753 mapped SaaS products."}},{"@type":"Question","name":"What do I need to run a scan?","acceptedAnswer":{"@type":"Answer","text":"Just a list of the SaaS tools your organization uses. No login, no account, no access to your systems."}},{"@type":"Question","name":"What are the compliance reports?","acceptedAnswer":{"@type":"Answer","text":"Transfer Impact Assessment and Privacy Impact Assessment reports pre-built with jurisdictional data from our 753-tool database. Available from $99 with immediate PDF delivery."}},{"@type":"Question","name":"When do I need consulting vs a report?","acceptedAnswer":{"@type":"Answer","text":"The $99 compliance reports cover standard TIA and PIA documentation. If you need a full sovereignty assessment, remediation roadmap, vendor migration strategy, or board-ready documentation, consulting gives you expert guidance scoped to your specific situation."}}]}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -391,7 +391,10 @@
     "url": "https://www.upperharbour.ca/harbourscan",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "CAD" },
+    "offers": [
+      { "@type": "Offer", "name": "Free Exposure Scan", "price": "0", "priceCurrency": "CAD", "description": "Free jurisdictional exposure scan — browser-based, no signup required" },
+      { "@type": "Offer", "name": "Compliance Reports", "price": "99", "priceCurrency": "CAD", "description": "Transfer Impact Assessment and Privacy Impact Assessment reports pre-filled with jurisdictional data" }
+    ],
     "creator": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" },
     "featureList": ["Jurisdictional mapping", "CLOUD Act exposure detection", "TIA gap identification", "DPA compliance check", "Compliance gap report generation"]
   }
@@ -527,16 +530,17 @@
     <!-- DETAILED TIERS -->
     <section class="landing-outputs">
       <div class="landing-outputs-intro">
-        <div class="label">Choose your level</div>
-        <p>Every engagement starts with a free scan. From there, choose the documentation your organization needs.</p>
+        <div class="label">What you need</div>
+        <p>Start with a free scan. Add compliance reports or consulting when you need them.</p>
       </div>
 
-      <!-- Free Assessment -->
-      <div class="output-card">
+      <!-- Free Scan -->
+      <div class="output-card" style="border-color:rgba(60,184,176,0.15);">
         <div class="output-header">
           <div class="output-label output-label-teal">Free</div>
-          <div class="output-title">HarbourScan</div>
-          <p class="output-summary">&ldquo;I need to see what we&rsquo;re exposed to.&rdquo; &mdash; Enter your tools and see your jurisdictional exposure instantly. The initial scan runs entirely in your browser.</p>
+          <div class="output-title">Exposure Scan</div>
+          <div style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:10px;">See your exposure in 10 minutes.</div>
+          <p class="output-summary">&ldquo;I need to see what we&rsquo;re dealing with.&rdquo; &mdash; Enter the tools your organization uses. See which ones fall under foreign jurisdiction, where your compliance gaps are, and what Canadian alternatives exist. Runs entirely in your browser.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
@@ -552,9 +556,9 @@
               </ul>
             </div>
             <div>
-              <div class="output-col-title">What you'll know</div>
+              <div class="output-col-title">What you&rsquo;ll know</div>
               <ul class="output-list">
-                <li>How exposed your stack is &mdash; and how urgently it needs attention</li>
+                <li>How exposed your organization is &mdash; and how urgently it needs attention</li>
                 <li>Which tools are under foreign jurisdiction</li>
                 <li>Whether your province&rsquo;s regulations require immediate action</li>
                 <li>The scale of the documentation gap you&rsquo;re facing</li>
@@ -567,62 +571,24 @@
         </div>
       </div>
 
-      <!-- Sovereignty Snapshot -->
+      <!-- Compliance Reports -->
       <div class="output-card" style="border-color:rgba(60,184,176,0.25);">
         <div class="output-header">
-          <div class="output-label output-label-teal">From $350</div>
-          <div class="output-title">Sovereignty Snapshot</div>
-          <div style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:10px;">A documented answer you can send when it matters.</div>
-          <p class="output-summary">&ldquo;Someone asked and I need an answer.&rdquo; &mdash; A professional sovereignty assessment you can produce when a regulator, partner, or procurement officer asks about your cross-border data exposure. Delivered in 5 business days.</p>
+          <div class="output-label output-label-teal">From $99</div>
+          <div class="output-title">Compliance Reports</div>
+          <div style="font-size:13px; color:var(--teal); font-weight:600; margin-bottom:10px;">Document your exposure. Meet your legal obligations.</div>
+          <p class="output-summary">&ldquo;We need to prove we&rsquo;ve done the work.&rdquo; &mdash; Canadian organizations are required under Quebec&rsquo;s Law 25 to complete Transfer Impact Assessments. BC&rsquo;s FIPPA requires Privacy Impact Assessments. Penalties under Law 25 reach $25 million or 4% of worldwide turnover. Our reports are pre-built with jurisdictional data for each tool.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
             <div>
-              <div class="output-col-title">Deliverables</div>
+              <div class="output-col-title">Available reports</div>
               <ul class="output-list">
-                <li>Full jurisdictional exposure map</li>
-                <li>CLOUD Act risk classification per tool</li>
-                <li>Sovereignty Score for each assessed tool</li>
-                <li>Gap identification with severity ratings</li>
-                <li>Executive summary PDF</li>
-              </ul>
-            </div>
-            <div>
-              <div class="output-col-title">When you need this</div>
-              <ul class="output-list">
-                <li>A board member or partner asks about your data sovereignty posture</li>
-                <li>You&rsquo;re responding to an RFP with sovereignty requirements</li>
-                <li>You need a defensible answer faster than a full compliance engagement</li>
-                <li>You want to scope the problem before committing to full documentation</li>
-              </ul>
-            </div>
-          </div>
-          <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border-md);">
-            <a href="https://buy.stripe.com/5kQaEX9kv5TpfQWfFY6Zy00" style="display:inline-block;font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Purchase Snapshot &mdash; $350 &rarr;</a>
-            <span style="font-size:12px;color:var(--muted);margin-left:12px;">PDF report &middot; Delivered in 5 business days &middot; No call required</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Compliance Documentation -->
-      <div class="output-card" style="border-color:rgba(201,168,76,0.25);">
-        <div class="output-header">
-          <div class="output-label output-label-gold">From $2,000</div>
-          <div class="output-title">Compliance Documentation</div>
-          <div style="font-size:13px; color:var(--gold); font-weight:600; margin-bottom:10px;">A full record you can stand behind legally.</div>
-          <p class="output-summary">&ldquo;We need to prove compliance.&rdquo; &mdash; The structured compliance record for regulators, auditors, and procurement evaluators. Board-ready deliverables that demonstrate defensible process. Delivered in 10&ndash;15 business days.</p>
-        </div>
-        <div class="output-body">
-          <div class="output-grid">
-            <div>
-              <div class="output-col-title">Deliverables</div>
-              <ul class="output-list">
-                <li>Everything in the Sovereignty Snapshot</li>
-                <li>Transfer Impact Assessment guidance per tool</li>
-                <li>Register of Processing Activities</li>
-                <li>Prioritized remediation roadmap</li>
-                <li>Regulatory framework mapping (province-specific)</li>
-                <li>Board-ready compliance document</li>
+                <li>Transfer Impact Assessment (Law 25) &mdash; from $99</li>
+                <li>Privacy Impact Assessment (FIPPA) &mdash; from $99</li>
+                <li>Industry-specific compliance packages</li>
+                <li>Pre-filled with jurisdictional data from 753-tool database</li>
+                <li>Immediate delivery &mdash; PDF download</li>
               </ul>
             </div>
             <div>
@@ -631,51 +597,49 @@
                 <li>Law 25 requires written TIAs &mdash; not just awareness</li>
                 <li>Procurement officers ask for compliance documentation</li>
                 <li>You&rsquo;re preparing for audit or regulatory review</li>
-                <li>Penalties reach $25M or 4% of worldwide turnover</li>
+                <li>You need a defensible record without a $20K consulting engagement</li>
               </ul>
             </div>
           </div>
           <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border-md);">
-            <a href="/cdn-cgi/l/email-protection#771d18041f3702070712051f160515180205591416" target="_blank" style="display:inline-block;font-size:13px;font-weight:700;color:var(--bg);background:var(--gold);padding:14px 28px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Get in Touch &rarr;</a>
-            <span style="font-size:12px;color:var(--muted);margin-left:12px;">We&rsquo;ll scope based on your scan results</span>
+            <a href="/comply" style="display:inline-block;font-size:13px;font-weight:700;color:var(--bg);background:var(--teal);padding:14px 28px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Browse Reports &mdash; from $99 &rarr;</a>
           </div>
         </div>
       </div>
 
-      <!-- Sovereignty Monitoring -->
-      <div class="output-card">
+      <!-- Consulting -->
+      <div class="output-card" style="border-color:rgba(201,168,76,0.25);">
         <div class="output-header">
-          <div class="output-label output-label-ice">From $200/mo</div>
-          <div class="output-title">Sovereignty Monitoring</div>
-          <div style="font-size:13px; color:var(--ice); font-weight:600; margin-bottom:10px;">Keeps your documentation from quietly going stale.</div>
-          <p class="output-summary">&ldquo;We need to stay compliant as things change.&rdquo; &mdash; Without monitoring, your compliance documentation can become inaccurate the moment a vendor is acquired or shifts hosting. Monitoring keeps your record current so a point-in-time assessment doesn&rsquo;t quietly become a liability.</p>
+          <div class="output-label output-label-gold">Custom</div>
+          <div class="output-title">Consulting &amp; Advisory</div>
+          <div style="font-size:13px; color:var(--gold); font-weight:600; margin-bottom:10px;">When you need more than a report.</div>
+          <p class="output-summary">&ldquo;We need someone to scope this properly.&rdquo; &mdash; For organizations that need a full sovereignty assessment, remediation roadmap, vendor migration strategy, or board-ready compliance documentation. We&rsquo;ll scope it based on your scan results and your regulatory obligations.</p>
         </div>
         <div class="output-body">
           <div class="output-grid">
             <div>
-              <div class="output-col-title">What&rsquo;s included</div>
+              <div class="output-col-title">What we can help with</div>
               <ul class="output-list">
-                <li>Continuous vendor ownership monitoring</li>
-                <li>Infrastructure change alerts</li>
-                <li>Regulatory development tracking</li>
-                <li>Sovereignty Score updates</li>
-                <li>Quarterly compliance status report</li>
-                <li>New tool assessment as your stack evolves</li>
+                <li>Full jurisdictional exposure assessment</li>
+                <li>Remediation and vendor migration roadmap</li>
+                <li>Board-ready sovereignty documentation</li>
+                <li>Regulatory framework mapping (province-specific)</li>
+                <li>Ongoing sovereignty monitoring</li>
               </ul>
             </div>
             <div>
-              <div class="output-col-title">Why ongoing matters</div>
+              <div class="output-col-title">When you need this</div>
               <ul class="output-list">
-                <li>Canadian SaaS companies are acquired regularly &mdash; shifting jurisdiction for every client</li>
-                <li>Vendors launch (and retire) Canadian data centre regions</li>
-                <li>The CPPA will change federal requirements when enacted</li>
-                <li>A point-in-time audit goes stale within months</li>
+                <li>Your organization handles sensitive data (legal, health, financial)</li>
+                <li>You&rsquo;re responding to an RFP with sovereignty requirements</li>
+                <li>A regulator or auditor has asked questions you can&rsquo;t answer yet</li>
+                <li>You want expert guidance on what to migrate and what to keep</li>
               </ul>
             </div>
           </div>
           <div style="margin-top:24px;padding-top:24px;border-top:1px solid var(--border-md);">
-            <a href="/cdn-cgi/l/email-protection#771d18041f3702070712051f160515180205591416" target="_blank" style="display:inline-block;font-size:13px;font-weight:700;color:var(--ice);background:transparent;padding:12px 24px;border-radius:4px;text-decoration:none;border:1px solid var(--border-md);transition:border-color 0.2s;">Get in Touch &rarr;</a>
-            <span style="font-size:12px;color:var(--muted);margin-left:12px;">Usually added after a Snapshot or Documentation engagement</span>
+            <a href="/cdn-cgi/l/email-protection#771d18041f3702070712051f160515180205591416" style="display:inline-block;font-size:13px;font-weight:700;color:var(--bg);background:var(--gold);padding:14px 28px;border-radius:4px;text-decoration:none;transition:background 0.2s;">Get in Touch &rarr;</a>
+            <span style="font-size:12px;color:var(--muted);margin-left:12px;">We&rsquo;ll scope based on your scan results</span>
           </div>
         </div>
       </div>
@@ -701,13 +665,13 @@
       </div>
 
       <div style="border-top:1px solid var(--border-md);padding:18px 0;">
-        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">What format are the paid deliverables?</div>
-        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">The Sovereignty Snapshot is delivered as a PDF report within 5 business days. The Compliance Documentation package includes all Snapshot deliverables plus TIA guidance, a Register of Processing Activities, remediation roadmap, and board-ready compliance documents.</p>
+        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">What are the compliance reports?</div>
+        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">Transfer Impact Assessment and Privacy Impact Assessment reports, pre-built with jurisdictional data from our 753-tool database. Available from $99 with immediate PDF delivery. Required under Quebec's Law 25 and BC's FIPPA.</p>
       </div>
 
       <div style="border-top:1px solid var(--border-md);padding:18px 0;">
-        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">Do I need a Sovereignty Snapshot if I already ran the free scan?</div>
-        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">The free scan shows your exposure. The Snapshot documents it. If a board member, regulator, procurement officer, or partner asks about your data sovereignty posture, the Snapshot is the PDF you hand them.</p>
+        <div style="font-size:15px;font-weight:700;color:var(--ice);margin:0 0 8px;">When do I need consulting vs a report?</div>
+        <p style="font-size:14px;color:var(--slate);line-height:1.65;margin:0;">The $99 compliance reports cover standard TIA and PIA documentation. If you need a full sovereignty assessment, remediation roadmap, vendor migration strategy, or board-ready documentation, consulting gives you expert guidance scoped to your specific situation.</p>
       </div>
     </section>
 
