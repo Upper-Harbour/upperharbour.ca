@@ -299,58 +299,14 @@
 
 
     <div class="notify-box reveal">
-      <div class="notify-header"><span class="notify-icon">🔔</span><span class="notify-title">Get notified when Shopify's compliance status changes</span></div>
-      <p>We monitor vendor ownership, data residency options, and regulatory changes. Enter your email to receive an alert if Shopify's sovereignty profile changes — including any ownership or infrastructure shifts.</p>
-      <div class="notify-form"><input type="email" class="notify-input" placeholder="your@email.com" id="notifyEmail" /><button class="notify-submit" onclick="alert('Thanks — we\'ll notify you of any changes to Shopify\'s sovereignty status.')">Notify Me</button></div>
-    </div>
-
-
-    <div class="expand-section" id="technical">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Technical Architecture</h2>
-        <span class="expand-arrow">▾</span>
+      <div class="notify-header">
+        <span class="notify-icon">💬</span>
+        <span class="notify-title">Questions about Shopify and Canadian compliance?</span>
       </div>
-      <div class="expand-content">
-        <h3>Infrastructure</h3>
-        <p>Shopify runs primarily on Google Cloud Platform (GCP), with infrastructure spanning multiple regions including Canada, the US, Europe, and Asia-Pacific. Shopify uses a multi-region architecture for performance and redundancy, and <strong>dynamically rebalances storage across GCP regions</strong>. This means merchant data may not always reside in a single fixed location.</p>
-        <h3>Encryption</h3>
-        <p>Shopify uses AES-256 encryption at rest and TLS in transit. For apps handling "Protected Customer Data," Shopify mandates encryption at rest as a Level 1 requirement. <strong>However, Shopify manages all encryption keys.</strong> Customer-managed encryption keys are not available. Because Shopify is Canadian-incorporated, the jurisdictional risk of vendor-managed keys is lower than with a US provider — but the technical limitation remains.</p>
-        <h3>Subprocessors</h3>
-        <p>Shopify uses subprocessors for cloud hosting, error logging, load balancing, content delivery, and data analysis. Some subprocessors may be US-based. Shopify's DPA includes Standard Contractual Clauses and protections for cross-border transfers. Organizations with strict residency requirements should review Shopify's published subprocessor list.</p>
-        <h3>Payment data</h3>
-        <p>Shopify maintains PCI DSS Level 1 compliance — the highest security standard for payment processing. Payment card data is handled through Shopify Payments (powered by Stripe) and is subject to its own data handling and residency rules separate from the main Shopify platform.</p>
-      </div>
-    </div>
-
-
-    <div class="expand-section" id="caveats">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>What to Watch</h2>
-        <span class="expand-arrow">▾</span>
-      </div>
-      <div class="expand-content">
-        <p>Shopify is a strong sovereignty choice, but no tool is perfect. Things to monitor:</p>
-        <ul>
-          <li><strong>Dynamic data rebalancing:</strong> Shopify moves data across GCP regions for performance. If strict data residency is required (e.g., for certain government contracts), confirm with Shopify that data can be restricted to Canadian regions.</li>
-          <li><strong>Vendor-managed encryption:</strong> Shopify holds the keys. For most e-commerce use cases this is acceptable, but organizations handling highly sensitive data should be aware.</li>
-          <li><strong>US-listed stock:</strong> Shopify trades on both the TSX and NYSE. While this does not change its Canadian incorporation or jurisdiction, some organizations may want to monitor whether any future corporate restructuring could affect its jurisdictional status.</li>
-          <li><strong>App ecosystem:</strong> Third-party Shopify apps may have their own data handling practices. An app installed from the Shopify App Store may be operated by a US company with different sovereignty characteristics than Shopify itself.</li>
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="expand-section" id="faq">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Frequently Asked Questions</h2>
-        <span class="expand-arrow">▾</span>
-      </div>
-      <div class="expand-content">
-        <div class="faq-item-inline"><h3>Is Shopify subject to the CLOUD Act?</h3><p>No. Shopify is Canadian-incorporated (Ottawa). US authorities cannot compel Shopify to produce data under the CLOUD Act.</p></div>
-        <div class="faq-item-inline"><h3>Where does Shopify store data?</h3><p>Shopify runs on Google Cloud Platform and dynamically rebalances storage across GCP regions including Canada. Data may move geographically for performance and reliability.</p></div>
-        <div class="faq-item-inline"><h3>Does Shopify offer customer-managed encryption?</h3><p>No. Shopify uses AES-256 at rest and TLS in transit, but manages all encryption keys. Because Shopify is Canadian, the jurisdictional risk of this is lower than with a US provider.</p></div>
-        <div class="faq-item-inline"><h3>How does Shopify compare to BigCommerce?</h3><p>Shopify (Canadian, not CLOUD Act exposed) is significantly stronger from a sovereignty perspective than BigCommerce (US, CLOUD Act exposed). Lightspeed (Montreal) is a comparable Canadian alternative.</p></div>
-        <div class="faq-item-inline"><h3>Do I need a TIA for Shopify under Law 25?</h3><p>If data stays within Canada, a cross-border TIA may not be required. However, Shopify's dynamic data rebalancing means data may temporarily reside outside Canada. Document your assessment and confirm data routing with Shopify.</p></div>
+      <p>We help organizations assess jurisdictional risk across their SaaS stack. Book a call or send us a message.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);padding:11px 22px;border-radius:4px;text-decoration:none;">Book a Call →</a>
+        <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:12px;font-weight:700;color:var(--ice);background:transparent;border:1px solid var(--border-md);padding:11px 22px;border-radius:4px;text-decoration:none;">Email Us →</a>
       </div>
     </div>
 

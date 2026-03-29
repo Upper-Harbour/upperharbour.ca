@@ -310,56 +310,14 @@
     </div>
 
     <div class="notify-box reveal">
-      <div class="notify-header"><span class="notify-icon">🔔</span><span class="notify-title">Get notified when QuickBooks' compliance status changes</span></div>
-      <p>We monitor vendor ownership, data residency options, and regulatory changes. Enter your email to receive an alert if QuickBooks' sovereignty profile changes.</p>
-      <div class="notify-form"><input type="email" class="notify-input" placeholder="your@email.com" id="notifyEmail" /><button class="notify-submit" onclick="alert('Thanks — we\'ll notify you of any changes to QuickBooks\' sovereignty status.')">Notify Me</button></div>
-    </div>
-
-    <div class="expand-section" id="technical">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Technical Architecture</h2>
-        <span class="expand-arrow">▾</span>
+      <div class="notify-header">
+        <span class="notify-icon">💬</span>
+        <span class="notify-title">Questions about QuickBooks and Canadian compliance?</span>
       </div>
-      <div class="expand-content">
-        <h3>Data hosting</h3>
-        <p>QuickBooks Online is hosted on Intuit-managed systems using AWS infrastructure. Primary data is stored in multiple US regions in an active/passive configuration. Intuit states that a backup copy of Canadian customer data is stored in Canada, but primary processing and storage occurs in the United States. This is not equivalent to full Canadian data residency — it is a disaster recovery measure.</p>
-        <h3>Encryption</h3>
-        <p>QuickBooks uses AES-256 encryption at rest and TLS for data in transit. <strong>However, Intuit manages all encryption keys.</strong> Customer-managed encryption keys are not available. Under a valid legal order, Intuit can produce data in readable form.</p>
-        <h3>What data is stored</h3>
-        <p>QuickBooks stores invoices, expenses, payroll records (including employee SINs and banking information), client billing data, tax calculations, vendor payments, and financial reports. For accounting firms using QuickBooks to manage client books, the data includes the personal and financial information of the firm's clients — creating a second layer of data stewardship responsibility.</p>
-        <h3>Intuit ecosystem</h3>
-        <p>Intuit also operates Mailchimp (marketing), Credit Karma (financial data), and TurboTax. Data may be shared or processed across Intuit's product ecosystem according to their privacy policy. Organizations should review Intuit's data sharing practices alongside QuickBooks-specific terms.</p>
-      </div>
-    </div>
-
-    <div class="expand-section" id="mitigation">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Mitigation Options</h2>
-        <span class="expand-arrow">▾</span>
-      </div>
-      <div class="expand-content">
-        <p>Unlike <a href="/tools/hubspot">HubSpot</a> (which offers a Montreal data centre) or Canadian-owned alternatives like FreshBooks, QuickBooks provides limited sovereignty controls:</p>
-        <ul>
-          <li><strong>Data minimization:</strong> Avoid storing sensitive data categories (employee SINs, banking details) in QuickBooks where possible. Use QuickBooks for invoicing and reporting while keeping sensitive payroll data in a Canadian-hosted system.</li>
-          <li><strong>Access controls:</strong> Use QuickBooks' permission levels to limit who can access sensitive financial data within your organization.</li>
-          <li><strong>DPA review:</strong> Execute Intuit's Data Processing Agreement and review against Law 25 or PIPEDA requirements.</li>
-          <li><strong>Migration planning:</strong> For organizations with high sensitivity requirements, develop a migration plan to FreshBooks or another Canadian-owned accounting platform.</li>
-        </ul>
-        <p><strong>What you cannot mitigate:</strong> CLOUD Act jurisdiction. As long as Intuit is US-incorporated and holds the encryption keys, US authorities can compel data production. The Canadian backup copy provides disaster recovery, not jurisdictional protection.</p>
-      </div>
-    </div>
-
-    <div class="expand-section" id="faq">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Frequently Asked Questions</h2>
-        <span class="expand-arrow">▾</span>
-      </div>
-      <div class="expand-content">
-        <div class="faq-item-inline"><h3>Where does QuickBooks store Canadian data?</h3><p>Primary data is stored in the United States on Intuit-managed systems. A backup copy of Canadian customer data is stored in Canada. Primary processing, queries, and storage occur in the US.</p></div>
-        <div class="faq-item-inline"><h3>Does the Canadian backup remove CLOUD Act exposure?</h3><p>No. The CLOUD Act applies to the company (Intuit), not the data centre location. US authorities can compel Intuit to produce data regardless of where any copy is stored.</p></div>
-        <div class="faq-item-inline"><h3>Is FreshBooks a viable alternative to QuickBooks?</h3><p>Yes. FreshBooks is Canadian-owned (Toronto), offers Canadian data residency, and is not subject to the CLOUD Act. It is suitable for small to mid-sized businesses, though it may lack some of QuickBooks' advanced reporting and inventory features.</p></div>
-        <div class="faq-item-inline"><h3>What happened to Wave? Is it still Canadian?</h3><p>Wave was founded in Toronto but acquired by H&R Block (US) in 2019. It is now subject to the CLOUD Act through its US parent company. Wave is no longer a Canadian-owned alternative.</p></div>
-        <div class="faq-item-inline"><h3>Should accounting firms be concerned about QuickBooks?</h3><p>Yes. Accounting firms handle client financial data under professional obligations. Employee SINs, banking details, and tax records flowing through a US-controlled platform create both regulatory exposure and professional liability. Firms should document their jurisdictional risk assessment and consider Canadian alternatives for sensitive client work.</p></div>
+      <p>We help organizations assess jurisdictional risk across their SaaS stack. Book a call or send us a message.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);padding:11px 22px;border-radius:4px;text-decoration:none;">Book a Call →</a>
+        <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:12px;font-weight:700;color:var(--ice);background:transparent;border:1px solid var(--border-md);padding:11px 22px;border-radius:4px;text-decoration:none;">Email Us →</a>
       </div>
     </div>
 

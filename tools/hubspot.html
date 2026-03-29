@@ -385,67 +385,13 @@
     <!-- ═══ EMAIL NOTIFICATION ═══ -->
     <div class="notify-box reveal">
       <div class="notify-header">
-        <span class="notify-icon">🔔</span>
-        <span class="notify-title">Get notified when HubSpot's compliance status changes</span>
+        <span class="notify-icon">💬</span>
+        <span class="notify-title">Questions about HubSpot and Canadian compliance?</span>
       </div>
-      <p>We monitor vendor ownership, data residency options, and regulatory changes. Enter your email to receive an alert if HubSpot's sovereignty profile changes.</p>
-      <div class="notify-form">
-        <input type="email" class="notify-input" placeholder="your@email.com" id="notifyEmail" />
-        <button class="notify-submit" onclick="alert('Thanks — we\'ll notify you of any changes to HubSpot\'s sovereignty status.')">Notify Me</button>
-      </div>
-    </div>
-
-
-    <!-- ═══ TECHNICAL ARCHITECTURE (collapsed) ═══ -->
-    <div class="expand-section" id="technical">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Technical Architecture</h2>
-        <span class="expand-arrow">▾</span>
-      </div>
-      <div class="expand-content">
-        <h3>Data hosting</h3>
-        <p>HubSpot's infrastructure runs on Amazon Web Services (AWS) and Google Cloud Platform (GCP). As of February 2025, HubSpot offers data centres in the United States (East and West), European Union (Frankfurt), Australia (Sydney), and Canada (Montreal). Canadian customers can opt into the Montreal data centre for primary data storage. Existing customers can migrate using HubSpot's automated migration tool — most migrations complete within 8–24 hours.</p>
-        <h3>Encryption</h3>
-        <p>HubSpot encrypts data at rest using AES-256 and in transit using TLS 1.2/1.3. <strong>However, HubSpot manages all encryption keys.</strong> HubSpot has explicitly stated it is "unable to use customer supplied encryption keys at this time." This means HubSpot — and any authority with a valid legal order — can access data in readable form.</p>
-        <h3>What data is stored</h3>
-        <p>HubSpot stores CRM contacts, company records, deals, email communications, marketing analytics, support tickets, and custom objects. For many organizations, this includes names, email addresses, phone numbers, purchase history, and communication records — all of which constitute personal information under Canadian privacy law.</p>
-        <h3>Data processing outside the primary region</h3>
-        <p>Even with the Montreal data centre selected, some data processing may occur outside Canada. HubSpot uses subprocessors and third-party integrations that may process data in other regions. Backup and disaster recovery systems replicate data within the same regional hosting location, but organizations should review HubSpot's subprocessor list for cross-border processing.</p>
-      </div>
-    </div>
-
-
-    <!-- ═══ MITIGATION OPTIONS (collapsed) ═══ -->
-    <div class="expand-section" id="mitigation">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Mitigation Options</h2>
-        <span class="expand-arrow">▾</span>
-      </div>
-      <div class="expand-content">
-        <p>HubSpot offers more sovereignty controls than many US-based SaaS tools, though significant gaps remain. Available mitigations:</p>
-        <ul>
-          <li><strong>Montreal data centre:</strong> Migrate to Canadian data residency. This is the single most impactful step and should be done immediately if not already configured. It addresses residency requirements under Law 25 and FIPPA.</li>
-          <li><strong>Data minimization:</strong> Limit what personal information is stored in HubSpot. Avoid storing sensitive categories (health data, financial details, government IDs) in CRM fields.</li>
-          <li><strong>DPA and subprocessor review:</strong> Execute HubSpot's Data Processing Agreement and review the subprocessor list for cross-border processing that may affect your compliance position.</li>
-          <li><strong>Access controls:</strong> Use HubSpot's role-based access controls and SSO integration to limit who can access personal information within your organization.</li>
-        </ul>
-        <p><strong>What you cannot mitigate:</strong> CLOUD Act jurisdiction. As long as HubSpot is US-incorporated and holds the encryption keys, US authorities can compel data production. No contractual arrangement changes this.</p>
-      </div>
-    </div>
-
-
-    <!-- ═══ FAQ (collapsed) ═══ -->
-    <div class="expand-section" id="faq">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Frequently Asked Questions</h2>
-        <span class="expand-arrow">▾</span>
-      </div>
-      <div class="expand-content">
-        <div class="faq-item-inline"><h3>Does HubSpot offer Canadian data residency?</h3><p>Yes. Since February 2025, HubSpot offers a Montreal data centre on AWS. New customers can select it at signup; existing customers can migrate using HubSpot's automated migration tool.</p></div>
-        <div class="faq-item-inline"><h3>Does the Montreal data centre remove CLOUD Act exposure?</h3><p>No. HubSpot is a US-incorporated company. The CLOUD Act applies to the company, not the data centre location. US authorities can compel data production regardless of where the data is physically stored.</p></div>
-        <div class="faq-item-inline"><h3>Does HubSpot offer customer-managed encryption?</h3><p>No. HubSpot encrypts data at rest (AES-256) and in transit (TLS 1.2/1.3), but HubSpot manages all encryption keys. Customer-managed encryption keys are not available.</p></div>
-        <div class="faq-item-inline"><h3>Do I need a TIA for HubSpot under Law 25?</h3><p>Recommended. If your data is in the Montreal data centre, primary storage may be within Quebec. However, a TIA is still advisable because HubSpot's US parent is subject to the CLOUD Act and some processing may occur outside Canada.</p></div>
-        <div class="faq-item-inline"><h3>What are the Canadian alternatives to HubSpot?</h3><p>Klue (Vancouver) offers competitive intelligence CRM capabilities. Jobber (Edmonton) serves field service businesses. For full-featured CRM, Zoho is headquartered in India and not subject to the CLOUD Act. HubSpot with the Montreal data centre is itself a reasonable choice for many organizations when properly documented.</p></div>
+      <p>We help organizations assess jurisdictional risk across their SaaS stack. Book a call or send us a message.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);padding:11px 22px;border-radius:4px;text-decoration:none;">Book a Call →</a>
+        <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:12px;font-weight:700;color:var(--ice);background:transparent;border:1px solid var(--border-md);padding:11px 22px;border-radius:4px;text-decoration:none;">Email Us →</a>
       </div>
     </div>
 
