@@ -60,15 +60,12 @@
 <style>
     .warning-callout { border-left-color: var(--gold); }
     .warning-callout .callout-label { color: var(--gold); }
-    .badge { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; }
-    .badge-red { background: rgba(224,96,80,0.12); color: #E06050; }
-    .badge-gold { background: rgba(201,168,76,0.12); color: var(--gold); }
-    .badge-teal { background: rgba(60,184,176,0.08); color: var(--teal); }
     .article-h1 em { color: var(--gold); }
     .article-read { font-size: 12px; color: var(--muted); }
     .article-body h3 { font-size: 18px; font-weight: 700; color: var(--ice); margin: 32px 0 12px; }
     .article-body a:hover { border-color: var(--teal); }
     .article-breadcrumb a:hover { text-decoration: underline; }
+    .stat-source { font-size: 11px; color: var(--muted); margin-top: -16px; margin-bottom: 24px; }
   </style>
 <body>
     <nav>
@@ -98,126 +95,157 @@
   </div>
 
   <header class="article-hero">
-    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/resources">Resources</a> → Data Residency</div>
+    <div class="article-breadcrumb"><a href="/">Home</a> &rarr; <a href="/resources">Compliance Guides</a> &rarr; Data Residency</div>
     <div class="article-meta">
       <span class="article-tag">Data Residency</span>
       <span class="article-tag">SaaS</span>
+      <span class="article-tag">CLOUD Act</span>
       <span class="article-date">March 2026</span>
-      <span class="article-read">11 min read</span>
+      <span class="article-read">12 min read</span>
     </div>
     <h1 class="article-h1">Canadian Data Residency: Which SaaS Tools <em>Offer It</em></h1>
-    <div class="author-card">
-      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="56" height="56">
-      <div class="author-card-info">
-        <div class="author-card-name"><a href="/founder">Joshua van Es</a></div>
-        <div class="author-card-role">Corporate law · Founder, Upper Harbour</div>
-        <div class="author-card-pubs">Published in The Globe and Mail, Maclean's, OpenCanada, and BetaKit</div>
+    <div style="display:flex;align-items:center;gap:10px;margin-top:16px;margin-bottom:24px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> &middot; Corporate law &middot; Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean&rsquo;s</em>, <em>The Logic</em>, and <em>BetaKit</em> &middot; March 2026</span>
       </div>
     </div>
-    <p class="article-intro">Canadian data residency is increasingly available across major SaaS platforms — but availability varies widely, and residency alone doesn't solve the compliance question. Here's a practical breakdown of what's available and what it actually means.</p>
+    <p class="article-intro">Canadian data residency is increasingly available across major SaaS platforms &mdash; but availability varies widely, and residency alone doesn&rsquo;t solve the compliance question. Here&rsquo;s what&rsquo;s available, what it actually means, and where the gaps are.</p>
   </header>
 
   <article class="article-body">
 
-    <h2>What Canadian data residency means</h2>
-    <p>When a SaaS vendor offers "Canadian data residency," they typically mean that your data at rest — the files, records, and databases associated with your account — will be stored on servers physically located in Canada. Most major cloud providers operate Canadian data centres, primarily in the Toronto and Montreal regions, with some expanding to Calgary and Vancouver.</p>
-    <p>What Canadian data residency usually does <strong>not</strong> mean is that your data is exclusively processed in Canada (it may be processed in other regions for certain functions), that support staff accessing your data are located in Canada, that metadata, logs, and telemetry stay in Canada, or that your data is subject only to Canadian law.</p>
-    <p>This last point is the most important. As we've covered in our <a href="/resources/cloud-act-canadian-data">CLOUD Act guide</a>, data stored in Canada by a US-parented company is still subject to US legal jurisdiction. Residency addresses geography; it doesn't address sovereignty.</p>
+    <h2>How available is Canadian data residency?</h2>
+    <p>In Upper Harbour&rsquo;s <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Sovereignty Index</a> of <span class="uh-stat" data-stat="totalTools">753</span> SaaS tools commonly used by Canadian organizations, the data residency picture breaks down like this:</p>
 
-    <h2>The current landscape</h2>
-    <p>Here's a practical breakdown of Canadian data residency availability across commonly-used SaaS categories. This information is current as of early 2026, but vendors frequently update their residency options — always verify directly with the vendor for your specific plan and configuration.</p>
+    <div class="stat-grid" style="grid-template-columns:repeat(3,1fr);">
+      <div class="stat-card"><div class="stat-num" style="color:var(--teal);">~19%</div><div class="stat-label">Offer some form of Canadian data residency</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:var(--red);">67%</div><div class="stat-label">US-parented with no Canadian residency option</div></div>
+      <div class="stat-card"><div class="stat-num" style="color:var(--gold);">~13%</div><div class="stat-label">Canadian-owned (inherent residency)</div></div>
+    </div>
+    <div class="stat-source">Source: Upper Harbour Sovereignty Index, March 2026. Based on <span class="uh-stat" data-stat="totalTools">753</span> tools tracked.</div>
+
+    <p>The majority of SaaS tools used by Canadian organizations offer no Canadian data residency whatsoever. Among those that do, many restrict it to enterprise pricing tiers, limit which data types are included, or require manual configuration that most customers never enable.</p>
+
+    <div class="callout warning-callout">
+      <div class="callout-label">The residency trap</div>
+      <p>Even when Canadian data residency <em>is</em> available, it doesn&rsquo;t change the legal jurisdiction of the vendor. A US-incorporated company storing data in Toronto is still subject to the CLOUD Act. Residency solves geography; <a href="/resources/data-sovereignty-compliance-2026" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">sovereignty</a> solves jurisdiction. For Law 25 compliance, you need to address both.</p>
+    </div>
+
+    <h2>What does &ldquo;Canadian data residency&rdquo; actually mean?</h2>
+    <p>When a vendor offers Canadian data residency, they typically mean that your <strong>data at rest</strong> &mdash; files, records, and databases &mdash; will be stored on servers physically located in Canada. Most major cloud providers operate Canadian data centres in the Toronto and Montr&eacute;al regions, with some expanding to Calgary.</p>
+    <p>What it usually does <strong>not</strong> mean: that all processing happens in Canada (data may be processed in other regions for specific functions), that support staff are located in Canada, that metadata, logs, and telemetry remain in Canada, or that your data is subject only to Canadian law. This last point is the most important &mdash; and is covered in depth in our <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">CLOUD Act guide</a>.</p>
+
+    <h2>Which tools offer Canadian data residency?</h2>
+    <p>Here&rsquo;s the current landscape across commonly-used SaaS categories. Each tool links to its detailed sovereignty analysis where available. Data verified March 2026 &mdash; always confirm directly with the vendor for your specific plan.</p>
 
     <h3>Productivity and collaboration</h3>
-    <table class="res-table">
-      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Plan Required</th><th>CLOUD Act</th></tr></thead>
+    <table class="data-table">
+      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Tier Required</th><th>CLOUD Act</th></tr></thead>
       <tbody>
-        <tr><td><strong>Microsoft 365</strong></td><td>US</td><td><span class="badge badge-yes">Available</span></td><td>Most business plans</td><td>Yes</td></tr>
-        <tr><td><strong>Google Workspace</strong></td><td>US</td><td><span class="badge badge-partial">Partial</span></td><td>Enterprise / data regions</td><td>Yes</td></tr>
-        <tr><td><strong>Slack</strong></td><td>US</td><td><span class="badge badge-partial">Partial</span></td><td>Enterprise Grid (data residency add-on)</td><td>Yes</td></tr>
-        <tr><td><strong>Zoom</strong></td><td>US</td><td><span class="badge badge-no">No</span></td><td>—</td><td>Yes</td></tr>
-        <tr><td><strong>Dropbox</strong></td><td>US</td><td><span class="badge badge-no">No</span></td><td>—</td><td>Yes</td></tr>
+        <tr><td><strong>Microsoft 365</strong></td><td>US</td><td style="color:var(--teal);font-weight:600;">Available</td><td>Most business plans</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><strong>Google Workspace</strong></td><td>US</td><td style="color:var(--gold);font-weight:600;">Partial</td><td>Enterprise (data regions)</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><strong>Slack</strong></td><td>US (Salesforce)</td><td style="color:var(--gold);font-weight:600;">Partial</td><td>Enterprise Grid + add-on</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/jira" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Jira</a></td><td>US (Atlassian)</td><td style="color:var(--teal);font-weight:600;">Available</td><td>All paid plans</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/confluence" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Confluence</a></td><td>US (Atlassian)</td><td style="color:var(--teal);font-weight:600;">Available</td><td>All paid plans</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/trello" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Trello</a></td><td>US (Atlassian)</td><td style="color:var(--red);font-weight:600;">No</td><td>&mdash;</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/asana" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Asana</a></td><td>US</td><td style="color:var(--red);font-weight:600;">No</td><td>Enterprise+ (EU/AU/JP only)</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><strong>Zoom</strong></td><td>US</td><td style="color:var(--red);font-weight:600;">No</td><td>&mdash;</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/dropbox" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Dropbox</a></td><td>US</td><td style="color:var(--red);font-weight:600;">No</td><td>&mdash;</td><td style="color:var(--red);">Yes</td></tr>
+      </tbody>
+    </table>
+
+    <h3>IT service management and enterprise</h3>
+    <table class="data-table">
+      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Tier Required</th><th>CLOUD Act</th></tr></thead>
+      <tbody>
+        <tr><td><a href="/tools/servicenow" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">ServiceNow</a></td><td>US</td><td style="color:var(--teal);font-weight:600;">Default for CDN</td><td>All plans</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><strong>Salesforce</strong></td><td>US</td><td style="color:var(--teal);font-weight:600;">Available</td><td>Hyperforce (Canada region)</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/hubspot" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">HubSpot</a></td><td>US</td><td style="color:var(--red);font-weight:600;">No</td><td>&mdash;</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/zendesk" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Zendesk</a></td><td>US</td><td style="color:var(--red);font-weight:600;">No</td><td>Add-on (US/EU/UK/AU/JP)</td><td style="color:var(--red);">Yes</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Design and development</h3>
+    <table class="data-table">
+      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Tier Required</th><th>CLOUD Act</th></tr></thead>
+      <tbody>
+        <tr><td><a href="/tools/github" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">GitHub</a></td><td>US (Microsoft)</td><td style="color:var(--red);font-weight:600;">No</td><td>Enterprise (EU/AU/US/JP)</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/figma" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Figma</a></td><td>US</td><td style="color:var(--red);font-weight:600;">No</td><td>Enterprise (EU/AU/IN)</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><a href="/tools/canva" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">Canva</a></td><td>Australia</td><td style="color:var(--red);font-weight:600;">No</td><td>Enterprise (US/EU)</td><td style="color:var(--gold);">Indirect</td></tr>
       </tbody>
     </table>
 
     <h3>Finance and accounting</h3>
-    <table class="res-table">
-      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Plan Required</th><th>CLOUD Act</th></tr></thead>
+    <table class="data-table">
+      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Tier Required</th><th>CLOUD Act</th></tr></thead>
       <tbody>
-        <tr><td><strong>QuickBooks Online</strong></td><td>US</td><td><span class="badge badge-partial">Partial</span></td><td>Canadian edition uses CA servers</td><td>Yes</td></tr>
-        <tr><td><strong>Xero</strong></td><td>NZ</td><td><span class="badge badge-no">No</span></td><td>—</td><td>No</td></tr>
-        <tr><td><strong>FreshBooks</strong></td><td>Canada</td><td><span class="badge badge-native">Native</span></td><td>All plans</td><td>No</td></tr>
-        <tr><td><strong>Wave</strong></td><td>Canada</td><td><span class="badge badge-native">Native</span></td><td>All plans</td><td>No</td></tr>
+        <tr><td><a href="/tools/quickbooks" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">QuickBooks Online</a></td><td>US (Intuit)</td><td style="color:var(--gold);font-weight:600;">Partial</td><td>Canadian edition uses CA servers</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><strong>Xero</strong></td><td>New Zealand</td><td style="color:var(--red);font-weight:600;">No</td><td>&mdash;</td><td style="color:var(--gold);">Indirect</td></tr>
+        <tr><td><strong>FreshBooks</strong></td><td>Canada</td><td style="color:var(--teal);font-weight:600;">Native</td><td>All plans</td><td style="color:var(--teal);">No</td></tr>
+        <tr><td><strong>Wave</strong></td><td>Canada (H&amp;R Block)</td><td style="color:var(--teal);font-weight:600;">Native</td><td>All plans</td><td style="color:var(--gold);">Indirect</td></tr>
       </tbody>
     </table>
 
-    <h3>CRM and sales</h3>
-    <table class="res-table">
-      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Plan Required</th><th>CLOUD Act</th></tr></thead>
+    <h3>Legal and healthcare</h3>
+    <table class="data-table">
+      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Tier Required</th><th>CLOUD Act</th></tr></thead>
       <tbody>
-        <tr><td><strong>Salesforce</strong></td><td>US</td><td><span class="badge badge-yes">Available</span></td><td>Hyperforce (Canada region)</td><td>Yes</td></tr>
-        <tr><td><strong>HubSpot</strong></td><td>US</td><td><span class="badge badge-no">No</span></td><td>—</td><td>Yes</td></tr>
-        <tr><td><strong>Pipedrive</strong></td><td>Estonia</td><td><span class="badge badge-no">No</span></td><td>US or EU hosting only</td><td>No</td></tr>
+        <tr><td><strong>Clio</strong></td><td>Canada</td><td style="color:var(--teal);font-weight:600;">Native</td><td>All plans (CA data centres)</td><td style="color:var(--teal);">No</td></tr>
+        <tr><td><strong>uLawPractice</strong></td><td>Canada</td><td style="color:var(--teal);font-weight:600;">Native</td><td>All plans</td><td style="color:var(--teal);">No</td></tr>
+        <tr><td><strong>Jane App</strong></td><td>Canada</td><td style="color:var(--teal);font-weight:600;">Native</td><td>All plans</td><td style="color:var(--teal);">No</td></tr>
+        <tr><td><strong>TELUS Health</strong></td><td>Canada</td><td style="color:var(--teal);font-weight:600;">Native</td><td>All plans</td><td style="color:var(--teal);">No</td></tr>
       </tbody>
     </table>
 
-    <h3>Legal practice management</h3>
-    <table class="res-table">
-      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Plan Required</th><th>CLOUD Act</th></tr></thead>
+    <h3>Security</h3>
+    <table class="data-table">
+      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Tier Required</th><th>CLOUD Act</th></tr></thead>
       <tbody>
-        <tr><td><strong>Clio</strong></td><td>Canada</td><td><span class="badge badge-native">Native</span></td><td>All plans (CA data centres)</td><td>No</td></tr>
-        <tr><td><strong>uLawPractice</strong></td><td>Canada</td><td><span class="badge badge-native">Native</span></td><td>All plans</td><td>No</td></tr>
-        <tr><td><strong>PracticePanther</strong></td><td>US</td><td><span class="badge badge-no">No</span></td><td>—</td><td>Yes</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Healthcare</h3>
-    <table class="res-table">
-      <thead><tr><th>Tool</th><th>HQ</th><th>CA Residency</th><th>Plan Required</th><th>CLOUD Act</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Jane App</strong></td><td>Canada</td><td><span class="badge badge-native">Native</span></td><td>All plans</td><td>No</td></tr>
-        <tr><td><strong>TELUS Health (PS Suite)</strong></td><td>Canada</td><td><span class="badge badge-native">Native</span></td><td>All plans</td><td>No</td></tr>
-        <tr><td><strong>Athenahealth</strong></td><td>US</td><td><span class="badge badge-no">No</span></td><td>—</td><td>Yes</td></tr>
+        <tr><td><a href="/tools/1password" style="color:var(--teal);text-decoration:none;font-weight:700;border-bottom:1px solid rgba(60,184,176,0.3);">1Password</a></td><td>Canada</td><td style="color:var(--teal);font-weight:600;">Native</td><td>All plans (zero-knowledge E2EE)</td><td style="color:var(--teal);">No</td></tr>
+        <tr><td><strong>LastPass</strong></td><td>US</td><td style="color:var(--red);font-weight:600;">No</td><td>&mdash;</td><td style="color:var(--red);">Yes</td></tr>
       </tbody>
     </table>
 
     <h3>Cloud infrastructure</h3>
-    <table class="res-table">
-      <thead><tr><th>Tool</th><th>HQ</th><th>CA Region</th><th>Notes</th><th>CLOUD Act</th></tr></thead>
+    <table class="data-table">
+      <thead><tr><th>Provider</th><th>HQ</th><th>CA Region</th><th>Locations</th><th>CLOUD Act</th></tr></thead>
       <tbody>
-        <tr><td><strong>AWS</strong></td><td>US</td><td><span class="badge badge-yes">Available</span></td><td>ca-central-1 (Montreal), ca-west-1 (Calgary)</td><td>Yes</td></tr>
-        <tr><td><strong>Azure</strong></td><td>US</td><td><span class="badge badge-yes">Available</span></td><td>Canada Central (Toronto), Canada East (Quebec)</td><td>Yes</td></tr>
-        <tr><td><strong>Google Cloud</strong></td><td>US</td><td><span class="badge badge-yes">Available</span></td><td>northamerica-northeast1 (Montreal), northeast2 (Toronto)</td><td>Yes</td></tr>
+        <tr><td><strong>AWS</strong></td><td>US</td><td style="color:var(--teal);font-weight:600;">Available</td><td>ca-central-1 (Montr&eacute;al), ca-west-1 (Calgary)</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><strong>Azure</strong></td><td>US</td><td style="color:var(--teal);font-weight:600;">Available</td><td>Canada Central (Toronto), Canada East (Quebec)</td><td style="color:var(--red);">Yes</td></tr>
+        <tr><td><strong>Google Cloud</strong></td><td>US</td><td style="color:var(--teal);font-weight:600;">Available</td><td>northamerica-northeast1/2 (Montr&eacute;al/Toronto)</td><td style="color:var(--red);">Yes</td></tr>
       </tbody>
     </table>
 
-    <div class="callout warning-callout">
+    <div class="callout warning-callout" style="margin-top:40px;">
       <div class="callout-label">The pattern</div>
-      <p>Notice that every major US-headquartered SaaS tool that offers Canadian data residency is still CLOUD Act exposed. Residency solves the "where is my data stored" question — but it does not change which country's laws can compel access to it. For Law 25 TIAs, you still need to assess the legal framework, even with residency enabled.</p>
+      <p>Every major US-headquartered SaaS tool that offers Canadian data residency is still CLOUD Act exposed. Residency solves the &ldquo;where is my data stored&rdquo; question &mdash; but does not change which country&rsquo;s laws can compel access. For Law 25 TIAs, you still need to assess the legal framework, even with residency enabled.</p>
     </div>
 
-    <h2>When residency matters — and when it doesn't</h2>
-    <p><strong>Residency matters</strong> when your regulatory framework requires data to be physically stored in Canada. Some provincial health information acts and certain government procurement rules specify physical data location. In these cases, verifying and configuring Canadian data residency is essential.</p>
-    <p><strong>Residency is insufficient</strong> when your concern is jurisdictional control — specifically, who can legally compel access to your data. This is the concern that Law 25 TIAs are designed to address, and it's where the distinction between residency and sovereignty becomes critical.</p>
-    <p><strong>Residency helps but doesn't resolve</strong> the broader compliance picture. Having data stored in Canada reduces some risk factors (like data transit across borders) and simplifies some aspects of your TIA documentation. But it doesn't eliminate the need for the assessment itself.</p>
+    <div class="callout" style="margin-top:32px;">
+      <div class="callout-label">Map your stack</div>
+      <p><a href="/harbourscan" style="color:var(--teal);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(60,184,176,0.3);">HarbourScan</a> shows you which tools in your stack offer Canadian data residency, which don&rsquo;t, and which are CLOUD Act exposed &mdash; across your entire SaaS environment. Free, browser-based. <a href="/harbourscan">Run your assessment &rarr;</a></p>
+    </div>
+
+    <h2>When does residency matter &mdash; and when doesn&rsquo;t it?</h2>
+    <p><strong>Residency matters</strong> when your regulatory framework requires data to be physically stored in Canada. Some provincial health information acts, government procurement rules, and sector-specific regulations specify physical data location. In these cases, verifying and configuring Canadian data residency is essential.</p>
+    <p><strong>Residency is insufficient</strong> when your concern is jurisdictional control &mdash; specifically, who can legally compel access to your data. This is the concern that Law 25 TIAs address, and it&rsquo;s where the distinction between <a href="/resources/data-residency-vs-data-sovereignty-canada" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">residency and sovereignty</a> becomes critical.</p>
+    <p><strong>Residency helps but doesn&rsquo;t resolve</strong> the broader compliance picture. Having data in Canada reduces some risk factors (transit across borders, latency) and simplifies aspects of TIA documentation. But it doesn&rsquo;t eliminate the need for the assessment itself.</p>
 
     <h2>Canadian-headquartered alternatives</h2>
-    <p>For organizations handling highly sensitive data — law firms, healthcare providers, financial advisors, educational institutions — it's worth knowing that Canadian-headquartered alternatives exist in many SaaS categories. These tools offer both data residency and data sovereignty, since the parent company is not subject to the CLOUD Act.</p>
-    <p>The trade-off is typically one of features and ecosystem. Canadian alternatives may not have the same breadth of integrations, the same feature depth, or the same market maturity as their US counterparts. But for specific high-sensitivity use cases — practice management software for law firms, EMR systems for clinics, financial planning tools — Canadian options are often competitive and purpose-built for the Canadian regulatory context.</p>
-
-    <div class="callout">
-      <div class="callout-label">Map your stack</div>
-      <p><strong>HarbourScan</strong> shows you which tools in your stack offer Canadian data residency, which don't, and which are CLOUD Act exposed — across your entire SaaS environment. Free, browser-based. <a href="/harbourscan">Run your assessment →</a></p>
-    </div>
+    <p>For organizations handling highly sensitive data &mdash; law firms, healthcare providers, financial advisors, educational institutions &mdash; Canadian-headquartered alternatives exist in many SaaS categories. These tools offer both data residency and data sovereignty, since the parent company is not subject to the CLOUD Act.</p>
+    <p>The trade-off is typically features and ecosystem. Canadian alternatives may not have the same breadth of integrations or market maturity as their US counterparts. But for specific high-sensitivity use cases &mdash; practice management software for law firms (<strong>Clio</strong>), password management (<a href="/tools/1password" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);"><strong>1Password</strong></a>), accounting (<strong>FreshBooks</strong>), EMR systems (<strong>Jane App</strong>, <strong>TELUS Health</strong>) &mdash; Canadian options are competitive and purpose-built for the Canadian regulatory context.</p>
 
     <h2>Practical recommendations</h2>
-    <p><strong>Enable Canadian data residency wherever it's available.</strong> Even though it doesn't solve the sovereignty question, it reduces your surface area and demonstrates good faith compliance effort. It's a necessary but not sufficient step.</p>
-    <p><strong>Prioritize sovereignty for sensitive categories.</strong> For legal files, health records, financial data, and employee records, evaluate whether a Canadian-headquartered alternative exists. You don't need to replace your entire stack — just make deliberate choices about where the most sensitive data goes.</p>
-    <p><strong>Document everything.</strong> Whether you choose to stay with a US vendor (with residency enabled) or switch to a Canadian alternative, the key is having documented your assessment and your rationale. Law 25 doesn't require you to avoid all cross-border transfers — it requires you to assess them, document the risks, and demonstrate adequate safeguards.</p>
+    <p><strong>Enable Canadian data residency wherever it&rsquo;s available.</strong> Even though it doesn&rsquo;t solve the sovereignty question, it reduces your surface area and demonstrates good faith compliance effort. It&rsquo;s a necessary but not sufficient step.</p>
+    <p><strong>Prioritize sovereignty for sensitive categories.</strong> For legal files, health records, financial data, and employee records, evaluate whether a Canadian-headquartered alternative exists. You don&rsquo;t need to replace your entire stack &mdash; just make deliberate choices about where the most sensitive data goes.</p>
+    <p><strong>Document everything.</strong> Whether you choose to stay with a US vendor (with residency enabled) or switch to a Canadian alternative, document your assessment and rationale. Law 25 doesn&rsquo;t require you to avoid all cross-border transfers &mdash; it requires you to assess them and demonstrate adequate safeguards.</p>
     <p><strong>Keep your inventory current.</strong> Vendor residency options change. New Canadian regions get added, pricing tiers shift, acquisitions change corporate structures. Review your SaaS inventory and residency configurations at least annually.</p>
 
     <div class="callout" style="margin-top:40px;">
       <div class="callout-label">Related guides</div>
-      <p><a href="/resources/foreign-jurisdiction-saas-action-guide">What to do when your vendors are under foreign jurisdiction →</a> · <a href="/resources/saas-inventory-compliance">How to build a defensible SaaS inventory →</a></p>
+      <p><a href="/resources/data-sovereignty-compliance-2026">Data Sovereignty Compliance 2026 &rarr;</a> &middot; <a href="/resources/cloud-act-canadian-data">The CLOUD Act and Canadian Data &rarr;</a> &middot; <a href="/resources/transfer-impact-assessments-law-25">Transfer Impact Assessments under Law 25 &rarr;</a> &middot; <a href="/resources/foreign-jurisdiction-saas-action-guide">Foreign Jurisdiction Action Guide &rarr;</a> &middot; <a href="/resources/saas-inventory-compliance">SaaS Inventory Compliance &rarr;</a></p>
     </div>
 
   </article>
@@ -226,28 +254,28 @@
     <h2>Frequently asked questions</h2>
     <div class="faq-item">
       <div class="faq-q">Which SaaS tools offer Canadian data residency?</div>
-      <div class="faq-a">Major tools with Canadian data residency include Microsoft 365 (Canada Central/East), AWS (Montréal and Calgary regions), Google Workspace (Enterprise tier), Salesforce (Hyperforce), and ServiceNow. However, many widely used tools — including Slack, Zoom, Dropbox, Notion, and ChatGPT — do not offer Canadian data residency at any tier. Upper Harbour's <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> tracks residency options for <span class="uh-stat" data-stat="totalTools">715</span> tools.</div>
+      <div class="faq-a">Major tools with Canadian data residency include Microsoft 365 (Canada Central/East), <a href="/tools/jira" style="color:var(--teal);">Jira</a> and <a href="/tools/confluence" style="color:var(--teal);">Confluence</a> (all paid plans), <a href="/tools/servicenow" style="color:var(--teal);">ServiceNow</a> (Canadian-default hosting), Salesforce (Hyperforce), and AWS/Azure/GCP (Canadian regions). However, many widely used tools &mdash; including Slack (except Enterprise Grid), Zoom, <a href="/tools/dropbox" style="color:var(--teal);">Dropbox</a>, Notion, and ChatGPT &mdash; do not offer Canadian data residency at any tier. Upper Harbour&rsquo;s <a href="/tools" style="color:var(--teal);">Sovereignty Index</a> tracks residency options for <span class="uh-stat" data-stat="totalTools">753</span> tools.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Does Canadian data residency mean my data is safe from US law?</div>
-      <div class="faq-a">No. Canadian data residency means your data is physically stored in Canada. But if the company operating the service is US-incorporated, that data remains subject to the CLOUD Act regardless of where the server sits. Data residency reduces some risks but does not change the legal jurisdiction of the vendor. See our guide on <a href="/resources/data-residency-vs-data-sovereignty-canada" style="color:var(--teal);">data residency vs data sovereignty</a>.</div>
+      <div class="faq-a">No. Canadian data residency means your data is physically stored in Canada. But if the company operating the service is US-incorporated, that data remains subject to the <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);">CLOUD Act</a> regardless of where the server sits. Residency reduces some risks but does not change the legal jurisdiction of the vendor. See our guide on <a href="/resources/data-residency-vs-data-sovereignty-canada" style="color:var(--teal);">data residency vs data sovereignty</a>.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">How many SaaS tools have Canadian data centres?</div>
-      <div class="faq-a">According to Upper Harbour's Sovereignty Index, approximately 142 of the 715 tracked tools offer some form of Canadian data residency — but the scope and availability varies significantly. Some offer it only on enterprise tiers, some only for primary data (not metadata or logs), and some require manual migration. Only 100 tools in the index are fully Canadian-controlled.</div>
+      <div class="faq-a">According to Upper Harbour&rsquo;s Sovereignty Index, approximately 142 of the <span class="uh-stat" data-stat="totalTools">753</span> tracked tools offer some form of Canadian data residency &mdash; but scope and availability varies significantly. Some offer it only on enterprise tiers, some only for primary data (not metadata or logs), and some require manual migration. Only about 100 tools in the index are fully Canadian-controlled.</div>
     </div>
     <div class="faq-item">
       <div class="faq-q">Is Canadian data residency required by law?</div>
-      <div class="faq-a">It depends on your jurisdiction and sector. British Columbia's FIPPA was amended in 2021 — public bodies can now store data outside Canada but must conduct a privacy impact assessment evaluating jurisdictional risk for sensitive personal information. Quebec's Law 25 doesn't mandate residency but requires a Transfer Impact Assessment for any cross-border transfer. PIPEDA does not require Canadian residency but expects organizations to ensure adequate protection. Healthcare and financial regulators may have additional requirements.</div>
+      <div class="faq-a">It depends on your jurisdiction and sector. BC&rsquo;s FIPPA was amended in 2021 &mdash; public bodies can now store data outside Canada but must conduct a PIA for sensitive personal information. Quebec&rsquo;s Law 25 doesn&rsquo;t mandate residency but requires a Transfer Impact Assessment for any cross-border transfer. PIPEDA does not require Canadian residency but expects adequate protection. Healthcare and financial regulators may have additional requirements. <a href="/resources/data-sovereignty-compliance-2026" style="color:var(--teal);">Full 2026 regulatory overview &rarr;</a></div>
     </div>
   </section>
 
   <section class="cta-section">
-    <h2>See your stack's residency status</h2>
-    <p>HarbourScan maps every tool to its parent jurisdiction and data residency options — giving you the full picture in about 10 minutes.</p>
-    <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
-    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Look up any tool's jurisdiction: <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index →</a></p>
-    <p style="font-size:13px;color:var(--muted);margin-top:8px;">Need compliance documentation? <a href="/cdn-cgi/l/email-protection#fa90958992ba8f8a8a9f88929b8898958f88d4999b" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Get in touch →</a></p>
+    <h2>See your stack&rsquo;s residency status</h2>
+    <p>HarbourScan maps every tool to its parent jurisdiction and data residency options &mdash; giving you the full picture in about 10 minutes.</p>
+    <a href="/harbourscan" class="cta-btn">Map Your Stack &rarr;</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Look up any tool&rsquo;s jurisdiction: <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index &rarr;</a></p>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;">Need compliance documentation? <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Compliance reports &rarr;</a> &middot; <a href="/cdn-cgi/l/email-protection#fa90958992ba8f8a8a9f88929b8898958f88d4999b" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Get in touch &rarr;</a></p>
   </section>
 
     <footer>
