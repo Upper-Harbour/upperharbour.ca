@@ -5,21 +5,21 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AWS Canadian Data Sovereignty & CLOUD Act Analysis | Upper Harbour</title>
-  <meta name="description" content="AWS jurisdiction analysis for Canadian organizations. US-incorporated, CLOUD Act exposed, with ca-central-1 in Montreal. The shared responsibility model means AWS's sovereignty profile depends on how you use it." />
+  <title>Is AWS Safe for Canadian Data? Sovereignty Analysis | Upper Harbour</title>
+  <meta name="description" content="AWS is CLOUD Act exposed but IaaS — you control data and encryption. Two Canadian regions (Montreal + Calgary). Customer-managed keys on FIPS 140-3 HSMs. Zero enterprise content disclosures outside US. Risk 5.5/10." />
   <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
   <link rel="canonical" href="https://www.upperharbour.ca/tools/aws" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" /><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <meta property="og:title" content="AWS Canadian Data Sovereignty & CLOUD Act Analysis" />
-  <meta property="og:description" content="AWS jurisdiction analysis for Canadian organizations. US-incorporated, CLOUD Act exposed, with ca-central-1 in Montreal. The shared responsibility model means AWS's sovereignty profile depends on how you use it." />
+  <meta property="og:title" content="Is AWS Safe for Canadian Data? Sovereignty Analysis" />
+  <meta property="og:description" content="AWS is fundamentally different from SaaS. IaaS with customer-managed encryption on Canadian regions. Zero enterprise disclosures outside US since 2020. Risk 5.5/10." />
   <meta property="og:url" content="https://www.upperharbour.ca/tools/aws" /><meta property="og:type" content="article" /><meta property="og:site_name" content="Upper Harbour" /><meta property="article:published_time" content="2026-02-23" /><meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/site.css" />
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"AWS Canadian Data Sovereignty & CLOUD Act Analysis","author":{"@type":"Person","name":"Joshua van Es","url":"https://joshuavanes.ca","jobTitle":"Corporate Lawyer","worksFor":{"@type":"Organization","name":"Upper Harbour"}},"publisher":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"datePublished":"2026-02-23","dateModified":"2026-03-30","mainEntityOfPage":"https://www.upperharbour.ca/tools/aws"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Is AWS Safe for Canadian Data? Sovereignty Analysis","author":{"@type":"Person","name":"Joshua van Es","url":"https://joshuavanes.ca","jobTitle":"Corporate Lawyer","worksFor":{"@type":"Organization","name":"Upper Harbour"}},"publisher":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"datePublished":"2026-03-03","dateModified":"2026-03-30","mainEntityOfPage":"https://www.upperharbour.ca/tools/aws"}</script>
 
-  
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is AWS subject to the CLOUD Act?", "acceptedAnswer": {"@type": "Answer", "text": "Structurally yes. But AWS is IaaS \u2014 you control encryption. With customer-managed keys, AWS cannot produce intelligible data. Zero enterprise content disclosures outside US since 2020."}}, {"@type": "Question", "name": "How many Canadian regions does AWS have?", "acceptedAnswer": {"@type": "Answer", "text": "Two: ca-central-1 (Montreal) and ca-west-1 (Calgary). In-country geographic redundancy without data leaving Canada."}}, {"@type": "Question", "name": "How is AWS different from SaaS for sovereignty?", "acceptedAnswer": {"@type": "Answer", "text": "AWS is IaaS. You control data, encryption, and key management. SaaS vendors hold the keys. Your sovereignty posture depends on your own architecture."}}, {"@type": "Question", "name": "What about global AWS services?", "acceptedAnswer": {"@type": "Answer", "text": "Route 53, CloudFront, IAM, and AWS Organizations are global. Data processed by these may transit non-Canadian infrastructure."}}, {"@type": "Question", "name": "Do I need a TIA for AWS under Law 25?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. But the TIA should reflect the IaaS shared responsibility model \u2014 a materially different assessment than SaaS tools."}}]}</script>
 
   <style>
     /* ── Verdict styles removed — verdict is now plain text, no box ── */
@@ -268,7 +268,7 @@
 
   <!-- ═══ SECTION 1: HERO ═══ -->
   <header class="article-hero">
-    <div class="article-breadcrumb anim-1"><a href="/">Home</a> → <a href="/tools">Sovereignty Index</a> → Aws</div>
+    <div class="article-breadcrumb anim-1"><a href="/">Home</a> → <a href="/tools">Sovereignty Index</a> → AWS</div>
 
     <h1 class="article-h1 anim-2">AWS <em>Canadian Data Sovereignty</em> Analysis</h1>
 
@@ -310,73 +310,139 @@
     </div>
 
         <!-- Verdict text -->
-    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Medium Risk</span> — AWS is US-incorporated and CLOUD Act exposed. But unlike SaaS tools, AWS is Infrastructure-as-a-Service — <strong>you control the data, encryption, and key management</strong>. Canadian regions (Montr&eacute;al + Calgary) with customer-managed keys give you meaningful sovereignty control that most SaaS tools cannot offer.</p>
+    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Medium Risk</span> — AWS is US-incorporated and CLOUD Act exposed. But AWS is <strong>fundamentally different from SaaS tools</strong>. As Infrastructure-as-a-Service, <em>you</em> control the data, encryption, and key management. Two Canadian regions (Montr&eacute;al + Calgary) with customer-managed keys on FIPS 140-3 Level 3 HSMs give you meaningful sovereignty control that most SaaS tools cannot offer. AWS has disclosed <strong>zero</strong> enterprise/government content data outside the US since it began tracking in 2020.</p>
   </header>
 
   <article class="article-body">
 
     <div class="bento">
       <div class="bento-cell b-grey"><div class="bento-label">Parent Company</div><div class="bento-value">Amazon.com Inc. (Delaware, US)</div></div>
-      <div class="bento-cell b-red"><div class="bento-label">CLOUD Act Status</div><div class="bento-value"><span class="badge red">✗ Exposed</span></div></div>
-      <div class="bento-cell b-green"><div class="bento-label">Canadian Regions</div><div class="bento-value"><span class="badge green">✓ ca-central-1 &amp; ca-west-1</span></div></div>
+      <div class="bento-cell b-red"><div class="bento-label">CLOUD Act Status</div><div class="bento-value"><span class="badge red">✗ Exposed (structurally)</span></div></div>
+      <div class="bento-cell b-green"><div class="bento-label">Canadian Regions</div><div class="bento-value"><span class="badge green">✓ ca-central-1 + ca-west-1</span></div></div>
       <div class="bento-cell b-green"><div class="bento-label">Encryption</div><div class="bento-value"><span class="badge green">✓ Customer-Managed Keys</span></div></div>
       <div class="bento-cell b-grey"><div class="bento-label">TIA / PIA Required</div><div class="bento-value"><span class="badge amber">⚠ Depends on config</span></div></div>
-      <div class="bento-cell b-amber"><div class="bento-label">Type</div><div class="bento-value">IaaS — you control the data</div></div>
+      <div class="bento-cell b-green"><div class="bento-label">Service Type</div><div class="bento-value">IaaS — you control the data</div></div>
     </div>
 
-    <div class="expand-section open reveal" id="analysis">
+    <h2 class="reveal">Is AWS CLOUD Act exposed for Canadian organizations?</h2>
+    <p>Structurally, yes. Amazon.com Inc. is incorporated in Delaware (NASDAQ: AMZN) and headquartered in Seattle. AWS, as a subsidiary, is subject to the CLOUD Act. But AWS's sovereignty profile is <strong>fundamentally different from SaaS tools</strong> — and treating it the same way is a compliance mistake in the other direction.</p>
+    <p>Most tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Sovereignty Index</a> are SaaS applications where the vendor controls the data. AWS is Infrastructure-as-a-Service (IaaS) — you deploy your own applications, manage your own data, and control your own encryption. AWS provides the compute, storage, and networking; <strong>you determine what runs on it</strong>. This means AWS's sovereignty profile is partially under your control in ways that SaaS tools are not.</p>
+    <p>A critical transparency fact: <strong>AWS has disclosed zero enterprise or government content data stored outside the US to the US government since it began tracking this statistic in 2020.</strong> AWS attributes this to robust legal protections, DOJ guidance directing prosecutors to seek data from enterprises rather than providers, and the technical controls AWS offers to customers (particularly customer-managed encryption).</p>
+
+    <div class="expand-section open reveal" id="regulatory">
       <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Full Analysis</h2>
+        <h2>Regulatory Analysis</h2>
         <span class="expand-arrow">▾</span>
       </div>
       <div class="expand-content">
-    <h2>AWS is not like other SaaS tools</h2>
-    <p>Most tools in the <a href="/tools">Sovereignty Index</a> are SaaS applications where the vendor controls the data. AWS is Infrastructure as a Service (IaaS) — you deploy your own applications, manage your own data, and control your own encryption. AWS provides the compute, storage, and networking; you determine what runs on it.</p>
-    <p>This means AWS's sovereignty profile is partially under your control. You choose the region (ca-central-1 for Canada). You choose whether to encrypt data and who holds the keys. You choose which services to use and how data flows between them. This is fundamentally different from a SaaS tool where the vendor makes these decisions for you.</p>
+        <h3>Two Canadian regions</h3>
+        <p>AWS operates two Canadian regions: <strong>ca-central-1</strong> (Montr&eacute;al) and <strong>ca-west-1</strong> (Calgary). Together, these provide geographic redundancy entirely within Canadian borders — your data can failover between Canadian regions without ever leaving the country. When you deploy resources in ca-central-1, the physical servers, storage, and networking are in Canada. AWS does not move your data out of the region unless you configure cross-region replication or use a global service.</p>
 
-    <h2>ca-central-1: what Canadian region actually means</h2>
-    <p>AWS operates the Canada (Central) region, also known as ca-central-1, located in Montréal. This region provides the full range of core AWS services with data at rest within Canada. A second Canadian region, ca-west-1 (Calgary), has also been launched, providing geographic redundancy within Canadian borders.</p>
-    <p>When you deploy resources in ca-central-1, the physical servers, storage, and networking infrastructure are in Canada. AWS does not move your data out of the region unless you configure cross-region replication or use a global service that requires it. This gives organizations meaningful control over data residency.</p>
+        <div class="jurisdiction-flow">
+          <div class="jf-node jf-safe"><div class="jf-icon">🍁</div><div class="jf-label">Your Applications</div><div class="jf-sub">ca-central-1 (Montr&eacute;al)<br>ca-west-1 (Calgary)</div></div>
+          <div class="jf-arrow"><svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#F59E0B" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#F59E0B"/></svg></div>
+          <div class="jf-node jf-warn"><div class="jf-icon">🏢</div><div class="jf-label">Amazon.com Inc.</div><div class="jf-sub">Delaware, USA<br>BUT: you control encryption</div></div>
+          <div class="jf-arrow"><svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#F59E0B" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#F59E0B"/></svg></div>
+          <div class="jf-node jf-safe"><div class="jf-icon">🔐</div><div class="jf-label">Customer-Managed Keys</div><div class="jf-sub">FIPS 140-3 Level 3 HSMs<br><strong style="color:#10B981;">AWS can't read your data</strong></div></div>
+        </div>
 
-    <h2>The CLOUD Act and infrastructure</h2>
-    <p>Amazon.com Inc. is a US company, and AWS is subject to the <a href="/resources/cloud-act-canadian-data">CLOUD Act</a>. A US legal order could compel AWS to provide access to data stored in ca-central-1. However, the practical implications differ from SaaS because of the shared responsibility model.</p>
-    <p>For SaaS tools, the vendor can directly read your data — it's their application. For AWS, the data on your servers is typically encrypted and managed by your application. If you use AWS KMS with customer-managed keys, or bring your own encryption, AWS's ability to produce intelligible data in response to a legal order is significantly limited.</p>
-    <p>This doesn't eliminate the CLOUD Act exposure — AWS can still be compelled to produce whatever it can access. But the practical exposure depends heavily on your encryption and key management architecture. An organization using customer-managed encryption on AWS has a materially different risk profile than one using default settings.</p>
+        <h3>The shared responsibility model and CLOUD Act</h3>
+        <p>For SaaS tools, the vendor can directly read your data — it's their application. For AWS, the data on your servers is typically encrypted and managed by your application. If you use AWS KMS with customer-managed keys, or bring your own encryption, <strong>AWS's ability to produce intelligible data in response to a legal order is significantly limited</strong>. AWS can only respond to legal requests where it has the technical ability to do so.</p>
+        <p>This doesn't eliminate the CLOUD Act exposure — AWS can still be compelled to produce whatever it <em>can</em> access (infrastructure metadata, billing data, access logs). But the practical exposure depends heavily on your encryption and key management architecture. An organization using customer-managed encryption on AWS has a <strong>materially different risk profile</strong> than one using default settings — or than one using a SaaS tool where the vendor holds all the keys.</p>
 
-    <h2>Services that behave differently</h2>
-    <p>Not all AWS services operate within a single region. Some services are global by design: Route 53 (DNS), CloudFront (CDN), IAM (identity management), and certain aspects of AWS Organizations. Data processed by these global services may transit infrastructure outside ca-central-1.</p>
-    <p>Additionally, AWS AI services — SageMaker, Bedrock, Comprehend — may process data on infrastructure that is not co-located with your primary region. Organizations using AWS AI services for Canadian data should verify where model inference occurs and whether it constitutes a cross-border transfer.</p>
+        <h3>Customer-managed encryption — FIPS 140-3</h3>
+        <p>AWS KMS keys are protected by <strong>FIPS 140-3 Security Level 3</strong> validated hardware security modules. Keys never leave KMS unencrypted. With customer-managed keys (CMK), you control the key lifecycle — creation, rotation, and deletion. You can also import your own key material or use AWS CloudHSM for dedicated, single-tenant hardware security modules. This is the strongest encryption posture available from any major cloud provider.</p>
 
-    <h2>The Canadian SaaS stack that runs on AWS</h2>
-    <p>Many Canadian SaaS companies host their infrastructure on AWS ca-central-1. When a vendor tells you "data is stored in Canada," they often mean it's on AWS Montréal. This is legitimate Canadian data residency — but the CLOUD Act exposure still exists through AWS as the underlying infrastructure provider.</p>
-    <p>This creates a layered jurisdiction question: your data is held by a Canadian SaaS vendor, which is hosted on US-owned infrastructure, which is subject to US law. The practical risk is lower than direct US SaaS exposure — a CLOUD Act order would need to be directed at AWS specifically and navigate the encryption layers — but it is not zero. Organizations should document this layered exposure in their assessments.</p>
+        <h3>Services that behave differently</h3>
+        <p>Not all AWS services operate within a single region. Some are <strong>global by design</strong>: Route 53 (DNS), CloudFront (CDN), IAM (identity management), AWS Organizations, and certain aspects of billing. Data processed by these global services may transit infrastructure outside ca-central-1. Additionally, AWS AI services — SageMaker, Bedrock, Comprehend — may process data on infrastructure not co-located with your primary region. Map which services you use and which are regional vs global.</p>
 
-    <h2>Compliance requirements</h2>
-    <p>The <a href="/resources/transfer-impact-assessments-law-25">TIA</a> for AWS should document: the specific region configuration (ca-central-1), encryption architecture and key management approach, which AWS services are in use and whether any are global, whether AI services process Canadian data, and the shared responsibility model's implications for data access. AWS provides extensive compliance documentation, including SOC reports and the AWS Artifact compliance portal, which can support your assessment.</p>
+        <h3>The SaaS stack that runs on AWS</h3>
+        <p>Many Canadian SaaS companies host on AWS ca-central-1. When a vendor says "data is stored in Canada," they often mean it's on AWS Montr&eacute;al. This is legitimate Canadian data residency — but the CLOUD Act exposure exists through AWS as the underlying infrastructure provider. This creates a layered jurisdiction question that organizations should document in their TIAs. Tools like <a href="/tools/hootsuite" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Hootsuite</a>, <a href="/tools/freshbooks" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">FreshBooks</a>, and <a href="/tools/clio" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Clio</a> all run on public cloud infrastructure.</p>
 
+        <h3>Quebec Law 25</h3>
+        <p>The <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">TIA</a> for AWS should document: specific region configuration (ca-central-1 and/or ca-west-1), encryption architecture and key management approach, which services are in use and whether any are global, whether AI services process Canadian data, and the shared responsibility model's implications. AWS provides extensive compliance documentation via AWS Artifact. Upper Harbour provides <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">compliance-ready TIA documentation</a> starting at $99.</p>
+
+        <h3>Alberta POPA &amp; BC FIPPA</h3>
+        <p>Public bodies using AWS must complete PIAs. Document Canadian region deployment and customer-managed encryption as strong mitigations. The dual Canadian regions (Montr&eacute;al + Calgary) provide in-country DR — a significant advantage over single-region providers. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically.</p>
+
+        <h3>EU Sovereign Cloud — precedent for Canada?</h3>
+        <p>AWS launched the European Sovereign Cloud on January 15, 2026 — a physically and logically separate infrastructure with a German legal entity, EU-citizen staff, and independent governance. No Canadian equivalent has been announced, but the EU model demonstrates AWS's willingness to create jurisdictionally isolated environments. Canadian organizations should monitor for similar offerings.</p>
       </div>
     </div>
 
-    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">This tool is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. <strong>Map your full stack.</strong></p>
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">AWS is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. Your infrastructure is one layer — the SaaS tools running on top (<a href="/tools/slack" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Slack</a>, <a href="/tools/salesforce" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Salesforce</a>, <a href="/tools/zoom" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Zoom</a>) may have weaker sovereignty controls. <strong>Map the full stack.</strong></p>
 
     <div class="mid-cta reveal">
       <div class="mid-cta-text">Map your entire SaaS stack to parent jurisdictions and CLOUD Act exposure in 10 minutes.</div>
       <a href="/harbourscan" class="mid-cta-btn">Map Your Stack →</a>
     </div>
 
-    
+    <div class="expand-section open reveal" id="alternatives">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Alternatives &amp; Comparison</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <div class="compare-wrap"><table class="compare-table">
+          <thead><tr><th>Provider</th><th>Ownership</th><th>CLOUD Act</th><th>CDN Regions</th><th>Customer Keys</th></tr></thead>
+          <tbody>
+            <tr class="current"><td><strong>AWS</strong></td><td>US (Amazon)</td><td class="ct-no">Exposed</td><td class="ct-yes">Montr&eacute;al + Calgary</td><td class="ct-yes">KMS (FIPS 140-3)</td></tr>
+            <tr><td>Microsoft Azure</td><td>US (Microsoft)</td><td class="ct-no">Exposed</td><td class="ct-yes">CDN Central + East</td><td class="ct-yes">Key Vault</td></tr>
+            <tr><td>Google Cloud</td><td>US (Alphabet)</td><td class="ct-no">Exposed</td><td class="ct-yes">Montr&eacute;al</td><td class="ct-yes">Cloud KMS / CMEK</td></tr>
+            <tr><td><a href="/tools/telus-cloud">TELUS Cloud</a></td><td class="ct-yes">Canada</td><td class="ct-yes">Not exposed</td><td class="ct-yes">Rimouski + Kamloops</td><td class="ct-partial">Varies</td></tr>
+            <tr><td>OVHcloud</td><td>France</td><td class="ct-partial">Indirect</td><td class="ct-yes">Beauharnois QC</td><td class="ct-partial">Available</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:13px;color:var(--muted);">Based on <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a> data. March 2026.</p>
+        <p><strong>Key finding:</strong> All three major hyperscalers (AWS, Azure, GCP) are US-incorporated and CLOUD Act exposed. Among them, AWS offers the strongest Canadian coverage with two regions (Montr&eacute;al + Calgary) providing in-country DR. For full sovereignty, <a href="/tools/telus-cloud" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">TELUS Cloud</a> (Canadian-owned, sovereign data centres) and OVHcloud (French-owned, Beauharnois QC) are not directly CLOUD Act exposed.</p>
+      </div>
+    </div>
 
     <div class="notify-box reveal">
-      <div class="notify-header"><span class="notify-icon">💬</span><span class="notify-title">Questions about compliance?</span></div>
-      <p>We help organizations assess jurisdictional risk across their SaaS stack. Book a call or send us a message.</p>
+      <div class="notify-header"><span class="notify-icon">💬</span><span class="notify-title">Questions about AWS and Canadian compliance?</span></div>
+      <p>We help organizations assess jurisdictional risk across their full SaaS and infrastructure stack. Book a call or send us a message.</p>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);padding:11px 22px;border-radius:4px;text-decoration:none;">Book a Call →</a>
         <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:12px;font-weight:700;color:var(--ice);background:transparent;border:1px solid var(--border-md);padding:11px 22px;border-radius:4px;text-decoration:none;">Email Us →</a>
       </div>
     </div>
 
+    <div class="expand-section" id="technical">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Technical Architecture</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <h3>Canadian regions</h3>
+        <p><strong>ca-central-1</strong> (Montr&eacute;al) — the original Canadian region, full service portfolio. <strong>ca-west-1</strong> (Calgary) — second Canadian region providing geographic redundancy within Canadian borders. Together, organizations can architect DR and high-availability entirely within Canada.</p>
+
+        <h3>Encryption options</h3>
+        <p>AWS KMS: customer-managed keys with FIPS 140-3 Level 3 HSMs. Keys never leave KMS unencrypted. AWS CloudHSM: dedicated single-tenant HSMs for the highest key management requirements. Server-side encryption (SSE) available with AWS-managed keys (SSE-S3), KMS keys (SSE-KMS), or customer-provided keys (SSE-C). Client-side encryption options available for maximum control.</p>
+
+        <h3>Compliance certifications</h3>
+        <p>SOC 1/2/3, ISO 27001/27017/27018, PCI DSS Level 1, FedRAMP (US), IRAP (Australia), C5 (Germany). AWS Artifact provides on-demand access to compliance reports. Canadian-specific: PBMM (Protected B, Medium Integrity, Medium Availability) certification for Canadian government workloads.</p>
+
+        <h3>Transparency record</h3>
+        <p>AWS publishes transparency reports. As of June 2025, zero disclosed enterprise or government content data stored outside the US to the US government since tracking began in 2020. DOJ Computer Crime and Intellectual Property Section guidance (2017) advises prosecutors to seek data from enterprises rather than cloud providers absent special circumstances.</p>
+      </div>
+    </div>
+
+    <div class="expand-section" id="faq">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Frequently Asked Questions</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <div class="faq-item-inline"><h3>Is AWS subject to the US CLOUD Act?</h3><p>Yes, structurally. Amazon.com is Delaware-incorporated. But AWS is IaaS, not SaaS — you control the data and encryption. With customer-managed keys, AWS cannot produce intelligible data even under a legal order. Zero enterprise/government content disclosures outside the US since 2020.</p></div>
+        <div class="faq-item-inline"><h3>How many Canadian regions does AWS have?</h3><p>Two: ca-central-1 (Montr&eacute;al) and ca-west-1 (Calgary). This provides in-country geographic redundancy — your data can failover between Canadian regions without leaving the country.</p></div>
+        <div class="faq-item-inline"><h3>How is AWS different from SaaS tools for sovereignty?</h3><p>AWS is Infrastructure-as-a-Service. You control the data, the encryption, and the key management. SaaS vendors hold the keys and can read your data. This shared responsibility model means your AWS sovereignty posture depends largely on your own architecture choices.</p></div>
+        <div class="faq-item-inline"><h3>What about global AWS services?</h3><p>Some services are global by design: Route 53, CloudFront, IAM, AWS Organizations. Data processed by these services may transit non-Canadian infrastructure. Map which services you use and document which are regional vs global in your TIA.</p></div>
+        <div class="faq-item-inline"><h3>Do I need a TIA for AWS under Law 25?</h3><p>Yes, if processing Quebec residents' personal information. However, the TIA should reflect the IaaS reality — document Canadian region deployment, customer-managed encryption, and the shared responsibility model. This is a materially different assessment than for a SaaS tool.</p></div>
+      </div>
+    </div>
+
     <div class="verified">
-      <strong>Methodology:</strong> This assessment is based on vendor documentation, published security practices, and the <a href="/methodology">Upper Harbour classification methodology</a>. Data verified March 2026. Part of the <a href="/tools">Canadian Technology Sovereignty Index</a>.
+      <strong>Methodology:</strong> This assessment is based on Amazon.com's SEC filings, AWS's published CLOUD Act documentation, transparency reports, Canadian region documentation, and the <a href="/methodology">Upper Harbour classification methodology</a>. Data verified March 2026. Updated quarterly. Part of the <a href="/tools">Canadian Technology Sovereignty Index</a>.
     </div>
 
 </article>
