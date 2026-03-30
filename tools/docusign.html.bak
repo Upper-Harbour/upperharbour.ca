@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DocuSign Canadian Data Sovereignty & CLOUD Act Analysis | Upper Harbour</title>
+  <meta name="description" content="DocuSign jurisdiction analysis for Canadian organizations. Your signed contracts, agreements, and legal documents are stored by a US company subject to the CLOUD Act. Canadian data residency is available but the jurisdiction question remains." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <link rel="canonical" href="https://www.upperharbour.ca/tools/docusign" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="DocuSign Canadian Data Sovereignty & CLOUD Act Analysis" />
+  <meta property="og:description" content="Your signed legal contracts stored by a US-incorporated company. What Canadian organizations need to understand." />
+  <meta property="og:url" content="https://www.upperharbour.ca/tools/docusign" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta property="article:published_time" content="2026-02-23" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script type="application/ld+json">
+  { "@context": "https://schema.org", "@type": "Article", "headline": "DocuSign Canadian Data Sovereignty & CLOUD Act Analysis", "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca" }, "publisher": { "@type": "Organization", "name": "Upper Harbour" }, "datePublished": "2026-02-23", "mainEntityOfPage": "https://www.upperharbour.ca/tools/docusign" }
+  </script>
+  <style>
+    .fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-md); border: 1px solid var(--border-md); border-radius: 8px; overflow: hidden; margin: 24px 0; }
+    .fact-cell { background: var(--surface); padding: 16px 20px; }
+    .fact-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .fact-value { font-size: 15px; font-weight: 600; color: var(--ice); }
+    .fact-value.exposed { color: var(--red); }
+    .fact-value.review { color: var(--gold); }
+    @media (max-width: 480px) { .fact-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav><a href="/" class="nav-logo" aria-label="Upper Harbour home"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link active">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Map Your Stack</a></div><button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
+  </div>
+
+  <header class="article-hero">
+    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/tools">Sovereignty Index</a> → DocuSign</div>
+    <div class="article-meta"><span class="article-tag">CLOUD Act Exposed</span><span class="article-tag">Canada Residency Available</span><span class="article-date">Updated March 2026</span></div>
+    <h1 class="article-h1">DocuSign <em>Canadian Data Sovereignty</em> Analysis</h1>
+    <p class="article-intro">DocuSign holds your organization's signed contracts, employment agreements, NDAs, and legal documents. These are among the most sensitive records any organization maintains. They are stored by a US-incorporated company subject to the CLOUD Act — and that creates a compliance question most organizations haven't considered.</p>
+  </header>
+
+  <div class="author-card" style="max-width:820px;margin:0 auto 0;padding:0 52px;">
+    <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="56" height="56">
+    <div class="author-card-info">
+      <div class="author-card-name"><a href="/founder">Joshua van Es</a></div>
+      <div class="author-card-role">Corporate law · Founder, Upper Harbour</div>
+      <div class="author-card-pubs">Published in The Globe and Mail, Maclean's, OpenCanada, and BetaKit</div>
+    </div>
+  </div>
+
+  <article class="article-body">
+
+    <div class="fact-grid">
+      <div class="fact-cell"><div class="fact-label">Parent Company</div><div class="fact-value">DocuSign Inc.</div></div>
+      <div class="fact-cell"><div class="fact-label">Headquarters</div><div class="fact-value">San Francisco, CA, United States</div></div>
+      <div class="fact-cell"><div class="fact-label">Jurisdiction</div><div class="fact-value">United States</div></div>
+      <div class="fact-cell"><div class="fact-label">CLOUD Act Status</div><div class="fact-value exposed">Exposed</div></div>
+      <div class="fact-cell"><div class="fact-label">Canadian Data Residency</div><div class="fact-value review">Available</div></div>
+      <div class="fact-cell"><div class="fact-label">Upper Harbour Risk Rating</div><div class="fact-value review">Review Required</div></div>
+    </div>
+
+    <h2>Why DocuSign's compliance profile matters more than most tools</h2>
+    <p>Most SaaS compliance discussions focus on communication and productivity tools — Slack, Teams, Google Workspace. But DocuSign holds a category of data that is qualitatively different: executed legal agreements. Employment contracts with personal information, salary details, and termination clauses. Real estate transactions. M&A documents. Client engagement letters. Government contracts.</p>
+    <p>A <a href="/resources/cloud-act-canadian-data">CLOUD Act</a> order directed at DocuSign could compel production of an organization's complete contract repository. Unlike a Slack message that might be informal, a signed contract is a definitive legal record containing names, addresses, financial terms, and obligations. This makes DocuSign's jurisdictional exposure particularly significant for legal, real estate, finance, and government organizations.</p>
+
+    <h2>Canadian data residency: what DocuSign offers</h2>
+    <p>DocuSign offers a Canadian data centre option. Organizations can configure their account to store envelopes (signed documents and their associated data) in Canada. This is a meaningful safeguard — it keeps the physical copies of your signed agreements within Canadian borders.</p>
+    <p>However, the same structural limitation applies as with all US-parented vendors: DocuSign Inc. is incorporated in the United States, and a CLOUD Act order can compel access to data regardless of where it is stored. Canadian data residency reduces the practical attack surface but does not eliminate the legal exposure.</p>
+
+    <h2>The signature authentication question</h2>
+    <p>DocuSign's value proposition depends on signature authentication — the ability to prove that a specific person signed a specific document at a specific time. This requires DocuSign to maintain detailed identity verification data: email addresses, IP addresses, access times, authentication methods, and the audit trail linking a signer to a signature.</p>
+    <p>This authentication metadata is personal information under both PIPEDA and <a href="/resources/law-25-saas-compliance">Law 25</a>. It is also precisely the type of data a legal process might target — not the contract itself, but proof of who signed it and when. Organizations should understand that DocuSign's jurisdictional exposure extends beyond the document content to the identity verification infrastructure.</p>
+
+    <h2>CLM and agreement intelligence</h2>
+    <p>DocuSign has expanded beyond e-signatures into Contract Lifecycle Management (CLM) and AI-powered agreement analysis. These features process contract content to extract terms, identify obligations, and flag risks. Like AI features from <a href="/tools/microsoft-365">Microsoft</a> and <a href="/tools/google-workspace">Google</a>, this processing may occur on infrastructure outside the configured data region.</p>
+    <p>Organizations using DocuSign's intelligence features should verify where contract content is processed for AI analysis, and whether this constitutes an additional cross-border transfer beyond the data residency configuration.</p>
+
+    <h2>Compliance requirements</h2>
+    <p>Quebec organizations must complete a <a href="/resources/transfer-impact-assessments-law-25">Transfer Impact Assessment</a> for DocuSign. Given the sensitivity of the data involved — signed legal agreements — this assessment should be thorough. Key safeguards to document: Canadian data residency is enabled, DocuSign's DPA and standard contractual clauses are in place, and organizational policies govern which categories of agreements flow through DocuSign.</p>
+    <p>For organizations handling government contracts, the presence of signed government agreements in a US-jurisdictional platform may conflict with procurement sovereignty requirements. This should be explicitly assessed.</p>
+
+    <div class="callout">
+      <div class="callout-label">Related vendor analyses</div>
+      <p><a href="/tools/microsoft-365">Microsoft 365 →</a> · <a href="/tools/salesforce">Salesforce →</a> · <a href="/tools/dropbox">Dropbox →</a></p>
+    </div>
+
+
+    <div class="callout" style="border-left-color:var(--gold);">
+      <div class="callout-label" style="color:var(--gold);">BC public bodies — FIPPA compliance note</div>
+      <p>DocuSign is US-incorporated and subject to the CLOUD Act. BC public bodies using DocuSign for contracts or forms involving sensitive personal information must complete a FIPPA privacy impact assessment. DocuSign offers a Canada region, but CLOUD Act exposure persists through the US parent entity. <a href="/resources/fippa-saas-compliance-bc-public-bodies">Read the full FIPPA SaaS compliance guide →</a> · <a href="/resources/fippa-pia-template">Download PIA template →</a></p>
+    </div>
+
+  </article>
+
+  <section class="cta-section">
+    <h2>Map your full stack exposure</h2>
+    <p>DocuSign is one tool. HarbourScan maps your entire SaaS environment to parent jurisdictions, CLOUD Act exposure, and data residency.</p>
+    <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Look up any tool: <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index →</a></p>
+  </section>
+
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+          <li><a href="/comply">Compliance Reports</a></li>
+          </ul></div><div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li><li><a href="/cdn-cgi/l/email-protection#6802071b00281d18180d1a00091a0a071d1a460b09">Contact us</a></li><li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li></ul></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span><span class="footer-copy">Canadian-owned and operated. Data stays in Can
