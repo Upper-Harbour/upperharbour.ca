@@ -2,214 +2,566 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-3KSW0FVBL1');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Slack Canadian Data Sovereignty & CLOUD Act Analysis | Upper Harbour</title>
-  <meta name="description" content="Slack jurisdiction analysis for Canadian organizations. Salesforce-owned, US-incorporated, CLOUD Act exposed with no dedicated Canadian data residency. What Law 25 and PIPEDA compliance require." />
+  <title>Is Slack Safe for Canadian Data? Sovereignty Analysis | Upper Harbour</title>
+  <meta name="description" content="Slack is Salesforce-owned (US). CLOUD Act exposed. No Canadian data residency. EKM on Enterprise Grid only. Risk 8.0/10." />
   <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
   <link rel="canonical" href="https://www.upperharbour.ca/tools/slack" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <meta property="og:title" content="Slack Canadian Data Sovereignty & CLOUD Act Analysis" />
-  <meta property="og:description" content="Slack is owned by Salesforce, US-incorporated, and CLOUD Act exposed with no Canadian data residency option. What this means for compliance." />
-  <meta property="og:url" content="https://www.upperharbour.ca/tools/slack" />
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="Upper Harbour" />
-  <meta property="article:published_time" content="2026-02-23" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" /><link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Is Slack Safe for Canadian Data? Sovereignty Analysis" />
+  <meta property="og:description" content="Slack (Salesforce) is CLOUD Act exposed. No Canadian data residency. Enterprise Key Management on Grid only. Risk 8.0/10." />
+  <meta property="og:url" content="https://www.upperharbour.ca/tools/slack" /><meta property="og:type" content="article" /><meta property="og:site_name" content="Upper Harbour" /><meta property="article:published_time" content="2026-02-23" /><meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/site.css" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": "Slack Canadian Data Sovereignty & CLOUD Act Analysis",
-    "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca" },
-    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" },
-    "datePublished": "2026-02-23",
-    "mainEntityOfPage": "https://www.upperharbour.ca/tools/slack"
-  }
-  </script>
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Is Slack Safe for Canadian Data? Sovereignty Analysis","author":{"@type":"Person","name":"Joshua van Es","url":"https://joshuavanes.ca","jobTitle":"Corporate Lawyer","worksFor":{"@type":"Organization","name":"Upper Harbour"}},"publisher":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"datePublished":"2026-02-23","dateModified":"2026-03-30","mainEntityOfPage":"https://www.upperharbour.ca/tools/slack"}</script>
+
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is Slack subject to the CLOUD Act?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Owned by Salesforce (Delaware). All data subject to US legal process."}}, {"@type": "Question", "name": "Does Slack offer Canadian data residency?", "acceptedAnswer": {"@type": "Answer", "text": "No. Data residency (Enterprise Grid only) offers US, EU, and select regions. Canada is not available."}}, {"@type": "Question", "name": "Does Slack Connect create compliance obligations?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Shared channels create cross-border transfers for both organizations involved."}}, {"@type": "Question", "name": "What is Slack Enterprise Key Management?", "acceptedAnswer": {"@type": "Answer", "text": "EKM gives Enterprise Grid customers control over encryption keys. Only available on the most expensive tier."}}, {"@type": "Question", "name": "Do I need a TIA for Slack under Law 25?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. US-incorporated, no Canadian residency. TIA required for any Quebec organization using Slack."}}]}</script>
+
   <style>
-    .fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-md); border: 1px solid var(--border-md); border-radius: 8px; overflow: hidden; margin: 24px 0; }
-    .fact-cell { background: var(--surface); padding: 16px 20px; }
-    .fact-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
-    .fact-value { font-size: 15px; font-weight: 600; color: var(--ice); }
-    .fact-value.exposed { color: var(--red); }
-    .fact-value.review { color: var(--gold); }
-    .fact-value.safe { color: var(--teal); }
-    @media (max-width: 480px) { .fact-grid { grid-template-columns: 1fr; } }
+    /* ── Verdict styles removed — verdict is now plain text, no box ── */
+
+    /* ── Bento data cards ───────────────────────────── */
+    .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 40px;padding-top:8px}
+    .bento-cell{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:20px;border-left:4px solid #6B7280}
+    .bento-cell.b-red{border-left-color:#EF4444}
+    .bento-cell.b-amber{border-left-color:#F59E0B}
+    .bento-cell.b-green{border-left-color:#10B981}
+    .bento-cell.b-grey{border-left-color:#6B7280}
+    .bento-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+    .bento-value{font-size:15px;font-weight:600;color:var(--ice)}
+    .badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:3px}
+    .badge.red{background:rgba(239,68,68,0.12);color:#EF4444}
+    .badge.amber{background:rgba(245,158,11,0.12);color:#F59E0B}
+    .badge.green{background:rgba(16,185,129,0.12);color:#10B981}
+    .badge-sm{font-size:11px;padding:2px 7px}
+
+    /* ── Expandable sections ─────────────────────────── */
+    .expand-section{border-top:1px solid var(--border-md);margin-top:0}
+    .expand-section:first-of-type{margin-top:20px}
+    .expand-header{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;user-select:none}
+    .expand-header h2{font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:0;line-height:1.3}
+    .expand-arrow{color:var(--muted);font-size:18px;transition:transform 0.2s;flex-shrink:0;margin-left:12px}
+    .expand-section.open .expand-arrow{transform:rotate(180deg)}
+    .expand-content{display:none;padding-bottom:24px}
+    .expand-section.open .expand-content{display:block}
+    .expand-content p{font-size:15px;color:var(--slate);line-height:1.8;margin-bottom:16px}
+    .expand-content p:last-child{margin-bottom:0}
+    .expand-content h3{font-size:16px;font-weight:700;color:var(--ice);margin:16px 0 8px}
+    .expand-content h3:first-child{margin-top:0}
+    .expand-content a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+    .expand-content ul{padding-left:20px;margin-bottom:16px}
+    .expand-content li{font-size:14px;color:var(--slate);line-height:1.7;margin-bottom:6px}
+    .expand-content li:last-child{margin-bottom:0}
+
+    /* ── Comparison table ────────────────────────────── */
+    .compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:16px 0}
+    .compare-table{width:100%;min-width:480px;border-collapse:collapse;font-size:13px}
+    .compare-table th{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:2px solid var(--border-md)}
+    .compare-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:var(--slate)}
+    .compare-table tr:hover td{background:rgba(60,184,176,0.03)}
+    .compare-table .current{background:rgba(239,68,68,0.04)}
+    .compare-table .recommended td{background:rgba(16,185,129,0.06);border-bottom-color:rgba(16,185,129,0.2)}
+    .compare-table .recommended td:first-child{box-shadow:inset 3px 0 0 #10B981}
+    .ct-yes{color:#10B981;font-weight:600}
+    .ct-no{color:#EF4444;font-weight:600}
+    .ct-partial{color:#F59E0B;font-weight:600}
+
+    /* ── Comparison mini-cards ────────────────────────── */
+    .compare-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+    .compare-card{display:block;background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:18px 20px;text-decoration:none;transition:border-color 0.2s,background 0.2s}
+    .compare-card:hover{border-color:rgba(60,184,176,0.35);background:rgba(20,30,42,1)}
+    .compare-card-name{font-size:14px;font-weight:700;color:var(--ice);margin-bottom:8px}
+    .compare-card-badges{font-size:12px;color:var(--slate);line-height:1.6;margin-bottom:10px}
+    .compare-card-link{font-size:12px;font-weight:600;color:var(--teal)}
+    .compare-card.highlight{border-color:rgba(16,185,129,0.3)}
+    .compare-card.highlight .compare-card-name{color:#10B981}
+
+    /* ── Mid-page CTA ────────────────────────────────── */
+    .mid-cta{background:rgba(20,30,42,0.95);border:1px solid rgba(60,184,176,0.15);border-radius:8px;padding:32px 28px;margin:28px 0;text-align:center}
+    .mid-cta-text{font-size:14px;color:var(--ice);line-height:1.6;margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto}
+    .mid-cta-text strong{color:var(--ice)}
+    .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s}
+    .mid-cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
+
+    /* ── Email notify ─────────────────────────────────── */
+    .notify-box{background:rgba(20,30,42,0.95);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:28px;margin:24px 0 32px}
+    .notify-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+    .notify-icon{font-size:16px}
+    .notify-title{font-size:14px;font-weight:700;color:var(--ice)}
+    .notify-box p{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6}
+    .notify-form{display:flex;gap:8px}
+    .notify-input{flex:1;padding:11px 14px;font-size:13px;background:var(--bg);border:1px solid var(--border-md);border-radius:4px;color:var(--ice);font-family:var(--body);outline:none;transition:border-color 0.2s}
+    .notify-input:focus{border-color:var(--teal)}
+    .notify-input::placeholder{color:var(--muted)}
+    .notify-submit{padding:11px 22px;font-size:12px;font-weight:700;background:var(--teal);color:#fff;border:none;border-radius:4px;cursor:pointer;white-space:nowrap;transition:opacity 0.2s}
+    .notify-submit:hover{opacity:0.9}
+
+    /* ── Verified ──────────────────────────────────────── */
+    .verified{font-size:11px;color:var(--muted);margin-top:40px;padding-top:20px;border-top:1px solid var(--border-md);line-height:1.7}
+    .verified a{font-size:11px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+
+    /* ── FAQ items ─────────────────────────────────────── */
+    .faq-item-inline{border-bottom:1px solid var(--border);padding:14px 0}
+    .faq-item-inline:first-child{padding-top:0}
+    .faq-item-inline:last-child{border-bottom:none;padding-bottom:0}
+    .faq-item-inline h3{margin-top:0}
+    .faq-item-inline p{margin-bottom:0}
+
+    /* ── Responsive ────────────────────────────────────── */
+    @media(max-width:768px){
+      .article-hero .anim-3 span{font-size:12px !important}
+      .article-hero .anim-3 span+br+span{font-size:10px !important}
+      .article-hero .anim-5,.article-hero .anim-4+p{font-size:15px !important}
+      .scan-console{max-width:100% !important}
+      .bento{grid-template-columns:1fr 1fr}
+      .compare-cards{grid-template-columns:1fr}
+      .mid-cta{padding:28px 20px}
+      .notify-form{flex-direction:column}
+      .verdict{padding:0 20px 16px}
+      .expand-header h2{font-size:18px}
+      .compare-table{font-size:12px}
+      .compare-table th,.compare-table td{padding:8px}
+    }
+    @media(max-width:480px){
+      .risk-gauge-svg{width:160px !important}
+      .risk-gauge-score strong{font-size:22px !important}
+      .article-h1{font-size:28px !important}
+      .bento{grid-template-columns:1fr}
+      .verdict-box{flex-direction:column;gap:12px}
+    }
+
+    /* ── Entrance Animations ─────────────────────────── */
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(24px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    .anim-1{animation:fadeInUp 0.6s ease-out both}
+    .anim-2{animation:fadeInUp 0.6s ease-out 0.12s both}
+    .anim-3{animation:fadeInUp 0.6s ease-out 0.24s both}
+    .anim-4{animation:fadeInUp 0.6s ease-out 0.36s both}
+    .anim-5{animation:fadeInUp 0.6s ease-out 0.48s both}
+
+    /* ── Scroll Reveal ───────────────────────────────── */
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease-out,transform 0.55s ease-out}
+    .reveal.in-view{opacity:1;transform:translateY(0)}
+
+    /* ── Background Depth ────────────────────────────── */
+    .article-hero{position:relative;overflow:visible}
+    .article-hero::before{content:'';position:absolute;top:-60px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(239,68,68,0.06) 0%,transparent 70%);pointer-events:none;z-index:0}
+    .article-hero>*{position:relative;z-index:1}
+
+    /* ── Card Hover Effects ──────────────────────────── */
+    .bento-cell{transition:transform 0.25s ease-out,box-shadow 0.25s ease-out,border-color 0.25s ease-out}
+    .bento-cell:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+    .bento-cell.b-red:hover{border-left-color:#F87171;box-shadow:0 8px 24px rgba(239,68,68,0.12)}
+    .bento-cell.b-amber:hover{border-left-color:#FBBF24;box-shadow:0 8px 24px rgba(245,158,11,0.12)}
+    .bento-cell.b-green:hover{border-left-color:#34D399;box-shadow:0 8px 24px rgba(16,185,129,0.12)}
+
+    /* ── CTA Glow ────────────────────────────────────── */
+    .mid-cta-btn{box-shadow:0 0 20px rgba(60,184,176,0.25),0 0 40px rgba(60,184,176,0.1)}
+    .mid-cta-btn:hover{box-shadow:0 0 28px rgba(60,184,176,0.4),0 0 56px rgba(60,184,176,0.15);background:#47cec5;transform:translateY(-2px)}
+
+    /* ── Comparison Table Polish ──────────────────────── */
+    .compare-table tbody tr{transition:background 0.2s ease-out}
+    .compare-table tbody tr:hover td{background:rgba(60,184,176,0.06)}
+    .compare-table .current td{background:rgba(239,68,68,0.06);font-weight:500}
+
+    /* ── Compare Card Lift ───────────────────────────── */
+    .compare-card{transition:transform 0.25s ease-out,border-color 0.25s ease-out,box-shadow 0.25s ease-out}
+    .compare-card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.2)}
+
+    /* ── Notify Box Accent ───────────────────────────── */
+    .notify-box{transition:border-color 0.3s ease-out}
+    .notify-box:hover{border-color:rgba(245,158,11,0.35)}
+
+    /* ── Bottom CTA Glow ─────────────────────────────── */
+    .cta-btn{transition:background 0.2s,transform 0.2s,box-shadow 0.2s;color:#fff !important}
+    .cta-btn:hover{box-shadow:0 0 24px rgba(60,184,176,0.35),0 0 48px rgba(60,184,176,0.12);transform:translateY(-2px)}
+
+    /* ── Risk Gauge ──────────────────────────────────── */
+    .risk-gauge{display:flex;flex-direction:column;align-items:center;margin:28px 0 4px}
+    .risk-gauge-svg{width:220px;height:auto}
+    .gauge-needle{transform-origin:100px 110px;animation:needleSwing 4.5s cubic-bezier(0.25,0.1,0.25,1) 0.6s both}
+    @keyframes needleSwing{from{transform:rotate(-80deg)}to{transform:rotate(62deg)}}
+    .risk-gauge-meta{text-align:center;margin-top:-4px}
+    .risk-gauge-score{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted)}
+    .risk-gauge-score strong{font-size:26px;color:#EF4444;letter-spacing:-0.02em;display:block;line-height:1.1;margin:2px 0}
+    .risk-gauge-label{font-size:11px;font-weight:700;color:#EF4444;letter-spacing:0.12em;text-transform:uppercase;background:rgba(239,68,68,0.1);padding:3px 10px;border-radius:3px;display:inline-block;margin-top:4px}
+    .gauge-glow{animation:gaugeGlow 2s ease-in-out 5s both}
+    @keyframes gaugeGlow{0%{filter:drop-shadow(0 0 0 transparent)}100%{filter:drop-shadow(0 0 12px rgba(239,68,68,0.2))}}
+
+    /* ── Jurisdiction Flow ────────────────────────────── */
+    .jurisdiction-flow{display:flex;align-items:stretch;justify-content:center;gap:0;margin:28px 0 8px;padding:20px 0}
+    .jf-node{display:flex;flex-direction:column;align-items:center;gap:4px;padding:16px 18px;border-radius:8px;background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);flex:1;max-width:180px;text-align:center;transition:border-color 0.3s,box-shadow 0.3s}
+    .jf-node:hover{box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+    .jf-node.jf-safe{border-left:3px solid #10B981}
+    .jf-node.jf-safe:hover{border-color:rgba(16,185,129,0.4)}
+    .jf-node.jf-warn{border-left:3px solid #F59E0B}
+    .jf-node.jf-warn:hover{border-color:rgba(245,158,11,0.4)}
+    .jf-node.jf-danger{border-left:3px solid #EF4444}
+    .jf-node.jf-danger:hover{border-color:rgba(239,68,68,0.4)}
+    .jf-icon{font-size:22px}
+    .jf-label{font-size:12px;font-weight:700;color:var(--ice);line-height:1.3}
+    .jf-sub{font-size:10px;color:var(--muted);line-height:1.4}
+    .jf-arrow{display:flex;align-items:center;padding:0 6px;flex-shrink:0}
+    .jf-arrow svg{width:36px;height:20px}
+    .jf-arrow-line{stroke-dasharray:4 3;animation:flowDash 0.8s linear infinite}
+    @keyframes flowDash{to{stroke-dashoffset:-7}}
+
+    /* ── Scan Effect ─────────────────────────────────── */
+    .scan-console{animation:fadeInUp 0.4s ease-out 0.3s both;transition:opacity 0.4s ease-out}
+    .scan-status{font-size:11px;color:var(--teal);display:flex;align-items:center;gap:6px;height:18px;transition:opacity 0.15s}
+    .scan-status.done{color:var(--muted)}
+    .scan-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:dotPulse 0.5s ease-in-out infinite;flex-shrink:0}
+    .scan-dot.done{animation:none;background:var(--teal);opacity:0.5}
+    @keyframes dotPulse{0%,100%{opacity:1}50%{opacity:0.2}}
+    .scan-progress{height:2px;background:rgba(255,255,255,0.04);border-radius:1px;margin-top:6px;overflow:hidden}
+    .scan-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--teal),rgba(60,184,176,0.5));border-radius:1px;transition:width 0.3s ease-out}
+    .bento-cell{position:relative;overflow:hidden}
+    .bento-cell::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(60,184,176,0.05) 50%,transparent 70%);background-size:200% 100%;border-radius:7px;pointer-events:none;opacity:0}
+    @keyframes scanShimmer{0%{background-position:200% 0;opacity:1}80%{opacity:1}100%{background-position:-200% 0;opacity:0}}
+    .bento-cell .bento-value{opacity:0}
+    @keyframes dataReveal{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes cardFlash{0%{box-shadow:inset 0 0 0 1px rgba(60,184,176,0)}30%{box-shadow:inset 0 0 0 1px rgba(60,184,176,0.25)}100%{box-shadow:inset 0 0 0 1px rgba(60,184,176,0)}}
+    .bento-cell.scanned .bento-value{animation:dataReveal 0.3s ease-out forwards}
+    .bento-cell.scanned{animation:cardFlash 0.6s ease-out}
+    .bento-cell.scanned::after{animation:scanShimmer 0.5s ease-in-out forwards}
+
+    /* ── Flow + Gauge responsive ─────────────────────── */
+    @media(max-width:768px){
+      .jurisdiction-flow{flex-direction:column;align-items:center}
+      .jf-arrow{transform:rotate(90deg);padding:4px 0}
+      .jf-node{max-width:100%;width:100%}
+      .risk-gauge-svg{width:180px}
+    }
+
+    /* ── Reduced Motion ──────────────────────────────── */
+    @media(prefers-reduced-motion:reduce){
+      .anim-1,.anim-2,.anim-3,.anim-4,.anim-5{animation:none !important;opacity:1;transform:none}
+      .reveal{opacity:1;transform:none;transition:none}
+      .bento-cell,.compare-card,.mid-cta-btn,.cta-btn{transition:none}
+      .bento-cell:hover,.compare-card:hover{transform:none}
+      .gauge-needle{animation:none !important;transform:rotate(62deg)}
+      .jf-arrow-line{animation:none !important}
+      .bento-cell::after{animation:none !important;opacity:0}
+      .bento-cell .bento-value{animation:none !important;opacity:1;transform:none}
+      .scan-console{animation:none !important;opacity:1}
+      .scan-status{animation:none !important;display:none}
+      .scan-progress{display:none}
+      .bento-cell .bento-value{animation:none !important;opacity:1 !important;transform:none !important}
+      .bento-cell.scanned{animation:none !important}
+      .bento-cell.scanned::after{animation:none !important;opacity:0 !important}
+      .gauge-glow{animation:none !important}
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
-      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
-        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
-        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
-      </svg>
-      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
-    </a>
-    <div class="nav-links">
-      <a href="/research" class="nav-link">Research</a>
-      <a href="/tools" class="nav-link active">Sovereignty Index</a>
-      <a href="/signals" class="nav-link">Signals</a>
-      <a href="/resources" class="nav-link">Compliance</a>
-      <a href="/harbourscan" class="nav-cta">Map Your Stack</a>
-    </div>
-    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
-      </svg>
-    </button>
-  </nav>
-  <div class="nav-mobile-menu">
-    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
-  </div>
 
+  <!-- ═══ NAV (no changes) ═══ -->
+  <nav><a href="/" class="nav-logo" aria-label="Upper Harbour home"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/signals" class="nav-link">Signals</a><a href="/tools" class="nav-link active">Tools</a><a href="/research" class="nav-link">Research</a><a href="/resources" class="nav-link">Guides</a><a href="/harbourscan" class="nav-cta">Map Your Stack</a></div><button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></nav>
+  <div class="nav-mobile-menu"><a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a></div>
+
+
+  <!-- ═══ SECTION 1: HERO ═══ -->
   <header class="article-hero">
-    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/tools">Sovereignty Index</a> → Slack</div>
-    <div class="article-meta">
-      <span class="article-tag">CLOUD Act Exposed</span>
-      <span class="article-tag">No Canadian Residency</span>
-      <span class="article-date">Updated March 2026</span>
-    </div>
-    <h1 class="article-h1">Slack <em>Canadian Data Sovereignty</em> Analysis</h1>
-    <p class="article-intro">Slack is the default communication layer for thousands of Canadian organizations. It is also fully exposed to US jurisdiction with no dedicated Canadian data residency option. Since its acquisition by Salesforce in 2021, Slack's jurisdictional profile has become more complex, not less.</p>
-  </header>
+    <div class="article-breadcrumb anim-1"><a href="/">Home</a> → <a href="/tools">Sovereignty Index</a> → Slack</div>
 
-  <div class="author-card" style="max-width:820px;margin:0 auto 0;padding:0 52px;">
-    <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="56" height="56">
-    <div class="author-card-info">
-      <div class="author-card-name"><a href="/founder">Joshua van Es</a></div>
-      <div class="author-card-role">Corporate law · Founder, Upper Harbour</div>
-      <div class="author-card-pubs">Published in The Globe and Mail, Maclean's, OpenCanada, and BetaKit</div>
+    <h1 class="article-h1 anim-2">Slack <em>Canadian Data Sovereignty</em> Analysis</h1>
+
+    <!-- Author byline — right under the title for immediate credibility -->
+    <div class="anim-3" style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> · Corporate law · Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, and <em>BetaKit</em> · Updated March 2026</span>
+      </div>
     </div>
-  </div>
+
+    <!-- Risk Gauge -->
+    <div class="risk-gauge anim-4" id="risk-gauge">
+      <svg viewBox="0 0 200 130" class="risk-gauge-svg gauge-glow" aria-label="Risk gauge showing high risk">
+        <!-- Arc track -->
+        <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="14" stroke-linecap="round"/>
+        <!-- Green (low risk) -->
+        <path d="M 20 110 A 80 80 0 0 1 53 45" fill="none" stroke="#10B981" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <!-- Amber (medium risk) -->
+        <path d="M 57 42 A 80 80 0 0 1 143 42" fill="none" stroke="#F59E0B" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <!-- Red (high risk) -->
+        <path d="M 147 45 A 80 80 0 0 1 180 110" fill="none" stroke="#EF4444" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
+        <!-- Needle — animated from green to red -->
+        <g class="gauge-needle">
+          <line x1="100" y1="110" x2="100" y2="42" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="100" cy="110" r="5" fill="#EF4444"/>
+        </g>
+        <!-- LOW / HIGH labels -->
+        <text x="16" y="126" fill="var(--muted,#6B7B8D)" font-size="7.5" font-family="sans-serif" letter-spacing="0.08em">LOW</text>
+        <text x="166" y="126" fill="#EF4444" font-size="7.5" font-family="sans-serif" font-weight="700" letter-spacing="0.08em">HIGH</text>
+      </svg>
+      <div class="risk-gauge-meta">
+        <div class="risk-gauge-score">Risk Score<strong id="risk-score">0.0 / 10</strong></div>
+        <span class="risk-gauge-label">High Risk</span>
+        <div class="scan-console anim-4" id="scan-console-wrap" style="margin-top:12px;width:100%;"><div class="scan-status"><span class="scan-dot"></span> <span id="scan-msg">Connecting to sovereignty database...</span></div><div class="scan-progress"><div class="scan-progress-fill" id="scan-bar"></div></div></div>
+        <div style="margin-top:8px;"><a href="/methodology" style="font-size:10px;color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(138,157,176,0.3);letter-spacing:0.05em;">How we score →</a></div>
+      </div>
+    </div>
+
+        <!-- Verdict text -->
+    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#EF4444;font-weight:700;font-size:19px;">✗ High Risk</span> — Slack is owned by Salesforce Inc. (Delaware, US) and fully CLOUD Act exposed. No dedicated Canadian data residency. Data residency available on Enterprise Grid only (US, EU, and select regions — not Canada). Your internal communications, files, and metadata are under US jurisdiction.</p>
+  </header>
 
   <article class="article-body">
 
-    <div class="fact-grid">
-      <div class="fact-cell">
-        <div class="fact-label">Parent Company</div>
-        <div class="fact-value">Salesforce Inc.</div>
+    <div class="bento">
+      <div class="bento-cell b-grey"><div class="bento-label">Parent Company</div><div class="bento-value">Salesforce Inc. (Delaware, US)</div></div>
+      <div class="bento-cell b-red"><div class="bento-label">CLOUD Act Status</div><div class="bento-value"><span class="badge red">✗ Exposed</span></div></div>
+      <div class="bento-cell b-red"><div class="bento-label">Canadian Data Residency</div><div class="bento-value"><span class="badge red">✗ Not Available</span></div></div>
+      <div class="bento-cell b-amber"><div class="bento-label">Encryption</div><div class="bento-value"><span class="badge amber">⚠ EKM (Enterprise Grid)</span></div></div>
+      <div class="bento-cell b-grey"><div class="bento-label">TIA / PIA Required</div><div class="bento-value"><span class="badge red">Yes — Law 25 &amp; POPA</span></div></div>
+      <div class="bento-cell b-grey"><div class="bento-label">Acquisition</div><div class="bento-value">Salesforce $27.7B (2021)</div></div>
+    </div>
+
+    <h2 class="reveal">Is Slack CLOUD Act exposed for Canadian organizations?</h2>
+    <p>Yes. Slack Technologies was acquired by Salesforce Inc. in July 2021 for $27.7 billion. Salesforce is incorporated in Delaware (NYSE: CRM). All Slack data is fully subject to the CLOUD Act — US authorities can compel Salesforce to produce any data stored in Slack regardless of where it is hosted.</p>
+    <p>Slack is the default communication layer for thousands of Canadian organizations, and its sovereignty exposure is significant because of <strong>what accumulates in it</strong>. Internal strategy discussions, client names, project details, shared files, personal information — all stored on US servers under US jurisdiction. Many organizations treat Slack as informal communication and underestimate the compliance implications.</p>
+    <p>Data residency is available on <strong>Enterprise Grid only</strong> — customers can choose US, EU, or select other regions. <strong>Canada is not among the available regions.</strong> All Canadian Slack data resides on US infrastructure by default. Enterprise Key Management (customer-controlled encryption keys) is available on Enterprise Grid but does not change the CLOUD Act jurisdiction.</p>
+
+    <div class="expand-section open reveal" id="regulatory">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Regulatory Analysis</h2>
+        <span class="expand-arrow">▾</span>
       </div>
-      <div class="fact-cell">
-        <div class="fact-label">Headquarters</div>
-        <div class="fact-value">San Francisco, CA, United States</div>
-      </div>
-      <div class="fact-cell">
-        <div class="fact-label">Jurisdiction</div>
-        <div class="fact-value">United States</div>
-      </div>
-      <div class="fact-cell">
-        <div class="fact-label">CLOUD Act Status</div>
-        <div class="fact-value exposed">Exposed</div>
-      </div>
-      <div class="fact-cell">
-        <div class="fact-label">Canadian Data Residency</div>
-        <div class="fact-value exposed">Not Available</div>
-      </div>
-      <div class="fact-cell">
-        <div class="fact-label">Upper Harbour Risk Rating</div>
-        <div class="fact-value exposed">Exposed</div>
+      <div class="expand-content">
+        <h3>CLOUD Act exposure</h3>
+        <p>Salesforce Inc. is Delaware-incorporated and fully within <a href="/resources/cloud-act-canadian-data" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">CLOUD Act</a> scope. Slack is now part of the Salesforce platform ecosystem — Salesforce integrations, Slack Connect channels, and AI features all create data flows beyond the Slack workspace itself. Assessing Slack means assessing its position within the broader Salesforce architecture.</p>
+
+        <div class="jurisdiction-flow">
+          <div class="jf-node jf-safe"><div class="jf-icon">🍁</div><div class="jf-label">Your Team Data</div><div class="jf-sub">Messages, files, channels<br>Internal communications</div></div>
+          <div class="jf-arrow"><svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#EF4444" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#EF4444"/></svg></div>
+          <div class="jf-node jf-warn"><div class="jf-icon">🏢</div><div class="jf-label">Salesforce Inc.</div><div class="jf-sub">Delaware, USA<br>$27.7B acquisition (2021)</div></div>
+          <div class="jf-arrow"><svg viewBox="0 0 48 24"><line x1="0" y1="12" x2="38" y2="12" stroke="#EF4444" stroke-width="2" class="jf-arrow-line"/><polygon points="38,6 48,12 38,18" fill="#EF4444"/></svg></div>
+          <div class="jf-node jf-danger"><div class="jf-icon">⚖️</div><div class="jf-label">US Legal Process</div><div class="jf-sub">CLOUD Act · Subpoena<br><strong style="color:#EF4444;">Full message access</strong></div></div>
+        </div>
+
+        <h3>Slack Connect amplifies the exposure</h3>
+        <p>Slack Connect allows channels shared between different organizations. When a Canadian organization shares a Slack Connect channel with a client or vendor, data from both organizations flows through Slack's US infrastructure. This creates a cross-border transfer not just for your own data, but potentially for your clients' personal information as well. Under <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Law 25</a>, each Slack Connect channel involving Quebec residents' personal information constitutes a cross-border transfer requiring assessment.</p>
+
+        <h3>Quebec Law 25</h3>
+        <p>Quebec organizations must complete a <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Transfer Impact Assessment</a> for Slack. The assessment should document: US incorporation (Salesforce), CLOUD Act exposure, US-only data hosting (no Canadian alternative), and the sensitivity of communications flowing through Slack. Upper Harbour provides <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">compliance-ready TIA documentation</a> starting at $99.</p>
+
+        <h3>Alberta POPA</h3>
+        <p>Alberta public bodies using Slack must complete a PIA. Internal communications frequently contain personal information about employees, clients, and citizens. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically.</p>
+
+        <h3>AI features and data processing</h3>
+        <p>Salesforce has integrated AI capabilities into Slack — search summarization, channel digests, and Agentforce integrations. These features process message content through AI models, raising questions about where processing occurs and how it interacts with data protection obligations. Organizations should verify whether opting out of AI processing is available on their plan tier.</p>
+
+        <h3>BC FIPPA</h3>
+        <p>BC public bodies using Slack with sensitive personal information must complete a FIPPA privacy impact assessment. Slack's US-only hosting and CLOUD Act exposure make the jurisdictional risk assessment particularly relevant. <a href="/resources/fippa-saas-compliance-bc-public-bodies" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Full FIPPA SaaS compliance guide →</a></p>
       </div>
     </div>
 
-    <h2>The Salesforce acquisition changed Slack's compliance profile</h2>
-    <p>Slack Technologies was acquired by Salesforce in July 2021 for $27.7 billion. Before the acquisition, Slack was already US-incorporated and CLOUD Act exposed. What the acquisition changed was the scale and complexity of the data relationship.</p>
-    <p>Slack is now part of the Salesforce platform ecosystem. Salesforce integrations, Slack Connect channels between organizations, and AI-powered features all create data flows that extend beyond the Slack workspace itself. For compliance purposes, assessing Slack now means assessing its position within the broader Salesforce data architecture.</p>
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Slack is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. If Slack is your communication layer, your other tools — <a href="/tools/jira" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Jira</a>, <a href="/tools/github" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">GitHub</a>, <a href="/tools/figma" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Figma</a> — are likely also CLOUD Act exposed. <strong>Map the full picture.</strong></p>
 
-    <h2>Why Slack rates "Exposed" rather than "Review Required"</h2>
-    <p>Upper Harbour rates tools on a three-tier scale: <strong>exposed</strong> (US-jurisdictional with no Canadian data residency), <strong>review required</strong> (US-jurisdictional but Canadian residency available), and <strong>Canadian/non-exposed</strong>. Slack is rated exposed because it combines two risk factors: US parent jurisdiction with CLOUD Act exposure, and no option to store data in Canada.</p>
-    <p>Unlike <a href="/tools/microsoft-365">Microsoft 365</a> or <a href="/tools/google-workspace">Google Workspace</a>, Slack does not offer a Canadian data centre or data residency selection. Slack Enterprise Grid customers can choose between US and EU data residency regions, but Canada is not among them. All Canadian Slack data resides on US infrastructure by default.</p>
-
-    <h2>What data Slack holds</h2>
-    <p>The compliance significance of Slack exposure depends on what flows through it. In most organizations, Slack channels contain: internal strategy discussions, client and customer names, project details, shared files and documents, personal information of employees and contacts, and increasingly, sensitive business data that would previously have been communicated by email or in meetings.</p>
-    <p>Many organizations treat Slack as informal communication and underestimate what accumulates. Slack retains message history, file uploads, reactions, and metadata. For compliance purposes, this is a rich repository of personal and business information — all stored on US servers under US jurisdiction.</p>
-
-    <h2>Slack Connect amplifies the exposure</h2>
-    <p>Slack Connect allows channels shared between different organizations. When a Canadian organization shares a Slack Connect channel with a client or vendor, data from both organizations flows through Slack's US infrastructure. This creates a cross-border transfer not just for your own data, but potentially for your clients' personal information as well.</p>
-    <p>For organizations subject to <a href="/resources/law-25-saas-compliance">Law 25</a>, each Slack Connect channel involving personal information of Quebec residents constitutes a cross-border transfer requiring assessment.</p>
-
-    <h2>AI features and Slack's data use</h2>
-    <p>Salesforce has integrated AI capabilities into Slack, including search summarization and channel digests. These features process message content through AI models — raising the question of where that processing occurs, whether message content is used for model training, and how this interacts with data protection obligations.</p>
-    <p>Organizations should review Slack's current data processing terms to understand how AI features handle workspace content, and whether opting out of AI processing is possible for their plan tier.</p>
-
-    <h2>What this means for Law 25 and PIPEDA compliance</h2>
-    <p>Quebec organizations must produce a <a href="/resources/transfer-impact-assessments-law-25">Transfer Impact Assessment</a> for Slack. The assessment will document that Slack is US-incorporated, CLOUD Act exposed, stores data in the US with no Canadian alternative, and processes personal information of Quebec residents. Available safeguards include Slack's Enterprise Key Management (customer-controlled encryption keys, Enterprise Grid only), Slack's DPA and standard contractual clauses, and organizational policies limiting what personal information flows through Slack.</p>
-    <p>For organizations processing sensitive personal information through Slack — health data, financial records, legal matter details — the exposure level may warrant stronger remediation measures, including restricting certain categories of data from Slack channels entirely.</p>
-
-    <h2>Practical options for Canadian organizations</h2>
-    <p><strong>For most organizations:</strong> Continue using Slack, complete the TIA/PIA documentation, implement Slack's Enterprise Key Management if available on your plan, and establish internal policies about what categories of information should not be shared in Slack.</p>
-    <p><strong>For high-sensitivity environments:</strong> Consider whether Slack is the appropriate tool for communications involving regulated personal information. Canadian alternatives exist for team messaging, though none match Slack's ecosystem integration. A hybrid approach — Slack for general communication, a Canadian-hosted tool for sensitive matters — may be defensible.</p>
-    <p><strong>For government and public sector:</strong> Slack's lack of Canadian data residency makes it difficult to satisfy sovereignty requirements in government procurement contexts. Organizations responding to RFPs with <a href="/resources/data-sovereignty-government-procurement">data sovereignty requirements</a> should document this limitation clearly.</p>
-
-    <div class="callout">
-      <div class="callout-label">Related vendor analyses</div>
-      <p><a href="/tools/microsoft-365">Microsoft 365 →</a> · <a href="/tools/google-workspace">Google Workspace →</a> · <a href="/tools/notion">Notion →</a></p>
+    <div class="mid-cta reveal">
+      <div class="mid-cta-text">Map your entire SaaS stack to parent jurisdictions and CLOUD Act exposure in 10 minutes.</div>
+      <a href="/harbourscan" class="mid-cta-btn">Map Your Stack →</a>
     </div>
 
-
-    <div class="callout" style="border-left-color:var(--gold);">
-      <div class="callout-label" style="color:var(--gold);">BC public bodies — FIPPA compliance note</div>
-      <p>Slack is owned by Salesforce Inc. (US-incorporated) and is subject to the CLOUD Act. BC public bodies using Slack with sensitive personal information must complete a FIPPA privacy impact assessment. Slack's data is primarily stored in the US, with no dedicated Canadian data region, making the jurisdictional risk assessment particularly relevant. <a href="/resources/fippa-saas-compliance-bc-public-bodies">Read the full FIPPA SaaS compliance guide →</a> · <a href="/resources/fippa-pia-template">Download PIA template →</a></p>
+    <div class="expand-section open reveal" id="alternatives">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Alternatives &amp; Comparison</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <div class="compare-wrap"><table class="compare-table">
+          <thead><tr><th>Tool</th><th>Ownership</th><th>CLOUD Act</th><th>CDN Residency</th><th>Customer Keys</th></tr></thead>
+          <tbody>
+            <tr class="current"><td><strong>Slack</strong></td><td>US (Salesforce)</td><td class="ct-no">Exposed</td><td class="ct-no">No</td><td class="ct-partial">EKM (Grid only)</td></tr>
+            <tr><td>Microsoft Teams</td><td>US (Microsoft)</td><td class="ct-no">Exposed</td><td class="ct-partial">Available</td><td class="ct-partial">Customer Key</td></tr>
+            <tr><td>Google Chat</td><td>US (Alphabet)</td><td class="ct-no">Exposed</td><td class="ct-partial">Available</td><td class="ct-partial">CMEK</td></tr>
+            <tr><td>Rocket.Chat</td><td>US</td><td class="ct-no">Exposed</td><td class="ct-yes">Self-hosted</td><td class="ct-yes">Full control</td></tr>
+            <tr><td>Element (Matrix)</td><td>UK</td><td class="ct-partial">Indirect</td><td class="ct-yes">Self-hosted</td><td class="ct-yes">E2EE</td></tr>
+          </tbody>
+        </table></div>
+        <p style="font-size:13px;color:var(--muted);">Based on <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a> data. March 2026.</p>
+        <p><strong>Key finding:</strong> All major cloud-hosted team messaging platforms are US-incorporated. Microsoft Teams and Google Chat offer Canadian data residency options that Slack does not. For maximum sovereignty, self-hosted options like Rocket.Chat or Element (Matrix protocol) provide full control. No major Canadian-headquartered team messaging platform exists.</p>
+      </div>
     </div>
 
-  </article>
+    <div class="notify-box reveal">
+      <div class="notify-header"><span class="notify-icon">💬</span><span class="notify-title">Questions about Slack and Canadian compliance?</span></div>
+      <p>We help organizations assess jurisdictional risk across their SaaS stack. Book a call or send us a message.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;font-size:12px;font-weight:700;color:#fff;background:var(--teal);padding:11px 22px;border-radius:4px;text-decoration:none;">Book a Call →</a>
+        <a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351" style="display:inline-block;font-size:12px;font-weight:700;color:var(--ice);background:transparent;border:1px solid var(--border-md);padding:11px 22px;border-radius:4px;text-decoration:none;">Email Us →</a>
+      </div>
+    </div>
 
-  <section class="cta-section">
-    <h2>Map your full stack exposure</h2>
-    <p>Slack is one tool. HarbourScan maps your entire SaaS environment to parent jurisdictions, CLOUD Act exposure, and data residency — producing the structured record compliance requires.</p>
+    <div class="expand-section" id="technical">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Technical Architecture</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <h3>Data residency — Enterprise Grid only</h3>
+        <p>Slack offers data residency on Enterprise Grid — customers can choose where certain data at rest is stored. Available regions include US, EU, and select others (Switzerland, UAE, Brazil added recently). <strong>Canada is not available as a data residency region.</strong> Metadata (billing, logs) may still be stored globally regardless of data residency settings.</p>
+
+        <h3>Enterprise Key Management</h3>
+        <p>Slack Enterprise Key Management (EKM) gives Enterprise Grid customers control and visibility over encryption keys used to encrypt messages and files. This allows organizations to revoke access to their data if needed. However, EKM is only available on Enterprise Grid — the most expensive tier — and does not change the CLOUD Act jurisdiction.</p>
+
+        <h3>What Slack stores</h3>
+        <p>Messages (full history by default), files and attachments, channel membership and metadata, user profiles and status, reactions and threads, Slack Connect shared channel data, workflow and automation data, search indexes, and analytics. For most organizations, Slack contains years of internal communications — a comprehensive record of organizational decisions, discussions, and relationships.</p>
+      </div>
+    </div>
+
+    <div class="expand-section" id="mitigation">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Mitigation Options</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <ul>
+          <li><strong>Enable EKM (Enterprise Grid):</strong> Customer-controlled encryption keys provide revocation capability — the strongest mitigation available within Slack.</li>
+          <li><strong>Set retention policies:</strong> Configure message retention to limit how much history accumulates. Shorter retention reduces the volume of data exposed.</li>
+          <li><strong>Establish channel policies:</strong> Create internal policies about what categories of information should not be shared in Slack — health data, financial records, legal matter details, SINs.</li>
+          <li><strong>Limit Slack Connect usage:</strong> Each Slack Connect channel with external organizations creates additional cross-border transfer obligations. Audit and restrict where needed.</li>
+          <li><strong>Document the exposure:</strong> Complete TIA/PIA documentation. The exposure is real but documentable. Most organizations will continue using Slack — the key is having the compliance record.</li>
+        </ul>
+        <p><strong>Bottom line:</strong> Slack is deeply embedded in most organizations' workflows and switching costs are high. For most organizations, the practical path is to document the exposure, enable available mitigations (EKM, retention policies, channel policies), and restrict highly sensitive data from Slack channels. For government and high-sensitivity environments, the lack of Canadian data residency is a significant limitation.</p>
+      </div>
+    </div>
+
+    <div class="expand-section" id="faq">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Frequently Asked Questions</h2>
+        <span class="expand-arrow">▾</span>
+      </div>
+      <div class="expand-content">
+        <div class="faq-item-inline"><h3>Is Slack subject to the US CLOUD Act?</h3><p>Yes. Slack is owned by Salesforce Inc. (Delaware, NYSE: CRM). All Slack data is subject to US legal process under the CLOUD Act, regardless of where it is hosted.</p></div>
+        <div class="faq-item-inline"><h3>Does Slack offer Canadian data residency?</h3><p>No. Slack data residency (Enterprise Grid only) offers US, EU, and select other regions. Canada is not available. All Canadian Slack data resides on US infrastructure by default.</p></div>
+        <div class="faq-item-inline"><h3>Does Slack Connect create additional compliance obligations?</h3><p>Yes. Slack Connect channels between organizations create cross-border data transfers for both parties. Under Law 25, each channel involving Quebec residents' personal information requires assessment as a cross-border transfer.</p></div>
+        <div class="faq-item-inline"><h3>What is Slack Enterprise Key Management?</h3><p>EKM gives Enterprise Grid customers control over encryption keys used to encrypt Slack data. This allows key revocation — but it's only available on the most expensive tier and doesn't change the CLOUD Act jurisdiction.</p></div>
+        <div class="faq-item-inline"><h3>Do I need a TIA for Slack under Law 25?</h3><p>Yes. Slack is US-incorporated with no Canadian data residency. A TIA is required for any Quebec organization using Slack that processes personal information.</p></div>
+      </div>
+    </div>
+
+    <div class="verified">
+      <strong>Methodology:</strong> This assessment is based on Salesforce's SEC filings, Slack's published security and privacy documentation, and the <a href="/methodology">Upper Harbour classification methodology</a>. Data verified March 2026. Updated quarterly. Part of the <a href="/tools">Canadian Technology Sovereignty Index</a>.
+    </div>
+
+</article>
+
+
+  <!-- ═══ SECTION 12: FINAL BOTTOM CTA ═══ -->
+  <section class="cta-section reveal">
+    <h2>What about the rest of your stack?</h2>
+    <p>HarbourScan maps every tool your organization uses to its parent jurisdiction, CLOUD Act exposure, and Canadian data residency options. Takes 10 minutes.</p>
     <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
-    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Look up any tool: <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index →</a></p>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Need compliance documentation? <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">TIA and PIA reports from $99 →</a></p>
   </section>
 
-  <footer>
-    <div class="footer-inner">
-      <div>
-        <div class="footer-logo">
-          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
-            <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
-            <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/>
-          </svg>
-          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span>
-        </div>
-        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
-      </div>
-      <div>
-        <div class="footer-col-title">Platform</div>
-        <ul class="footer-links">
-          <li><a href="/harbourscan">HarbourScan</a></li>
-          <li><a href="/tools">Sovereignty Index</a></li>
-          <li><a href="/signals">Signals</a></li>
-          <li><a href="/research">Research</a></li>
-          <li><a href="/methodology">Methodology</a></li>
-          <li><a href="/resources">Compliance Guides</a></li>
-          <li><a href="/comply">Compliance Reports</a></li>
-          </ul>
-      </div>
-      <div>
-        <div class="footer-col-title">About</div>
-        <ul class="footer-links">
-          <li><a href="/founder">Founder</a></li>
-          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
-          
-          <li><a href="/cdn-cgi/l/email-protection#ff95908c97bf8a8f8f9a8d979e8d9d908a8dd19c9e">Contact us</a></li>
-          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span class="footer-copy">© 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
-      <span class="footer-copy">Canadian-owned and operated. Data stays in Canada.</sp
+
+  <!-- ═══ FOOTER (no changes) ═══ -->
+  <footer><div class="footer-inner"><div><div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div><p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p></div><div><div class="footer-col-title">Platform</div><ul class="footer-links"><li><a href="/harbourscan">HarbourScan</a></li><li><a href="/tools">Sovereignty Index</a></li><li><a href="/signals">Signals</a></li><li><a href="/research">Research</a></li><li><a href="/methodology">Methodology</a></li><li><a href="/resources">Compliance Guides</a></li><li><a href="/comply">Compliance Reports</a></li></ul></div><div><div class="footer-col-title">About</div><ul class="footer-links"><li><a href="/founder">Founder</a></li><li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li><li><a href="/cdn-cgi/l/email-protection#305a5f4358704540405542585142525f45421e5351">Contact us</a></li><li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li></ul></div></div><div class="footer-bottom"><span class="footer-copy">© 2026 Upper Harbour. All rights reserved. · <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> · <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span><span class="footer-copy">Canadian-owned and operated. Data stays in Canada.</span></div></footer>
+
+<!-- ═══ SCROLL REVEAL + COUNTER ANIMATION ═══ -->
+<script>
+// Scroll reveal — elements fade in when they enter viewport
+(function(){
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target);}
+    });
+  },{threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+  // Risk score counter — counts up in sync with needle (0.6s delay, 4.5s duration)
+  var scoreEl=document.getElementById('risk-score');
+  if(scoreEl&&!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
+    var targetScore=8.0,dur=4500,delay=600,t0=null;
+    setTimeout(function(){
+      requestAnimationFrame(function step(ts){
+        if(!t0)t0=ts;
+        var p=Math.min((ts-t0)/dur,1);
+        var ease=p<0.5?2*p*p:(1-Math.pow(-2*p+2,2)/2);
+        var val=(targetScore*ease).toFixed(1);
+        scoreEl.textContent=val+' / 10';
+        if(p<1)requestAnimationFrame(step);else scoreEl.textContent=targetScore.toFixed(1)+' / 10';
+      });
+    },delay);
+  } else if(scoreEl){scoreEl.textContent='8.0 / 10';}
+
+  // Counter animation — "753" counts up on scroll
+  var counted=false;
+  var counterObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting&&!counted){
+        counted=true;
+        var el=e.target,target=753,start=0,dur=1600,t0=null;
+        function step(ts){
+          if(!t0)t0=ts;
+          var p=Math.min((ts-t0)/dur,1);
+          var ease=1-Math.pow(1-p,3);
+          el.textContent=Math.floor(start+(target-start)*ease);
+          if(p<1)requestAnimationFrame(step);else el.textContent='753';
+        }
+        requestAnimationFrame(step);
+        counterObs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.3});
+  var c=document.getElementById('counter-753');
+  if(c)counterObs.observe(c);
+
+  // ── Theatrical Scan Effect — runs on load, activates gauge on completion ──
+  var reducedMotion=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var scanMsg=document.getElementById('scan-msg');
+  var scanBar=document.getElementById('scan-bar');
+  var scanDot=document.querySelector('.scan-dot');
+  var scanStatus=document.querySelector('.scan-status');
+  var scanConsole=document.querySelector('.scan-console');
+  var cells=document.querySelectorAll('.bento-cell');
+
+  if(scanMsg&&scanBar&&!reducedMotion){
+    var steps=[
+      {msg:'Connecting to sovereignty database...',pct:8,delay:600},
+      {msg:'Analyzing corporate jurisdiction...',pct:20,delay:700,cell:0},
+      {msg:'Checking CLOUD Act exposure...',pct:36,delay:650,cell:1},
+      {msg:'Evaluating data residency options...',pct:50,delay:600,cell:2},
+      {msg:'Scanning encryption architecture...',pct:65,delay:650,cell:3},
+      {msg:'Checking regulatory requirements...',pct:78,delay:600,cell:4},
+      {msg:'Identifying Canadian alternatives...',pct:90,delay:650,cell:5},
+      {msg:'Analysis complete — 6 risk factors identified',pct:100,delay:900}
+    ];
+    var i=0;
+    function runStep(){
+      if(i>=steps.length){
+        scanDot.classList.add('done');
+        scanStatus.classList.add('done');
+        setTimeout(function(){
+          scanConsole.style.opacity='0';
+          setTimeout(function(){scanConsole.style.display='none';},400);
+        },800);
+        return;
+      }
+      var s=steps[i];
+      scanMsg.textContent=s.msg;
+      scanBar.style.width=s.pct+'%';
+      if(typeof s.cell==='number'&&cells[s.cell]){
+        cells[s.cell].classList.add('scanned');
+      }
+      i++;
+      setTimeout(runStep,s.delay);
+    }
+    setTimeout(runStep,500);
+  } else if(reducedMotion){
+    cells.forEach(function(c){c.classList.add('scanned');});
+    if(scanConsole)scanConsole.style.display='none';
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Slack Canadian Data Sovereignty & CLOUD Act Analysis | Upper Harbour</title>
+  <meta name="description" content="Slack jurisdiction analysis for Canadian organizations. Salesforce-owned, US-incorporated, CLOUD Act exposed with no dedicated Canadian data residency. What Law 25 and PIPEDA compliance require." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <link rel="canonical" href="https://www.upperharbour.ca/tools/slack" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Slack Canadian Data Sovereignty & CLOUD Act Analysis" />
+  <meta property="og:description" content="Slack is owned by Salesforce, US-incorporated, and CLOUD Act exposed with no Canadian data residency option. What this means for compliance." />
+  <meta property="og:url" content="https://www.upperharbour.ca/tools/slack" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta property="article:published_time" content="2026-02-23" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Slack Canadian Data Sovereignty & CLOUD Act Analysis",
+    "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca" },
+    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" },
+    "datePublished": "2026-02-23",
+    "mainEntityOfPage": "https://www.upperharbour.ca/tools/slack"
+  }
+  </script>
+  <style>
+    .fact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border-md); border: 1px solid var(--border-md); border-radius: 8px; overflow: hidden; margin: 24px 0; }
+    .fact-cell { background: var(--surface); padding: 16px 20px; }
+    .fact-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .fact-value { font-size: 15px; font-weight: 600; color: var(--ice); }
+    .fact-value.exposed { color: var(--red); }
+    .fact-value.review { color: var(--gold); }
+    .fact-value.safe { color: var(--teal); }
+    @media (max-width: 480px) { .fact-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link active">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Map Your Stack</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
+  </div>
+
+  <header class="article-hero">
+    <div class="article-breadcrumb"><a href="/">Home</a> → <a href="/tools">Sovereignty Index</a> → Slack</div>
+    <div class="article-meta">
+      <span class="article-tag">CLOUD Act Exposed</span>
+      <span class="article-tag">No Canadian Residency</span>
+      <span class="article-date">Updated March 2026</span>
+    </div>
+    <h1 class="article-h1">Slack <em>Canadian Data Sovereignty</em> Analysis</h1>
+    <p class="article-intro">Slack is the default communication layer for thousands of Canadian organizations. It is also fully exposed to US jurisdiction with no dedicated Canadian data residency option. Since its acquisition by Salesforce in 2021, Slack's jurisdictional profile has become more complex, not less.</p>
+  </header>
+
+  <div class="author-card" style="max-width:820px;margin:0 auto 0;padding:0 52px;">
+    <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="56" height="56">
+    <div class="author-card-info">
+      <div class="author-card-name"><a href="/founder">Joshua van Es</a></div>
+      <div class="author-card-role">Corporate law · Founder, Upper Harbour</div>
+      <div class="author-card-pubs">Published in The Globe and Mail, Maclean's, OpenCanada, and BetaKit</div>
+    </div>
+  </div>
+
+  <article class="article-body">
+
+    <div class="fact-grid">
+      <div class="fact-cell">
+        <div class="fact-label">Parent Company</div>
+        <div class="fact-value">Salesforce Inc.</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Headquarters</div>
+        <div class="fact-value">San Francisco, CA, United States</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Jurisdiction</div>
+        <div class="fact-value">United States</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">CLOUD Act Status</div>
+        <div class="fact-value exposed">Exposed</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Canadian Data Residency</div>
+        <div class="fact-value exposed">Not Available</div>
+      </div>
+      <div class="fact-cell">
+        <div class="fact-label">Upper Harbour Risk Rating</div>
+        <div class="fact-value exposed">Exposed</div>
+      </div>
+    </div>
+
+    <h2>The Salesforce acquisition changed Slack's compliance profile</h2>
+    <p>Slack Technologies was acquired by Salesforce in July 2021 for $27.7 billion. Before the acquisition, Slack was already US-incorporated and CLOUD Act exposed. What the acquisition changed was the scale and complexity of the data relationship.</p>
+    <p>Slack is now part of the Salesforce platform ecosystem. Salesforce integrations, Slack Connect channels between organizations, and AI-powered features all create data flows that extend beyond the Slack workspace itself. For compliance purposes, assessing Slack now means assessing its position within the broader Salesforce data architecture.</p>
+
+    <h2>Why Slack rates "Exposed" rather than "Review Required"</h2>
+    <p>Upper Harbour rates tools on a three-tier scale: <strong>exposed</strong> (US-jurisdictional with no Canadian data residency), <strong>review required</strong> (US-jurisdictional but Canadian residency available), and <strong>Canadian/non-exposed</strong>. Slack is rated exposed because it combines two risk factors: US parent jurisdiction with CLOUD Act exposure, and no option to store data in Canada.</p>
+    <p>Unlike <a href="/tools/microsoft-365">Microsoft 365</a> or <a href="/tools/google-workspace">Google Workspace</a>, Slack does not offer a Canadian data centre or data residency selection. Slack Enterprise Grid customers can choose between US and EU data residency regions, but Canada is not among them. All Canadian Slack data resides on US infrastructure by default.</p>
+
+    <h2>What data Slack holds</h2>
+    <p>The compliance significance of Slack exposure depends on what flows through it. In most organizations, Slack channels contain: internal strategy discussions, client and customer names, project details, shared files and documents, personal information of employees and contacts, and increasingly, sensitive business data that would previously have been communicated by email or in meetings.</p>
+    <p>Many organizations treat Slack as informal communication and underestimate what accumulates. Slack retains message history, file uploads, reactions, and metadata. For compliance purposes, this is a rich repository of personal and business information — all stored on US servers under US jurisdiction.</p>
+
+    <h2>Slack Connect amplifies the exposure</h2>
+    <p>Slack Connect allows channels shared between different organizations. When a Canadian organization shares a Slack Connect channel with a client or vendor, data from both organizations flows through Slack's US infrastructure. This creates a cross-border transfer not just for your own data, but potentially for your clients' personal information as well.</p>
+    <p>For organizations subject to <a href="/resources/law-25-saas-compliance">Law 25</a>, each Slack Connect channel involving personal information of Quebec residents constitutes a cross-border transfer requiring assessment.</p>
+
+    <h2>AI features and Slack's data use</h2>
+    <p>Salesforce has integrated AI capabilities into Slack, including search summarization and channel digests. These features process message content through AI models — raising the question of where that processing occurs, whether message content is used for model training, and how this interacts with data protection obligations.</p>
+    <p>Organizations should review Slack's current data processing terms to understand how AI features handle workspace content, and whether opting out of AI processing is possible for their plan tier.</p>
+
+    <h2>What this means for Law 25 and PIPEDA compliance</h2>
+    <p>Quebec organizations must produce a <a href="/resources/transfer-impact-assessments-law-25">Transfer Impact Assessment</a> for Slack. The assessment will document that Slack is US-incorporated, CLOUD Act exposed, stores data in the US with no Canadian alternative, and processes personal information of Quebec residents. Available safeguards include Slack's Enterprise Key Management (customer-controlled encryption keys, Enterprise Grid only), Slack's DPA and standard contractual clauses, and organizational policies limiting what personal information flows through Slack.</p>
+    <p>For organizations processing sensitive personal information through Slack — health data, financial records, legal matter details — the exposure level may warrant stronger remediation measures, including restricting certain categories of data from Slack channels entirely.</p>
+
+    <h2>Practical options for Canadian organizations</h2>
+    <p><strong>For most organizations:</strong> Continue using Slack, complete the TIA/PIA documentation, implement Slack's Enterprise Key Management if available on your plan, and establish internal policies about what categories of information should not be shared in Slack.</p>
+    <p><strong>For high-sensitivity environments:</strong> Consider whether Slack is the appropriate tool for communications involving regulated personal information. Canadian alternatives exist for team messaging, though none match Slack's ecosystem integration. A hybrid approach — Slack for general communication, a Canadian-hosted tool for sensitive matters — may be defensible.</p>
+    <p><strong>For government and public sector:</strong> Slack's lack of Canadian data residency makes it difficult to satisfy sovereignty requirements in government procurement contexts. Organizations responding to RFPs with <a href="/resources/data-sovereignty-government-procurement">data sovereignty requirements</a> should document this limitation clearly.</p>
+
+    <div class="callout">
+      <div class="callout-label">Related vendor analyses</div>
+      <p><a href="/tools/microsoft-365">Microsoft 365 →</a> · <a href="/tools/google-workspace">Google Workspace →</a> · <a href="/tools/notion">Notion →</a></p>
+    </div>
+
+
+    <div class="callout" style="border-left-color:var(--gold);">
+      <div class="callout-label" style="color:var(--gold);">BC public bodies — FIPPA compliance note</div>
+      <p>Slack is owned by Salesforce Inc. (US-incorporated) and is subject to the CLOUD Act. BC public bodies using Slack with sensitive personal information must complete a FIPPA privacy impact assessment. Slack's data is primarily stored in the US, with no dedicated Canadian data region, making the jurisdictional risk assessment particularly relevant. <a href="/resources/fippa-saas-compliance-bc-public-bodies">Read the full FIPPA SaaS compliance guide →</a> · <a href="/resources/fippa-pia-template">Download PIA template →</a></p>
+    </div>
+
+  </article>
+
+  <section class="cta-section">
+    <h2>Map your full stack exposure</h2>
+    <p>Slack is one tool. HarbourScan maps your entire SaaS environment to parent jurisdictions, CLOUD Act exposure, and data residency — producing the structured record compliance requires.</p>
+    <a href="/harbourscan" class="cta-btn">Map Your Stack →</a>
+    <p style="font-size:13px;color:var(--muted);margin-top:16px;">Look up any tool: <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Search the Sovereignty Index →</a></p>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">
+          <svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+            <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+            <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/>
+          </svg>
+          <span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span>
+        </div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+          <li><a href="/comply">Compliance Reports</a></li>
+          </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          
+          <li><a href="/cdn-cgi/l/email-protection#ff95908c97bf8a8f8f9a8d979e8d9d908a8dd19c9e">Contact us</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+      <span class="footer-copy">Canadian-owned and operated. Data stays in Canada.</sp
