@@ -54,35 +54,8 @@
   <link rel="stylesheet" href="/assets/site.css" />
 
   <style>
-    @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
-    .article-hero { position:relative; padding:150px 0 60px; overflow:hidden }
-    .article-hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 55% 50% at 40% 35%, rgba(60,184,176,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 65% at 85% 70%, rgba(201,168,76,0.03) 0%, transparent 55%), var(--bg); z-index:0 }
-    .article-hero-bg::after { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(234,240,244,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.015) 1px, transparent 1px); background-size:72px 72px }
-    .article-inner { position:relative; z-index:1 }
-    .breadcrumb { font-size:13px; color:var(--muted); margin-bottom:20px; opacity:0; animation:fadeUp 0.6s ease forwards 0.1s }
-    .breadcrumb a { color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; transition:color 0.2s, border-color 0.2s }
-    .breadcrumb a:hover { color:var(--teal); border-bottom-color:var(--teal) }
-    .article-h1 { font-family:var(--display); font-size:clamp(32px,5vw,52px); font-weight:900; color:var(--ice); line-height:1.1; letter-spacing:-0.5px; margin-bottom:20px; max-width:780px; opacity:0; animation:fadeUp 0.7s ease forwards 0.2s }
-    .article-h1 em { font-style:italic; font-weight:700; color:var(--gold) }
-    .article-byline { display:flex; align-items:center; gap:12px; margin-bottom:8px; opacity:0; animation:fadeUp 0.6s ease forwards 0.35s }
-    .article-byline img { width:36px; height:36px; border-radius:50%; object-fit:cover }
-    .article-byline-text { font-size:13px; color:var(--slate); line-height:1.4 }
-    .article-byline-text strong { color:var(--ice) }
-    .article-byline-text a { color:var(--teal); text-decoration:none }
-    .article-pubs { font-size:12px; color:var(--muted); font-style:italic; opacity:0; animation:fadeUp 0.6s ease forwards 0.4s }
-    .article-sub { font-size:17px; color:var(--slate); line-height:1.72; max-width:640px; margin-top:40px; opacity:0; animation:fadeUp 0.7s ease forwards 0.45s }
-    
-    
-    .article-body h2 { font-family:var(--display); font-size:28px; font-weight:700; color:var(--ice); margin:48px 0 16px; line-height:1.2 }
-    .article-body h2:first-child { margin-top:0 }
-    .article-body h3 { font-size:18px; font-weight:700; color:var(--ice); margin:28px 0 10px }
-    .article-body p { font-size:15px; color:var(--slate); line-height:1.8; margin-bottom:16px }
-    .article-body p:last-child { margin-bottom:0 }
-    .article-body a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3) }
-    .article-body strong { color:var(--ice) }
-    .article-body ul, .article-body ol { padding-left:20px; margin-bottom:20px }
-    .article-body li { font-size:15px; color:var(--slate); line-height:1.7; margin-bottom:8px }
-    .vs-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:32px 0 }
+}
+.vs-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:32px 0 }
     .vs-card { background:var(--surface); padding:28px 24px; border:1px solid var(--border-md); border-radius:8px }
     .vs-label { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:12px }
     .vs-label.green { color:#10B981 }
@@ -96,19 +69,17 @@
     .callout-gold { border-left-color:var(--gold) }
     .mid-cta { background:rgba(20,30,42,0.95); border:1px solid rgba(60,184,176,0.15); border-radius:8px; padding:32px 28px; margin:40px 0; text-align:center }
     .mid-cta p { font-size:14px; color:var(--ice); line-height:1.6; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto }
-    .mid-cta-btn, .article-body .mid-cta-btn { display:inline-block; font-size:13px; font-weight:800; color:#06090E; background:var(--teal); padding:14px 32px; border-radius:4px; text-decoration:none; transition:background 0.2s, transform 0.15s }
+    .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;border-bottom:none !important;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(60,184,176,0.25)}
     .mid-cta-btn:hover { background:#47cec5; transform:translateY(-1px) }
-    .article-body .mid-cta-btn { border-bottom:none }
-    .faq-section { border-top:1px solid var(--border) }
-    .faq-section h2 { font-family:var(--display); font-size:24px; font-weight:700; color:var(--ice); margin:0 0 24px }
-    .faq-item { border-bottom:1px solid var(--border); padding:18px 0 }
+.faq-item { border-bottom:1px solid var(--border); padding:18px 0 }
     .faq-q { font-size:15px; font-weight:700; color:var(--ice); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px }
     .faq-q::after { content:'+'; font-size:20px; color:var(--muted); transition:transform 0.2s }
     .faq-item.open .faq-q::after { transform:rotate(45deg); color:var(--teal) }
     .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.35s ease; padding:0 }
     .faq-item.open .faq-a { max-height:400px; padding:14px 0 4px }
     .faq-a p { font-size:14px; color:var(--slate); line-height:1.7 }
-    @media (max-width:900px) { .article-hero { padding:120px 0 48px }  .vs-grid { grid-template-columns:1fr } }
+    @media (max-width:900px) {
+.vs-grid { grid-template-columns:1fr } }
   </style>
 </head>
 <body>
@@ -141,23 +112,20 @@
     <a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
   </div>
 
-  <section class="article-hero">
-    <div class="article-hero-bg"></div>
-    <div class="article-inner">
-      <div class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/vendors">For Vendors</a> &rarr; Data Residency as Sales Advantage</div>
+  <header class="article-hero">
+<div class="article-breadcrumb"><a href="/">Home</a> &rarr; <a href="/vendors">For Vendors</a> &rarr; Data Residency as Sales Advantage</div>
       <h1 class="article-h1">Canadian Data Residency as a <em>Sales Advantage</em></h1>
-      <div class="article-byline">
-        <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="36" height="36" />
-        <div class="article-byline-text">By <strong>Joshua van Es</strong> &middot; Corporate law &middot; Founder, <a href="/">Upper Harbour</a></div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> &middot; Corporate law &middot; Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean&rsquo;s</em>, <em>The Logic</em>, and <em>BetaKit</em> &middot; March 2026</span>
       </div>
-      <div class="article-pubs">As seen in <em>The Globe and Mail</em>, <em>Maclean&rsquo;s</em>, <em>The Logic</em>, and <em>BetaKit</em> &middot; March 2026</div>
-      <p class="article-sub">The vendor who can answer &ldquo;yes, your data stays in Canada&rdquo; on the first call shortens the procurement cycle by weeks. Here&rsquo;s how to turn your hosting architecture from a compliance detail into a competitive weapon.</p>
     </div>
-  </section>
+      <p style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);">The vendor who can answer &ldquo;yes, your data stays in Canada&rdquo; on the first call shortens the procurement cycle by weeks. Here&rsquo;s how to turn your hosting architecture from a compliance detail into a competitive weapon.</p>
+  </header>
 
-  <section>
-    <div class="container">
-      <div class="article-body">
+  <article class="article-body">
 
         <h2>The question that decides deals</h2>
         <p>Every enterprise sales conversation with a Canadian buyer eventually reaches the same question: <strong>&ldquo;Where is our data stored?&rdquo;</strong></p>
@@ -216,9 +184,7 @@
         <h3>Quebec (any industry)</h3>
         <p>Any organization operating in Quebec is subject to Law 25, which requires a Transfer Impact Assessment before personal information leaves the province. A vendor with Canadian data residency &mdash; ideally with servers in Quebec &mdash; makes the buyer&rsquo;s TIA straightforward. A vendor without it creates compliance work that delays the deal.</p>
 
-        <div class="mid-cta">
-          <p><strong>Make your residency verifiable.</strong> A Sovereign Badge from Upper Harbour independently confirms your Canadian incorporation, hosting, and sovereignty posture &mdash; giving procurement teams documented evidence without a lengthy questionnaire.</p>
-          <a href="/vendors" class="mid-cta-btn">Get Your Sovereign Badge &rarr;</a>
+        <div class="mid-cta"><div class="mid-cta-text"><strong>Make your residency verifiable.</strong> A Sovereign Badge from Upper Harbour independently confirms your Canadian incorporation, hosting, and sovereignty posture &mdash; giving procurement teams documented evidence without a lengthy questionnaire.</div><a href="/vendors" class="mid-cta-btn">Get Your Sovereign Badge &rarr;</a>
         </div>
 
         <h2>How to deploy residency in your sales process</h2>
@@ -255,17 +221,10 @@
         </ul>
         <p>The cost of Canadian hosting regions is comparable to US regions on major cloud providers. The cost of losing deals because you can&rsquo;t answer the residency question is significantly higher.</p>
 
-        <div class="mid-cta">
-          <p><strong>Already hosting in Canada?</strong> Get listed in the Sovereignty Index and make it visible to every procurement team searching for Canadian-hosted options.</p>
-          <a href="/vendors#submit" class="mid-cta-btn">Submit Your Tool &rarr;</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
+        <div class="mid-cta"><div class="mid-cta-text"><strong>Already hosting in Canada?</strong> Get listed in the Sovereignty Index and make it visible to every procurement team searching for Canadian-hosted options.</div><a href="/vendors#submit" class="mid-cta-btn">Submit Your Tool &rarr;</a>
+  </article>
 
   <section class="faq-section">
-    <div class="container">
       <h2>Frequently asked questions</h2>
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does Canadian data residency help close enterprise deals?</div>
@@ -287,7 +246,6 @@
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What if I&rsquo;m a Canadian company hosting in the US?</div>
         <div class="faq-a"><p>You have Canadian jurisdiction (no CLOUD Act) but US data residency. Consider migrating to a Canadian region on AWS, Azure, or GCP &mdash; costs are comparable. Or use a Canadian cloud provider like ThinkOn, eStruxture, or TELUS Cloud.</p></div>
       </div>
-    </div>
   </section>
 
   <footer>

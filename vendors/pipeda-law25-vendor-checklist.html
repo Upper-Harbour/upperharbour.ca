@@ -88,42 +88,8 @@
   <link rel="stylesheet" href="/assets/site.css" />
 
   <style>
-    @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
-
-    .article-hero { position:relative; padding:150px 0 60px; overflow:hidden }
-    .article-hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 55% 50% at 40% 35%, rgba(60,184,176,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 65% at 85% 70%, rgba(201,168,76,0.03) 0%, transparent 55%), var(--bg); z-index:0 }
-    .article-hero-bg::after { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(234,240,244,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.015) 1px, transparent 1px); background-size:72px 72px }
-    .article-inner { position:relative; z-index:1 }
-
-    .breadcrumb { font-size:13px; color:var(--muted); margin-bottom:20px; opacity:0; animation:fadeUp 0.6s ease forwards 0.1s }
-    .breadcrumb a { color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; transition:color 0.2s, border-color 0.2s }
-    .breadcrumb a:hover { color:var(--teal); border-bottom-color:var(--teal) }
-
-    .article-h1 { font-family:var(--display); font-size:clamp(32px,5vw,52px); font-weight:900; color:var(--ice); line-height:1.1; letter-spacing:-0.5px; margin-bottom:20px; max-width:780px; opacity:0; animation:fadeUp 0.7s ease forwards 0.2s }
-    .article-h1 em { font-style:italic; font-weight:700; color:var(--gold) }
-
-    .article-byline { display:flex; align-items:center; gap:12px; margin-bottom:8px; opacity:0; animation:fadeUp 0.6s ease forwards 0.35s }
-    .article-byline img { width:36px; height:36px; border-radius:50%; object-fit:cover }
-    .article-byline-text { font-size:13px; color:var(--slate); line-height:1.4 }
-    .article-byline-text strong { color:var(--ice) }
-    .article-byline-text a { color:var(--teal); text-decoration:none }
-    .article-pubs { font-size:12px; color:var(--muted); font-style:italic; opacity:0; animation:fadeUp 0.6s ease forwards 0.4s }
-
-    .article-sub { font-size:17px; color:var(--slate); line-height:1.72; max-width:640px; margin-top:40px; opacity:0; animation:fadeUp 0.7s ease forwards 0.45s }
-
-    
-    
-    .article-body h2 { font-family:var(--display); font-size:28px; font-weight:700; color:var(--ice); margin:48px 0 16px; line-height:1.2 }
-    .article-body h2:first-child { margin-top:0 }
-    .article-body h3 { font-size:18px; font-weight:700; color:var(--ice); margin:28px 0 10px }
-    .article-body p { font-size:15px; color:var(--slate); line-height:1.8; margin-bottom:16px }
-    .article-body p:last-child { margin-bottom:0 }
-    .article-body a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3) }
-    .article-body strong { color:var(--ice) }
-    .article-body ul, .article-body ol { padding-left:20px; margin-bottom:20px }
-    .article-body li { font-size:15px; color:var(--slate); line-height:1.7; margin-bottom:8px }
-
-    /* Checklist items */
+}
+/* Checklist items */
     .checklist { list-style:none; padding:0; margin:24px 0 }
     .checklist li { position:relative; padding:14px 0 14px 36px; border-bottom:1px solid var(--border); font-size:14px; color:var(--slate); line-height:1.65 }
     .checklist li::before { content:''; position:absolute; left:0; top:18px; width:16px; height:16px; border:2px solid var(--teal); border-radius:3px }
@@ -146,13 +112,9 @@
 
     .mid-cta { background:rgba(20,30,42,0.95); border:1px solid rgba(60,184,176,0.15); border-radius:8px; padding:32px 28px; margin:40px 0; text-align:center }
     .mid-cta p { font-size:14px; color:var(--ice); line-height:1.6; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto }
-    .mid-cta-btn, .article-body .mid-cta-btn { display:inline-block; font-size:13px; font-weight:800; color:#06090E; background:var(--teal); padding:14px 32px; border-radius:4px; text-decoration:none; transition:background 0.2s, transform 0.15s }
+    .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;border-bottom:none !important;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(60,184,176,0.25)}
     .mid-cta-btn:hover { background:#47cec5; transform:translateY(-1px) }
-    .article-body .mid-cta-btn { border-bottom:none }
-
-    .faq-section { border-top:1px solid var(--border) }
-    .faq-section h2 { font-family:var(--display); font-size:24px; font-weight:700; color:var(--ice); margin:0 0 24px }
-    .faq-item { border-bottom:1px solid var(--border); padding:18px 0 }
+.faq-item { border-bottom:1px solid var(--border); padding:18px 0 }
     .faq-q { font-size:15px; font-weight:700; color:var(--ice); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px }
     .faq-q::after { content:'+'; font-size:20px; color:var(--muted); transition:transform 0.2s }
     .faq-item.open .faq-q::after { transform:rotate(45deg); color:var(--teal) }
@@ -161,9 +123,7 @@
     .faq-a p { font-size:14px; color:var(--slate); line-height:1.7 }
 
     @media (max-width:900px) {
-      .article-hero { padding:120px 0 48px }
-      
-      .law-grid { grid-template-columns:1fr }
+.law-grid { grid-template-columns:1fr }
     }
   </style>
 </head>
@@ -198,26 +158,23 @@
   </div>
 
 
-  <section class="article-hero">
-    <div class="article-hero-bg"></div>
-    <div class="article-inner">
-      <div class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/vendors">For Vendors</a> &rarr; Compliance Checklist</div>
+  <header class="article-hero">
+<div class="article-breadcrumb"><a href="/">Home</a> &rarr; <a href="/vendors">For Vendors</a> &rarr; Compliance Checklist</div>
       <h1 class="article-h1">PIPEDA and Law 25 Compliance Checklist <em>for Vendors</em></h1>
 
-      <div class="article-byline">
-        <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="36" height="36" />
-        <div class="article-byline-text">By <strong>Joshua van Es</strong> &middot; Corporate law &middot; Founder, <a href="/">Upper Harbour</a></div>
+          <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
+      <div style="line-height:1.4;">
+        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> &middot; Corporate law &middot; Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
+        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean&rsquo;s</em>, <em>The Logic</em>, and <em>BetaKit</em> &middot; March 2026</span>
       </div>
-      <div class="article-pubs">As seen in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, and <em>BetaKit</em> &middot; March 2026</div>
-
-      <p class="article-sub">Your Canadian customers will ask you about data residency, breach notification, privacy impact assessments, and transfer impact assessments. This is what you need to have ready &mdash; and why having it ready closes deals faster.</p>
     </div>
-  </section>
+
+      <p style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);">Your Canadian customers will ask you about data residency, breach notification, privacy impact assessments, and transfer impact assessments. This is what you need to have ready &mdash; and why having it ready closes deals faster.</p>
+  </header>
 
 
-  <section>
-    <div class="container">
-      <div class="article-body">
+  <article class="article-body">
 
         <h2>This is a sales document, not a legal memo</h2>
         <p>Most compliance checklists are written for lawyers. This one is written for SaaS founders and sales leaders who need to answer the compliance questions that show up in procurement evaluations, enterprise sales calls, and RFP responses.</p>
@@ -321,9 +278,7 @@
           <p><strong>The fastest way to handle all of this:</strong> Be Canadian-incorporated with Canadian data hosting. This eliminates the CLOUD Act question, makes TIAs straightforward, simplifies PIAs, and satisfies FIPPA data residency requirements. Every item on the checklist above becomes easier to answer when your jurisdiction is Canada.</p>
         </div>
 
-        <div class="mid-cta">
-          <p><strong>Want to document your compliance posture for buyers?</strong> A Sovereign Badge from Upper Harbour independently verifies your jurisdiction, hosting, and sovereignty posture &mdash; giving procurement teams the evidence they need without a 30-page questionnaire.</p>
-          <a href="/vendors" class="mid-cta-btn">See Vendor Services &rarr;</a>
+        <div class="mid-cta"><div class="mid-cta-text"><strong>Want to document your compliance posture for buyers?</strong> A Sovereign Badge from Upper Harbour independently verifies your jurisdiction, hosting, and sovereignty posture &mdash; giving procurement teams the evidence they need without a 30-page questionnaire.</div><a href="/vendors" class="mid-cta-btn">See Vendor Services &rarr;</a>
         </div>
 
         <h2>What&rsquo;s coming: Bill C-27</h2>
@@ -340,18 +295,10 @@
         <p>The vendors who win in the Canadian market aren&rsquo;t the ones who scramble to answer compliance questions during procurement. They&rsquo;re the ones who have everything documented, published, and independently verified before the first call.</p>
         <p>Your competitors are getting the same questions from the same procurement teams. The one who answers fastest &mdash; with documented, verifiable evidence &mdash; closes first. That&rsquo;s not a compliance strategy. That&rsquo;s a <a href="/vendors/compete-against-us-saas">competitive strategy</a>.</p>
 
-        <div class="mid-cta">
-          <p><strong>Get listed, get verified, get ahead.</strong> Submit your tool to the Sovereignty Index for free, or earn a Sovereign Badge to prove your compliance posture to every Canadian buyer who asks.</p>
-          <a href="/vendors#submit" class="mid-cta-btn">Submit Your Tool &rarr;</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
+        <div class="mid-cta"><div class="mid-cta-text"><strong>Get listed, get verified, get ahead.</strong> Submit your tool to the Sovereignty Index for free, or earn a Sovereign Badge to prove your compliance posture to every Canadian buyer who asks.</div><a href="/vendors#submit" class="mid-cta-btn">Submit Your Tool &rarr;</a>
+  </article>
 
   <section class="faq-section">
-    <div class="container">
       <h2>Frequently asked questions</h2>
 
       <div class="faq-item">
@@ -378,7 +325,6 @@
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will Bill C-27 change these requirements?</div>
         <div class="faq-a"><p>Bill C-27 would modernize PIPEDA with higher penalties (5% of global revenue), expanded rights, and stricter consent. Vendors who already meet Law 25&rsquo;s requirements will be well-positioned &mdash; Law 25 is currently Canada&rsquo;s strictest privacy framework.</p></div>
       </div>
-    </div>
   </section>
 
 
