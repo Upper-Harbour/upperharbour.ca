@@ -55,10 +55,10 @@
 
   <style>
     @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
-    .article-hero { position:relative; padding:150px 52px 60px; overflow:hidden }
+    .article-hero { position:relative; padding:150px 0 60px; overflow:hidden }
     .article-hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 55% 50% at 40% 35%, rgba(60,184,176,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 65% at 85% 70%, rgba(201,168,76,0.04) 0%, transparent 55%), var(--bg); z-index:0 }
     .article-hero-bg::after { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(234,240,244,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.015) 1px, transparent 1px); background-size:72px 72px }
-    .article-inner { position:relative; z-index:1; max-width:1120px; margin:0 auto }
+    .article-inner { position:relative; z-index:1; max-width:1120px; margin:0 auto; padding:0 52px }
     .breadcrumb { font-size:13px; color:var(--muted); margin-bottom:20px; opacity:0; animation:fadeUp 0.6s ease forwards 0.1s }
     .breadcrumb a { color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; transition:color 0.2s, border-color 0.2s }
     .breadcrumb a:hover { color:var(--teal); border-bottom-color:var(--teal) }
@@ -70,7 +70,7 @@
     .article-byline-text strong { color:var(--ice) }
     .article-byline-text a { color:var(--teal); text-decoration:none }
     .article-pubs { font-size:12px; color:var(--muted); font-style:italic; opacity:0; animation:fadeUp 0.6s ease forwards 0.4s }
-    .article-sub { font-size:17px; color:var(--slate); line-height:1.72; max-width:640px; margin-top:28px; opacity:0; animation:fadeUp 0.7s ease forwards 0.45s }
+    .article-sub { font-size:17px; color:var(--slate); line-height:1.72; max-width:640px; margin-top:40px; opacity:0; animation:fadeUp 0.7s ease forwards 0.45s }
     .container { max-width:1120px; margin:0 auto; padding:0 52px }
     .article-body { max-width:740px; padding:60px 0 }
     .article-body h2 { font-family:var(--display); font-size:28px; font-weight:700; color:var(--ice); margin:48px 0 16px; line-height:1.2 }
@@ -82,8 +82,8 @@
     .article-body strong { color:var(--ice) }
     .article-body ul, .article-body ol { padding-left:20px; margin-bottom:20px }
     .article-body li { font-size:15px; color:var(--slate); line-height:1.7; margin-bottom:8px }
-    .proof-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:2px; background:var(--border-md); border-radius:8px; overflow:hidden; margin:32px 0 }
-    .proof-card { background:var(--surface); padding:28px 24px }
+    .proof-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)); gap:12px; margin:32px 0 }
+    .proof-card { background:var(--surface); padding:28px 24px; border:1px solid var(--border-md); border-radius:8px }
     .proof-num { font-family:var(--mono); font-size:24px; font-weight:700; color:var(--teal); margin-bottom:4px }
     .proof-title { font-size:14px; font-weight:700; color:var(--ice); margin-bottom:8px }
     .proof-desc { font-size:13px; color:var(--muted); line-height:1.65 }
@@ -105,7 +105,7 @@
     .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.35s ease; padding:0 }
     .faq-item.open .faq-a { max-height:400px; padding:14px 0 4px }
     .faq-a p { font-size:14px; color:var(--slate); line-height:1.7 }
-    @media (max-width:900px) { .article-hero { padding:120px 24px 48px } .container { padding:0 24px } .proof-grid { grid-template-columns:1fr } }
+    @media (max-width:900px) { .article-hero { padding:120px 0 48px } .article-inner { padding:0 24px } .container { padding:0 24px } .proof-grid { grid-template-columns:1fr } }
   </style>
 </head>
 <body>
