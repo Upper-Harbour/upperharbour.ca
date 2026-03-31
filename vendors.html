@@ -140,6 +140,12 @@
     .svc-items li::before { content:''; position:absolute; left:0; top:12px; width:8px; height:5px; border-left:2px solid var(--teal); border-bottom:2px solid var(--teal); transform:rotate(-45deg) }
     .svc-badge { margin-top:20px; display:inline-flex; align-items:center; gap:8px; background:var(--teal-deep); color:var(--ice); font-size:11px; font-weight:700; letter-spacing:0.06em; padding:10px 18px; border-radius:6px }
     .svc-badge-note { font-size:10px; color:var(--muted); margin-top:6px }
+    .svc-cta { display:block; margin-top:24px; padding:12px 0; font-size:13px; font-weight:700; text-align:center; text-decoration:none; border-radius:4px; transition:background 0.2s, transform 0.15s }
+    .svc-cta:hover { transform:translateY(-1px) }
+    .svc-cta.primary { background:var(--teal); color:var(--bg) }
+    .svc-cta.primary:hover { background:#47cec5 }
+    .svc-cta.ghost { background:transparent; color:var(--teal); border:1px solid var(--teal) }
+    .svc-cta.ghost:hover { background:rgba(60,184,176,0.08) }
 
     /* Bundle */
     .bundle { display:flex; align-items:center; justify-content:space-between; background:var(--surface); border:1px solid var(--gold); border-radius:8px; padding:28px 36px; margin-top:32px }
@@ -272,6 +278,7 @@
             <li>Public profile on upperharbour.ca</li>
             <li>Self-serve submission &mdash; live within 5 business days</li>
           </ul>
+          <a href="mailto:josh@upperharbour.ca?subject=Index%20Listing%20Request" class="svc-cta ghost">Submit Your Tool &rarr;</a>
         </div>
 
         <!-- Sovereign Badge -->
@@ -286,6 +293,7 @@
             <li>Annual renewal keeps credentials current</li>
           </ul>
           <p style="margin-top:20px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);padding-top:14px">Includes 4 badge styles for light &amp; dark backgrounds, horizontal &amp; vertical layouts.</p>
+          <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="svc-cta primary">Get Your Badge &rarr;</a>
         </div>
 
         <!-- Competitor Report -->
@@ -299,6 +307,7 @@
             <li>Data residency, encryption, and jurisdictional breakdown</li>
             <li>Formatted for RFP responses and enterprise sales decks</li>
           </ul>
+          <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="svc-cta primary">Book a Call &rarr;</a>
         </div>
 
         <!-- Dedicated Tool Page -->
@@ -312,6 +321,7 @@
             <li>Comparison table, jurisdiction analysis, and FAQ schema</li>
             <li>Permanent link &mdash; becomes the definitive source for your product</li>
           </ul>
+          <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="svc-cta primary">Book a Call &rarr;</a>
         </div>
 
       </div>
@@ -325,6 +335,7 @@
         <div>
           <div class="bundle-price">$1,299</div>
           <div class="bundle-sub">One engagement, full coverage</div>
+          <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" style="display:inline-block;margin-top:12px;font-size:12px;font-weight:700;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,0.3)">Book a Call &rarr;</a>
         </div>
       </div>
     </div>
