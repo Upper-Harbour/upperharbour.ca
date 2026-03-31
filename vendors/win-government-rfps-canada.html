@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Win Government RFPs as a Canadian SaaS Vendor</title>
+  <meta name="description" content="A tactical guide to winning Canadian government RFPs. How evaluators score proposals, where sovereignty fits in the scoring matrix, and how to differentiate against larger US competitors." />
+  <link rel="canonical" href="https://www.upperharbour.ca/vendors/win-government-rfps-canada" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="How to Win Government RFPs as a Canadian SaaS Vendor" />
+  <meta property="og:description" content="How evaluators score government RFPs, where sovereignty fits in scoring, and how to beat larger US competitors." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://www.upperharbour.ca/vendors/win-government-rfps-canada" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Win Government RFPs as a Canadian SaaS Vendor" />
+  <meta name="twitter:description" content="How evaluators score government RFPs and where sovereignty fits in the scoring matrix." />
+  <meta name="twitter:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Win Government RFPs as a Canadian SaaS Vendor",
+    "author": { "@type": "Person", "name": "Joshua van Es", "url": "https://joshuavanes.ca", "jobTitle": "Corporate Lawyer", "worksFor": { "@type": "Organization", "name": "Upper Harbour" } },
+    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" },
+    "datePublished": "2026-03-30",
+    "dateModified": "2026-03-30",
+    "mainEntityOfPage": "https://www.upperharbour.ca/vendors/win-government-rfps-canada"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How are Canadian government SaaS RFPs typically scored?", "acceptedAnswer": { "@type": "Answer", "text": "Government SaaS RFPs typically use weighted scoring across technical requirements (30-50%), security and compliance (20-30%), pricing (20-30%), and past performance (10-20%). Under the Buy Canadian policy, Canadian suppliers receive a 10% bid price reduction and up to 25% of evaluation score is allocated to Canadian content. The exact weights are published in each RFP's evaluation section." } },
+      { "@type": "Question", "name": "How does sovereignty factor into government RFP scoring?", "acceptedAnswer": { "@type": "Answer", "text": "Sovereignty increasingly appears in RFP evaluation criteria under security and compliance sections. Government evaluators assess data residency, jurisdiction of the parent company, CLOUD Act exposure, and encryption standards. The Buy Canadian policy adds a separate 25% Canadian content evaluation weight. Canadian vendors who document their sovereignty posture clearly score higher in these sections without additional effort." } },
+      { "@type": "Question", "name": "Can small Canadian SaaS companies win against Microsoft and Salesforce?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Government procurement evaluates on criteria where small Canadian vendors have structural advantages: sovereignty (no CLOUD Act), Canadian content scoring (Buy Canadian policy), data residency (Canadian hosting on all plans, not just enterprise), and responsive support (same time zone, same regulatory context). The Small and Medium Business Procurement Program launching spring 2026 will create additional reserved opportunities for Canadian SMBs." } },
+      { "@type": "Question", "name": "What should I include in the compliance section of a government RFP?", "acceptedAnswer": { "@type": "Answer", "text": "Include your jurisdiction of incorporation, hosting location with specific data centre details, CLOUD Act status, encryption standards, security certifications (SOC 2, ISO 27001), subprocessor list, breach notification commitment, and any independent sovereignty verification like an Upper Harbour Sovereign Badge. For Protected B requirements, document your alignment with GC Cloud Control Profiles." } }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <style>
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+    .article-hero { position:relative; padding:150px 52px 60px; overflow:hidden }
+    .article-hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 55% 50% at 40% 35%, rgba(60,184,176,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 65% at 85% 70%, rgba(201,168,76,0.04) 0%, transparent 55%), var(--bg); z-index:0 }
+    .article-hero-bg::after { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(234,240,244,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.015) 1px, transparent 1px); background-size:72px 72px }
+    .article-inner { position:relative; z-index:1; max-width:1120px; margin:0 auto }
+    .breadcrumb { font-size:13px; color:var(--muted); margin-bottom:20px; opacity:0; animation:fadeUp 0.6s ease forwards 0.1s }
+    .breadcrumb a { color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; transition:color 0.2s, border-color 0.2s }
+    .breadcrumb a:hover { color:var(--teal); border-bottom-color:var(--teal) }
+    .article-h1 { font-family:var(--display); font-size:clamp(32px,5vw,52px); font-weight:900; color:var(--ice); line-height:1.1; letter-spacing:-0.5px; margin-bottom:20px; max-width:780px; opacity:0; animation:fadeUp 0.7s ease forwards 0.2s }
+    .article-h1 em { font-style:italic; font-weight:700; color:var(--gold) }
+    .article-byline { display:flex; align-items:center; gap:12px; margin-bottom:8px; opacity:0; animation:fadeUp 0.6s ease forwards 0.35s }
+    .article-byline img { width:36px; height:36px; border-radius:50%; object-fit:cover }
+    .article-byline-text { font-size:13px; color:var(--slate); line-height:1.4 }
+    .article-byline-text strong { color:var(--ice) }
+    .article-byline-text a { color:var(--teal); text-decoration:none }
+    .article-pubs { font-size:12px; color:var(--muted); font-style:italic; opacity:0; animation:fadeUp 0.6s ease forwards 0.4s }
+    .article-sub { font-size:17px; color:var(--slate); line-height:1.72; max-width:640px; margin-top:28px; opacity:0; animation:fadeUp 0.7s ease forwards 0.45s }
+    .container { max-width:1120px; margin:0 auto; padding:0 52px }
+    .article-body { max-width:740px; padding:60px 0 }
+    .article-body h2 { font-family:var(--display); font-size:28px; font-weight:700; color:var(--ice); margin:48px 0 16px; line-height:1.2 }
+    .article-body h2:first-child { margin-top:0 }
+    .article-body h3 { font-size:18px; font-weight:700; color:var(--ice); margin:28px 0 10px }
+    .article-body p { font-size:15px; color:var(--slate); line-height:1.8; margin-bottom:16px }
+    .article-body p:last-child { margin-bottom:0 }
+    .article-body a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3) }
+    .article-body strong { color:var(--ice) }
+    .article-body ul, .article-body ol { padding-left:20px; margin-bottom:20px }
+    .article-body li { font-size:15px; color:var(--slate); line-height:1.7; margin-bottom:8px }
+    .score-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--border-md); border-radius:8px; overflow:hidden; margin:32px 0 }
+    .score-card { background:var(--surface); padding:24px 20px }
+    .score-weight { font-family:var(--mono); font-size:28px; font-weight:700; line-height:1; margin-bottom:4px }
+    .score-weight.teal { color:var(--teal) }
+    .score-weight.gold { color:var(--gold) }
+    .score-label { font-size:14px; font-weight:700; color:var(--ice); margin-bottom:6px }
+    .score-desc { font-size:12px; color:var(--muted); line-height:1.5 }
+    .callout { background:var(--surface); border:1px solid var(--border-md); border-left:3px solid var(--teal); border-radius:0 6px 6px 0; padding:24px 28px; margin:32px 0 }
+    .callout p { font-size:14px; color:var(--slate); line-height:1.7; margin-bottom:0 }
+    .callout strong { color:var(--ice) }
+    .callout-gold { border-left-color:var(--gold) }
+    .mid-cta { background:rgba(20,30,42,0.95); border:1px solid rgba(60,184,176,0.15); border-radius:8px; padding:32px 28px; margin:40px 0; text-align:center }
+    .mid-cta p { font-size:14px; color:var(--ice); line-height:1.6; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto }
+    .mid-cta-btn { display:inline-block; font-size:13px; font-weight:800; color:var(--bg); background:var(--teal); padding:14px 32px; border-radius:4px; text-decoration:none; transition:background 0.2s, transform 0.15s }
+    .mid-cta-btn:hover { background:#47cec5; transform:translateY(-1px) }
+    .faq-section { padding:60px 0; border-top:1px solid var(--border) }
+    .faq-section h2 { font-family:var(--display); font-size:24px; font-weight:700; color:var(--ice); margin:0 0 24px }
+    .faq-item { border-bottom:1px solid var(--border); padding:18px 0 }
+    .faq-q { font-size:15px; font-weight:700; color:var(--ice); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px }
+    .faq-q::after { content:'+'; font-size:20px; color:var(--muted); transition:transform 0.2s }
+    .faq-item.open .faq-q::after { transform:rotate(45deg); color:var(--teal) }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.35s ease; padding:0 }
+    .faq-item.open .faq-a { max-height:400px; padding:14px 0 4px }
+    .faq-a p { font-size:14px; color:var(--slate); line-height:1.7 }
+    @media (max-width:900px) { .article-hero { padding:120px 24px 48px } .container { padding:0 24px } .score-grid { grid-template-columns:1fr } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Map Your Stack</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a>
+    <a href="/tools">Sovereignty Index</a>
+    <a href="/signals">Signals</a>
+    <a href="/resources">Compliance</a>
+    <a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
+  </div>
+
+  <section class="article-hero">
+    <div class="article-hero-bg"></div>
+    <div class="article-inner">
+      <div class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/vendors">For Vendors</a> &rarr; Winning Government RFPs</div>
+      <h1 class="article-h1">How to Win Government RFPs as a <em>Canadian SaaS Vendor</em></h1>
+      <div class="article-byline">
+        <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="36" height="36" />
+        <div class="article-byline-text">By <strong>Joshua van Es</strong> &middot; Corporate law &middot; Founder, <a href="/">Upper Harbour</a></div>
+      </div>
+      <div class="article-pubs">As seen in <em>The Globe and Mail</em>, <em>Maclean&rsquo;s</em>, <em>The Logic</em>, and <em>BetaKit</em> &middot; March 2026</div>
+      <p class="article-sub">Government RFPs are not enterprise sales decks. They have specific scoring structures, mandatory requirements, and evaluation criteria that reward vendors who understand the system. Here&rsquo;s how to structure your response to maximize your score.</p>
+    </div>
+  </section>
+
+  <section style="border-top:1px solid var(--border)">
+    <div class="container">
+      <div class="article-body">
+
+        <h2>How government evaluators actually score RFPs</h2>
+        <p>Government procurement uses <strong>weighted scoring matrices</strong>. Every criterion has a defined point value, and evaluators score each section independently. The weights are typically published in the RFP document itself &mdash; which means you know exactly what matters before you start writing.</p>
+        <p>For SaaS procurement, the typical scoring breakdown looks like this:</p>
+
+        <div class="score-grid">
+          <div class="score-card">
+            <div class="score-weight teal">30&ndash;50%</div>
+            <div class="score-label">Technical requirements</div>
+            <div class="score-desc">Product capabilities, feature completeness, integration support, scalability, user experience. Does your product do what the RFP asks for?</div>
+          </div>
+          <div class="score-card">
+            <div class="score-weight teal">20&ndash;30%</div>
+            <div class="score-label">Security and compliance</div>
+            <div class="score-desc">Data residency, encryption, CLOUD Act status, security certifications, breach notification. This section is growing &mdash; modern SaaS RFPs allocate 20&ndash;30% here.</div>
+          </div>
+          <div class="score-card">
+            <div class="score-weight gold">20&ndash;30%</div>
+            <div class="score-label">Pricing</div>
+            <div class="score-desc">Total cost of ownership, licensing model, implementation costs. Canadian suppliers get a 10% price reduction for evaluation purposes under Buy Canadian.</div>
+          </div>
+          <div class="score-card">
+            <div class="score-weight gold">25%</div>
+            <div class="score-label">Canadian content (Buy Canadian)</div>
+            <div class="score-desc">New since December 2025. Up to 25% of total score allocated to Canadian value-added content. Development, R&amp;D, hosting, and support in Canada all count.</div>
+          </div>
+        </div>
+
+        <p>The key insight: <strong>security/compliance and Canadian content together can account for 45&ndash;55% of the total evaluation</strong>. This is where Canadian SaaS vendors have a structural advantage that no US competitor can match.</p>
+
+        <div class="callout">
+          <p><strong>Read the Basis of Selection.</strong> Every government RFP includes a &ldquo;Basis of Selection&rdquo; or &ldquo;Evaluation Procedures&rdquo; section that tells you exactly how bids will be scored. Read it before you write a single word. Structure your entire response around it. Vendors who mirror the RFP&rsquo;s evaluation structure in their response make it easy for evaluators to award points.</p>
+        </div>
+
+        <h2>The sovereignty scoring advantage</h2>
+        <p>Sovereignty is no longer a secondary consideration in government procurement &mdash; it&rsquo;s baked into the scoring structure. Here&rsquo;s where Canadian vendors pick up points that US competitors structurally cannot:</p>
+
+        <h3>Security and compliance section (20&ndash;30%)</h3>
+        <p>When the RFP asks about data residency, jurisdiction, and CLOUD Act exposure, your answer as a Canadian vendor is short and clean. US vendors must explain their mitigation measures, document their limitations, and hope the evaluator gives them partial credit. You get full marks.</p>
+        <p>Include in your response:</p>
+        <ul>
+          <li>Jurisdiction of incorporation (province, Canada)</li>
+          <li>Hosting location with specific data centre details</li>
+          <li>Explicit CLOUD Act status statement: &ldquo;Not subject to the US CLOUD Act&rdquo;</li>
+          <li>Security certifications (SOC 2, ISO 27001)</li>
+          <li>Encryption standards and key management</li>
+          <li>Breach notification commitment (72 hours for Law 25 alignment)</li>
+          <li>Sovereign Badge or independent verification</li>
+        </ul>
+
+        <h3>Canadian content section (up to 25%)</h3>
+        <p>Under the <a href="/vendors/buy-canadian-procurement-policy">Buy Canadian policy</a>, procuring departments must allocate up to 25% of the evaluation score to Canadian value-added content. For a SaaS company, Canadian content includes development team location, R&amp;D activities, hosting infrastructure, support operations, and IP ownership.</p>
+        <p>If your entire operation is Canadian, you can claim close to 100% Canadian content &mdash; capturing the full 25% advantage. A US vendor with a Canadian sales office and Canadian data centre gets partial credit at best.</p>
+
+        <h3>Price evaluation (20&ndash;30%)</h3>
+        <p>Canadian suppliers receive a <strong>10% reduction to their financial proposal</strong> for evaluation purposes. Your $100,000 bid is evaluated as $90,000. This doesn&rsquo;t change the actual contract price &mdash; it&rsquo;s a scoring mechanism that advantages Canadian vendors in the evaluation.</p>
+
+        <div class="mid-cta">
+          <p><strong>Attach sovereignty evidence to every RFP.</strong> A Competitor Sovereignty Report from Upper Harbour gives evaluators a side-by-side comparison of your sovereignty posture against US alternatives &mdash; formatted for RFP appendices.</p>
+          <a href="/vendors" class="mid-cta-btn">Get a Competitor Report &rarr;</a>
+        </div>
+
+        <h2>How to beat Microsoft (and Salesforce, and AWS)</h2>
+        <p>Small Canadian SaaS companies can and do beat the global incumbents in government procurement. Here&rsquo;s how:</p>
+
+        <h3>Don&rsquo;t compete on feature count</h3>
+        <p>Microsoft has more features than you. That&rsquo;s not the game. Government evaluators score against the <strong>specific requirements listed in the RFP</strong>, not against a feature catalogue. If the RFP asks for 15 capabilities and you deliver all 15, you score the same as Microsoft on technical requirements &mdash; regardless of the 500 features you don&rsquo;t have.</p>
+
+        <h3>Compete on sovereignty and compliance</h3>
+        <p>Microsoft is US-incorporated and CLOUD Act exposed. Their Canadian data residency is a geographic configuration, not jurisdictional protection. In the security/compliance section, your sovereignty story is cleaner, simpler, and scores higher. This is 20&ndash;30% of the evaluation that you win structurally.</p>
+
+        <h3>Compete on Canadian content</h3>
+        <p>Microsoft&rsquo;s Canadian content percentage is limited to their Canadian office operations &mdash; a fraction of their global development, hosting, and R&amp;D footprint. Your Canadian content is likely 80&ndash;100%. That&rsquo;s up to 25% of the evaluation where you have a mathematical advantage.</p>
+
+        <h3>Compete on support and proximity</h3>
+        <p>Government buyers value responsive support in their time zone, in their language, with their regulatory context. When a federal department in Ottawa has a problem at 3pm on a Tuesday, they want to call someone in Canada &mdash; not a global support queue routing to Bangalore. Make your support model a selling point, not an afterthought.</p>
+
+        <h3>Compete on price</h3>
+        <p>Your 10% price evaluation advantage under Buy Canadian means you can price higher than a US competitor and still score better. If your total cost of ownership is within 10% of the US vendor, you win on price evaluation. Combined with your sovereignty and Canadian content advantages, the math is overwhelmingly in your favour.</p>
+
+        <div class="callout-gold callout">
+          <p><strong>The combined advantage:</strong> A Canadian SaaS vendor competing against a US incumbent captures scoring advantages across security/compliance (20&ndash;30%), Canadian content (25%), and price (10% reduction). Even if the US vendor has a technically superior product, the Canadian vendor can win on total evaluation score. This is the structural shift the Buy Canadian policy created.</p>
+        </div>
+
+        <h2>Structuring your RFP response</h2>
+        <p>Government RFP responses follow a specific format. Here&rsquo;s how to structure yours for maximum score:</p>
+
+        <h3>Mirror the RFP structure</h3>
+        <p>Use the same section numbers and headings as the RFP. If the RFP has 12 evaluation criteria, your response should have 12 clearly labelled sections addressing each one. Make it effortless for evaluators to find your answers and award points.</p>
+
+        <h3>Answer the question first</h3>
+        <p>Start every section with a direct answer to the evaluation criterion. &ldquo;Yes, we comply. Here&rsquo;s how.&rdquo; Then provide the supporting detail. Evaluators review dozens of proposals &mdash; the ones that make their job easy score better.</p>
+
+        <h3>Use their language</h3>
+        <p>If the RFP says &ldquo;data residency,&rdquo; use &ldquo;data residency&rdquo; in your response &mdash; not &ldquo;data hosting&rdquo; or &ldquo;cloud deployment.&rdquo; Evaluators are looking for keyword matches against their scoring rubric. Use their exact terms.</p>
+
+        <h3>Provide evidence, not claims</h3>
+        <p>Generic claims get low scores. Specific evidence gets full marks. Instead of &ldquo;we prioritize security,&rdquo; write &ldquo;SOC 2 Type II audited annually, most recent audit completed [date], letter of attestation attached as Appendix C.&rdquo; Instead of &ldquo;Canadian-owned,&rdquo; write &ldquo;Incorporated in [province], Canada. Federal corporation number [number]. No US subsidiaries or operations. Sovereign Badge verification attached as Appendix D.&rdquo;</p>
+
+        <h3>Include appendices</h3>
+        <p>Attach your trust documentation as appendices that evaluators can reference: SOC 2 letter of attestation, Sovereign Badge, Competitor Sovereignty Report, subprocessor list, DPA template, insurance certificates. Each appendix supports a specific evaluation criterion.</p>
+
+        <h2>After submission</h2>
+        <p>Government procurement doesn&rsquo;t end at submission. Here&rsquo;s what to expect:</p>
+        <ul>
+          <li><strong>Clarification requests.</strong> Evaluators may ask for additional information or clarification. Respond promptly and precisely &mdash; this is part of the evaluation.</li>
+          <li><strong>Debriefing.</strong> Whether you win or lose, request a debriefing. Government evaluators are required to provide feedback on your score and areas for improvement. This is invaluable intelligence for your next bid.</li>
+          <li><strong>Contract history.</strong> CanadaBuys publishes contract history for past awards. Research who won similar contracts, what they bid, and how they were evaluated. This is public information and powerful competitive intelligence.</li>
+          <li><strong>Build relationships.</strong> Government procurement is relationship-driven within ethical bounds. Attend industry days, respond to Requests for Information, and engage with Procurement Assistance Canada (PAC) regional offices. Being known before the RFP drops is an advantage.</li>
+        </ul>
+
+        <div class="mid-cta">
+          <p><strong>Build your RFP toolkit.</strong> Get listed in the Sovereignty Index (free), earn a Sovereign Badge ($249), or get a Competitor Report ($499) to attach as evidence in every government RFP response.</p>
+          <a href="/vendors" class="mid-cta-btn">See All Vendor Services &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How are government SaaS RFPs scored?</div>
+        <div class="faq-a"><p>Using weighted scoring matrices: technical requirements (30&ndash;50%), security and compliance (20&ndash;30%), pricing (20&ndash;30%), and Canadian content under Buy Canadian (up to 25%). Exact weights are published in each RFP&rsquo;s evaluation section.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does sovereignty factor into scoring?</div>
+        <div class="faq-a"><p>Sovereignty appears in security/compliance sections (data residency, CLOUD Act, jurisdiction) and in the Buy Canadian content evaluation (25% weight). Canadian vendors score higher in both without additional effort because their compliance story is structurally cleaner.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can small Canadian companies beat Microsoft in government RFPs?</div>
+        <div class="faq-a"><p>Yes. Evaluators score against specific RFP requirements, not feature catalogues. Canadian vendors have structural advantages in sovereignty (20&ndash;30%), Canadian content (25%), and price (10% evaluation reduction). The SMB Procurement Program launching spring 2026 creates additional reserved opportunities.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What should I include in the compliance section?</div>
+        <div class="faq-a"><p>Jurisdiction of incorporation, hosting location with data centre specifics, CLOUD Act status, encryption standards, security certifications, subprocessor list, breach notification commitment, and independent sovereignty verification. For Protected B, document alignment with GC Cloud Control Profiles.</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How do I research past government contract awards?</div>
+        <div class="faq-a"><p>CanadaBuys publishes contract history for past awards, including who won, what they bid, and contract values. Use this to research competitors and understand evaluation patterns. Also request debriefings after every bid &mdash; evaluators must provide scoring feedback.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/vendors">For Vendors</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+</body>
+</html>
