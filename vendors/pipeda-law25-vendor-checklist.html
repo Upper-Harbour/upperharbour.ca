@@ -87,44 +87,37 @@
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/site.css" />
 
-  <style>
-}
-/* Checklist items */
-    .checklist { list-style:none; padding:0; margin:24px 0 }
-    .checklist li { position:relative; padding:14px 0 14px 36px; border-bottom:1px solid var(--border); font-size:14px; color:var(--slate); line-height:1.65 }
-    .checklist li::before { content:''; position:absolute; left:0; top:18px; width:16px; height:16px; border:2px solid var(--teal); border-radius:3px }
-    .checklist li strong { color:var(--ice) }
+    <style>
+    .checklist{list-style:none;padding:0;margin:24px 0}
+    .checklist li{position:relative;padding:14px 0 14px 36px;border-bottom:1px solid var(--border);font-size:14px;color:var(--slate);line-height:1.65}
+    .checklist li::before{content:'';position:absolute;left:0;top:18px;width:16px;height:16px;border:2px solid var(--teal);border-radius:3px}
+    .checklist li strong{color:var(--ice)}
+    .law-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0 32px}
+    .law-card{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:24px 20px}
+    .law-name{font-family:var(--display);font-size:18px;font-weight:700;color:var(--ice);margin-bottom:4px}
+    .law-scope{font-size:12px;color:var(--muted);margin-bottom:12px}
+    .law-card ul{list-style:none;padding:0;margin:0}
+    .law-card li{font-size:13px;color:var(--slate);line-height:1.5;padding:5px 0 5px 16px;position:relative}
+    .law-card li::before{content:'';position:absolute;left:0;top:11px;width:6px;height:4px;border-left:1.5px solid var(--teal);border-bottom:1.5px solid var(--teal);transform:rotate(-45deg)}
+    .callout-gold{border-left-color:var(--gold)}
+    .callout-red{border-left-color:var(--red)}
+    @media(max-width:700px){.law-grid{grid-template-columns:1fr}}
 
-    /* Law comparison cards */
-    .law-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin:32px 0 }
-    .law-card { background:var(--surface); padding:28px 24px; border:1px solid var(--border-md); border-radius:8px }
-    .law-name { font-family:var(--display); font-size:18px; font-weight:700; color:var(--ice); margin-bottom:4px }
-    .law-scope { font-size:12px; color:var(--muted); margin-bottom:12px }
-    .law-card ul { list-style:none; padding:0; margin:0 }
-    .law-card li { font-size:13px; color:var(--slate); line-height:1.5; padding:5px 0 5px 16px; position:relative }
-    .law-card li::before { content:''; position:absolute; left:0; top:11px; width:6px; height:4px; border-left:1.5px solid var(--teal); border-bottom:1.5px solid var(--teal); transform:rotate(-45deg) }
-
-    .callout { background:var(--surface); border:1px solid var(--border-md); border-left:3px solid var(--teal); border-radius:0 6px 6px 0; padding:24px 28px; margin:32px 0 }
-    .callout p { font-size:14px; color:var(--slate); line-height:1.7; margin-bottom:0 }
-    .callout strong { color:var(--ice) }
-    .callout-gold { border-left-color:var(--gold) }
-    .callout-red { border-left-color:var(--red) }
-
-    .mid-cta { background:rgba(20,30,42,0.95); border:1px solid rgba(60,184,176,0.15); border-radius:8px; padding:32px 28px; margin:40px 0; text-align:center }
-    .mid-cta p { font-size:14px; color:var(--ice); line-height:1.6; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto }
+    /* Mid CTA */
+    .mid-cta{background:rgba(20,30,42,0.95);border:1px solid rgba(60,184,176,0.15);border-radius:8px;padding:32px 28px;margin:28px 0;text-align:center}
+    .mid-cta-text{font-size:14px;color:var(--ice);line-height:1.6;margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto}
+    .mid-cta-text strong{color:var(--ice)}
     .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;border-bottom:none !important;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(60,184,176,0.25)}
-    .mid-cta-btn:hover { background:#47cec5; transform:translateY(-1px) }
-.faq-item { border-bottom:1px solid var(--border); padding:18px 0 }
-    .faq-q { font-size:15px; font-weight:700; color:var(--ice); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px }
-    .faq-q::after { content:'+'; font-size:20px; color:var(--muted); transition:transform 0.2s }
-    .faq-item.open .faq-q::after { transform:rotate(45deg); color:var(--teal) }
-    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.35s ease; padding:0 }
-    .faq-item.open .faq-a { max-height:400px; padding:14px 0 4px }
-    .faq-a p { font-size:14px; color:var(--slate); line-height:1.7 }
+    .mid-cta-btn:hover{background:#47cec5;transform:translateY(-1px);box-shadow:0 0 28px rgba(60,184,176,0.4)}
 
-    @media(max-width:700px){
-      .law-grid{grid-template-columns:1fr}
-    }
+    /* FAQ expand/collapse */
+    .faq-q{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+    .faq-q::after{content:'+';font-size:20px;color:var(--muted);transition:transform 0.2s}
+    .faq-item.open .faq-q::after{transform:rotate(45deg);color:var(--teal)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;padding:0}
+    .faq-item.open .faq-a{max-height:400px;padding:14px 0 4px}
+    .faq-a p{font-size:14px;color:var(--slate);line-height:1.7}
+
   </style>
 </head>
 <body>
@@ -157,7 +150,6 @@
     <a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
   </div>
 
-
   <header class="article-hero">
 <div class="article-breadcrumb"><a href="/">Home</a> &rarr; <a href="/vendors">For Vendors</a> &rarr; Compliance Checklist</div>
       <h1 class="article-h1">PIPEDA and Law 25 Compliance Checklist <em>for Vendors</em></h1>
@@ -172,7 +164,6 @@
 
       <p style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);">Your Canadian customers will ask you about data residency, breach notification, privacy impact assessments, and transfer impact assessments. This is what you need to have ready &mdash; and why having it ready closes deals faster.</p>
   </header>
-
 
   <article class="article-body">
 
@@ -326,7 +317,6 @@
         <div class="faq-a"><p>Bill C-27 would modernize PIPEDA with higher penalties (5% of global revenue), expanded rights, and stricter consent. Vendors who already meet Law 25&rsquo;s requirements will be well-positioned &mdash; Law 25 is currently Canada&rsquo;s strictest privacy framework.</p></div>
       </div>
   </section>
-
 
   <footer>
     <div class="footer-inner">
