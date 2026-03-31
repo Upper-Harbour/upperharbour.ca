@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PIPEDA and Law 25 Compliance Checklist for Vendors</title>
+  <meta name="description" content="A practical checklist for SaaS vendors selling to Canadian organizations. What PIPEDA, Law 25, FIPPA, and PIPA require from your product, your contracts, and your hosting architecture." />
+  <link rel="canonical" href="https://www.upperharbour.ca/vendors/pipeda-law25-vendor-checklist" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="PIPEDA and Law 25 Compliance Checklist for Vendors" />
+  <meta property="og:description" content="What PIPEDA, Law 25, FIPPA, and PIPA require from SaaS vendors. A practical checklist for your product, contracts, and hosting." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://www.upperharbour.ca/vendors/pipeda-law25-vendor-checklist" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="PIPEDA and Law 25 Compliance Checklist for Vendors" />
+  <meta name="twitter:description" content="What PIPEDA, Law 25, FIPPA, and PIPA require from SaaS vendors selling to Canadian organizations." />
+  <meta name="twitter:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "PIPEDA and Law 25 Compliance Checklist for Vendors",
+    "author": {
+      "@type": "Person",
+      "name": "Joshua van Es",
+      "url": "https://joshuavanes.ca",
+      "jobTitle": "Corporate Lawyer",
+      "worksFor": { "@type": "Organization", "name": "Upper Harbour" }
+    },
+    "publisher": { "@type": "Organization", "name": "Upper Harbour", "url": "https://www.upperharbour.ca" },
+    "datePublished": "2026-03-30",
+    "dateModified": "2026-03-30",
+    "mainEntityOfPage": "https://www.upperharbour.ca/vendors/pipeda-law25-vendor-checklist"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does PIPEDA require from SaaS vendors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PIPEDA requires SaaS vendors to have a designated privacy officer, document purposes for data collection, obtain meaningful consent, collect only necessary data, limit use and disclosure to stated purposes, maintain accuracy, implement appropriate security safeguards, publish a privacy policy, provide access to personal information on request, and maintain a complaints process. Vendors must also report breaches that create a real risk of significant harm."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Quebec's Law 25 require from SaaS vendors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Law 25 adds requirements beyond PIPEDA including mandatory Privacy Impact Assessments before deploying new systems, Transfer Impact Assessments for any data leaving Quebec, breach notification within 72 hours, a public-facing privacy officer, privacy by default settings, and penalties up to $25 million or 4% of worldwide turnover. SaaS vendors serving Quebec organizations should prepare for TIA requests from their customers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do SaaS vendors need Canadian data residency to comply with PIPEDA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "PIPEDA does not require data to be stored in Canada. However, vendors must provide a comparable level of protection when data is transferred outside Canada, including contractual safeguards. For practical purposes, Canadian data residency simplifies compliance significantly — especially for customers subject to Law 25, FIPPA, or public sector requirements that do restrict data location."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Transfer Impact Assessment and do vendors need to help with it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Transfer Impact Assessment (TIA) is required under Law 25 before any personal information is transferred outside Quebec. Your customers must complete TIAs, but they need information from you to do it: your jurisdiction of incorporation, where data is hosted, what legal process applies, whether you offer encryption, and what contractual safeguards you provide. Having this documented and ready accelerates your sales cycle."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <style>
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+
+    .article-hero { position:relative; padding:150px 52px 60px; overflow:hidden }
+    .article-hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 55% 50% at 40% 35%, rgba(60,184,176,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 65% at 85% 70%, rgba(201,168,76,0.03) 0%, transparent 55%), var(--bg); z-index:0 }
+    .article-hero-bg::after { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(234,240,244,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.015) 1px, transparent 1px); background-size:72px 72px }
+    .article-inner { position:relative; z-index:1; max-width:1120px; margin:0 auto }
+
+    .breadcrumb { font-size:13px; color:var(--muted); margin-bottom:20px; opacity:0; animation:fadeUp 0.6s ease forwards 0.1s }
+    .breadcrumb a { color:var(--muted); text-decoration:none; border-bottom:1px solid transparent; transition:color 0.2s, border-color 0.2s }
+    .breadcrumb a:hover { color:var(--teal); border-bottom-color:var(--teal) }
+
+    .article-h1 { font-family:var(--display); font-size:clamp(32px,5vw,52px); font-weight:900; color:var(--ice); line-height:1.1; letter-spacing:-0.5px; margin-bottom:20px; max-width:780px; opacity:0; animation:fadeUp 0.7s ease forwards 0.2s }
+    .article-h1 em { font-style:italic; font-weight:700; color:var(--gold) }
+
+    .article-byline { display:flex; align-items:center; gap:12px; margin-bottom:8px; opacity:0; animation:fadeUp 0.6s ease forwards 0.35s }
+    .article-byline img { width:36px; height:36px; border-radius:50%; object-fit:cover }
+    .article-byline-text { font-size:13px; color:var(--slate); line-height:1.4 }
+    .article-byline-text strong { color:var(--ice) }
+    .article-byline-text a { color:var(--teal); text-decoration:none }
+    .article-pubs { font-size:12px; color:var(--muted); font-style:italic; opacity:0; animation:fadeUp 0.6s ease forwards 0.4s }
+
+    .article-sub { font-size:17px; color:var(--slate); line-height:1.72; max-width:640px; margin-top:28px; opacity:0; animation:fadeUp 0.7s ease forwards 0.45s }
+
+    .container { max-width:1120px; margin:0 auto; padding:0 52px }
+    .article-body { max-width:740px; padding:60px 0 }
+    .article-body h2 { font-family:var(--display); font-size:28px; font-weight:700; color:var(--ice); margin:48px 0 16px; line-height:1.2 }
+    .article-body h2:first-child { margin-top:0 }
+    .article-body h3 { font-size:18px; font-weight:700; color:var(--ice); margin:28px 0 10px }
+    .article-body p { font-size:15px; color:var(--slate); line-height:1.8; margin-bottom:16px }
+    .article-body p:last-child { margin-bottom:0 }
+    .article-body a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3) }
+    .article-body strong { color:var(--ice) }
+    .article-body ul, .article-body ol { padding-left:20px; margin-bottom:20px }
+    .article-body li { font-size:15px; color:var(--slate); line-height:1.7; margin-bottom:8px }
+
+    /* Checklist items */
+    .checklist { list-style:none; padding:0; margin:24px 0 }
+    .checklist li { position:relative; padding:14px 0 14px 36px; border-bottom:1px solid var(--border); font-size:14px; color:var(--slate); line-height:1.65 }
+    .checklist li::before { content:''; position:absolute; left:0; top:18px; width:16px; height:16px; border:2px solid var(--teal); border-radius:3px }
+    .checklist li strong { color:var(--ice) }
+
+    /* Law comparison cards */
+    .law-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--border-md); border-radius:8px; overflow:hidden; margin:32px 0 }
+    .law-card { background:var(--surface); padding:28px 24px }
+    .law-name { font-family:var(--display); font-size:18px; font-weight:700; color:var(--ice); margin-bottom:4px }
+    .law-scope { font-size:12px; color:var(--muted); margin-bottom:12px }
+    .law-card ul { list-style:none; padding:0; margin:0 }
+    .law-card li { font-size:13px; color:var(--slate); line-height:1.5; padding:5px 0 5px 16px; position:relative }
+    .law-card li::before { content:''; position:absolute; left:0; top:11px; width:6px; height:4px; border-left:1.5px solid var(--teal); border-bottom:1.5px solid var(--teal); transform:rotate(-45deg) }
+
+    .callout { background:var(--surface); border:1px solid var(--border-md); border-left:3px solid var(--teal); border-radius:0 6px 6px 0; padding:24px 28px; margin:32px 0 }
+    .callout p { font-size:14px; color:var(--slate); line-height:1.7; margin-bottom:0 }
+    .callout strong { color:var(--ice) }
+    .callout-gold { border-left-color:var(--gold) }
+    .callout-red { border-left-color:var(--red) }
+
+    .mid-cta { background:rgba(20,30,42,0.95); border:1px solid rgba(60,184,176,0.15); border-radius:8px; padding:32px 28px; margin:40px 0; text-align:center }
+    .mid-cta p { font-size:14px; color:var(--ice); line-height:1.6; margin-bottom:20px; max-width:560px; margin-left:auto; margin-right:auto }
+    .mid-cta-btn { display:inline-block; font-size:13px; font-weight:800; color:var(--bg); background:var(--teal); padding:14px 32px; border-radius:4px; text-decoration:none; transition:background 0.2s, transform 0.15s }
+    .mid-cta-btn:hover { background:#47cec5; transform:translateY(-1px) }
+
+    .faq-section { padding:60px 0; border-top:1px solid var(--border) }
+    .faq-section h2 { font-family:var(--display); font-size:24px; font-weight:700; color:var(--ice); margin:0 0 24px }
+    .faq-item { border-bottom:1px solid var(--border); padding:18px 0 }
+    .faq-q { font-size:15px; font-weight:700; color:var(--ice); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px }
+    .faq-q::after { content:'+'; font-size:20px; color:var(--muted); transition:transform 0.2s }
+    .faq-item.open .faq-q::after { transform:rotate(45deg); color:var(--teal) }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.35s ease; padding:0 }
+    .faq-item.open .faq-a { max-height:400px; padding:14px 0 4px }
+    .faq-a p { font-size:14px; color:var(--slate); line-height:1.7 }
+
+    @media (max-width:900px) {
+      .article-hero { padding:120px 24px 48px }
+      .container { padding:0 24px }
+      .law-grid { grid-template-columns:1fr }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Map Your Stack</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a>
+    <a href="/tools">Sovereignty Index</a>
+    <a href="/signals">Signals</a>
+    <a href="/resources">Compliance</a>
+    <a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
+  </div>
+
+
+  <section class="article-hero">
+    <div class="article-hero-bg"></div>
+    <div class="article-inner">
+      <div class="breadcrumb"><a href="/">Home</a> &rarr; <a href="/vendors">For Vendors</a> &rarr; Compliance Checklist</div>
+      <h1 class="article-h1">PIPEDA and Law 25 Compliance Checklist <em>for Vendors</em></h1>
+
+      <div class="article-byline">
+        <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="36" height="36" />
+        <div class="article-byline-text">By <strong>Joshua van Es</strong> &middot; Corporate law &middot; Founder, <a href="/">Upper Harbour</a></div>
+      </div>
+      <div class="article-pubs">As seen in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, and <em>BetaKit</em> &middot; March 2026</div>
+
+      <p class="article-sub">Your Canadian customers will ask you about data residency, breach notification, privacy impact assessments, and transfer impact assessments. This is what you need to have ready &mdash; and why having it ready closes deals faster.</p>
+    </div>
+  </section>
+
+
+  <section style="border-top:1px solid var(--border)">
+    <div class="container">
+      <div class="article-body">
+
+        <h2>This is a sales document, not a legal memo</h2>
+        <p>Most compliance checklists are written for lawyers. This one is written for SaaS founders and sales leaders who need to answer the compliance questions that show up in procurement evaluations, enterprise sales calls, and RFP responses.</p>
+        <p>Canadian organizations are legally required to assess the privacy posture of their vendors. That means your buyers will ask you specific questions about data handling, hosting, breach response, and jurisdictional exposure. Having clear, documented answers to these questions isn&rsquo;t just compliance &mdash; it&rsquo;s competitive advantage. The vendor who can answer immediately wins the deal. The vendor who says &ldquo;we&rsquo;ll get back to you&rdquo; loses momentum.</p>
+
+        <h2>The four laws your buyers care about</h2>
+        <p>Canada&rsquo;s privacy landscape is fragmented. Four different laws may apply depending on where your customer operates, what sector they&rsquo;re in, and what kind of data they handle.</p>
+
+        <div class="law-grid">
+          <div class="law-card">
+            <div class="law-name">PIPEDA</div>
+            <div class="law-scope">Federal &middot; Private sector &middot; All provinces (except where substantially similar provincial law applies)</div>
+            <ul>
+              <li>10 fair information principles</li>
+              <li>Breach notification for significant harm risk</li>
+              <li>No data residency requirement</li>
+              <li>Comparable protection for cross-border transfers</li>
+              <li>Penalties up to $100K per violation</li>
+            </ul>
+          </div>
+          <div class="law-card">
+            <div class="law-name">Law 25 (Quebec)</div>
+            <div class="law-scope">Quebec &middot; All organizations operating in Quebec</div>
+            <ul>
+              <li>Mandatory Privacy Impact Assessments</li>
+              <li>Transfer Impact Assessments for data leaving Quebec</li>
+              <li>Breach notification within 72 hours</li>
+              <li>Privacy by default settings required</li>
+              <li>Penalties up to $25M or 4% worldwide turnover</li>
+            </ul>
+          </div>
+          <div class="law-card">
+            <div class="law-name">FIPPA (BC)</div>
+            <div class="law-scope">British Columbia &middot; Public bodies (government, health authorities, schools)</div>
+            <ul>
+              <li>Restricts personal information storage/access outside Canada</li>
+              <li>Privacy Impact Assessments required</li>
+              <li>Affects SaaS vendor selection for all BC public bodies</li>
+              <li>Data residency effectively required for public sector</li>
+            </ul>
+          </div>
+          <div class="law-card">
+            <div class="law-name">PIPA (Alberta)</div>
+            <div class="law-scope">Alberta &middot; Private sector organizations</div>
+            <ul>
+              <li>Similar to PIPEDA but provincially administered</li>
+              <li>POPA governs public sector</li>
+              <li>Privacy Impact Assessments under POPA</li>
+              <li>Breach notification requirements</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout">
+          <p><strong>Why this matters for vendors:</strong> Your customer in Toronto operates under PIPEDA. Your customer in Montreal operates under Law 25. Your customer in Vancouver&rsquo;s public sector operates under FIPPA. Your customer in Edmonton may be under PIPA or POPA. You need to be ready for all four &mdash; and the answers are mostly the same if your fundamentals are right.</p>
+        </div>
+
+        <h2>The vendor compliance checklist</h2>
+        <p>This is what your Canadian buyers will ask about, organized by what you can prepare now.</p>
+
+        <h3>Privacy governance</h3>
+        <ul class="checklist">
+          <li><strong>Designated privacy officer.</strong> Have a named person responsible for privacy compliance. Your customers need this for their vendor assessment forms. Law 25 requires it to be publicly listed.</li>
+          <li><strong>Published privacy policy.</strong> Clear, plain-language policy that explains what data you collect, why, how you use it, who you share it with, how long you keep it, and how to request access or deletion.</li>
+          <li><strong>Data Processing Agreement (DPA).</strong> A contract between you and your customers that specifies your obligations as a data processor. This should be available on request &mdash; ideally on your website.</li>
+          <li><strong>Subprocessor list.</strong> Publish a list of your subprocessors (hosting providers, analytics tools, support platforms) that handle customer data. Law 25 and PIPEDA both require transparency about third-party processing.</li>
+        </ul>
+
+        <h3>Data hosting and residency</h3>
+        <ul class="checklist">
+          <li><strong>Document where data is stored.</strong> Country, region, cloud provider, specific data centre locations. Your customers need this for their TIAs and PIAs.</li>
+          <li><strong>Canadian data residency option.</strong> Not legally required under PIPEDA, but increasingly demanded by customers. If you offer it, document it clearly. If you don&rsquo;t, document why and what safeguards are in place.</li>
+          <li><strong>Jurisdiction of incorporation.</strong> US-incorporated companies are CLOUD Act exposed regardless of hosting location. Canadian incorporation eliminates this. Document your corporate jurisdiction prominently.</li>
+          <li><strong>Backup and disaster recovery locations.</strong> Data residency isn&rsquo;t just about primary storage. If your backups replicate to a US region, that creates cross-border exposure. Document your full data lifecycle geography.</li>
+        </ul>
+
+        <h3>Consent and data handling</h3>
+        <ul class="checklist">
+          <li><strong>Purpose limitation.</strong> Document the specific purposes for which you process personal information. PIPEDA&rsquo;s second principle requires this. Law 25 is stricter.</li>
+          <li><strong>Consent mechanisms.</strong> Ensure your product collects meaningful consent &mdash; not buried in terms of service. Law 25 requires granular, specific consent. Privacy by default means features that collect data should be off unless the user opts in.</li>
+          <li><strong>Data minimization.</strong> Collect only what you need for stated purposes. Both PIPEDA and Law 25 require this, and it simplifies your compliance posture across all frameworks.</li>
+          <li><strong>Retention and deletion.</strong> Have a documented retention schedule and a mechanism for customers to request data deletion. Law 25 strengthens deletion rights significantly.</li>
+        </ul>
+
+        <h3>Security</h3>
+        <ul class="checklist">
+          <li><strong>Encryption at rest and in transit.</strong> AES-256 for storage, TLS 1.2+ for transmission. This is baseline. Document it in your security posture page.</li>
+          <li><strong>Access controls.</strong> Role-based access, least-privilege principles, MFA for administrative access. Document who at your company can access customer data and under what circumstances.</li>
+          <li><strong>Breach notification.</strong> PIPEDA requires notification for breaches that create a &ldquo;real risk of significant harm.&rdquo; Law 25 requires notification within 72 hours. Document your incident response procedure and commit to specific timelines in your DPA.</li>
+          <li><strong>Security certifications.</strong> SOC 2 Type II, ISO 27001, or equivalent. Not legally required but increasingly expected in enterprise and government procurement. If you have them, make them prominent.</li>
+        </ul>
+
+        <h3>Transfer readiness</h3>
+        <ul class="checklist">
+          <li><strong>TIA-ready documentation.</strong> Quebec organizations must complete Transfer Impact Assessments for every vendor that processes personal information outside Quebec. Prepare a document that answers the TIA questions proactively: your jurisdiction, hosting location, applicable legal process, safeguards, and encryption posture.</li>
+          <li><strong>PIA support.</strong> Buyers under FIPPA, PIPA, and POPA need to complete Privacy Impact Assessments. The easier you make it for them to assess your product, the faster the deal closes. Consider publishing a PIA information sheet.</li>
+          <li><strong>Contractual safeguards for cross-border transfers.</strong> If data leaves Canada, your DPA must include specific protections. Document these explicitly &mdash; don&rsquo;t leave your customers to infer them.</li>
+        </ul>
+
+        <div class="callout-gold callout">
+          <p><strong>The fastest way to handle all of this:</strong> Be Canadian-incorporated with Canadian data hosting. This eliminates the CLOUD Act question, makes TIAs straightforward, simplifies PIAs, and satisfies FIPPA data residency requirements. Every item on the checklist above becomes easier to answer when your jurisdiction is Canada.</p>
+        </div>
+
+        <div class="mid-cta">
+          <p><strong>Want to document your compliance posture for buyers?</strong> A Sovereign Badge from Upper Harbour independently verifies your jurisdiction, hosting, and sovereignty posture &mdash; giving procurement teams the evidence they need without a 30-page questionnaire.</p>
+          <a href="/vendors" class="mid-cta-btn">See Vendor Services &rarr;</a>
+        </div>
+
+        <h2>What&rsquo;s coming: Bill C-27</h2>
+        <p>Bill C-27 (the Consumer Privacy Protection Act) is still working through Parliament and would replace Part 1 of PIPEDA with a modernized framework. Key proposed changes relevant to SaaS vendors:</p>
+        <ul>
+          <li><strong>Higher penalties</strong> &mdash; up to 5% of global revenue or $25 million</li>
+          <li><strong>Expanded individual rights</strong> &mdash; data portability, enhanced deletion rights</li>
+          <li><strong>Stricter consent</strong> &mdash; more explicit requirements, especially for analytics and marketing</li>
+          <li><strong>Algorithmic transparency</strong> &mdash; disclosure requirements for automated decision-making</li>
+        </ul>
+        <p>Vendors who meet Law 25&rsquo;s current requirements will be well-positioned for whatever Bill C-27 becomes. Law 25 is already the strictest privacy framework in Canada &mdash; preparing for it covers the most ground.</p>
+
+        <h2>Turn compliance into a sales advantage</h2>
+        <p>The vendors who win in the Canadian market aren&rsquo;t the ones who scramble to answer compliance questions during procurement. They&rsquo;re the ones who have everything documented, published, and independently verified before the first call.</p>
+        <p>Your competitors are getting the same questions from the same procurement teams. The one who answers fastest &mdash; with documented, verifiable evidence &mdash; closes first. That&rsquo;s not a compliance strategy. That&rsquo;s a <a href="/vendors/compete-against-us-saas">competitive strategy</a>.</p>
+
+        <div class="mid-cta">
+          <p><strong>Get listed, get verified, get ahead.</strong> Submit your tool to the Sovereignty Index for free, or earn a Sovereign Badge to prove your compliance posture to every Canadian buyer who asks.</p>
+          <a href="/vendors#submit" class="mid-cta-btn">Submit Your Tool &rarr;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="faq-section">
+    <div class="container">
+      <h2>Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does PIPEDA require from SaaS vendors?</div>
+        <div class="faq-a"><p>Privacy officer, documented purposes, meaningful consent, data minimization, security safeguards, breach notification for significant harm risk, access and deletion mechanisms, and a published privacy policy. Vendors must also provide comparable protection for any data transferred outside Canada.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does Law 25 require beyond PIPEDA?</div>
+        <div class="faq-a"><p>Mandatory Privacy Impact Assessments, Transfer Impact Assessments for data leaving Quebec, breach notification within 72 hours, privacy by default settings, a publicly listed privacy officer, and penalties up to $25 million or 4% of worldwide turnover.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need Canadian data residency to sell to Canadian organizations?</div>
+        <div class="faq-a"><p>Not legally required under PIPEDA, but increasingly demanded. BC public bodies under FIPPA effectively require it. Quebec organizations need TIAs for any data leaving Quebec. Government procurement strongly favours Canadian hosting. Offering it simplifies your compliance story significantly.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a Transfer Impact Assessment and how do I support it?</div>
+        <div class="faq-a"><p>A TIA is required under Law 25 before personal information leaves Quebec. Your customers complete them, but they need your data: jurisdiction, hosting location, legal process, encryption, and contractual safeguards. Prepare a TIA-ready document proactively.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Will Bill C-27 change these requirements?</div>
+        <div class="faq-a"><p>Bill C-27 would modernize PIPEDA with higher penalties (5% of global revenue), expanded rights, and stricter consent. Vendors who already meet Law 25&rsquo;s requirements will be well-positioned &mdash; Law 25 is currently Canada&rsquo;s strictest privacy framework.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/vendors">For Vendors</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+</body>
+</html>
