@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Mar 27, 2026 — 00:10 ET",
+    "lastUpdated": "Apr 01, 2026 — 07:20 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Government of Canada extends BlackBerry contract for secure communications with Canadian data residency",
+      "summary": "The Government of Canada extended its contract with BlackBerry for secure communications infrastructure, with data stored in Canadian government data centres. This procurement decision directly supports federal digital sovereignty objectives by ensuring sensitive communications remain under Canadian control.",
+      "type": "procurement",
+      "source": "Canada.ca",
+      "sourceUrl": "https://www.canada.ca/en/shared-services/news/2026/03/government-of-canada-advances-digital-sovereignty-and-secure-communications-through-contract-extension-with-blackberry.html",
+      "date": "2026-03-31",
+      "impact": "Federal departments and agencies should review this contract extension as a reference model for secure communications procurement requirements and Canadian data residency specifications.",
+      "dbUpdate": true
+    },
     {
       "headline": "Alberta OIPC releases privacy impact assessment template and guide for public bodies",
       "summary": "The Office of the Alberta Information and Privacy Commissioner has developed new PIA templates and guidance documents to assist public bodies in conducting privacy impact assessments under Alberta's Protection of Personal Information Act. The resources are intended for use across Alberta's public sector and may serve as reference material for other Canadian jurisdictions.",
