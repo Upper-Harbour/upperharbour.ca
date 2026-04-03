@@ -2140,7 +2140,8 @@
       .nav-hamburger{display:block}
       }
 
-  </style></head><body>${content}</body></html>`;
+  </style></head><body>${content}<script src="/assets/track.js" defer></script>
+</body></html>`;
 
     const blob = new Blob([html], { type: 'text/html' });
     const a = document.createElement('a');
@@ -2190,5 +2191,6 @@
       }
     });
   </script>
+<script src="/assets/track.js" defer></script>
 </body>
 </html>
