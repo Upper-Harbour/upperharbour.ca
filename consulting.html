@@ -5,23 +5,43 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Consulting — Data Sovereignty Advisory | Upper Harbour</title>
-  <meta name="description" content="Hands-on sovereignty advisory for Canadian organizations. Stack audits, migration planning, compliance documentation, and ongoing monitoring. From the team behind the Sovereignty Index." />
+  <title>SaaS Compliance &amp; Data Sovereignty Consulting | Canada</title>
+  <meta name="description" content="Law 25 TIAs, CLOUD Act exposure audits, privacy impact assessments, and SaaS stack sovereignty reviews for Canadian organizations. From the team behind the Sovereignty Index." />
   <link rel="canonical" href="https://www.upperharbour.ca/consulting" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <meta property="og:title" content="Consulting — Data Sovereignty Advisory | Upper Harbour" />
-  <meta property="og:description" content="Hands-on sovereignty advisory for Canadian organizations. Stack audits, migration planning, and ongoing monitoring." />
+  <meta property="og:title" content="SaaS Compliance & Data Sovereignty Consulting | Canada" />
+  <meta property="og:description" content="Law 25 TIAs, CLOUD Act exposure audits, and SaaS stack sovereignty reviews for Canadian organizations." />
   <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
   <meta property="og:url" content="https://www.upperharbour.ca/consulting" />
   <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Service","name":"Data Sovereignty Consulting","provider":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"description":"SaaS compliance and data sovereignty consulting for Canadian organizations. Transfer Impact Assessments, CLOUD Act exposure audits, privacy impact assessments, and sovereign alternative evaluation.","areaServed":"Canada","serviceType":"Consulting"}
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a data sovereignty audit?","acceptedAnswer":{"@type":"Answer","text":"A data sovereignty audit maps every SaaS tool your organization uses to its parent jurisdiction, CLOUD Act exposure, data residency options, and encryption posture. The result is a prioritized remediation plan showing which tools create compliance risk and what to do about each one."}},{"@type":"Question","name":"Do I need a Transfer Impact Assessment under Law 25?","acceptedAnswer":{"@type":"Answer","text":"If your organization processes personal information of Quebec residents and uses any SaaS tool that stores or processes data outside Quebec, you need a TIA for each tool. This includes most US-owned SaaS tools even if they offer Canadian data residency, because the parent company remains subject to US jurisdiction."}},{"@type":"Question","name":"How much does a privacy impact assessment cost in Canada?","acceptedAnswer":{"@type":"Answer","text":"Industry-specific compliance assessments start at $99 for self-serve reports covering 18-24 common tools. Custom assessments tailored to your exact stack are $500. Full compliance packages including privacy policies, breach response plans, and incident registers are $2,500. Consulting engagements for complex organizations start at $5,000."}},{"@type":"Question","name":"What is the difference between data residency and data sovereignty?","acceptedAnswer":{"@type":"Answer","text":"Data residency means your data is physically stored in Canada. Data sovereignty means the company controlling your data is subject to Canadian law. A US company hosting data in Canada still has residency but not sovereignty — the CLOUD Act can compel them to produce that data regardless of where it is stored."}}]}
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/site.css" />
 
   <style>
-    .article-h1 em{color:var(--gold)}
+    .landing-hero{padding:160px 52px 60px;max-width:860px;margin:0 auto}
+    .landing-hero h1{font-family:var(--display);font-size:clamp(36px,5vw,52px);font-weight:700;color:var(--ice);line-height:1.08;letter-spacing:-1px;margin-bottom:24px}
+    .landing-hero h1 em{font-style:italic;color:var(--gold)}
+    .landing-sub{font-size:17px;color:var(--slate);line-height:1.72;max-width:620px;margin-bottom:36px}
+    .landing-cta{display:inline-block;font-size:14px;font-weight:700;color:var(--bg);background:var(--teal);padding:16px 36px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s}
+    .landing-cta:hover{background:#47cec5;transform:translateY(-1px)}
+
+    .services{max-width:860px;margin:0 auto;padding:0 52px 60px}
+    .services h2{font-family:var(--display);font-size:28px;font-weight:700;color:var(--ice);margin:0 0 16px;line-height:1.2}
+    .services p{font-size:15px;color:var(--slate);line-height:1.8;margin-bottom:16px}
+    .services a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
 
     .tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
     .tier{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:28px 24px;display:flex;flex-direction:column}
@@ -35,13 +55,15 @@
     .tier-cta{display:inline-block;font-size:13px;font-weight:700;color:#fff !important;background:var(--teal);padding:12px 24px;border-radius:4px;text-decoration:none;text-align:center;border-bottom:none !important;transition:background 0.2s}
     .tier-cta:hover{background:#47cec5}
 
-    .callout-gold{border-left-color:var(--gold)}
+    .self-serve{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0 32px}
+    .ss-card{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:20px;text-decoration:none;transition:border-color 0.2s}
+    .ss-card:hover{border-color:rgba(60,184,176,0.25)}
+    .ss-price{font-family:var(--display);font-size:24px;font-weight:900;color:var(--ice);margin-bottom:4px}
+    .ss-name{font-size:13px;font-weight:700;color:var(--teal);margin-bottom:6px}
+    .ss-desc{font-size:12px;color:var(--muted);line-height:1.5}
 
-    /* Mid CTA */
-    .mid-cta{background:rgba(20,30,42,0.95);border:1px solid rgba(60,184,176,0.15);border-radius:8px;padding:32px 28px;margin:28px 0;text-align:center}
-    .mid-cta-text{font-size:14px;color:var(--ice);line-height:1.6;margin-bottom:20px;max-width:560px;margin-left:auto;margin-right:auto}
-    .mid-cta-btn{display:inline-block;font-size:13px;font-weight:800;color:#fff !important;background:var(--teal);padding:14px 32px;border-radius:4px;text-decoration:none;border-bottom:none !important;transition:background 0.2s,transform 0.15s;box-shadow:0 0 20px rgba(60,184,176,0.25)}
-    .mid-cta-btn:hover{background:#47cec5;transform:translateY(-1px);box-shadow:0 0 28px rgba(60,184,176,0.4)}
+    .bottom-cta{max-width:860px;margin:0 auto;padding:0 52px 60px;text-align:center}
+    .bottom-cta p{font-size:15px;color:var(--slate);margin-bottom:24px}
 
     /* FAQ expand/collapse */
     .faq-q{cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
@@ -51,7 +73,12 @@
     .faq-item.open .faq-a{max-height:400px;padding:14px 0 4px}
     .faq-a p{font-size:14px;color:var(--slate);line-height:1.7}
 
-    @media(max-width:700px){.tier-grid{grid-template-columns:1fr}}
+    @media(max-width:700px){
+      .landing-hero{padding:110px 20px 40px}
+      .services{padding:0 20px 40px}
+      .tier-grid,.self-serve{grid-template-columns:1fr}
+      .bottom-cta{padding:0 20px 40px}
+    }
   </style>
 </head>
 <body>
@@ -59,34 +86,48 @@
   <nav><a href="/" class="nav-logo" aria-label="Upper Harbour home"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span></a><div class="nav-links"><a href="/research" class="nav-link">Research</a><a href="/tools" class="nav-link">Sovereignty Index</a><a href="/signals" class="nav-link">Signals</a><a href="/resources" class="nav-link">Compliance</a><a href="/harbourscan" class="nav-cta">Map Your Stack</a></div><button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button></nav>
   <div class="nav-mobile-menu"><a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a></div>
 
-  <header class="article-hero">
-    <div class="article-breadcrumb"><a href="/">Home</a> &rarr; Consulting</div>
 
-    <h1 class="article-h1">Data sovereignty <em>advisory</em></h1>
+  <section class="landing-hero">
+    <h1>Your SaaS stack is probably <em>exposed.</em> We can fix that.</h1>
+    <p class="landing-sub">Transfer Impact Assessments, CLOUD Act audits, privacy impact assessments, and sovereign alternative evaluation &mdash; for Canadian organizations that need compliance documentation or are ready to migrate sensitive workloads.</p>
+    <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="landing-cta">Book a Free Call &rarr;</a>
+  </section>
 
-    <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
-      <img src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="28" height="28" style="border-radius:50%;object-fit:cover;">
-      <div style="line-height:1.4;">
-        <span style="font-size:13px;color:var(--slate);">By <a href="/founder" style="color:var(--ice);text-decoration:none;font-weight:600;">Joshua van Es</a> &middot; Corporate law &middot; Founder, <a href="/" style="color:var(--teal);text-decoration:none;">Upper Harbour</a></span><br>
-        <span style="font-size:11px;color:var(--muted);">As seen in <em>The Globe and Mail</em>, <em>Maclean&rsquo;s</em>, <em>The Logic</em>, and <em>BetaKit</em></span>
-      </div>
+
+  <div class="services">
+    <h2>Self-serve compliance documentation</h2>
+    <p>Most organizations should start here. Instant or 48-hour delivery, no call required.</p>
+
+    <div class="self-serve">
+      <a href="/comply" class="ss-card">
+        <div class="ss-price">$99</div>
+        <div class="ss-name">Industry Assessment</div>
+        <div class="ss-desc">Five-factor TIAs for the 18&ndash;24 most common tools in your industry. Instant PDF.</div>
+      </a>
+      <a href="/comply" class="ss-card">
+        <div class="ss-price">$500</div>
+        <div class="ss-name">Custom Assessment</div>
+        <div class="ss-desc">TIAs tailored to your exact tool stack. 48-hour delivery.</div>
+      </a>
+      <a href="/comply" class="ss-card">
+        <div class="ss-price">$2,500</div>
+        <div class="ss-name">Full Compliance Package</div>
+        <div class="ss-desc">Complete Law 25 binder &mdash; TIAs, privacy policy, breach plan, incident register, everything.</div>
+      </a>
     </div>
+  </div>
 
-    <p style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);">The $99 report tells you what&rsquo;s exposed. Consulting tells you what to do about it &mdash; in priority order, with a plan your team can execute.</p>
-  </header>
 
-  <article class="article-body">
-
-    <h2>When you need more than a report</h2>
-    <p>Our self-serve assessments document your exposure. They&rsquo;re the right starting point for most organizations. But some situations need hands-on expertise: your stack is complex, your regulatory environment is layered, your board wants a defensible position, or you&rsquo;re ready to actually migrate sensitive workloads to sovereign alternatives.</p>
-    <p>That&rsquo;s what consulting is for. Every engagement is led by Joshua van Es &mdash; the same person who built the Sovereignty Index, researched every tool page, and wrote the compliance guides.</p>
+  <div class="services">
+    <h2>Consulting</h2>
+    <p>When your stack is complex, your regulatory environment is layered, or you&rsquo;re ready to actually migrate. Every engagement is led by <a href="/founder">Joshua van Es</a> &mdash; the person who built the Sovereignty Index and researched every tool page on this site.</p>
 
     <div class="tier-grid">
       <div class="tier">
         <div class="tier-name">Sovereignty Assessment</div>
-        <div class="tier-price">$5,000&ndash;$10,000</div>
+        <div class="tier-price">$5,000+</div>
         <div class="tier-note">2&ndash;3 weeks</div>
-        <div class="tier-desc">Full audit of your SaaS stack, infrastructure, and data flows against Canadian sovereignty requirements.</div>
+        <div class="tier-desc">Full audit of your SaaS stack against Canadian sovereignty requirements.</div>
         <ul class="tier-list">
           <li>Complete SaaS inventory and jurisdiction mapping</li>
           <li>CLOUD Act exposure analysis per tool</li>
@@ -101,9 +142,9 @@
 
       <div class="tier">
         <div class="tier-name">Strategy &amp; Migration</div>
-        <div class="tier-price">$15,000&ndash;$30,000</div>
+        <div class="tier-price">$15,000+</div>
         <div class="tier-note">4&ndash;8 weeks</div>
-        <div class="tier-desc">Assessment plus hands-on support choosing sovereign alternatives and planning the migration.</div>
+        <div class="tier-desc">Assessment plus hands-on support choosing alternatives and planning the move.</div>
         <ul class="tier-list">
           <li>Everything in Sovereignty Assessment</li>
           <li>Canadian alternative evaluation and shortlisting</li>
@@ -118,9 +159,9 @@
 
       <div class="tier">
         <div class="tier-name">Ongoing Advisory</div>
-        <div class="tier-price">$2,000&ndash;$5,000</div>
+        <div class="tier-price">$2,000+</div>
         <div class="tier-note">per month</div>
-        <div class="tier-desc">Continuous monitoring, new tool evaluations, and quarterly compliance reviews as your stack evolves.</div>
+        <div class="tier-desc">Continuous monitoring as your stack and regulatory environment evolve.</div>
         <ul class="tier-list">
           <li>New tool sovereignty evaluation before adoption</li>
           <li>Quarterly compliance review and update</li>
@@ -133,44 +174,39 @@
         <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="tier-cta">Book a Call &rarr;</a>
       </div>
     </div>
+  </div>
 
-    <div class="callout callout-gold">
-      <p><strong>Not sure which tier?</strong> Most organizations start with the Sovereignty Assessment. If the findings warrant migration, we scope the Strategy engagement from there. The Ongoing Advisory is for organizations that want continuous coverage as their stack and regulatory environment evolve.</p>
-    </div>
 
-    <h2>Start smaller if you need to</h2>
-    <p>Not every organization needs a five-figure engagement. If you&rsquo;re earlier in the process, start with our self-serve products:</p>
-    <p><a href="/comply">Industry Assessment ($99)</a> &mdash; instant TIA documentation for the 18&ndash;24 most common tools in your industry. Good enough for most small organizations.</p>
-    <p><a href="/comply">Custom Assessment ($500)</a> &mdash; TIAs tailored to your exact stack, delivered in 48 hours.</p>
-    <p><a href="/comply">Full Compliance Package ($2,500)</a> &mdash; complete Law 25 binder including privacy policy, breach response plan, incident register, and more.</p>
-    <p>These are often the right starting point. If you outgrow them, consulting is the next step.</p>
+  <div class="bottom-cta">
+    <p>Every engagement starts with a 30-minute call. No cost, no commitment.</p>
+    <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="landing-cta">Book a Free Call &rarr;</a>
+  </div>
 
-    <div class="mid-cta">
-      <div class="mid-cta-text">Every consulting engagement starts with a 30-minute call. No cost, no commitment.</div>
-      <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="mid-cta-btn">Book a Call &rarr;</a>
-    </div>
-
-  </article>
 
   <section class="faq-section">
     <h2>Frequently asked questions</h2>
     <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who leads the engagement?</div>
-      <div class="faq-a"><p>Joshua van Es leads every consulting engagement personally. He built the Sovereignty Index (755+ tools), wrote every tool analysis page, and has a corporate law background. You&rsquo;re working directly with the person who built the platform.</p></div>
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What is a data sovereignty audit?</div>
+      <div class="faq-a"><p>We map every SaaS tool your organization uses to its parent jurisdiction, CLOUD Act exposure, data residency options, and encryption posture. The result is a prioritized remediation plan showing which tools create compliance risk and what to do about each one.</p></div>
     </div>
     <div class="faq-item">
-      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What industries do you work with?</div>
-      <div class="faq-a"><p>Any Canadian organization that uses SaaS tools and has compliance obligations under PIPEDA, Law 25, FIPPA, PIPA, or POPA. Most common clients are in professional services, healthcare, finance, education, and government.</p></div>
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Do I need a Transfer Impact Assessment under Law 25?</div>
+      <div class="faq-a"><p>If your organization processes personal information of Quebec residents and uses any SaaS tool that stores or processes data outside Quebec, you likely need a TIA for each tool. This includes most US-owned SaaS even if they offer Canadian data residency.</p></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How much does a privacy impact assessment cost?</div>
+      <div class="faq-a"><p>Industry-specific assessments start at $99 for self-serve reports covering 18&ndash;24 common tools. Custom assessments for your exact stack are $500. Full compliance packages are $2,500. Consulting engagements for complex organizations start at $5,000.</p></div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How is this different from a privacy consultant?</div>
-      <div class="faq-a"><p>Privacy consultants do broad compliance work. We specialize exclusively in technology sovereignty &mdash; which tools are exposed, what the jurisdictional risks are, and what alternatives exist. We have the deepest dataset on SaaS vendor jurisdictions in Canada.</p></div>
+      <div class="faq-a"><p>Privacy consultants do broad compliance work. We specialize exclusively in technology sovereignty &mdash; which tools are exposed, what the jurisdictional risks are, and what alternatives exist. We have the deepest dataset on SaaS vendor jurisdictions in Canada (755+ tools mapped).</p></div>
     </div>
     <div class="faq-item">
       <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can I start with a $99 report and upgrade later?</div>
-      <div class="faq-a"><p>Yes. Many consulting clients start with a self-serve assessment to understand the landscape, then engage consulting when they need hands-on help with remediation and migration. The $99 report isn&rsquo;t wasted &mdash; it gives us a baseline to work from.</p></div>
+      <div class="faq-a"><p>Yes. Many consulting clients start with a self-serve assessment, then engage consulting when they need hands-on help. The $99 report gives us a baseline to work from.</p></div>
     </div>
   </section>
+
 
   <footer>
     <div class="footer-inner">
