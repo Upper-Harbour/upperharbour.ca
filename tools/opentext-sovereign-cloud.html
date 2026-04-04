@@ -94,14 +94,6 @@
     .notify-box p{font-size:14px;color:var(--slate);line-height:1.65;margin-bottom:14px}
     .verified{font-size:12px;color:var(--muted);line-height:1.65;border-top:1px solid var(--border-md);padding-top:20px;margin-top:32px}
     .verified a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
-    .faq-item{border-top:1px solid var(--border-md)}
-    .faq-item .faq-q{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;user-select:none}
-    .faq-item .faq-q h3{font-size:15px;font-weight:700;color:var(--ice);margin:0;line-height:1.4}
-    .faq-item .faq-arrow{color:var(--muted);font-size:14px;transition:transform 0.2s;flex-shrink:0;margin-left:12px}
-    .faq-item.open .faq-arrow{transform:rotate(180deg)}
-    .faq-item .faq-a{display:none;padding:0 0 12px}
-    .faq-item.open .faq-a{display:block}
-    .faq-item .faq-a p{font-size:14px;color:var(--slate);line-height:1.7;margin:0}
     .faq-item-inline{margin-bottom:16px}
     .faq-item-inline h3{font-size:15px;font-weight:700;color:var(--ice);margin:0 0 6px}
     .faq-item-inline p{font-size:14px;color:var(--slate);line-height:1.7;margin:0}
@@ -273,14 +265,18 @@
       </div>
     </div>
 
-    <div id="faq" style="margin-top:32px;">
-      <h2 style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:0 0 4px;">Frequently Asked Questions</h2>
-        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Is OpenText subject to the CLOUD Act?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>No. Open Text Corporation is incorporated in Canada and listed on both NASDAQ and TSX. As a Canadian company, OpenText is not subject to the US CLOUD Act. US authorities cannot compel OpenText to produce data.</p></div></div>
-        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>What is the OpenText and TELUS Canadian Sovereign Cloud?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>Launched July 2025, it combines OpenText&rsquo;s enterprise applications and Aviator AI with TELUS data centres in Rimouski, QC and Kamloops, BC. Every application, dataset, and computation remains within Canadian borders. Available for commercial and government customers.</p></div></div>
-        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>How many Canadian organizations use OpenText?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>Over 1,600 Canadian institutions, with nearly 1,000 actively using AI-powered cloud applications. The sovereign cloud gives these customers a fully Canadian-hosted environment.</p></div></div>
-        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Does OpenText AI stay in Canada?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>Yes. OpenText&rsquo;s Aviator AI products integrate with TELUS&rsquo;s AI Factory in a wholly sovereign configuration. All AI operations and data are hosted domestically &mdash; no cross-border data movement for AI processing.</p></div></div>
-        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Is OpenText available through government procurement?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>Yes. OpenText private cloud solutions are available through PSPC procurement. Both OpenText and TELUS are early signatories of the Government of Canada&rsquo;s voluntary AI code of conduct.</p></div></div>
-        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Do I need a TIA for OpenText under Law 25?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>OpenText is Canadian-incorporated. When using the sovereign cloud hosted at TELUS facilities in Canada (including Rimouski, QC), data does not leave Canadian jurisdiction. The TIA requirement is substantially simplified.</p></div></div>
+    <div class="expand-section" id="faq">
+      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
+        <h2>Frequently Asked Questions</h2>
+        <span class="expand-arrow">&#9662;</span>
+      </div>
+      <div class="expand-content">
+        <div class="faq-item-inline"><h3>Is OpenText subject to the CLOUD Act?</h3><p>No. Open Text Corporation is incorporated in Canada and listed on both NASDAQ and TSX. As a Canadian company, OpenText is not subject to the US CLOUD Act. US authorities cannot compel OpenText to produce data.</p></div>
+        <div class="faq-item-inline"><h3>What is the OpenText and TELUS Canadian Sovereign Cloud?</h3><p>Launched July 2025, it combines OpenText&rsquo;s enterprise applications and Aviator AI with TELUS data centres in Rimouski, QC and Kamloops, BC. Every application, dataset, and computation remains within Canadian borders. Available for commercial and government customers.</p></div>
+        <div class="faq-item-inline"><h3>How many Canadian organizations use OpenText?</h3><p>Over 1,600 Canadian institutions, with nearly 1,000 actively using AI-powered cloud applications. The sovereign cloud gives these customers a fully Canadian-hosted environment.</p></div>
+        <div class="faq-item-inline"><h3>Does OpenText AI stay in Canada?</h3><p>Yes. OpenText&rsquo;s Aviator AI products integrate with TELUS&rsquo;s AI Factory in a wholly sovereign configuration. All AI operations and data are hosted domestically &mdash; no cross-border data movement for AI processing.</p></div>
+        <div class="faq-item-inline"><h3>Is OpenText available through government procurement?</h3><p>Yes. OpenText private cloud solutions are available through PSPC procurement. Both OpenText and TELUS are early signatories of the Government of Canada&rsquo;s voluntary AI code of conduct.</p></div>
+        <div class="faq-item-inline"><h3>Do I need a TIA for OpenText under Law 25?</h3><p>OpenText is Canadian-incorporated. When using the sovereign cloud hosted at TELUS facilities in Canada (including Rimouski, QC), data does not leave Canadian jurisdiction. The TIA requirement is substantially simplified.</p></div>
       </div>
     </div>
 
