@@ -216,7 +216,7 @@
     .scan-console{animation:fadeInUp 0.4s ease-out 0.3s both;transition:opacity 0.4s ease-out}
     .scan-status{font-size:11px;color:var(--teal);display:flex;align-items:center;gap:6px;height:18px;transition:opacity 0.15s}
     .scan-status.done{color:var(--muted)}
-    .scan-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:dotPulse 0.5s ease-in-out infinite;flex-shrink:0}
+    .scan-dot{width:6px;height:6px;border-radius:50%;background:#F59E0B;animation:dotPulse 0.5s ease-in-out infinite;flex-shrink:0}
     .scan-dot.done{animation:none;background:var(--teal);opacity:0.5}
     @keyframes dotPulse{0%,100%{opacity:1}50%{opacity:0.2}}
     .scan-progress{height:2px;background:rgba(255,255,255,0.04);border-radius:1px;margin-top:6px;overflow:hidden}
@@ -279,7 +279,7 @@
       <svg viewBox="0 0 200 130" class="risk-gauge-svg gauge-glow" aria-label="Risk gauge showing low risk">
         <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="14" stroke-linecap="round"/>
         <path d="M 20 110 A 80 80 0 0 1 53 45" fill="none" stroke="#10B981" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
-        <path d="M 57 42 A 80 80 0 0 1 143 42" fill="none" stroke="#3CB8B0" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <path d="M 57 42 A 80 80 0 0 1 143 42" fill="none" stroke="#F59E0B" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
         <path d="M 147 45 A 80 80 0 0 1 180 110" fill="none" stroke="#EF4444" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
         <g class="gauge-needle"><line x1="100" y1="110" x2="38" y2="96" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/><circle cx="100" cy="110" r="5" fill="#10B981"/></g>
         <text x="16" y="126" fill="var(--muted,#6B7B8D)" font-size="7.5" font-family="sans-serif" letter-spacing="0.08em">LOW</text>
