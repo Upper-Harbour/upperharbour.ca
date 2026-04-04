@@ -1,13 +1,13 @@
 # .github/workflows/signals.yml
-# Runs the signals intelligence pipeline every 6 hours
+# Runs the signals intelligence pipeline once daily
 # Auto-publishes signals directly to signals.json
 
 name: Signals Pipeline
 
 on:
   schedule:
-    # Every 6 hours: midnight, 6am, noon, 6pm ET (UTC-5)
-    - cron: '0 5,11,17,23 * * *'
+    # Once daily at 7am ET (noon UTC)
+    - cron: '0 12 * * *'
   workflow_dispatch:  # Allow manual trigger
 
 jobs:
