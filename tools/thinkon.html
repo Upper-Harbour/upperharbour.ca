@@ -82,6 +82,14 @@
     .notify-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}.notify-icon{font-size:18px}.notify-title{font-size:15px;font-weight:700;color:var(--ice)}
     .notify-box p{font-size:14px;color:var(--slate);line-height:1.65;margin-bottom:14px}
     .verified{font-size:12px;color:var(--muted);line-height:1.65;border-top:1px solid var(--border-md);padding-top:20px;margin-top:32px}.verified a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)}
+    .faq-item{border-top:1px solid var(--border-md)}
+    .faq-item .faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 0;cursor:pointer;user-select:none}
+    .faq-item .faq-q h3{font-size:15px;font-weight:700;color:var(--ice);margin:0;line-height:1.4}
+    .faq-item .faq-arrow{color:var(--muted);font-size:14px;transition:transform 0.2s;flex-shrink:0;margin-left:12px}
+    .faq-item.open .faq-arrow{transform:rotate(180deg)}
+    .faq-item .faq-a{display:none;padding-bottom:16px}
+    .faq-item.open .faq-a{display:block}
+    .faq-item .faq-a p{font-size:14px;color:var(--slate);line-height:1.7;margin:0}
     .faq-item-inline{margin-bottom:16px}.faq-item-inline h3{font-size:15px;font-weight:700;color:var(--ice);margin:0 0 6px}.faq-item-inline p{font-size:14px;color:var(--slate);line-height:1.7;margin:0}
 
 .cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
@@ -215,18 +223,14 @@
       </div>
     </div>
 
-    <div class="expand-section" id="faq">
-      <div class="expand-header" onclick="this.parentElement.classList.toggle('open')">
-        <h2>Frequently Asked Questions</h2>
-        <span class="expand-arrow">&#9662;</span>
-      </div>
-      <div class="expand-content">
-        <div class="faq-item-inline"><h3>Is ThinkOn subject to the CLOUD Act?</h3><p>No. ThinkOn Inc. is 100% Canadian-owned and operated. Not subject to the US CLOUD Act or any foreign data access law. No foreign employees or contractors support ThinkOn&rsquo;s Canadian infrastructure.</p></div>
-        <div class="faq-item-inline"><h3>Is ThinkOn approved for Protected-B government data?</h3><p>Yes. ThinkOn is the only Canadian-owned cloud provider authorized for Protected-B workloads under the Shared Services Canada GC Cloud Framework Agreement. Achieved Protected-B status after four rigorous audits in 2018.</p></div>
-        <div class="faq-item-inline"><h3>What is ThinkOn&rsquo;s VMware Sovereign Cloud certification?</h3><p>ThinkOn is the first Canadian VMware Sovereign Cloud partner &mdash; one of only a few in-country leaders worldwide. The certification requires proof of a sovereign data supply chain, ITSG-33 compliance, and stringent data governance controls.</p></div>
-        <div class="faq-item-inline"><h3>Is ThinkOn part of the sovereign government cloud consortium?</h3><p>Yes. ThinkOn provides the cloud services layer in Canada&rsquo;s first end-to-end sovereign government cloud, alongside Hypertec (hardware), eStruxture (facilities), and Aptum (orchestration). Launched October 2025.</p></div>
-        <div class="faq-item-inline"><h3>How much data does ThinkOn manage?</h3><p>Over 100 petabytes for 1,500+ organizations through 150+ channel partners. Clients include the Canadian Federal Government, provincial agencies, and organizations in healthcare, finance, education, and defence.</p></div>
-        <div class="faq-item-inline"><h3>Do I need a TIA for ThinkOn under Law 25?</h3><p>ThinkOn is Canadian-owned with all infrastructure operated exclusively by Canadians within Canada. Data does not leave Canadian jurisdiction. The TIA requirement is substantially simplified.</p></div>
+    <div id="faq" style="margin-top:32px;">
+      <h2 style="font-family:var(--display);font-size:20px;font-weight:700;color:var(--ice);margin:0 0 4px;">Frequently Asked Questions</h2>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Is ThinkOn subject to the CLOUD Act?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>No. ThinkOn Inc. is 100% Canadian-owned and operated. Not subject to the US CLOUD Act or any foreign data access law. No foreign employees or contractors support ThinkOn&rsquo;s Canadian infrastructure.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Is ThinkOn approved for Protected-B government data?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>Yes. ThinkOn is the only Canadian-owned cloud provider authorized for Protected-B workloads under the Shared Services Canada GC Cloud Framework Agreement. Achieved Protected-B status after four rigorous audits in 2018.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>What is ThinkOn&rsquo;s VMware Sovereign Cloud certification?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>ThinkOn is the first Canadian VMware Sovereign Cloud partner &mdash; one of only a few in-country leaders worldwide. The certification requires proof of a sovereign data supply chain, ITSG-33 compliance, and stringent data governance controls.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Is ThinkOn part of the sovereign government cloud consortium?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>Yes. ThinkOn provides the cloud services layer in Canada&rsquo;s first end-to-end sovereign government cloud, alongside Hypertec (hardware), eStruxture (facilities), and Aptum (orchestration). Launched October 2025.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>How much data does ThinkOn manage?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>Over 100 petabytes for 1,500+ organizations through 150+ channel partners. Clients include the Canadian Federal Government, provincial agencies, and organizations in healthcare, finance, education, and defence.</p></div></div>
+        <div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q"><h3>Do I need a TIA for ThinkOn under Law 25?</h3><span class="faq-arrow">&#9662;</span></div><div class="faq-a"><p>ThinkOn is Canadian-owned with all infrastructure operated exclusively by Canadians within Canada. Data does not leave Canadian jurisdiction. The TIA requirement is substantially simplified.</p></div></div>
       </div>
     </div>
 
