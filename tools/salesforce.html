@@ -310,7 +310,7 @@
     </div>
 
         <!-- Verdict text -->
-    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Medium-High Risk</span> — Salesforce is US-incorporated (Delaware) and CLOUD Act exposed. But it has made <strong>major Canadian investment</strong>: Hyperforce Canada now supports Data Cloud, AI Cloud, Marketing Cloud, Commerce Cloud, MuleSoft, and Tableau. The challenge isn't a single tool — it's the ecosystem. Each Salesforce product may have different residency, and data flows between them (especially into <a href="/tools/slack" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Slack</a>) must be assessed independently.</p>
+    <p class="verdict-reveal" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);opacity:0;transform:translateY(8px);transition:opacity 0.6s ease,transform 0.6s ease;"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Medium-High Risk</span> — Salesforce is US-incorporated (Delaware) and CLOUD Act exposed. But it has made <strong>major Canadian investment</strong>: Hyperforce Canada now supports Data Cloud, AI Cloud, Marketing Cloud, Commerce Cloud, MuleSoft, and Tableau. The challenge isn't a single tool — it's the ecosystem. Each Salesforce product may have different residency, and data flows between them (especially into <a href="/tools/slack" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Slack</a>) must be assessed independently.</p>
   </header>
 
   <article class="article-body">
@@ -524,7 +524,7 @@
   var cells=document.querySelectorAll('.bento-cell');
 
   if(scanMsg&&scanBar&&!reducedMotion){
-    var steps=[
+    var verdictEl=document.querySelector(".verdict-reveal");var steps=[
       {msg:'Connecting to sovereignty database...',pct:8,delay:600},
       {msg:'Analyzing corporate jurisdiction...',pct:20,delay:700,cell:0},
       {msg:'Checking CLOUD Act exposure...',pct:36,delay:650,cell:1},
@@ -541,7 +541,7 @@
         scanStatus.classList.add('done');
         setTimeout(function(){
           scanConsole.style.opacity='0';
-          setTimeout(function(){scanConsole.style.display='none';},400);
+          setTimeout(function(){scanConsole.style.display='none';},400);if(verdictEl){verdictEl.style.opacity='1';verdictEl.style.transform='translateY(0)';}
         },800);
         return;
       }

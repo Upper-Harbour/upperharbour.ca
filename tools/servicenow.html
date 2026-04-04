@@ -310,7 +310,7 @@
     </div>
 
         <!-- Verdict text -->
-    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Medium Risk</span> — ServiceNow is US-incorporated (Delaware) and CLOUD Act exposed. However, <strong>Canada is the default hosting location</strong> for North American customers. ServiceNow operates its own data centres (not AWS or Azure) with BYOK encryption using FIPS 140-2 Level 3 HSMs. Strong sovereignty controls for a US-parented platform.</p>
+    <p class="verdict-reveal" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);opacity:0;transform:translateY(8px);transition:opacity 0.6s ease,transform 0.6s ease;"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Medium Risk</span> — ServiceNow is US-incorporated (Delaware) and CLOUD Act exposed. However, <strong>Canada is the default hosting location</strong> for North American customers. ServiceNow operates its own data centres (not AWS or Azure) with BYOK encryption using FIPS 140-2 Level 3 HSMs. Strong sovereignty controls for a US-parented platform.</p>
   </header>
 
   <article class="article-body">
@@ -569,7 +569,7 @@
   var cells=document.querySelectorAll('.bento-cell');
 
   if(scanMsg&&scanBar&&!reducedMotion){
-    var steps=[
+    var verdictEl=document.querySelector(".verdict-reveal");var steps=[
       {msg:'Connecting to sovereignty database...',pct:8,delay:600},
       {msg:'Analyzing corporate jurisdiction...',pct:20,delay:700,cell:0},
       {msg:'Checking CLOUD Act exposure...',pct:36,delay:650,cell:1},
@@ -586,7 +586,7 @@
         scanStatus.classList.add('done');
         setTimeout(function(){
           scanConsole.style.opacity='0';
-          setTimeout(function(){scanConsole.style.display='none';},400);
+          setTimeout(function(){scanConsole.style.display='none';},400);if(verdictEl){verdictEl.style.opacity='1';verdictEl.style.transform='translateY(0)';}
         },800);
         return;
       }

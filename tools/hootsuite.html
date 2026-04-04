@@ -310,7 +310,7 @@
     </div>
 
         <!-- Verdict text -->
-    <p class="anim-5" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Low-Medium Risk</span> — Hootsuite is Canadian-incorporated (Vancouver) and <strong>not directly CLOUD Act exposed</strong>. However, all customer data is hosted on AWS in the United States — no Canadian data residency is available. This creates a sovereignty paradox: Canadian jurisdiction protects against direct CLOUD Act compulsion, but US hosting creates an indirect exposure pathway through the infrastructure provider.</p>
+    <p class="verdict-reveal" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);opacity:0;transform:translateY(8px);transition:opacity 0.6s ease,transform 0.6s ease;"><span style="color:#F59E0B;font-weight:700;font-size:19px;">⚠ Low-Medium Risk</span> — Hootsuite is Canadian-incorporated (Vancouver) and <strong>not directly CLOUD Act exposed</strong>. However, all customer data is hosted on AWS in the United States — no Canadian data residency is available. This creates a sovereignty paradox: Canadian jurisdiction protects against direct CLOUD Act compulsion, but US hosting creates an indirect exposure pathway through the infrastructure provider.</p>
   </header>
 
   <article class="article-body">
@@ -566,7 +566,7 @@
   var cells=document.querySelectorAll('.bento-cell');
 
   if(scanMsg&&scanBar&&!reducedMotion){
-    var steps=[
+    var verdictEl=document.querySelector(".verdict-reveal");var steps=[
       {msg:'Connecting to sovereignty database...',pct:8,delay:600},
       {msg:'Analyzing corporate jurisdiction...',pct:20,delay:700,cell:0},
       {msg:'Checking CLOUD Act exposure...',pct:36,delay:650,cell:1},
@@ -583,7 +583,7 @@
         scanStatus.classList.add('done');
         setTimeout(function(){
           scanConsole.style.opacity='0';
-          setTimeout(function(){scanConsole.style.display='none';},400);
+          setTimeout(function(){scanConsole.style.display='none';},400);if(verdictEl){verdictEl.style.opacity='1';verdictEl.style.transform='translateY(0)';}
         },800);
         return;
       }
