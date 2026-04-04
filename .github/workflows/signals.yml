@@ -38,6 +38,17 @@ jobs:
           SIGNALS_JSON_PATH: signals.json
         run: python signals_pipeline.py collect
 
+      - name: Run acquisition tripwire
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          APPROVAL_EMAIL: ${{ secrets.APPROVAL_EMAIL }}
+          SIGNALS_JSON_PATH: signals.json
+        run: python acquisition_tripwire.py
+
       - name: Commit published signals
         run: |
           git config user.name "Signals Bot"
@@ -47,6 +58,9 @@ jobs:
           fi
           if [ -f db-alerts.json ]; then
             git add -f db-alerts.json
+          fi
+          if [ -f tripwire-cache.json ]; then
+            git add -f tripwire-cache.json
           fi
           git diff --staged --quiet || git commit -m "signals: $(date -u +%Y-%m-%dT%H:%M) — auto-published"
           git pull --rebase origin main || true
