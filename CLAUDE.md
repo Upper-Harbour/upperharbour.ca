@@ -2,7 +2,7 @@ This is a static HTML site for upperharbour.ca hosted on GitHub Pages.
 
 ## The database
 
-There is ONE database file: `saas-db.js` in the repo root. Every page loads it via `<script src="/saas-db.js">`. There is no copy in assets/ — do not create one. All tools, all stats, all automation flows from this single file. Currently 715 tools across 32 categories including SaaS and cloud infrastructure.
+There is ONE database file: `saas-db.js` in the repo root. Every page loads it via `<script src="/saas-db.js">`. There is no copy in assets/ — do not create one. All tools, all stats, all automation flows from this single file. Currently 755 tools across 32 categories including SaaS and cloud infrastructure.
 
 ## Adding a tool
 
@@ -23,10 +23,37 @@ All visible numbers on the site update automatically — `assets/uh-stats.js` co
 ## Site structure
 
 Navigation: Signals | Tools | Research | Guides | [Run HarbourScan]
-Footer columns: Platform (HarbourScan, Sovereignty Index, Signals, Research, Methodology, Compliance Guides, Pricing) | About (Founder, LinkedIn, Contact)
+Footer columns: Platform (HarbourScan, Sovereignty Index, Signals, Research, Methodology, Compliance Guides, Consulting, Vendors, Compliance Reports) | About (Founder, joshuavanes.ca, Contact, LinkedIn)
 Footer tagline: "Technology sovereignty intelligence for Canadian organizations."
 
 Google Analytics: G-3KSW0FVBL1 (GA tag in all HTML files, added March 2026)
+
+## Server (Railway)
+
+A separate repo `upperharbour-server` (private) runs a Flask webhook server on Railway.
+- URL: `https://web-production-b1856.up.railway.app`
+- Endpoints: `/webhook/calendly`, `/webhook/stripe`, `/webhook/formspree`, `/brief` (POST)
+- Purpose: receives Calendly/Stripe webhooks → generates pre-call lead briefs via Claude web search → emails them to josh@upperharbour.ca
+- Environment variables: ANTHROPIC_API_KEY, BRIEF_EMAIL, STRIPE_WEBHOOK_SECRET, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS
+
+## Automated Pipelines
+
+### Signals Pipeline (`signals_pipeline.py`)
+- Runs daily at 7am ET via GitHub Actions (`.github/workflows/signals.yml`)
+- Monitors 50+ RSS feeds + web searches for sovereignty-relevant news
+- Auto-publishes to `signals.json` → appears on /signals page
+- Sends digest email to josh@upperharbour.ca
+
+### Acquisition Tripwire (`acquisition_tripwire.py`)
+- Runs daily at 7am ET via GitHub Actions (`.github/workflows/tripwire.yml`)
+- Monitors SEC EDGAR for 384 US parent companies in saas-db.js
+- Checks for 8-K, SC 13D, S-4 filings signalling ownership changes
+- Claude assesses sovereignty impact → auto-publishes to signals.json
+- CIK cache persists in `tripwire-cache.json`
+
+### Database Update Alerts (`db-alerts.json`)
+- Both pipelines flag database changes (acquisitions, jurisdiction changes)
+- Approved alerts auto-apply via `.github/workflows/approve-db-update.yml`
 
 Standalone pages with own nav (do not update): law25.html, sovereignty.html
 
