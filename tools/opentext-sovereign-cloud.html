@@ -28,14 +28,14 @@
     .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0 0 40px;padding-top:8px}
     .bento-cell{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:20px;border-left:4px solid #6B7280}
     .bento-cell.b-green{border-left-color:#10B981}
-    .bento-cell.b-amber{border-left-color:#F59E0B}
+    .bento-cell.b-amber{border-left-color:#3CB8B0}
     .bento-cell.b-green{border-left-color:#10B981}
     .bento-cell.b-grey{border-left-color:#6B7280}
     .bento-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
     .bento-value{font-size:15px;font-weight:600;color:var(--ice)}
     .badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:3px}
     .badge.red{background:rgba(16,185,129,0.12);color:#10B981}
-    .badge.amber{background:rgba(245,158,11,0.12);color:#F59E0B}
+    .badge.amber{background:rgba(245,158,11,0.12);color:#3CB8B0}
     .badge.green{background:rgba(16,185,129,0.12);color:#10B981}
     .badge-sm{font-size:11px;padding:2px 7px}
 
@@ -68,7 +68,7 @@
     .compare-table .recommended td:first-child{box-shadow:inset 3px 0 0 #10B981}
     .ct-yes{color:#10B981;font-weight:600}
     .ct-no{color:#10B981;font-weight:600}
-    .ct-partial{color:#F59E0B;font-weight:600}
+    .ct-partial{color:#3CB8B0;font-weight:600}
 
     /* ── Comparison mini-cards ────────────────────────── */
     .compare-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
@@ -88,7 +88,7 @@
     .mid-cta-btn:hover{background:#47cec5;transform:translateY(-1px)}
 
     /* ── Email notify ─────────────────────────────────── */
-    .notify-box{background:rgba(20,30,42,0.95);border:1px solid rgba(245,158,11,0.15);border-radius:8px;padding:28px;margin:24px 0 32px}
+    .notify-box{background:rgba(20,30,42,0.95);border:1px solid rgba(60,184,176,0.15);border-radius:8px;padding:28px;margin:24px 0 32px}
     .notify-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
     .notify-icon{font-size:16px}
     .notify-title{font-size:14px;font-weight:700;color:var(--ice)}
@@ -176,7 +176,7 @@
 
     /* ── Notify Box Accent ───────────────────────────── */
     .notify-box{transition:border-color 0.3s ease-out}
-    .notify-box:hover{border-color:rgba(245,158,11,0.35)}
+    .notify-box:hover{border-color:rgba(60,184,176,0.35)}
 
     /* ── Bottom CTA Glow ─────────────────────────────── */
     .cta-btn{transition:background 0.2s,transform 0.2s,box-shadow 0.2s;color:#fff !important}
@@ -200,7 +200,7 @@
     .jf-node:hover{box-shadow:0 4px 16px rgba(0,0,0,0.2)}
     .jf-node.jf-safe{border-left:3px solid #10B981}
     .jf-node.jf-safe:hover{border-color:rgba(16,185,129,0.4)}
-    .jf-node.jf-safe{border-left:3px solid #F59E0B}
+    .jf-node.jf-safe{border-left:3px solid #3CB8B0}
     .jf-node.jf-safe:hover{border-color:rgba(245,158,11,0.4)}
     .jf-node.jf-safe{border-left:3px solid #10B981}
     .jf-node.jf-safe:hover{border-color:rgba(16,185,129,0.4)}
@@ -279,7 +279,7 @@
       <svg viewBox="0 0 200 130" class="risk-gauge-svg gauge-glow" aria-label="Risk gauge showing low risk">
         <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="14" stroke-linecap="round"/>
         <path d="M 20 110 A 80 80 0 0 1 53 45" fill="none" stroke="#10B981" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
-        <path d="M 57 42 A 80 80 0 0 1 143 42" fill="none" stroke="#F59E0B" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
+        <path d="M 57 42 A 80 80 0 0 1 143 42" fill="none" stroke="#3CB8B0" stroke-width="14" stroke-linecap="round" opacity="0.55"/>
         <path d="M 147 45 A 80 80 0 0 1 180 110" fill="none" stroke="#EF4444" stroke-width="14" stroke-linecap="round" opacity="0.85"/>
         <g class="gauge-needle"><line x1="100" y1="110" x2="38" y2="96" stroke="#10B981" stroke-width="2.5" stroke-linecap="round"/><circle cx="100" cy="110" r="5" fill="#10B981"/></g>
         <text x="16" y="126" fill="var(--muted,#6B7B8D)" font-size="7.5" font-family="sans-serif" letter-spacing="0.08em">LOW</text>
