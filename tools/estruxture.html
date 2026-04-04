@@ -171,7 +171,7 @@
       </div>
     </div>
 
-    <p class="verdict-reveal" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);opacity:0;transform:translateY(8px);transition:opacity 0.6s ease,transform 0.6s ease;"><span style="color:#10B981;font-weight:700;font-size:19px;">&check; Low Risk</span> &mdash; eStruxture Data Centers is Canada&rsquo;s largest homegrown data centre provider. Majority-owned by Fengate Asset Management (Canadian). <strong>Not subject to the CLOUD Act.</strong> 16+ facilities across Montreal, Toronto, Vancouver, and Calgary totalling over 760,000 square feet. Member of the sovereign government cloud consortium with ThinkOn, Hypertec, and Aptum. Backed by $1.35 billion in financing secured in 2025.</p>
+    <p class="verdict-reveal" style="font-size:17px;line-height:1.65;margin-top:20px;margin-bottom:0;color:var(--slate);display:none;"><span style="color:#10B981;font-weight:700;font-size:19px;">&check; Low Risk</span> &mdash; eStruxture Data Centers is Canada&rsquo;s largest homegrown data centre provider. Majority-owned by Fengate Asset Management (Canadian). <strong>Not subject to the CLOUD Act.</strong> 16+ facilities across Montreal, Toronto, Vancouver, and Calgary totalling over 760,000 square feet. Member of the sovereign government cloud consortium with ThinkOn, Hypertec, and Aptum. Backed by $1.35 billion in financing secured in 2025.</p>
   </header>
 
   <article class="article-body">
@@ -388,7 +388,7 @@
         scanStatus.classList.add('done');
         setTimeout(function(){
           scanConsole.style.opacity='0';
-          setTimeout(function(){scanConsole.style.display="none";},400);if(verdictEl){verdictEl.style.opacity="1";verdictEl.style.transform="translateY(0)";}
+          setTimeout(function(){scanConsole.style.display="none";},400);if(verdictEl){verdictEl.style.display="block";verdictEl.style.opacity="0";verdictEl.style.transition="opacity 0.6s ease";setTimeout(function(){verdictEl.style.opacity="1";},20);}
         },800);
         return;
       }
