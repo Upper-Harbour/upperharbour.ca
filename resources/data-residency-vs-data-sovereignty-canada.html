@@ -120,8 +120,66 @@
     <p>The distinction is simple to state: <strong>residency is where the bits physically sit; sovereignty is which country's laws can compel access to them.</strong> A Canadian data centre operated by a US-incorporated company gives you residency without sovereignty. A Canadian-incorporated vendor with Canadian infrastructure gives you both. Most Canadian SaaS deployments today sit in the first category — residency achieved, sovereignty assumed — and the assumption is wrong.</p>
     <p>The stakes are not theoretical. Quebec's Law 25 requires a Transfer Impact Assessment anchored to jurisdictional analysis, not server location. BC's FIPPA since 2021 requires jurisdictional PIAs for foreign-stored data. PIPEDA's accountability principle requires Canadian organizations to assess the laws to which their service providers are subject — again, sovereignty, not residency. And in July 2020, the European Union's highest court struck down the EU-US Privacy Shield specifically because data residency in European servers could not protect EU data from US surveillance authorities when the operator was US-jurisdictional. Canada's regulatory conversation is roughly five years behind that decision. This page exists to close the gap.</p>
 
-    <h2>The definitions</h2>
-    <p><strong>Data residency</strong> refers to the physical or geographic location where your data is stored. If your Microsoft 365 tenant is configured to store data in the Canada Central region (Toronto), your data has Canadian data residency. The bits are on servers in Canadian territory.</p>
+    <h2>Residency vs sovereignty: the core distinction</h2>
+    <p>Residency is geographic. Sovereignty is legal. A Canadian data centre operated by a US-incorporated company gives you one without the other — the bits sit in Toronto, but US courts can still compel access to them.</p>
+
+    <!-- ═══ VISUAL 1: Core distinction ═══ -->
+    <style>
+      .rvs-distinction { background: var(--surface); border: 1px solid rgba(234,240,244,0.08); border-radius: 10px; padding: 32px 24px; margin: 24px 0 32px; }
+      .rvs-dc-row { display: flex; align-items: stretch; justify-content: center; gap: 24px; flex-wrap: wrap; }
+      .rvs-shield { flex: 1 1 280px; max-width: 360px; background: rgba(12,18,25,0.6); border: 1px solid rgba(234,240,244,0.1); border-radius: 8px; padding: 20px; position: relative; }
+      .rvs-shield-residency { border-left: 3px solid var(--teal); }
+      .rvs-shield-sovereignty { border-left: 3px solid var(--red); }
+      .rvs-shield-label { font-family: var(--mono, 'Courier New', monospace); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--slate); margin-bottom: 8px; }
+      .rvs-shield-residency .rvs-shield-label { color: var(--teal); }
+      .rvs-shield-sovereignty .rvs-shield-label { color: var(--red); }
+      .rvs-shield-title { font-size: 18px; font-weight: 700; color: var(--ice); margin-bottom: 12px; }
+      .rvs-shield-answer { font-size: 14px; color: var(--ice); line-height: 1.5; margin-bottom: 12px; }
+      .rvs-shield-answer strong { color: var(--ice); }
+      .rvs-shield-verdict { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.5px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase; }
+      .rvs-verdict-ok { background: rgba(60,184,176,0.15); color: var(--teal); }
+      .rvs-verdict-fail { background: rgba(224,96,80,0.15); color: var(--red); }
+      .rvs-building { text-align: center; padding: 16px 0 24px; border-bottom: 1px dashed rgba(234,240,244,0.1); margin-bottom: 24px; }
+      .rvs-building-label { font-size: 12px; color: var(--slate); margin-top: 10px; font-family: var(--mono, monospace); letter-spacing: 1px; }
+      @media (max-width: 640px) { .rvs-dc-row { flex-direction: column; } .rvs-shield { max-width: 100%; } }
+    </style>
+    <div class="rvs-distinction">
+      <div class="rvs-building">
+        <svg width="88" height="88" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:inline-block;">
+          <!-- data centre building -->
+          <rect x="14" y="24" width="60" height="52" fill="none" stroke="#EAF0F4" stroke-width="2" opacity="0.7"/>
+          <rect x="14" y="24" width="60" height="8" fill="#EAF0F4" opacity="0.15"/>
+          <!-- server rack slots -->
+          <line x1="22" y1="40" x2="66" y2="40" stroke="#3CB8B0" stroke-width="1.5" opacity="0.6"/>
+          <line x1="22" y1="48" x2="66" y2="48" stroke="#3CB8B0" stroke-width="1.5" opacity="0.6"/>
+          <line x1="22" y1="56" x2="66" y2="56" stroke="#3CB8B0" stroke-width="1.5" opacity="0.6"/>
+          <line x1="22" y1="64" x2="66" y2="64" stroke="#3CB8B0" stroke-width="1.5" opacity="0.6"/>
+          <!-- blink dots -->
+          <circle cx="26" cy="40" r="1.5" fill="#3CB8B0"/>
+          <circle cx="26" cy="48" r="1.5" fill="#3CB8B0"/>
+          <circle cx="26" cy="64" r="1.5" fill="#C9A84C"/>
+          <!-- small maple leaf above building -->
+          <text x="44" y="18" font-size="16" text-anchor="middle" fill="#EAF0F4">🍁</text>
+        </svg>
+        <div class="rvs-building-label">SAME DATA CENTRE · TORONTO</div>
+      </div>
+      <div class="rvs-dc-row">
+        <div class="rvs-shield rvs-shield-residency">
+          <div class="rvs-shield-label">Question 1: Residency</div>
+          <div class="rvs-shield-title">Where do the bits sit?</div>
+          <div class="rvs-shield-answer"><strong>On Canadian soil</strong>, in a Toronto data centre. Physically inside Canadian territory.</div>
+          <span class="rvs-shield-verdict rvs-verdict-ok">✓ Canadian residency</span>
+        </div>
+        <div class="rvs-shield rvs-shield-sovereignty">
+          <div class="rvs-shield-label">Question 2: Sovereignty</div>
+          <div class="rvs-shield-title">Whose laws reach them?</div>
+          <div class="rvs-shield-answer"><strong>US courts can compel disclosure</strong> under the CLOUD Act — the provider is US-incorporated, so US process reaches the data regardless of where it physically sits.</div>
+          <span class="rvs-shield-verdict rvs-verdict-fail">✗ US sovereignty</span>
+        </div>
+      </div>
+    </div>
+
+    <p><strong>Data residency</strong> refers to the physical or geographic location where your data is stored. If your Microsoft 365 tenant is configured to store data in the Canada Central region (Toronto), your data has Canadian data residency — the bits are on servers in Canadian territory.</p>
     <p><strong>Data sovereignty</strong> refers to the legal jurisdiction that governs your data. It's determined not by where the data physically sits, but by who controls the platform, who the parent company is, and what laws apply to that entity. If your data is managed by a US-incorporated company, it is subject to US legal jurisdiction — regardless of where it's stored.</p>
     <p>The Government of Canada's own definition, published by the Treasury Board of Canada Secretariat in its <a href="https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/cloud-services/digital-sovereignty/gc-white-paper-data-sovereignty-public-cloud.html" target="_blank" rel="noopener">white paper on Data Sovereignty and Public Cloud</a>, draws this distinction clearly: data sovereignty is "Canada's right to control access to and disclosure of its digital information subject only to Canadian laws," while data residency is simply "the physical or geographical location of that information." The same paper states bluntly: "As long as a CSP that operates in Canada is subject to the laws of a foreign country, Canada will not have full sovereignty over its data."</p>
 
@@ -137,11 +195,6 @@
         <tr><td class="col-label">Law 25 TIA required?</td><td>Yes — residency alone doesn't satisfy the legal framework assessment</td><td>Simplified — Canadian sovereignty reduces the assessment burden</td></tr>
       </tbody>
     </table>
-
-    <h2>Why the confusion exists</h2>
-    <p>The confusion between residency and sovereignty is not accidental. Many SaaS vendors market "Canadian data residency" as a compliance solution, and for many organizations, it sounds like the problem is solved. Microsoft offers Canada Central and Canada East regions. AWS has ca-central-1 in Montreal and ca-west-1 in Calgary. Google Cloud has Montreal and Toronto regions. Configuring data residency in Canada is straightforward and increasingly common.</p>
-    <p>But the compliance question under Law 25 isn't just "where is my data stored?" It's "does the jurisdiction that governs my data provide adequate privacy protection?" And when the platform is operated by a US-incorporated company, the jurisdiction that governs it includes the United States — which means the CLOUD Act, FISA Section 702, and other US surveillance authorities are relevant to the legal framework assessment.</p>
-    <p>Residency is a geographic configuration. Sovereignty is a legal and corporate structure question. They operate on different axes entirely.</p>
 
     <div class="callout warning-callout">
       <div class="callout-label">The marketing gap</div>
@@ -214,15 +267,62 @@
     <p>The pattern across all Canadian instruments is consistent: <strong>residency is the floor, jurisdictional analysis is the ceiling, and the gap between them is where compliance risk lives.</strong></p>
 
     <h2>The sovereignty spectrum</h2>
-    <p>Not all sovereignty positions are binary. In practice, organizations operate on a spectrum:</p>
+    <p>Sovereignty isn't binary. In practice, Canadian organizations sit on a three-tier spectrum — and most are on the middle tier without realizing the distinction exists.</p>
 
-    <p><strong>Full sovereignty:</strong> Data stored on Canadian infrastructure, operated by a Canadian-incorporated company, with no foreign parent or subsidiary that could create jurisdictional exposure. All personnel with access to data are Canadian-based. This is the gold standard but limits your vendor options significantly.</p>
-    <p><strong>Partial sovereignty with residency:</strong> Data stored in Canada on infrastructure operated by a foreign-incorporated company (e.g., AWS Canada region, Azure Canada). Canadian residency is achieved, but the operating company's foreign jurisdiction creates a sovereignty gap. Most Canadian organizations sit here today.</p>
-    <p><strong>No sovereignty, no residency:</strong> Data stored outside Canada on infrastructure operated by a foreign company. No data residency configuration enabled. This is the default position for many SaaS tools that don't offer regional data storage options.</p>
+    <!-- ═══ VISUAL 2: Sovereignty spectrum ═══ -->
+    <style>
+      .rvs-spectrum { background: var(--surface); border: 1px solid rgba(234,240,244,0.08); border-radius: 10px; padding: 24px; margin: 24px 0 32px; }
+      .rvs-spectrum-track { display: flex; gap: 2px; border-radius: 6px; overflow: hidden; margin-bottom: 20px; }
+      .rvs-tier { flex: 1; padding: 18px 16px; position: relative; min-height: 160px; display: flex; flex-direction: column; }
+      .rvs-tier-full { background: linear-gradient(180deg, rgba(60,184,176,0.18), rgba(60,184,176,0.06)); border-top: 2px solid var(--teal); }
+      .rvs-tier-partial { background: linear-gradient(180deg, rgba(201,168,76,0.18), rgba(201,168,76,0.06)); border-top: 2px solid var(--gold); }
+      .rvs-tier-neither { background: linear-gradient(180deg, rgba(224,96,80,0.18), rgba(224,96,80,0.06)); border-top: 2px solid var(--red); }
+      .rvs-tier-name { font-family: var(--mono, 'Courier New', monospace); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+      .rvs-tier-full .rvs-tier-name { color: var(--teal); }
+      .rvs-tier-partial .rvs-tier-name { color: var(--gold); }
+      .rvs-tier-neither .rvs-tier-name { color: var(--red); }
+      .rvs-tier-title { font-size: 15px; font-weight: 700; color: var(--ice); margin-bottom: 8px; line-height: 1.3; }
+      .rvs-tier-checks { font-size: 12px; color: var(--slate); margin-bottom: 10px; font-family: var(--mono, monospace); letter-spacing: 0.3px; }
+      .rvs-tier-checks .chk-yes { color: var(--teal); }
+      .rvs-tier-checks .chk-no { color: var(--red); }
+      .rvs-tier-desc { font-size: 12px; color: var(--slate); line-height: 1.5; margin-top: auto; }
+      .rvs-tier-examples { font-size: 11px; color: var(--muted); font-style: italic; margin-top: 8px; padding-top: 8px; border-top: 1px dashed rgba(234,240,244,0.08); }
+      .rvs-axis { display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); font-family: var(--mono, monospace); letter-spacing: 1px; text-transform: uppercase; padding: 0 2px; }
+      @media (max-width: 720px) { .rvs-spectrum-track { flex-direction: column; } .rvs-tier { min-height: 0; } }
+    </style>
+    <div class="rvs-spectrum">
+      <div class="rvs-spectrum-track">
+        <div class="rvs-tier rvs-tier-full">
+          <div class="rvs-tier-name">Tier 1 · Strongest</div>
+          <div class="rvs-tier-title">Full sovereignty</div>
+          <div class="rvs-tier-checks"><span class="chk-yes">✓</span> Residency &nbsp; <span class="chk-yes">✓</span> Sovereignty</div>
+          <div class="rvs-tier-desc">Canadian-incorporated vendor, Canadian infrastructure, no foreign parent or subsidiary creating jurisdictional exposure.</div>
+          <div class="rvs-tier-examples">Clio · 1Password · Sync.com · ThinkOn</div>
+        </div>
+        <div class="rvs-tier rvs-tier-partial">
+          <div class="rvs-tier-name">Tier 2 · Most orgs</div>
+          <div class="rvs-tier-title">Residency, no sovereignty</div>
+          <div class="rvs-tier-checks"><span class="chk-yes">✓</span> Residency &nbsp; <span class="chk-no">✗</span> Sovereignty</div>
+          <div class="rvs-tier-desc">Canadian region configured on a foreign-operated platform. CLOUD Act still reaches the data through the parent company.</div>
+          <div class="rvs-tier-examples">M365 (Canada Central) · AWS ca-central-1 · Google Cloud Montréal</div>
+        </div>
+        <div class="rvs-tier rvs-tier-neither">
+          <div class="rvs-tier-name">Tier 3 · Default</div>
+          <div class="rvs-tier-title">Neither</div>
+          <div class="rvs-tier-checks"><span class="chk-no">✗</span> Residency &nbsp; <span class="chk-no">✗</span> Sovereignty</div>
+          <div class="rvs-tier-desc">Data outside Canada, foreign-operated platform, no region configuration available. The default for many SaaS tools.</div>
+          <div class="rvs-tier-examples">Dropbox · Slack · Notion · Mailchimp · Zoom</div>
+        </div>
+      </div>
+      <div class="rvs-axis">
+        <span>← More protection</span>
+        <span>Less protection →</span>
+      </div>
+    </div>
 
     <div class="callout">
       <div class="callout-label">The practical question</div>
-      <p>Full data sovereignty for every tool in your stack may not be realistic — there simply aren't Canadian-headquartered alternatives for every SaaS category. The practical approach is to <strong>know where you sit on the spectrum for each tool</strong>, prioritize sovereignty for your most sensitive data, and document your rationale. That's what compliance actually requires.</p>
+      <p>Full sovereignty for every tool isn't realistic — Canadian alternatives don't exist in every category. The practical move is to <strong>know where you sit per tool</strong>, prioritize Tier 1 for your most sensitive data, and document the rationale everywhere else. That's what compliance actually requires.</p>
     </div>
 
     <h2>What to do about it</h2>
