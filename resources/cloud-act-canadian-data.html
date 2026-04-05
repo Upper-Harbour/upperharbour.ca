@@ -83,12 +83,12 @@
 
     /* ── Action Cards ───────────────────────────────── */
     .action-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0 32px}
-    .action-card{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:24px 20px;text-align:center;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s}
+    .action-card{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:24px 20px;text-align:center;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;display:flex;flex-direction:column}
     .action-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,0.3);border-color:rgba(60,184,176,0.2)}
     .action-icon{font-size:28px;margin-bottom:12px}
     .action-title{font-size:14px;font-weight:700;color:var(--ice);margin-bottom:6px}
     .action-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:16px}
-    .action-link{display:inline-block;font-size:12px;font-weight:700;color:#fff !important;background:var(--teal);padding:10px 20px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s}
+    .action-link{display:inline-block;align-self:center;margin-top:auto;font-size:12px;font-weight:700;color:#fff !important;background:var(--teal);padding:10px 20px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s}
     .action-link:hover{background:#47cec5;transform:translateY(-1px)}
     .action-link.secondary{background:transparent;border:1px solid rgba(60,184,176,0.4);color:var(--teal) !important}
     .action-link.secondary:hover{background:rgba(60,184,176,0.08)}
