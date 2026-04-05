@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Apr 02, 2026 — 06:44 ET",
+    "lastUpdated": "Apr 05, 2026 — 13:38 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Government of Canada launches comprehensive review of the Privacy Act",
+      "summary": "The Government of Canada has initiated a substantial review of the Privacy Act, which has remained largely unchanged since 1983. The review includes a public consultation period ending July 10, 2026, with final findings expected in Winter 2026-27. This modernization directly affects how Canadian organizations and government institutions handle personal data and establishes updated baseline requirements for data sovereignty compliance.",
+      "type": "legislation",
+      "source": "Government of Canada (Treasury Board Secretariat)",
+      "sourceUrl": "https://www.canada.ca/en/treasury-board-secretariat/news/2026/04/government-of-canada-launches-review-of-the-privacy-act.html",
+      "date": "2026-04-03",
+      "impact": "All Canadian organizations processing personal data should monitor the Privacy Act consultation and prepare for potential compliance changes; federal departments should actively participate in the review process.",
+      "dbUpdate": false
+    },
     {
       "headline": "Government of Canada extends BlackBerry contract for secure communications with Canadian data residency",
       "summary": "The Government of Canada extended its contract with BlackBerry for secure communications infrastructure, with data stored in Canadian government data centres. This procurement decision directly supports federal digital sovereignty objectives by ensuring sensitive communications remain under Canadian control.",
