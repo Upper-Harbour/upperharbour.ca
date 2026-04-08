@@ -1,0 +1,62 @@
+# Upper Harbour — .gitignore
+# Anything in this list will not be committed to the public repo and will not
+# be deployed to upperharbour.ca. Use this to keep secrets, internal docs,
+# and operational state out of the public deployment.
+#
+# Critical rule: never commit secrets to this repo, even temporarily.
+# Even after deletion, secrets remain in git history and must be revoked.
+
+# ── Secrets & environment ────────────────────────────────────────
+.env
+.env.*
+*.env
+secrets.json
+credentials.json
+.npmrc
+.netrc
+
+# ── Internal-only documentation ──────────────────────────────────
+# Anything in .private/ is for internal reference only and never deployed.
+# Keep working notes, session logs, strategy docs, AI orchestration files
+# here instead of at the repo root.
+.private/
+*.private.md
+*.local.md
+SESSION-LOG.md
+CLAUDE.md
+BUSINESS-SHERPA.md
+business-sherpa.md
+SITE-BIBLE.md
+CLASSIFICATION-RUBRIC.md
+UPDATE-GUIDE.md
+CONTINUATION-MANUAL.md
+
+# ── OS / editor cruft ────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# ── Python build artifacts ───────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ── Node build artifacts (if added later) ────────────────────────
+node_modules/
+.next/
+dist/
+build/
+
+# ── Local test / scratch files ───────────────────────────────────
+/tmp/
+/scratch/
+*.bak
+*.tmp
