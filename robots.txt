@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
 
+# Operational files — not for indexing
+Disallow: /admin-alerts.html
+Disallow: /db-alerts.json
+Disallow: /tripwire-cache.json
+Disallow: /acquisitions.json
+
 Sitemap: https://www.upperharbour.ca/sitemap.xml
