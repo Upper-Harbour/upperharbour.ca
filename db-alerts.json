@@ -58,8 +58,9 @@
       "signal_date": "2026-03-31",
       "source_url": "https://www.canada.ca/en/shared-services/news/2026/03/government-of-canada-advances-digital-sovereignty-and-secure-communications-through-contract-extension-with-blackberry.html",
       "flagged_at": "2026-04-01T07:20:08.064207",
-      "status": "pending_review"
+      "status": "dismissed",
+      "reviewed_at": "2026-04-09T07:43:05.252418Z"
     }
   ],
-  "updated": "2026-04-01T07:20:08.065487"
+  "updated": "2026-04-09T07:43:05.252433Z"
 }
