@@ -340,9 +340,41 @@
       <span class="footer-copy">© 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
     </div>
   </footer>
-  <script src="/saas-db.js"></script>
   <script>
-  (function() {
+    // ── Fetch the Sovereignty Index from the Railway API ───────
+    // The page used to load /saas-db.js as a static file. As of April 2026
+    // the database lives behind the Railway API. We fetch both the tool
+    // list (for the per-tool walks) and the stats endpoint (for loadedAt,
+    // which replaces the legacy saasDBMeta.lastUpdated).
+    var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
+    window.saasDB = [];
+    window._indexLoadedAt = null;
+    var _indexReady = Promise.all([
+      fetch(UH_API_BASE + '/api/tools', { cache: 'default' })
+        .then(function(r) {
+          if (!r.ok) throw new Error('tools fetch failed: ' + r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          window.saasDB = data.tools || [];
+        }),
+      fetch(UH_API_BASE + '/api/stats', { cache: 'default' })
+        .then(function(r) {
+          if (!r.ok) throw new Error('stats fetch failed: ' + r.status);
+          return r.json();
+        })
+        .then(function(stats) {
+          window._indexLoadedAt = stats.loadedAt || null;
+        })
+    ]).catch(function(err) {
+      if (window.console && console.warn) {
+        console.warn('[index page] Could not fetch:', err.message);
+      }
+    });
+  </script>
+  <script>
+  _indexReady.then(function() {
+    if (!saasDB.length) return;
     var total = saasDB.length;
     var usCount = 0, cdnCount = 0, cloudActCount = 0;
     var caResTotal = 0, caResExposed = 0;
@@ -413,8 +445,8 @@
     setText('bodyCdnPct', cdnPct);
 
     // ── Timestamp ──
-    if (typeof saasDBMeta !== 'undefined' && saasDBMeta.lastUpdated) {
-      var d = new Date(saasDBMeta.lastUpdated);
+    if (window._indexLoadedAt) {
+      var d = new Date(window._indexLoadedAt);
       var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
       var formatted = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
       var timeStr = d.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit', timeZoneName:'short' });
@@ -484,7 +516,7 @@
     setText('ownCdnInline', ownCdnPct);
     setText('ownFBInline', ownRevPct);
     setText('ownFormerInline', ownNonExpPct);
-  })();
+  });
   </script>
 <script src="/assets/track.js" defer></script>
 </body>

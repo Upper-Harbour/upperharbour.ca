@@ -593,7 +593,33 @@ html{scroll-padding-top:100px}
 
 
 <!-- ═══ SAAS DATABASE ═══ -->
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/saas-db.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<script>
+  // ── Fetch the Sovereignty Index from the Railway API ───────
+  // The PIA generator's tool selector reads window.saasDB. Used to load
+  // /saas-db.js as a static file; as of April 2026 the database lives
+  // behind the Railway API. We fetch the tool list and shim it into
+  // window.saasDB so the existing autocomplete code below stays unchanged.
+  // The fetch promise is exposed as window._albertaPiaToolsReady so the
+  // payment-flow auto-restore (which runs on page load) can wait on it.
+  var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
+  window.saasDB = [];
+  window._albertaPiaToolsReady = fetch(UH_API_BASE + '/api/tools', { cache: 'default' })
+    .then(function(r) {
+      if (!r.ok) throw new Error('tools fetch failed: ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      window.saasDB = data.tools || [];
+      return window.saasDB;
+    })
+    .catch(function(err) {
+      if (window.console && console.warn) {
+        console.warn('[alberta-pia] Could not fetch tools:', err.message);
+      }
+      return [];
+    });
+</script>
 
 <!-- ═══ APPLICATION LOGIC ═══ -->
 <script>
@@ -776,16 +802,22 @@ html{scroll-padding-top:100px}
   if(window.location.search.indexOf('paid=true')>-1||window.location.search.indexOf('success')>-1){
     var st=sessionStorage.getItem('pia_tools');
     if(st){
-      var tn=JSON.parse(st);
-      tn.forEach(function(name){
-        var tool=saasDB.find(function(t){return t.name===name});
-        if(tool)selected.push(tool);
+      // Wait for the tool list to load before trying to restore — if the
+      // user is coming back from a Stripe checkout the page is still
+      // hydrating, and saasDB.find() against an empty array would silently
+      // fail and lose the user's tool selection.
+      (window._albertaPiaToolsReady || Promise.resolve()).then(function(){
+        var tn=JSON.parse(st);
+        tn.forEach(function(name){
+          var tool=saasDB.find(function(t){return t.name===name});
+          if(tool)selected.push(tool);
+        });
+        render();
+        generateOutput();
+        sessionStorage.removeItem('pia_tools');
+        // Scroll to top first so user sees the hero, then output is below
+        window.scrollTo(0,0);
       });
-      render();
-      generateOutput();
-      sessionStorage.removeItem('pia_tools');
-      // Scroll to top first so user sees the hero, then output is below
-      window.scrollTo(0,0);
     }
   }
 })();

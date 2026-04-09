@@ -1130,7 +1130,33 @@
   </div><!-- /wizardSection -->
 
   <!-- ── Data Files ──────────────────────────────────────────── -->
-  <script src="/saas-db.js"></script>
+  <script>
+    // ── Fetch the Sovereignty Index from the Railway API ───────
+    // The wizard's Step 2 tool autocomplete reads window.saasDB. The page
+    // used to load /saas-db.js as a static file; as of April 2026 the
+    // database lives behind the Railway API. We fetch the tool list and
+    // shim it into window.saasDB so the existing autocomplete code below
+    // can stay unchanged. The fetch resolves long before the user reaches
+    // Step 2, so no UI gating is needed — the autocomplete just returns
+    // no matches if a user somehow types into it before the fetch lands.
+    var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
+    window.saasDB = [];
+    var _harbourscanToolsReady = fetch(UH_API_BASE + '/api/tools', { cache: 'default' })
+      .then(function(r) {
+        if (!r.ok) throw new Error('tools fetch failed: ' + r.status);
+        return r.json();
+      })
+      .then(function(data) {
+        window.saasDB = data.tools || [];
+        return window.saasDB;
+      })
+      .catch(function(err) {
+        if (window.console && console.warn) {
+          console.warn('[harbourscan] Could not fetch tools:', err.message);
+        }
+        return [];
+      });
+  </script>
   <script src="/assets/uh-stats.js"></script>
   <script>
   </script>

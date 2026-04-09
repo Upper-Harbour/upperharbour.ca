@@ -310,11 +310,38 @@
   </footer>
 
 
-  <!-- Load the sovereignty database -->
-  <script src="/saas-db.js"></script>
+  <!-- Load the sovereignty database from the Railway API -->
   <script>
-    // Render the directory from saas-db.js
-    (function() {
+    // The page used to load /saas-db.js as a static file. As of April 2026
+    // the database lives behind the Railway API. We fetch the tool list
+    // and shim it into window.saasDB so the existing directory rendering
+    // code below can run unchanged via _buyCanadianReady.then(...).
+    var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
+    window.saasDB = [];
+    var _buyCanadianReady = fetch(UH_API_BASE + '/api/tools', { cache: 'default' })
+      .then(function(r) {
+        if (!r.ok) throw new Error('tools fetch failed: ' + r.status);
+        return r.json();
+      })
+      .then(function(data) {
+        window.saasDB = data.tools || [];
+        return window.saasDB;
+      })
+      .catch(function(err) {
+        if (window.console && console.warn) {
+          console.warn('[buy-canadian] Could not fetch tools:', err.message);
+        }
+        var dirEl = document.getElementById('directory');
+        if (dirEl) {
+          dirEl.innerHTML = '<div style="padding:48px 24px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:13px;">Could not load directory from server. Please refresh in a moment.</div>';
+        }
+        return [];
+      });
+  </script>
+  <script>
+    // Render the directory after the fetch resolves
+    _buyCanadianReady.then(function() {
+      if (!saasDB.length) return;
       var cdn = saasDB.filter(function(t) { return t.risk === 'canadian'; });
       var cats = {};
       cdn.forEach(function(t) {
@@ -398,7 +425,7 @@
 
         countEl.textContent = visible + ' tool' + (visible !== 1 ? 's' : '') + (q ? ' matching "' + q + '"' : '');
       });
-    })();
+    });
   </script>
 <script src="/assets/track.js" defer></script>
 </body>

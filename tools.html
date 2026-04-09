@@ -291,8 +291,36 @@
       <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
     </div>
   </footer>
-  <script src="/saas-db.js"></script>
   <script>
+    // ── Fetch the Sovereignty Index from the Railway API ───────
+    // The page used to load /saas-db.js as a script tag and walk the
+    // global saasDB array. As of April 2026 the database lives behind
+    // the API server. We fetch the tool list once and shim it into
+    // window.saasDB so the existing render/filter/search code below
+    // can stay unchanged.
+    var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
+    window.saasDB = [];
+    var _toolsReady = fetch(UH_API_BASE + '/api/tools', { cache: 'default' })
+      .then(function(r) {
+        if (!r.ok) throw new Error('tools fetch failed: ' + r.status);
+        return r.json();
+      })
+      .then(function(data) {
+        window.saasDB = data.tools || [];
+        return window.saasDB;
+      })
+      .catch(function(err) {
+        if (window.console && console.warn) {
+          console.warn('[tools] Could not fetch tools:', err.message);
+        }
+        // Show a graceful empty-state message in the tool list
+        var list = document.getElementById('toolList');
+        if (list) {
+          list.innerHTML = '<div style="padding:48px 24px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:13px;">Could not load tools from server. Please refresh in a moment.</div>';
+        }
+        return [];
+      });
+
     // ── Unmatched search logging ────────────────────────────────────
     function logUnmatchedSearch(query, source) {
       if (!query || query.length < 2) return;
@@ -474,24 +502,29 @@
     document.getElementById('metaUpdated').textContent =
       new Date().toLocaleDateString('en-CA', { year: 'numeric', month: 'short', day: 'numeric' });
 
-    renderFeatured();
-    render();
+    // Wait for the tool data to load before running anything that touches saasDB.
+    // The DOM event listeners (search input, hashchange) are wired up immediately
+    // but they all call render() which checks saasDB.length internally.
+    _toolsReady.then(function() {
+      renderFeatured();
+      render();
 
-    // Handle direct links via hash
-    var ht = getHashTool();
-    if (ht) {
-      var m = saasDB.find(function(t) {
-        return t.name.toLowerCase() === ht.toLowerCase() ||
-               t.name.toLowerCase().replace(/\s+/g, '-') === ht.toLowerCase();
-      });
-      if (m) {
-        jumpToTool(m.name);
+      // Handle direct links via hash
+      var ht = getHashTool();
+      if (ht) {
+        var m = saasDB.find(function(t) {
+          return t.name.toLowerCase() === ht.toLowerCase() ||
+                 t.name.toLowerCase().replace(/\s+/g, '-') === ht.toLowerCase();
+        });
+        if (m) {
+          jumpToTool(m.name);
+        }
       }
-    }
+    });
 
     window.addEventListener('hashchange', function() {
       var h = getHashTool();
-      if (h) {
+      if (h && saasDB.length) {
         var m = saasDB.find(function(t) {
           return t.name.toLowerCase() === h.toLowerCase() ||
                  t.name.toLowerCase().replace(/\s+/g, '-') === h.toLowerCase();
