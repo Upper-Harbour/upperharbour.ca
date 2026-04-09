@@ -183,6 +183,16 @@ def find_tool_index(db: list[dict], tool_name: str) -> int | None:
 
 def apply_alert(db: list[dict], alert: dict) -> tuple[bool, str]:
     """Apply a single approved alert to the database."""
+    # suggest_new_tool is a separate alert type emitted by the tripwire when
+    # Claude identifies a tool mentioned in a filing that Upper Harbour isn't
+    # tracking yet. It can't be mutated into an existing entry because there
+    # IS no existing entry — it proposes creating one. For now, this applier
+    # skips those and leaves them in the "approved" bucket so they show up
+    # in the admin UI as approved suggestions awaiting manual entry. A
+    # future version of the applier will handle creation.
+    if alert.get("change") == "suggest_new_tool":
+        return False, "Approved new-tool suggestion: manual entry required (skipped by applier)"
+
     tool_name = alert.get("tool") or alert.get("tool_name") or alert.get("name") or alert.get("toolName")
     if not tool_name:
         return False, "Alert has no tool/name field — skipping"
@@ -257,6 +267,13 @@ def run(apply: bool = False, commit: bool = False) -> None:
             alert["status"] = "applied"
             alert["appliedAt"] = now
             applied_count += 1
+        elif alert.get("change") == "suggest_new_tool":
+            # New-tool suggestions are intentionally skipped by this applier.
+            # Mark them "deferred" rather than "failed" so the admin UI can
+            # render them as awaiting manual action rather than as errors.
+            alert["status"] = "deferred"
+            alert["deferredAt"] = now
+            alert["deferredReason"] = message
         else:
             alert["status"] = "failed"
             alert["failedAt"] = now

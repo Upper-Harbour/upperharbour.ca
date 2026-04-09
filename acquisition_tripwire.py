@@ -133,6 +133,22 @@ def extract_parents(db_path: str = SAAS_DB_PATH) -> dict:
     return parents
 
 
+def extract_all_tool_names(db_path: str = SAAS_DB_PATH) -> set:
+    """
+    Return the flat set of all tool names in saas-db.js.
+
+    Used by assess_sovereignty_impact to give Claude the "already tracked"
+    list so it can reliably identify NEW tools mentioned in filings that
+    Upper Harbour should probably be tracking.
+    """
+    with open(db_path, 'r') as f:
+        src = f.read()
+    names = re.findall(r'\{\s*name:"([^"]+)"', src)
+    result = set(n.strip() for n in names if n.strip())
+    log.info(f"Indexed {len(result)} tool names for new-tool suggestions")
+    return result
+
+
 # ── CIK Lookup (SEC EDGAR) ───────────────────────────────────
 
 # Cache CIK lookups to avoid repeated API calls
@@ -325,24 +341,43 @@ def has_acquisition_language(text: str) -> bool:
 
 # ── Claude Impact Assessment ─────────────────────────────────
 
-def assess_sovereignty_impact(filing: dict, tools: list[str], filing_text: str) -> Optional[dict]:
+def assess_sovereignty_impact(filing: dict, tools: list[str], filing_text: str,
+                              known_tool_names: set = None) -> Optional[dict]:
     """
     Use Claude to assess whether a filing has sovereignty implications
     for Canadian organizations using the affected tools.
-    
+
+    Also asks Claude to identify any OTHER tools mentioned in the filing
+    that Upper Harbour should probably be tracking but isn't yet. Those
+    come back as a suggested_new_tools array and downstream become
+    db-alerts entries with change="suggest_new_tool".
+
     Returns a signal dict ready for publish, or None if not relevant.
     """
     if not ANTHROPIC_API_KEY:
         log.warning("No ANTHROPIC_API_KEY — skipping impact assessment")
         return None
-    
+
     import anthropic
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    
+
+    # Lazy-load the known-tool index if the caller didn't pass one
+    if known_tool_names is None:
+        try:
+            known_tool_names = extract_all_tool_names()
+        except Exception as e:
+            log.warning(f"Could not load known tool names: {e}")
+            known_tool_names = set()
+
+    # Give Claude a compact but useful slice of the known-tool list so it
+    # can recognize what's already tracked. The full list is ~755 tools
+    # (~10-12KB of text) which fits easily in the prompt.
+    known_sample = sorted(known_tool_names)
+
     try:
         response = client.messages.create(
             model="claude-haiku-4-5-20251001",
-            max_tokens=1500,
+            max_tokens=2500,
             messages=[{
                 "role": "user",
                 "content": f"""You are an analyst for Upper Harbour, a Canadian data sovereignty research organization.
@@ -354,24 +389,39 @@ Filing details:
 - Form type: {filing['form_type']}
 - Filed: {filing['filing_date']}
 - 8-K items: {filing.get('items', 'N/A')}
-- Tools affected: {', '.join(tools)}
+- Tools already tracked for this parent: {', '.join(tools)}
 
 Filing text excerpt (first 5000 chars):
 ---
 {filing_text[:5000]}
 ---
 
+Upper Harbour already tracks the following tool names in its Sovereignty Index (this is the complete list — anything NOT on this list is a candidate for a new tool suggestion):
+{', '.join(known_sample)}
+
 Analyze this filing and determine:
 
+PART A — Primary event:
 1. Does this filing indicate an acquisition, merger, ownership change, or change of control?
 2. If yes, what specifically changed? (new parent company, new PE owner, etc.)
 3. Does this change affect the CLOUD Act exposure or jurisdictional status of the tools listed above?
 4. What should Canadian organizations using these tools know?
 
-If this IS a sovereignty-relevant event, return a JSON object:
+PART B — New tool suggestions:
+5. Does the filing mention any OTHER software products, SaaS tools, cloud services, or technology offerings that are NOT in the "already tracked" list above and that Canadian organizations could plausibly be using? This could include:
+   - A target company being acquired whose products are a SaaS/cloud/enterprise tool
+   - A newly-announced product or service line with sovereignty relevance
+   - A subsidiary or brand mentioned that has its own distinct tool offering
+   - A partnership or integration that creates a new tool-like offering
+   Do NOT suggest: generic terms (like "cloud services"), consulting services, physical hardware, financial products, media products, or things clearly out of scope for Canadian data sovereignty research.
+6. For each suggested new tool, provide a short factual rationale grounded in the filing text.
+
+Return a JSON object in this exact shape:
+
+If the filing IS sovereignty-relevant OR contains new-tool suggestions:
 {{
   "is_relevant": true,
-  "headline": "Short factual headline for Signals page",
+  "headline": "Short factual headline for Signals page (required even if the only finding is new tools — in that case frame it around the filing itself)",
   "summary": "2-3 sentence summary of what happened and what it means for Canadian organizations",
   "type": "acquisition",
   "impact": "Who is affected and what they should do (one sentence)",
@@ -381,25 +431,61 @@ If this IS a sovereignty-relevant event, return a JSON object:
     "old_value": "Previous value",
     "new_value": "New value",
     "reason": "Brief explanation"
-  }}
+  }} OR null if there's no primary-tool update (only new-tool suggestions),
+  "suggested_new_tools": [
+    {{
+      "tool_name": "Exact name of the tool (as it would appear in the Sovereignty Index)",
+      "parent": "Parent company name after this filing's effect",
+      "jurisdiction": "Best-guess jurisdiction of the parent (Canada, United States, United Kingdom, Germany, etc.)",
+      "category": "Best-guess category (communication, crm, storage, ai, analytics, devtools, etc.) or 'unknown'",
+      "rationale": "1-2 sentence explanation of why Upper Harbour should track this tool, grounded in the filing"
+    }}
+  ]
 }}
 
-If this is NOT a sovereignty-relevant event (routine filing, no ownership change, etc.), return:
+If this is NOT sovereignty-relevant AND there are no new-tool candidates, return:
 {{"is_relevant": false}}
 
-Return ONLY the JSON object, nothing else."""
+IMPORTANT:
+- Only return suggested_new_tools for products that plausibly fit the Sovereignty Index — real SaaS/cloud/enterprise software Canadian organizations would actually use. Be conservative; if in doubt, don't suggest.
+- Each suggested tool's name must NOT already appear in the "already tracked" list above. Check carefully.
+- If there are no new-tool candidates, omit the suggested_new_tools field or return an empty array.
+- Return ONLY the JSON object, nothing else."""
             }]
         )
-        
+
         text = ""
         for block in response.content:
             if hasattr(block, 'text'):
                 text += block.text
-        
+
         text = text.strip().strip('```json').strip('```').strip()
         result = json.loads(text)
-        
+
         if result.get("is_relevant"):
+            # Filter suggested_new_tools to drop anything that's actually a dup
+            # against our known list (Claude occasionally hallucinates that
+            # something is new when it isn't — belt-and-suspenders check).
+            raw_suggestions = result.get("suggested_new_tools") or []
+            cleaned_suggestions = []
+            known_lower = {n.lower() for n in known_tool_names}
+            for s in raw_suggestions:
+                if not isinstance(s, dict):
+                    continue
+                name = (s.get("tool_name") or "").strip()
+                if not name:
+                    continue
+                if name.lower() in known_lower:
+                    log.info(f"Dropping suggested new tool '{name}' — already tracked")
+                    continue
+                cleaned_suggestions.append({
+                    "tool_name": name,
+                    "parent": (s.get("parent") or "").strip(),
+                    "jurisdiction": (s.get("jurisdiction") or "").strip(),
+                    "category": (s.get("category") or "unknown").strip(),
+                    "rationale": (s.get("rationale") or "").strip(),
+                })
+
             return {
                 "headline": result["headline"],
                 "summary": result["summary"],
@@ -409,11 +495,12 @@ Return ONLY the JSON object, nothing else."""
                 "date": filing["filing_date"],
                 "impact": result.get("impact", ""),
                 "db_update": result.get("db_update"),
+                "suggested_new_tools": cleaned_suggestions,
             }
         else:
             log.info(f"Filing for {filing['company']} assessed as not sovereignty-relevant")
             return None
-            
+
     except Exception as e:
         log.warning(f"Claude assessment failed for {filing['company']}: {e}")
         return None
@@ -454,9 +541,18 @@ def run_tripwire(us_only: bool = False, ca_only: bool = False,
     cache = load_cache()
     processed = set(cache.get("processed_filings", []))
     cik_map = cache.get("cik_map", {})
-    
+
     # Extract parent companies from database
     parents = extract_parents()
+
+    # Build a one-shot index of every tool name in the database so Claude
+    # can recognize new tools vs already-tracked ones without us reparsing
+    # saas-db.js for every filing.
+    try:
+        known_tool_names = extract_all_tool_names()
+    except Exception as e:
+        log.warning(f"Could not build known-tool index: {e}")
+        known_tool_names = set()
     
     # Filter by jurisdiction
     if test_ticker:
@@ -503,10 +599,17 @@ def run_tripwire(us_only: bool = False, ca_only: bool = False,
                 filing_text = fetch_filing_text(filing["filing_url"])
                 if filing_text and has_acquisition_language(filing_text):
                     # Assess sovereignty impact with Claude
-                    signal = assess_sovereignty_impact(filing, info["tools"], filing_text)
+                    signal = assess_sovereignty_impact(
+                        filing, info["tools"], filing_text,
+                        known_tool_names=known_tool_names,
+                    )
                     if signal:
                         all_signals.append(signal)
                         log.info(f"ALERT: {signal['headline']}")
+                        if signal.get("suggested_new_tools"):
+                            log.info(
+                                f"  + {len(signal['suggested_new_tools'])} new-tool suggestion(s)"
+                            )
                 
                 processed.add(filing_id)
             
@@ -530,7 +633,10 @@ def run_tripwire(us_only: bool = False, ca_only: bool = False,
                 
                 filing_text = fetch_filing_text(filing["filing_url"])
                 if filing_text and has_acquisition_language(filing_text):
-                    signal = assess_sovereignty_impact(filing, info["tools"], filing_text)
+                    signal = assess_sovereignty_impact(
+                        filing, info["tools"], filing_text,
+                        known_tool_names=known_tool_names,
+                    )
                     if signal:
                         all_signals.append(signal)
                 
@@ -610,6 +716,11 @@ if __name__ == "__main__":
             if s.get('db_update'):
                 db = s['db_update']
                 print(f"  DB Update: {db['tool_name']} — {db['change']}: {db.get('old_value','?')} → {db['new_value']}")
+            if s.get('suggested_new_tools'):
+                for sugg in s['suggested_new_tools']:
+                    print(f"  New tool suggestion: {sugg['tool_name']} ({sugg.get('parent','?')}, {sugg.get('jurisdiction','?')})")
+                    if sugg.get('rationale'):
+                        print(f"    → {sugg['rationale']}")
             print()
         
         # Auto-integrate with pipeline if running in CI

@@ -850,6 +850,41 @@ def publish_signals(new_signals: list[dict]):
                 "status": "pending_review",
             })
 
+        # Collect new-tool suggestions as a distinct alert type. These come
+        # from the tripwire's assess_sovereignty_impact pass, which asks
+        # Claude to identify tools mentioned in a filing that Upper Harbour
+        # isn't tracking yet. Each suggestion becomes its own db-alerts entry
+        # with change="suggest_new_tool" so the admin UI can render it and
+        # Josh can accept or dismiss it.
+        for sugg in (signal.get("suggested_new_tools") or []):
+            if not isinstance(sugg, dict):
+                continue
+            tool_name = (sugg.get("tool_name") or "").strip()
+            if not tool_name:
+                continue
+            # Pack the suggestion details into new_value as a JSON string so
+            # the applier (future session) can reconstruct a full tool entry
+            # on approval without losing any of the fields. old_value is null
+            # because there's nothing there yet.
+            sugg_payload = {
+                "parent": sugg.get("parent", ""),
+                "jurisdiction": sugg.get("jurisdiction", ""),
+                "category": sugg.get("category", "unknown"),
+                "rationale": sugg.get("rationale", ""),
+            }
+            db_alerts.append({
+                "tool_name": tool_name,
+                "change": "suggest_new_tool",
+                "old_value": None,
+                "new_value": json.dumps(sugg_payload, ensure_ascii=False),
+                "reason": sugg.get("rationale", "") or f"Mentioned in filing linked to {signal.get('headline', 'a tracked parent')}",
+                "signal_headline": signal.get("headline", ""),
+                "signal_date": signal.get("date", ""),
+                "source_url": signal.get("source_url", ""),
+                "flagged_at": datetime.now().isoformat(),
+                "status": "pending_review",
+            })
+
     # Add to existing signals (newest first)
     existing["signals"] = published + existing.get("signals", [])
 
