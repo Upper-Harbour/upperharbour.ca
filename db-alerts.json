@@ -10,7 +10,8 @@
       "signal_date": "2026-03-12",
       "source_url": "https://news.sap.com/canada/2026/03/sap-strengthens-compliance-in-canada-with-canadian-centre-for-cyber-security-cccs-cloud-assessments-of-sap-sovereign-cloud-for-canada/",
       "flagged_at": "2026-03-13T00:03:52.987202",
-      "status": "pending_review"
+      "status": "dismissed",
+      "reviewed_at": "2026-04-09T07:43:20.425166Z"
     },
     {
       "tool_name": "Check Point Software Technologies",
@@ -63,5 +64,5 @@
       "reviewed_at": "2026-04-09T07:43:05.252418Z"
     }
   ],
-  "updated": "2026-04-09T07:43:14.171464Z"
+  "updated": "2026-04-09T07:43:20.425182Z"
 }
