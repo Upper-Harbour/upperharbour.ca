@@ -48,8 +48,10 @@
       "signal_date": "2026-03-20",
       "source_url": "https://betakit.com/ecolab-to-acquire-coolit-systems-for-4-75-billion-usd/",
       "flagged_at": "2026-03-25T18:33:32.726352",
-      "status": "approved",
-      "reviewed_at": "2026-04-09T07:43:28.118283Z"
+      "status": "failed",
+      "reviewed_at": "2026-04-09T07:43:28.118283Z",
+      "failedAt": "2026-04-09T07:43:37.081796+00:00",
+      "failureReason": "Tool 'CoolIT Systems' not found in saas-db.js — skipping"
     },
     {
       "tool_name": "BlackBerry Secure Communications",
