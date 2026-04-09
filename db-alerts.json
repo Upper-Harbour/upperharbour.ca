@@ -23,7 +23,8 @@
       "signal_date": "2026-03-16",
       "source_url": "https://channelbuzz.ca/2026/03/icymi-nearly-60-of-channel-partners-expect-a-q1-profit-crash-check-point-adds-canadian-data-region-46068/",
       "flagged_at": "2026-03-16T18:31:35.662688",
-      "status": "pending_review"
+      "status": "dismissed",
+      "reviewed_at": "2026-04-09T23:04:37.975165Z"
     },
     {
       "tool_name": "Bell Canada Data Centre (Saskatchewan)",
@@ -51,7 +52,7 @@
       "status": "failed",
       "reviewed_at": "2026-04-09T07:43:28.118283Z",
       "failedAt": "2026-04-09T07:43:39.294440+00:00",
-      "failureReason": "Tool 'CoolIT Systems' not found in saas-db.js — skipping"
+      "failureReason": "Tool 'CoolIT Systems' not found in saas-db.js \u2014 skipping"
     },
     {
       "tool_name": "BlackBerry Secure Communications",
@@ -67,5 +68,5 @@
       "reviewed_at": "2026-04-09T07:43:05.252418Z"
     }
   ],
-  "updated": "2026-04-09T07:43:28.118317Z"
+  "updated": "2026-04-09T23:04:37.975174Z"
 }
