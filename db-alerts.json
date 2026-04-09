@@ -34,7 +34,8 @@
       "signal_date": "2026-03-17",
       "source_url": "https://globalnews.ca/news/11734297/bell-canada-data-centre-regina/",
       "flagged_at": "2026-03-17T18:31:27.157370",
-      "status": "pending_review"
+      "status": "dismissed",
+      "reviewed_at": "2026-04-09T07:43:14.171432Z"
     },
     {
       "tool_name": "CoolIT Systems",
@@ -62,5 +63,5 @@
       "reviewed_at": "2026-04-09T07:43:05.252418Z"
     }
   ],
-  "updated": "2026-04-09T07:43:05.252433Z"
+  "updated": "2026-04-09T07:43:14.171464Z"
 }
