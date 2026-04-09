@@ -26,6 +26,7 @@ Environment variables:
 """
 
 import os
+import re
 import json
 import hashlib
 import logging
@@ -51,6 +52,43 @@ SMTP_USER = os.environ.get("SMTP_USER")
 SMTP_PASS = os.environ.get("SMTP_PASS")
 APPROVAL_EMAIL = os.environ.get("APPROVAL_EMAIL", "josh@upperharbour.ca")
 SIGNALS_JSON_PATH = os.environ.get("SIGNALS_JSON_PATH", "assets/signals.json")
+SAAS_DB_PATH = os.environ.get("SAAS_DB_PATH", "saas-db.js")
+
+
+def _load_known_tool_names() -> set:
+    """
+    Return the flat set of every tool name in saas-db.js.
+
+    Used by process_with_claude to give the model an "already tracked" list
+    so it can reliably identify NEW tools mentioned in news items that
+    Upper Harbour should probably be tracking. Cached at module level so
+    we only parse the file once per pipeline run.
+    """
+    if not os.path.exists(SAAS_DB_PATH):
+        log.warning(f"saas-db.js not found at {SAAS_DB_PATH} — new-tool detection disabled")
+        return set()
+    try:
+        with open(SAAS_DB_PATH, "r") as f:
+            src = f.read()
+        names = re.findall(r'\{\s*name:"([^"]+)"', src)
+        result = set(n.strip() for n in names if n.strip())
+        log.info(f"Indexed {len(result)} tool names for new-tool suggestions")
+        return result
+    except Exception as e:
+        log.warning(f"Could not load known tool names from {SAAS_DB_PATH}: {e}")
+        return set()
+
+
+_KNOWN_TOOLS_CACHE: Optional[set] = None
+
+
+def get_known_tool_names() -> set:
+    """Memoized accessor for _load_known_tool_names()."""
+    global _KNOWN_TOOLS_CACHE
+    if _KNOWN_TOOLS_CACHE is None:
+        _KNOWN_TOOLS_CACHE = _load_known_tool_names()
+    return _KNOWN_TOOLS_CACHE
+
 
 # RSS feeds to monitor
 RSS_FEEDS = [
@@ -348,12 +386,16 @@ def process_with_claude(items: list[dict]) -> list[dict]:
     1. Final relevance filtering
     2. Summary rewriting in Upper Harbour voice
     3. Event type classification
-    4. Database update detection
+    4. Database update detection (existing tools)
+    5. New-tool suggestions (tools mentioned in items that aren't tracked yet)
     """
     if not ANTHROPIC_API_KEY or not items:
         return []
 
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    known_tool_names = get_known_tool_names()
+    known_sample = sorted(known_tool_names)
+    known_lower = {n.lower() for n in known_tool_names}
 
     # Process in batches of 10
     processed = []
@@ -373,7 +415,7 @@ def process_with_claude(items: list[dict]) -> list[dict]:
         try:
             response = client.messages.create(
                 model="claude-haiku-4-5-20251001",
-                max_tokens=4000,
+                max_tokens=6000,
                 messages=[{
                     "role": "user",
                     "content": f"""You are the intelligence processor for Upper Harbour, a Canadian data sovereignty research organization.
@@ -386,7 +428,12 @@ Review these news items and process ONLY the ones that are directly relevant to 
 
 IMPORTANT: Only process items about real, verifiable events. Do not infer, speculate, or embellish. If an item is ambiguous about whether it relates to Canadian data sovereignty, discard it.
 
-For each relevant item, return a JSON array with objects containing:
+Upper Harbour already tracks the following tool names in its Sovereignty Index (this is the complete list — anything NOT on this list is a candidate for a new tool suggestion):
+{', '.join(known_sample)}
+
+For each relevant item, return a JSON object with:
+
+PART A — Standard fields:
 - "headline": Rewritten headline — factual, concise, no clickbait. Written as Upper Harbour would write it.
 - "summary": 2-3 sentence summary in Upper Harbour's voice — precise, analytical, focused on jurisdictional implications. Do not editorialize. State what happened and what it means for Canadian organizations.
 - "type": One of: enforcement, acquisition, legislation, vendor, procurement, policy
@@ -394,13 +441,35 @@ For each relevant item, return a JSON array with objects containing:
 - "source_url": Original URL
 - "date": YYYY-MM-DD
 - "impact": A short actionable sentence describing who is affected and what they should do. Examples: "Quebec public-sector organizations using this vendor should reassess compliance." or "Federal departments may need to update procurement documentation." or "Organizations using this tool should review their TIA." Do NOT just write a province code — write a sentence.
-- "db_update": If this event should trigger a change in our SaaS database (e.g., a company was acquired, a vendor added Canadian data residency), include an object with:
-  - "tool_name": Name of the SaaS tool affected
+
+PART B — Database update for an EXISTING tracked tool:
+- "db_update": If this event should trigger a change in our SaaS database for a tool that IS already in the tracked list above (e.g., a company in our list was acquired, a vendor in our list added Canadian data residency), include an object with:
+  - "tool_name": Exact name of the tracked tool affected (must match the tracked list)
   - "change": What changed (e.g., "parent_company", "data_residency", "risk_status")
   - "old_value": Previous value (if known)
   - "new_value": New value
   - "reason": Brief explanation
   Otherwise set db_update to null.
+
+PART C — Suggested NEW tools to track:
+- "suggested_new_tools": If the news item mentions any SaaS/cloud/enterprise software tools that are NOT in the tracked list above and that Canadian organizations could plausibly be using, include them as an array. Only suggest:
+  - Real, named software products / SaaS tools / cloud services / enterprise platforms
+  - Things Canadian organizations might actually use
+  - Things with clear sovereignty relevance (parent jurisdiction, data residency, acquisition exposure)
+  Do NOT suggest:
+  - Generic terms like "cloud services" or "enterprise software"
+  - Consulting services, physical hardware, financial products, media products
+  - Tools whose name already appears in the tracked list above
+  - Speculative or unconfirmed tools
+  Each suggested tool should be an object with:
+  - "tool_name": Exact name of the tool (as it would appear in the Sovereignty Index)
+  - "parent": Parent company name (best inference from the news item — do NOT make this up if unclear; use empty string)
+  - "jurisdiction": Best-guess jurisdiction of the parent (Canada, United States, United Kingdom, Germany, France, etc., or empty string if unclear)
+  - "category": Best-guess category (communication, crm, storage, ai, analytics, devtools, productivity, hr, finance, etc.) or 'unknown'
+  - "rationale": 1-2 sentence explanation of why Upper Harbour should track this tool, grounded in the news item itself
+  If there are no new-tool candidates in this item, set suggested_new_tools to an empty array or omit the field.
+
+Be conservative with suggested_new_tools. It is better to miss a candidate than to suggest something speculative. Only suggest when the news item gives you concrete evidence of a real tool with sovereignty relevance.
 
 Items to process:
 {items_text}
@@ -417,8 +486,37 @@ Return ONLY the JSON array. If no items are relevant, return: []"""
             text = text.strip().strip('```json').strip('```').strip()
             if text.startswith('['):
                 results = json.loads(text)
+
+                # Belt-and-suspenders: drop suggested tools whose name already
+                # appears in the tracked list (Claude occasionally hallucinates
+                # novelty even when explicitly told not to). Same defensive
+                # filter the tripwire pipeline applies.
+                for r in results:
+                    raw_suggestions = r.get("suggested_new_tools") or []
+                    cleaned = []
+                    for s in raw_suggestions:
+                        if not isinstance(s, dict):
+                            continue
+                        name = (s.get("tool_name") or "").strip()
+                        if not name or name.lower() in known_lower:
+                            if name:
+                                log.info(f"Dropping suggested new tool '{name}' — already tracked")
+                            continue
+                        cleaned.append({
+                            "tool_name": name,
+                            "parent": (s.get("parent") or "").strip(),
+                            "jurisdiction": (s.get("jurisdiction") or "").strip(),
+                            "category": (s.get("category") or "unknown").strip(),
+                            "rationale": (s.get("rationale") or "").strip(),
+                        })
+                    r["suggested_new_tools"] = cleaned
+
                 processed.extend(results)
-                log.info(f"Claude processed batch: {len(batch)} in → {len(results)} relevant")
+                total_suggestions = sum(len(r.get("suggested_new_tools") or []) for r in results)
+                log.info(
+                    f"Claude processed batch: {len(batch)} in → {len(results)} relevant"
+                    + (f", {total_suggestions} new-tool suggestion(s)" if total_suggestions else "")
+                )
 
         except Exception as e:
             log.warning(f"Claude processing failed: {e}")

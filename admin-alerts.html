@@ -24,6 +24,9 @@
       --red: #E06050;
       --red-dim: rgba(224,96,80,0.08);
       --red-border: rgba(224,96,80,0.3);
+      --violet: #9B6BFF;
+      --violet-dim: rgba(155,107,255,0.10);
+      --violet-border: rgba(155,107,255,0.32);
       --ice: #EAF0F4;
       --slate: #8A9DB0;
       --muted: #566778;
@@ -91,6 +94,32 @@
     .alert.status-dismissed { border-left: 3px solid var(--muted); opacity: 0.45; }
     .alert.status-applied { border-left: 3px solid var(--teal); opacity: 0.45; }
     .alert.status-failed { border-left: 3px solid var(--red); }
+    .alert.status-deferred { border-left: 3px solid var(--violet); opacity: 0.6; }
+    .alert.status-accepted_for_research { border-left: 3px solid var(--violet); }
+    .alert.status-researched_added { border-left: 3px solid var(--teal); opacity: 0.5; }
+    .alert.status-researched_rejected { border-left: 3px solid var(--muted); opacity: 0.4; }
+
+    /* Suggestion cards (change="suggest_new_tool") get a distinct violet
+       treatment overlaid on top of the status colour. The status border
+       still indicates the lifecycle stage (pending vs accepted vs researched);
+       the violet ribbon below the header signals "this is a tool we don't
+       track yet" so Josh can scan for them. */
+    .alert.is-suggestion { background: linear-gradient(180deg, rgba(155,107,255,0.04) 0%, var(--surface) 80px); }
+    .alert.is-suggestion .suggestion-ribbon {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--violet); background: var(--violet-dim);
+      border: 1px solid var(--violet-border); border-radius: 3px;
+      padding: 4px 10px; margin-bottom: 14px;
+    }
+    .alert:not(.is-suggestion) .suggestion-ribbon { display: none; }
+    .suggestion-meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 13px; margin-bottom: 14px; padding: 12px 14px; background: var(--bg); border-radius: 4px; border: 1px solid var(--border); }
+    .suggestion-meta .label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); align-self: start; padding-top: 2px; }
+    .suggestion-meta .value { color: var(--ice); line-height: 1.5; }
+    .suggestion-meta .value.empty { color: var(--muted); font-style: italic; }
+    .suggestion-rationale { font-size: 13px; color: var(--slate); margin-bottom: 14px; padding: 12px 14px; background: var(--bg); border-radius: 4px; border-left: 2px solid var(--violet); }
+    .suggestion-rationale .label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--violet); margin-bottom: 6px; display: block; }
 
     .alert-header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
     .alert-tool { font-family: var(--display); font-size: 19px; font-weight: 700; color: var(--ice); letter-spacing: -0.2px; }
@@ -100,6 +129,10 @@
     .alert-status.status-dismissed { background: rgba(138,157,176,0.08); color: var(--slate); border: 1px solid var(--border-md); }
     .alert-status.status-applied { background: var(--teal-dim); color: var(--teal); border: 1px solid var(--teal-border); }
     .alert-status.status-failed { background: var(--red-dim); color: var(--red); border: 1px solid var(--red-border); }
+    .alert-status.status-deferred { background: var(--violet-dim); color: var(--violet); border: 1px solid var(--violet-border); }
+    .alert-status.status-accepted_for_research { background: var(--violet-dim); color: var(--violet); border: 1px solid var(--violet-border); }
+    .alert-status.status-researched_added { background: var(--teal-dim); color: var(--teal); border: 1px solid var(--teal-border); }
+    .alert-status.status-researched_rejected { background: rgba(138,157,176,0.08); color: var(--slate); border: 1px solid var(--border-md); }
 
     .alert-change { display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
     .alert-diff { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 13px; margin-bottom: 14px; }
@@ -115,6 +148,8 @@
     .btn { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 10px 18px; border: 1px solid transparent; border-radius: 4px; cursor: pointer; transition: all 0.15s; background: none; }
     .btn-approve { color: var(--teal); border-color: var(--teal-border); background: var(--teal-dim); }
     .btn-approve:hover { background: var(--teal); color: var(--bg); }
+    .btn-research { color: var(--violet); border-color: var(--violet-border); background: var(--violet-dim); }
+    .btn-research:hover { background: var(--violet); color: var(--bg); }
     .btn-dismiss { color: var(--slate); border-color: var(--border-md); }
     .btn-dismiss:hover { color: var(--ice); border-color: var(--red-border); background: var(--red-dim); }
     .btn:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -176,6 +211,7 @@
 
       <div class="filters" id="filters">
         <button class="filter active" data-filter="pending_review">Pending</button>
+        <button class="filter" data-filter="accepted_for_research">To Research</button>
         <button class="filter" data-filter="all">All</button>
         <button class="filter" data-filter="approved">Approved</button>
         <button class="filter" data-filter="dismissed">Dismissed</button>
@@ -274,13 +310,34 @@
     });
   }
 
+  // Map of UI action → API endpoint suffix.
+  // The action names are what data-action values are on the buttons.
+  var ACTION_ENDPOINTS = {
+    'approve': 'approve',
+    'dismiss': 'dismiss',
+    'mark-researched': 'mark-researched',
+    'mark-rejected': 'mark-rejected'
+  };
+
   function setStatus(alertId, action) {
-    var btn = document.querySelector('[data-action="' + action + '"][data-id="' + alertId + '"]');
-    var sibling = document.querySelector('[data-action="' + (action === 'approve' ? 'dismiss' : 'approve') + '"][data-id="' + alertId + '"]');
-    if (btn) btn.disabled = true;
-    if (sibling) sibling.disabled = true;
-    apiCall('/api/admin/alerts/' + encodeURIComponent(alertId) + '/' + action, 'POST').then(function(data) {
-      showToast((action === 'approve' ? '\u2713 Approved' : '\u2713 Dismissed') + ': ' + (data.tool_name || alertId));
+    var endpoint = ACTION_ENDPOINTS[action];
+    if (!endpoint) {
+      showToast('Unknown action: ' + action, true);
+      return;
+    }
+    // Disable both action buttons on this card while the request is in flight
+    var cardButtons = document.querySelectorAll('.btn[data-id="' + alertId + '"]');
+    for (var i = 0; i < cardButtons.length; i++) cardButtons[i].disabled = true;
+
+    apiCall('/api/admin/alerts/' + encodeURIComponent(alertId) + '/' + endpoint, 'POST').then(function(data) {
+      var label = (
+        action === 'approve' ? '\u2713 Approved' :
+        action === 'dismiss' ? '\u2713 Dismissed' :
+        action === 'mark-researched' ? '\u2713 Marked researched & added' :
+        action === 'mark-rejected' ? '\u2713 Marked researched & rejected' :
+        '\u2713 Updated'
+      );
+      showToast(label + ': ' + (data.tool_name || alertId));
       var target = null;
       for (var i = 0; i < allAlerts.length; i++) {
         if (allAlerts[i].id === alertId) { target = allAlerts[i]; break; }
@@ -290,8 +347,7 @@
       render();
     }).catch(function(e) {
       showToast('Error: ' + e.message, true);
-      if (btn) btn.disabled = false;
-      if (sibling) sibling.disabled = false;
+      for (var i = 0; i < cardButtons.length; i++) cardButtons[i].disabled = false;
     });
   }
 
@@ -305,6 +361,7 @@
     var html = '<div class="stat"><div class="stat-label">Total</div><div class="stat-value">' + total + '</div></div>';
     var order = [
       ['pending_review', 'Pending', 'pending'],
+      ['accepted_for_research', 'To Research', 'accepted_for_research'],
       ['approved', 'Approved', 'approved'],
       ['dismissed', 'Dismissed', 'dismissed'],
       ['applied', 'Applied', '']
@@ -317,6 +374,112 @@
     summaryEl.innerHTML = html;
   }
 
+  // Try to parse the new_value field as the JSON metadata blob the
+  // signals/tripwire pipelines emit for suggest_new_tool alerts. Returns
+  // null if parsing fails or the field doesn't look like a suggestion blob.
+  function parseSuggestionMeta(newValue) {
+    if (!newValue || typeof newValue !== 'string') return null;
+    var trimmed = newValue.trim();
+    if (!trimmed.startsWith('{')) return null;
+    try {
+      var meta = JSON.parse(trimmed);
+      if (!meta || typeof meta !== 'object') return null;
+      return {
+        parent: (meta.parent || '').toString(),
+        jurisdiction: (meta.jurisdiction || '').toString(),
+        category: (meta.category || '').toString(),
+        rationale: (meta.rationale || '').toString()
+      };
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function renderSuggestionCard(a) {
+    var statusLabel = (a.status || 'unknown').replace(/_/g, ' ');
+    var meta = parseSuggestionMeta(a.new_value) || { parent: '', jurisdiction: '', category: '', rationale: '' };
+
+    var sourceLine = a.source_url
+      ? '<a href="' + escapeHtml(a.source_url) + '" target="_blank" rel="noopener">Source</a>'
+      : '';
+    var headline = a.signal_headline ? '<span>' + escapeHtml(a.signal_headline) + '</span>' : '';
+    var sigDate = a.signal_date ? '<span>' + escapeHtml(a.signal_date) + '</span>' : '';
+
+    function metaRow(label, value) {
+      var v = (value || '').trim();
+      var cls = v ? 'value' : 'value empty';
+      var display = v || '(unknown — Claude could not infer from the source)';
+      return '<div class="label">' + label + '</div><div class="' + cls + '">' + escapeHtml(display) + '</div>';
+    }
+
+    // Action buttons differ by status:
+    //  - pending_review        → "Mark for research" / "Dismiss"
+    //  - accepted_for_research → "Researched & added" / "Researched & rejected"
+    //  - terminal states       → no buttons
+    var actions = '';
+    if (a.status === 'pending_review' || a.status === 'pending') {
+      actions = '<div class="alert-actions">'
+        + '<button class="btn btn-research" data-action="approve" data-id="' + escapeHtml(a.id) + '">Mark for research</button>'
+        + '<button class="btn btn-dismiss" data-action="dismiss" data-id="' + escapeHtml(a.id) + '">Dismiss</button>'
+      + '</div>';
+    } else if (a.status === 'accepted_for_research') {
+      actions = '<div class="alert-actions">'
+        + '<button class="btn btn-approve" data-action="mark-researched" data-id="' + escapeHtml(a.id) + '">Researched &amp; added</button>'
+        + '<button class="btn btn-dismiss" data-action="mark-rejected" data-id="' + escapeHtml(a.id) + '">Researched &amp; rejected</button>'
+      + '</div>';
+    }
+
+    return '<div class="alert is-suggestion status-' + escapeHtml(a.status) + '">'
+      + '<div class="alert-header">'
+        + '<div class="alert-tool">' + escapeHtml(a.tool_name || '(unknown tool)') + '</div>'
+        + '<div class="alert-status status-' + escapeHtml(a.status) + '">' + escapeHtml(statusLabel) + '</div>'
+      + '</div>'
+      + '<div class="suggestion-ribbon">\u25C6 New tool suggestion</div>'
+      + '<div class="suggestion-meta">'
+        + metaRow('Parent', meta.parent)
+        + metaRow('Jurisdiction', meta.jurisdiction)
+        + metaRow('Category', meta.category)
+      + '</div>'
+      + (meta.rationale
+          ? '<div class="suggestion-rationale"><span class="label">Why Claude flagged this</span>' + escapeHtml(meta.rationale) + '</div>'
+          : '')
+      + '<div class="alert-source">' + headline + sigDate + sourceLine + '</div>'
+      + actions
+    + '</div>';
+  }
+
+  function renderStandardCard(a) {
+    var isPending = a.status === 'pending_review' || a.status === 'pending';
+    var statusLabel = (a.status || 'unknown').replace(/_/g, ' ');
+    var oldVal = a.old_value == null ? '(none)' : a.old_value;
+    var newVal = a.new_value == null ? '(none)' : a.new_value;
+    var sourceLine = a.source_url
+      ? '<a href="' + escapeHtml(a.source_url) + '" target="_blank" rel="noopener">Source</a>'
+      : '';
+    var headline = a.signal_headline ? '<span>' + escapeHtml(a.signal_headline) + '</span>' : '';
+    var sigDate = a.signal_date ? '<span>' + escapeHtml(a.signal_date) + '</span>' : '';
+
+    return '<div class="alert status-' + escapeHtml(a.status) + '">'
+      + '<div class="alert-header">'
+        + '<div class="alert-tool">' + escapeHtml(a.tool_name || '(unknown tool)') + '</div>'
+        + '<div class="alert-status status-' + escapeHtml(a.status) + '">' + escapeHtml(statusLabel) + '</div>'
+      + '</div>'
+      + '<div class="alert-change">' + escapeHtml((a.change || '').replace(/_/g, ' ')) + '</div>'
+      + '<div class="alert-diff">'
+        + '<div class="label">From</div><div class="value old">' + escapeHtml(oldVal) + '</div>'
+        + '<div class="label">To</div><div class="value">' + escapeHtml(newVal) + '</div>'
+      + '</div>'
+      + (a.reason ? '<div class="alert-reason">' + escapeHtml(a.reason) + '</div>' : '')
+      + '<div class="alert-source">' + headline + sigDate + sourceLine + '</div>'
+      + (isPending
+          ? '<div class="alert-actions">'
+              + '<button class="btn btn-approve" data-action="approve" data-id="' + escapeHtml(a.id) + '">Approve</button>'
+              + '<button class="btn btn-dismiss" data-action="dismiss" data-id="' + escapeHtml(a.id) + '">Dismiss</button>'
+            + '</div>'
+          : '')
+    + '</div>';
+  }
+
   function render() {
     loading.classList.add('hidden');
     var filtered = currentFilter === 'all'
@@ -324,8 +487,14 @@
       : allAlerts.filter(function(a){ return a.status === currentFilter; });
 
     filtered.sort(function(a, b) {
-      if (a.status === 'pending_review' && b.status !== 'pending_review') return -1;
-      if (b.status === 'pending_review' && a.status !== 'pending_review') return 1;
+      // Pending always at top, then accepted_for_research, then by recency
+      var rank = function(status) {
+        if (status === 'pending_review' || status === 'pending') return 0;
+        if (status === 'accepted_for_research') return 1;
+        return 2;
+      };
+      var ra = rank(a.status), rb = rank(b.status);
+      if (ra !== rb) return ra - rb;
       return (b.flagged_at || '').localeCompare(a.flagged_at || '');
     });
 
@@ -338,35 +507,10 @@
     alertsEl.classList.remove('hidden');
 
     var html = filtered.map(function(a) {
-      var isPending = a.status === 'pending_review' || a.status === 'pending';
-      var statusLabel = (a.status || 'unknown').replace(/_/g, ' ');
-      var oldVal = a.old_value == null ? '(none)' : a.old_value;
-      var newVal = a.new_value == null ? '(none)' : a.new_value;
-      var sourceLine = a.source_url
-        ? '<a href="' + escapeHtml(a.source_url) + '" target="_blank" rel="noopener">Source</a>'
-        : '';
-      var headline = a.signal_headline ? '<span>' + escapeHtml(a.signal_headline) + '</span>' : '';
-      var sigDate = a.signal_date ? '<span>' + escapeHtml(a.signal_date) + '</span>' : '';
-
-      return '<div class="alert status-' + escapeHtml(a.status) + '">'
-        + '<div class="alert-header">'
-          + '<div class="alert-tool">' + escapeHtml(a.tool_name || '(unknown tool)') + '</div>'
-          + '<div class="alert-status status-' + escapeHtml(a.status) + '">' + escapeHtml(statusLabel) + '</div>'
-        + '</div>'
-        + '<div class="alert-change">' + escapeHtml((a.change || '').replace(/_/g, ' ')) + '</div>'
-        + '<div class="alert-diff">'
-          + '<div class="label">From</div><div class="value old">' + escapeHtml(oldVal) + '</div>'
-          + '<div class="label">To</div><div class="value">' + escapeHtml(newVal) + '</div>'
-        + '</div>'
-        + (a.reason ? '<div class="alert-reason">' + escapeHtml(a.reason) + '</div>' : '')
-        + '<div class="alert-source">' + headline + sigDate + sourceLine + '</div>'
-        + (isPending
-            ? '<div class="alert-actions">'
-                + '<button class="btn btn-approve" data-action="approve" data-id="' + escapeHtml(a.id) + '">Approve</button>'
-                + '<button class="btn btn-dismiss" data-action="dismiss" data-id="' + escapeHtml(a.id) + '">Dismiss</button>'
-              + '</div>'
-            : '')
-      + '</div>';
+      if (a.change === 'suggest_new_tool') {
+        return renderSuggestionCard(a);
+      }
+      return renderStandardCard(a);
     }).join('');
     alertsEl.innerHTML = html;
 
