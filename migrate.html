@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SaaS Sovereignty Migration — Upper Harbour</title>
+  <meta name="description" content="Rebuild your organization's SaaS stack for Canadian data sovereignty. Assessment, migration planning, and implementation for organizations moving off CLOUD Act exposed tools." />
+  <link rel="canonical" href="https://www.upperharbour.ca/migrate" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="SaaS Sovereignty Migration — Upper Harbour" />
+  <meta property="og:description" content="Rebuild your organization's SaaS stack for Canadian data sovereignty. Assessment, migration planning, and implementation." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://www.upperharbour.ca/migrate" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"SaaS Sovereignty Migration","provider":{"@type":"Organization","name":"Upper Harbour","url":"https://www.upperharbour.ca"},"description":"Full-stack SaaS sovereignty assessment and migration service for Canadian organizations. Covers jurisdictional audit, Canadian alternative identification, migration planning, and implementation oversight.","areaServed":"CA","serviceType":"Technology Consulting"}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+  <style>
+    /* ── Hero ──────────────────────────────────────────────────── */
+    .mig-hero { padding: 160px 52px 72px; max-width: 860px; margin: 0 auto; }
+    .mig-eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 28px; display: inline-flex; align-items: center; gap: 10px; }
+    .mig-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--teal); opacity: 0.5; }
+    .mig-hero h1 { font-family: var(--display); font-size: clamp(34px, 5vw, 50px); font-weight: 700; color: var(--ice); line-height: 1.08; letter-spacing: -1px; margin-bottom: 24px; }
+    .mig-hero h1 em { font-style: italic; color: var(--gold); }
+    .mig-hero-sub { font-size: 17px; color: var(--slate); line-height: 1.72; max-width: 620px; margin-bottom: 20px; }
+    .mig-hero-stat { font-size: 13px; color: var(--muted); line-height: 1.6; margin-top: 20px; }
+    .mig-hero-stat strong { color: var(--slate); }
+    .mig-hero-cta { display: inline-block; font-size: 14px; font-weight: 700; color: var(--bg); background: var(--teal); padding: 16px 36px; border-radius: 4px; text-decoration: none; margin-top: 32px; transition: background 0.2s; }
+    .mig-hero-cta:hover { background: #47cec5; }
+
+    /* ── Problem section ──────────────────────────────────────── */
+    .mig-problem { background: var(--surface); border-top: 1px solid var(--border-md); border-bottom: 1px solid var(--border-md); padding: 72px 52px; }
+    .mig-problem-inner { max-width: 960px; margin: 0 auto; }
+    .mig-problem-title { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ice); margin-bottom: 16px; }
+    .mig-problem-sub { font-size: 15px; color: var(--slate); line-height: 1.75; max-width: 620px; margin-bottom: 40px; }
+    .mig-pressure-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .mig-pressure { background: var(--bg); border: 1px solid var(--border-md); border-radius: 8px; padding: 28px; transition: border-color 0.3s; }
+    .mig-pressure:hover { border-color: rgba(60,184,176,0.2); }
+    .mig-pressure-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+    .mig-pressure-title { font-size: 15px; font-weight: 700; color: var(--ice); margin-bottom: 8px; }
+    .mig-pressure-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── Process section ──────────────────────────────────────── */
+    .mig-process { max-width: 960px; margin: 0 auto; padding: 80px 52px; }
+    .mig-process-title { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ice); margin-bottom: 12px; }
+    .mig-process-sub { font-size: 15px; color: var(--slate); margin-bottom: 48px; max-width: 560px; }
+    .mig-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .mig-step-num { font-family: var(--mono); font-size: 32px; font-weight: 700; color: var(--teal); opacity: 0.4; margin-bottom: 12px; }
+    .mig-step-title { font-size: 15px; font-weight: 700; color: var(--ice); margin-bottom: 6px; }
+    .mig-step-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+
+    /* ── Scope section ────────────────────────────────────────── */
+    .mig-scope { background: var(--surface); border-top: 1px solid var(--border-md); border-bottom: 1px solid var(--border-md); padding: 72px 52px; }
+    .mig-scope-inner { max-width: 960px; margin: 0 auto; }
+    .mig-scope-title { font-family: var(--display); font-size: 28px; font-weight: 700; color: var(--ice); margin-bottom: 12px; }
+    .mig-scope-sub { font-size: 15px; color: var(--slate); margin-bottom: 40px; max-width: 600px; }
+    .mig-scope-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .mig-scope-card { background: var(--bg); border: 1px solid var(--border-md); border-radius: 10px; padding: 32px; }
+    .mig-scope-card-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 14px; }
+    .mig-scope-card-label.teal { color: var(--teal); }
+    .mig-scope-card-label.gold { color: var(--gold); }
+    .mig-scope-card-title { font-family: var(--display); font-size: 22px; font-weight: 700; color: var(--ice); margin-bottom: 10px; line-height: 1.2; }
+    .mig-scope-card-desc { font-size: 14px; color: var(--slate); line-height: 1.7; margin-bottom: 20px; }
+    .mig-scope-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .mig-scope-list li { font-size: 13px; color: var(--slate); line-height: 1.6; padding-left: 18px; position: relative; }
+    .mig-scope-list li::before { content: '→'; position: absolute; left: 0; color: var(--teal); font-size: 12px; }
+
+    /* ── Form section ─────────────────────────────────────────── */
+    .mig-form-section { max-width: 720px; margin: 0 auto; padding: 80px 52px; }
+    .mig-form-title { font-family: var(--display); font-size: 32px; font-weight: 700; color: var(--ice); margin-bottom: 12px; text-align: center; }
+    .mig-form-sub { font-size: 15px; color: var(--muted); text-align: center; margin-bottom: 40px; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .mig-form { background: var(--surface); border: 1px solid var(--border-md); border-radius: 10px; padding: 40px; }
+    .mig-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+    .mig-field { font-family: var(--body); font-size: 14px; color: var(--ice); background: var(--bg); border: 1px solid var(--border-md); border-radius: 6px; padding: 14px 16px; width: 100%; outline: none; transition: border-color 0.2s; }
+    .mig-field:focus { border-color: var(--teal); }
+    .mig-field::placeholder { color: var(--muted); }
+    .mig-field-full { margin-bottom: 16px; }
+    select.mig-field { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237B8FA1' fill='none' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; cursor: pointer; }
+    select.mig-field option { background: var(--bg); color: var(--ice); }
+    textarea.mig-field { resize: vertical; min-height: 100px; font-family: var(--body); }
+    .mig-field-label { font-size: 12px; font-weight: 600; color: var(--slate); margin-bottom: 6px; display: block; }
+    .mig-field-group { margin-bottom: 16px; }
+    .mig-submit { font-family: var(--body); font-size: 14px; font-weight: 700; color: var(--bg); background: var(--teal); border: none; border-radius: 4px; padding: 16px 36px; cursor: pointer; width: 100%; transition: background 0.2s; margin-top: 8px; }
+    .mig-submit:hover { background: #47cec5; }
+    .mig-form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 16px; line-height: 1.6; }
+    .mig-success { padding: 28px; background: rgba(60,184,176,0.08); border: 1px solid rgba(60,184,176,0.3); border-radius: 6px; text-align: center; }
+    .mig-success p { font-size: 15px; color: var(--teal); font-weight: 600; margin-bottom: 6px; }
+    .mig-success span { font-size: 13px; color: var(--muted); }
+
+    /* ── Responsive ───────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .mig-hero { padding: 120px 20px 56px; }
+      .mig-problem { padding: 56px 20px; }
+      .mig-pressure-grid { grid-template-columns: 1fr; }
+      .mig-process { padding: 56px 20px; }
+      .mig-steps { grid-template-columns: 1fr 1fr; }
+      .mig-scope { padding: 56px 20px; }
+      .mig-scope-grid { grid-template-columns: 1fr; }
+      .mig-form-section { padding: 56px 20px; }
+      .mig-form { padding: 28px 20px; }
+      .mig-form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+      .mig-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Map Your Stack</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
+  </div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="mig-hero">
+    <div class="mig-eyebrow">Sovereignty Migration</div>
+    <h1>Rebuild your SaaS stack for <em>Canadian sovereignty.</em></h1>
+    <p class="mig-hero-sub">Most Canadian organizations run on software controlled by foreign companies, subject to foreign laws, and exposed to foreign data access regimes. Moving off that stack requires more than swapping one tool for another &mdash; it requires a structured overhaul of your entire SaaS posture.</p>
+    <p class="mig-hero-sub" style="font-size:15px">Upper Harbour provides the jurisdictional assessment. Our implementation partners handle the migration. You get a sovereign stack with documentation that satisfies your regulator, your board, and your procurement office.</p>
+    <p class="mig-hero-stat">Powered by the <a href="/research/canadian-technology-sovereignty-index" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3)">Canadian Technology Sovereignty Index</a> &mdash; <span class="uh-stat" data-stat="totalTools">766</span> tools mapped to parent jurisdictions and CLOUD Act exposure.</p>
+    <a href="#contact" class="mig-hero-cta">Start a Migration Assessment &rarr;</a>
+  </section>
+
+  <!-- ═══════════════ PRESSURE ═══════════════ -->
+  <section class="mig-problem">
+    <div class="mig-problem-inner">
+      <div class="mig-problem-title">Why organizations are migrating now</div>
+      <p class="mig-problem-sub">Regulatory pressure, board scrutiny, and procurement reform are converging. Organizations that don&rsquo;t act on their foreign jurisdiction exposure will have it acted on for them.</p>
+      <div class="mig-pressure-grid">
+        <div class="mig-pressure">
+          <div class="mig-pressure-label">Quebec</div>
+          <div class="mig-pressure-title">Law 25 &mdash; Transfer Impact Assessments</div>
+          <p class="mig-pressure-desc">Quebec&rsquo;s privacy law requires a Transfer Impact Assessment before personal information leaves the province. Every US-parented SaaS tool in your stack triggers this obligation.</p>
+        </div>
+        <div class="mig-pressure">
+          <div class="mig-pressure-label">Alberta</div>
+          <div class="mig-pressure-title">POPA &mdash; Mandatory PIAs</div>
+          <p class="mig-pressure-desc">Alberta&rsquo;s new public-sector privacy rules require Privacy Impact Assessments that explicitly analyze CLOUD Act and foreign jurisdiction exposure for every tool handling personal information.</p>
+        </div>
+        <div class="mig-pressure">
+          <div class="mig-pressure-label">Federal</div>
+          <div class="mig-pressure-title">Procurement &amp; Board Mandates</div>
+          <p class="mig-pressure-desc">Federal procurement officers and boards of directors are asking the same question: which foreign government can compel disclosure of our data? If you don&rsquo;t have an answer documented, you have a problem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROCESS ═══════════════ -->
+  <section class="mig-process">
+    <div class="mig-process-title">How the migration works</div>
+    <p class="mig-process-sub">Four phases, each with a clear deliverable. You know exactly where you are at every stage.</p>
+    <div class="mig-steps">
+      <div>
+        <div class="mig-step-num">01</div>
+        <div class="mig-step-title">Jurisdictional Audit</div>
+        <p class="mig-step-desc">We map every SaaS tool in your stack to its parent company, jurisdiction of incorporation, and CLOUD Act exposure status using the Sovereignty Index.</p>
+      </div>
+      <div>
+        <div class="mig-step-num">02</div>
+        <div class="mig-step-title">Risk Prioritization</div>
+        <p class="mig-step-desc">Not every exposed tool is equally urgent. We rank your exposure by data sensitivity, regulatory trigger, and operational dependency to build a sequenced migration plan.</p>
+      </div>
+      <div>
+        <div class="mig-step-num">03</div>
+        <div class="mig-step-title">Alternative Identification</div>
+        <p class="mig-step-desc">For each tool being migrated, we identify Canadian-jurisdiction alternatives that meet your functional requirements &mdash; drawn from the 142 Canadian-controlled tools in the Index.</p>
+      </div>
+      <div>
+        <div class="mig-step-num">04</div>
+        <div class="mig-step-title">Implementation</div>
+        <p class="mig-step-desc">Our implementation partners handle the technical migration &mdash; data transfer, user provisioning, integration reconfiguration &mdash; while we provide ongoing jurisdictional oversight.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SCOPE ═══════════════ -->
+  <section class="mig-scope">
+    <div class="mig-scope-inner">
+      <div class="mig-scope-title">What you get</div>
+      <p class="mig-scope-sub">Every migration produces two things: a sovereign stack and the compliance documentation to prove it.</p>
+      <div class="mig-scope-grid">
+        <div class="mig-scope-card">
+          <div class="mig-scope-card-label teal">Assessment &amp; Planning</div>
+          <div class="mig-scope-card-title">Sovereignty Posture Report</div>
+          <p class="mig-scope-card-desc">A complete jurisdictional map of your current stack with risk-ranked migration priorities and Canadian alternative recommendations.</p>
+          <ul class="mig-scope-list">
+            <li>Full SaaS inventory mapped to parent jurisdictions</li>
+            <li>CLOUD Act exposure analysis per tool</li>
+            <li>Risk-ranked migration sequence</li>
+            <li>Canadian alternative shortlist per category</li>
+            <li>Compliance gap analysis (Law 25, POPA, PIPEDA)</li>
+            <li>Board-ready executive summary</li>
+          </ul>
+        </div>
+        <div class="mig-scope-card">
+          <div class="mig-scope-card-label gold">Implementation</div>
+          <div class="mig-scope-card-title">Managed Migration</div>
+          <p class="mig-scope-card-desc">Hands-on migration execution with data transfer, user transition, and integration reconfiguration &mdash; managed by vetted implementation partners.</p>
+          <ul class="mig-scope-list">
+            <li>Data migration and integrity verification</li>
+            <li>User provisioning and access management</li>
+            <li>Integration and workflow reconfiguration</li>
+            <li>Post-migration compliance documentation</li>
+            <li>Transfer Impact Assessment support (Law 25)</li>
+            <li>Ongoing jurisdictional monitoring via Sovereignty Index</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FORM ═══════════════ -->
+  <section class="mig-form-section" id="contact">
+    <h2 class="mig-form-title">Start your migration assessment</h2>
+    <p class="mig-form-sub">Tell us about your organization and what&rsquo;s driving the migration. We&rsquo;ll respond within two business days with a scoping proposal.</p>
+    <div class="mig-form" id="migFormWrap">
+      <form id="migForm" action="https://formspree.io/f/mgolzdwe" method="POST">
+        <div class="mig-form-row">
+          <div class="mig-field-group">
+            <label class="mig-field-label" for="mig-name">Your name</label>
+            <input type="text" id="mig-name" name="name" class="mig-field" placeholder="Full name" required />
+          </div>
+          <div class="mig-field-group">
+            <label class="mig-field-label" for="mig-email">Work email</label>
+            <input type="email" id="mig-email" name="email" class="mig-field" placeholder="you@organization.ca" required />
+          </div>
+        </div>
+        <div class="mig-form-row">
+          <div class="mig-field-group">
+            <label class="mig-field-label" for="mig-org">Organization</label>
+            <input type="text" id="mig-org" name="organization" class="mig-field" placeholder="Organization name" required />
+          </div>
+          <div class="mig-field-group">
+            <label class="mig-field-label" for="mig-size">Organization size</label>
+            <select id="mig-size" name="org_size" class="mig-field" required>
+              <option value="" disabled selected>Select</option>
+              <option value="1-50">1&ndash;50 employees</option>
+              <option value="51-200">51&ndash;200 employees</option>
+              <option value="201-1000">201&ndash;1,000 employees</option>
+              <option value="1000+">1,000+ employees</option>
+            </select>
+          </div>
+        </div>
+        <div class="mig-field-group">
+          <label class="mig-field-label" for="mig-driver">What&rsquo;s driving this migration?</label>
+          <select id="mig-driver" name="migration_driver" class="mig-field mig-field-full" required>
+            <option value="" disabled selected>Select the primary driver</option>
+            <option value="law25">Quebec Law 25 compliance</option>
+            <option value="popa">Alberta POPA / PIA requirements</option>
+            <option value="procurement">Federal or provincial procurement rules</option>
+            <option value="board">Board or executive directive</option>
+            <option value="proactive">Proactive sovereignty posture improvement</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="mig-field-group">
+          <label class="mig-field-label" for="mig-stack">Current stack overview</label>
+          <textarea id="mig-stack" name="current_stack" class="mig-field mig-field-full" placeholder="Briefly describe the key SaaS tools your organization uses today — or paste a list. Include anything you know about data residency or existing compliance documentation." rows="4"></textarea>
+        </div>
+        <div class="mig-field-group">
+          <label class="mig-field-label" for="mig-notes">Anything else we should know?</label>
+          <textarea id="mig-notes" name="additional_notes" class="mig-field mig-field-full" placeholder="Timeline constraints, specific regulatory deadlines, tools you've already identified as priorities, etc." rows="3"></textarea>
+        </div>
+        <input type="hidden" name="page" value="migrate" />
+        <input type="hidden" name="_subject" value="Migration Assessment Request" />
+        <button type="submit" class="mig-submit">Submit Migration Request &rarr;</button>
+      </form>
+    </div>
+    <div id="migSuccess" style="display:none" class="mig-success">
+      <p>Thank you. We&rsquo;ve received your migration request.</p>
+      <span>We&rsquo;ll review your information and respond within two business days with a scoping proposal.</span>
+    </div>
+    <p class="mig-form-note">Your information is used only to scope the engagement. Upper Harbour does not share contact details with third parties without your permission.</p>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+          <li><a href="/consulting">Consulting</a></li>
+          <li><a href="/vendors">Vendors</a></li>
+          <li><a href="/comply">Compliance Reports</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="/assets/uh-stats.js" defer></script>
+  <script>
+    function handleMigForm(e) {
+      e.preventDefault();
+      var form = document.getElementById('migForm');
+      var data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r) {
+        if (r.ok) {
+          document.getElementById('migFormWrap').style.display = 'none';
+          document.getElementById('migSuccess').style.display = 'block';
+          if (typeof gtag === 'function') gtag('event', 'migration_request', { event_category: 'conversion' });
+        } else {
+          alert('Something went wrong. Please try again or email josh@upperharbour.ca directly.');
+        }
+      }).catch(function() {
+        alert('Something went wrong. Please try again or email josh@upperharbour.ca directly.');
+      });
+    }
+    document.getElementById('migForm').addEventListener('submit', handleMigForm);
+  </script>
+  <script src="/assets/track.js" defer></script>
+</body>
+</html>
