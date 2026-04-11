@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — IP · Data · Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember: #C96A3D;
+    --ember-light: #D4804E;
+    --ember-dark: #A8542E;
+    --ember-glow: #E8985C;
+    --bg: #141519;
+    --bg-elevated: #1A1C22;
+    --bg-surface: #21232B;
+    --text-primary: #E8E6E1;
+    --text-secondary: #8A8880;
+    --text-tertiary: #5C5A54;
+    --border: rgba(232, 230, 225, 0.06);
+    --border-hover: rgba(232, 230, 225, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 28px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to bottom, var(--bg) 60%, transparent);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .nav-logo svg {
+    width: 32px;
+    height: auto;
+  }
+
+  .nav-wordmark {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 44px;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-cta {
+    color: var(--ember) !important;
+    border: 1px solid rgba(201, 106, 61, 0.3);
+    padding: 10px 24px;
+    border-radius: 2px;
+    transition: all 0.3s !important;
+  }
+
+  .nav-cta:hover {
+    background: rgba(201, 106, 61, 0.08);
+    border-color: rgba(201, 106, 61, 0.5);
+  }
+
+  /* --- HERO --- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 60px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(201, 106, 61, 0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-shield {
+    margin-bottom: 48px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.3s forwards;
+  }
+
+  .hero-shield svg {
+    width: 72px;
+    height: auto;
+    filter: drop-shadow(0 0 60px rgba(201, 106, 61, 0.15));
+  }
+
+  .hero h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(42px, 5.5vw, 72px);
+    font-weight: 400;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: var(--text-primary);
+    max-width: 700px;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.5s forwards;
+  }
+
+  .hero-sub {
+    font-size: 15px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 420px;
+    margin-bottom: 56px;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.7s forwards;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 16px 48px;
+    border: 1px solid rgba(201, 106, 61, 0.4);
+    color: var(--ember);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s;
+    opacity: 0;
+    animation: fadeUp 1.2s ease 0.9s forwards;
+  }
+
+  .hero-cta:hover {
+    background: var(--ember);
+    color: var(--bg);
+    border-color: var(--ember);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeIn 1s ease 1.5s forwards;
+  }
+
+  .scroll-indicator span {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--text-tertiary), transparent);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  /* --- DOMAINS --- */
+  .domains {
+    padding: 160px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .domains-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 80px;
+  }
+
+  .domain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .domain-card {
+    background: var(--bg);
+    padding: 56px 40px;
+    transition: all 0.5s;
+    cursor: default;
+    position: relative;
+  }
+
+  .domain-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: var(--ember);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s;
+  }
+
+  .domain-card:hover {
+    background: var(--bg-elevated);
+  }
+
+  .domain-card:hover::after {
+    transform: scaleX(1);
+  }
+
+  .domain-number {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+
+  .domain-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+    letter-spacing: -0.3px;
+  }
+
+  .domain-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  /* --- ETHOS --- */
+  .ethos {
+    padding: 160px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 120px;
+    align-items: start;
+  }
+
+  .ethos-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+
+  .ethos-headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+  }
+
+  .ethos-headline em {
+    color: var(--ember);
+    font-style: italic;
+  }
+
+  .ethos-points {
+    padding-top: 12px;
+  }
+
+  .ethos-point {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .ethos-point:last-child {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .ethos-point-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .ethos-point-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 400;
+  }
+
+  /* --- PRICING SIGNAL --- */
+  .pricing-signal {
+    padding: 160px 60px;
+    text-align: center;
+    position: relative;
+  }
+
+  .pricing-signal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border-hover), transparent);
+  }
+
+  .pricing-quote {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-primary);
+    max-width: 680px;
+    margin: 0 auto 48px;
+    line-height: 1.35;
+    letter-spacing: -0.5px;
+  }
+
+  .pricing-detail {
+    font-size: 13px;
+    color: var(--text-secondary);
+    max-width: 400px;
+    margin: 0 auto 56px;
+    line-height: 1.7;
+  }
+
+  .pricing-cta {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--ember);
+    color: var(--bg);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.4s;
+  }
+
+  .pricing-cta:hover {
+    background: var(--ember-light);
+    box-shadow: 0 0 60px rgba(201, 106, 61, 0.2);
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    padding: 80px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+
+  .footer-left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .footer-logo svg {
+    width: 24px;
+    height: auto;
+  }
+
+  .footer-logo span {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .footer-tagline {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    color: var(--text-tertiary);
+  }
+
+  .footer-legal {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    margin-top: 24px;
+  }
+
+  .footer-right {
+    text-align: right;
+  }
+
+  .footer-right a {
+    display: block;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+
+  .footer-right a:hover {
+    color: var(--ember);
+  }
+
+  .footer-email {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    margin-top: 24px;
+  }
+
+  .footer-email a {
+    color: var(--ember) !important;
+    margin: 0 !important;
+    display: inline !important;
+  }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  /* --- SCROLL REVEAL --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 0 24px; }
+    .domains { padding: 100px 24px; }
+    .domain-grid { grid-template-columns: 1fr; }
+    .ethos { padding: 100px 24px; grid-template-columns: 1fr; gap: 60px; }
+    .pricing-signal { padding: 100px 24px; }
+    footer { padding: 60px 24px; flex-direction: column; align-items: start; gap: 40px; }
+    .footer-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg viewBox="0 0 72 96" fill="none">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+      <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+    </svg>
+    <span class="nav-wordmark">Ember</span>
+  </div>
+  <div class="nav-links">
+    <a href="#domains">Expertise</a>
+    <a href="#ethos">Approach</a>
+    <a href="#contact" class="nav-cta">Begin</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shield">
+    <svg viewBox="0 0 72 96" fill="none">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+      <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+    </svg>
+  </div>
+  <h1>Protection for what you've built</h1>
+  <p class="hero-sub">Ember is a boutique Canadian law firm for companies that take intellectual property, data, and privacy seriously.</p>
+  <a href="#contact" class="hero-cta">Request access</a>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- DOMAINS -->
+<section class="domains" id="domains">
+  <div class="domains-label reveal">Practice domains</div>
+  <div class="domain-grid reveal">
+    <div class="domain-card">
+      <div class="domain-number">01</div>
+      <div class="domain-title">Intellectual Property</div>
+      <div class="domain-desc">Patent strategy, trademark portfolios, licensing architecture, and enforcement. We build IP positions that compound over time.</div>
+    </div>
+    <div class="domain-card">
+      <div class="domain-number">02</div>
+      <div class="domain-title">Data Governance</div>
+      <div class="domain-desc">Regulatory compliance, cross-border data flows, AI governance frameworks, and incident response. Structure before crisis.</div>
+    </div>
+    <div class="domain-card">
+      <div class="domain-number">03</div>
+      <div class="domain-title">Privacy</div>
+      <div class="domain-desc">PIPEDA, provincial health privacy, GDPR alignment, privacy impact assessments, and breach management. Canadian law, global standard.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ETHOS -->
+<section class="ethos" id="ethos">
+  <div>
+    <div class="ethos-label reveal">Approach</div>
+    <h2 class="ethos-headline reveal">Built for companies that see legal as <em>infrastructure</em>, not overhead.</h2>
+  </div>
+  <div class="ethos-points">
+    <div class="ethos-point reveal">
+      <div class="ethos-point-title">Fixed-fee subscriptions</div>
+      <div class="ethos-point-desc">No billable hour surprises. Predictable monthly pricing scaled to your stage and complexity. Budget like a SaaS contract, not a litigation reserve.</div>
+    </div>
+    <div class="ethos-point reveal">
+      <div class="ethos-point-title">Senior counsel only</div>
+      <div class="ethos-point-desc">Your work is never delegated to juniors. Every engagement is handled by partners with deep domain expertise. Direct access, no layers.</div>
+    </div>
+    <div class="ethos-point reveal">
+      <div class="ethos-point-title">Three domains, total focus</div>
+      <div class="ethos-point-desc">We don't do family law, litigation, or real estate. IP, data, and privacy — that's it. Depth over breadth, always.</div>
+    </div>
+    <div class="ethos-point reveal">
+      <div class="ethos-point-title">Canadian-first, globally aware</div>
+      <div class="ethos-point-desc">Grounded in Canadian regulatory landscape. Fluent in GDPR, state-level US privacy law, and cross-border data transfer frameworks.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING SIGNAL -->
+<section class="pricing-signal" id="contact">
+  <p class="pricing-quote reveal">"The firms that protect your most valuable assets shouldn't bill like the ones that don't."</p>
+  <p class="pricing-detail reveal">Ember operates on a subscription model. Fixed monthly fees. No hourly billing. Scope defined upfront.</p>
+  <a href="/cdn-cgi/l/email-protection#b8d1d6c9cdd1cad1ddcbf8ddd5daddcad4dddfd9d496dbd9" class="pricing-cta reveal">Request a consultation</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo">
+      <svg viewBox="0 0 72 96" fill="none" width="24">
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+        <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+      </svg>
+      <span>Ember</span>
+    </div>
+    <div class="footer-tagline">IP · DATA · PRIVACY</div>
+    <div class="footer-legal">© 2026 Ember LLP. All rights reserved.</div>
+  </div>
+  <div class="footer-right">
+    <a href="#">Expertise</a>
+    <a href="#">Approach</a>
+    <a href="#">Insights</a>
+    <div class="footer-email"><a href="/cdn-cgi/l/email-protection#177e7966627e657e726457727a7572657b7270767b397476"><span class="__cf_email__" data-cfemail="f89196898d918a919d8bb89d959a9d8a949d9f9994d69b99">[email&#160;protected]</span></a></div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.r

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — IP · Data · Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember: #C96A3D;
+    --ember-light: #D4804E;
+    --ember-dark: #A8542E;
+    --ember-10: rgba(201, 106, 61, 0.08);
+    --ember-border: rgba(201, 106, 61, 0.2);
+    --bg: #FAFAF8;
+    --white: #FFFFFF;
+    --text-primary: #1E2430;
+    --text-secondary: #5C6170;
+    --text-tertiary: #9498A3;
+    --text-muted: #B8BBC2;
+    --border: #EBEBEA;
+    --border-light: #F3F3F1;
+    --surface: #F5F5F3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 0 56px;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 250, 248, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo svg { width: 24px; height: auto; }
+
+  .nav-wordmark {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+    letter-spacing: -0.4px;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+  }
+
+  .nav-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .nav-login {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-login:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--text-primary);
+    color: var(--bg);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: #2D3340;
+    box-shadow: 0 2px 8px rgba(30, 36, 48, 0.15);
+  }
+
+  /* --- HERO --- */
+  .hero {
+    padding: 160px 56px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--ember-10);
+    border: 1px solid var(--ember-border);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ember-dark);
+    letter-spacing: 0.02em;
+    margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .hero-eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--ember);
+  }
+
+  .hero h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(40px, 5vw, 62px);
+    font-weight: 400;
+    letter-spacing: -1.5px;
+    line-height: 1.12;
+    color: var(--text-primary);
+    max-width: 720px;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    max-width: 520px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.5s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.65s forwards;
+  }
+
+  .btn-primary {
+    background: var(--ember);
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    background: var(--ember-dark);
+    box-shadow: 0 4px 16px rgba(201, 106, 61, 0.25);
+  }
+
+  .btn-primary svg {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.2s;
+  }
+
+  .btn-primary:hover svg {
+    transform: translateX(3px);
+  }
+
+  .btn-secondary {
+    color: var(--text-secondary);
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--text-primary); }
+
+  /* --- SYSTEM GRID --- */
+  .system {
+    padding: 0 56px 140px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .system-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .system-card {
+    padding: 40px 36px;
+    border-right: 1px solid var(--border);
+    position: relative;
+    transition: background 0.3s;
+    cursor: default;
+  }
+
+  .system-card:last-child { border-right: none; }
+
+  .system-card:hover {
+    background: var(--surface);
+  }
+
+  .system-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    background: var(--ember-10);
+    border: 1px solid var(--ember-border);
+  }
+
+  .system-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--ember);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .system-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+  }
+
+  .system-card-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .system-card-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .system-card-items li {
+    font-size: 13px;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .system-card-items li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 1px;
+    background: var(--ember);
+    flex-shrink: 0;
+  }
+
+  /* --- HOW IT WORKS --- */
+  .how {
+    padding: 140px 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    margin-bottom: 64px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    max-width: 400px;
+  }
+
+  .section-link {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ember);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+    padding-bottom: 8px;
+  }
+
+  .section-link:hover { gap: 10px; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 16.66%;
+    right: 16.66%;
+    height: 1px;
+    background: var(--border);
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 28px;
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.3s;
+  }
+
+  .step:hover .step-number {
+    border-color: var(--ember);
+    color: var(--ember);
+    box-shadow: 0 0 0 4px var(--ember-10);
+  }
+
+  .step-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  /* --- PRICING --- */
+  .pricing {
+    padding: 140px 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .pricing-card {
+    padding: 44px 36px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pricing-card:last-child { border-right: none; }
+
+  .pricing-card.featured {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+  }
+
+  .pricing-tier {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .pricing-card:not(.featured) .pricing-tier { color: var(--text-tertiary); }
+  .pricing-card.featured .pricing-tier { color: var(--ember-light); }
+
+  .pricing-name {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    letter-spacing: -0.3px;
+  }
+
+  .pricing-card:not(.featured) .pricing-name { color: var(--text-primary); }
+  .pricing-card.featured .pricing-name { color: #fff; }
+
+  .pricing-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 28px;
+    flex-grow: 1;
+  }
+
+  .pricing-card:not(.featured) .pricing-desc { color: var(--text-secondary); }
+  .pricing-card.featured .pricing-desc { color: rgba(255,255,255,0.6); }
+
+  .pricing-price {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+  }
+
+  .pricing-card.featured .pricing-price {
+    border-top-color: rgba(255,255,255,0.12);
+    color: #fff;
+  }
+
+  .pricing-card:not(.featured) .pricing-price { color: var(--text-primary); }
+
+  .pricing-price span {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+  }
+
+  .pricing-card:not(.featured) .pricing-price span { color: var(--text-tertiary); }
+  .pricing-card.featured .pricing-price span { color: rgba(255,255,255,0.4); }
+
+  .pricing-btn {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.25s;
+  }
+
+  .pricing-card:not(.featured) .pricing-btn {
+    background: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+  }
+
+  .pricing-card:not(.featured) .pricing-btn:hover {
+    border-color: var(--text-tertiary);
+  }
+
+  .pricing-card.featured .pricing-btn {
+    background: var(--ember);
+    color: #fff;
+  }
+
+  .pricing-card.featured .pricing-btn:hover {
+    background: var(--ember-light);
+    box-shadow: 0 4px 16px rgba(201, 106, 61, 0.3);
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    padding: 64px 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .footer-logo svg { width: 20px; height: auto; }
+
+  .footer-logo span {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .footer-sep {
+    width: 1px;
+    height: 16px;
+    background: var(--border);
+  }
+
+  .footer-legal {
+    font-size: 13px;
+    color: var(--text-tertiary);
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-right a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .footer-right a:hover { color: var(--text-primary); }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links, .nav-divider, .nav-login { display: none; }
+    .hero { padding: 140px 24px 80px; }
+    .system { padding: 0 24px 100px; }
+    .system-grid { grid-template-columns: 1fr; }
+    .system-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .system-card:last-child { border-bottom: none; }
+    .how { padding: 100px 24px; }
+    .steps { grid-template-columns: 1fr; gap: 48px; }
+    .steps::before { display: none; }
+    .section-header { flex-direction: column; align-items: start; gap: 16px; }
+    .pricing { padding: 100px 24px; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-card { border-right: none; border-bottom: 1px solid var(--border); }
+    .pricing-card:last-child { border-bottom: none; }
+    footer { padding: 48px 24px; flex-direction: column; gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">
+      <svg viewBox="0 0 72 96" fill="none">
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+        <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+      </svg>
+      <span class="nav-wordmark">Ember</span>
+    </div>
+    <div class="nav-divider"></div>
+    <div class="nav-links">
+      <a href="#domains">Domains</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="nav-login">Client login</a>
+    <a href="#" class="nav-cta">Get started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow"><span class="dot"></span> Now accepting new subscriptions</div>
+  <h1>Legal infrastructure for IP, data, and privacy</h1>
+  <p class="hero-sub">Ember is a subscription law firm. Fixed monthly pricing, senior counsel only, three practice domains. Built for Canadian companies that treat legal as a system, not an emergency.</p>
+  <div class="hero-actions">
+    <a href="#pricing" class="btn-primary">
+      View plans
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+    </a>
+    <a href="#how" class="btn-secondary">How it works</a>
+  </div>
+</section>
+
+<!-- SYSTEM GRID -->
+<section class="system" id="domains">
+  <div class="system-grid reveal">
+    <div class="system-card">
+      <div class="system-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="system-card-title">Intellectual Property</div>
+      <div class="system-card-desc">Strategic IP positioning that compounds. Patents, trademarks, licensing, and enforcement built into your business architecture.</div>
+      <ul class="system-card-items">
+        <li>Patent strategy & prosecution</li>
+        <li>Trademark portfolios</li>
+        <li>Licensing architecture</li>
+        <li>IP due diligence</li>
+      </ul>
+    </div>
+    <div class="system-card">
+      <div class="system-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+      </div>
+      <div class="system-card-title">Data Governance</div>
+      <div class="system-card-desc">Regulatory compliance, cross-border data frameworks, AI governance, and incident response. Structure before crisis.</div>
+      <ul class="system-card-items">
+        <li>Cross-border data flows</li>
+        <li>AI governance frameworks</li>
+        <li>Data processing agreements</li>
+        <li>Incident response plans</li>
+      </ul>
+    </div>
+    <div class="system-card">
+      <div class="system-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      </div>
+      <div class="system-card-title">Privacy</div>
+      <div class="system-card-desc">PIPEDA, provincial health privacy, GDPR alignment, privacy impact assessments. Canadian law, global standard.</div>
+      <ul class="system-card-items">
+        <li>Privacy impact assessments</li>
+        <li>PIPEDA & provincial compliance</li>
+        <li>GDPR alignment</li>
+        <li>Breach management</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Three steps to retained counsel</h2>
+    </div>
+    <a href="#" class="section-link">
+      Learn more
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+  <div class="steps reveal">
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-title">Scope</div>
+      <div class="step-desc">We assess your business, regulatory exposure, and IP position. You get a clear picture of what coverage you need.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <div class="step-title">Subscribe</div>
+      <div class="step-desc">Choose a plan that matches your stage. Fixed monthly fee, no surprises, no billable hour tracking.</div>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <div class="step-title">Operate</div>
+      <div class="step-desc">Direct access to senior counsel across all three domains. Email, call, or schedule — we respond same-day.</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-header reveal">
+    <div>
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Predictable legal costs, scaled to your stage</h2>
+    </div>
+  </div>
+  <div class="pricing-grid reveal">
+    <div class="pricing-card">
+      <div class="pricing-tier">Foundation</div>
+      <div class="pricing-name">Startup</div>
+      <div class="pricing-desc">For early-stage companies establishing their first IP and privacy foundations. Core coverage, clear guardrails.</div>
+      <div class="pricing-price">From $2,500 <span>/month</span></div>
+      <a href="#" class="pricing-btn">Get started</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="pricing-tier">Recommended</div>
+      <div class="pricing-name">Growth</div>
+      <div class="pricing-desc">For scaling companies with active IP portfolios, data operations, and regulatory obligations across jurisdictions.</div>
+      <div class="pricing-price">From $6,000 <span>/month</span></div>
+      <a href="#" class="pricing-btn">Get started</a>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">Enterprise</div>
+      <div class="pricing-name">Portfolio</div>
+      <div class="pricing-desc">For established companies needing comprehensive coverage across all three domains with strategic advisory.</div>
+      <div class="pricing-price">Custom <span>pricing</span></div>
+      <a href="#" class="pricing-btn">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div class="footer-logo">
+      <svg viewBox="0 0 72 96" fill="none" width="20">
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+        <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+      </svg>
+      <span>Ember</span>
+    </div>
+    <div class="footer-sep"></div>
+    <div class="footer-legal">© 2026 Ember LLP</div>
+  </div>
+  <div class="footer-right">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="/cdn-cgi/l/email-protection#6a03041b1f0318030f192a0f07080f18060f0d0b0644090b">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = '0.1s';
+        e

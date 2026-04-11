@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — IP · Data · Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember: #C96A3D;
+    --ember-light: #D4804E;
+    --ember-dark: #A8542E;
+    --ember-10: rgba(201, 106, 61, 0.07);
+    --ember-border: rgba(201, 106, 61, 0.18);
+    --bg: #FFFFFF;
+    --bg-warm: #FBF9F7;
+    --bg-section: #F7F5F2;
+    --ink: #1A1714;
+    --ink-mid: #4D4843;
+    --ink-light: #8A847C;
+    --ink-faint: #C4BFB8;
+    --rule: #E8E5E0;
+    --green: #1A7A4C;
+    --green-bg: rgba(26, 122, 76, 0.06);
+    --green-border: rgba(26, 122, 76, 0.15);
+    --red: #C43333;
+    --red-bg: rgba(196, 51, 51, 0.05);
+    --red-border: rgba(196, 51, 51, 0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0 56px;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .nav-logo svg { width: 24px; height: auto; }
+
+  .nav-wordmark {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.4px;
+  }
+
+  .nav-sep { width: 1px; height: 20px; background: var(--rule); }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .nav-links a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .nav-ghost {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-ghost:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--ember);
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover {
+    background: var(--ember-dark);
+    box-shadow: 0 2px 12px rgba(201, 106, 61, 0.2);
+  }
+
+  /* --- HERO --- */
+  .hero {
+    padding: 152px 56px 100px;
+    max-width: 1140px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .hero-pain {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--red);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.15s forwards;
+  }
+
+  .hero h1 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(36px, 4.8vw, 60px);
+    font-weight: 400;
+    letter-spacing: -1.5px;
+    line-height: 1.12;
+    color: var(--ink);
+    max-width: 780px;
+    margin: 0 auto 24px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.3s forwards;
+  }
+
+  .hero h1 .strike {
+    text-decoration: line-through;
+    color: var(--ink-faint);
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 2px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--ember);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    max-width: 540px;
+    margin: 0 auto 44px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.45s forwards;
+  }
+
+  .hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.6s forwards;
+  }
+
+  .btn-ember {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--ember);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.25s;
+  }
+
+  .btn-ember:hover {
+    background: var(--ember-dark);
+    box-shadow: 0 4px 20px rgba(201, 106, 61, 0.25);
+  }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    border: 1px solid var(--rule);
+    color: var(--ink-mid);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.25s;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--ink-light);
+    color: var(--ink);
+  }
+
+  /* --- COMPARISON --- */
+  .comparison {
+    padding: 0 56px 120px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .comp-card {
+    padding: 36px 32px;
+    border-radius: 12px;
+    border: 1px solid;
+  }
+
+  .comp-old {
+    background: var(--red-bg);
+    border-color: var(--red-border);
+  }
+
+  .comp-new {
+    background: var(--green-bg);
+    border-color: var(--green-border);
+  }
+
+  .comp-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .comp-old .comp-label { color: var(--red); }
+  .comp-new .comp-label { color: var(--green); }
+
+  .comp-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .comp-items li {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.5;
+    display: flex;
+    align-items: start;
+    gap: 10px;
+  }
+
+  .comp-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+  }
+
+  .comp-old .comp-icon {
+    background: rgba(196, 51, 51, 0.1);
+    color: var(--red);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .comp-new .comp-icon {
+    background: rgba(26, 122, 76, 0.1);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  /* --- CALCULATOR --- */
+  .calculator {
+    padding: 120px 56px;
+    background: var(--bg-section);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .calc-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .calc-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .calc-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .calc-subtitle {
+    font-size: 15px;
+    color: var(--ink-mid);
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .calc-box {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 48px;
+  }
+
+  .calc-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+
+  .calc-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-mid);
+    margin-bottom: 10px;
+  }
+
+  .calc-field select,
+  .calc-field input[type="range"] {
+    width: 100%;
+  }
+
+  .calc-select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--bg);
+    appearance: none;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' fill='none' stroke='%238A847C' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  .calc-select:focus {
+    outline: none;
+    border-color: var(--ember);
+  }
+
+  .calc-range-wrap {
+    position: relative;
+  }
+
+  .calc-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--rule);
+    outline: none;
+    margin-top: 8px;
+  }
+
+  .calc-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--ember);
+    cursor: pointer;
+    border: 3px solid var(--bg);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+  }
+
+  .calc-range-values {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+
+  .calc-range-current {
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+
+  .calc-divider {
+    height: 1px;
+    background: var(--rule);
+    margin: 8px 0 36px;
+  }
+
+  .calc-result {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .calc-result-card {
+    text-align: center;
+    padding: 28px;
+    border-radius: 8px;
+  }
+
+  .calc-result-old {
+    background: var(--red-bg);
+    border: 1px solid var(--red-border);
+  }
+
+  .calc-result-new {
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+  }
+
+  .calc-result-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+
+  .calc-result-old .calc-result-label { color: var(--red); }
+  .calc-result-new .calc-result-label { color: var(--green); }
+
+  .calc-result-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -1px;
+  }
+
+  .calc-result-old .calc-result-value { color: var(--red); }
+  .calc-result-new .calc-result-value { color: var(--green); }
+
+  .calc-result-note {
+    font-size: 12px;
+    color: var(--ink-light);
+    margin-top: 6px;
+  }
+
+  .calc-savings {
+    text-align: center;
+    margin-top: 32px;
+    padding: 20px;
+    background: var(--ember-10);
+    border: 1px solid var(--ember-border);
+    border-radius: 8px;
+  }
+
+  .calc-savings-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ember-dark);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  .calc-savings-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--ember);
+  }
+
+  /* --- STEPS --- */
+  .steps-section {
+    padding: 120px 56px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .steps-header {
+    text-align: center;
+    margin-bottom: 72px;
+  }
+
+  .steps-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 34px;
+    font-weight: 400;
+    letter-spacing: -0.5px;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    position: relative;
+  }
+
+  .steps-grid::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: 16.66%;
+    right: 16.66%;
+    height: 2px;
+    background: linear-gradient(to right, var(--rule), var(--ember), var(--rule));
+    z-index: 0;
+  }
+
+  .step-item {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    transition: all 0.3s;
+  }
+
+  .step-item:hover .step-circle {
+    border-color: var(--ember);
+    box-shadow: 0 0 0 6px var(--ember-10);
+  }
+
+  .step-circle svg {
+    width: 28px;
+    height: 28px;
+    stroke: var(--ink-light);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s;
+  }
+
+  .step-item:hover .step-circle svg { stroke: var(--ember); }
+
+  .step-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.6;
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  /* --- FINAL CTA --- */
+  .final-cta {
+    padding: 100px 56px;
+    background: var(--ink);
+    text-align: center;
+  }
+
+  .final-cta-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .final-cta h2 {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #fff;
+    letter-spacing: -0.5px;
+    line-height: 1.25;
+    margin-bottom: 16px;
+  }
+
+  .final-cta h2 em {
+    font-style: italic;
+    color: var(--ember);
+  }
+
+  .final-cta p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.65;
+    margin-bottom: 40px;
+  }
+
+  .final-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 40px;
+    background: var(--ember);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: all 0.3s;
+  }
+
+  .final-cta-btn:hover {
+    background: var(--ember-light);
+    box-shadow: 0 0 48px rgba(201, 106, 61, 0.3);
+  }
+
+  .final-note {
+    margin-top: 20px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    padding: 40px 56px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .foot-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .foot-left svg { width: 18px; height: auto; }
+
+  .foot-name {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .foot-copy {
+    font-size: 12px;
+    color: var(--ink-light);
+  }
+
+  .foot-right a {
+    font-size: 12px;
+    color: var(--ink-light);
+    text-decoration: none;
+    margin-left: 24px;
+    transition: color 0.2s;
+  }
+
+  .foot-right a:hover { color: var(--ink); }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links, .nav-sep, .nav-ghost { display: none; }
+    .hero { padding: 140px 24px 80px; }
+    .comparison { padding: 0 24px 80px; }
+    .comp-grid { grid-template-columns: 1fr; }
+    .calculator { padding: 80px 24px; }
+    .calc-box { padding: 28px; }
+    .calc-row { grid-template-columns: 1fr; }
+    .calc-result { grid-template-columns: 1fr; }
+    .steps-section { padding: 80px 24px; }
+    .steps-grid { grid-template-columns: 1fr; gap: 36px; }
+    .steps-grid::before { display: none; }
+    .final-cta { padding: 64px 24px; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">
+      <svg viewBox="0 0 72 96" fill="none">
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+        <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+      </svg>
+      <span class="nav-wordmark">Ember</span>
+    </div>
+    <div class="nav-sep"></div>
+    <div class="nav-links">
+      <a href="#compare">Why Ember</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#steps">How it works</a>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="#" class="nav-ghost">Client login</a>
+    <a href="#" class="nav-cta">Get started</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pain">The average IP matter bills $18,000+ in hourly fees</div>
+  <h1>Stop paying <span class="strike">$600/hour</span> for legal that should be <em>infrastructure</em></h1>
+  <p class="hero-sub">Ember is a subscription law firm for IP, data, and privacy. Fixed monthly pricing. Senior counsel only. No billable hour surprises, ever.</p>
+  <div class="hero-actions">
+    <a href="#calculator" class="btn-ember">
+      Calculate your savings
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3.5v9M4 8.5l4 4 4-4"/></svg>
+    </a>
+    <a href="#steps" class="btn-outline">How it works</a>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison reveal" id="compare">
+  <div class="comp-grid">
+    <div class="comp-card comp-old">
+      <div class="comp-label">Traditional firms</div>
+      <ul class="comp-items">
+        <li><span class="comp-icon">✕</span> Hourly billing with unpredictable invoices</li>
+        <li><span class="comp-icon">✕</span> Junior associates doing the actual work</li>
+        <li><span class="comp-icon">✕</span> Generalist firms that "also do" IP</li>
+        <li><span class="comp-icon">✕</span> Reactive — called when something breaks</li>
+        <li><span class="comp-icon">✕</span> Scope creep turns a $5K matter into $25K</li>
+      </ul>
+    </div>
+    <div class="comp-card comp-new">
+      <div class="comp-label">Ember</div>
+      <ul class="comp-items">
+        <li><span class="comp-icon">✓</span> Fixed monthly subscription, no surprises</li>
+        <li><span class="comp-icon">✓</span> Senior counsel handles every engagement</li>
+        <li><span class="comp-icon">✓</span> Three domains only — IP, data, privacy</li>
+        <li><span class="comp-icon">✓</span> Proactive — embedded in your operations</li>
+        <li><span class="comp-icon">✓</span> Scope defined upfront, budget never moves</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="calculator" id="calculator">
+  <div class="calc-inner">
+    <div class="calc-label reveal">Savings calculator</div>
+    <h2 class="calc-title reveal">See what you'd save with Ember</h2>
+    <p class="calc-subtitle reveal">Compare your estimated annual legal spend under hourly billing vs. an Ember subscription.</p>
+    <div class="calc-box reveal">
+      <div class="calc-row">
+        <div class="calc-field">
+          <label>Company stage</label>
+          <select class="calc-select" id="calc-stage" onchange="updateCalc()">
+            <option value="startup">Startup (seed – Series A)</option>
+            <option value="growth" selected>Growth (Series B – C)</option>
+            <option value="enterprise">Enterprise (Series D+ / public)</option>
+          </select>
+        </div>
+        <div class="calc-field">
+          <label>Primary legal needs</label>
+          <select class="calc-select" id="calc-needs" onchange="updateCalc()">
+            <option value="1">1 domain (IP, data, or privacy)</option>
+            <option value="2" selected>2 domains</option>
+            <option value="3">All 3 domains</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-field" style="margin-bottom: 8px;">
+        <label>Estimated monthly hours with a traditional firm</label>
+        <div class="calc-range-wrap">
+          <input type="range" class="calc-range" id="calc-hours" min="5" max="60" value="20" oninput="updateCalc()">
+          <div class="calc-range-values">
+            <span>5 hrs</span>
+            <span>60 hrs</span>
+          </div>
+          <div class="calc-range-current" id="hours-display">20 hours/month</div>
+        </div>
+      </div>
+      <div class="calc-divider"></div>
+      <div class="calc-result">
+        <div class="calc-result-card calc-result-old">
+          <div class="calc-result-label">Traditional firm (est.)</div>
+          <div class="calc-result-value" id="cost-old">$144,000</div>
+          <div class="calc-result-note">per year at ~$600/hr</div>
+        </div>
+        <div class="calc-result-card calc-result-new">
+          <div class="calc-result-label">Ember subscription</div>
+          <div class="calc-result-value" id="cost-new">$72,000</div>
+          <div class="calc-result-note">per year, fixed monthly</div>
+        </div>
+      </div>
+      <div class="calc-savings">
+        <div class="calc-savings-label">Estimated annual savings</div>
+        <div class="calc-savings-value" id="savings-display">$72,000</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps-section" id="steps">
+  <div class="steps-header reveal">
+    <h2 class="steps-title">From first call to retained counsel in three steps</h2>
+  </div>
+  <div class="steps-grid reveal">
+    <div class="step-item">
+      <div class="step-circle">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="step-name">30-minute scoping call</div>
+      <div class="step-desc">We assess your IP position, data exposure, and privacy obligations. No charge, no commitment.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 3v18"/></svg>
+      </div>
+      <div class="step-name">Custom plan proposal</div>
+      <div class="step-desc">Within 48 hours you receive a clear scope, fixed monthly price, and service-level commitments.</div>
+    </div>
+    <div class="step-item">
+      <div class="step-circle">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+      </div>
+      <div class="step-name">Activate & operate</div>
+      <div class="step-desc">Direct access to senior counsel. Email, call, or schedule. Same-day response, every time.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta reveal">
+  <div class="final-cta-inner">
+    <h2>Your legal costs should be as predictable as your <em>SaaS contracts</em></h2>
+    <p>Start with a free scoping call. We'll tell you honestly whether Ember is the right fit — and if it's not, we'll tell you that too.</p>
+    <a href="/cdn-cgi/l/email-protection#91f8ffe0e4f8e3f8f4e2d1f4fcf3f4e3fdf4f6f0fdbff2f0" class="final-cta-btn">
+      Book a scoping call
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8h9M8.5 4l4 4-4 4"/></svg>
+    </a>
+    <div class="final-note">Free · 30 minutes · No obligation</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-left">
+    <svg viewBox="0 0 72 96" fill="none" width="18">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+      <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+    </svg>
+    <span class="foot-name">Ember</span>
+    <span class="foot-copy">© 2026 Ember LLP</span>
+  </div>
+  <div class="foot-right">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="/cdn-cgi/l/email-protection#395057484c504b505c4a795c545b5c4b555c5e5855175a58">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function updateCalc() {
+    const stage = document.getElementById('calc-stage').value;
+    const domains = parseInt(document.getElementById('calc-needs').value);
+    const hours = parseInt(document.getElementById('calc-hours').value);
+
+    document.getElementById('hours-display').textContent = hours + ' hours/month';
+
+    const rate = stage === 'enterprise' ? 750 : stage === 'growth' ? 600 : 450;
+    const oldCost = hours * rate * 12;
+
+    const basePrices = { startup: 2500, growth: 6000, enterprise: 15000 };
+    let monthly = basePrices[stage];
+    if (domains === 2) monthly *= 1.4;
+    if (domains === 3) monthly *= 1.75;
+    const newCost = Math.round(monthly) * 12;
+
+    const savings = Math.max(0, oldCost - newCost);
+
+    document.getElementById('cost-old').textContent = '$' + oldCost.toLocaleString();
+    document.getElementById('cost-new').textContent = '$' + newCost.toLocaleString();
+    document.getElementById('savings-display').textContent = '$' + savings.toLocaleString();
+  }
+
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry =

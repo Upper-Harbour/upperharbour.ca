@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — IP · Data · Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember: #C96A3D;
+    --ember-light: #D4804E;
+    --ember-dark: #A8542E;
+    --bg: #FAF8F5;
+    --bg-warm: #F4F0EB;
+    --white: #FFFFFF;
+    --ink: #1C1917;
+    --ink-secondary: #57534E;
+    --ink-tertiary: #A8A29E;
+    --ink-faint: #D6D3D1;
+    --rule: #E7E5E4;
+    --rule-dark: #D6D3D1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Newsreader', Georgia, serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* --- MASTHEAD --- */
+  .masthead {
+    padding: 20px 56px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+  }
+
+  .mast-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .mast-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mast-logo svg { width: 22px; height: auto; }
+
+  .mast-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+  }
+
+  .mast-tagline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.38em;
+    color: var(--ink-tertiary);
+    padding-left: 20px;
+    border-left: 1px solid var(--rule);
+  }
+
+  .mast-nav {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .mast-nav a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .mast-nav a:hover { color: var(--ink); }
+
+  .mast-subscribe {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ember) !important;
+    border: 1px solid var(--ember);
+    padding: 7px 18px;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+
+  .mast-subscribe:hover {
+    background: var(--ember);
+    color: var(--white) !important;
+  }
+
+  /* --- EDITION BAR --- */
+  .edition-bar {
+    padding: 12px 56px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-tertiary);
+  }
+
+  .edition-bar span {
+    letter-spacing: 0.02em;
+  }
+
+  .edition-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--ember);
+    display: inline-block;
+    margin-right: 6px;
+    animation: blink 2.5s ease-in-out infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* --- HERO FEATURE --- */
+  .hero-feature {
+    padding: 72px 56px 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 72px;
+  }
+
+  .feature-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ember);
+    margin-bottom: 20px;
+  }
+
+  .feature-headline {
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.18;
+    letter-spacing: -1px;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+
+  .feature-headline em {
+    font-style: italic;
+    color: var(--ember-dark);
+  }
+
+  .feature-deck {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    margin-bottom: 28px;
+    max-width: 520px;
+  }
+
+  .feature-byline {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--ink-tertiary);
+  }
+
+  .feature-byline strong {
+    color: var(--ink-secondary);
+    font-weight: 600;
+  }
+
+  .feature-aside {
+    padding-top: 8px;
+  }
+
+  .aside-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .aside-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    transition: padding-left 0.3s;
+  }
+
+  .aside-item:hover {
+    padding-left: 8px;
+  }
+
+  .aside-item-cat {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .cat-ip { color: var(--ember); }
+  .cat-data { color: #2563EB; }
+  .cat-privacy { color: #7C3AED; }
+
+  .aside-item-title {
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.35;
+    letter-spacing: -0.2px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .aside-item-date {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-tertiary);
+  }
+
+  /* --- CONTENT GRID --- */
+  .content-grid {
+    padding: 64px 56px;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+  }
+
+  .articles-col {}
+
+  .articles-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .article-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .article-row:hover {
+    background: var(--bg-warm);
+    margin: 0 -16px;
+    padding: 32px 16px;
+    border-radius: 4px;
+  }
+
+  .article-cat {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .article-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.3px;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .article-excerpt {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.55;
+    color: var(--ink-secondary);
+  }
+
+  .article-meta {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-tertiary);
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  .article-author {
+    font-weight: 600;
+    color: var(--ink-secondary);
+    margin-bottom: 4px;
+  }
+
+  /* --- SIDEBAR --- */
+  .sidebar-col {}
+
+  .sidebar-section {
+    margin-bottom: 48px;
+  }
+
+  .sidebar-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  /* FIRM CARD */
+  .firm-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 32px 28px;
+    border-radius: 4px;
+  }
+
+  .firm-card-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .firm-card-logo svg { width: 28px; height: auto; }
+
+  .firm-card-logo span {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+
+  .firm-card-text {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-secondary);
+    margin-bottom: 24px;
+  }
+
+  .firm-card-cta {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.25s;
+  }
+
+  .firm-card-cta:hover { background: #2D2926; }
+
+  .firm-domains {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .firm-domain-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    color: var(--ink-secondary);
+  }
+
+  /* DIGEST SIGNUP */
+  .digest-box {
+    background: var(--ink);
+    padding: 32px 28px;
+    border-radius: 4px;
+    color: var(--bg);
+  }
+
+  .digest-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    letter-spacing: -0.3px;
+  }
+
+  .digest-desc {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+
+  .digest-input-group {
+    display: flex;
+    gap: 0;
+  }
+
+  .digest-input {
+    flex: 1;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-right: none;
+    border-radius: 2px 0 0 2px;
+    color: var(--bg);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .digest-input::placeholder { color: rgba(255,255,255,0.3); }
+  .digest-input:focus { border-color: var(--ember); }
+
+  .digest-btn {
+    padding: 10px 18px;
+    background: var(--ember);
+    border: 1px solid var(--ember);
+    border-radius: 0 2px 2px 0;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.25s;
+  }
+
+  .digest-btn:hover { background: var(--ember-dark); }
+
+  .digest-note {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    margin-top: 10px;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    margin-top: 40px;
+    border-top: 2px solid var(--ink);
+    padding: 32px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .foot-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .foot-left svg { width: 18px; height: auto; }
+
+  .foot-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .foot-copy {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-tertiary);
+  }
+
+  .foot-right {
+    display: flex;
+    gap: 24px;
+  }
+
+  .foot-right a {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--ink-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .foot-right a:hover { color: var(--ink); }
+
+  /* --- ANIMATIONS --- */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-feature > * {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+
+  .hero-feature > *:nth-child(1) { animation-delay: 0.15s; }
+  .hero-feature > *:nth-child(2) { animation-delay: 0.35s; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 900px) {
+    .masthead { padding: 16px 24px; }
+    .mast-tagline { display: none; }
+    .mast-nav { gap: 16px; }
+    .mast-nav a:not(.mast-subscribe) { display: none; }
+    .edition-bar { padding: 10px 24px; }
+    .hero-feature { padding: 48px 24px; grid-template-columns: 1fr; gap: 48px; }
+    .content-grid { padding: 48px 24px; grid-template-columns: 1fr; }
+    .article-row { grid-template-columns: 1fr; gap: 12px; }
+    footer { padding: 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<header class="masthead">
+  <div class="mast-left">
+    <div class="mast-logo">
+      <svg viewBox="0 0 72 96" fill="none">
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+        <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+        <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+      </svg>
+      <span class="mast-title">Ember</span>
+    </div>
+    <span class="mast-tagline">IP · DATA · PRIVACY</span>
+  </div>
+  <nav class="mast-nav">
+    <a href="#">Insights</a>
+    <a href="#">Domains</a>
+    <a href="#">About</a>
+    <a href="#" class="mast-subscribe">Subscribe</a>
+  </nav>
+</header>
+
+<!-- EDITION BAR -->
+<div class="edition-bar">
+  <span><span class="edition-dot"></span>April 2026 · Canadian Regulatory Intelligence</span>
+  <span>Vancouver, BC</span>
+</div>
+
+<!-- HERO FEATURE -->
+<section class="hero-feature">
+  <div>
+    <div class="feature-meta">Analysis · Privacy</div>
+    <h1 class="feature-headline">Canada's new privacy framework will reshape how companies <em>think</em> about data</h1>
+    <p class="feature-deck">Bill C-27 is dead on the order paper — but the principles it embedded are already reshaping provincial enforcement. What companies should be building now, regardless of federal timelines.</p>
+    <div class="feature-byline">By <strong>Ember Editorial</strong> · 12 min read · April 8, 2026</div>
+  </div>
+  <aside class="feature-aside">
+    <div class="aside-label">Latest</div>
+    <div class="aside-item">
+      <div class="aside-item-cat cat-ip">Intellectual Property</div>
+      <div class="aside-item-title">Patent trolls are coming to Canada. Here's the playbook.</div>
+      <div class="aside-item-date">April 4, 2026</div>
+    </div>
+    <div class="aside-item">
+      <div class="aside-item-cat cat-data">Data Governance</div>
+      <div class="aside-item-title">Cross-border data transfers after the EU adequacy review: a Canadian guide</div>
+      <div class="aside-item-date">March 28, 2026</div>
+    </div>
+    <div class="aside-item">
+      <div class="aside-item-cat cat-privacy">Privacy</div>
+      <div class="aside-item-title">What the OPC's latest enforcement action means for your consent model</div>
+      <div class="aside-item-date">March 21, 2026</div>
+    </div>
+    <div class="aside-item">
+      <div class="aside-item-cat cat-data">Data Governance</div>
+      <div class="aside-item-title">AI governance in Canada: the regulatory landscape in Q2 2026</div>
+      <div class="aside-item-date">March 14, 2026</div>
+    </div>
+  </aside>
+</section>
+
+<!-- CONTENT GRID -->
+<section class="content-grid">
+  <div class="articles-col">
+    <div class="articles-label reveal">Recent analysis</div>
+
+    <div class="article-row reveal">
+      <div>
+        <div class="article-cat cat-ip">IP Strategy</div>
+        <div class="article-title">The hidden cost of provisional patents: when "cheap protection" becomes expensive exposure</div>
+        <div class="article-excerpt">Most startups file provisionals to buy time. But a poorly drafted provisional can destroy novelty — and the clock is already running.</div>
+      </div>
+      <div class="article-meta">
+        <div>
+          <div class="article-author">Ember Editorial</div>
+          <div>8 min · March 7, 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-row reveal">
+      <div>
+        <div class="article-cat cat-privacy">Privacy</div>
+        <div class="article-title">Privacy by design is now table stakes. Here's what "privacy by default" actually requires.</div>
+        <div class="article-excerpt">The distinction matters more than most companies realize — especially when dealing with provincial health information legislation.</div>
+      </div>
+      <div class="article-meta">
+        <div>
+          <div class="article-author">Ember Editorial</div>
+          <div>6 min · Feb 28, 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="article-row reveal">
+      <div>
+        <div class="article-cat cat-data">Data</div>
+        <div class="article-title">Your DPA template is probably non-compliant. Here's a checklist.</div>
+        <div class="article-excerpt">We reviewed 40 data processing agreements from Canadian SaaS companies. The common failures are instructive — and fixable.</div>
+      </div>
+      <div class="article-meta">
+        <div>
+          <div class="article-author">Ember Editorial</div>
+          <div>10 min · Feb 14, 2026</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar-col">
+    <div class="sidebar-section reveal">
+      <div class="sidebar-label">The Firm</div>
+      <div class="firm-card">
+        <div class="firm-card-logo">
+          <svg viewBox="0 0 72 96" fill="none">
+            <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+            <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+            <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+          </svg>
+          <span>Ember LLP</span>
+        </div>
+        <div class="firm-domains">
+          <span class="firm-domain-tag">IP</span>
+          <span class="firm-domain-tag">Data</span>
+          <span class="firm-domain-tag">Privacy</span>
+        </div>
+        <div class="firm-card-text">Boutique Canadian law firm. Subscription model. Senior counsel only. Fixed monthly fees with no billable hour surprises.</div>
+        <a href="#" class="firm-card-cta">Inquire about membership</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section reveal">
+      <div class="sidebar-label">Weekly digest</div>
+      <div class="digest-box">
+        <div class="digest-title">The Ember Brief</div>
+        <div class="digest-desc">A weekly distillation of what matters in Canadian IP, data, and privacy law. Read by in-house counsel, founders, and policy teams.</div>
+        <div class="digest-input-group">
+          <input type="email" class="digest-input" placeholder="you@company.com">
+          <button class="digest-btn">Subscribe</button>
+        </div>
+        <div class="digest-note">Free. No spam. Unsubscribe anytime.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-left">
+    <svg viewBox="0 0 72 96" fill="none">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+      <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+    </svg>
+    <span class="foot-name">Ember</span>
+    <span class="foot-copy">© 2026 Ember LLP. All rights reserved.</span>
+  </div>
+  <div class="foot-right">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms</a>
+    <a href="/cdn-cgi/l/email-protection#9cf5f2ede9f5eef5f9efdcf9f1fef9eef0f9fbfdf0b2fffd"><span class="__cf_email__" data-cfemail="bbd2d5caced2c9d2dec8fbded6d9dec9d7dedcdad795d8da">[email&#160;protected]</span></a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer =

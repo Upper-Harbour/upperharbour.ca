@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — IP · Data · Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ember: #C96A3D;
+    --ember-light: #D4804E;
+    --ember-dark: #A8542E;
+    --ember-glow: rgba(201, 106, 61, 0.08);
+    --cream: #F9F6F1;
+    --cream-dark: #F0EBE3;
+    --ink: #1A1714;
+    --ink-mid: #4A4540;
+    --ink-light: #8A847C;
+    --ink-faint: #C4BEB6;
+    --rule: #E2DDD6;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* --- NAV --- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    mix-blend-mode: normal;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .nav-logo svg { width: 28px; height: auto; }
+
+  .nav-wordmark {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+  }
+
+  .nav-right a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-right a:hover { color: var(--ink); }
+
+  .nav-cta-link {
+    color: var(--ember) !important;
+    font-weight: 600 !important;
+  }
+
+  /* --- HERO --- */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 48px 80px 80px;
+  }
+
+  .hero-question {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(38px, 4.5vw, 64px);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+    color: var(--ink);
+    margin-bottom: 40px;
+  }
+
+  .hero-question em {
+    font-style: italic;
+    color: var(--ember);
+    font-weight: 400;
+  }
+
+  .hero-answer {
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 400px;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ember);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: gap 0.3s;
+  }
+
+  .hero-link:hover { gap: 18px; }
+
+  .hero-link-line {
+    width: 40px;
+    height: 1px;
+    background: var(--ember);
+    transition: width 0.3s;
+  }
+
+  .hero-link:hover .hero-link-line { width: 56px; }
+
+  .hero-right {
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-shield-large {
+    opacity: 0.06;
+    position: absolute;
+    width: 420px;
+    height: auto;
+  }
+
+  .hero-right-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px;
+    max-width: 440px;
+  }
+
+  .hero-stat {
+    margin-bottom: 48px;
+  }
+
+  .hero-stat-number {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 72px;
+    font-weight: 300;
+    color: var(--ember);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .hero-stat-label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .hero-divider {
+    width: 48px;
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-bottom: 48px;
+  }
+
+  /* --- MARQUEE STRIP --- */
+  .marquee-strip {
+    background: var(--ink);
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    color: rgba(255,255,255,0.2);
+    text-transform: uppercase;
+    padding: 0 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .marquee-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--ember);
+    opacity: 0.6;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* --- DOMAINS --- */
+  .domains {
+    padding: 140px 80px;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .domains-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-bottom: 96px;
+    align-items: end;
+  }
+
+  .domains-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .domains-headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
+  }
+
+  .domains-intro {
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 420px;
+    padding-bottom: 8px;
+  }
+
+  .domain-blocks {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .domain-block {
+    background: var(--white);
+    padding: 52px 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: all 0.4s;
+  }
+
+  .domain-block:hover {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .domain-block:hover .domain-block-number { color: var(--ember); }
+  .domain-block:hover .domain-block-title { color: var(--cream); }
+  .domain-block:hover .domain-block-desc { color: rgba(255,255,255,0.5); }
+  .domain-block:hover .domain-block-list li { color: rgba(255,255,255,0.4); border-color: rgba(255,255,255,0.08); }
+
+  .domain-block-stamp {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: auto;
+    opacity: 0.04;
+  }
+
+  .domain-block-number {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--ink-faint);
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+    transition: color 0.4s;
+  }
+
+  .domain-block-title {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    margin-bottom: 14px;
+    transition: color 0.4s;
+  }
+
+  .domain-block-desc {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    margin-bottom: 28px;
+    transition: color 0.4s;
+  }
+
+  .domain-block-list {
+    list-style: none;
+  }
+
+  .domain-block-list li {
+    font-size: 13px;
+    color: var(--ink-light);
+    padding: 10px 0;
+    border-top: 1px solid var(--rule);
+    transition: all 0.4s;
+  }
+
+  /* --- PROVOCATION --- */
+  .provocation {
+    padding: 140px 80px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 64px;
+    max-width: 1300px;
+    margin: 0 auto;
+    align-items: start;
+  }
+
+  .prov-mark {
+    padding-top: 12px;
+  }
+
+  .prov-mark svg {
+    width: 48px;
+    height: auto;
+    opacity: 0.15;
+  }
+
+  .prov-content {}
+
+  .prov-text {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: clamp(28px, 3.5vw, 42px);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    letter-spacing: -0.5px;
+    color: var(--ink);
+    max-width: 700px;
+    margin-bottom: 32px;
+  }
+
+  .prov-text strong {
+    font-weight: 500;
+    font-style: normal;
+    color: var(--ember);
+  }
+
+  .prov-attrib {
+    font-size: 13px;
+    color: var(--ink-light);
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    max-width: 700px;
+  }
+
+  /* --- CTA BAND --- */
+  .cta-band {
+    background: var(--ink);
+    padding: 96px 80px;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-band::before {
+    content: '';
+    position: absolute;
+    right: -100px;
+    top: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(201, 106, 61, 0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-headline {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: -0.8px;
+    line-height: 1.25;
+  }
+
+  .cta-headline em {
+    font-style: italic;
+    color: var(--ember);
+  }
+
+  .cta-right {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-desc {
+    font-size: 15px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin-bottom: 36px;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 16px;
+  }
+
+  .cta-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: var(--ember);
+    color: var(--white);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    transition: all 0.3s;
+  }
+
+  .cta-primary:hover {
+    background: var(--ember-light);
+    box-shadow: 0 0 48px rgba(201, 106, 61, 0.25);
+  }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 28px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .cta-secondary:hover {
+    border-color: rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.85);
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    padding: 48px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+  }
+
+  .foot-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .foot-left svg { width: 18px; height: auto; }
+
+  .foot-name {
+    font-family: 'Newsreader', Georgia, serif;
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .foot-copy {
+    font-size: 12px;
+    color: var(--ink-light);
+  }
+
+  .foot-right a {
+    font-size: 12px;
+    color: var(--ink-light);
+    text-decoration: none;
+    margin-left: 24px;
+    transition: color 0.2s;
+  }
+
+  .foot-right a:hover { color: var(--ink); }
+
+  /* --- ANIMATIONS --- */
+  .hero-left > * {
+    opacity: 0;
+    animation: slideIn 0.9s ease forwards;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: 0.2s; }
+  .hero-left > *:nth-child(2) { animation-delay: 0.45s; }
+  .hero-left > *:nth-child(3) { animation-delay: 0.65s; }
+
+  .hero-right-content > * {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .hero-right-content > *:nth-child(1) { animation-delay: 0.5s; }
+  .hero-right-content > *:nth-child(2) { animation-delay: 0.7s; }
+  .hero-right-content > *:nth-child(3) { animation-delay: 0.8s; }
+  .hero-right-content > *:nth-child(4) { animation-delay: 0.9s; }
+  .hero-right-content > *:nth-child(5) { animation-delay: 1.0s; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* --- RESPONSIVE --- */
+  @media (max-width: 900px) {
+    nav { padding: 20px 24px; }
+    .nav-right a:not(.nav-cta-link) { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 140px 24px 60px; }
+    .hero-right { padding: 60px 24px; min-height: 50vh; }
+    .hero-right-content { padding: 0; }
+    .domains { padding: 80px 24px; }
+    .domains-header { grid-template-columns: 1fr; gap: 24px; }
+    .domain-blocks { grid-template-columns: 1fr; }
+    .provocation { padding: 80px 24px; grid-template-columns: 1fr; gap: 24px; }
+    .prov-mark { display: none; }
+    .cta-band { padding: 64px 24px; grid-template-columns: 1fr; gap: 32px; }
+    .cta-actions { flex-direction: column; }
+    footer { padding: 32px 24px; flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg viewBox="0 0 72 96" fill="none">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+      <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+    </svg>
+    <span class="nav-wordmark">Ember</span>
+  </div>
+  <div class="nav-right">
+    <a href="#domains">Domains</a>
+    <a href="#approach">Approach</a>
+    <a href="#" class="nav-cta-link">Begin a conversation</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <h1 class="hero-question">Who's protecting your most <em>valuable</em> assets?</h1>
+    <p class="hero-answer">Most companies insure their buildings. They audit their finances. But their intellectual property, data architecture, and privacy obligations? Those get a call to "a lawyer we know" when something goes wrong.</p>
+    <a href="#" class="hero-link">
+      That should bother you
+      <span class="hero-link-line"></span>
+    </a>
+  </div>
+  <div class="hero-right">
+    <svg class="hero-shield-large" viewBox="0 0 72 96" fill="none">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+    </svg>
+    <div class="hero-right-content">
+      <div class="hero-stat">
+        <div class="hero-stat-number">73%</div>
+        <div class="hero-stat-label">of Canadian companies lack a formal privacy compliance framework</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">4.2×</div>
+        <div class="hero-stat-label">increase in OPC enforcement actions since 2022</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">$0</div>
+        <div class="hero-stat-label">what most startups budget for IP strategy before their first funding round</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span class="marquee-item">Intellectual Property <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Data Governance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Privacy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Patent Strategy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PIPEDA <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Cross-Border Data <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AI Governance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Trademark Protection <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Intellectual Property <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Data Governance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Privacy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Patent Strategy <span class="marquee-dot"></span></span>
+    <span class="marquee-item">PIPEDA <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Cross-Border Data <span class="marquee-dot"></span></span>
+    <span class="marquee-item">AI Governance <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Trademark Protection <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- DOMAINS -->
+<section class="domains" id="domains">
+  <div class="domains-header reveal">
+    <div>
+      <div class="domains-label">Practice domains</div>
+      <h2 class="domains-headline">Three disciplines.<br>One retained relationship.</h2>
+    </div>
+    <p class="domains-intro">Most firms scatter your work across departments. We built Ember around three intersecting domains because that's how the problems actually arrive — tangled together, not sorted into practice areas.</p>
+  </div>
+  <div class="domain-blocks reveal">
+    <div class="domain-block">
+      <svg class="domain-block-stamp" viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="currentColor"/></svg>
+      <div class="domain-block-number">01</div>
+      <div class="domain-block-title">Intellectual Property</div>
+      <div class="domain-block-desc">Strategic IP positioning that compounds with every filing, every license, every enforcement decision.</div>
+      <ul class="domain-block-list">
+        <li>Patent strategy & prosecution</li>
+        <li>Trademark portfolio management</li>
+        <li>Licensing architecture</li>
+        <li>IP due diligence & valuation</li>
+      </ul>
+    </div>
+    <div class="domain-block">
+      <svg class="domain-block-stamp" viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="currentColor"/></svg>
+      <div class="domain-block-number">02</div>
+      <div class="domain-block-title">Data Governance</div>
+      <div class="domain-block-desc">Regulatory frameworks, cross-border architectures, and incident response — built before you need them.</div>
+      <ul class="domain-block-list">
+        <li>Cross-border data flows</li>
+        <li>AI governance frameworks</li>
+        <li>Data processing agreements</li>
+        <li>Incident response planning</li>
+      </ul>
+    </div>
+    <div class="domain-block">
+      <svg class="domain-block-stamp" viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="currentColor"/></svg>
+      <div class="domain-block-number">03</div>
+      <div class="domain-block-title">Privacy</div>
+      <div class="domain-block-desc">PIPEDA, provincial health privacy, GDPR alignment. Canadian law applied to global operational reality.</div>
+      <ul class="domain-block-list">
+        <li>Privacy impact assessments</li>
+        <li>PIPEDA & provincial compliance</li>
+        <li>GDPR alignment programs</li>
+        <li>Breach management protocols</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROVOCATION -->
+<section class="provocation reveal" id="approach">
+  <div class="prov-mark">
+    <svg viewBox="0 0 72 96" fill="none">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+    </svg>
+  </div>
+  <div class="prov-content">
+    <p class="prov-text">Every law firm says they're different. We decided to actually <strong>be</strong> different — fixed pricing, three domains, senior counsel only, no billable hour theatre.</p>
+    <p class="prov-attrib">Ember operates on a subscription model. Monthly retainers scaled to your stage and complexity. You'll never receive a bill you didn't expect.</p>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band reveal">
+  <h2 class="cta-headline">Ready to stop <em>reacting</em> and start building legal infrastructure?</h2>
+  <div class="cta-right">
+    <p class="cta-desc">Begin with a scoping conversation. We'll assess your IP position, data exposure, and privacy obligations — then tell you honestly whether Ember is the right fit.</p>
+    <div class="cta-actions">
+      <a href="/cdn-cgi/l/email-protection#11787f6064786378746251747c7374637d7476707d3f7270" class="cta-primary">
+        Start the conversation
+      </a>
+      <a href="#" class="cta-secondary">View pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-left">
+    <svg viewBox="0 0 72 96" fill="none" width="18">
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/>
+      <path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/>
+      <path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/>
+    </svg>
+    <span class="foot-name">Ember</span>
+    <span class="foot-copy">© 2026 Ember LLP</span>
+  </div>
+  <div class="foot-right">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="/cdn-cgi/l/email-protection#f39a9d82869a819a9680b3969e9196819f9694929fdd9092">Contact</a>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries
