@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Apr 05, 2026 — 13:38 ET",
+    "lastUpdated": "Apr 11, 2026 — 13:45 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "U.S. trade barriers report identifies Canada's data sovereignty measures as trade concern",
+      "summary": "The U.S. released its annual trade barriers report listing Canada for the first time alongside other countries for pursuing greater control over its own data, signaling that the U.S. government views Canadian data sovereignty initiatives as potential trade impediments. This marks an official escalation in bilateral tensions over data localization and digital sovereignty policy.",
+      "type": "policy",
+      "source": "The Globe and Mail",
+      "sourceUrl": "https://www.theglobeandmail.com/business/commentary/article-the-us-isnt-happy-about-canadas-quest-for-digital-sovereignty/",
+      "date": "2026-04-09",
+      "impact": "Canadian organizations and government bodies should anticipate potential U.S. trade pressure on data residency requirements and sovereignty-focused procurement rules, and prepare to document business justifications for data localization decisions.",
+      "dbUpdate": false
+    },
     {
       "headline": "Government of Canada launches comprehensive review of the Privacy Act",
       "summary": "The Government of Canada has initiated a substantial review of the Privacy Act, which has remained largely unchanged since 1983. The review includes a public consultation period ending July 10, 2026, with final findings expected in Winter 2026-27. This modernization directly affects how Canadian organizations and government institutions handle personal data and establishes updated baseline requirements for data sovereignty compliance.",
