@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — Palette Comparison</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+  body { background: #F5F4F0; padding: 60px 24px 80px; }
+
+  .page-header {
+    max-width: 1200px; margin: 0 auto 56px;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-family: 'Newsreader', serif;
+    font-size: 38px; font-weight: 400; letter-spacing: -0.8px;
+    color: #1A1714; margin-bottom: 12px;
+  }
+  .page-header p {
+    font-size: 15px; color: #6B6862; max-width: 560px; margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+
+  /* ===== PALETTE CARD ===== */
+  .palette {
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .palette-meta {
+    padding: 18px 24px;
+    background: #fff; border-bottom: 1px solid #ECEAE5;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .palette-name {
+    font-family: 'Newsreader', serif;
+    font-size: 18px; font-weight: 500; color: #1A1714;
+  }
+  .palette-tag {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 4px 10px; border-radius: 100px;
+    background: #F0EEE8; color: #6B6862;
+  }
+
+  .palette-swatches {
+    padding: 14px 24px; background: #fff;
+    display: flex; gap: 8px; align-items: center;
+    border-bottom: 1px solid #ECEAE5;
+  }
+  .swatch {
+    width: 28px; height: 28px; border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .swatch-label {
+    font-family: 'DM Sans', sans-serif; font-size: 11px; color: #9A978F;
+    margin-left: auto; font-feature-settings: 'tnum';
+  }
+
+  /* ===== HERO PREVIEW ===== */
+  .hero {
+    padding: 64px 40px 56px;
+    position: relative;
+    min-height: 360px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 320px;
+    background: radial-gradient(ellipse, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-content { position: relative; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text-mid);
+    padding: 6px 14px; border-radius: 100px;
+    background: var(--eyebrow-bg); border: 1px solid var(--eyebrow-border);
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+  }
+  .hero h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 38px; font-weight: 400; letter-spacing: -1.1px;
+    line-height: 1.1; color: var(--text); margin-bottom: 16px;
+    max-width: 480px;
+  }
+  .hero h2 em { font-style: italic; color: var(--accent); }
+  .hero p {
+    font-size: 14px; color: var(--text-mid); line-height: 1.6;
+    max-width: 380px; margin-bottom: 28px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px; background: var(--accent); color: var(--cta-text);
+    font-size: 13px; font-weight: 600; text-decoration: none;
+    border-radius: 8px; transition: opacity 0.2s;
+  }
+  .hero-cta:hover { opacity: 0.9; }
+  .hero-cta::after {
+    content: '→'; font-size: 14px;
+  }
+  .hero-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-left: 16px; padding: 11px 0;
+    color: var(--text-mid); font-size: 13px; font-weight: 500;
+    text-decoration: none;
+  }
+
+  /* Logo mark */
+  .hero-logo {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .hero-logo svg { width: 22px; height: auto; }
+  .hero-logo span {
+    font-family: 'Newsreader', serif; font-size: 18px;
+    font-weight: 500; color: var(--text); letter-spacing: -0.3px;
+  }
+
+  /* ===== PALETTE 1: EMBER (current) ===== */
+  .p-ember {
+    --bg: #131418;
+    --text: #ECEAE5;
+    --text-mid: #8C8983;
+    --accent: #C96A3D;
+    --accent-glow: rgba(201,106,61,0.08);
+    --cta-text: #fff;
+    --eyebrow-bg: rgba(201,106,61,0.08);
+    --eyebrow-border: rgba(201,106,61,0.18);
+  }
+  .p-ember .hero { background: var(--bg); }
+
+  /* ===== PALETTE 2: BURGUNDY/OXBLOOD ===== */
+  .p-burgundy {
+    --bg: #FBFAF7;
+    --text: #1F1A1A;
+    --text-mid: #6B5E5E;
+    --accent: #6B1A1F;
+    --accent-glow: rgba(107,26,31,0.06);
+    --cta-text: #fff;
+    --eyebrow-bg: rgba(107,26,31,0.06);
+    --eyebrow-border: rgba(107,26,31,0.18);
+  }
+  .p-burgundy .hero { background: var(--bg); }
+
+  /* ===== PALETTE 3: FOREST + BRASS ===== */
+  .p-forest {
+    --bg: #0F1612;
+    --text: #E8E5DD;
+    --text-mid: #8A8B82;
+    --accent: #B08D57;
+    --accent-glow: rgba(176,141,87,0.08);
+    --cta-text: #0F1612;
+    --eyebrow-bg: rgba(176,141,87,0.08);
+    --eyebrow-border: rgba(176,141,87,0.22);
+  }
+  .p-forest .hero { background: var(--bg); }
+  .p-forest .hero::after {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(46,77,58,0.3), transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ===== PALETTE 4: CHARCOAL MONO + EMBER ACCENT ===== */
+  .p-mono {
+    --bg: #FAF9F6;
+    --text: #14161A;
+    --text-mid: #6B6862;
+    --accent: #C96A3D;
+    --accent-glow: rgba(201,106,61,0.04);
+    --cta-text: #fff;
+    --eyebrow-bg: #F0EEE8;
+    --eyebrow-border: #E2DFD8;
+  }
+  .p-mono .hero { background: var(--bg); }
+  .p-mono .hero h2 em { color: var(--accent); font-style: italic; }
+  .p-mono .hero-eyebrow::before { background: #14161A; }
+
+  /* ===== NOTES SECTION ===== */
+  .notes {
+    max-width: 1200px; margin: 64px auto 0;
+    background: #fff; border-radius: 14px;
+    padding: 40px 48px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+  }
+  .notes h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 22px; font-weight: 500; color: #1A1714;
+    margin-bottom: 24px; letter-spacing: -0.3px;
+  }
+  .notes-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
+  }
+  .note-block h4 {
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: #6B6862; margin-bottom: 10px;
+  }
+  .note-block p {
+    font-size: 14px; line-height: 1.65; color: #3D3A35;
+    margin-bottom: 8px;
+  }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .notes-grid { grid-template-columns: 1fr; }
+    .notes { padding: 32px 24px; }
+    .hero { padding: 48px 28px 44px; }
+    .hero h2 { font-size: 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Ember in four palettes</h1>
+  <p>Same hero, same wordmark, same copy. Only the colors change. Look at each one and ask: would I want my law firm to look like this?</p>
+</div>
+
+<div class="grid">
+
+  <!-- 1. EMBER (current) -->
+  <div class="palette p-ember">
+    <div class="palette-meta">
+      <div class="palette-name">Ember on Charcoal</div>
+      <div class="palette-tag">Current</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#131418"></div>
+      <div class="swatch" style="background:#ECEAE5"></div>
+      <div class="swatch" style="background:#C96A3D"></div>
+      <div class="swatch" style="background:#8C8983"></div>
+      <div class="swatch-label">#C96A3D · terracotta</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#C96A3D"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D4804E"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#A8542E"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. BURGUNDY -->
+  <div class="palette p-burgundy">
+    <div class="palette-meta">
+      <div class="palette-name">Oxblood on Cream</div>
+      <div class="palette-tag">Traditional</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#FBFAF7"></div>
+      <div class="swatch" style="background:#1F1A1A"></div>
+      <div class="swatch" style="background:#6B1A1F"></div>
+      <div class="swatch" style="background:#6B5E5E"></div>
+      <div class="swatch-label">#6B1A1F · oxblood</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#6B1A1F"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#82252B"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#511216"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. FOREST + BRASS -->
+  <div class="palette p-forest">
+    <div class="palette-meta">
+      <div class="palette-name">Forest &amp; Brass</div>
+      <div class="palette-tag">Heritage</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#0F1612"></div>
+      <div class="swatch" style="background:#E8E5DD"></div>
+      <div class="swatch" style="background:#B08D57"></div>
+      <div class="swatch" style="background:#2E4D3A"></div>
+      <div class="swatch-label">#B08D57 · brass</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#B08D57"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#C7A36A"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#8E7144"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. CHARCOAL MONO + EMBER ACCENT -->
+  <div class="palette p-mono">
+    <div class="palette-meta">
+      <div class="palette-name">Mono with Ember Accent</div>
+      <div class="palette-tag">Restrained</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#FAF9F6"></div>
+      <div class="swatch" style="background:#14161A"></div>
+      <div class="swatch" style="background:#C96A3D"></div>
+      <div class="swatch" style="background:#6B6862"></div>
+      <div class="swatch-label">#14161A + #C96A3D accent</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#14161A"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#2A2D33"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#0A0C0F"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="notes">
+  <h3>How to read these</h3>
+  <div class="notes-grid">
+    <div class="note-block">
+      <h4>Ember on Charcoal (current)</h4>
+      <p>Distinctive in Canadian law. Reads as modern professional services, not white-shoe firm. The orange does the heavy lifting — if you don't trust the orange, this whole approach falls apart.</p>
+    </div>
+    <div class="note-block">
+      <h4>Oxblood on Cream</h4>
+      <p>What 80% of Canadian firms already look like. Safe, traditional, immediately legible as "law firm." But Ember now looks like a smaller version of Stikeman or Blakes — the positioning differentiation evaporates.</p>
+    </div>
+    <div class="note-block">
+      <h4>Forest &amp; Brass</h4>
+      <p>European private bank energy. Heritage without nationalism. Reads as senior, expensive, deliberate. Risk: starts to feel like a wealth management firm or a whisky brand more than a law firm.</p>
+    </div>
+    <div class="note-block">
+      <h4>Mono with Ember Accent</h4>
+      <p>The hedge. Charcoal does the seriousness work, ember accent does the differentiation work. Closest to Stripe / Linear / modern fintech aesthetic. Probably the safest "modern professional" move that still keeps Ember's name coherent with its color.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
