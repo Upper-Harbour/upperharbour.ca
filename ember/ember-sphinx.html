@@ -394,7 +394,7 @@
   .hero > *:nth-child(3) { animation-delay: 0.25s; }
   .hero > *:nth-child(4) { animation-delay: 0.4s; }
   .hero > *:nth-child(5) { animation-delay: 0.55s; }
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal { opacity: 1; transform: none; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 900px) {
@@ -697,15 +697,7 @@
     document.getElementById('cost-new').textContent = '$' + newCost.toLocaleString();
     document.getElementById('savings-display').textContent = '$' + savings.toLocaleString();
   }
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEa> {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => observer.observe(el));
   updateCalc();
 </script>
-
 </body>
 </html>

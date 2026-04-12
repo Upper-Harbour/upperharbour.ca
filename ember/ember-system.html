@@ -612,11 +612,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
+  .reveal { opacity: 1; transform: none; }
 
   .reveal.visible {
     opacity: 1;
@@ -815,17 +811,6 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        entry.target.style.transitionDelay = '0.1s';
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>

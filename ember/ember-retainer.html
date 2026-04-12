@@ -715,11 +715,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-  }
+  .reveal { opacity: 1; transform: none; }
 
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -930,34 +926,20 @@
     const stage = document.getElementById('calc-stage').value;
     const domains = parseInt(document.getElementById('calc-needs').value);
     const hours = parseInt(document.getElementById('calc-hours').value);
-
     document.getElementById('hours-display').textContent = hours + ' hours/month';
-
     const rate = stage === 'enterprise' ? 750 : stage === 'growth' ? 600 : 450;
     const oldCost = hours * rate * 12;
-
-    const basePrices = { startup: 2500, growth: 6000, enterprise: 15000 };
-    let monthly = basePrices[stage];
+    const base = { startup: 2500, growth: 6000, enterprise: 15000 };
+    let monthly = base[stage];
     if (domains === 2) monthly *= 1.4;
     if (domains === 3) monthly *= 1.75;
     const newCost = Math.round(monthly) * 12;
-
     const savings = Math.max(0, oldCost - newCost);
-
     document.getElementById('cost-old').textContent = '$' + oldCost.toLocaleString();
     document.getElementById('cost-new').textContent = '$' + newCost.toLocaleString();
     document.getElementById('savings-display').textContent = '$' + savings.toLocaleString();
   }
-
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => observer.observe(el));
   updateCalc();
 </script>
-
 </body>
 </html>

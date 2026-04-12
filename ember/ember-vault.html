@@ -497,11 +497,7 @@
   }
 
   /* --- SCROLL REVEAL --- */
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-  }
+  .reveal { opacity: 1; transform: none; }
 
   .reveal.visible {
     opacity: 1;
@@ -637,16 +633,6 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.15 });
-  reveals.forEach(el => observer.observe(el));
 </script>
-
 </body>
 </html>
