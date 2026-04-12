@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ember — Oxblood Variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+  body { background: #F5F4F0; padding: 60px 24px 80px; }
+
+  .page-header {
+    max-width: 1200px; margin: 0 auto 56px;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-family: 'Newsreader', serif;
+    font-size: 38px; font-weight: 400; letter-spacing: -0.8px;
+    color: #1A1714; margin-bottom: 12px;
+  }
+  .page-header p {
+    font-size: 15px; color: #6B6862; max-width: 580px; margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+
+  .palette {
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+  }
+
+  .palette-meta {
+    padding: 18px 24px;
+    background: #fff; border-bottom: 1px solid #ECEAE5;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .palette-name {
+    font-family: 'Newsreader', serif;
+    font-size: 18px; font-weight: 500; color: #1A1714;
+  }
+  .palette-tag {
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    padding: 4px 10px; border-radius: 100px;
+    background: #F0EEE8; color: #6B6862;
+  }
+
+  .palette-swatches {
+    padding: 14px 24px; background: #fff;
+    display: flex; gap: 8px; align-items: center;
+    border-bottom: 1px solid #ECEAE5;
+  }
+  .swatch {
+    width: 28px; height: 28px; border-radius: 6px;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .swatch-label {
+    font-family: 'DM Sans', sans-serif; font-size: 11px; color: #9A978F;
+    margin-left: auto; font-feature-settings: 'tnum';
+  }
+
+  .hero {
+    padding: 64px 40px 56px;
+    position: relative;
+    min-height: 380px;
+    overflow: hidden;
+  }
+  .hero-content { position: relative; z-index: 2; }
+
+  .hero-logo {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 32px;
+  }
+  .hero-logo svg { width: 22px; height: auto; }
+  .hero-logo span {
+    font-family: 'Newsreader', serif; font-size: 18px;
+    font-weight: 500; letter-spacing: -0.3px;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 6px 14px; border-radius: 100px;
+    margin-bottom: 24px;
+  }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+  }
+
+  .hero h2 {
+    font-family: 'Newsreader', serif;
+    font-size: 38px; font-weight: 400; letter-spacing: -1.1px;
+    line-height: 1.1; margin-bottom: 16px;
+    max-width: 480px;
+  }
+  .hero h2 em { font-style: italic; }
+
+  .hero p {
+    font-size: 14px; line-height: 1.6;
+    max-width: 380px; margin-bottom: 28px;
+  }
+
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px;
+    font-size: 13px; font-weight: 600; text-decoration: none;
+    border-radius: 8px; transition: opacity 0.2s;
+  }
+  .hero-cta:hover { opacity: 0.9; }
+  .hero-cta::after { content: '→'; font-size: 14px; }
+
+  .hero-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin-left: 16px; padding: 11px 0;
+    font-size: 13px; font-weight: 500; text-decoration: none;
+  }
+
+  /* ===== 1. OXBLOOD ON CHARCOAL (modern luxury) ===== */
+  .p-noir {
+    background: #16161A;
+  }
+  .p-noir .hero { background: linear-gradient(135deg, #16161A 0%, #1F1518 100%); }
+  .p-noir .hero::before {
+    content: '';
+    position: absolute; top: 30%; right: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(140,30,40,0.18) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .p-noir .hero-logo span { color: #EDE8E2; }
+  .p-noir .hero-eyebrow {
+    color: #C7918F; background: rgba(140,30,40,0.12); 
+    border: 1px solid rgba(140,30,40,0.3);
+  }
+  .p-noir .hero-eyebrow::before { background: #B8252F; }
+  .p-noir .hero h2 { color: #EDE8E2; }
+  .p-noir .hero h2 em { color: #B8252F; }
+  .p-noir .hero p { color: #8C8983; }
+  .p-noir .hero-cta { background: #B8252F; color: #fff; }
+  .p-noir .hero-secondary { color: #8C8983; }
+
+  /* ===== 2. EDITORIAL OXBLOOD (cream + charcoal accents) ===== */
+  .p-editorial {
+    background: #F8F4ED;
+  }
+  .p-editorial .hero { 
+    background: #F8F4ED;
+    border-left: 6px solid #5C161B;
+  }
+  .p-editorial .hero::before {
+    content: '01';
+    position: absolute; top: 24px; right: 32px;
+    font-family: 'Newsreader', serif; font-size: 90px;
+    color: rgba(92,22,27,0.08); font-weight: 300;
+    line-height: 1;
+  }
+  .p-editorial .hero-logo span { color: #1A1714; }
+  .p-editorial .hero-eyebrow {
+    color: #5C161B; background: transparent;
+    padding: 0; border: none; gap: 12px;
+    font-size: 10px;
+  }
+  .p-editorial .hero-eyebrow::before { 
+    background: #5C161B; width: 32px; height: 1px; border-radius: 0;
+  }
+  .p-editorial .hero h2 { color: #1A1714; }
+  .p-editorial .hero h2 em { color: #5C161B; }
+  .p-editorial .hero p { color: #6B5E5E; }
+  .p-editorial .hero-cta { 
+    background: #1A1714; color: #F8F4ED;
+    border-radius: 0;
+  }
+  .p-editorial .hero-secondary { color: #5C161B; }
+
+  /* ===== 3. OXBLOOD + BRASS (heritage premium) ===== */
+  .p-heritage {
+    background: #1A1212;
+  }
+  .p-heritage .hero { 
+    background: 
+      radial-gradient(ellipse at top left, rgba(92,22,27,0.4) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(176,141,87,0.15) 0%, transparent 50%),
+      #1A1212;
+  }
+  .p-heritage .hero::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #B08D57, transparent);
+  }
+  .p-heritage .hero-logo span { color: #E8E0D2; }
+  .p-heritage .hero-eyebrow {
+    color: #B08D57; background: rgba(176,141,87,0.1);
+    border: 1px solid rgba(176,141,87,0.3);
+  }
+  .p-heritage .hero-eyebrow::before { background: #B08D57; }
+  .p-heritage .hero h2 { color: #E8E0D2; font-weight: 300; }
+  .p-heritage .hero h2 em { color: #B08D57; }
+  .p-heritage .hero p { color: #8C857A; }
+  .p-heritage .hero-cta { 
+    background: transparent; color: #B08D57;
+    border: 1px solid #B08D57; padding: 10px 22px;
+  }
+  .p-heritage .hero-secondary { color: #8C857A; }
+
+  /* ===== 4. OXBLOOD DOMINANT (statement) ===== */
+  .p-statement {
+    background: #5C161B;
+  }
+  .p-statement .hero { 
+    background: 
+      linear-gradient(180deg, #6B1A20 0%, #4A0F14 100%);
+    position: relative;
+  }
+  .p-statement .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: 
+      repeating-linear-gradient(45deg, transparent 0, transparent 40px, rgba(255,255,255,0.015) 40px, rgba(255,255,255,0.015) 41px);
+    pointer-events: none;
+  }
+  .p-statement .hero-logo span { color: #F5EDE3; }
+  .p-statement .hero-eyebrow {
+    color: #F5EDE3; background: rgba(245,237,227,0.08);
+    border: 1px solid rgba(245,237,227,0.18);
+  }
+  .p-statement .hero-eyebrow::before { background: #F5EDE3; }
+  .p-statement .hero h2 { color: #F5EDE3; }
+  .p-statement .hero h2 em { color: #E8B888; }
+  .p-statement .hero p { color: rgba(245,237,227,0.7); }
+  .p-statement .hero-cta { 
+    background: #F5EDE3; color: #5C161B;
+  }
+  .p-statement .hero-secondary { color: rgba(245,237,227,0.7); }
+
+  /* ===== 5. SPLIT — CHARCOAL + OXBLOOD HALVES ===== */
+  .p-split {
+    background: #fff;
+  }
+  .p-split .hero { 
+    background: linear-gradient(90deg, #18181C 0%, #18181C 60%, #5C161B 60%, #5C161B 100%);
+    padding-right: 200px;
+  }
+  .p-split .hero::after {
+    content: '';
+    position: absolute; right: 0; top: 0; bottom: 0;
+    width: 40%;
+    background-image: radial-gradient(circle at 30% 50%, rgba(245,237,227,0.05) 0%, transparent 60%);
+  }
+  .p-split .hero-logo span { color: #EDE8E2; }
+  .p-split .hero-eyebrow {
+    color: #C7918F; background: rgba(140,30,40,0.18);
+    border: 1px solid rgba(140,30,40,0.35);
+  }
+  .p-split .hero-eyebrow::before { background: #B8252F; }
+  .p-split .hero h2 { color: #EDE8E2; }
+  .p-split .hero h2 em { color: #C7918F; }
+  .p-split .hero p { color: #8C8983; }
+  .p-split .hero-cta { background: #5C161B; color: #F5EDE3; border: 1px solid rgba(245,237,227,0.2); }
+  .p-split .hero-secondary { color: #8C8983; }
+
+  /* ===== 6. INK + WAX SEAL (charcoal page, oxblood as accent) ===== */
+  .p-ink {
+    background: #1C1C20;
+  }
+  .p-ink .hero { 
+    background: #1C1C20;
+    position: relative;
+  }
+  .p-ink .hero::before {
+    content: '';
+    position: absolute; top: 40px; right: 40px;
+    width: 80px; height: 80px;
+    background: radial-gradient(circle, #6B1A20 0%, #4A0F14 60%, transparent 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 40px rgba(107,26,32,0.4);
+  }
+  .p-ink .hero::after {
+    content: 'E';
+    position: absolute; top: 65px; right: 70px;
+    font-family: 'Newsreader', serif;
+    font-size: 28px; font-weight: 400;
+    color: rgba(245,237,227,0.85); font-style: italic;
+    z-index: 2;
+  }
+  .p-ink .hero-logo span { color: #EDE8E2; }
+  .p-ink .hero-eyebrow {
+    color: #9A978F; background: transparent;
+    border: 1px solid rgba(237,232,226,0.15);
+  }
+  .p-ink .hero-eyebrow::before { background: #6B1A20; }
+  .p-ink .hero h2 { color: #EDE8E2; }
+  .p-ink .hero h2 em { color: #B8252F; }
+  .p-ink .hero p { color: #8C8983; }
+  .p-ink .hero-cta { 
+    background: transparent; color: #EDE8E2;
+    border: 1px solid #EDE8E2;
+    padding: 10px 22px;
+  }
+  .p-ink .hero-secondary { color: #8C8983; }
+
+  /* ===== NOTES ===== */
+  .notes {
+    max-width: 1200px; margin: 64px auto 0;
+    background: #fff; border-radius: 14px;
+    padding: 40px 48px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+  }
+  .notes h3 {
+    font-family: 'Newsreader', serif;
+    font-size: 22px; font-weight: 500; color: #1A1714;
+    margin-bottom: 24px; letter-spacing: -0.3px;
+  }
+  .notes-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;
+  }
+  .note-block h4 {
+    font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    color: #6B6862; margin-bottom: 10px;
+  }
+  .note-block p {
+    font-size: 13.5px; line-height: 1.65; color: #3D3A35;
+  }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .notes-grid { grid-template-columns: 1fr; }
+    .notes { padding: 32px 24px; }
+    .hero { padding: 48px 28px 44px; }
+    .hero h2 { font-size: 28px; }
+    .p-split .hero { padding-right: 28px; background: #18181C; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Six ways to use oxblood</h1>
+  <p>Same hero copy, same wordmark. Six different relationships between oxblood and charcoal — from "barely there" to "all in." See which one feels like Ember.</p>
+</div>
+
+<div class="grid">
+
+  <!-- 1. OXBLOOD ON CHARCOAL (Noir) -->
+  <div class="palette p-noir">
+    <div class="palette-meta">
+      <div class="palette-name">Noir</div>
+      <div class="palette-tag">Modern Luxury</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#16161A"></div>
+      <div class="swatch" style="background:#1F1518"></div>
+      <div class="swatch" style="background:#B8252F"></div>
+      <div class="swatch" style="background:#EDE8E2"></div>
+      <div class="swatch-label">charcoal + #B8252F glow</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#B8252F"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#D03543"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#8C1A22"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. EDITORIAL -->
+  <div class="palette p-editorial">
+    <div class="palette-meta">
+      <div class="palette-name">Editorial</div>
+      <div class="palette-tag">Print Magazine</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#F8F4ED"></div>
+      <div class="swatch" style="background:#1A1714"></div>
+      <div class="swatch" style="background:#5C161B"></div>
+      <div class="swatch" style="background:#6B5E5E"></div>
+      <div class="swatch-label">cream + charcoal + oxblood rule</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#5C161B"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#6F1F25"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#3F0E12"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. HERITAGE (oxblood + brass) -->
+  <div class="palette p-heritage">
+    <div class="palette-meta">
+      <div class="palette-name">Heritage</div>
+      <div class="palette-tag">Oxblood + Brass</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#1A1212"></div>
+      <div class="swatch" style="background:#5C161B"></div>
+      <div class="swatch" style="background:#B08D57"></div>
+      <div class="swatch" style="background:#E8E0D2"></div>
+      <div class="swatch-label">oxblood glow + brass accent</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#5C161B"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#B08D57"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#3F0E12"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. STATEMENT (oxblood dominant) -->
+  <div class="palette p-statement">
+    <div class="palette-meta">
+      <div class="palette-name">Statement</div>
+      <div class="palette-tag">Bold &amp; Confident</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#5C161B"></div>
+      <div class="swatch" style="background:#4A0F14"></div>
+      <div class="swatch" style="background:#F5EDE3"></div>
+      <div class="swatch" style="background:#E8B888"></div>
+      <div class="swatch-label">all-in oxblood + cream type</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#F5EDE3"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#FFF7EB"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#D9CFC0"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. SPLIT -->
+  <div class="palette p-split">
+    <div class="palette-meta">
+      <div class="palette-name">Split</div>
+      <div class="palette-tag">Two Worlds</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#18181C"></div>
+      <div class="swatch" style="background:#5C161B"></div>
+      <div class="swatch" style="background:#EDE8E2"></div>
+      <div class="swatch" style="background:#C7918F"></div>
+      <div class="swatch-label">60/40 charcoal/oxblood</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#5C161B"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#7A1F26"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#3F0E12"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. INK + WAX SEAL -->
+  <div class="palette p-ink">
+    <div class="palette-meta">
+      <div class="palette-name">Wax Seal</div>
+      <div class="palette-tag">Restrained Symbol</div>
+    </div>
+    <div class="palette-swatches">
+      <div class="swatch" style="background:#1C1C20"></div>
+      <div class="swatch" style="background:#6B1A20"></div>
+      <div class="swatch" style="background:#EDE8E2"></div>
+      <div class="swatch" style="background:#9A978F"></div>
+      <div class="swatch-label">charcoal page + oxblood as object</div>
+    </div>
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-logo">
+          <svg viewBox="0 0 72 96" fill="none"><path d="M36,0 C58,2 72,13 72,26 L72,58 C72,76 56,90 36,96 C16,90 0,76 0,58 L0,26 C0,13 14,2 36,0 Z" fill="#EDE8E2"/><path d="M36,0 C58,2 72,13 72,26 L72,58 C52,52 32,40 20,26 C12,16 18,2 36,0 Z" fill="#FFFAF2"/><path d="M72,58 C72,76 56,90 36,96 C41,80 56,64 68,54 Z" fill="#C5C0B7"/></svg>
+          <span>Ember</span>
+        </div>
+        <div class="hero-eyebrow">IP · Data · Privacy</div>
+        <h2>Senior counsel for what should be <em>infrastructure</em></h2>
+        <p>Subscription law firm. Fixed monthly pricing. Three focused domains. Built for Canadian companies that treat legal as a system.</p>
+        <a href="#" class="hero-cta">Book a call</a>
+        <a href="#" class="hero-secondary">Explore →</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="notes">
+  <h3>How each one is doing the work</h3>
+  <div class="notes-grid">
+    <div class="note-block">
+      <h4>1. Noir</h4>
+      <p>Charcoal is the stage, oxblood is the spotlight. The radial glow makes the red feel like firelight, not paint. Closest to a Bottega Veneta or private bank energy. Reads as expensive and contemporary at once.</p>
+    </div>
+    <div class="note-block">
+      <h4>2. Editorial</h4>
+      <p>The 6px oxblood rule on the left edge is the only "color" — the rest is cream and charcoal. Treats oxblood like a publication mark or a serial number. Black square button instead of red button keeps it severe and print-like.</p>
+    </div>
+    <div class="note-block">
+      <h4>3. Heritage</h4>
+      <p>Oxblood and brass together — the colors of leather-bound legal volumes and brass nameplates. The brass takes over for the eyebrow, link, and CTA outline so oxblood gets to be a background mood rather than every accent. Most "old firm" of the six.</p>
+    </div>
+    <div class="note-block">
+      <h4>4. Statement</h4>
+      <p>Oxblood is the page, not the accent. Cream type, brass italic accent. This is the only one that says "we are a red brand" instead of "we are a charcoal brand with a red accent." Hardest to pull off, biggest payoff if you commit.</p>
+    </div>
+    <div class="note-block">
+      <h4>5. Split</h4>
+      <p>60/40 charcoal-to-oxblood vertical split. The hero text lives on charcoal, the right gutter is oxblood. Suggests two sides of a ledger or two columns of a contract. Architectural and a bit aggressive in a good way.</p>
+    </div>
+    <div class="note-block">
+      <h4>6. Wax Seal</h4>
+      <p>The oxblood is literally a wax seal in the corner — a single contained object on an otherwise restrained charcoal page. The lightest possible touch of oxblood, treated as a symbol of authentication rather than a brand color. Most subtle.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
