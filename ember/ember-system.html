@@ -820,4 +820,12 @@
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
         entry.target.style.transitionDelay = '0.1s';
-        e
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
