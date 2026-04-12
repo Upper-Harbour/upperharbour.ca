@@ -559,7 +559,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
   /* --- RESPONSIVE --- */
@@ -750,6 +751,13 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { observer.observe(el); });
 </script>
 </body>
 </html>

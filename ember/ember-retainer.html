@@ -715,7 +715,8 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -923,23 +924,30 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function updateCalc() {
-    const stage = document.getElementById('calc-stage').value;
-    const domains = parseInt(document.getElementById('calc-needs').value);
-    const hours = parseInt(document.getElementById('calc-hours').value);
+    var stage = document.getElementById('calc-stage').value;
+    var domains = parseInt(document.getElementById('calc-needs').value);
+    var hours = parseInt(document.getElementById('calc-hours').value);
     document.getElementById('hours-display').textContent = hours + ' hours/month';
-    const rate = stage === 'enterprise' ? 750 : stage === 'growth' ? 600 : 450;
-    const oldCost = hours * rate * 12;
-    const base = { startup: 2500, growth: 6000, enterprise: 15000 };
-    let monthly = base[stage];
+    var rate = stage === 'enterprise' ? 750 : stage === 'growth' ? 600 : 450;
+    var oldCost = hours * rate * 12;
+    var base = { startup: 2500, growth: 6000, enterprise: 15000 };
+    var monthly = base[stage];
     if (domains === 2) monthly *= 1.4;
     if (domains === 3) monthly *= 1.75;
-    const newCost = Math.round(monthly) * 12;
-    const savings = Math.max(0, oldCost - newCost);
+    var newCost = Math.round(monthly) * 12;
+    var savings = Math.max(0, oldCost - newCost);
     document.getElementById('cost-old').textContent = '$' + oldCost.toLocaleString();
     document.getElementById('cost-new').textContent = '$' + newCost.toLocaleString();
     document.getElementById('savings-display').textContent = '$' + savings.toLocaleString();
   }
   updateCalc();
+  var reveals = document.querySelectorAll('.reveal');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(function(el) { observer.observe(el); });
 </script>
 </body>
 </html>
