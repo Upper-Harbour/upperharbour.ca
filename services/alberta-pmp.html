@@ -40,6 +40,28 @@
     .landing-sub{font-size:17px;color:var(--slate);line-height:1.72;max-width:680px;margin-bottom:28px}
     .credibility{font-size:12px;color:var(--muted);margin-bottom:32px;line-height:1.6}
     .credibility em{color:var(--slate);font-style:italic}
+
+    .trust-strip{margin:0 0 32px;padding:18px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)}
+    .trust-strip-label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+    .trust-strip-pubs{font-size:14px;color:var(--slate);line-height:1.6}
+    .trust-strip-pubs em{color:var(--ice);font-style:italic;font-weight:500}
+
+    .founder-section{max-width:860px;margin:0 auto;padding:20px 52px 60px}
+    .founder-card{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:32px;display:flex;gap:28px;align-items:flex-start}
+    .founder-photo{flex-shrink:0;width:96px;height:96px;border-radius:50%;object-fit:cover;border:1px solid rgba(60,184,176,0.2)}
+    .founder-content{flex:1;min-width:0}
+    .founder-label{font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+    .founder-name{font-family:var(--display);font-size:22px;font-weight:700;color:var(--ice);margin:0 0 4px;line-height:1.2}
+    .founder-role{font-size:13px;color:var(--slate);margin:0 0 14px}
+    .founder-bio{font-size:14px;color:var(--slate);line-height:1.7;margin:0 0 12px}
+    .founder-bio strong{color:var(--ice)}
+    .founder-bio em{color:var(--ice);font-style:italic}
+    .founder-pubs{font-size:12px;color:var(--muted);line-height:1.6;margin:0}
+    .founder-pubs em{color:var(--slate);font-style:italic}
+    @media (max-width:640px){
+      .founder-card{flex-direction:column;align-items:center;text-align:center;padding:28px 22px}
+      .founder-photo{width:88px;height:88px}
+    }
     .hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
     .landing-cta{display:inline-block;font-size:14px;font-weight:700;color:var(--bg);background:var(--teal);padding:16px 36px;border-radius:4px;text-decoration:none;transition:background 0.2s,transform 0.15s;box-shadow:0 0 24px rgba(60,184,176,0.3)}
     .landing-cta:hover{background:#47cec5;transform:translateY(-1px);box-shadow:0 0 32px rgba(60,184,176,0.45)}
@@ -108,7 +130,12 @@
     <div class="landing-eyebrow">Alberta POPA · June 11, 2026 deadline</div>
     <h1>Your Privacy Management Program, <em>done in 3 weeks.</em></h1>
     <p class="landing-sub">Every Alberta public body needs a compliant PMP in place by June 11, 2026. We build yours end-to-end &mdash; the full document, the PIAs for your actual SaaS tools, the privacy officer framework, and the breach procedures. Fixed fee. No hourly billing surprises. Ready well before the deadline.</p>
-    <p class="credibility">Built by the founder of Upper Harbour. Research cited in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, and <em>BetaKit</em>. Sovereignty Index of 766 tools used to complete the jurisdictional analysis in every PIA we generate.</p>
+
+    <div class="trust-strip">
+      <div class="trust-strip-label">As seen in</div>
+      <div class="trust-strip-pubs"><em>The Globe and Mail</em> &middot; <em>Maclean's</em> &middot; <em>The Logic</em> &middot; <em>BetaKit</em> &middot; <em>OpenCanada</em></div>
+    </div>
+
     <div class="hero-ctas">
       <a href="mailto:josh@upperharbour.ca?subject=Alberta%20PMP%20Readiness%20-%20Discovery%20Call" class="landing-cta">Book a free discovery call &rarr;</a>
       <a href="#pricing" class="landing-cta-secondary">See pricing &darr;</a>
@@ -207,6 +234,19 @@
     </div>
 
     <p style="font-size:13px;color:var(--muted);margin-top:16px;">Not sure which tier fits? Book a discovery call and we'll help you scope it. The call is free.</p>
+  </section>
+
+  <section class="founder-section">
+    <div class="founder-card">
+      <img class="founder-photo" src="/assets/joshua-van-es-headshot.jpg" alt="Joshua van Es" width="96" height="96">
+      <div class="founder-content">
+        <div class="founder-label">Who you're working with</div>
+        <h3 class="founder-name">Joshua van Es</h3>
+        <div class="founder-role">Founder, Upper Harbour &middot; Corporate law background</div>
+        <p class="founder-bio">Josh is the founder of Upper Harbour, Canada's technology sovereignty intelligence platform. He built the <a href="/methodology" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">766-tool Sovereignty Index</a> that underpins the jurisdictional analysis in every PIA we deliver, and the classification methodology the service uses to evaluate CLOUD Act exposure and sub-processor risk at every layer of your SaaS stack.</p>
+        <p class="founder-pubs">Research cited in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, <em>BetaKit</em>, and <em>OpenCanada</em>. Book chapter on Canadian technology policy published by McGill-Queen's University Press.</p>
+      </div>
+    </div>
   </section>
 
   <section class="section">
