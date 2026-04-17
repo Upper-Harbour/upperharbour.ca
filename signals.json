@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Apr 11, 2026 — 13:45 ET",
+    "lastUpdated": "Apr 17, 2026 — 13:58 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Cohere executive pledges AI firm will remain Canadian-headquartered amid merger speculation",
+      "summary": "A Cohere executive has publicly committed to keeping the company Canadian-headquartered in response to reports that the AI firm is exploring merger or acquisition options. This statement directly addresses investor and stakeholder concerns about potential loss of Canadian control over a domestically developed AI technology platform with significant data processing implications.",
+      "type": "vendor",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/cohere-exec-pledges-ai-firm-will-stay-canadian-headquartered-amid-merger-reports/",
+      "date": "2026-04-15",
+      "impact": "Canadian organizations currently using or evaluating Cohere's AI services should monitor any changes to corporate ownership or data residency policies, as a foreign acquisition could alter data sovereignty and control characteristics.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Check Point Software reports low adoption of Canadian data region despite launch",
+      "summary": "According to a Check Point Software executive, the company's launch of a dedicated Canadian data region has not generated expected customer demand. This signals a potential gap between vendor offerings and Canadian organizational awareness of or demand for data sovereignty solutions in the cybersecurity space.",
+      "type": "vendor",
+      "source": "ChannelBuzz",
+      "sourceUrl": "https://channelbuzz.ca/2026/04/canadas-data-sovereignty-moment-why-partners-who-move-first-will-own-the-space-46238/",
+      "date": "2026-04-15",
+      "impact": "Canadian MSPs and organizations should become aware that Check Point Software now offers a Canadian data residency option and evaluate whether their current deployments should be migrated to comply with emerging data sovereignty expectations.",
+      "dbUpdate": false
+    },
     {
       "headline": "U.S. trade barriers report identifies Canada's data sovereignty measures as trade concern",
       "summary": "The U.S. released its annual trade barriers report listing Canada for the first time alongside other countries for pursuing greater control over its own data, signaling that the U.S. government views Canadian data sovereignty initiatives as potential trade impediments. This marks an official escalation in bilateral tensions over data localization and digital sovereignty policy.",
