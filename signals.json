@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Apr 17, 2026 — 13:58 ET",
+    "lastUpdated": "Apr 18, 2026 — 13:40 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Privacy Commissioner of Canada recommends PIPEDA amendments to address trans-border data flows",
+      "summary": "Privacy Commissioner Philippe Dufresne submitted recommendations to Parliament for amendments to PIPEDA that would specifically govern cross-border data transfers, including mandatory Privacy Impact Assessments before data leaves Canada and mechanisms to ensure comparable protection levels abroad. This represents a direct federal response to data sovereignty concerns raised in the context of the Canada-China EV sector arrangement.",
+      "type": "legislation",
+      "source": "Office of the Privacy Commissioner of Canada",
+      "sourceUrl": "https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260416/",
+      "date": "2026-04-16",
+      "impact": "All Canadian organizations handling personal data should monitor proposed PIPEDA amendments and begin conducting trans-border data flow assessments; federal departments should prepare for new compliance requirements if recommendations are adopted.",
+      "dbUpdate": false
+    },
     {
       "headline": "Cohere executive pledges AI firm will remain Canadian-headquartered amid merger speculation",
       "summary": "A Cohere executive has publicly committed to keeping the company Canadian-headquartered in response to reports that the AI firm is exploring merger or acquisition options. This statement directly addresses investor and stakeholder concerns about potential loss of Canadian control over a domestically developed AI technology platform with significant data processing implications.",
