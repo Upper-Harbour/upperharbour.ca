@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Apr 18, 2026 — 13:40 ET",
+    "lastUpdated": "Apr 19, 2026 — 13:40 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Legal Analysis: Data Sovereignty in Canada and the U.S. CLOUD Act",
+      "summary": "BLG has published legal analysis examining data sovereignty as a question of control rather than location, with specific focus on how U.S. lawful access laws (the CLOUD Act) affect Canadian organizations. The analysis provides guidance for assessing and managing cross-border data risks.",
+      "type": "policy",
+      "source": "BLG",
+      "sourceUrl": "https://www.blg.com/en/insights/2026/04/data-sovereignty-and-the-cloud-act-what-canadian-organizations-should-know",
+      "date": "2026-04-13",
+      "impact": "Canadian organizations storing data in U.S.-based cloud services should review the analysis to understand CLOUD Act exposure and reassess their data residency and vendor selection strategies.",
+      "dbUpdate": false
+    },
     {
       "headline": "Privacy Commissioner of Canada recommends PIPEDA amendments to address trans-border data flows",
       "summary": "Privacy Commissioner Philippe Dufresne submitted recommendations to Parliament for amendments to PIPEDA that would specifically govern cross-border data transfers, including mandatory Privacy Impact Assessments before data leaves Canada and mechanisms to ensure comparable protection levels abroad. This represents a direct federal response to data sovereignty concerns raised in the context of the Canada-China EV sector arrangement.",
