@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Apr 19, 2026 — 13:40 ET",
+    "lastUpdated": "Apr 20, 2026 — 14:21 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Alberta Information and Privacy Commissioner issues guidance on new privacy management program requirement for public bodies",
+      "summary": "Alberta's OIPC has issued guidance to assist public bodies in meeting a new requirement for privacy management programs, effective June 2026. This regulatory change will affect all Alberta public-sector organizations and requires them to establish formal privacy governance structures.",
+      "type": "policy",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/office-of-the-alberta-information-and-privacy-commissioner-issues-guidance-to-assist-public-bodies-with-new-requirement-for-privacy-management-programs/",
+      "date": "2026-04-16",
+      "impact": "Alberta public-sector organizations must implement privacy management programs by June 2026 and should begin planning using the OIPC guidance.",
+      "dbUpdate": false
+    },
     {
       "headline": "Legal Analysis: Data Sovereignty in Canada and the U.S. CLOUD Act",
       "summary": "BLG has published legal analysis examining data sovereignty as a question of control rather than location, with specific focus on how U.S. lawful access laws (the CLOUD Act) affect Canadian organizations. The analysis provides guidance for assessing and managing cross-border data risks.",
