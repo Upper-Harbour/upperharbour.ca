@@ -1,9 +1,59 @@
 {
   "meta": {
-    "lastUpdated": "Apr 11, 2026 — 13:45 ET",
+    "lastUpdated": "Apr 20, 2026 — 14:21 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Alberta Information and Privacy Commissioner issues guidance on new privacy management program requirement for public bodies",
+      "summary": "Alberta's OIPC has issued guidance to assist public bodies in meeting a new requirement for privacy management programs, effective June 2026. This regulatory change will affect all Alberta public-sector organizations and requires them to establish formal privacy governance structures.",
+      "type": "policy",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/office-of-the-alberta-information-and-privacy-commissioner-issues-guidance-to-assist-public-bodies-with-new-requirement-for-privacy-management-programs/",
+      "date": "2026-04-16",
+      "impact": "Alberta public-sector organizations must implement privacy management programs by June 2026 and should begin planning using the OIPC guidance.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Legal Analysis: Data Sovereignty in Canada and the U.S. CLOUD Act",
+      "summary": "BLG has published legal analysis examining data sovereignty as a question of control rather than location, with specific focus on how U.S. lawful access laws (the CLOUD Act) affect Canadian organizations. The analysis provides guidance for assessing and managing cross-border data risks.",
+      "type": "policy",
+      "source": "BLG",
+      "sourceUrl": "https://www.blg.com/en/insights/2026/04/data-sovereignty-and-the-cloud-act-what-canadian-organizations-should-know",
+      "date": "2026-04-13",
+      "impact": "Canadian organizations storing data in U.S.-based cloud services should review the analysis to understand CLOUD Act exposure and reassess their data residency and vendor selection strategies.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Privacy Commissioner of Canada recommends PIPEDA amendments to address trans-border data flows",
+      "summary": "Privacy Commissioner Philippe Dufresne submitted recommendations to Parliament for amendments to PIPEDA that would specifically govern cross-border data transfers, including mandatory Privacy Impact Assessments before data leaves Canada and mechanisms to ensure comparable protection levels abroad. This represents a direct federal response to data sovereignty concerns raised in the context of the Canada-China EV sector arrangement.",
+      "type": "legislation",
+      "source": "Office of the Privacy Commissioner of Canada",
+      "sourceUrl": "https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260416/",
+      "date": "2026-04-16",
+      "impact": "All Canadian organizations handling personal data should monitor proposed PIPEDA amendments and begin conducting trans-border data flow assessments; federal departments should prepare for new compliance requirements if recommendations are adopted.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Cohere executive pledges AI firm will remain Canadian-headquartered amid merger speculation",
+      "summary": "A Cohere executive has publicly committed to keeping the company Canadian-headquartered in response to reports that the AI firm is exploring merger or acquisition options. This statement directly addresses investor and stakeholder concerns about potential loss of Canadian control over a domestically developed AI technology platform with significant data processing implications.",
+      "type": "vendor",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/cohere-exec-pledges-ai-firm-will-stay-canadian-headquartered-amid-merger-reports/",
+      "date": "2026-04-15",
+      "impact": "Canadian organizations currently using or evaluating Cohere's AI services should monitor any changes to corporate ownership or data residency policies, as a foreign acquisition could alter data sovereignty and control characteristics.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Check Point Software reports low adoption of Canadian data region despite launch",
+      "summary": "According to a Check Point Software executive, the company's launch of a dedicated Canadian data region has not generated expected customer demand. This signals a potential gap between vendor offerings and Canadian organizational awareness of or demand for data sovereignty solutions in the cybersecurity space.",
+      "type": "vendor",
+      "source": "ChannelBuzz",
+      "sourceUrl": "https://channelbuzz.ca/2026/04/canadas-data-sovereignty-moment-why-partners-who-move-first-will-own-the-space-46238/",
+      "date": "2026-04-15",
+      "impact": "Canadian MSPs and organizations should become aware that Check Point Software now offers a Canadian data residency option and evaluate whether their current deployments should be migrated to comply with emerging data sovereignty expectations.",
+      "dbUpdate": false
+    },
     {
       "headline": "U.S. trade barriers report identifies Canada's data sovereignty measures as trade concern",
       "summary": "The U.S. released its annual trade barriers report listing Canada for the first time alongside other countries for pursuing greater control over its own data, signaling that the U.S. government views Canadian data sovereignty initiatives as potential trade impediments. This marks an official escalation in bilateral tensions over data localization and digital sovereignty policy.",
