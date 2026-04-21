@@ -41,10 +41,16 @@
     .credibility{font-size:12px;color:var(--muted);margin-bottom:32px;line-height:1.6}
     .credibility em{color:var(--slate);font-style:italic}
 
-    .trust-strip{margin:0 0 32px;padding:18px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06)}
-    .trust-strip-label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-    .trust-strip-pubs{font-size:14px;color:var(--slate);line-height:1.6}
-    .trust-strip-pubs em{color:var(--ice);font-style:italic;font-weight:500}
+    .trust-strip{margin:0 0 32px;padding:18px 0;border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);overflow:hidden}
+    .trust-strip-label{font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+    .trust-strip-track{display:flex;width:max-content;animation:ticker 20s linear infinite}
+    .trust-strip-track:hover{animation-play-state:paused}
+    .trust-strip-item{font-size:14px;color:var(--ice);font-style:italic;font-weight:500;white-space:nowrap;padding:0 24px;position:relative}
+    .trust-strip-item a{color:var(--ice);text-decoration:none;border-bottom:1px solid rgba(234,240,244,0.15);transition:border-color 0.2s}
+    .trust-strip-item a:hover{border-color:rgba(60,184,176,0.5)}
+    .trust-strip-item::after{content:'\00b7';position:absolute;right:0;top:50%;transform:translateY(-50%);color:var(--muted);font-style:normal}
+    .trust-strip-item:last-child::after{content:none}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
     .founder-section{max-width:860px;margin:0 auto;padding:20px 52px 60px}
     .founder-card{background:rgba(20,30,42,0.95);border:1px solid rgba(255,255,255,0.06);border-radius:8px;padding:32px;display:flex;gap:28px;align-items:flex-start}
@@ -133,7 +139,22 @@
 
     <div class="trust-strip">
       <div class="trust-strip-label">As seen in</div>
-      <div class="trust-strip-pubs"><em>The Globe and Mail</em> &middot; <em>Maclean's</em> &middot; <em>The Logic</em> &middot; <em>BetaKit</em> &middot; <em>OpenCanada</em></div>
+      <div class="trust-strip-track">
+        <span class="trust-strip-item"><a href="https://www.theglobeandmail.com/business/commentary/article-canada-is-a-branch-plant-economy-for-software-too/" target="_blank" rel="noopener">The Globe and Mail</a></span>
+        <span class="trust-strip-item"><a href="https://macleans.ca/author/joshua-van-es/" target="_blank" rel="noopener">Maclean's</a></span>
+        <span class="trust-strip-item"><a href="https://thelogic.co/" target="_blank" rel="noopener">The Logic</a></span>
+        <span class="trust-strip-item"><a href="https://betakit.com/" target="_blank" rel="noopener">BetaKit</a></span>
+        <span class="trust-strip-item"><a href="https://policyoptions.irpp.org/authors/joshua-van-es/" target="_blank" rel="noopener">Policy Options</a></span>
+        <span class="trust-strip-item"><a href="https://opencanada.org/" target="_blank" rel="noopener">OpenCanada</a></span>
+        <span class="trust-strip-item"><a href="https://www.mqup.ca/" target="_blank" rel="noopener">McGill-Queen's University Press</a></span>
+        <span class="trust-strip-item"><a href="https://www.theglobeandmail.com/business/commentary/article-canada-is-a-branch-plant-economy-for-software-too/" target="_blank" rel="noopener">The Globe and Mail</a></span>
+        <span class="trust-strip-item"><a href="https://macleans.ca/author/joshua-van-es/" target="_blank" rel="noopener">Maclean's</a></span>
+        <span class="trust-strip-item"><a href="https://thelogic.co/" target="_blank" rel="noopener">The Logic</a></span>
+        <span class="trust-strip-item"><a href="https://betakit.com/" target="_blank" rel="noopener">BetaKit</a></span>
+        <span class="trust-strip-item"><a href="https://policyoptions.irpp.org/authors/joshua-van-es/" target="_blank" rel="noopener">Policy Options</a></span>
+        <span class="trust-strip-item"><a href="https://opencanada.org/" target="_blank" rel="noopener">OpenCanada</a></span>
+        <span class="trust-strip-item"><a href="https://www.mqup.ca/" target="_blank" rel="noopener">McGill-Queen's University Press</a></span>
+      </div>
     </div>
 
     <div class="hero-ctas">
@@ -244,7 +265,7 @@
         <h3 class="founder-name">Joshua van Es</h3>
         <div class="founder-role">Founder, Upper Harbour &middot; Corporate law background</div>
         <p class="founder-bio">Josh is the founder of Upper Harbour, Canada's technology sovereignty intelligence platform. He built the <a href="/methodology" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">766-tool Sovereignty Index</a> that underpins the jurisdictional analysis in every PIA we deliver, and the classification methodology the service uses to evaluate CLOUD Act exposure and sub-processor risk at every layer of your SaaS stack.</p>
-        <p class="founder-pubs">Research cited in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, <em>BetaKit</em>, and <em>OpenCanada</em>. Book chapter on Canadian technology policy published by McGill-Queen's University Press.</p>
+        <p class="founder-pubs">Research cited in <em>The Globe and Mail</em>, <em>Maclean's</em>, <em>The Logic</em>, <em>BetaKit</em>, <em>Policy Options</em>, and <em>OpenCanada</em>. Book chapter on Canadian technology policy published by McGill-Queen's University Press.</p>
       </div>
     </div>
   </section>
