@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Apr 20, 2026 — 14:21 ET",
+    "lastUpdated": "Apr 22, 2026 — 14:19 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Quebec Law 25 Establishes Canada's Most Stringent Private-Sector Privacy Standards",
+      "summary": "Quebec's Law 25 is now in effect as Canada's strictest private-sector privacy legislation, introducing higher penalties, mandatory privacy officer appointments, and stricter controls on data use and automated decision-making. Organizations operating in Quebec and adjacent provinces must comply with these standards rather than relying solely on federal PIPEDA requirements.",
+      "type": "legislation",
+      "source": "Shaw Computer Systems Inc.",
+      "sourceUrl": "https://www.shawcsit.com/canadian-cybersecurity-laws-in-2026",
+      "date": "2026-04-21",
+      "impact": "All organizations processing personal data of Quebec residents must ensure compliance with Law 25 requirements; federal and interprovincial organizations should review and upgrade privacy governance to meet Quebec's higher standards.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "U.S. Trade Report Identifies Canada's Sovereign Cloud Procurement Policy as Trade Barrier",
+      "summary": "The U.S. 2026 National Trade Estimate Report has formally designated Canada's Shared Services Canada sovereign cloud procurement proposal as a trade barrier. The proposal mandates that government cloud services process, transmit, and store all data exclusively in Canada under providers not subject to foreign legal frameworks. This creates direct tension between Canadian data sovereignty objectives and U.S. trade policy.",
+      "type": "policy",
+      "source": "Michael Geist",
+      "sourceUrl": "https://www.michaelgeist.ca/2026/04/the-global-battle-for-data-control-how-the-2026-u-s-report-on-trade-barriers-targets-data-sovereignty-worldwide/",
+      "date": "2026-04-15",
+      "impact": "Canadian federal government and cloud service providers should anticipate potential trade disputes or negotiations regarding Shared Services Canada procurement requirements; organizations bidding on sovereign cloud contracts should monitor U.S. policy responses.",
+      "dbUpdate": false
+    },
     {
       "headline": "Alberta Information and Privacy Commissioner issues guidance on new privacy management program requirement for public bodies",
       "summary": "Alberta's OIPC has issued guidance to assist public bodies in meeting a new requirement for privacy management programs, effective June 2026. This regulatory change will affect all Alberta public-sector organizations and requires them to establish formal privacy governance structures.",
