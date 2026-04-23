@@ -262,8 +262,7 @@
     <h3 style="font-family:var(--display);font-size:24px;font-weight:700;color:var(--ice);margin:0 0 8px;line-height:1.2;">Submit a missing tool</h3>
     <p style="font-size:14px;color:var(--slate);line-height:1.7;margin:0 0 28px;max-width:560px;">Spotted a SaaS tool we haven&rsquo;t classified yet? Tell us about it &mdash; we review and add submissions within 3&ndash;5 business days.</p>
 
-    <form id="submitToolForm" action="https://formspree.io/f/mgolzdwe" method="POST" style="max-width:560px;">
-      <input type="hidden" name="page" value="tools-submit-missing">
+    <form id="submitToolForm" style="max-width:560px;">
       <div style="display:none;"><label>Leave blank<input type="text" name="website_url_confirm" tabindex="-1" autocomplete="off"></label></div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;">
@@ -311,14 +310,39 @@
       e.preventDefault();
       if (this.website_url_confirm && this.website_url_confirm.value) return;
       var form = this;
-      var data = new FormData(form);
-      fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} })
-        .then(function(r) {
-          if (r.ok) {
-            form.style.display = 'none';
-            document.getElementById('submitToolSuccess').style.display = 'block';
-          }
-        });
+      var errEl = document.getElementById('submitToolError');
+      if (errEl) errEl.style.display = 'none';
+      var payload = {
+        tool_name: form.tool_name.value,
+        tool_url: form.tool_website.value,
+        submitter_email: form.email.value,
+        aliases: form.aliases.value || '',
+        parent_info: form.parent_info.value || '',
+        source: form.referral_source.value || ''
+      };
+      fetch('https://web-production-b1856.up.railway.app/api/submit-missing-tool', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(function(r) {
+        if (r.status === 429) throw new Error('Too many submissions. Please try again in an hour.');
+        return r.json().then(function(d) { if (!r.ok || !d.ok) throw new Error(d.error || 'Something went wrong.'); return d; });
+      })
+      .then(function() {
+        form.style.display = 'none';
+        document.getElementById('submitToolSuccess').style.display = 'block';
+      })
+      .catch(function(err) {
+        if (!errEl) {
+          errEl = document.createElement('div');
+          errEl.id = 'submitToolError';
+          errEl.style.cssText = 'padding:14px 18px;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.25);border-radius:6px;margin-top:16px;max-width:560px;font-size:13px;color:#EF4444;line-height:1.5;';
+          form.parentNode.insertBefore(errEl, form.nextSibling);
+        }
+        errEl.textContent = err.message;
+        errEl.style.display = 'block';
+      });
     });
     </script>
   </section>
@@ -355,6 +379,7 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+      <span class="footer-copy"><a href="#submit-missing-tool" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);" onclick="document.getElementById('submit-missing-tool').scrollIntoView({behavior:'smooth'});return false;">Spotted a tool missing from the Index? Submit one &rarr;</a></span>
     </div>
   </footer>
   <script>
