@@ -6,7 +6,7 @@
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sovereignty Intelligence API for Canadian Software | Upper Harbour</title>
-  <meta name="description" content="License Canada's most comprehensive technology sovereignty dataset via API. 766+ tools classified by jurisdiction, CLOUD Act exposure, and Canadian data residency. Early-partner integrations from free; production tiers from $499/month CAD." />
+  <meta name="description" content="License Canada's most comprehensive technology sovereignty dataset via API. 766+ tools classified by jurisdiction, CLOUD Act exposure, and Canadian data residency. Pay-as-you-go Starter at $0.003/call; production tiers from $499/month CAD." />
   <link rel="canonical" href="https://www.upperharbour.ca/partners" />
   <meta name="robots" content="index, follow" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -38,7 +38,7 @@
       "@type": "OfferCatalog",
       "name": "API Integration Tiers",
       "itemListElement": [
-        {"@type": "Offer", "name": "Partner Alliance", "price": "0", "priceCurrency": "CAD", "description": "Up to 1,000 API calls/month (integration & demo, not production runtime) with daily data refresh in exchange for 'Powered by Upper Harbour' attribution."},
+        {"@type": "Offer", "name": "Starter", "price": "0.003", "priceCurrency": "CAD", "description": "Pay-as-you-go per API call, $25/month minimum billing threshold. Classification lookup + domain resolve endpoints, daily data refresh. Month-to-month, no commitment. For testing, low-volume, or pilot integrations."},
         {"@type": "Offer", "name": "Pro", "price": "499", "priceCurrency": "CAD", "description": "10,000 calls included + overage, drift webhooks, Canadian alternatives endpoint, 99.5% SLA. Ramp-in $249/mo for months 1–3."},
         {"@type": "Offer", "name": "Enterprise", "price": "3999", "priceCurrency": "CAD", "description": "Unlimited calls, bulk corpus export, 99.9% SLA, priority classification, optional attribution."}
       ]
@@ -69,10 +69,10 @@
       },
       {
         "@type": "Question",
-        "name": "Can we get a discount while we're pre-revenue?",
+        "name": "We're just starting out and don't know our volume. Where should we land?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The Pro tier offers an early-partner ramp-in — $249/month for the first 3 months while you complete integration and prove ROI, then $499/month ongoing. 12-month term. Designed so integration friction isn't the blocker; full price kicks in once you're getting real value from the API."
+          "text": "Start on Starter — pay-as-you-go at $0.003/call, $25/month minimum. Gives you time to prove the integration and understand your call volume before committing to a monthly tier. Most partners who exceed ~8,000 calls/month find Pro becomes cheaper; we'll surface that in your quarterly review and you can upgrade any time."
         }
       }
     ]
@@ -297,20 +297,20 @@
 
       <div class="svc-grid">
 
-        <!-- Partner Alliance -->
+        <!-- Starter (pay-as-you-go) -->
         <div class="svc">
-          <div class="svc-name">Partner Alliance</div>
-          <div class="svc-price green">Free</div>
-          <div class="svc-tag">Integrate, test, and demo &mdash; co-marketing in exchange for attribution</div>
+          <div class="svc-name">Starter</div>
+          <div class="svc-price teal">$0.003<span class="period">/call CAD</span></div>
+          <div class="svc-tag">For testing, low-volume, or pilot integrations</div>
           <ul class="svc-items">
-            <li>Up to 1,000 API calls / month (integration &amp; demo)</li>
+            <li>Pay only for what you use</li>
             <li>Classification lookup + domain resolve endpoints</li>
             <li>Daily data refresh</li>
-            <li>&ldquo;Powered by Upper Harbour&rdquo; attribution required</li>
-            <li>Mutual logo placement on partners page</li>
-            <li>12-month term</li>
+            <li>$25/month minimum billing threshold</li>
+            <li>Month-to-month, no commitment</li>
+            <li>Upgrade to Pro anytime</li>
           </ul>
-          <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="svc-cta ghost">Apply &rarr;</a>
+          <a href="#book" class="svc-cta ghost">Get an API Key &rarr;</a>
         </div>
 
         <!-- Pro (featured) -->
@@ -351,7 +351,7 @@
       </div>
 
       <div class="tier-note">
-        <strong>Early-stage?</strong> Two paths. The <strong>Partner Alliance</strong> tier exists for pre-revenue products willing to co-market sovereignty while they build &mdash; free in exchange for visibility. If you're past co-branding and need paid-tier features, the Pro <strong>ramp-in</strong> drops the base to $249/mo for the first 3 months while you complete integration and prove ROI, then lifts to $499/mo. 12-month term.
+        <strong>Starter is pay-as-you-go</strong> with a $25/month minimum &mdash; no commitment, billed for actual calls. Most partners start here during integration and move to Pro once they're past ~8,000 calls/month (where Pro becomes cheaper). The Pro <strong>ramp-in</strong> drops the base to $249/mo for months 1&ndash;3 while you complete integration, then lifts to $499/mo ongoing. 12-month term on Pro and Enterprise.
       </div>
     </div>
   </section>
@@ -475,22 +475,17 @@
 
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens if we exceed our tier cap?</div>
-        <div class="faq-a"><p>Partner Alliance tier is rate-limited at 1,000 calls/month &mdash; enough to integrate, test end-to-end, and demo to prospects, but not a production runtime. Excess requests return 429 with a clear header noting when you reset. Pro tier bills overage at $0.003 per call above the 10,000 included. Enterprise tier has no cap. No surprise invoices &mdash; you set alerts at any usage threshold.</p></div>
+        <div class="faq-a"><p>Starter has no cap &mdash; you're billed $0.003 per call. Pro includes 10,000 calls; overage billed at $0.003/call above that. Enterprise has no cap. No surprise invoices &mdash; you set alerts at any usage threshold.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">We're just starting out and don't know our volume. Where should we land?</div>
+        <div class="faq-a"><p>Start on Starter &mdash; pay-as-you-go at $0.003/call, $25/month minimum. Gives you time to prove the integration and understand your call volume before committing to a monthly tier. Most partners who exceed ~8,000 calls/month find Pro becomes cheaper; we'll surface that in your quarterly review and you can upgrade any time.</p></div>
       </div>
 
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does exit work?</div>
         <div class="faq-a"><p>60 days notice from either party. On termination, API keys are rotated, cached data in your systems must be flushed within 30 days. Any pre-paid annual subscription is pro-rated. No penalties for exiting.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can we get a discount while we're pre-revenue?</div>
-        <div class="faq-a"><p>Yes. The Pro tier offers an early-partner ramp-in &mdash; $249/month for the first 3 months while you complete integration and prove ROI, then $499/month ongoing. 12-month term. Designed so integration friction isn't the blocker; full price kicks in once you're getting real value from the API. Mention it on the technical call and we'll paper it into the letter of agreement.</p></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What does &ldquo;Powered by Upper Harbour&rdquo; attribution look like?</div>
-        <div class="faq-a"><p>On the Partner Alliance tier, you include a small &ldquo;Powered by Upper Harbour Sovereignty Index&rdquo; credit wherever classification data surfaces in your UI, plus our logo on your partners page. We reciprocate by featuring you on our partners page. Pro and Enterprise tiers make attribution optional.</p></div>
       </div>
 
       <div class="faq-item">
