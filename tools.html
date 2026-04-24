@@ -257,9 +257,25 @@
     </p>
   </div>
 
+  <!-- Persistent "tool not here?" CTA — matches .cta-strip vocabulary
+       used above (left-ink teal border, transparent bg, 40px padding)
+       so it reads as a first-class main-area affordance rather than
+       a footer afterthought. Clicking either the heading/text or the
+       button reveals the hidden form below and scrolls to it. -->
+  <div class="cta-strip" id="submitMissingToolCta">
+    <div class="cta-inner">
+      <div class="cta-text">
+        <h3>Don&rsquo;t see a tool you use?</h3>
+        <p>If we&rsquo;re missing a SaaS tool from the Index, submit it and we&rsquo;ll classify it within 3&ndash;5 business days.</p>
+      </div>
+      <a href="#submit-missing-tool" class="btn-teal" onclick="revealMissingToolForm();return false;">Submit a missing tool →</a>
+    </div>
+  </div>
+
   <!-- Hidden by default. Revealed by revealMissingToolForm() when the
-       user clicks either the empty-state CTA or the footer link —
-       keeps the page clean for visitors who came to look up a tool,
+       user clicks the main-area CTA above, the empty-state CTA inside
+       the tool list, or hits /tools#submit-missing-tool as a deep link.
+       Keeps the page clean for visitors who came to look up a tool;
        surfaces the form on-demand for visitors who came to contribute. -->
   <section id="submit-missing-tool" style="display:none;max-width:820px;margin:0 auto;padding:60px 52px 48px;">
     <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">Contribute</div>
@@ -383,7 +399,6 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
-      <span class="footer-copy"><a href="#submit-missing-tool" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);" onclick="revealMissingToolForm();return false;">Spotted a tool missing from the Index? Submit one &rarr;</a></span>
     </div>
   </footer>
   <script>
