@@ -228,7 +228,7 @@
   </div>
   <div class="tool-grid" id="toolGridWrap" style="display:none;">
     <div class="tool-list" id="toolList"></div>
-    <div class="no-results" id="noResults" style="display:none">No tools match your search.<br><a href="#submit-missing-tool" style="color:var(--teal);font-size:13px;text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);margin-top:8px;display:inline-block;" onclick="document.getElementById('submit-missing-tool').scrollIntoView({behavior:'smooth'});return false;">Or, if we're missing a tool, tell us about it &rarr;</a></div>
+    <div class="no-results" id="noResults" style="display:none">No tools match your search.<br><a href="#submit-missing-tool" style="color:var(--teal);font-size:13px;text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);margin-top:8px;display:inline-block;" onclick="revealMissingToolForm();return false;">Or, if we're missing a tool, tell us about it &rarr;</a></div>
   </div>
 
   <div class="cta-strip">
@@ -257,7 +257,11 @@
     </p>
   </div>
 
-  <section id="submit-missing-tool" style="max-width:820px;margin:0 auto;padding:60px 52px 48px;">
+  <!-- Hidden by default. Revealed by revealMissingToolForm() when the
+       user clicks either the empty-state CTA or the footer link —
+       keeps the page clean for visitors who came to look up a tool,
+       surfaces the form on-demand for visitors who came to contribute. -->
+  <section id="submit-missing-tool" style="display:none;max-width:820px;margin:0 auto;padding:60px 52px 48px;">
     <div style="font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--teal);margin-bottom:10px;">Contribute</div>
     <h3 style="font-family:var(--display);font-size:24px;font-weight:700;color:var(--ice);margin:0 0 8px;line-height:1.2;">Submit a missing tool</h3>
     <p style="font-size:14px;color:var(--slate);line-height:1.7;margin:0 0 28px;max-width:560px;">Spotted a SaaS tool we haven&rsquo;t classified yet? Tell us about it &mdash; we review and add submissions within 3&ndash;5 business days.</p>
@@ -379,7 +383,7 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
-      <span class="footer-copy"><a href="#submit-missing-tool" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);" onclick="document.getElementById('submit-missing-tool').scrollIntoView({behavior:'smooth'});return false;">Spotted a tool missing from the Index? Submit one &rarr;</a></span>
+      <span class="footer-copy"><a href="#submit-missing-tool" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);" onclick="revealMissingToolForm();return false;">Spotted a tool missing from the Index? Submit one &rarr;</a></span>
     </div>
   </footer>
   <script>
@@ -389,6 +393,34 @@
     // the API server. We fetch the tool list once and shim it into
     // window.saasDB so the existing render/filter/search code below
     // can stay unchanged.
+    // ── Reveal-on-click for the missing-tool form ──────────────────
+    // The #submit-missing-tool section is hidden by default so the
+    // page stays focused on lookup. Two entry points call this:
+    // the empty-state CTA and the footer link. Reveal + scroll are
+    // wrapped in a rAF so the browser sees the section before the
+    // scroll starts, which gives a smooth glide instead of a jump.
+    function revealMissingToolForm() {
+      var el = document.getElementById('submit-missing-tool');
+      if (!el) return;
+      el.style.display = '';
+      requestAnimationFrame(function() {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        var first = document.getElementById('mt-tool-name')
+          || el.querySelector('input, textarea');
+        if (first) {
+          // Small delay so focus lands after the scroll settles.
+          setTimeout(function() { try { first.focus({ preventScroll: true }); } catch (e) { first.focus(); } }, 450);
+        }
+      });
+    }
+    window.revealMissingToolForm = revealMissingToolForm;
+
+    // If someone lands on the page with #submit-missing-tool already
+    // in the URL (e.g. a deep link from elsewhere), reveal on load.
+    if (location.hash === '#submit-missing-tool') {
+      document.addEventListener('DOMContentLoaded', revealMissingToolForm);
+    }
+
     var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
     window.saasDB = [];
     var _toolsReady = fetch(UH_API_BASE + '/api/tools', { cache: 'default' })
