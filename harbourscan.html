@@ -1191,7 +1191,24 @@
     } catch(e) { /* localStorage unavailable — silent fail */ }
   }
   if (typeof dataCategories === 'undefined') var dataCategories = [];
-  if (typeof industryProfiles === 'undefined') var industryProfiles = [];
+  if (typeof industryProfiles === 'undefined') var industryProfiles = [
+    {id:'healthcare', label:'Healthcare & Health Services'},
+    {id:'education', label:'Education (K-12 & Post-Secondary)'},
+    {id:'government', label:'Government & Public Sector'},
+    {id:'financial', label:'Financial Services & Insurance'},
+    {id:'legal', label:'Legal Services'},
+    {id:'technology', label:'Technology & Software'},
+    {id:'nonprofit', label:'Non-Profit & Charitable'},
+    {id:'energy', label:'Energy & Natural Resources'},
+    {id:'retail', label:'Retail & E-Commerce'},
+    {id:'manufacturing', label:'Manufacturing & Industrial'},
+    {id:'real-estate', label:'Real Estate & Construction'},
+    {id:'media', label:'Media & Communications'},
+    {id:'transportation', label:'Transportation & Logistics'},
+    {id:'agriculture', label:'Agriculture & Food'},
+    {id:'professional', label:'Professional Services & Consulting'},
+    {id:'other', label:'Other'}
+  ];
   if (typeof regulatoryMap === 'undefined') var regulatoryMap = {};
 
   // ── State ──────────────────────────────────────────────────────
@@ -2166,7 +2183,7 @@
       .nav-hamburger{display:block}
       }
 
-  </style></head><body>${content}<script src="/assets/track.js" defer></script>
+  </style></head><body>${content}<script src="/assets/track.js" defer><\/script>
 </body></html>`;
 
     const blob = new Blob([html], { type: 'text/html' });
