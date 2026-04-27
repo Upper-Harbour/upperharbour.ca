@@ -225,58 +225,86 @@
     <h3>Step 5: Classify Canadian control</h3>
     <p>Our &ldquo;Canadian-controlled&rdquo; definition goes beyond headquarters location. The entity must be Canadian-incorporated, majority Canadian-owned (or publicly listed on a Canadian exchange), and have no corporate chain that creates foreign jurisdictional exposure.</p>
 
-    <h3>Step 6: Assign a Risk Score</h3>
-    <p>Each tool receives a Risk Score from 0 to 10, derived from six factors. Each factor is scored 0 (lowest risk), 1 (medium risk), or 2 (highest risk). The six raw scores are summed (maximum 12) and scaled to a 10-point scale. A higher score indicates greater jurisdictional risk for Canadian organizations.</p>
+    <h3>Step 6: Assign a Compelled Disclosure Exposure Score</h3>
+    <p>Each tool receives a <strong>Compelled Disclosure Exposure (CDE) Score</strong> from 0 to 10, derived from nine factors. Each factor is scored 0 (lowest risk), 1 (medium risk), or 2 (highest risk). The nine raw scores are summed (maximum 18) and scaled to a 10-point scale. A higher score indicates greater jurisdictional risk for Canadian organizations.</p>
+
+    <div class="principle-box" style="border-left-color:var(--gold);margin:24px 0">
+      <div class="label" style="color:var(--gold)">April 2026 update &mdash; Risk Score renamed and expanded</div>
+      <p>This score was previously called the Risk Score and derived from six factors. We renamed it to Compelled Disclosure Exposure Score to make explicit what it measures: the pathways by which customer data could be compelled from the vendor in practice. Three new factors were added (Hyperscaler Dependency, US Operational Footprint, Documented Challenge Posture) to capture exposure vectors the previous rubric missed. The four-tier classification (Exposed / Review / Non-Exposed / Canadian) is unchanged &mdash; tier answers &ldquo;whose law governs the vendor corporation,&rdquo; CDE answers &ldquo;where can the data actually be compelled from.&rdquo; Scores for the 143 Canadian-tier entries were re-researched with respect to the new factors as part of this update; re-scoring of the Exposed / Review / Non-Exposed tiers is scheduled for a subsequent pass.</p>
+    </div>
 
     <div id="scoring-rubric"></div>
 
     <table class="juris-table" style="margin:32px 0;">
-      <thead><tr><th>Factor</th><th style="color:#10B981">0 — Low Risk</th><th style="color:#F59E0B">1 — Medium Risk</th><th style="color:#EF4444">2 — High Risk</th></tr></thead>
+      <thead><tr><th>Factor</th><th style="color:#10B981">0 &mdash; Low Risk</th><th style="color:#F59E0B">1 &mdash; Medium Risk</th><th style="color:#EF4444">2 &mdash; High Risk</th></tr></thead>
       <tbody>
-        <tr><td class="country">Jurisdiction</td><td>Canadian-incorporated</td><td>Non-US, non-Five Eyes</td><td>US-incorporated</td></tr>
-        <tr><td class="country">CLOUD Act</td><td>Not exposed</td><td>Indirect (US subsidiary in chain)</td><td>Directly exposed</td></tr>
-        <tr><td class="country">Data Residency</td><td>Canadian default or only option</td><td>Canadian available (opt-in)</td><td>No Canadian option</td></tr>
-        <tr><td class="country">Encryption</td><td>Customer-managed keys available</td><td>Customer option on premium tiers</td><td>Vendor-managed only</td></tr>
-        <tr><td class="country">Ownership Chain</td><td>Canadian-owned, no foreign PE</td><td>Non-US owned (EU, India, etc.)</td><td>US-owned or US PE-backed</td></tr>
-        <tr><td class="country">Regulatory Tooling</td><td>DPA, compliance docs, audit support</td><td>Standard DPA available</td><td>No compliance tooling</td></tr>
+        <tr><td class="country">Vendor Jurisdiction</td><td>Canadian-incorporated</td><td>Non-US, non-Five Eyes</td><td>US / UK / AU incorporated</td></tr>
+        <tr><td class="country">CLOUD Act direct exposure</td><td>Not exposed</td><td>Indirect (US subsidiary in chain)</td><td>Directly exposed</td></tr>
+        <tr><td class="country">Data Residency</td><td>Canadian default or only option</td><td>Canadian available (opt-in)</td><td>No Canadian option, or residency claim unverified</td></tr>
+        <tr><td class="country">Encryption</td><td>Customer-managed keys on standard plans; provider cannot decrypt content</td><td>Customer-managed keys on premium tiers only, or documented HSM separation</td><td>Vendor-managed keys only</td></tr>
+        <tr><td class="country">Ownership Chain</td><td>Canadian-owned, no foreign PE</td><td>Non-US-owned (EU PE, minority US VC)</td><td>US-owned, US PE majority, or US strategic acquirer</td></tr>
+        <tr><td class="country">Regulatory Tooling</td><td>DPA + SOC 2 / ISO attestations + subprocessor list published</td><td>Standard DPA available on request</td><td>No DPA, no compliance tooling, no subprocessor disclosure</td></tr>
+        <tr style="background:rgba(60,184,176,0.04)"><td class="country">Hyperscaler Dependency <span style="color:var(--teal);font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-left:6px">new</span></td><td>Self-run Canadian infra, OR hosted with a Canadian infra provider (OVHcloud CA, Bell, TELUS, ThinkOn, eStruxture, Hypertec, Micrologic)</td><td>Hyperscaler (Azure / AWS / GCP) used but Canadian region is the only or default deployment</td><td>US hyperscaler with no Canadian region commitment, OR hosting stack not publicly documented</td></tr>
+        <tr style="background:rgba(60,184,176,0.04)"><td class="country">US Operational Footprint <span style="color:var(--teal);font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-left:6px">new</span></td><td>No US subsidiary, no US-based staff with documented customer-data access</td><td>US subsidiary exists (commercial reasons) but DPA documents customer data is not US-accessible</td><td>US subsidiary with customer-data access, or US-domiciled contracting entity, or US support engineers with production access</td></tr>
+        <tr style="background:rgba(60,184,176,0.04)"><td class="country">Documented Challenge Posture <span style="color:var(--teal);font-family:var(--mono);font-size:9px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-left:6px">new</span></td><td>Published transparency report AND documented policy of challenging foreign disclosure requests before compliance</td><td>DPA addresses foreign disclosure / subpoena handling but no transparency report or challenge history</td><td>No documented policy on foreign disclosure requests</td></tr>
       </tbody>
     </table>
 
-    <p><strong>Scoring formula:</strong> Raw score = sum of six factors (0&ndash;12). Risk Score = (Raw &divide; 12) &times; 10, rounded to one decimal.</p>
+    <p><strong>Scoring formula:</strong> Raw score = sum of nine factors (0&ndash;18). CDE Score = (Raw &divide; 18) &times; 10, rounded to one decimal.</p>
+
+    <p><strong>Why the new factors matter.</strong> A research pass over all 143 Canadian-tier entries in April 2026 found that <strong>62% run on US hyperscaler infrastructure</strong> (AWS, Azure, or GCP, alone or in a mixed stack) &mdash; including many tools whose marketing implies Canadian sovereignty. Only 10.5% run on documented Canadian infrastructure; the remainder don&rsquo;t publicly disclose their hosting stack. That exposure was invisible under the six-factor rubric. Factor 7 (Hyperscaler Dependency) now captures it.</p>
 
     <h3>Worked examples</h3>
 
     <div class="principle-box" style="border-left-color:var(--red)">
-      <div class="label" style="color:var(--red)">Dropbox &mdash; Risk Score: 8.8 / 10</div>
+      <div class="label" style="color:var(--red)">Dropbox &mdash; CDE Score: 8.9 / 10 (tier: Exposed)</div>
       <p style="font-weight:400;color:var(--slate);font-size:14px;line-height:1.8">
-        Jurisdiction: <strong>2</strong> (US-incorporated) · CLOUD Act: <strong>2</strong> (directly exposed) · Data Residency: <strong>2</strong> (no Canadian option) · Encryption: <strong>2</strong> (vendor-managed only) · Ownership: <strong>2</strong> (US-owned) · Regulatory Tooling: <strong>1</strong> (standard DPA available)<br>
-        Raw: 11 / 12 &rarr; <strong>Risk Score: 9.2</strong> &rarr; Rounded to <strong>8.8</strong> (adjusted for category context: file storage alternatives exist with full Canadian sovereignty)
+        Jurisdiction: <strong>2</strong> (US-incorporated) · CLOUD Act: <strong>2</strong> (directly exposed) · Data Residency: <strong>2</strong> (no Canadian option) · Encryption: <strong>2</strong> (vendor-managed only) · Ownership: <strong>2</strong> (US-owned) · Regulatory Tooling: <strong>1</strong> (standard DPA available) · Hyperscaler: <strong>1</strong> (runs on own infrastructure + AWS) · US Footprint: <strong>2</strong> (US parent with full data access) · Challenge Posture: <strong>1</strong> (transparency report published but challenge history mixed)<br>
+        Raw: 15 / 18 &rarr; <strong>CDE Score: 8.3</strong> &rarr; Rounded to <strong>8.9</strong> (adjusted for category context: Canadian-sovereign file-storage alternatives exist)
       </p>
     </div>
 
     <div class="principle-box" style="border-left-color:var(--gold)">
-      <div class="label" style="color:var(--gold)">HubSpot &mdash; Risk Score: 6.2 / 10</div>
+      <div class="label" style="color:var(--gold)">HubSpot &mdash; CDE Score: 6.2 / 10 (tier: Review)</div>
       <p style="font-weight:400;color:var(--slate);font-size:14px;line-height:1.8">
-        Jurisdiction: <strong>2</strong> (US-incorporated) · CLOUD Act: <strong>2</strong> (directly exposed) · Data Residency: <strong>1</strong> (Montreal data centre available since Feb 2025) · Encryption: <strong>2</strong> (vendor-managed only) · Ownership: <strong>2</strong> (US-owned) · Regulatory Tooling: <strong>0</strong> (GDPR delete, consent tracking, DPA, subprocessor list)<br>
-        Raw: 9 / 12 &rarr; <strong>Risk Score: 7.5</strong> &rarr; Rounded to <strong>6.2</strong> (adjusted: Montreal residency is a meaningful mitigation, and HubSpot provides above-average compliance tooling)
+        Jurisdiction: <strong>2</strong> (US-incorporated) · CLOUD Act: <strong>2</strong> (directly exposed) · Data Residency: <strong>1</strong> (Montreal data centre available since Feb 2025) · Encryption: <strong>2</strong> (vendor-managed only) · Ownership: <strong>2</strong> (US-owned) · Regulatory Tooling: <strong>0</strong> (GDPR delete, consent tracking, DPA, subprocessor list) · Hyperscaler: <strong>1</strong> (AWS, Montreal region available) · US Footprint: <strong>2</strong> (US parent, US-based staff) · Challenge Posture: <strong>0</strong> (transparency report + foreign-disclosure policy published)<br>
+        Raw: 12 / 18 &rarr; <strong>CDE Score: 6.7</strong> &rarr; Rounded to <strong>6.2</strong> (adjusted: Montreal residency + strong compliance tooling)
       </p>
     </div>
 
     <div class="principle-box" style="border-left-color:var(--teal)">
-      <div class="label" style="color:var(--teal)">Clio &mdash; Risk Score: 1.2 / 10</div>
+      <div class="label" style="color:var(--teal)">Clio &mdash; CDE Score: 3.1 / 10 (tier: Canadian)</div>
       <p style="font-weight:400;color:var(--slate);font-size:14px;line-height:1.8">
-        Jurisdiction: <strong>0</strong> (Canadian-incorporated) · CLOUD Act: <strong>0</strong> (not exposed) · Data Residency: <strong>0</strong> (Canadian default) · Encryption: <strong>1</strong> (customer option on premium tier) · Ownership: <strong>0</strong> (Canadian-owned) · Regulatory Tooling: <strong>0</strong> (compliance-focused legal tech)<br>
-        Raw: 1 / 12 &rarr; <strong>Risk Score: 0.8</strong> &rarr; Rounded to <strong>1.2</strong> (adjusted: encryption is not fully customer-managed on all tiers)
+        Jurisdiction: <strong>0</strong> (Canadian-incorporated, BC) · CLOUD Act: <strong>0</strong> (no US parent) · Data Residency: <strong>0</strong> (Canadian region on all plans) · Encryption: <strong>1</strong> (customer-managed keys on premium tier only) · Ownership: <strong>1</strong> (US-VC-backed at Series F &mdash; not US-owned, but US capital with board rights) · Regulatory Tooling: <strong>0</strong> (full DPA, SOC 2, subprocessor list) · <strong>Hyperscaler: <strong>1</strong> (Microsoft Azure, but Canadian region default)</strong> · <strong>US Footprint: <strong>1</strong> (US sales &amp; support offices; data-access posture unclear)</strong> · <strong>Challenge Posture: <strong>1</strong> (DPA addresses subpoenas; no public transparency report)</strong><br>
+        Raw: 5 / 18 &rarr; <strong>CDE Score: 2.8</strong> &rarr; Rounded to <strong>3.1</strong> (adjusted: Azure dependency adds uncaptured exposure, transparency-report gap)
       </p>
     </div>
 
-    <p><strong>A note on adjustments:</strong> The formula produces a raw score, but the final published Risk Score may be adjusted up or down by up to 1.5 points based on category-specific context. Factors that can trigger adjustment include: the availability of Canadian-owned alternatives in the same category, the sensitivity of data typically processed by tools in that category (e.g., legal or health data), the quality and transparency of the vendor&rsquo;s compliance documentation, and recent changes in the vendor&rsquo;s ownership or infrastructure. All adjustments are documented in the tool&rsquo;s individual analysis page.</p>
+    <p><strong>What changed in Clio&rsquo;s worked example.</strong> Under the previous six-factor Risk Score, Clio was 1.2 / 10. Under the nine-factor CDE Score, it moves to 3.1. The tier is still Canadian &mdash; Clio&rsquo;s corporate structure hasn&rsquo;t changed &mdash; but the score now honestly reflects that Clio runs on Azure and has a US operational footprint that a TIA should consider. The tier is the headline answer; the CDE Score is the honest picture.</p>
+
+    <p><strong>A note on adjustments:</strong> The formula produces a raw score, but the final published CDE Score may be adjusted up or down by up to 1.5 points based on category-specific context. Factors that can trigger adjustment include: the availability of Canadian-owned alternatives in the same category, the sensitivity of data typically processed by tools in that category (e.g., legal or health data), the quality and transparency of the vendor&rsquo;s compliance documentation, and recent changes in the vendor&rsquo;s ownership or infrastructure. All adjustments are documented in the tool&rsquo;s individual analysis page.</p>
+
+    <h2>What a Canadian classification does &mdash; and does not &mdash; guarantee</h2>
+    <p>The tier badge answers a single question: <strong>whose law governs the corporate entity that controls the service?</strong> It is a jurisdictional-posture badge, not a sovereignty-of-the-data-pipeline badge. Two distinct exposure surfaces live outside it.</p>
+    <div class="principle-box">
+      <div class="label">What Canadian guarantees</div>
+      <p>The vendor&rsquo;s ultimate parent entity is incorporated in Canada, no US parent sits in the corporate chain, and the vendor&rsquo;s decisions &mdash; including how to respond to foreign disclosure requests &mdash; are made by an entity that is itself subject to Canadian law (PIPEDA, provincial privacy statutes, Canadian courts). Foreign compelled-disclosure statutes do not reach the vendor corporation directly.</p>
+    </div>
+    <div class="principle-box" style="border-left-color:var(--gold)">
+      <div class="label" style="color:var(--gold)">What Canadian does not guarantee</div>
+      <p><strong>Hyperscaler independence.</strong> A Canadian-parented vendor may still run on Microsoft Azure, Amazon Web Services, or Google Cloud. Those providers are US-incorporated and can be compelled under the CLOUD Act to produce data they host &mdash; regardless of whether the data sits in a Canadian region. That exposure runs through the hyperscaler, not through the vendor. A green Canadian badge does not automatically mean the hosting stack is Canadian.</p>
+      <p><strong>US operational footprint.</strong> A Canadian-parented vendor may operate US subsidiaries, employ US-based engineers or support staff with database access, or contract with US-domiciled entities for certain customer segments. Each creates a reachable entity or person independent of the parent.</p>
+      <p><strong>Sub-processor exposure.</strong> Most SaaS tools depend on sub-processors (Twilio, SendGrid, Stripe, Segment, etc.) that are themselves US-incorporated. Data flowing through those sub-processors is compellable at the sub-processor, not at the vendor.</p>
+    </div>
+    <p>The six-factor Risk Score attempts to capture these secondary exposure vectors on a per-tool basis, but the score and the tier answer different questions. <strong>Treat the tier as &ldquo;whose law governs the vendor.&rdquo; Treat the Risk Score and the per-tool note as the honest picture of where customer data can actually be compelled from.</strong></p>
+    <p>Where hosting or operational footprint is known from a vendor&rsquo;s trust center, DPA, or security documentation, it is documented in the per-tool note. Where it is not publicly documented, the note says so. A privacy officer producing a Transfer Impact Assessment should rely on the per-tool note, not the tier badge alone.</p>
 
     <h2>Edge cases and precedents</h2>
     <p><strong>Canadian company with US VC backing:</strong> Classified as Canadian. VC investment does not change the legal jurisdiction of the corporate entity. However, the note field documents the VC structure as a risk factor for future acquisition.</p>
+    <p><strong>Canadian company on US hyperscaler (Azure, AWS, GCP):</strong> Classified as Canadian for tier purposes &mdash; the decision tree terminates at the parent-jurisdiction check &mdash; but the hyperscaler dependency is an explicit factor in the Risk Score and is called out in the per-tool note. Canadian parent + US hyperscaler is a common posture; the tier badge alone is not sufficient for a TIA.</p>
     <p><strong>Canadian company acquired by a US parent:</strong> Reclassified immediately to Exposed or Review depending on whether Canadian data residency is maintained.</p>
     <p><strong>Dual-headquartered (Canada/US):</strong> Classified as Review. If any entity in the corporate chain is US-incorporated, the tool cannot be classified as Canadian.</p>
-    <p><strong>Non-US company with data on US infrastructure:</strong> Classified as Review. Even without a US parent, routing data through US infrastructure creates indirect jurisdictional exposure through the infrastructure provider.</p>
+    <p><strong>Non-US company with data on US infrastructure:</strong> Classified as Review. Even without a US parent, routing data through US infrastructure creates indirect jurisdictional exposure through the infrastructure provider. (Note the asymmetry with the Canadian-parent case above &mdash; Canadian-parented tools on US infrastructure remain Canadian-tier but carry the exposure explicitly in their Risk Score and note. This asymmetry exists because the Canadian parent retains legal control over contracting choice, challenge posture, and future re-architecture in a way a non-Canadian foreign parent typically does not.)</p>
 
     <h2>Data sources</h2>
     <p>Classifications are based on primary research into corporate ownership structures using: provincial and federal corporate registries (Canada), SEC filings (US), SEDAR+ filings (Canada), annual reports, vendor documentation, and publicly reported funding rounds. Each classification includes a note field documenting the specific reasoning and sources.</p>

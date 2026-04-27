@@ -1,9 +1,89 @@
 {
   "meta": {
-    "lastUpdated": "Apr 22, 2026 — 14:19 ET",
+    "lastUpdated": "Apr 27, 2026 — 13:12 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "OpenTable acquires Libro, a Montreal restaurant reservation platform",
+      "summary": "US-based OpenTable has acquired Canadian restaurant reservation startup Libro. The acquisition consolidates restaurant tech infrastructure under US ownership, with implications for Canadian restaurant operators' data residency and control over booking systems.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/opentable-gobbles-up-canadian-market-share-with-libro-acquisition/",
+      "date": "2026-04-22",
+      "impact": "Canadian restaurant operators using Libro should review data residency terms and assess whether booking and customer data will remain in Canadian jurisdiction post-acquisition.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Quebec digital sovereignty initiative raises concerns",
+      "summary": "Quebec's digital sovereignty strategy has prompted public alarm, suggesting either controversial policy direction or tension between sovereignty ambitions and stakeholder interests. The full scope of Quebec's approach and the specific concerns require review of the original source.",
+      "type": "policy",
+      "source": "The Logic",
+      "sourceUrl": "https://thelogic.co/commentary/quebec-ink/quebec-digital-sovereignty-cgi/",
+      "date": "2026-04-27",
+      "impact": "Quebec-based technology vendors and public-sector organizations should monitor the evolving sovereignty policy framework and its procurement or operational implications.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Cohere and Aleph Alpha merge to advance sovereign AI capabilities",
+      "summary": "Canadian AI company Cohere has merged with German AI company Aleph Alpha in a transaction framed around sovereign AI development. The merger combines Canadian and European AI capacity, with potential implications for where Canadian AI infrastructure and training data will be hosted and governed.",
+      "type": "acquisition",
+      "source": "The Logic",
+      "sourceUrl": "https://thelogic.co/news/cohere-aleph-alpha-merger-sovereign-ai/",
+      "date": "2026-04-24",
+      "impact": "Canadian organizations using Cohere for AI services should clarify post-merger data residency, governance structure, and whether training data or model inference will move to European jurisdiction.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Data sovereignty and geospatial control emerge as operational procurement priorities in federal and provincial infrastructure planning",
+      "summary": "Data sovereignty and control of critical geospatial datasets have become active operational considerations in federal, provincial, and industry procurement decisions and infrastructure planning for Canada's geospatial sector. This signals broader institutional recognition that data control is a material factor in strategic technology procurement and public infrastructure decisions.",
+      "type": "policy",
+      "source": "GoGeomatics",
+      "sourceUrl": "https://gogeomatics.ca/canada-geospatial-sector-execution-geoignite-2026/",
+      "date": "2026-04-24",
+      "impact": "Federal and provincial agencies responsible for geospatial infrastructure and critical data systems should ensure procurement frameworks for mapping, geographic information systems, and location-based services include data sovereignty and residency requirements aligned with emerging sector standards.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Privacy Commissioner testifies on Connected Care for Canadians Act digital health privacy safeguards",
+      "summary": "Deputy Commissioner Marc Chénier testified before the Senate on Bill S-5 (Connected Care for Canadians Act), supporting interoperable digital health systems while recommending privacy law exceptions in regulations. This reflects active federal engagement on data sovereignty and privacy controls in the digital health sector.",
+      "type": "policy",
+      "source": "Office of the Privacy Commissioner of Canada",
+      "sourceUrl": "https://www.priv.gc.ca/en/opc-actions-and-decisions/advice-to-parliament/2026/parl_260422/",
+      "date": "2026-04-22",
+      "impact": "Healthcare organizations and digital health vendors should monitor Bill S-5 regulations for final privacy and data residency requirements applicable to health systems and patient data.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Federal procurement policy now explicitly requires Canadian data residency for vendor selection",
+      "summary": "Federal procurement frameworks have been updated effective June 2026 to explicitly prefer vendors with Canadian data residency, marking a formal shift from guidance to mandatory policy. This codifies data sovereignty requirements in federal vendor selection and represents concrete enforcement of residency preferences across government contracting.",
+      "type": "procurement",
+      "source": "Augure",
+      "sourceUrl": "https://augureai.ca/blog/canadian-data-sovereignty-in-2026-whats-changed",
+      "date": "2026-04-19",
+      "impact": "Federal departments and vendors seeking federal contracts must ensure Canadian data residency capabilities are documented and compliant with June 2026 procurement guidelines.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Analysis reveals two-thirds of Canadian SaaS platforms are US-owned and CLOUD Act-exposed",
+      "summary": "A Policy Options analysis of 750+ SaaS platforms used in Canada found that 67% are US-owned with CLOUD Act exposure, while only 17% are Canadian-owned. Federal procurement frameworks are identified as failing to adequately assess or account for jurisdictional exposure in vendor selection, creating systematic sovereign data risk.",
+      "type": "policy",
+      "source": "Policy Options",
+      "sourceUrl": "https://policyoptions.irpp.org/2026/04/canada-digital-sovereignty-software-risk/",
+      "date": "2026-04-21",
+      "impact": "Federal and provincial procurement teams should systematically audit SaaS vendor jurisdictions and CLOUD Act exposure in existing contracts and conduct risk-based vendor reclassification.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "CIRANO analysis proposes FPT+ digital sovereignty roadmap and flags federal coordination gaps",
+      "summary": "CIRANO's April 2026 analysis incorporates Quebec's 2026 Digital Sovereignty Statement and federal departmental plans, proposing a federal-provincial-territorial coordination roadmap for AI and digital infrastructure. The report identifies coordination gaps between Treasury Board Secretariat, Shared Services Canada, and the Office of Digital Transformation.",
+      "type": "policy",
+      "source": "CIRANO",
+      "sourceUrl": "https://www3.cirano.qc.ca/en/summaries/2026PR-05",
+      "date": "2026-04-19",
+      "impact": "Federal and provincial digital governance bodies should review CIRANO recommendations for interoperability frameworks and jurisdictional coordination on shared digital infrastructure and AI deployment.",
+      "dbUpdate": false
+    },
     {
       "headline": "Quebec Law 25 Establishes Canada's Most Stringent Private-Sector Privacy Standards",
       "summary": "Quebec's Law 25 is now in effect as Canada's strictest private-sector privacy legislation, introducing higher penalties, mandatory privacy officer appointments, and stricter controls on data use and automated decision-making. Organizations operating in Quebec and adjacent provinces must comply with these standards rather than relying solely on federal PIPEDA requirements.",

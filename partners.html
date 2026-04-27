@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-3KSW0FVBL1');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sovereignty Intelligence API for Canadian Software | Upper Harbour</title>
+  <meta name="description" content="License Canada's most comprehensive technology sovereignty dataset via API. 766+ tools classified by jurisdiction, CLOUD Act exposure, and Canadian data residency. Pay-as-you-go Starter at $0.003/call; production tiers from $499/month CAD." />
+  <link rel="canonical" href="https://www.upperharbour.ca/partners" />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+  <meta property="og:title" content="Sovereignty Intelligence API for Canadian Software | Upper Harbour" />
+  <meta property="og:description" content="License Canada's most comprehensive technology sovereignty dataset via API. 766+ tools classified by jurisdiction, CLOUD Act exposure, and Canadian data residency." />
+  <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+  <meta property="og:url" content="https://www.upperharbour.ca/partners" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Upper Harbour" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sovereignty Intelligence API for Canadian Software | Upper Harbour" />
+  <meta name="twitter:description" content="License Canada's most comprehensive technology sovereignty dataset via API. 766+ tools classified by jurisdiction, CLOUD Act exposure, and Canadian data residency." />
+  <meta name="twitter:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Upper Harbour Sovereignty Intelligence API",
+    "provider": {
+      "@type": "Organization",
+      "name": "Upper Harbour",
+      "url": "https://www.upperharbour.ca"
+    },
+    "description": "API access to Canada's most comprehensive technology sovereignty dataset — 766+ tools classified by jurisdiction, CLOUD Act exposure, and Canadian data residency.",
+    "areaServed": "CA",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "API Integration Tiers",
+      "itemListElement": [
+        {"@type": "Offer", "name": "Starter", "price": "0.003", "priceCurrency": "CAD", "description": "Pay-as-you-go per API call, $25/month minimum billing threshold. Classification lookup + domain resolve endpoints, daily data refresh. Month-to-month, no commitment. For testing, low-volume, or pilot integrations."},
+        {"@type": "Offer", "name": "Pro", "price": "499", "priceCurrency": "CAD", "description": "10,000 calls included + overage, drift webhooks, Canadian alternatives endpoint, 99.5% SLA. Ramp-in $249/mo for months 1–3."},
+        {"@type": "Offer", "name": "Enterprise", "price": "3999", "priceCurrency": "CAD", "description": "Unlimited calls, bulk corpus export, 99.9% SLA, priority classification, optional attribution."}
+      ]
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What data does the Upper Harbour Sovereignty API return?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each classification includes canonical tool name, aliases, parent company (legal name), ultimate-parent jurisdiction, CLOUD Act exposure flag, Canadian data residency availability, risk score (0–10 scale), and links to primary sources. The Canadian alternatives endpoint returns a ranked list of sovereign alternatives with the same structure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How current is the classification data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The corpus is maintained continuously. SEC EDGAR integration catches US public-company M&A in near-real-time. Canadian private-company rebrands and ownership changes are swept quarterly. All tiers get daily data refreshes; Enterprise subscribers can additionally request specific classifications on a 10-business-day turnaround."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "We're just starting out and don't know our volume. Where should we land?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start on Starter — pay-as-you-go at $0.003/call, $25/month minimum. Gives you time to prove the integration and understand your call volume before committing to a monthly tier. Most partners who exceed ~8,000 calls/month find Pro becomes cheaper; we'll surface that in your quarterly review and you can upgrade any time."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;0,6..72,900;1,6..72,400;1,6..72,700&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/site.css" />
+
+  <style>
+    /* ── Hero ───────────────────────────────────────────────── */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(18px) } to { opacity:1; transform:translateY(0) } }
+
+    .v-hero { position:relative; padding:150px 52px 80px; overflow:hidden }
+    .v-hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 60% 55% at 50% 30%, rgba(60,184,176,0.06) 0%, transparent 65%), radial-gradient(ellipse 45% 65% at 85% 70%, rgba(201,168,76,0.04) 0%, transparent 55%), var(--bg); z-index:0 }
+    .v-hero-bg::after { content:''; position:absolute; inset:0; background-image:linear-gradient(rgba(234,240,244,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(234,240,244,0.015) 1px, transparent 1px); background-size:72px 72px }
+    .v-inner { position:relative; z-index:1; max-width:1120px; margin:0 auto }
+    .v-eyebrow { font-family:var(--mono); font-size:11px; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal-deep); margin-bottom:24px; opacity:0; animation:fadeUp 0.7s ease forwards 0.15s }
+    .v-h1 { font-family:var(--display); font-size:clamp(38px,5.5vw,64px); font-weight:900; color:var(--ice); line-height:1.08; letter-spacing:-0.8px; margin-bottom:28px; max-width:820px; opacity:0; animation:fadeUp 0.7s ease forwards 0.3s }
+    .v-h1 em { font-style:italic; font-weight:700; color:var(--gold) }
+    .v-sub { font-size:17px; color:var(--slate); line-height:1.72; max-width:680px; margin-bottom:40px; opacity:0; animation:fadeUp 0.7s ease forwards 0.44s }
+    .v-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border-md); border:1px solid var(--border-md); border-radius:8px; overflow:hidden; max-width:680px; margin-bottom:40px; opacity:0; animation:fadeUp 0.7s ease forwards 0.55s }
+    .v-stat { background:var(--surface); padding:24px 20px; text-align:center }
+    .v-stat-num { font-family:var(--mono); font-size:36px; font-weight:700; line-height:1; margin-bottom:6px }
+    .v-stat-num.teal { color:var(--teal) } .v-stat-num.gold { color:var(--gold) } .v-stat-num.red { color:var(--red) }
+    .v-stat-label { font-size:11px; color:var(--muted); line-height:1.4 }
+    .v-actions { display:flex; gap:14px; align-items:center; flex-wrap:wrap; opacity:0; animation:fadeUp 0.7s ease forwards 0.65s }
+
+    /* ── Shared shells ──────────────────────────────────────── */
+    .container { max-width:1120px; margin:0 auto; padding:0 52px }
+    .section { padding:80px 0; border-top:1px solid var(--border) }
+    .section-label { font-family:var(--mono); font-size:10px; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal-deep); margin-bottom:16px }
+    .section-title { font-family:var(--display); font-size:clamp(26px,3vw,40px); font-weight:700; color:var(--ice); line-height:1.12; letter-spacing:-0.3px; margin-bottom:16px }
+    .section-title em { font-style:italic; color:var(--gold) }
+    .section-body { font-size:15px; color:var(--slate); line-height:1.75; max-width:620px }
+
+    .btn-primary { font-size:13px; font-weight:800; color:var(--bg); background:var(--teal); padding:16px 32px; text-decoration:none; border-radius:4px; transition:background 0.2s, transform 0.15s; display:inline-flex; align-items:center; gap:6px; box-shadow:0 0 16px rgba(60,184,176,0.25) }
+    .btn-primary:hover { background:#47cec5; transform:translateY(-1px) }
+    .btn-ghost { font-size:13px; font-weight:500; color:var(--slate); text-decoration:none; padding:14px 4px; border-bottom:1px solid var(--border-md); transition:color 0.2s, border-color 0.2s }
+    .btn-ghost:hover { color:var(--teal); border-color:var(--teal) }
+
+    /* ── Tier cards (3-up svc-grid variant) ─────────────────── */
+    .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--border-md); border-radius:10px; overflow:hidden; margin-top:48px }
+    .svc { background:var(--surface); padding:40px 32px; position:relative; transition:background 0.25s; display:flex; flex-direction:column }
+    .svc:hover { background:var(--surface-2) }
+    .svc.popular::before { content:'RECOMMENDED'; position:absolute; top:0; left:50%; transform:translateX(-50%); background:var(--gold); color:var(--bg); font-family:var(--mono); font-size:9px; font-weight:700; letter-spacing:0.12em; padding:5px 14px; border-radius:0 0 4px 4px }
+    .svc-name { font-family:var(--display); font-size:20px; font-weight:700; color:var(--ice); line-height:1.2; margin-bottom:4px }
+    .svc-price { font-family:var(--display); font-size:40px; font-weight:700; margin-bottom:8px; line-height:1 }
+    .svc-price .period { font-family:var(--body); font-size:15px; font-weight:500; color:var(--slate); margin-left:4px }
+    .svc-price.teal { color:var(--teal) } .svc-price.gold { color:var(--gold) } .svc-price.green { color:#10B981 }
+    .svc-tag { font-size:13px; color:var(--teal); margin-bottom:24px; line-height:1.45; font-weight:500; min-height:38px }
+    .svc-items { list-style:none; margin:0 0 24px; padding:0; flex:1 }
+    .svc-items li { font-size:13px; color:var(--slate); line-height:1.5; padding:9px 0 9px 22px; position:relative; border-bottom:1px solid var(--border) }
+    .svc-items li:last-child { border-bottom:none }
+    .svc-items li::before { content:''; position:absolute; left:0; top:14px; width:8px; height:5px; border-left:2px solid var(--teal); border-bottom:2px solid var(--teal); transform:rotate(-45deg) }
+    .svc-items li em { font-style:italic; font-family:var(--display); color:var(--gold); font-size:12.5px; font-weight:400 }
+    .svc-items li strong { color:var(--ice); font-weight:700 }
+    a.svc-cta { display:block; margin-top:auto; padding:13px 0; font-size:13px; font-weight:700; text-align:center; text-decoration:none; border-radius:4px; transition:background 0.2s, transform 0.15s }
+    a.svc-cta:hover { transform:translateY(-1px) }
+    a.svc-cta.primary { background:var(--teal); color:var(--bg) }
+    a.svc-cta.primary:hover { background:#47cec5 }
+    a.svc-cta.ghost { background:transparent; color:var(--teal); border:1px solid var(--teal) }
+    a.svc-cta.ghost:hover { background:rgba(60,184,176,0.08) }
+
+    /* Callout under tiers */
+    .tier-note { margin-top:40px; padding:24px 28px; background:var(--surface); border:1px solid var(--border-md); border-left:3px solid var(--teal-deep); border-radius:0 6px 6px 0; font-size:14px; color:var(--slate); line-height:1.7 }
+    .tier-note strong { color:var(--ice); font-weight:700 }
+
+    /* ── Process grid (reuses vendors pattern) ──────────────── */
+    .process-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--border-md); border-radius:8px; overflow:hidden; margin-top:48px }
+    .process-card { background:var(--surface); padding:32px 28px }
+    .process-num { display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:50%; background:var(--teal); color:var(--bg); font-family:var(--body); font-size:12px; font-weight:700; margin-bottom:16px }
+    .process-title { font-family:var(--display); font-size:17px; font-weight:700; color:var(--ice); margin-bottom:8px }
+    .process-desc { font-size:13px; color:var(--muted); line-height:1.65 }
+
+    /* ── Endpoint grid (code samples) ───────────────────────── */
+    .endpoint-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--border-md); border-radius:8px; overflow:hidden; margin-top:48px }
+    .endpoint-card { background:var(--surface); padding:32px 28px }
+    .endpoint-title { font-family:var(--display); font-size:17px; font-weight:700; color:var(--ice); margin-bottom:8px }
+    .endpoint-desc { font-size:13px; color:var(--muted); line-height:1.65; margin-bottom:16px }
+    .endpoint-code { display:block; background:var(--bg); color:var(--teal); padding:11px 14px; border-radius:4px; font-family:var(--mono); font-size:12.5px; border:1px solid var(--border); overflow-x:auto; white-space:nowrap }
+
+    /* ── Moat grid (reuses proof pattern at 4 cols) ─────────── */
+    .moat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; background:var(--border-md); border-radius:8px; overflow:hidden; margin-top:48px }
+    .moat-card { background:var(--surface); padding:28px 24px }
+    .moat-num { font-family:var(--mono); font-size:24px; font-weight:700; color:var(--gold); margin-bottom:6px; line-height:1.1 }
+    .moat-num.teal { color:var(--teal); font-family:var(--display); font-style:italic; font-weight:700 }
+    .moat-num.ice { color:var(--ice); font-family:var(--display); font-style:italic; font-weight:700 }
+    .moat-desc { font-size:13px; color:var(--slate); line-height:1.6 }
+
+    /* ── FAQ (reuses vendors pattern) ───────────────────────── */
+    .faq-section { padding:80px 0; border-top:1px solid var(--border) }
+    .faq-section h2 { font-family:var(--display); font-size:28px; font-weight:700; color:var(--ice); margin:0 0 32px }
+    .faq-item { border-bottom:1px solid var(--border); padding:20px 0 }
+    .faq-q { font-size:15px; font-weight:700; color:var(--ice); cursor:pointer; display:flex; justify-content:space-between; align-items:center; gap:16px }
+    .faq-q::after { content:'+'; font-size:20px; color:var(--muted); transition:transform 0.2s }
+    .faq-item.open .faq-q::after { transform:rotate(45deg); color:var(--teal) }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.35s ease; padding:0 }
+    .faq-item.open .faq-a { max-height:400px; padding:16px 0 4px }
+    .faq-a p { font-size:14px; color:var(--slate); line-height:1.75 }
+
+    /* ── CTA (reuses vendors pattern) ───────────────────────── */
+    .cta-section { padding:80px 0; text-align:center; border-top:1px solid var(--border) }
+    .cta-section h2 { font-family:var(--display); font-size:clamp(28px,3.5vw,44px); font-weight:700; color:var(--ice); margin-bottom:12px }
+    .cta-section p { font-size:15px; color:var(--slate); margin-bottom:32px }
+    .cta-contact { font-size:13px; color:var(--muted); margin-top:16px }
+    .cta-contact a { color:var(--teal); text-decoration:none; border-bottom:1px solid rgba(60,184,176,0.3) }
+
+    /* ── Submit form (reuses vendors pattern) ───────────────── */
+    .submit-section { padding:80px 0; border-top:1px solid var(--border) }
+    .submit-form { max-width:640px; margin-top:40px }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px }
+    .form-group { display:flex; flex-direction:column; gap:6px }
+    .form-group.full { grid-column:1 / -1 }
+    .form-label { font-size:12px; font-weight:600; color:var(--slate); letter-spacing:0.03em }
+    .form-input, .form-select { padding:12px 14px; font-size:14px; font-family:var(--body); background:var(--surface); border:1px solid var(--border-md); border-radius:4px; color:var(--ice); outline:none; transition:border-color 0.2s; width:100% }
+    .form-input:focus, .form-select:focus { border-color:var(--teal) }
+    .form-input::placeholder { color:var(--muted) }
+    .form-select { appearance:none; background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238A9DB0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:36px; cursor:pointer }
+    .form-select option { background:var(--surface); color:var(--ice) }
+    .form-note { font-size:11px; color:var(--muted); margin-top:4px; line-height:1.4 }
+    .form-submit { margin-top:24px; display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:800; font-family:var(--body); color:var(--bg); background:var(--teal); padding:16px 32px; border:none; border-radius:4px; cursor:pointer; transition:background 0.2s, transform 0.15s; box-shadow:0 0 16px rgba(60,184,176,0.25) }
+    .form-submit:hover { background:#47cec5; transform:translateY(-1px) }
+    .form-success { display:none; padding:24px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); border-radius:6px; margin-top:24px }
+    .form-success h3 { font-family:var(--display); font-size:20px; font-weight:700; color:#10B981; margin-bottom:8px }
+    .form-success p { font-size:14px; color:var(--slate); line-height:1.6 }
+
+    /* ── Related cards ──────────────────────────────────────── */
+    .related-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; background:var(--border-md); border-radius:8px; overflow:hidden; margin-top:48px }
+    .related-card { background:var(--surface); padding:28px; text-decoration:none; transition:background 0.2s }
+    .related-card:hover { background:var(--surface-2) }
+    .related-title { font-family:var(--display); font-size:18px; font-weight:700; color:var(--teal); margin-bottom:6px }
+    .related-desc { font-size:13px; color:var(--slate); line-height:1.6 }
+
+    /* ── Reveal ─────────────────────────────────────────────── */
+    .reveal { opacity:0; transform:translateY(16px); transition:opacity 0.6s ease, transform 0.6s ease }
+    .reveal.visible { opacity:1; transform:translateY(0) }
+
+    /* ── Mobile ─────────────────────────────────────────────── */
+    @media (max-width:900px) {
+      .v-hero { padding:120px 24px 60px }
+      .container { padding:0 24px }
+      .svc-grid { grid-template-columns:1fr }
+      .process-grid { grid-template-columns:1fr }
+      .endpoint-grid { grid-template-columns:1fr }
+      .moat-grid { grid-template-columns:1fr 1fr }
+      .related-grid { grid-template-columns:1fr }
+    }
+    @media (max-width:600px) {
+      .v-stats { grid-template-columns:1fr }
+      .form-row { grid-template-columns:1fr }
+      .moat-grid { grid-template-columns:1fr }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nav (standard) -->
+  <nav>
+    <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+      <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+        <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+        <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+      </svg>
+      <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/research" class="nav-link">Research</a>
+      <a href="/tools" class="nav-link">Sovereignty Index</a>
+      <a href="/signals" class="nav-link">Signals</a>
+      <a href="/resources" class="nav-link">Compliance</a>
+      <a href="/harbourscan" class="nav-cta">Map Your Stack</a>
+    </div>
+    <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </nav>
+  <div class="nav-mobile-menu">
+    <a href="/research">Research</a>
+    <a href="/tools">Sovereignty Index</a>
+    <a href="/signals">Signals</a>
+    <a href="/resources">Compliance</a>
+    <a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HERO                                                    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="v-hero">
+    <div class="v-hero-bg"></div>
+    <div class="v-inner">
+      <div class="v-eyebrow">For Software Companies &amp; Integrators</div>
+      <h1 class="v-h1">Build sovereignty intelligence <em>into your product.</em></h1>
+      <p class="v-sub">Canada's most comprehensive technology sovereignty dataset &mdash; 766+ tools mapped by jurisdiction, ownership, and CLOUD Act exposure &mdash; available via API for products that need jurisdictional context at decision time.</p>
+
+      <div class="v-stats">
+        <div class="v-stat"><div class="v-stat-num teal">766+</div><div class="v-stat-label">tools classified</div></div>
+        <div class="v-stat"><div class="v-stat-num red">82%</div><div class="v-stat-label">under foreign jurisdiction</div></div>
+        <div class="v-stat"><div class="v-stat-num gold">Daily</div><div class="v-stat-label">data refresh cadence</div></div>
+      </div>
+
+      <div class="v-actions">
+        <a href="https://calendly.com/josh-upperharbour/30min" class="btn-primary" target="_blank">Book a Technical Call &rarr;</a>
+        <a href="#tiers" class="btn-ghost">See pricing &darr;</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- TIERS                                                   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="section reveal" id="tiers">
+    <div class="container">
+      <div class="section-label">Three ways to integrate</div>
+      <h2 class="section-title">License the data. <em>Power the decision.</em></h2>
+      <p class="section-body">Your agent, dashboard, or procurement tool asks the sovereignty question. Our API answers it &mdash; with primary-source classification, CLOUD Act exposure, and Canadian alternatives.</p>
+
+      <div class="svc-grid">
+
+        <!-- Starter (pay-as-you-go) -->
+        <div class="svc">
+          <div class="svc-name">Starter</div>
+          <div class="svc-price teal">$0.003<span class="period">/call CAD</span></div>
+          <div class="svc-tag">For testing, low-volume, or pilot integrations</div>
+          <ul class="svc-items">
+            <li>Pay only for what you use</li>
+            <li>Classification lookup + domain resolve endpoints</li>
+            <li>Daily data refresh</li>
+            <li>$25/month minimum billing threshold</li>
+            <li>Month-to-month, no commitment</li>
+            <li>Upgrade to Pro anytime</li>
+          </ul>
+          <a href="#book" class="svc-cta ghost">Book a Call &rarr;</a>
+        </div>
+
+        <!-- Pro (featured) -->
+        <div class="svc popular">
+          <div class="svc-name">Pro</div>
+          <div class="svc-price teal">$499<span class="period">/mo CAD</span></div>
+          <div class="svc-tag">For products where classification drives real-time decisions</div>
+          <ul class="svc-items">
+            <li>10,000 API calls included; $0.003 per call above</li>
+            <li>Classification drift webhooks</li>
+            <li>Canadian alternatives endpoint <em>&mdash; Pro and Enterprise only</em></li>
+            <li>Daily data refresh</li>
+            <li>Quarterly partnership review</li>
+            <li>Shared Slack support channel</li>
+            <li>99.5% uptime SLA</li>
+            <li><strong>Early-partner ramp:</strong> $249/mo for months 1&ndash;3 <em>while you complete integration</em></li>
+          </ul>
+          <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="svc-cta primary">Book a Call &rarr;</a>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="svc">
+          <div class="svc-name">Enterprise</div>
+          <div class="svc-price gold">$3,999<span class="period">/mo CAD</span></div>
+          <div class="svc-tag">For integrations where downtime is customer-visible</div>
+          <ul class="svc-items">
+            <li>Unlimited API calls</li>
+            <li>Bulk corpus export (signed JSON)</li>
+            <li>99.9% uptime SLA with incident response</li>
+            <li>Priority classification requests (10-business-day turnaround)</li>
+            <li>Custom data fields on request</li>
+            <li>Dedicated Slack channel &amp; quarterly review calls</li>
+            <li>Attribution optional</li>
+          </ul>
+          <a href="https://calendly.com/josh-upperharbour/30min" target="_blank" class="svc-cta primary">Book a Call &rarr;</a>
+        </div>
+
+      </div>
+
+      <div class="tier-note">
+        <strong>Starter is pay-as-you-go</strong> with a $25/month minimum &mdash; no commitment, billed for actual calls. Most partners start here during integration and move to Pro once they're past ~8,000 calls/month (where Pro becomes cheaper). The Pro <strong>ramp-in</strong> drops the base to $249/mo for months 1&ndash;3 while you complete integration, then lifts to $499/mo ongoing. 12-month term on Pro and Enterprise.
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- HOW IT WORKS                                            -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Integration in 10 days. <em>Not 10 months.</em></h2>
+      <p class="section-body">Primary-source classification data, a stable API, and a partnership model designed to get you shipping &mdash; not stuck in procurement.</p>
+
+      <div class="process-grid">
+        <div class="process-card">
+          <div class="process-num">1</div>
+          <div class="process-title">30-minute technical call</div>
+          <div class="process-desc">Walk through your architecture, expected call volume, and which classification fields are highest-value for your agent's decisions.</div>
+        </div>
+        <div class="process-card">
+          <div class="process-num">2</div>
+          <div class="process-title">Trial access + scoping</div>
+          <div class="process-desc">Sandbox API key, full documentation, two weeks of free testing against the full dataset. No commitment until you're ready.</div>
+        </div>
+        <div class="process-card">
+          <div class="process-num">3</div>
+          <div class="process-title">Production in 10 business days</div>
+          <div class="process-desc">One-page letter of agreement signed. Production API key issued. Integration support as you wire it into your product.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- ENDPOINTS                                               -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="section-label">What you get</div>
+      <h2 class="section-title">The data your agent <em>actually needs.</em></h2>
+
+      <div class="endpoint-grid">
+        <div class="endpoint-card">
+          <div class="endpoint-title">Vendor classification lookup</div>
+          <div class="endpoint-desc">Ultimate-parent jurisdiction, risk score, CLOUD Act exposure, Canadian data residency status. Sub-100ms response.</div>
+          <code class="endpoint-code">GET /api/sovereignty/classify?tool=slack</code>
+        </div>
+        <div class="endpoint-card">
+          <div class="endpoint-title">Domain-to-tool resolution</div>
+          <div class="endpoint-desc">Raw hostname to canonical tool mapping. Handles subdomains, aliases, CNAME chains.</div>
+          <code class="endpoint-code">POST /api/sovereignty/resolve</code>
+        </div>
+        <div class="endpoint-card">
+          <div class="endpoint-title">Canadian alternatives</div>
+          <div class="endpoint-desc">For any flagged tool, returns Canadian-sovereign alternatives with full classification. Not replicable without the corpus.</div>
+          <code class="endpoint-code">GET /api/sovereignty/alternatives?tool=zoom</code>
+        </div>
+        <div class="endpoint-card">
+          <div class="endpoint-title">Classification drift webhook</div>
+          <div class="endpoint-desc">Real-time notification when vendors in your watchlist are reclassified (M&amp;A, jurisdictional change, EDGAR tripwire).</div>
+          <code class="endpoint-code">POST [your endpoint]</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- MOAT                                                    -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="section-label">Why license it</div>
+      <h2 class="section-title">Build your product. <em>We'll maintain the corpus.</em></h2>
+
+      <div class="moat-grid">
+        <div class="moat-card">
+          <div class="moat-num">766+</div>
+          <div class="moat-desc">Tools classified to ultimate-parent jurisdiction, not marketing claims.</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-num teal">SEC EDGAR</div>
+          <div class="moat-desc">M&amp;A tripwire catches US public-company acquisitions before they hit news.</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-num">Quarterly</div>
+          <div class="moat-desc">Canadian private-company rebrand + ownership review sweep.</div>
+        </div>
+        <div class="moat-card">
+          <div class="moat-num ice">Primary</div>
+          <div class="moat-desc">Every classification traceable to incorporation records, DPAs, filings.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FAQ                                                     -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="faq-section reveal">
+    <div class="container">
+      <h2>Common questions</h2>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What data does the API return?</div>
+        <div class="faq-a"><p>Each classification includes canonical tool name, aliases, parent company (legal name), ultimate-parent jurisdiction, CLOUD Act exposure flag, Canadian data residency availability, risk score (0&ndash;10 scale), and links to primary sources. The Canadian alternatives endpoint returns a ranked list of sovereign alternatives with the same structure.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How current is the classification data?</div>
+        <div class="faq-a"><p>The corpus is maintained continuously. SEC EDGAR integration catches US public-company M&amp;A in near-real-time. Canadian private-company rebrands and ownership changes are swept quarterly. All tiers get daily data refreshes; Enterprise subscribers can additionally request specific classifications on a 10-business-day turnaround.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Can we white-label or resell the classification data?</div>
+        <div class="faq-a"><p>Not at the standard tiers. Classifications are licensed for use as part of your product, not for resale as a standalone data product. Custom arrangements can be discussed for enterprise integrations &mdash; we'll scope it during the technical call.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">What happens if we exceed our tier cap?</div>
+        <div class="faq-a"><p>Starter has no cap &mdash; you're billed $0.003 per call. Pro includes 10,000 calls; overage billed at $0.003/call above that. Enterprise has no cap. No surprise invoices &mdash; you set alerts at any usage threshold.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">We're just starting out and don't know our volume. Where should we land?</div>
+        <div class="faq-a"><p>Start on Starter &mdash; pay-as-you-go at $0.003/call, $25/month minimum. Gives you time to prove the integration and understand your call volume before committing to a monthly tier. Most partners who exceed ~8,000 calls/month find Pro becomes cheaper; we'll surface that in your quarterly review and you can upgrade any time.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">How does exit work?</div>
+        <div class="faq-a"><p>60 days notice from either party. On termination, API keys are rotated, cached data in your systems must be flushed within 30 days. Any pre-paid annual subscription is pro-rated. No penalties for exiting.</p></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">Who is behind Upper Harbour?</div>
+        <div class="faq-a"><p>Upper Harbour was founded by Josh van Es, a corporate lawyer published in The Globe and Mail, Maclean's, OpenCanada, and BetaKit. The platform maintains Canada's most comprehensive technology sovereignty dataset &mdash; 766+ tools mapped by jurisdiction, ownership, and CLOUD Act exposure.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- BOOK CTA                                                -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="cta-section reveal" id="book">
+    <div class="container">
+      <h2>Ready to build sovereignty into your product?</h2>
+      <p>Book a 30-minute technical call. We'll assess fit and recommend the right tier for your integration.</p>
+      <a href="https://calendly.com/josh-upperharbour/30min" class="btn-primary" target="_blank">Book a Call &rarr;</a>
+      <p class="cta-contact">Or email <a href="mailto:josh@upperharbour.ca">josh@upperharbour.ca</a> directly.</p>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- SUBMIT YOUR TOOL FORM (Index listing)                   -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="submit-section reveal" id="submit">
+    <div class="container" style="text-align:center">
+      <div class="section-label">Also &mdash; get listed in the Index</div>
+      <h2 class="section-title">Your product <em>belongs on the map.</em></h2>
+      <p class="section-body" style="margin-left:auto;margin-right:auto">While you're here: the Upper Harbour Sovereignty Index is free to join for any SaaS tool. Fill out the form below &mdash; we'll verify against primary sources and add your tool within 5 business days. Independent of the API licensing conversation &mdash; just a separate, free way to get your sovereignty posture on the public record.</p>
+
+      <div class="submit-form" id="submit-form-wrap" style="margin-left:auto;margin-right:auto;text-align:left">
+        <form action="https://formspree.io/f/mlgonedz" method="POST" id="listing-form">
+          <input type="hidden" name="_subject" value="New Index Listing Submission (from /partners)" />
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tool_name">Tool name</label>
+              <input type="text" class="form-input" id="tool_name" name="tool_name" placeholder="e.g. Acme Cloud" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="company_name">Parent company (legal name)</label>
+              <input type="text" class="form-input" id="company_name" name="company_name" placeholder="e.g. Acme Technologies Inc." required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="jurisdiction">Jurisdiction of incorporation</label>
+              <input type="text" class="form-input" id="jurisdiction" name="jurisdiction" placeholder="e.g. Delaware, US &middot; Ontario, Canada" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="website">Website URL</label>
+              <input type="url" class="form-input" id="website" name="website" placeholder="https://" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="category">Category</label>
+              <select class="form-select" id="category" name="category" required>
+                <option value="" disabled selected>Select a category</option>
+                <option value="Collaboration">Collaboration</option>
+                <option value="Cloud Infrastructure">Cloud Infrastructure</option>
+                <option value="CRM">CRM</option>
+                <option value="Cybersecurity">Cybersecurity</option>
+                <option value="Data & Analytics">Data &amp; Analytics</option>
+                <option value="Design">Design</option>
+                <option value="Developer Tools">Developer Tools</option>
+                <option value="E-commerce">E-commerce</option>
+                <option value="Finance & Accounting">Finance &amp; Accounting</option>
+                <option value="HR & Payroll">HR &amp; Payroll</option>
+                <option value="Legal">Legal</option>
+                <option value="Marketing">Marketing</option>
+                <option value="Productivity">Productivity</option>
+                <option value="Project Management">Project Management</option>
+                <option value="Storage">Storage</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="hosting">Where is data hosted?</label>
+              <input type="text" class="form-input" id="hosting" name="hosting" placeholder="e.g. AWS ca-central-1 (Canada)" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="cdn_residency">Canadian data residency available?</label>
+              <select class="form-select" id="cdn_residency" name="cdn_residency">
+                <option value="" disabled selected>Select</option>
+                <option value="Yes - all plans">Yes &mdash; all plans</option>
+                <option value="Yes - enterprise only">Yes &mdash; enterprise only</option>
+                <option value="No">No</option>
+                <option value="Default (Canada is default)">Default (Canada is default)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="us_operations">US subsidiary or operations?</label>
+              <select class="form-select" id="us_operations" name="us_operations">
+                <option value="" disabled selected>Select</option>
+                <option value="No">No</option>
+                <option value="Yes - US subsidiary">Yes &mdash; US subsidiary</option>
+                <option value="Yes - US incorporated">Yes &mdash; US incorporated</option>
+                <option value="US is parent jurisdiction">US is parent jurisdiction</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="contact_name">Your name</label>
+              <input type="text" class="form-input" id="contact_name" name="contact_name" placeholder="First and last name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact_email">Your email</label>
+              <input type="email" class="form-input" id="contact_email" name="_replyto" placeholder="you@company.com" required />
+            </div>
+          </div>
+
+          <div class="form-group full" style="margin-bottom:0">
+            <label class="form-label" for="notes">Anything else we should know?</label>
+            <textarea class="form-input" id="notes" name="notes" rows="3" placeholder="Encryption details, compliance certifications, hosting architecture notes, etc." style="resize:vertical"></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Submit for Listing &rarr;</button>
+          <p class="form-note" style="margin-top:12px">We'll verify against primary sources before publishing. You'll receive a confirmation email once your listing is live.</p>
+        </form>
+
+        <div class="form-success" id="form-success">
+          <h3>Submission received</h3>
+          <p>We'll verify your details against primary sources and add your tool to the Sovereignty Index within 5 business days. You'll receive a confirmation email at the address you provided.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- RELATED                                                 -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <section class="section reveal">
+    <div class="container">
+      <div class="section-label">Also in the Upper Harbour family</div>
+      <h2 class="section-title">Three more ways <em>to engage.</em></h2>
+
+      <div class="related-grid">
+        <a href="/vendors" class="related-card">
+          <div class="related-title">For SaaS vendors &rarr;</div>
+          <p class="related-desc">The full vendor service menu: Sovereign Badge ($249), Competitor Sovereignty Report ($499), Dedicated Tool Page ($799), or the bundle.</p>
+        </a>
+        <a href="/tools" class="related-card">
+          <div class="related-title">Browse the Index &rarr;</div>
+          <p class="related-desc">Search 766 classified SaaS tools by jurisdiction, CLOUD Act exposure, and Canadian data residency.</p>
+        </a>
+        <a href="/comply" class="related-card">
+          <div class="related-title">For organizations &rarr;</div>
+          <p class="related-desc">Generate Law 25, PIPEDA, and POPA compliance documentation against your stack. From $99.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/consulting">Consulting</a></li>
+          <li><a href="/vendors">Vendors</a></li>
+          <li><a href="/partners">Partners</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Form submission via fetch (stays on page, shows success message)
+    const form = document.getElementById('listing-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = form.querySelector('.form-submit');
+        btn.textContent = 'Submitting...';
+        btn.disabled = true;
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function(r) {
+          if (r.ok) {
+            form.style.display = 'none';
+            document.getElementById('form-success').style.display = 'block';
+          } else {
+            btn.textContent = 'Something went wrong. Try again.';
+            btn.disabled = false;
+          }
+        }).catch(function() {
+          btn.textContent = 'Something went wrong. Try again.';
+          btn.disabled = false;
+        });
+      });
+    }
+  </script>
+  <script src="/assets/track.js" defer></script>
+</body>
+</html>
