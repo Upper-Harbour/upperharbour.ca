@@ -1,0 +1,29 @@
+{
+  "alerts": [
+    {
+      "tool_name": "Libro",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"OpenTable\", \"jurisdiction\": \"United States\", \"category\": \"productivity\", \"rationale\": \"Restaurant reservation SaaS now under US parent company ownership; Canadian restaurants should track data residency and compliance implications under Law 25 and PIPEDA.\"}",
+      "reason": "Restaurant reservation SaaS now under US parent company ownership; Canadian restaurants should track data residency and compliance implications under Law 25 and PIPEDA.",
+      "signal_headline": "OpenTable acquires Libro, a Montreal restaurant reservation platform",
+      "signal_date": "2026-04-22",
+      "source_url": "https://betakit.com/opentable-gobbles-up-canadian-market-share-with-libro-acquisition/",
+      "flagged_at": "2026-04-27T13:12:27.368549",
+      "status": "pending_review"
+    },
+    {
+      "tool_name": "Cohere",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Cohere / Aleph Alpha (merged)\", \"jurisdiction\": \"Canada / Germany\", \"category\": \"ai\", \"rationale\": \"Major Canadian AI vendor now under joint Canadian-German ownership; governance and data residency structure post-merger is critical for Canadian public and private sector adopters.\"}",
+      "reason": "Major Canadian AI vendor now under joint Canadian-German ownership; governance and data residency structure post-merger is critical for Canadian public and private sector adopters.",
+      "signal_headline": "Cohere and Aleph Alpha merge to advance sovereign AI capabilities",
+      "signal_date": "2026-04-24",
+      "source_url": "https://thelogic.co/news/cohere-aleph-alpha-merger-sovereign-ai/",
+      "flagged_at": "2026-04-27T13:12:27.368586",
+      "status": "pending_review"
+    }
+  ],
+  "updated": "2026-04-27T13:12:27.370095"
+}

@@ -1,9 +1,49 @@
 {
   "meta": {
-    "lastUpdated": "Apr 26, 2026 — 12:50 ET",
+    "lastUpdated": "Apr 27, 2026 — 13:12 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "OpenTable acquires Libro, a Montreal restaurant reservation platform",
+      "summary": "US-based OpenTable has acquired Canadian restaurant reservation startup Libro. The acquisition consolidates restaurant tech infrastructure under US ownership, with implications for Canadian restaurant operators' data residency and control over booking systems.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/opentable-gobbles-up-canadian-market-share-with-libro-acquisition/",
+      "date": "2026-04-22",
+      "impact": "Canadian restaurant operators using Libro should review data residency terms and assess whether booking and customer data will remain in Canadian jurisdiction post-acquisition.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Quebec digital sovereignty initiative raises concerns",
+      "summary": "Quebec's digital sovereignty strategy has prompted public alarm, suggesting either controversial policy direction or tension between sovereignty ambitions and stakeholder interests. The full scope of Quebec's approach and the specific concerns require review of the original source.",
+      "type": "policy",
+      "source": "The Logic",
+      "sourceUrl": "https://thelogic.co/commentary/quebec-ink/quebec-digital-sovereignty-cgi/",
+      "date": "2026-04-27",
+      "impact": "Quebec-based technology vendors and public-sector organizations should monitor the evolving sovereignty policy framework and its procurement or operational implications.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Cohere and Aleph Alpha merge to advance sovereign AI capabilities",
+      "summary": "Canadian AI company Cohere has merged with German AI company Aleph Alpha in a transaction framed around sovereign AI development. The merger combines Canadian and European AI capacity, with potential implications for where Canadian AI infrastructure and training data will be hosted and governed.",
+      "type": "acquisition",
+      "source": "The Logic",
+      "sourceUrl": "https://thelogic.co/news/cohere-aleph-alpha-merger-sovereign-ai/",
+      "date": "2026-04-24",
+      "impact": "Canadian organizations using Cohere for AI services should clarify post-merger data residency, governance structure, and whether training data or model inference will move to European jurisdiction.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Data sovereignty and geospatial control emerge as operational procurement priorities in federal and provincial infrastructure planning",
+      "summary": "Data sovereignty and control of critical geospatial datasets have become active operational considerations in federal, provincial, and industry procurement decisions and infrastructure planning for Canada's geospatial sector. This signals broader institutional recognition that data control is a material factor in strategic technology procurement and public infrastructure decisions.",
+      "type": "policy",
+      "source": "GoGeomatics",
+      "sourceUrl": "https://gogeomatics.ca/canada-geospatial-sector-execution-geoignite-2026/",
+      "date": "2026-04-24",
+      "impact": "Federal and provincial agencies responsible for geospatial infrastructure and critical data systems should ensure procurement frameworks for mapping, geographic information systems, and location-based services include data sovereignty and residency requirements aligned with emerging sector standards.",
+      "dbUpdate": false
+    },
     {
       "headline": "Privacy Commissioner testifies on Connected Care for Canadians Act digital health privacy safeguards",
       "summary": "Deputy Commissioner Marc Chénier testified before the Senate on Bill S-5 (Connected Care for Canadians Act), supporting interoperable digital health systems while recommending privacy law exceptions in regulations. This reflects active federal engagement on data sovereignty and privacy controls in the digital health sector.",
