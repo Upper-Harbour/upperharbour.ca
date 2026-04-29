@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Apr 28, 2026 — 13:13 ET",
+    "lastUpdated": "Apr 29, 2026 — 13:11 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "ITIF report recommends control-by-design over strict localization in Canadian cloud policy",
+      "summary": "The Information Technology and Innovation Foundation published analysis of Canadian cloud procurement policy recommending customer-held encryption keys and data portability as preferable to strict data localization mandates. The report acknowledges heightened controls for defense and intelligence systems but warns that broad commercial localization constraints risk system fragmentation.",
+      "type": "policy",
+      "source": "ITIF",
+      "sourceUrl": "https://itif.org/publications/2026/04/27/from-sovereignty-to-control-a-clear-eyed-view-of-canadian-cloud-policy/",
+      "date": "2026-04-27",
+      "impact": "Canadian organizations should evaluate whether their cloud vendors offer customer-controlled encryption and data portability as alternatives to full residency requirements, particularly where CLOUD Act exposure exists.",
+      "dbUpdate": false
+    },
     {
       "headline": "OpenTable acquires Libro, a Montreal restaurant reservation platform",
       "summary": "US-based OpenTable has acquired Canadian restaurant reservation startup Libro. The acquisition consolidates restaurant tech infrastructure under US ownership, with implications for Canadian restaurant operators' data residency and control over booking systems.",
