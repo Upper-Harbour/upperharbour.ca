@@ -56,16 +56,28 @@
   var API_BASE = 'https://web-production-b1856.up.railway.app';
 
   function populate(stats) {
+    // Plain inline stats — overwrite textContent with the live value.
     document.querySelectorAll('.uh-stat').forEach(function(el) {
       var key = el.getAttribute('data-stat');
       if (key && stats[key] !== undefined && stats[key] !== null) {
         el.textContent = stats[key];
       }
     });
+    // Animated counters — these have data-target which an in-page
+    // count-up animation reads on viewport-enter. The fetch usually
+    // resolves AFTER that animation has already painted the stale
+    // hardcoded value, so we (a) update the data-target so any
+    // not-yet-started animation lands on the right number, and
+    // (b) ALSO overwrite textContent unconditionally so an
+    // already-completed animation gets corrected on top. Includes
+    // suffix support (data-suffix="%") to match how the page-level
+    // count-up animation formats values.
     document.querySelectorAll('[data-stat][data-target]').forEach(function(el) {
       var key = el.getAttribute('data-stat');
       if (key && stats[key] !== undefined && stats[key] !== null) {
         el.setAttribute('data-target', stats[key]);
+        var suffix = el.getAttribute('data-suffix') || '';
+        el.textContent = stats[key] + suffix;
       }
     });
   }
