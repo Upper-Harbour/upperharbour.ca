@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Apr 29, 2026 — 13:11 ET",
+    "lastUpdated": "Apr 30, 2026 — 13:10 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Ontario passes Bill 97, exempting ministerial records from freedom of information requests",
+      "summary": "Ontario's Legislative Assembly passed Bill 97 on April 24, 2026, exempting records held by provincial ministers from freedom of information and privacy act requests. This legislation reduces transparency and access to government-held data, with potential implications for how Canadian provinces manage information governance and data access protocols.",
+      "type": "legislation",
+      "source": "JURIST",
+      "sourceUrl": "https://www.jurist.org/news/2026/04/ontario-passes-law-shielding-provincial-ministers-records-from-information-requests/",
+      "date": "2026-04-25",
+      "impact": "Ontario government organizations and vendors managing ministerial records should review data handling agreements and FOI/ATIP compliance documentation to understand the scope of this exemption.",
+      "dbUpdate": false
+    },
     {
       "headline": "ITIF report recommends control-by-design over strict localization in Canadian cloud policy",
       "summary": "The Information Technology and Innovation Foundation published analysis of Canadian cloud procurement policy recommending customer-held encryption keys and data portability as preferable to strict data localization mandates. The report acknowledges heightened controls for defense and intelligence systems but warns that broad commercial localization constraints risk system fragmentation.",
