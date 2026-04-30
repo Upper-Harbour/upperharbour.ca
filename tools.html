@@ -527,13 +527,21 @@
     // view; users see vendor + parent + jurisdiction + CLOUD-Act
     // boolean, but not Upper Harbour's editorial risk call.
     //
-    // Switched away from the live API endpoint (April 2026) after
-    // a security audit found the public bulk endpoint was
-    // exfiltratable in one curl. Bulk now keyed; static snapshot
-    // here is what the marketing site needs.
+    // Two-tier dataset (Option A.5, April 2026):
+    //   1) Anonymous visitors get /assets/saas-db-featured.json
+    //      — just the 8 "Notable tools" rendered on the landing.
+    //      Tiny static file, publicly readable.
+    //   2) Once a visitor has redeemed a magic-link unlock and we
+    //      have an access_token in localStorage, we fetch
+    //      /api/snapshot (Bearer-gated) and replace saasDB with
+    //      the full 767-tool dataset.
+    // This closes the bulk-curl backdoor that an unauthenticated
+    // full snapshot used to leave open. Anonymous extraction now
+    // requires going through the email gate first.
     var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
+    var UH_ACCESS_TOKEN_KEY = 'uh.tools.access_token';
     window.saasDB = [];
-    var _toolsReady = fetch('/assets/saas-db-public.json', { cache: 'default' })
+    var _toolsReady = fetch('/assets/saas-db-featured.json', { cache: 'default' })
       .then(function(r) {
         if (!r.ok) throw new Error('tools fetch failed: ' + r.status);
         return r.json();
@@ -722,10 +730,51 @@
       t.classList.add('visible');
       setTimeout(function() { t.classList.remove('visible'); }, 3200);
     }
+    // Fetch the full 767-tool snapshot from /api/snapshot using the
+    // access_token in localStorage as Bearer credentials. Replaces
+    // the in-memory saasDB and re-renders. No-op if no access_token
+    // (anonymous visitors stay on the 8-tool featured slice).
+    //
+    // On 401 (token expired or revoked) we drop the cached token so
+    // the visitor's next 6th-tool tap re-triggers the email gate
+    // cleanly instead of silently failing.
+    function _loadFullSnapshotIfUnlocked() {
+      var token;
+      try { token = localStorage.getItem(UH_ACCESS_TOKEN_KEY); } catch (e) { token = null; }
+      if (!token) return Promise.resolve(false);
+
+      return fetch(UH_API_BASE + '/api/snapshot', {
+        headers: { 'Authorization': 'Bearer ' + token }
+      })
+        .then(function(r) {
+          if (r.status === 401) {
+            try { localStorage.removeItem(UH_ACCESS_TOKEN_KEY); } catch (e) {}
+            console.warn('[tools] access_token rejected; cleared.');
+            return null;
+          }
+          if (!r.ok) throw new Error('snapshot fetch failed: ' + r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          if (!data || !Array.isArray(data.tools)) return false;
+          window.saasDB = data.tools;
+          // Re-render with the full dataset so search, filters, and
+          // featured cards now resolve against all 767 tools.
+          if (typeof renderFeatured === 'function') renderFeatured();
+          if (typeof render === 'function') render();
+          return true;
+        })
+        .catch(function(e) {
+          console.warn('[tools] snapshot fetch error:', e && e.message);
+          return false;
+        });
+    }
     // Process ?unlock=<token>&t=<pending-tool> on page load. Verifies
-    // the token with the server; on success, sets unlocked, scrubs the
-    // URL clean, shows the toast, and auto-expands the tool the
-    // visitor was originally trying to open (if any).
+    // the magic-link token with the server; on success, stores the
+    // returned long-lived access_token in localStorage, sets the
+    // unlocked flag, scrubs the URL clean, shows the toast, fetches
+    // the full snapshot, and auto-expands the tool the visitor was
+    // originally trying to open (if any).
     function _processUnlockParam() {
       var params = new URLSearchParams(window.location.search);
       var token = params.get('unlock');
@@ -733,8 +782,7 @@
       var pendingTool = params.get('t') || '';
 
       // Strip the params from the URL right away so a copy/paste of
-      // the URL doesn't leak the token. Token is single-use semantically;
-      // technically valid until expiry, but no need to keep it in the bar.
+      // the URL doesn't leak the token.
       try {
         var clean = window.location.pathname + window.location.hash;
         window.history.replaceState(null, '', clean);
@@ -745,6 +793,15 @@
         .then(function(res) {
           if (res && res.ok) {
             _setUnlocked();
+            // Store the long-lived access_token returned by the
+            // server. Used as Bearer on /api/snapshot calls so this
+            // browser can fetch the full 767-tool dataset on every
+            // future visit without re-prompting the visitor.
+            if (res.access_token) {
+              try {
+                localStorage.setItem(UH_ACCESS_TOKEN_KEY, res.access_token);
+              } catch (e) {}
+            }
             _showUnlockToast();
             try {
               if (typeof gtag === 'function') {
@@ -754,21 +811,20 @@
                 });
               }
             } catch (e) {}
-            // If the visitor came in via the email link to see a
-            // specific tool, auto-expand it.
-            if (pendingTool && saasDB && saasDB.length) {
-              var match = saasDB.find(function(t) {
-                return t.name === pendingTool ||
-                       t.name.toLowerCase() === pendingTool.toLowerCase();
-              });
-              if (match) {
-                jumpToTool(match.name);
+            // Fetch the full snapshot and replace saasDB. Once it
+            // resolves, auto-expand the pending tool if any.
+            _loadFullSnapshotIfUnlocked().then(function() {
+              if (pendingTool && saasDB && saasDB.length) {
+                var match = saasDB.find(function(t) {
+                  return t.name === pendingTool ||
+                         t.name.toLowerCase() === pendingTool.toLowerCase();
+                });
+                if (match) jumpToTool(match.name);
               }
-            }
+            });
           } else {
-            // Token invalid/expired. Don't be loud about it — the
-            // visitor can just click another tool to re-trigger the
-            // modal.
+            // Token invalid/expired. Don't be loud — visitor can
+            // re-trigger by clicking another tool.
             console.warn('[tools] unlock token verify failed:', res && res.reason);
           }
         })
@@ -950,12 +1006,16 @@
       renderFeatured();
       render();
 
-      // If the URL carries ?unlock=<token>, verify with the server.
-      // On success this sets the unlocked flag, scrubs the URL,
-      // shows a toast, and (if t=<tool> was on the URL) auto-expands
-      // the tool the visitor was originally trying to open. Run
-      // before the hash deep-link handler so the unlock applies in
-      // time for the deep-linked expansion.
+      // Returning unlocked visitor: if we have an access_token in
+      // localStorage, pull the full 767-tool snapshot and re-render.
+      // Anonymous visitors stay on the 8-tool featured slice.
+      _loadFullSnapshotIfUnlocked();
+
+      // Magic-link arrival: if the URL carries ?unlock=<token>,
+      // verify with the server. On success this stores the new
+      // access_token, sets the unlocked flag, scrubs the URL,
+      // shows a toast, fetches the full snapshot, and (if
+      // t=<tool> was on the URL) auto-expands the pending tool.
       _processUnlockParam();
 
       // Handle direct links via hash. jumpToTool() runs the gate

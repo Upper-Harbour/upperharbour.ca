@@ -1,0 +1,175 @@
+{
+  "generated_at": "2026-04-30T20:08:24.145932+00:00",
+  "count": 8,
+  "total_in_database": 767,
+  "fields": [
+    "name",
+    "parent",
+    "hq",
+    "jurisdiction",
+    "cloudAct",
+    "dataResidency",
+    "risk",
+    "category",
+    "industries",
+    "slug"
+  ],
+  "stripped_fields": [
+    "note"
+  ],
+  "note_to_consumers": "This file lists only the 'featured' tools rendered anonymously on /tools. The full 767-tool dataset is available via /api/snapshot with an access token issued at /api/verify-tools-unlock.",
+  "tools": [
+    {
+      "name": "Slack",
+      "parent": "Salesforce Inc.",
+      "hq": "San Francisco, CA",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "US/Global regions",
+      "risk": "exposed",
+      "category": "communication",
+      "industries": [
+        "technology",
+        "finance",
+        "government",
+        "legal",
+        "education",
+        "healthcare",
+        "mining",
+        "hospitality",
+        "nonprofit"
+      ],
+      "slug": "slack"
+    },
+    {
+      "name": "Microsoft Teams",
+      "parent": "Microsoft Corporation",
+      "hq": "Redmond, WA",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "Canada region available",
+      "risk": "review",
+      "category": "communication",
+      "industries": [
+        "technology",
+        "finance",
+        "government",
+        "legal",
+        "education",
+        "healthcare",
+        "mining",
+        "real_estate",
+        "accounting",
+        "nonprofit"
+      ],
+      "slug": "microsoft-teams"
+    },
+    {
+      "name": "Zoom",
+      "parent": "Zoom Video Communications",
+      "hq": "San Jose, CA",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "US primary",
+      "risk": "exposed",
+      "category": "communication",
+      "industries": [
+        "technology",
+        "finance",
+        "government",
+        "legal",
+        "education",
+        "healthcare",
+        "accounting",
+        "nonprofit"
+      ],
+      "slug": "zoom"
+    },
+    {
+      "name": "Notion",
+      "parent": "Notion Labs Inc.",
+      "hq": "San Francisco, CA",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "US only",
+      "risk": "exposed",
+      "category": "project_management",
+      "industries": [
+        "technology",
+        "education",
+        "nonprofit"
+      ],
+      "slug": "notion"
+    },
+    {
+      "name": "Google Workspace",
+      "parent": "Alphabet Inc.",
+      "hq": "Mountain View, CA",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "Canada region available",
+      "risk": "review",
+      "category": "productivity",
+      "industries": [
+        "technology",
+        "education",
+        "nonprofit",
+        "hospitality"
+      ],
+      "slug": "google-workspace"
+    },
+    {
+      "name": "Salesforce",
+      "parent": "Salesforce Inc.",
+      "hq": "San Francisco, CA",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "Canada (Hyperforce)",
+      "risk": "review",
+      "category": "crm",
+      "industries": [
+        "technology",
+        "finance",
+        "real_estate",
+        "nonprofit",
+        "government",
+        "healthcare"
+      ],
+      "slug": "salesforce"
+    },
+    {
+      "name": "Shopify",
+      "parent": "Shopify Inc.",
+      "hq": "Ottawa, ON",
+      "jurisdiction": "Canada",
+      "cloudAct": false,
+      "dataResidency": "Canada/Global",
+      "risk": "canadian",
+      "category": "ecommerce",
+      "industries": [
+        "hospitality",
+        "technology"
+      ],
+      "slug": "shopify"
+    },
+    {
+      "name": "1Password",
+      "parent": "AgileBits Inc.",
+      "hq": "Toronto, ON",
+      "jurisdiction": "Canada",
+      "cloudAct": false,
+      "dataResidency": "Canada available",
+      "risk": "canadian",
+      "category": "security",
+      "industries": [
+        "technology",
+        "finance",
+        "legal",
+        "government",
+        "healthcare",
+        "education"
+      ],
+      "slug": "1password"
+    }
+  ]
+}
