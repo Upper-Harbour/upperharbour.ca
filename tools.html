@@ -131,11 +131,28 @@
     .lookup-gate-eyebrow::before{content:'';width:24px;height:1px;background:var(--teal);opacity:0.5}
     .lookup-gate-title{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--ice);line-height:1.2;letter-spacing:-0.3px;margin-bottom:12px}
     .lookup-gate-body{font-size:14px;color:var(--slate);line-height:1.65;margin-bottom:24px}
-    .lookup-gate-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .lookup-gate-secondary{font-family:var(--mono);font-size:10px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;padding:8px 16px;border-radius:3px;color:var(--slate);background:transparent;border:1px solid var(--border-md);cursor:pointer;transition:all 0.2s}
-    .lookup-gate-secondary:hover{color:var(--ice);border-color:var(--slate)}
+    .lookup-gate-form{display:flex;flex-direction:column;gap:10px}
+    .lookup-gate-form input[type=email]{width:100%;font-family:var(--font);font-size:14px;color:var(--ice);background:var(--midnight);border:1px solid var(--border-md);border-radius:4px;padding:12px 14px;outline:none;transition:border-color 0.2s}
+    .lookup-gate-form input[type=email]:focus{border-color:var(--teal)}
+    .lookup-gate-form input[type=email]::placeholder{color:var(--muted)}
+    .lookup-gate-submit{font-family:var(--font);font-size:13px;font-weight:700;color:var(--midnight);background:var(--teal);border:none;padding:12px 18px;border-radius:4px;cursor:pointer;transition:background 0.2s}
+    .lookup-gate-submit:hover{background:#47cec5}
+    .lookup-gate-submit:disabled{opacity:0.5;cursor:not-allowed}
+    .lookup-gate-error{color:var(--red);font-size:12px;margin-top:8px;min-height:16px}
+    .lookup-gate-fineprint{font-size:11px;color:var(--muted);line-height:1.55;margin-top:14px}
+    .lookup-gate-confirm{display:none}
+    .lookup-gate.confirmed .lookup-gate-form-wrap{display:none}
+    .lookup-gate.confirmed .lookup-gate-confirm{display:block}
+    .lookup-gate-confirm-icon{width:42px;height:42px;border-radius:50%;background:rgba(60,184,176,0.12);border:1px solid rgba(60,184,176,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+    .lookup-gate-confirm-email{font-family:var(--mono);font-size:13px;color:var(--teal);word-break:break-all}
     .lookup-gate-close{position:absolute;top:14px;right:14px;width:30px;height:30px;border-radius:50%;background:transparent;border:1px solid var(--border-md);color:var(--muted);font-size:18px;line-height:1;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center}
     .lookup-gate-close:hover{color:var(--ice);border-color:var(--slate)}
+    /* Toast that flashes briefly when the URL ?unlock=<token> param
+       successfully verifies — confirms to the visitor the magic link
+       worked. Auto-dismisses after ~3s. */
+    .lookup-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(40px);background:var(--surface);border:1px solid var(--border-md);border-left:3px solid var(--teal);border-radius:6px;padding:14px 22px;font-size:13px;color:var(--ice);z-index:1100;opacity:0;transition:opacity 0.25s,transform 0.25s;pointer-events:none;box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+    .lookup-toast.visible{opacity:1;transform:translateX(-50%) translateY(0)}
+    .lookup-toast strong{color:var(--teal);font-weight:600}
     @media(max-width:960px){
       .hero{padding:120px 28px 28px}
       .tool-grid{padding:0 28px 60px}
@@ -256,24 +273,56 @@
     </div>
   </div>
 
-  <!-- 5-lookup gate modal. Hidden by default; revealed by toggleDetail()
-       when a visitor tries to open a 6th unique tool detail. The data
-       in this database is hand-curated by Upper Harbour from cited
-       sources; the gate creates a soft conversion wall before letting
-       anyone bulk-browse the entire 767-row classification. -->
+  <!-- 5-lookup email gate. Hidden by default; revealed by toggleDetail()
+       when a visitor tries to open a 6th unique tool detail. Visitor
+       enters email → server (api/request-tools-unlock) emails a
+       HMAC-signed magic link → clicking the link unlocks this browser
+       permanently. The gate is lead capture, not authentication —
+       there's no account, no password, no session. The actual
+       anti-scrape barriers live on the API (key on /api/tools, per-IP
+       rate limit on /api/tool/<slug>, note field stripped from the
+       public snapshot). -->
   <div id="lookupGateModal" class="lookup-gate" onclick="hideLookupGate()">
     <div class="lookup-gate-inner" onclick="event.stopPropagation()">
       <button type="button" class="lookup-gate-close" onclick="hideLookupGate()" aria-label="Close">×</button>
-      <div class="lookup-gate-eyebrow">5 / 5 tools previewed</div>
-      <h2 class="lookup-gate-title">Unlock the full sovereignty index.</h2>
-      <p class="lookup-gate-body">
-        You've previewed five tools from the Canadian Technology Sovereignty Index. The full database — <strong style="color:var(--ice);font-weight:600;">767 tools</strong>, hand-classified against CLOUD Act exposure, parent jurisdiction, and Canadian data residency — is available with a free Upper Harbour account. We don't sell the data and we don't share it.
-      </p>
-      <div class="lookup-gate-actions">
-        <a href="/harbourscan" class="btn-small btn-teal-sm" onclick="markUnlockedAndProceed(true)">Map your stack &rarr;</a>
-        <button type="button" class="lookup-gate-secondary" onclick="markUnlockedAndProceed(false)">I already have an account</button>
+
+      <!-- Initial state: ask for email -->
+      <div class="lookup-gate-form-wrap">
+        <div class="lookup-gate-eyebrow">5 / 5 tools previewed</div>
+        <h2 class="lookup-gate-title">Unlock the full Sovereignty Index.</h2>
+        <p class="lookup-gate-body">
+          Enter your email and we'll send you a one-time link to unlock the full database — <strong style="color:var(--ice);font-weight:600;">767 tools</strong>, hand-classified against CLOUD Act exposure, parent jurisdiction, and Canadian data residency — on this browser. No password, no account.
+        </p>
+        <form class="lookup-gate-form" id="lookupGateForm" onsubmit="submitLookupGate(event)">
+          <input type="email" id="lookupGateEmail" placeholder="you@yourorg.ca" required autocomplete="email" />
+          <button type="submit" class="lookup-gate-submit" id="lookupGateSubmit">Send link</button>
+          <div class="lookup-gate-error" id="lookupGateError" role="alert"></div>
+        </form>
+        <p class="lookup-gate-fineprint">
+          We email the link from josh@upperharbour.ca and only use your address to send updates to the index. Unsubscribe any time.
+        </p>
+      </div>
+
+      <!-- Confirmation state: link sent -->
+      <div class="lookup-gate-confirm">
+        <div class="lookup-gate-confirm-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3CB8B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        </div>
+        <div class="lookup-gate-eyebrow" style="color:var(--teal);">Check your email</div>
+        <h2 class="lookup-gate-title">Link sent.</h2>
+        <p class="lookup-gate-body">
+          We just sent a magic link to <span class="lookup-gate-confirm-email" id="lookupGateConfirmEmail"></span>. Click the link to unlock the full Sovereignty Index on this browser. The link expires in 24 hours.
+        </p>
+        <p class="lookup-gate-fineprint">
+          Don't see it? Check spam, or wait a minute and try again. Need help? Email <a href="mailto:josh@upperharbour.ca" style="color:var(--teal);">josh@upperharbour.ca</a>.
+        </p>
       </div>
     </div>
+  </div>
+
+  <!-- Toast shown briefly after a magic-link click successfully verifies -->
+  <div id="lookupToast" class="lookup-toast" role="status" aria-live="polite">
+    <strong>Unlocked.</strong> Full Sovereignty Index available on this browser.
   </div>
 
   <div style="max-width:820px;margin:0 auto;padding:32px 52px 48px;">
@@ -529,17 +578,25 @@
     var FEATURED = ['Slack','Microsoft Teams','Zoom','Notion','Google Workspace','Salesforce','Shopify','1Password'];
     var fullListVisible = false;
 
-    // ── 5-lookup gate ───────────────────────────────────────────────
-    // Visitors can preview five unique tools freely. The 6th unique
-    // open triggers the modal; revisiting an already-previewed tool
-    // is unlimited so deep links keep working. Storage is browser-
-    // local (clearable, bypassable) — this is conversion pressure,
-    // not enforcement. The hard anti-scrape barrier is the API key
-    // on /api/tools and the rate limit on /api/tool/<slug>. The note
-    // field — the deepest editorial IP — is stripped from the public
+    // ── 5-lookup email gate ─────────────────────────────────────────
+    // Visitors preview five unique tools freely. The 6th unique
+    // open triggers a modal asking for their email; the server
+    // emails a HMAC-signed magic link; clicking it sets `unlocked`
+    // and the gate stops firing on this browser.
+    //
+    // localStorage shape: { seen: [name, ...], unlocked: bool }
+    // The unlocked flag is set ONLY by a server-verified token
+    // arriving via the `?unlock=` query param. Self-claiming is
+    // not exposed in the UI.
+    //
+    // Hard anti-scrape barriers live on the server: API key on
+    // /api/tools (bulk endpoint) and per-IP rate limit on
+    // /api/tool/<slug> (single-lookup endpoint). The `note` field —
+    // the deepest editorial IP — is stripped from the public
     // snapshot entirely; it only ships behind the keyed API.
     var UH_LOOKUP_LIMIT = 5;
     var UH_LOOKUP_KEY = 'uh.tools.lookups';
+    // UH_API_BASE already declared above where saas-db-public.json is fetched.
     var _pendingLookupName = null;
 
     function _getLookupState() {
@@ -569,11 +626,27 @@
         _saveLookupState(s);
       }
     }
+    function _setUnlocked() {
+      var s = _getLookupState();
+      s.unlocked = true;
+      _saveLookupState(s);
+    }
     function showLookupGate(name) {
       _pendingLookupName = name || null;
       var m = document.getElementById('lookupGateModal');
-      if (m) m.classList.add('visible');
+      if (!m) return;
+      // Reset to the form state in case it was last shown in confirm state
+      m.classList.remove('confirmed');
+      m.classList.add('visible');
+      var err = document.getElementById('lookupGateError');
+      if (err) err.textContent = '';
+      var btn = document.getElementById('lookupGateSubmit');
+      if (btn) { btn.disabled = false; btn.textContent = 'Send link'; }
       document.body.style.overflow = 'hidden';
+      setTimeout(function() {
+        var inp = document.getElementById('lookupGateEmail');
+        if (inp) inp.focus();
+      }, 60);
     }
     function hideLookupGate() {
       var m = document.getElementById('lookupGateModal');
@@ -581,28 +654,127 @@
       document.body.style.overflow = '';
       _pendingLookupName = null;
     }
-    // Called by both the "Map your stack →" link (which navigates
-    // away) and the "I already have an account" button (which stays
-    // on page). In both cases we lift the local gate so when they
-    // come back the wall is gone. If isLink, let the navigation
-    // happen; otherwise expand the pending tool inline.
-    function markUnlockedAndProceed(isLink) {
-      var s = _getLookupState();
-      s.unlocked = true;
-      _saveLookupState(s);
-      if (isLink) return; // anchor handles navigation
-      var pending = _pendingLookupName;
-      hideLookupGate();
-      if (pending) {
-        expandedTool = pending;
-        recordLookup(pending);
-        window.history.replaceState(null, '', '/tools#' + slugify(pending));
-        render();
-        setTimeout(function() {
-          var e = document.querySelector('.tool-card.expanded');
-          if (e) e.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }, 80);
+    function submitLookupGate(ev) {
+      ev.preventDefault();
+      var inp = document.getElementById('lookupGateEmail');
+      var btn = document.getElementById('lookupGateSubmit');
+      var err = document.getElementById('lookupGateError');
+      var email = (inp && inp.value || '').trim();
+      err.textContent = '';
+      if (!email || email.indexOf('@') < 1 || email.indexOf('.') < 0) {
+        err.textContent = 'Please enter a valid email address.';
+        return;
       }
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      fetch(UH_API_BASE + '/api/request-tools-unlock', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: email,
+          pending_tool: _pendingLookupName || ''
+        })
+      })
+      .then(function(r) { return r.json().then(function(j) { return { status: r.status, body: j }; }); })
+      .then(function(res) {
+        if (res.status === 200 && res.body && res.body.ok) {
+          // Show confirmation state
+          var modal = document.getElementById('lookupGateModal');
+          var emailSpan = document.getElementById('lookupGateConfirmEmail');
+          if (emailSpan) emailSpan.textContent = email;
+          if (modal) modal.classList.add('confirmed');
+          // Track conversion
+          try {
+            if (typeof gtag === 'function') {
+              gtag('event', 'tools_unlock_requested', {
+                event_category: 'lead',
+                event_label: 'tools_index'
+              });
+            }
+          } catch (e) { /* ignore */ }
+        } else if (res.status === 429) {
+          err.textContent = "Too many requests from this address. Try again in a few minutes.";
+          btn.disabled = false;
+          btn.textContent = 'Send link';
+        } else if (res.body && res.body.error === 'invalid_email') {
+          err.textContent = "That doesn't look like a valid email.";
+          btn.disabled = false;
+          btn.textContent = 'Send link';
+        } else if (res.body && res.body.error === 'server_misconfigured') {
+          err.textContent = "Something's misconfigured on our end. Email josh@upperharbour.ca and we'll fix it.";
+          btn.disabled = false;
+          btn.textContent = 'Send link';
+        } else {
+          err.textContent = 'Something went wrong. Try again, or email josh@upperharbour.ca.';
+          btn.disabled = false;
+          btn.textContent = 'Send link';
+        }
+      })
+      .catch(function() {
+        err.textContent = 'Network error. Check your connection and try again.';
+        btn.disabled = false;
+        btn.textContent = 'Send link';
+      });
+    }
+    function _showUnlockToast() {
+      var t = document.getElementById('lookupToast');
+      if (!t) return;
+      t.classList.add('visible');
+      setTimeout(function() { t.classList.remove('visible'); }, 3200);
+    }
+    // Process ?unlock=<token>&t=<pending-tool> on page load. Verifies
+    // the token with the server; on success, sets unlocked, scrubs the
+    // URL clean, shows the toast, and auto-expands the tool the
+    // visitor was originally trying to open (if any).
+    function _processUnlockParam() {
+      var params = new URLSearchParams(window.location.search);
+      var token = params.get('unlock');
+      if (!token) return;
+      var pendingTool = params.get('t') || '';
+
+      // Strip the params from the URL right away so a copy/paste of
+      // the URL doesn't leak the token. Token is single-use semantically;
+      // technically valid until expiry, but no need to keep it in the bar.
+      try {
+        var clean = window.location.pathname + window.location.hash;
+        window.history.replaceState(null, '', clean);
+      } catch (e) {}
+
+      fetch(UH_API_BASE + '/api/verify-tools-unlock?token=' + encodeURIComponent(token))
+        .then(function(r) { return r.json(); })
+        .then(function(res) {
+          if (res && res.ok) {
+            _setUnlocked();
+            _showUnlockToast();
+            try {
+              if (typeof gtag === 'function') {
+                gtag('event', 'tools_unlock_verified', {
+                  event_category: 'lead',
+                  event_label: 'tools_index'
+                });
+              }
+            } catch (e) {}
+            // If the visitor came in via the email link to see a
+            // specific tool, auto-expand it.
+            if (pendingTool && saasDB && saasDB.length) {
+              var match = saasDB.find(function(t) {
+                return t.name === pendingTool ||
+                       t.name.toLowerCase() === pendingTool.toLowerCase();
+              });
+              if (match) {
+                jumpToTool(match.name);
+              }
+            }
+          } else {
+            // Token invalid/expired. Don't be loud about it — the
+            // visitor can just click another tool to re-trigger the
+            // modal.
+            console.warn('[tools] unlock token verify failed:', res && res.reason);
+          }
+        })
+        .catch(function(e) {
+          console.warn('[tools] unlock token verify network error:', e && e.message);
+        });
     }
     // Esc closes the gate
     document.addEventListener('keydown', function(e) {
@@ -777,6 +949,14 @@
     _toolsReady.then(function() {
       renderFeatured();
       render();
+
+      // If the URL carries ?unlock=<token>, verify with the server.
+      // On success this sets the unlocked flag, scrubs the URL,
+      // shows a toast, and (if t=<tool> was on the URL) auto-expands
+      // the tool the visitor was originally trying to open. Run
+      // before the hash deep-link handler so the unlock applies in
+      // time for the deep-linked expansion.
+      _processUnlockParam();
 
       // Handle direct links via hash. jumpToTool() runs the gate
       // check itself, so a deep-linked 6th tool will trigger the
