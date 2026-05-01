@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Apr 30, 2026 — 13:10 ET",
+    "lastUpdated": "May 01, 2026 — 12:57 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Alberta Information and Privacy Commissioner Issues Statement on Unauthorized Distribution of Elector List Affecting 2.9 Million Albertans",
+      "summary": "Alberta's Information and Privacy Commissioner has raised concern about the unauthorized sharing of personal information affecting approximately 2.9 million Albertans whose names appeared on a list of electors. This represents a significant data breach within a Canadian provincial jurisdiction and signals enforcement attention to unauthorized personal information distribution by public bodies.",
+      "type": "enforcement",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/information-and-privacy-commissioner-of-alberta-issues-statement-regarding-unauthorized-distribution-of-list-of-electors/",
+      "date": "2026-04-30",
+      "impact": "Alberta public-sector organizations and electoral bodies should immediately review their information management and access control practices to prevent similar unauthorized disclosures.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Canada's Spring Economic Update Outlines AI Strategy Pillars and New SMB Procurement Program",
+      "summary": "The federal government's Spring Economic Update 2026 has revealed AI strategy pillars and a new procurement program for small and medium-sized businesses. This signals federal policy direction on AI development and procurement practices, with potential implications for how Canadian organizations adopt AI tools and how vendors serving Canadian SMBs will be evaluated.",
+      "type": "policy",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/canadian-spring-economic-update-2026/",
+      "date": "2026-04-28",
+      "impact": "Canadian SMBs and federal procurement officers should track the detailed procurement criteria and AI strategy framework when it becomes available, as it may affect technology purchasing decisions and vendor selection requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "Ontario passes Bill 97, exempting ministerial records from freedom of information requests",
       "summary": "Ontario's Legislative Assembly passed Bill 97 on April 24, 2026, exempting records held by provincial ministers from freedom of information and privacy act requests. This legislation reduces transparency and access to government-held data, with potential implications for how Canadian provinces manage information governance and data access protocols.",
