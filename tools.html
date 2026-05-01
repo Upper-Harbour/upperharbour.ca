@@ -527,21 +527,21 @@
     // view; users see vendor + parent + jurisdiction + CLOUD-Act
     // boolean, but not Upper Harbour's editorial risk call.
     //
-    // Two-tier dataset (Option A.5, April 2026):
-    //   1) Anonymous visitors get /assets/saas-db-featured.json
-    //      — just the 8 "Notable tools" rendered on the landing.
-    //      Tiny static file, publicly readable.
-    //   2) Once a visitor has redeemed a magic-link unlock and we
-    //      have an access_token in localStorage, we fetch
-    //      /api/snapshot (Bearer-gated) and replace saasDB with
-    //      the full 767-tool dataset.
-    // This closes the bulk-curl backdoor that an unauthenticated
-    // full snapshot used to leave open. Anonymous extraction now
-    // requires going through the email gate first.
+    // Public snapshot at /assets/saas-db-public.json: all 767 tools
+    // with the `risk` classification visible. The `note` field
+    // (research methodology + classification reasoning — the actual
+    // editorial layer) is stripped from this snapshot and only
+    // ships behind the keyed /api/tools endpoint. The 5-lookup
+    // email gate is conversion friction for "save your stack / get
+    // alerts when classifications change," not a wall around the
+    // classification data — visitors can see "is my tool ok?"
+    // without signing up, which is what makes the index useful as
+    // a free reference and what drives word-of-mouth back to the
+    // platform.
     var UH_API_BASE = 'https://web-production-b1856.up.railway.app';
     var UH_ACCESS_TOKEN_KEY = 'uh.tools.access_token';
     window.saasDB = [];
-    var _toolsReady = fetch('/assets/saas-db-featured.json', { cache: 'default' })
+    var _toolsReady = fetch('/assets/saas-db-public.json', { cache: 'default' })
       .then(function(r) {
         if (!r.ok) throw new Error('tools fetch failed: ' + r.status);
         return r.json();
@@ -811,17 +811,17 @@
                 });
               }
             } catch (e) {}
-            // Fetch the full snapshot and replace saasDB. Once it
-            // resolves, auto-expand the pending tool if any.
-            _loadFullSnapshotIfUnlocked().then(function() {
-              if (pendingTool && saasDB && saasDB.length) {
-                var match = saasDB.find(function(t) {
-                  return t.name === pendingTool ||
-                         t.name.toLowerCase() === pendingTool.toLowerCase();
-                });
-                if (match) jumpToTool(match.name);
-              }
-            });
+            // Auto-expand the tool the visitor was originally
+            // trying to open via the email link. saasDB is already
+            // loaded with all 767 + classifications (public
+            // snapshot), so there's nothing to re-fetch.
+            if (pendingTool && saasDB && saasDB.length) {
+              var match = saasDB.find(function(t) {
+                return t.name === pendingTool ||
+                       t.name.toLowerCase() === pendingTool.toLowerCase();
+              });
+              if (match) jumpToTool(match.name);
+            }
           } else {
             // Token invalid/expired. Don't be loud — visitor can
             // re-trigger by clicking another tool.
@@ -1006,16 +1006,14 @@
       renderFeatured();
       render();
 
-      // Returning unlocked visitor: if we have an access_token in
-      // localStorage, pull the full 767-tool snapshot and re-render.
-      // Anonymous visitors stay on the 8-tool featured slice.
-      _loadFullSnapshotIfUnlocked();
-
       // Magic-link arrival: if the URL carries ?unlock=<token>,
       // verify with the server. On success this stores the new
-      // access_token, sets the unlocked flag, scrubs the URL,
-      // shows a toast, fetches the full snapshot, and (if
-      // t=<tool> was on the URL) auto-expands the pending tool.
+      // access_token, sets the unlocked flag (which suppresses
+      // the 5-lookup modal), scrubs the URL, shows a toast, and
+      // (if t=<tool> was on the URL) auto-expands the pending
+      // tool. The public snapshot already has classifications, so
+      // there's nothing to re-fetch — the unlocked state is just
+      // the absence of the gate modal.
       _processUnlockParam();
 
       // Handle direct links via hash. jumpToTool() runs the gate
