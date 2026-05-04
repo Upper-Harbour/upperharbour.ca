@@ -23,7 +23,19 @@
       "source_url": "https://thelogic.co/news/cohere-aleph-alpha-merger-sovereign-ai/",
       "flagged_at": "2026-04-27T13:12:27.368586",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Plum",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Phenom\", \"jurisdiction\": \"United States\", \"category\": \"hr\", \"rationale\": \"Plum is a Canadian HR assessment and hiring platform now owned by a US parent company; Canadian employers using Plum for recruitment and talent evaluation should track potential data residency and jurisdictional shifts under Phenom's ownership.\"}",
+      "reason": "Plum is a Canadian HR assessment and hiring platform now owned by a US parent company; Canadian employers using Plum for recruitment and talent evaluation should track potential data residency and jurisdictional shifts under Phenom's ownership.",
+      "signal_headline": "Plum acquired by US-based Phenom, expanding parent company presence in Canadian HR technology market",
+      "signal_date": "2026-05-04",
+      "source_url": "https://betakit.com/plum-acquired-by-us-based-phenom-to-reduce-bad-hires-in-the-age-of-ai/",
+      "flagged_at": "2026-05-04T13:11:42.750111",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-04-27T13:12:27.370095"
+  "updated": "2026-05-04T13:11:42.751503"
 }

@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 01, 2026 — 12:57 ET",
+    "lastUpdated": "May 04, 2026 — 13:11 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Plum acquired by US-based Phenom, expanding parent company presence in Canadian HR technology market",
+      "summary": "Phenom, a US-based HR technology company, acquired Plum, a Canadian recruitment and hiring platform. This acquisition shifts Plum's ownership to a US parent, potentially affecting data residency and legal jurisdiction for Canadian organizations using Plum's hiring and assessment tools.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/plum-acquired-by-us-based-phenom-to-reduce-bad-hires-in-the-age-of-ai/",
+      "date": "2026-05-04",
+      "impact": "Canadian organizations currently using Plum for hiring and talent assessment should review their data processing agreements, clarify where candidate and employee data is stored and processed, and assess exposure to US legal jurisdiction post-acquisition.",
+      "dbUpdate": false
+    },
     {
       "headline": "Alberta Information and Privacy Commissioner Issues Statement on Unauthorized Distribution of Elector List Affecting 2.9 Million Albertans",
       "summary": "Alberta's Information and Privacy Commissioner has raised concern about the unauthorized sharing of personal information affecting approximately 2.9 million Albertans whose names appeared on a list of electors. This represents a significant data breach within a Canadian provincial jurisdiction and signals enforcement attention to unauthorized personal information distribution by public bodies.",
