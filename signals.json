@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 04, 2026 — 13:11 ET",
+    "lastUpdated": "May 05, 2026 — 13:05 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Treasury Board updates federal procurement reporting requirements effective April 30, 2026",
+      "summary": "Treasury Board of Canada Secretariat amended procurement management directives through Contracting Policy Notice 2026-3, streamlining reporting requirements and governance oversight for federal government contracts. The change affects how Canadian federal departments manage procurement documentation and may have downstream implications for vendor selection, contract management, and compliance verification.",
+      "type": "policy",
+      "source": "Government of Canada",
+      "sourceUrl": "https://www.canada.ca/en/treasury-board-secretariat/services/policy-notice/2026-3.html",
+      "date": "2026-04-29",
+      "impact": "Federal departments and vendors supplying the Government of Canada should review the updated Contracting Policy Notice 2026-3 to ensure compliance with new reporting requirements and adjust procurement governance and documentation processes accordingly.",
+      "dbUpdate": false
+    },
     {
       "headline": "Plum acquired by US-based Phenom, expanding parent company presence in Canadian HR technology market",
       "summary": "Phenom, a US-based HR technology company, acquired Plum, a Canadian recruitment and hiring platform. This acquisition shifts Plum's ownership to a US parent, potentially affecting data residency and legal jurisdiction for Canadian organizations using Plum's hiring and assessment tools.",
