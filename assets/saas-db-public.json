@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-01T08:55:37.642660+00:00",
-  "count": 767,
+  "generated_at": "2026-05-06T22:56:01.023286+00:00",
+  "count": 768,
   "fields": [
     "name",
     "parent",
@@ -11577,6 +11577,22 @@
         "nonprofit"
       ],
       "slug": "cone"
+    },
+    {
+      "name": "Augure",
+      "parent": "The Altercation Company",
+      "hq": "Toronto, ON",
+      "jurisdiction": "Canada",
+      "cloudAct": false,
+      "dataResidency": "Canada (with EU LLM-inference fallback)",
+      "risk": "canadian",
+      "category": "ai",
+      "industries": [
+        "legal",
+        "government",
+        "healthcare"
+      ],
+      "slug": "augure"
     }
   ]
 }
