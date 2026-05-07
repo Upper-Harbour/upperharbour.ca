@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 05, 2026 — 13:05 ET",
+    "lastUpdated": "May 07, 2026 — 13:16 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "IBM study finds AI governance in Canada lags deployment pace; raises digital sovereignty control concerns",
+      "summary": "An IBM study released in May 2026 examined AI governance across Canadian organizations and found significant gaps between the speed of AI adoption and the maturity of oversight mechanisms. The report emphasizes control and transparency issues beyond data location as central to digital sovereignty.",
+      "type": "policy",
+      "source": "Cantech Letter",
+      "sourceUrl": "https://www.cantechletter.com/newswires/new-ibm-study-ai-is-moving-faster-than-oversight-in-canada-gaps-in-governance-raise-concerns-about-control-and-digital-sovereignty-as-ai-enters-everyday-operations/",
+      "date": "2026-05-07",
+      "impact": "Canadian organizations deploying AI systems should implement governance frameworks that address control, transparency, and accountability—not merely data location—to align with emerging sovereignty expectations.",
+      "dbUpdate": false
+    },
     {
       "headline": "Treasury Board updates federal procurement reporting requirements effective April 30, 2026",
       "summary": "Treasury Board of Canada Secretariat amended procurement management directives through Contracting Policy Notice 2026-3, streamlining reporting requirements and governance oversight for federal government contracts. The change affects how Canadian federal departments manage procurement documentation and may have downstream implications for vendor selection, contract management, and compliance verification.",
