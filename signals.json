@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 07, 2026 — 13:16 ET",
+    "lastUpdated": "May 08, 2026 — 13:07 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "PIPEDA compliance obligations from Bill C-8 cascade into 2026-2027 SaaS vendor contracts for critical-infrastructure sectors",
+      "summary": "Bill C-8's cybersecurity obligations are flowing into vendor procurement requirements for 2026-2027, requiring SaaS vendors serving designated critical-infrastructure clients to demonstrate documented cybersecurity programs prior to formal government designation. This represents an upstream compliance requirement for even small vendors before regulatory enforcement occurs.",
+      "type": "legislation",
+      "source": "Fusion Computing",
+      "sourceUrl": "https://fusioncomputing.ca/pipeda-compliance-small-business-canada/",
+      "date": "2026-05-06",
+      "impact": "SaaS vendors and cloud service providers serving critical-infrastructure sectors should begin documenting cybersecurity programs immediately and prepare vendor attestations for 2026-2027 procurement cycles. Compliance teams should review Bill C-8 obligations and map them to product offerings.",
+      "dbUpdate": false
+    },
     {
       "headline": "IBM study finds AI governance in Canada lags deployment pace; raises digital sovereignty control concerns",
       "summary": "An IBM study released in May 2026 examined AI governance across Canadian organizations and found significant gaps between the speed of AI adoption and the maturity of oversight mechanisms. The report emphasizes control and transparency issues beyond data location as central to digital sovereignty.",
