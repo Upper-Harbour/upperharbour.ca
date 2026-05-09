@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "May 08, 2026 — 13:07 ET",
+    "lastUpdated": "May 09, 2026 — 13:52 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "U.S. Department of Homeland Security Seeks Unmasking of Canadian via Google Data; Data Sovereignty Implications Clarified",
+      "summary": "A legal case has emerged in which the U.S. Department of Homeland Security is attempting to obtain personal information from Google to unmask an anonymous Canadian. The case raises critical questions about the limits of Canadian data sovereignty, the adequacy of protections for Canadians' data held by U.S. cloud providers, and cross-border government access to Canadian personal information.",
+      "type": "enforcement",
+      "source": "CTV News",
+      "sourceUrl": "https://www.ctvnews.ca/sci-tech/article/these-are-real-life-consequences-what-to-know-about-data-sovereignty-as-the-trump-administration-tries-to-unmask-an-anonymous-canadian/",
+      "date": "2026-05-08",
+      "impact": "Canadian individuals and organizations should understand that personal data stored with U.S. cloud providers may be subject to U.S. government disclosure demands; organizations handling sensitive Canadian data should evaluate alternative providers with stronger data residency and legal protections.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Federal procurement now grants scoring advantage to vendors with Canadian data jurisdiction; Alberta and other provinces restrict CLOUD Act-exposed vendors",
+      "summary": "CanSpace analysis confirms that federal procurement policies now provide a 10–15% scoring advantage to vendors demonstrating Canadian jurisdiction over data storage and operations. Alberta and other provinces have implemented explicit restrictions prohibiting the use of vendors exposed to the U.S. CLOUD Act. This represents a material shift in Canadian government procurement criteria toward domestic data control.",
+      "type": "procurement",
+      "source": "CanSpace",
+      "sourceUrl": "https://www.canspace.ca/blog/hosting-servers/canadian-cloud-provider-vs-data-center-federal-procurement/",
+      "date": "2026-05-05",
+      "impact": "Federal departments and provincial public-sector organizations must review their vendor selection criteria and procurement documentation to align with the new scoring requirements and CLOUD Act restrictions. Organizations currently using U.S.-based vendors in restricted jurisdictions should assess compliance gaps.",
+      "dbUpdate": false
+    },
     {
       "headline": "PIPEDA compliance obligations from Bill C-8 cascade into 2026-2027 SaaS vendor contracts for critical-infrastructure sectors",
       "summary": "Bill C-8's cybersecurity obligations are flowing into vendor procurement requirements for 2026-2027, requiring SaaS vendors serving designated critical-infrastructure clients to demonstrate documented cybersecurity programs prior to formal government designation. This represents an upstream compliance requirement for even small vendors before regulatory enforcement occurs.",
