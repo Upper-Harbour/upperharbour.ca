@@ -35,7 +35,19 @@
       "source_url": "https://betakit.com/plum-acquired-by-us-based-phenom-to-reduce-bad-hires-in-the-age-of-ai/",
       "flagged_at": "2026-05-04T13:11:42.750111",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "ChatGPT",
+      "change": "risk_status",
+      "old_value": "unknown",
+      "new_value": "regulatory_violation_confirmed",
+      "reason": "Joint federal and provincial investigation concluded that ChatGPT violates Canadian privacy laws; status updated to reflect confirmed regulatory violation.",
+      "signal_headline": "Canadian federal and provincial privacy authorities find OpenAI violated privacy laws in joint investigation of ChatGPT",
+      "signal_date": "2026-05-06",
+      "source_url": "https://oipc.ab.ca/joint-report-openai-chatgpt/",
+      "flagged_at": "2026-05-10T13:54:14.279273",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-05-04T13:11:42.751503"
+  "updated": "2026-05-10T13:54:14.280883"
 }

@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 09, 2026 — 13:52 ET",
+    "lastUpdated": "May 10, 2026 — 13:54 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian federal and provincial privacy authorities find OpenAI violated privacy laws in joint investigation of ChatGPT",
+      "summary": "Federal and provincial privacy commissioners, including OIPC Alberta, issued a joint report finding that OpenAI violated Canadian privacy laws through data handling practices in ChatGPT, with recommendations to improve privacy provisions. This represents a significant enforcement finding against a US-based vendor affecting Canadian users and organizations.",
+      "type": "enforcement",
+      "source": "OIPC Alberta / BetaKit",
+      "sourceUrl": "https://oipc.ab.ca/joint-report-openai-chatgpt/",
+      "date": "2026-05-06",
+      "impact": "Canadian organizations using ChatGPT or other OpenAI products should immediately review their data handling agreements, obtain a copy of the joint report findings, and assess compliance obligations under PIPEDA and provincial privacy laws.",
+      "dbUpdate": true
+    },
     {
       "headline": "U.S. Department of Homeland Security Seeks Unmasking of Canadian via Google Data; Data Sovereignty Implications Clarified",
       "summary": "A legal case has emerged in which the U.S. Department of Homeland Security is attempting to obtain personal information from Google to unmask an anonymous Canadian. The case raises critical questions about the limits of Canadian data sovereignty, the adequacy of protections for Canadians' data held by U.S. cloud providers, and cross-border government access to Canadian personal information.",
