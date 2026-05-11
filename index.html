@@ -36,6 +36,15 @@
 </script>
 
 <style>
+  /* Lock horizontal overflow — prevents mobile pan/wobble when scrolling */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+
   /* Body offset for fixed nav (66px from site.css) */
   body { padding-top: 66px; }
 
@@ -694,7 +703,7 @@
       &ldquo;We were quoted <span class="athena-quote-highlight">$20,000</span> by a privacy consultant. Upper Harbour delivered everything we needed &mdash; in <span class="athena-quote-highlight">80% less time</span>.&rdquo;
     </blockquote>
     <div class="athena-attribution">
-      <strong>Athena Collective</strong> · Quebec health practice · Law 25 compliance
+      <strong>Athena Collective</strong>
     </div>
   </div>
 </section>
