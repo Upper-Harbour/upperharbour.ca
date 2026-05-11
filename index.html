@@ -529,6 +529,60 @@
     margin-bottom: 40px;
   }
 
+  /* PILOT */
+  .pilot-section {
+    padding: 100px 20px;
+    background: var(--midnight);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .pilot-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .pilot-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .pilot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .pilot-card {
+    padding: 32px;
+    background: rgba(60,184,176,0.04);
+    border: 1px solid rgba(60,184,176,0.18);
+    border-radius: 6px;
+  }
+  .pilot-card-num {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .pilot-card-title {
+    font-size: 18px;
+    color: var(--ice);
+    margin-bottom: 12px;
+    font-weight: 600;
+  }
+  .pilot-card-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+  .pilot-cta-wrap {
+    margin-top: 48px;
+    text-align: center;
+  }
+
   /* RESPONSIVE */
   @media(max-width: 900px) {
     .hero-h1 { font-size: 40px; }
@@ -538,11 +592,29 @@
     .how-steps { grid-template-columns: 1fr; gap: 40px; }
     .moat-inner { grid-template-columns: 1fr; gap: 40px; }
     .obligation-grid { grid-template-columns: 1fr; }
+    .pilot-grid { grid-template-columns: 1fr; gap: 16px; }
+    .pilot-section { padding: 64px 20px; }
+    .pilot-card { padding: 24px; }
     .stack-layer { flex-direction: column; align-items: flex-start; gap: 8px; }
     .stack-layer-desc { margin-left: 0; }
     .athena-quote { font-size: 22px; }
+    .athena-section { padding: 64px 20px; }
+    .produces-section { padding: 64px 20px; }
+    .how-section { padding: 64px 20px; }
+    .moat-section { padding: 64px 20px; }
+    .obligation-section { padding: 64px 20px; }
+    .stack-section { padding: 64px 20px; }
+    .final-cta-section { padding: 80px 20px; }
     .final-cta-title { font-size: 30px; }
+    .hero-commercial { padding: 64px 20px 56px; }
+    .hero-trust-row { gap: 16px; padding-top: 24px; flex-direction: column; align-items: flex-start; text-align: left; }
+    .hero-commercial-inner { text-align: left; }
+    .hero-h1 { max-width: 100%; margin-left: 0; margin-right: 0; }
+    .hero-sub { margin-left: 0; }
+    .hero-ctas { justify-content: flex-start; }
+    .cta-primary, .cta-secondary { padding: 14px 24px; font-size: 14px; }
     .press-strip-inner { gap: 20px; }
+    .press-strip-label { width: 100%; text-align: center; }
   }
 </style>
 </head>
@@ -709,29 +781,29 @@
 </section>
 
 <!-- PILOT DETAILS -->
-<section style="padding:100px 20px; background:var(--midnight); border-top:1px solid rgba(255,255,255,0.06);">
-  <div style="max-width:1100px; margin:0 auto;">
-    <div style="font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:20px;">The pilot cohort</div>
+<section class="pilot-section">
+  <div class="pilot-inner">
+    <div class="pilot-eyebrow">The pilot cohort</div>
     <h2 class="section-title">Bring a real project. Leave with audit-ready documentation.</h2>
     <p class="section-sub">Upper Harbour is in pilot. We&rsquo;re working with a small group of Canadian organizations to refine the platform against real privacy work &mdash; the kind of project that would otherwise sit on your desk for months or go out to a consultant for tens of thousands.</p>
-    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-top:48px;">
-      <div style="padding:32px; background:rgba(60,184,176,0.04); border:1px solid rgba(60,184,176,0.18); border-radius:6px;">
-        <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:12px;">01 &middot; Access</div>
-        <div style="font-size:18px; color:var(--ice); margin-bottom:12px; font-weight:600;">Free during the cohort</div>
-        <div style="font-size:14px; line-height:1.6; color:var(--slate);">Early access to the full platform at no cost during the pilot period. Bring one real project; we&rsquo;ll produce the documentation alongside you.</div>
+    <div class="pilot-grid">
+      <div class="pilot-card">
+        <div class="pilot-card-num">01 &middot; Access</div>
+        <div class="pilot-card-title">Free during the cohort</div>
+        <div class="pilot-card-body">Early access to the full platform at no cost during the pilot period. Bring one real project; we&rsquo;ll produce the documentation alongside you.</div>
       </div>
-      <div style="padding:32px; background:rgba(60,184,176,0.04); border:1px solid rgba(60,184,176,0.18); border-radius:6px;">
-        <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:12px;">02 &middot; Input</div>
-        <div style="font-size:18px; color:var(--ice); margin-bottom:12px; font-weight:600;">Direct line to the founder</div>
-        <div style="font-size:14px; line-height:1.6; color:var(--slate);">Your privacy program shapes the roadmap. Weekly check-ins, async feedback channels, and the ability to flag missing regime coverage or document types as priorities.</div>
+      <div class="pilot-card">
+        <div class="pilot-card-num">02 &middot; Input</div>
+        <div class="pilot-card-title">Direct line to the founder</div>
+        <div class="pilot-card-body">Your privacy program shapes the roadmap. Weekly check-ins, async feedback channels, and the ability to flag missing regime coverage or document types as priorities.</div>
       </div>
-      <div style="padding:32px; background:rgba(60,184,176,0.04); border:1px solid rgba(60,184,176,0.18); border-radius:6px;">
-        <div style="font-size:11px; letter-spacing:0.15em; text-transform:uppercase; color:var(--teal); font-weight:700; margin-bottom:12px;">03 &middot; Pricing</div>
-        <div style="font-size:18px; color:var(--ice); margin-bottom:12px; font-weight:600;">Locked-in rate at launch</div>
-        <div style="font-size:14px; line-height:1.6; color:var(--slate);">Pilot members move into production at a locked-in rate when general availability launches. You see the value first; you pay the lowest price.</div>
+      <div class="pilot-card">
+        <div class="pilot-card-num">03 &middot; Pricing</div>
+        <div class="pilot-card-title">Locked-in rate at launch</div>
+        <div class="pilot-card-body">Pilot members move into production at a locked-in rate when general availability launches. You see the value first; you pay the lowest price.</div>
       </div>
     </div>
-    <div style="margin-top:48px; text-align:center;">
+    <div class="pilot-cta-wrap">
       <a href="/meet" class="cta-primary">Apply to the pilot cohort</a>
     </div>
   </div>
