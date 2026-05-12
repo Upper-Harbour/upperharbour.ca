@@ -1,0 +1,3331 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upper Harbour — The AI Privacy Agent for Canadian Organizations</title>
+<meta name="description" content="Generate defensible PIAs, TIAs, breach assessments, and Quebec Law 25 documentation in hours, not weeks. Built for privacy officers, compliance teams, and anyone responsible for privacy at their organization." />
+
+<meta property="og:title" content="Upper Harbour — The AI Privacy Agent for Canadian Organizations" />
+<meta property="og:description" content="Generate defensible PIAs, TIAs, breach assessments, and Quebec Law 25 documentation in hours, not weeks." />
+<meta property="og:url" content="https://www.upperharbour.ca/" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Upper Harbour — The AI Privacy Agent for Canadian Organizations" />
+<meta name="twitter:description" content="Generate defensible PIAs, TIAs, breach assessments, and Quebec Law 25 documentation in hours, not weeks." />
+
+<link rel="canonical" href="https://www.upperharbour.ca/" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Upper Harbour",
+  "url": "https://www.upperharbour.ca",
+  "description": "The AI privacy agent for Canadian organizations. Generates defensible PIAs, TIAs, breach assessments, and Law 25 documentation that responds to each statutory requirement — built for privacy officers, compliance teams, and anyone responsible for privacy at their organization.",
+  "founder": {
+    "@type": "Person",
+    "name": "Joshua van Es",
+    "url": "https://joshuavanes.ca",
+    "sameAs": ["https://www.linkedin.com/in/joshuavanes"]
+  },
+  "sameAs": ["https://www.linkedin.com/company/upper-harbour/"]
+}
+</script>
+
+<!-- Site shared stylesheet (drives nav + footer) -->
+<link rel="stylesheet" href="/assets/site.css" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+<style>
+/* Upper Harbour — Brand tokens & base styles */
+:root {
+  --bg: #06090E;
+  --surface: #0C1219;
+  --surface-2: #111A24;
+  --surface-3: #0e1620;
+  --teal: #3CB8B0;
+  --teal-deep: #2A8A84;
+  --teal-bright: #47cec5;
+  --gold: #C9A84C;
+  --red: #E06050;
+  --ice: #EAF0F4;
+  --slate: #8A9DB0;
+  --muted: #566778;
+  --border-hair: rgba(234,240,244,0.06);
+  --border: rgba(234,240,244,0.10);
+  --border-teal-low: rgba(60,184,176,0.18);
+  --border-teal: rgba(60,184,176,0.30);
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --container: 1120px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ice);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  padding-top: 66px; /* clear fixed nav from site.css */
+  overflow-x: hidden;
+}
+
+/* Subtle grid overlay for texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(234,240,244,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234,240,244,0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+}
+
+a { color: var(--teal); text-decoration: none; }
+a:hover { color: var(--teal-bright); }
+
+::selection { background: rgba(60,184,176,0.28); color: var(--ice); }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  background: rgba(10,16,24,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border-hair);
+}
+.nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 17px;
+  color: var(--ice);
+  letter-spacing: -0.2px;
+}
+.brand-mark {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, var(--teal) 0%, var(--teal-deep) 60%, #0e2422 100%);
+  box-shadow: 0 0 12px rgba(60,184,176,0.5);
+  position: relative;
+}
+.brand-mark::after {
+  content: "";
+  position: absolute; inset: 4px;
+  border-radius: 50%;
+  border: 1px solid rgba(234,240,244,0.4);
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+.nav-links {
+  display: flex; gap: 28px;
+  font-size: 13.5px;
+  color: var(--slate);
+}
+.nav-links a { color: var(--slate); transition: color .15s; }
+.nav-links a:hover { color: var(--ice); }
+.nav-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 9px 16px;
+  font-size: 13px; font-weight: 700;
+  background: var(--teal);
+  color: var(--bg) !important;
+  border-radius: 4px;
+  box-shadow: 0 0 16px rgba(60,184,176,0.25), 0 1px 3px rgba(0,0,0,0.3);
+  transition: background .15s;
+}
+.nav-cta:hover { background: var(--teal-bright); color: var(--bg) !important; }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}
+
+/* ─── EYEBROW ─── */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.eyebrow.teal { color: var(--teal); }
+
+/* ─── HEADINGS ─── */
+h1, h2, h3, h4 { font-family: var(--serif); font-weight: 700; color: var(--ice); margin: 0; }
+h1 { font-size: clamp(44px, 6vw, 72px); line-height: 1.02; letter-spacing: -1.5px; font-weight: 800; }
+h2 { font-size: clamp(32px, 4vw, 48px); line-height: 1.08; letter-spacing: -0.6px; }
+h3 { font-size: 22px; line-height: 1.25; letter-spacing: -0.2px; }
+
+.italic-gold { font-style: italic; color: var(--gold); font-weight: 500; }
+.italic-teal { font-style: italic; color: var(--teal); font-weight: 500; }
+
+p { color: var(--slate); margin: 0; }
+.lead { font-size: 18px; line-height: 1.7; color: var(--slate); }
+
+/* ─── SECTIONS ─── */
+section { padding: 100px 0; position: relative; z-index: 2; }
+section + section { border-top: 1px solid var(--border-hair); }
+.section-alt { background: var(--surface-3); }
+
+.section-head { display: flex; flex-direction: column; gap: 18px; margin-bottom: 48px; max-width: 760px; }
+.section-head h2 .em { color: var(--teal); font-style: italic; font-weight: 500; }
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 16px 28px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all .15s ease;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--bg);
+  box-shadow: 0 0 24px rgba(60,184,176,0.28), 0 1px 3px rgba(0,0,0,0.3);
+}
+.btn-primary:hover { background: var(--teal-bright); transform: translateY(-1px); }
+.btn-secondary {
+  background: transparent;
+  color: var(--teal);
+  border-color: var(--teal);
+}
+.btn-secondary:hover { background: rgba(60,184,176,0.08); }
+
+/* ─── CARDS ─── */
+.card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px;
+  transition: all .2s ease;
+}
+.card:hover {
+  border-color: var(--border-teal);
+  background: rgba(60,184,176,0.04);
+}
+.card.featured { background: rgba(60,184,176,0.04); border-color: var(--border-teal-low); }
+
+/* ─── HERO ─── */
+.hero {
+  padding: 160px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(ellipse 800px 600px at 80% 30%, rgba(60,184,176,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 20% 70%, rgba(60,184,176,0.05) 0%, transparent 60%);
+}
+.hero-inner { max-width: 920px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
+.hero-inner h1 { max-width: 880px; margin-left: auto; margin-right: auto; }
+.hero-inner .hero-sub { margin-left: auto; margin-right: auto; }
+.hero-inner .hero-ctas { justify-content: center; }
+.hero-inner .hero-stats { margin-left: auto; margin-right: auto; justify-content: center; }
+.hero-eyebrow.pill { border: 1px solid rgba(60,184,176,0.3); padding: 6px 14px; border-radius: 100px; }
+.hero-eyebrow { margin-bottom: 22px; display: inline-flex; align-items: center; gap: 10px; }
+.hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px var(--teal); animation: pulse 2.4s ease-in-out infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .3; } }
+.hero h1 { margin-bottom: 28px; }
+.hero h1 .em { color: var(--ice); font-style: italic; font-weight: 500; }
+.hero-sub {
+  font-size: 18px; line-height: 1.7;
+  color: var(--slate);
+  max-width: 540px;
+  margin-bottom: 36px;
+}
+.hero-ctas { display: flex; gap: 14px; margin-bottom: 48px; flex-wrap: wrap; }
+.hero-stats {
+  display: flex; flex-wrap: wrap; gap: 28px;
+  font-size: 13.5px;
+  color: var(--slate);
+  padding-top: 28px;
+  border-top: 1px solid var(--border-hair);
+  max-width: 600px;
+}
+.hero-stats b { color: var(--ice); font-weight: 700; }
+
+/* ─── QUOTE BLOCK ─── */
+.quote-block {
+  padding: 80px 0;
+}
+.quote-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 48px;
+  position: relative;
+  overflow: hidden;
+}
+.quote-card::before {
+  content: "";
+  position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+  background: linear-gradient(180deg, var(--teal), var(--teal-deep));
+}
+.quote-card blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.35;
+  color: var(--ice);
+  font-weight: 400;
+}
+.quote-attrib { display: flex; align-items: center; gap: 14px; margin-top: 20px; }
+.quote-attrib .avatar {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 700; color: var(--ice);
+  font-size: 14px;
+}
+.quote-attrib .who { font-size: 14px; color: var(--ice); font-weight: 600; }
+.quote-attrib .role { font-size: 13px; color: var(--muted); }
+.quote-side { display: flex; flex-direction: column; gap: 18px; }
+.quote-metric {
+  display: flex; align-items: baseline; gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-hair);
+}
+.quote-metric:last-child { border-bottom: 0; }
+.quote-metric .v { font-family: var(--sans); font-size: 32px; font-weight: 700; color: var(--teal); letter-spacing: -1px; font-feature-settings: "tnum"; }
+.quote-metric .l { font-size: 13px; color: var(--slate); }
+@media (max-width: 900px) {
+  .quote-card { grid-template-columns: 1fr; padding: 32px; }
+  .quote-card blockquote { font-size: 22px; }
+}
+
+/* ─── FEATURED LOGOS ─── */
+.featured-section {
+  padding: 56px 0;
+  border-top: 1px solid var(--border-hair);
+  border-bottom: 1px solid var(--border-hair);
+  background: rgba(255,255,255,0.01);
+}
+.featured-section .container { display: flex; flex-direction: column; align-items: center; gap: 22px; }
+.featured-section .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.featured-section .logos {
+  display: flex; gap: 48px; flex-wrap: wrap; justify-content: center; align-items: center;
+  font-family: var(--serif); color: var(--ice);
+  font-size: 22px; font-weight: 500; letter-spacing: -0.2px;
+}
+.featured-section .logos span { opacity: 0.7; transition: opacity .2s; }
+.featured-section .logos span:hover { opacity: 1; color: var(--teal); }
+@media (max-width: 800px) { .featured-section .logos { gap: 24px; font-size: 17px; } }
+
+/* ─── EDITORIAL QUOTE ─── */
+.quote-block { padding: 120px 0; }
+.quote-editorial { max-width: 1100px; margin: 0 auto; text-align: center; }
+.quote-editorial .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-bottom: 36px; }
+.quote-editorial blockquote {
+  margin: 0 auto;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.35;
+  letter-spacing: -0.5px;
+  color: var(--ice);
+  font-weight: 400;
+  max-width: 1000px;
+  text-wrap: balance;
+}
+.quote-editorial blockquote .em-teal { color: var(--teal); }
+.quote-attrib-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 44px; }
+.quote-attrib-row .avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--surface-2), var(--surface));
+  border: 1px solid var(--border-teal-low);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--teal); font-family: var(--mono); font-size: 14px; font-weight: 600;
+}
+.quote-attrib-row .avatar-photo {
+  object-fit: cover;
+  background: transparent;
+  display: block;
+  border: 2px solid rgba(60, 184, 176, 0.35);
+}
+.quote-attrib-row .who { font-size: 14px; color: var(--ice); font-weight: 600; text-align: left; }
+.quote-attrib-row .role { font-size: 13px; color: var(--muted); text-align: left; }
+@media (max-width: 700px) { .quote-block { padding: 80px 0; } }
+.editorial { padding: 120px 0; }
+.editorial .container { max-width: 920px; }
+.editorial .eyebrow { margin-bottom: 24px; }
+.editorial h2 { margin-bottom: 40px; }
+.editorial p { font-size: 18px; line-height: 1.75; margin-bottom: 22px; color: var(--slate); max-width: 720px; }
+.editorial p strong { color: var(--ice); font-weight: 600; }
+.editorial .link-out {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 18px;
+  color: var(--teal); font-weight: 600;
+  border-bottom: 1px solid transparent;
+}
+.editorial .link-out:hover { border-bottom-color: var(--teal); }
+
+/* ─── PRODUCES GRID ─── */
+.produces-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+@media (max-width: 800px) { .produces-grid { grid-template-columns: 1fr; } }
+.produce-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transition: all .2s ease;
+}
+.produce-card::after {
+  content: "";
+  position: absolute; right: -40px; top: -40px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(60,184,176,0.12) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.produce-card:hover { border-color: var(--border-teal); }
+.produce-card:hover::after { opacity: 1; }
+.produce-stamp {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: fit-content; min-width: 56px; padding: 6px 12px;
+  font-family: var(--mono); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--teal);
+  background: rgba(60,184,176,0.08);
+  border: 1px solid var(--border-teal-low);
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+.produce-card h3 { font-size: 22px; color: var(--ice); margin-top: 4px; }
+.produce-card p { font-size: 14px; line-height: 1.65; color: var(--slate); }
+
+/* ─── HOW IT WORKS ─── */
+.steps { display: flex; flex-direction: column; gap: 12px; }
+.step {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 28px 0;
+  border-top: 1px solid var(--border-hair);
+}
+.step:first-child { border-top: 0; }
+.step .num {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  color: var(--teal);
+  letter-spacing: 0.1em;
+  padding-top: 6px;
+}
+.step h3 { font-size: 24px; margin-bottom: 10px; }
+.step p { font-size: 15.5px; line-height: 1.65; max-width: 680px; }
+
+/* ─── STATS ROW ─── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+@media (max-width: 800px) { .stats-row { grid-template-columns: 1fr; } }
+.stat-card {
+  padding: 36px 28px;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card.accent { background: rgba(60,184,176,0.04); border-color: var(--border-teal-low); }
+.stat-card .v {
+  font-family: var(--sans);
+  font-size: 64px;
+  font-weight: 700;
+  color: var(--ice);
+  line-height: 1;
+  letter-spacing: -2.5px;
+  margin-bottom: 12px;
+  font-feature-settings: "tnum";
+}
+.stat-card.accent .v { color: var(--teal); }
+.stat-card .l { font-size: 14px; color: var(--ice); font-weight: 600; margin-bottom: 8px; }
+.stat-card .d { font-size: 13.5px; color: var(--slate); line-height: 1.55; }
+
+/* ─── LAYERS (Sovereignty Index intro) ─── */
+.layers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+@media (max-width: 1000px) { .layers-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .layers-grid { grid-template-columns: 1fr; } }
+.layer-card {
+  padding: 24px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.layer-card.live { border-color: var(--border-teal-low); background: rgba(60,184,176,0.04); }
+.layer-card .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--teal); text-transform: uppercase; margin-bottom: 12px; }
+.layer-card .live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px var(--teal); margin-right: 8px; animation: pulse 2s ease-in-out infinite; }
+.layer-card h4 { font-family: var(--serif); font-size: 17px; color: var(--ice); margin: 0 0 8px; }
+.layer-card p { font-size: 13.5px; color: var(--slate); line-height: 1.6; }
+
+/* ─── JURISDICTION STACK (cumulative exposure visual) ─── */
+.js-stack {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 32px;
+  background: rgba(255,255,255,0.015);
+  border: 1px solid var(--border-hair);
+  border-radius: 6px;
+  padding: 36px;
+}
+@media (max-width: 900px) { .js-stack { grid-template-columns: 1fr; padding: 24px; gap: 24px; } }
+.js-stack__col > h5 {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--muted);
+  margin: 0 0 18px; font-weight: 600;
+}
+.js-flow { display: flex; flex-direction: column; }
+.js-entity {
+  position: relative; padding: 14px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border-hair);
+  border-radius: 4px;
+  transition: opacity .4s ease, transform .4s ease, border-color .4s, background .4s;
+  opacity: 0.18; transform: translateY(-4px);
+}
+.js-entity.is-on { opacity: 1; transform: translateY(0); }
+.js-entity.is-base.is-on { border-color: var(--border-teal-low); background: rgba(60,184,176,0.06); }
+.js-entity.is-foreign.is-on { border-color: rgba(230,165,92,0.25); background: rgba(230,165,92,0.04); }
+.js-entity__role {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.js-entity__name {
+  font-family: var(--serif); font-size: 18px; color: var(--ice);
+  margin-top: 4px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.js-flag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  padding: 2px 8px; border-radius: 100px; border: 1px solid;
+  font-weight: 600;
+}
+.js-flag--ca { color: var(--teal); border-color: var(--border-teal-low); background: rgba(60,184,176,0.08); }
+.js-flag--us { color: #e6a55c; border-color: rgba(230,165,92,0.35); background: rgba(230,165,92,0.08); }
+.js-entity__why { font-size: 12.5px; color: var(--slate); margin-top: 6px; line-height: 1.55; }
+.js-conn {
+  display: flex; align-items: center; gap: 10px;
+  padding-left: 16px; height: 28px;
+  color: var(--muted); font-family: var(--mono);
+  font-size: 9.5px; letter-spacing: 0.18em; text-transform: uppercase;
+  opacity: 0.35; transition: opacity .4s;
+}
+.js-conn.is-on { opacity: 0.9; }
+.js-conn::before {
+  content: ""; width: 1px; height: 100%;
+  background: linear-gradient(to bottom, rgba(60,184,176,0.45), rgba(230,165,92,0.25));
+}
+.js-auth { display: flex; flex-direction: column; gap: 10px; }
+.js-counter {
+  display: flex; align-items: baseline; gap: 14px;
+  padding: 16px 18px;
+  background: linear-gradient(135deg, rgba(230,165,92,0.07), rgba(230,165,92,0.015));
+  border: 1px solid rgba(230,165,92,0.22);
+  border-radius: 4px; margin-bottom: 6px;
+}
+.js-counter__num {
+  font-family: var(--sans); font-size: 42px; font-weight: 700;
+  color: #e6a55c; line-height: 1; font-variant-numeric: tabular-nums;
+  letter-spacing: -1.5px;
+  transition: color .3s;
+}
+.js-counter.is-baseline .js-counter__num { color: var(--teal); }
+.js-counter.is-baseline { border-color: var(--border-teal-low); background: linear-gradient(135deg, rgba(60,184,176,0.07), rgba(60,184,176,0.015)); }
+.js-counter__label { font-size: 12.5px; color: var(--slate); line-height: 1.5; flex: 1; }
+.js-stamp {
+  padding: 12px 14px; border: 1px solid var(--border-hair);
+  border-radius: 4px; background: rgba(255,255,255,0.02);
+  opacity: 0; transform: translateX(10px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.js-stamp.is-on { opacity: 1; transform: translateX(0); }
+.js-stamp.is-ca { border-color: var(--border-teal-low); background: rgba(60,184,176,0.05); }
+.js-stamp.is-us { border-color: rgba(230,165,92,0.3); background: rgba(230,165,92,0.05); }
+.js-stamp__head { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+.js-stamp.is-ca .js-stamp__head { color: var(--teal); }
+.js-stamp.is-us .js-stamp__head { color: #e6a55c; }
+.js-stamp__law { font-family: var(--serif); color: var(--ice); font-size: 15px; margin-top: 4px; }
+.js-stamp__via { font-size: 11.5px; color: var(--muted); margin-top: 3px; font-family: var(--mono); letter-spacing: 0.02em; }
+.js-controls { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.js-step-pill {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--muted);
+  background: transparent; border: 1px solid var(--border-hair);
+  padding: 8px 12px; border-radius: 100px; cursor: pointer;
+  transition: all .2s;
+}
+.js-step-pill:hover { color: var(--ice); border-color: rgba(255,255,255,0.22); }
+.js-step-pill.is-current { color: var(--teal); border-color: var(--border-teal-low); background: rgba(60,184,176,0.05); }
+.js-callout {
+  margin-top: 22px; padding: 18px 22px;
+  border-left: 2px solid var(--teal);
+  background: rgba(60,184,176,0.03);
+  font-family: var(--serif); font-size: 15.5px; color: var(--ice);
+  line-height: 1.55;
+}
+.js-callout b { color: var(--teal); font-weight: 500; }
+
+/* ─── VERBATIM vs PARAPHRASE ─── */
+.vvp { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 56px; }
+@media (max-width: 1000px) { .vvp { grid-template-columns: 1fr; } }
+.vvp-panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; min-height: 540px; position: relative; }
+.vvp-panel.is-bad { border-color: rgba(220,90,90,0.35); }
+.vvp-panel.is-good { border-color: var(--border-teal-low); }
+.vvp-chrome { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; border-bottom: 1px solid var(--border-hair); background: rgba(255,255,255,0.015); }
+.vvp-chrome-left { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.vvp-dot { width: 8px; height: 8px; border-radius: 50%; }
+.vvp-panel.is-bad .vvp-dot { background: #dc5a5a; box-shadow: 0 0 8px #dc5a5a; }
+.vvp-panel.is-good .vvp-dot { background: var(--teal); box-shadow: 0 0 8px var(--teal); animation: pulse 2s ease-in-out infinite; }
+.vvp-badge { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; padding: 4px 9px; border-radius: 100px; border: 1px solid; opacity: 0; transition: opacity .4s ease .3s; }
+.vvp-badge.is-on { opacity: 1; }
+.vvp-badge.is-bad { color: #dc5a5a; border-color: rgba(220,90,90,0.4); background: rgba(220,90,90,0.08); }
+.vvp-badge.is-good { color: var(--teal); border-color: var(--border-teal-low); background: rgba(60,184,176,0.08); }
+.vvp-prompt { padding: 14px 18px; border-bottom: 1px solid var(--border-hair); font-family: var(--mono); font-size: 12px; color: var(--slate); background: rgba(0,0,0,0.15); }
+.vvp-prompt b { color: var(--ice); font-weight: 600; }
+.vvp-body { flex: 1; padding: 22px 24px; display: flex; flex-direction: column; gap: 14px; }
+.vvp-answer { font-family: var(--serif); font-size: 16.5px; line-height: 1.65; color: var(--ice); position: relative; }
+.vvp-panel.is-bad .vvp-answer { color: var(--slate); }
+.vvp-mark { background: rgba(220,90,90,0.16); border-bottom: 1.5px solid #dc5a5a; padding: 0 2px; border-radius: 2px; cursor: help; }
+.vvp-cursor { display: inline-block; width: 7px; height: 15px; background: var(--teal); vertical-align: text-bottom; animation: blink 1s steps(2) infinite; margin-left: 2px; }
+.vvp-panel.is-bad .vvp-cursor { background: #9aa4ad; }
+@keyframes blink { 50% { opacity: 0; } }
+.vvp-flags { display: flex; flex-direction: column; gap: 6px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border-hair); }
+.vvp-flag { display: flex; align-items: flex-start; gap: 8px; font-size: 12.5px; color: #dc5a5a; font-family: var(--mono); letter-spacing: 0.02em; opacity: 0; transform: translateY(4px); transition: opacity .4s, transform .4s; }
+.vvp-flag.is-on { opacity: 1; transform: translateY(0); }
+.vvp-flag::before { content: "✕"; font-weight: 700; }
+.vvp-cite { display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 3px; background: rgba(60,184,176,0.1); border: 1px solid var(--border-teal-low); font-family: var(--mono); font-size: 10.5px; color: var(--teal); margin: 0 3px; vertical-align: baseline; opacity: 0; transform: translateY(-3px) scale(0.9); transition: opacity .35s, transform .35s; }
+.vvp-cite.is-on { opacity: 1; transform: translateY(0) scale(1); }
+.vvp-source { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border-hair); font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.vvp-source a { color: var(--teal); border-bottom: 1px dotted var(--border-teal-low); }
+.vvp-replay { display: inline-flex; align-items: center; gap: 8px; margin: 28px auto 0; padding: 9px 16px; background: transparent; border: 1px solid var(--border); border-radius: 100px; color: var(--slate); font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all .2s; }
+.vvp-replay:hover { color: var(--teal); border-color: var(--border-teal-low); }
+.vvp-foot { display: flex; justify-content: center; margin-top: 8px; }
+.vvp-switch { display: flex; gap: 8px; justify-content: center; margin-top: 56px; margin-bottom: 20px; flex-wrap: wrap; }
+.vvp-tab { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); background: transparent; border: 1px solid var(--border-hair); padding: 8px 14px; border-radius: 100px; cursor: pointer; transition: all .2s; }
+.vvp-tab:hover { color: var(--ice); border-color: rgba(255,255,255,0.22); }
+.vvp-tab.is-on { color: var(--teal); border-color: var(--border-teal-low); background: rgba(60,184,176,0.05); }
+.vvp { margin-top: 0; }
+
+/* ─── PILOT COHORT ─── */
+.pilot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+@media (max-width: 800px) { .pilot-grid { grid-template-columns: 1fr; } }
+.pilot-card {
+  padding: 32px 28px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.pilot-card .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; }
+.pilot-card h3 { font-size: 20px; margin-bottom: 12px; }
+.pilot-card p { font-size: 14px; color: var(--slate); line-height: 1.6; }
+
+/* ─── REQUIRED SECTION ─── */
+.req-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+@media (max-width: 900px) { .req-grid { grid-template-columns: 1fr; } }
+.req-card {
+  padding: 32px 28px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  position: relative;
+}
+.req-card .jur { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--teal); text-transform: uppercase; margin-bottom: 16px; }
+.req-card h3 { font-size: 19px; margin-bottom: 14px; }
+.req-card p { font-size: 14px; color: var(--slate); line-height: 1.6; }
+.req-card .penalty { display: inline-block; margin-top: 14px; padding: 4px 10px; background: rgba(224,96,80,0.08); border: 1px solid rgba(224,96,80,0.2); border-radius: 3px; font-family: var(--mono); font-size: 10.5px; color: var(--red); letter-spacing: 0.1em; }
+
+/* ─── BUILT FOR (personas) ─── */
+.personas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+@media (max-width: 800px) { .personas-grid { grid-template-columns: 1fr; } }
+.persona-card {
+  padding: 28px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  transition: all .2s ease;
+}
+.persona-card:hover { border-color: var(--border-teal); background: rgba(60,184,176,0.03); }
+.persona-card .glyph {
+  width: 48px; height: 48px; flex-shrink: 0;
+  border-radius: 8px;
+  background: rgba(60,184,176,0.07);
+  border: 1px solid var(--border-teal-low);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--teal);
+}
+.persona-card .glyph svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.persona-card h4 { font-family: var(--serif); font-size: 17px; color: var(--ice); margin: 0 0 6px; }
+.persona-card p { font-size: 13.5px; color: var(--slate); line-height: 1.55; }
+
+.probably-not {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: rgba(234,240,244,0.02);
+  border: 1px solid var(--border-hair);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.65;
+}
+.probably-not strong { color: var(--ice); font-weight: 600; }
+
+/* ─── FINAL CTA ─── */
+.final-cta {
+  padding: 120px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-cta::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 900px 500px at 50% 50%, rgba(60,184,176,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.final-cta h2 { font-size: clamp(40px, 5vw, 56px); max-width: 800px; margin: 0 auto 28px; letter-spacing: -0.8px; }
+.final-cta p { font-size: 17px; max-width: 660px; margin: 0 auto 40px; }
+.final-cta .ctas { display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+/* ─── FOOTER ─── */
+.footer {
+  padding: 80px 0 40px;
+  border-top: 1px solid var(--border-hair);
+  background: var(--surface);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+@media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
+.footer-brand p { font-size: 14px; color: var(--slate); margin-top: 12px; max-width: 320px; }
+.footer h5 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin: 0 0 16px; font-weight: 500; }
+.footer ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.footer ul a { color: var(--slate); font-size: 14px; transition: color .15s; }
+.footer ul a:hover { color: var(--ice); }
+.footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid var(--border-hair);
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.footer-bottom a { color: var(--muted); }
+.footer-bottom a:hover { color: var(--slate); }
+
+/* ─── UTIL ─── */
+.featured-host { min-height: 480px; position: relative; }
+
+/* hide non-featured wow embeds when their slot in hero is "featured" — handled via state */
+
+/* Wow component styles */
+
+/* ── MAP YOUR STACK ── */
+.mys {
+  background: linear-gradient(180deg, rgba(60,184,176,0.05) 0%, rgba(60,184,176,0.01) 60%, transparent 100%);
+  border: 1px solid var(--border-teal-low);
+  border-radius: 8px;
+  padding: 22px;
+  position: relative;
+  overflow: hidden;
+  min-height: 560px;
+  box-shadow: 0 0 80px rgba(60,184,176,0.06), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+.mys::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 500px 300px at 30% 0%, rgba(60,184,176,0.08), transparent 60%);
+  pointer-events: none;
+}
+.mys-head { position: relative; z-index: 2; }
+.mys-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--teal);
+  margin-bottom: 14px;
+}
+.mys-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); animation: pulse 1.8s ease-in-out infinite; }
+
+.mys-search {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(6,9,14,0.7);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  color: var(--slate);
+  position: relative;
+}
+.mys-search:focus-within { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(60,184,176,0.12); }
+.mys-search input {
+  flex: 1; background: transparent; border: 0; outline: none;
+  font-family: var(--sans); font-size: 14px; color: var(--ice);
+}
+.mys-search input::placeholder { color: var(--muted); }
+.mys-search kbd {
+  font-family: var(--mono); font-size: 10.5px; color: var(--teal);
+  background: rgba(60,184,176,0.10); border: 1px solid var(--border-teal-low);
+  padding: 3px 8px; border-radius: 3px; letter-spacing: 0.05em;
+}
+
+.mys-suggestions {
+  position: absolute; left: 22px; right: 22px; top: 86px;
+  background: rgba(12,18,25,0.98);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  z-index: 10;
+  overflow: hidden;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+}
+.mys-suggest {
+  display: grid; grid-template-columns: 1fr 1fr auto; gap: 12px;
+  align-items: center;
+  width: 100%; padding: 11px 14px;
+  background: transparent; border: 0; cursor: pointer;
+  color: var(--ice); text-align: left;
+  font-family: var(--sans); font-size: 13.5px;
+  border-bottom: 1px solid var(--border-hair);
+}
+.mys-suggest:last-child { border-bottom: 0; }
+.mys-suggest:hover { background: rgba(60,184,176,0.06); }
+.mys-suggest-name { font-weight: 600; }
+.mys-suggest-cat { color: var(--muted); font-size: 12px; }
+.mys-suggest-flag { font-size: 16px; }
+
+.mys-result { margin-top: 20px; position: relative; z-index: 2; }
+.mys-result-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-hair);
+  margin-bottom: 18px;
+}
+.mys-result-name {
+  display: flex; align-items: baseline; gap: 10px;
+  font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ice);
+  letter-spacing: -0.3px;
+}
+.mys-result-flag { font-size: 22px; }
+.mys-result-cat { font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--muted); }
+.mys-risk {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid;
+  border-radius: 3px;
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+.mys-risk-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+.mys-layers { display: flex; flex-direction: column; gap: 0; }
+.mys-layer {
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  animation: layerIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.mys-layer.is-hl { border-color: var(--border-teal); background: rgba(60,184,176,0.05); transform: translateX(2px); }
+.mys-layer-tag { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--teal); margin-bottom: 6px; }
+.mys-layer-main { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--ice); line-height: 1.3; letter-spacing: -0.2px; }
+.mys-layer-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 12.5px; color: var(--slate); margin-top: 6px; }
+.mys-layer-meta .dot-sep { color: var(--muted); }
+.mys-layer-meta .warn { color: var(--red); font-weight: 500; }
+.mys-layer-meta .ok { color: var(--teal); }
+.mys-layer-note { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
+
+.mys-flow { display: flex; justify-content: center; padding: 4px 0; }
+.mys-flow span {
+  display: block; width: 1px; height: 18px;
+  background: linear-gradient(180deg, var(--border-teal), transparent);
+  animation: flowLine 1.4s ease-in-out infinite;
+}
+@keyframes flowLine { 0%,100% { opacity: .3; transform: scaleY(.7); } 50% { opacity: 1; transform: scaleY(1); } }
+
+.mys-sub-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.mys-sub-pill {
+  display: inline-flex; align-items: baseline; gap: 6px;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-hair);
+  border-radius: 3px;
+  font-size: 12px;
+  animation: layerIn 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+.mys-sub-name { color: var(--ice); font-weight: 500; }
+.mys-sub-jur { color: var(--muted); font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; }
+
+@keyframes layerIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.mys-foot {
+  display: flex; gap: 12px; align-items: flex-start;
+  margin-top: 16px; padding: 14px;
+  background: rgba(6,9,14,0.5);
+  border: 1px solid var(--border-hair);
+  border-radius: 4px;
+}
+.mys-foot-icon { flex-shrink: 0; padding-top: 1px; }
+.mys-foot-text { font-size: 13px; color: var(--slate); line-height: 1.55; }
+
+
+/* ── DOC SIMULATOR ── */
+.doc-sim { padding: 8px 0; }
+.doc-sim-frame {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45), 0 0 0 1px rgba(60,184,176,0.04);
+}
+.doc-chrome {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(6,9,14,0.6);
+  border-bottom: 1px solid var(--border-hair);
+}
+.doc-chrome-tabs { display: flex; gap: 6px; }
+.doc-chrome-tab {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 12px; border-radius: 4px;
+  font-size: 12px; color: var(--muted);
+  background: transparent;
+  font-family: var(--sans);
+}
+.doc-chrome-tab.active { background: rgba(60,184,176,0.06); color: var(--ice); border: 1px solid var(--border-teal-low); }
+.doc-chrome-icon { font-family: var(--mono); font-size: 9.5px; padding: 2px 5px; background: rgba(60,184,176,0.18); color: var(--teal); border-radius: 2px; letter-spacing: 0.1em; }
+.doc-chrome-actions { display: flex; gap: 8px; }
+.doc-chrome-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; border-radius: 4px;
+  font-family: var(--sans); font-size: 12px; font-weight: 500;
+  background: transparent; color: var(--slate);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.doc-chrome-btn:hover { color: var(--ice); border-color: var(--border-teal-low); }
+.doc-chrome-btn.primary { background: var(--teal); color: var(--bg); border-color: var(--teal); font-weight: 700; }
+
+.doc-body-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  min-height: 540px;
+}
+@media (max-width: 900px) { .doc-body-grid { grid-template-columns: 1fr; } }
+
+.doc-canvas {
+  padding: 36px 36px;
+  border-right: 1px solid var(--border-hair);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(60,184,176,0.03), transparent 60%),
+    var(--surface);
+  overflow: hidden;
+}
+.doc-canvas-meta { padding-bottom: 24px; border-bottom: 1px solid var(--border-hair); margin-bottom: 24px; }
+.doc-canvas-eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--teal); margin-bottom: 10px; }
+.doc-canvas-title { font-family: var(--serif); font-size: 28px; font-weight: 700; color: var(--ice); letter-spacing: -0.4px; line-height: 1.1; }
+.doc-canvas-sub { font-size: 13px; color: var(--slate); margin-top: 6px; }
+
+.doc-paras { display: flex; flex-direction: column; gap: 22px; }
+.doc-para {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+  padding: 4px 0;
+  opacity: 0.35;
+  transition: opacity .3s;
+}
+.doc-para.is-active { opacity: 1; }
+.doc-section { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+.doc-body p {
+  font-family: var(--serif);
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: var(--ice);
+  margin: 0;
+  font-weight: 400;
+}
+.doc-skel { display: inline-block; width: 80%; height: 14px; background: linear-gradient(90deg, rgba(255,255,255,0.04), rgba(255,255,255,0.08), rgba(255,255,255,0.04)); background-size: 200% 100%; animation: shimmer 1.4s linear infinite; border-radius: 3px; }
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+.doc-cursor {
+  display: inline-block; width: 2px; height: 16px; background: var(--teal);
+  margin-left: 2px; vertical-align: middle; animation: caret 0.7s steps(1) infinite;
+}
+@keyframes caret { 50% { opacity: 0; } }
+
+.doc-cites { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+.doc-cite {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 9px;
+  background: rgba(60,184,176,0.08);
+  border: 1px solid var(--border-teal-low);
+  border-radius: 3px;
+  font-family: var(--mono); font-size: 10.5px;
+  animation: citePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) backwards;
+}
+@keyframes citePop {
+  0% { opacity: 0; transform: translateY(-4px) scale(0.9); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.doc-cite-stat { color: var(--teal); font-weight: 600; letter-spacing: 0.05em; }
+.doc-cite-prov { color: var(--ice); letter-spacing: 0.02em; }
+
+.doc-agent {
+  padding: 24px 22px;
+  background: rgba(6,9,14,0.7);
+  display: flex; flex-direction: column;
+  font-family: var(--sans);
+}
+.doc-agent-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.doc-agent-brand { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--teal); }
+.doc-agent-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px var(--teal); animation: pulse 1.6s ease-in-out infinite; }
+.doc-agent-state { font-family: var(--mono); font-size: 11px; color: var(--ice); letter-spacing: 0.1em; }
+.doc-agent-progress { height: 3px; background: rgba(60,184,176,0.10); border-radius: 2px; overflow: hidden; }
+.doc-agent-progress-bar { height: 100%; background: linear-gradient(90deg, var(--teal-deep), var(--teal-bright)); transition: width 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); box-shadow: 0 0 12px var(--teal); }
+.doc-agent-meta { display: flex; justify-content: space-between; margin-top: 8px; font-family: var(--mono); font-size: 10.5px; color: var(--muted); letter-spacing: 0.1em; }
+
+.doc-agent-log {
+  list-style: none; padding: 16px 0 0; margin: 14px 0 0; border-top: 1px solid var(--border-hair);
+  display: flex; flex-direction: column; gap: 8px;
+  flex: 1;
+}
+.doc-agent-log li {
+  display: flex; gap: 10px; align-items: center;
+  font-size: 12px; color: var(--muted);
+  font-family: var(--mono); letter-spacing: 0.02em;
+  transition: color .2s;
+}
+.doc-agent-bullet { width: 5px; height: 5px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+.doc-agent-log li.done { color: var(--slate); }
+.doc-agent-log li.done .doc-agent-bullet { background: var(--teal); }
+.doc-agent-log li.active { color: var(--ice); }
+.doc-agent-log li.active .doc-agent-bullet { background: var(--teal); box-shadow: 0 0 10px var(--teal); animation: pulse 1.4s ease-in-out infinite; }
+
+.doc-agent-foot { padding-top: 14px; margin-top: 14px; border-top: 1px solid var(--border-hair); display: flex; flex-direction: column; gap: 8px; }
+.doc-agent-foot-row { display: flex; justify-content: space-between; gap: 12px; font-size: 11.5px; }
+.doc-agent-foot-row span { color: var(--muted); font-family: var(--mono); letter-spacing: 0.05em; }
+.doc-agent-foot-row b { color: var(--ice); font-weight: 600; font-family: var(--sans); }
+
+
+/* ── CONSTELLATION ── */
+.constellation {
+  display: block;
+  gap: 24px;
+  margin-top: 24px;
+  align-items: stretch;
+}
+@media (max-width: 1000px) {
+  .constellation { grid-template-columns: 1fr; }
+}
+.constellation-canvas-wrap {
+  position: relative;
+  height: 720px;
+  background:
+    radial-gradient(ellipse at center, rgba(60,184,176,0.04), transparent 70%),
+    var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.constellation-canvas-wrap canvas { display: block; width: 100%; height: 100%; }
+.constellation-labels { position: absolute; inset: 0; pointer-events: none; }
+.constellation-label {
+  position: absolute;
+  pointer-events: auto;
+  transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 5px 10px;
+  font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: 0.08em;
+  border: 1px solid;
+  border-radius: 100px;
+  cursor: pointer;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform .2s, background .2s, border-color .2s;
+}
+.constellation-label.is-active { transform: translate(-50%, -50%) scale(1.04); z-index: 2; }
+.constellation-label-flag { font-size: 14px; line-height: 1; }
+.constellation-label-count { font-weight: 700; }
+.constellation-label-name { color: var(--ice); font-size: 10.5px; letter-spacing: 0.1em; }
+
+.constellation-meta {
+  position: absolute; left: 22px; top: 22px;
+  display: flex; flex-direction: column; gap: 4px;
+  pointer-events: none;
+}
+.constellation-meta-eyebrow { display: inline-flex; align-items: center; gap: 6px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--teal); }
+.constellation-live { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); animation: pulse 1.8s ease-in-out infinite; }
+.constellation-meta-count { font-family: var(--sans); font-size: 64px; font-weight: 700; color: var(--teal); line-height: 1; letter-spacing: -2.5px; margin-top: 6px; font-feature-settings: "tnum"; }
+.constellation-meta-label { font-family: var(--sans); font-size: 11.5px; color: var(--slate); line-height: 1.45; margin-top: 4px; }
+
+.constellation-detail {
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.constellation-detail-head { display: flex; gap: 14px; align-items: center; padding-bottom: 14px; border-bottom: 1px solid var(--border-hair); }
+.constellation-detail-flag { font-size: 32px; line-height: 1; }
+.constellation-detail-name { font-family: var(--serif); font-size: 22px; font-weight: 700; color: var(--ice); letter-spacing: -0.3px; }
+.constellation-detail-count { font-size: 12.5px; color: var(--slate); margin-top: 2px; font-family: var(--mono); letter-spacing: 0.05em; }
+.constellation-detail-note { font-size: 13.5px; line-height: 1.6; color: var(--slate); }
+.constellation-detail-sample-h { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.2em; color: var(--muted); margin-bottom: 10px; text-transform: uppercase; }
+.constellation-detail-sample-grid { display: flex; flex-wrap: wrap; gap: 5px; }
+.constellation-detail-pill {
+  display: inline-block;
+  padding: 4px 9px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-hair);
+  border-radius: 3px;
+  font-size: 11.5px;
+  color: var(--ice);
+  font-family: var(--sans);
+}
+.constellation-detail-cta { margin-top: auto; font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--teal); border-bottom: 1px solid transparent; align-self: flex-start; padding-bottom: 1px; }
+.constellation-detail-cta:hover { border-bottom-color: var(--teal); }
+
+</style>
+</head>
+<body>
+
+<!-- NAV (canonical, uses site.css) -->
+<nav>
+  <a href="/" class="nav-logo" aria-label="Upper Harbour home">
+    <svg aria-hidden="true" width="28" height="28" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs><linearGradient id="hg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs>
+      <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+      <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg)"/>
+    </svg>
+    <span style="display:inline-flex;align-items:baseline;gap:0"><span class="nav-upper">Upper</span><span class="nav-harbour">Harbour</span></span>
+  </a>
+  <div class="nav-links">
+    <a href="/research" class="nav-link">Research</a>
+    <a href="/tools" class="nav-link">Sovereignty Index</a>
+    <a href="/signals" class="nav-link">Signals</a>
+    <a href="/resources" class="nav-link">Compliance</a>
+    <a href="/harbourscan" class="nav-cta">Map Your Stack</a>
+  </div>
+  <button class="nav-hamburger" onclick="document.body.classList.toggle('nav-mobile-open')" aria-label="Menu">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#8A9DB0" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+</nav>
+<div class="nav-mobile-menu">
+  <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" data-screen-label="01 Hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow eyebrow pill">
+        <span class="dot"></span>
+        <span>For self-serve privacy compliance</span>
+      </div>
+      <h1>The AI <span class="italic-teal">privacy agent</span> for Canadian organizations.</h1>
+      <p class="hero-sub">Generate defensible PIAs, TIAs, breach assessments, and Quebec Law 25 documentation in hours, not weeks. Built for privacy officers, compliance teams, and anyone responsible for privacy at their organization.</p>
+      <div class="hero-ctas">
+        <a href="/pilot" class="btn btn-primary">Join the pilot cohort</a>
+        <a href="/meet" class="btn btn-secondary">Book a 30-minute demo</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>768</b> tools mapped</div>
+        <div><b>All</b> Canadian privacy regimes covered</div>
+        <div><b>Grounded</b> in Canadian statute law</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- AS FEATURED IN -->
+<section class="featured-section" data-screen-label="02 Press">
+  <div class="container">
+    <span class="label">As featured in</span>
+    <div class="logos">
+      <span>The Globe and Mail</span>
+      <span>The Logic</span>
+      <span>Maclean's</span>
+      <span>Policy Options</span>
+      <span>OpenCanada</span>
+      <span>BetaKit</span>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE STRIP -->
+<section class="quote-block" data-screen-label="03 Customer outcome">
+  <div class="container">
+    <div class="quote-editorial">
+      <div class="eyebrow">Customer outcome</div>
+      <blockquote>“We had Law 25 obligations to meet and a <span class="em-teal">$20,000</span> consultant quote we couldn’t justify. Upper Harbour delivered everything we needed at <span class="em-teal">a fraction of the cost</span>, in <span class="em-teal">80% less time</span>.”</blockquote>
+      <div class="quote-attrib-row">
+        <img class="avatar avatar-photo" src="/assets/mikayla-stewart.jpeg" alt="Mikayla Stewart" />
+        <div>
+          <div class="who">Mikayla Stewart</div>
+          <div class="role">Co-Founder, Athena Collective</div>
+        </div>
+      </div>
+    </div>
+    <div class="featured-strip" hidden="">
+      <span class="label">As featured in</span>
+      <div class="logos">
+        <span>The Globe and Mail</span>
+        <span>The Logic</span>
+        <span>Maclean's</span>
+        <span>Policy Options</span>
+        <span>OpenCanada</span>
+        <span>BetaKit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL: Why we built this -->
+<section class="editorial" data-screen-label="03 Why we built this">
+  <div class="container">
+    <div class="eyebrow">Why we built this</div>
+    <h2>Privacy is the most concrete expression of <span class="italic-gold">data sovereignty</span> Canadians have.</h2>
+    <p>The Canadian sovereignty conversation usually gets stuck on infrastructure — data centres, AI compute, undersea cables. But even when the infrastructure is Canadian, Canadian personal information still moves into foreign jurisdictions one layer up: in the SaaS contracts and processing agreements signed every day.</p>
+    <p>Privacy compliance is where those choices become visible. Every PIA, every TIA, every breach assessment is a moment to ask the question that matters: <strong>whose courts, whose laws, whose subpoenas reach this data?</strong> The question is rarely asked. When it is, the answer is buried under legal fees.</p>
+    <p>Upper Harbour exists to change that — to make Canadian data sovereignty visible, understandable, and actionable, and to make the documentation regulators require something compliance teams can actually produce themselves. The AI privacy agent is one piece. The Sovereignty Index, the methodology, the research that anchors it all — same project: helping Canada see what it has signed up for, and giving organizations the tools to do something about it.</p>
+    <a href="/research" class="link-out">Explore the research that powers this →</a>
+  </div>
+</section>
+
+<!-- WHAT WE PRODUCE -->
+<section class="section-alt" data-screen-label="04 What we produce">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">What Upper Harbour produces</div>
+      <h2>Audit-ready documentation that responds to each <span class="em">statutory requirement</span> that applies to your operations, with every claim traced to the governing provision.</h2>
+    </div>
+    <div class="produces-grid">
+      <div class="produce-card">
+        <div class="produce-stamp">PIA</div>
+        <h3>Privacy Impact Assessments</h3>
+        <p>Full PIAs aligned to each regulator's published template — federal, BC, Alberta, Ontario, Quebec. Every data field mapped to the operating-program authority that governs it.</p>
+      </div>
+      <div class="produce-card">
+        <div class="produce-stamp">TIA</div>
+        <h3>Transfer Impact Assessments</h3>
+        <p>Law 25 TIAs grounded in current Quebec Court of Appeal jurisprudence and CLOUD Act analysis. Every vendor traced to its corporate parent, jurisdiction, and exposure to foreign legal regimes.</p>
+      </div>
+      <div class="produce-card">
+        <div class="produce-stamp">BREACH</div>
+        <h3>Breach assessment packages</h3>
+        <p>72-hour breach workflows, OPC and provincial regulator notification packages, and the supporting documentation regulators expect when the clock is running.</p>
+      </div>
+      <div class="produce-card">
+        <div class="produce-stamp">PMP</div>
+        <h3>Privacy Management Programs</h3>
+        <p>Privacy management programs and privacy policies aligned to PIPEDA accountability requirements and Law 25 Section 8. Built once, kept current as your stack and operations evolve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS + DOC SIMULATOR -->
+<section data-screen-label="05 How it works" id="section-doc">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">How it works</div>
+      <h2>Three steps from <span class="em">intake</span> to audit-ready output.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <div>
+          <h3>Tell us what you do</h3>
+          <p>Where you operate, the data you handle, the SaaS tools in your stack. That's the intake. You don't need to know what laws apply or what documents you're on the hook for — that's our job.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <div>
+          <h3>We map your obligations</h3>
+          <p>The agent identifies every statute that applies to your operations — federal, provincial, sector-specific — and exactly what documentation regulators expect from you. You see the full picture before anything gets drafted.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <div>
+          <h3>We produce the documentation</h3>
+          <p>Audit-ready PIAs, TIAs, breach assessments, and privacy management programs — drafted in parallel, grounded in statute, with every claim traced to the provision it answers. Review in a familiar document editor, override anything you'd word differently, and export.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WOW: Document Drafting Simulator -->
+    <div style="margin-top:56px;" id="doc-slot"></div>
+  </div>
+</section>
+
+<!-- BUILT ON VERIFIED SOURCES + STATS -->
+<section class="section-alt" data-screen-label="06 Built on verified Canadian primary sources">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Why Upper Harbour is different</div>
+      <h2>Built on verified <span class="em">Canadian primary sources</span>.</h2>
+      <p class="lead">Ask ChatGPT to draft a PIA and it paraphrases the statute. Close enough is not good enough in front of a regulator — the words that matter are the ones in the statute itself, not an LLM's summary of them.</p>
+      <p class="lead">Upper Harbour works from the verbatim statute text. Every claim in the output traces to the provision that authorizes it. Every vendor traces to its corporate parent, its subprocessors, and the jurisdictions data actually flows through.</p>
+    </div>
+
+    <!-- WOW: Verbatim vs Paraphrase — Law 25 s. 3.3 -->
+    <div id="vvp-slot"></div>
+    <div class="stats-row">
+      <div class="stat-card accent">
+        <div class="v">768</div>
+        <div class="l">SaaS tools mapped</div>
+        <div class="d">Every tool traced to ultimate corporate parent, jurisdiction of incorporation, CLOUD Act exposure, and data residency posture. The most comprehensive public Canadian sovereignty dataset.</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">13</div>
+        <div class="l">Canadian jurisdictions grounded</div>
+        <div class="d">Coverage across every major Canadian privacy regime — federal, provincial, health-sector, and public-sector. Built from the statute itself rather than adapted from US compliance frameworks.</div>
+      </div>
+      <div class="stat-card">
+        <div class="v">100%</div>
+        <div class="l">Statute-grounded</div>
+        <div class="d">Every section of the output responds to a specific statutory requirement, with claims traced to the governing provision via the Anthropic Citations API. No paraphrase. No hallucination.</div>
+      </div>
+    </div>
+
+    <!-- WOW: Sovereignty constellation (proof for the 768 tools stat) -->
+    <div style="margin-top:56px;" id="constellation-slot"></div>
+  </div>
+</section>
+
+<!-- SOVEREIGNTY INDEX + CONSTELLATION -->
+<section id="sov" data-screen-label="07 Sovereignty Index">
+  <span id="section-constellation-anchor"></span>
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The Sovereignty Index</div>
+      <h2>Three layers deep. <span class="em">Continuously monitored.</span></h2>
+      <p class="lead">Vendors tell you where the data is hosted. The Sovereignty Index tells you whose courts can compel its disclosure, whose subpoenas reach it, and whose terms of service govern it — three layers of legal authority analysis, continuously updated as the SaaS landscape shifts. It's the data layer underneath every PIA, TIA, and breach assessment the agent produces.</p>
+    </div>
+    <div class="layers-grid">
+      <div class="layer-card">
+        <div class="tag">Layer 1</div>
+        <h4>Corporate parent</h4>
+        <p>Every tool traced to its ultimate beneficial owner, jurisdiction of incorporation, and CLOUD Act exposure.</p>
+      </div>
+      <div class="layer-card">
+        <div class="tag">Layer 2</div>
+        <h4>Data transfer</h4>
+        <p>Where data physically moves and is processed. Cross-border transfer routes, regional residency options, and actual processing geographies.</p>
+      </div>
+      <div class="layer-card">
+        <div class="tag">Layer 3</div>
+        <h4>Subprocessor chain</h4>
+        <p>The vendors your vendor relies on, and the jurisdictions they operate under. Most Canadian privacy assessments miss this layer entirely.</p>
+      </div>
+      <div class="layer-card live">
+        <div class="tag"><span class="live-dot"></span>Live</div>
+        <h4>Continuously monitored</h4>
+        <p>When a tool's sovereignty posture changes — M&amp;A, infrastructure shifts, policy revisions — the index updates and you get alerts with the specific lines in your existing documentation that need to change.</p>
+      </div>
+    </div>
+
+    <div id="jstack-slot"></div>
+
+    <!-- (constellation moved to the primary-sources section above) -->
+
+    <div style="margin-top:32px;">
+      <a href="/tools" class="btn btn-secondary">Search the Sovereignty Index →</a>
+    </div>
+  </div>
+</section>
+
+<!-- MAP YOUR STACK (natural slot if not featured in hero) -->
+<section class="section-alt" id="section-map" data-screen-label="08 Map your stack">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">HarbourScan · Map your stack</div>
+      <h2>Drop in your SaaS — see <span class="em">whose courts reach it</span> in seconds.</h2>
+      <p class="lead">The same Sovereignty Index that powers every PIA, exposed as a tool. Type the SaaS you use, get the three-layer breakdown, and see which exposures Upper Harbour will document on your behalf.</p>
+    </div>
+    <div id="map-slot" style="max-width:880px;"></div>
+  </div>
+</section>
+
+<!-- PILOT COHORT -->
+<section id="pilot" data-screen-label="09 Pilot cohort">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">The pilot cohort</div>
+      <h2>Bring a real project. Leave with <span class="em">audit-ready documentation.</span></h2>
+      <p class="lead">A small group of Canadian organizations is shaping the platform against real privacy work — projects that would otherwise sit on your desk for months or go out to a consultant for tens of thousands.</p>
+    </div>
+    <div class="pilot-grid">
+      <div class="pilot-card">
+        <div class="num">01 · Access</div>
+        <h3>Free during the cohort</h3>
+        <p>Full platform access at no cost during the cohort. Bring one real project; we produce the documentation alongside you.</p>
+      </div>
+      <div class="pilot-card">
+        <div class="num">02 · Input</div>
+        <h3>Direct line to the founder</h3>
+        <p>Your privacy program shapes the roadmap. Weekly check-ins, async feedback channels, and priority on what we build next.</p>
+      </div>
+      <div class="pilot-card">
+        <div class="num">03 · Pricing</div>
+        <h3>Locked-in rate at launch</h3>
+        <p>Pilot members carry a locked-in rate into production. First to see the value, lowest price to keep it.</p>
+      </div>
+    </div>
+    <div style="margin-top:36px;">
+      <a href="/pilot" class="btn btn-primary">Apply to the pilot cohort</a>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTATION REQUIRED -->
+<section class="section-alt" data-screen-label="10 Documentation required">
+  <div class="container">
+    <div class="section-head">
+      <h2>This documentation is now <span class="em">required.</span></h2>
+      <p class="lead">Canadian privacy law has shifted from principles to specific, enforceable documentation obligations. Most organizations don't even know which obligations apply to them — and most who do can't justify the consultant fees to produce the documentation.</p>
+    </div>
+    <div class="req-grid">
+      <div class="req-card">
+        <div class="jur">Quebec — Law 25</div>
+        <h3>PIAs required for sensitive processing and transfers</h3>
+        <p>Section 3.3 mandates PIAs for personal information transfers outside Quebec. The CAI is enforcing.</p>
+        <span class="penalty">Penalties up to 4% of worldwide turnover</span>
+      </div>
+      <div class="req-card">
+        <div class="jur">Federal — PIPEDA</div>
+        <h3>PMP and accountability documentation</h3>
+        <p>The OPC requires documented privacy management programs as a condition of accountability. Anticipated federal AI legislation will introduce algorithmic impact assessments. Organizations need a defensible record now.</p>
+      </div>
+      <div class="req-card">
+        <div class="jur">Federal procurement</div>
+        <h3>Buy Canadian + sovereignty disclosures</h3>
+        <p>The Buy Canadian framework and federal sovereignty assessments require vendor jurisdiction disclosure. Canadian software vendors selling to government need to be ready.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT FOR -->
+<section data-screen-label="11 Built for">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Built for</div>
+      <h2>Anyone in Canada handling <span class="em">personal data.</span></h2>
+      <p class="lead">Upper Harbour is for the people doing privacy compliance work without a standing law-firm retainer attached. If that describes you, you're who we built this for.</p>
+    </div>
+    <div class="personas-grid">
+      <div class="persona-card">
+        <div class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M5 19c0-3 1-5 3-7l4-4c2-2 5-3 7-3 0 2-1 5-3 7l-4 4c-2 2-4 3-7 3z"></path><path d="M9 15l-4 4"></path><circle cx="15" cy="9" r="1.3"></circle></svg>
+        </div>
+        <div>
+          <h4>Solo founders &amp; startups</h4>
+          <p>Building products that touch Canadian customer data and discovering Law 25, PIPEDA, or a provincial regime applies to you.</p>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </div>
+        <div>
+          <h4>Privacy officers &amp; compliance teams</h4>
+          <p>Scaling your privacy program without scaling your consultant spend. Bring more work in-house and finish it faster.</p>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M3 21h18"></path><path d="M5 21V10"></path><path d="M9 21V10"></path><path d="M15 21V10"></path><path d="M19 21V10"></path><path d="M3 10h18"></path><path d="M12 3l9 5H3l9-5z"></path></svg>
+        </div>
+        <div>
+          <h4>Public bodies, health, education</h4>
+          <p>Subject to provincial regimes (POPA, PHIPA, FIPPA, Law 25 public sector) and accountable to a regulator that publishes specific templates.</p>
+        </div>
+      </div>
+      <div class="persona-card">
+        <div class="glyph" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"></rect><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2"></path><path d="M3 13h18"></path><path d="M11 12v2"></path><path d="M13 12v2"></path></svg>
+        </div>
+        <div>
+          <h4>Privacy &amp; compliance consultants</h4>
+          <p>Delivering client work faster and more thoroughly, with documentation grounded in statute rather than checklists.</p>
+        </div>
+      </div>
+    </div>
+    <div class="probably-not">
+      <strong>Probably not for:</strong> organizations with dedicated outside counsel already producing all of this documentation on a standing retainer. If your privacy work runs through a top-tier Canadian firm by default, you don't need us yet.
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" data-screen-label="12 Final CTA">
+  <div class="container">
+    <h2>Join the Upper Harbour <span class="italic-teal">pilot cohort.</span></h2>
+    <p>A small group of Canadian organizations is shaping the platform right now. Book a call, bring a real project, and see what audit-ready documentation looks like for your jurisdiction.</p>
+    <div class="ctas">
+      <a href="/pilot" class="btn btn-primary">Apply to join the cohort</a>
+      <a href="/research" class="btn btn-secondary">See the research</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (canonical, uses site.css) -->
+<footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo"><svg width="22" height="22" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1C4F5E"/><stop offset="100%" stop-color="#32A8A4"/></linearGradient></defs><path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/><path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hg2)"/></svg><span style="display:inline-flex;align-items:baseline;gap:0"><span style="font-size:14px;font-weight:400;color:var(--slate);font-family:var(--body)">Upper</span><span style="font-size:14px;font-weight:800;color:var(--ice);letter-spacing:-0.5px;margin-left:4px;font-family:var(--body)">Harbour</span></span></div>
+        <p class="footer-desc">Technology sovereignty intelligence for Canadian organizations.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Platform</div>
+        <ul class="footer-links">
+          <li><a href="/harbourscan">HarbourScan</a></li>
+          <li><a href="/tools">Sovereignty Index</a></li>
+          <li><a href="/signals">Signals</a></li>
+          <li><a href="/research">Research</a></li>
+          <li><a href="/methodology">Methodology</a></li>
+          <li><a href="/resources">Compliance Guides</a></li>
+          <li><a href="/consulting">Consulting</a></li>
+          <li><a href="/vendors">Vendors</a></li>
+          <li><a href="/comply">Compliance Reports</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">About</div>
+        <ul class="footer-links">
+          <li><a href="/founder">Founder</a></li>
+          <li><a href="https://joshuavanes.ca" target="_blank">joshuavanes.ca</a></li>
+          <li><a href="https://www.upperharbour.ca">upperharbour.ca</a></li>
+          <li><a href="https://www.linkedin.com/company/upper-harbour/" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:josh@upperharbour.ca">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">&copy; 2026 Upper Harbour. All rights reserved. &middot; <a href="/privacy" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Privacy</a> &middot; <a href="/terms" style="color:var(--muted);text-decoration:none;border-bottom:1px solid rgba(107,123,141,0.3);">Terms</a></span>
+    </div>
+  </footer>
+
+<!-- Tweaks panel mount -->
+<div id="tweaks-root"></div>
+
+<script>
+  // Suppress benign ResizeObserver loop notice from canvas resize
+  window.addEventListener('error', (e) => {
+    if (e.message && e.message.includes('ResizeObserver loop')) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+    }
+  });
+</script>
+
+<!-- React + ReactDOM + Babel standalone (CDN, for in-browser JSX) -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<!-- Tweaks panel + components + app (inlined to avoid Babel fetch 401) -->
+<script type="text/babel" data-presets="react">
+
+/* ===== tweaks-panel.jsx ===== */
+
+// tweaks-panel.jsx
+// Reusable Tweaks shell + form-control helpers.
+//
+// Owns the host protocol (listens for __activate_edit_mode / __deactivate_edit_mode,
+// posts __edit_mode_available / __edit_mode_set_keys / __edit_mode_dismissed) so
+// individual prototypes don't re-roll it. Ships a consistent set of controls so you
+// don't hand-draw <input type="range">, segmented radios, steppers, etc.
+//
+// Usage (in an HTML file that loads React + Babel):
+//
+//   const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+//     "primaryColor": "#D97757",
+//     "palette": ["#D97757", "#29261b", "#f6f4ef"],
+//     "fontSize": 16,
+//     "density": "regular",
+//     "dark": false
+//   }/*EDITMODE-END*/;
+//
+//   function App() {
+//     const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+//     return (
+//       <div style={{ fontSize: t.fontSize, color: t.primaryColor }}>
+//         Hello
+//         <TweaksPanel>
+//           <TweakSection label="Typography" />
+//           <TweakSlider label="Font size" value={t.fontSize} min={10} max={32} unit="px"
+//                        onChange={(v) => setTweak('fontSize', v)} />
+//           <TweakRadio  label="Density" value={t.density}
+//                        options={['compact', 'regular', 'comfy']}
+//                        onChange={(v) => setTweak('density', v)} />
+//           <TweakSection label="Theme" />
+//           <TweakColor  label="Primary" value={t.primaryColor}
+//                        options={['#D97757', '#2A6FDB', '#1F8A5B', '#7A5AE0']}
+//                        onChange={(v) => setTweak('primaryColor', v)} />
+//           <TweakColor  label="Palette" value={t.palette}
+//                        options={[['#D97757', '#29261b', '#f6f4ef'],
+//                                  ['#475569', '#0f172a', '#f1f5f9']]}
+//                        onChange={(v) => setTweak('palette', v)} />
+//           <TweakToggle label="Dark mode" value={t.dark}
+//                        onChange={(v) => setTweak('dark', v)} />
+//         </TweaksPanel>
+//       </div>
+//     );
+//   }
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+const __TWEAKS_STYLE = `
+  .twk-panel{position:fixed;right:16px;bottom:16px;z-index:2147483646;width:280px;
+    max-height:calc(100vh - 32px);display:flex;flex-direction:column;
+    transform:scale(var(--dc-inv-zoom,1));transform-origin:bottom right;
+    background:rgba(250,249,247,.78);color:#29261b;
+    -webkit-backdrop-filter:blur(24px) saturate(160%);backdrop-filter:blur(24px) saturate(160%);
+    border:.5px solid rgba(255,255,255,.6);border-radius:14px;
+    box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 12px 40px rgba(0,0,0,.18);
+    font:11.5px/1.4 ui-sans-serif,system-ui,-apple-system,sans-serif;overflow:hidden}
+  .twk-hd{display:flex;align-items:center;justify-content:space-between;
+    padding:10px 8px 10px 14px;cursor:move;user-select:none}
+  .twk-hd b{font-size:12px;font-weight:600;letter-spacing:.01em}
+  .twk-x{appearance:none;border:0;background:transparent;color:rgba(41,38,27,.55);
+    width:22px;height:22px;border-radius:6px;cursor:default;font-size:13px;line-height:1}
+  .twk-x:hover{background:rgba(0,0,0,.06);color:#29261b}
+  .twk-body{padding:2px 14px 14px;display:flex;flex-direction:column;gap:10px;
+    overflow-y:auto;overflow-x:hidden;min-height:0;
+    scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.15) transparent}
+  .twk-body::-webkit-scrollbar{width:8px}
+  .twk-body::-webkit-scrollbar-track{background:transparent;margin:2px}
+  .twk-body::-webkit-scrollbar-thumb{background:rgba(0,0,0,.15);border-radius:4px;
+    border:2px solid transparent;background-clip:content-box}
+  .twk-body::-webkit-scrollbar-thumb:hover{background:rgba(0,0,0,.25);
+    border:2px solid transparent;background-clip:content-box}
+  .twk-row{display:flex;flex-direction:column;gap:5px}
+  .twk-row-h{flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .twk-lbl{display:flex;justify-content:space-between;align-items:baseline;
+    color:rgba(41,38,27,.72)}
+  .twk-lbl>span:first-child{font-weight:500}
+  .twk-val{color:rgba(41,38,27,.5);font-variant-numeric:tabular-nums}
+
+  .twk-sect{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+    color:rgba(41,38,27,.45);padding:10px 0 0}
+  .twk-sect:first-child{padding-top:0}
+
+  .twk-field{appearance:none;box-sizing:border-box;width:100%;min-width:0;height:26px;padding:0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;
+    background:rgba(255,255,255,.6);color:inherit;font:inherit;outline:none}
+  .twk-field:focus{border-color:rgba(0,0,0,.25);background:rgba(255,255,255,.85)}
+  select.twk-field{padding-right:22px;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='rgba(0,0,0,.5)' d='M0 0h10L5 6z'/></svg>");
+    background-repeat:no-repeat;background-position:right 8px center}
+
+  .twk-slider{appearance:none;-webkit-appearance:none;width:100%;height:4px;margin:6px 0;
+    border-radius:999px;background:rgba(0,0,0,.12);outline:none}
+  .twk-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+    width:14px;height:14px;border-radius:50%;background:#fff;
+    border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+  .twk-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;
+    background:#fff;border:.5px solid rgba(0,0,0,.12);box-shadow:0 1px 3px rgba(0,0,0,.2);cursor:default}
+
+  .twk-seg{position:relative;display:flex;padding:2px;border-radius:8px;
+    background:rgba(0,0,0,.06);user-select:none}
+  .twk-seg-thumb{position:absolute;top:2px;bottom:2px;border-radius:6px;
+    background:rgba(255,255,255,.9);box-shadow:0 1px 2px rgba(0,0,0,.12);
+    transition:left .15s cubic-bezier(.3,.7,.4,1),width .15s}
+  .twk-seg.dragging .twk-seg-thumb{transition:none}
+  .twk-seg button{appearance:none;position:relative;z-index:1;flex:1;border:0;
+    background:transparent;color:inherit;font:inherit;font-weight:500;min-height:22px;
+    border-radius:6px;cursor:default;padding:4px 6px;line-height:1.2;
+    overflow-wrap:anywhere}
+
+  .twk-toggle{position:relative;width:32px;height:18px;border:0;border-radius:999px;
+    background:rgba(0,0,0,.15);transition:background .15s;cursor:default;padding:0}
+  .twk-toggle[data-on="1"]{background:#34c759}
+  .twk-toggle i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;
+    background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.25);transition:transform .15s}
+  .twk-toggle[data-on="1"] i{transform:translateX(14px)}
+
+  .twk-num{display:flex;align-items:center;box-sizing:border-box;min-width:0;height:26px;padding:0 0 0 8px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:7px;background:rgba(255,255,255,.6)}
+  .twk-num-lbl{font-weight:500;color:rgba(41,38,27,.6);cursor:ew-resize;
+    user-select:none;padding-right:8px}
+  .twk-num input{flex:1;min-width:0;height:100%;border:0;background:transparent;
+    font:inherit;font-variant-numeric:tabular-nums;text-align:right;padding:0 8px 0 0;
+    outline:none;color:inherit;-moz-appearance:textfield}
+  .twk-num input::-webkit-inner-spin-button,.twk-num input::-webkit-outer-spin-button{
+    -webkit-appearance:none;margin:0}
+  .twk-num-unit{padding-right:8px;color:rgba(41,38,27,.45)}
+
+  .twk-btn{appearance:none;height:26px;padding:0 12px;border:0;border-radius:7px;
+    background:rgba(0,0,0,.78);color:#fff;font:inherit;font-weight:500;cursor:default}
+  .twk-btn:hover{background:rgba(0,0,0,.88)}
+  .twk-btn.secondary{background:rgba(0,0,0,.06);color:inherit}
+  .twk-btn.secondary:hover{background:rgba(0,0,0,.1)}
+
+  .twk-swatch{appearance:none;-webkit-appearance:none;width:56px;height:22px;
+    border:.5px solid rgba(0,0,0,.1);border-radius:6px;padding:0;cursor:default;
+    background:transparent;flex-shrink:0}
+  .twk-swatch::-webkit-color-swatch-wrapper{padding:0}
+  .twk-swatch::-webkit-color-swatch{border:0;border-radius:5.5px}
+  .twk-swatch::-moz-color-swatch{border:0;border-radius:5.5px}
+
+  .twk-chips{display:flex;gap:6px}
+  .twk-chip{position:relative;appearance:none;flex:1;min-width:0;height:46px;
+    padding:0;border:0;border-radius:6px;overflow:hidden;cursor:default;
+    box-shadow:0 0 0 .5px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.06);
+    transition:transform .12s cubic-bezier(.3,.7,.4,1),box-shadow .12s}
+  .twk-chip:hover{transform:translateY(-1px);
+    box-shadow:0 0 0 .5px rgba(0,0,0,.18),0 4px 10px rgba(0,0,0,.12)}
+  .twk-chip[data-on="1"]{box-shadow:0 0 0 1.5px rgba(0,0,0,.85),
+    0 2px 6px rgba(0,0,0,.15)}
+  .twk-chip>span{position:absolute;top:0;bottom:0;right:0;width:34%;
+    display:flex;flex-direction:column;box-shadow:-1px 0 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i{flex:1;box-shadow:0 -1px 0 rgba(0,0,0,.1)}
+  .twk-chip>span>i:first-child{box-shadow:none}
+  .twk-chip svg{position:absolute;top:6px;left:6px;width:13px;height:13px;
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+`;
+
+// ── useTweaks ───────────────────────────────────────────────────────────────
+// Single source of truth for tweak values. setTweak persists via the host
+// (__edit_mode_set_keys → host rewrites the EDITMODE block on disk).
+function useTweaks(defaults) {
+  const [values, setValues] = React.useState(defaults);
+  // Accepts either setTweak('key', value) or setTweak({ key: value, ... }) so a
+  // useState-style call doesn't write a "[object Object]" key into the persisted
+  // JSON block.
+  const setTweak = React.useCallback((keyOrEdits, val) => {
+    const edits = typeof keyOrEdits === 'object' && keyOrEdits !== null
+      ? keyOrEdits : { [keyOrEdits]: val };
+    setValues((prev) => ({ ...prev, ...edits }));
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits }, '*');
+    // Same-window signal so in-page listeners (deck-stage rail thumbnails)
+    // can react — the parent message only reaches the host, not peers.
+    window.dispatchEvent(new CustomEvent('tweakchange', { detail: edits }));
+  }, []);
+  return [values, setTweak];
+}
+
+// ── TweaksPanel ─────────────────────────────────────────────────────────────
+// Floating shell. Registers the protocol listener BEFORE announcing
+// availability — if the announce ran first, the host's activate could land
+// before our handler exists and the toolbar toggle would silently no-op.
+// The close button posts __edit_mode_dismissed so the host's toolbar toggle
+// flips off in lockstep; the host echoes __deactivate_edit_mode back which
+// is what actually hides the panel.
+function TweaksPanel({ title = 'Tweaks', noDeckControls = false, children }) {
+  const [open, setOpen] = React.useState(false);
+  const dragRef = React.useRef(null);
+  // Auto-inject a rail toggle when a <deck-stage> is on the page. The
+  // toggle drives the deck's per-viewer _railVisible via window message;
+  // state is mirrored from the same localStorage key the deck reads so
+  // the control reflects reality across reloads. The mechanism is the
+  // message — authors who want custom placement can post it directly
+  // and pass noDeckControls to suppress this one.
+  const hasDeckStage = React.useMemo(
+    () => typeof document !== 'undefined' && !!document.querySelector('deck-stage'),
+    [],
+  );
+  // Hide the toggle until the host has actually enabled the rail (the
+  // __omelette_rail_enabled window message, posted only when the
+  // omelette_deck_rail_enabled flag is on for this user). The initial read
+  // covers TweaksPanel mounting after the message already arrived; the
+  // listener covers the common case of mounting first.
+  const [railEnabled, setRailEnabled] = React.useState(
+    () => hasDeckStage && !!document.querySelector('deck-stage')?._railEnabled,
+  );
+  React.useEffect(() => {
+    if (!hasDeckStage || railEnabled) return undefined;
+    const onMsg = (e) => {
+      if (e.data && e.data.type === '__omelette_rail_enabled') setRailEnabled(true);
+    };
+    window.addEventListener('message', onMsg);
+    return () => window.removeEventListener('message', onMsg);
+  }, [hasDeckStage, railEnabled]);
+  const [railVisible, setRailVisible] = React.useState(() => {
+    try { return localStorage.getItem('deck-stage.railVisible') !== '0'; } catch (e) { return true; }
+  });
+  const toggleRail = (on) => {
+    setRailVisible(on);
+    window.postMessage({ type: '__deck_rail_visible', on }, '*');
+  };
+  const offsetRef = React.useRef({ x: 16, y: 16 });
+  const PAD = 16;
+
+  const clampToViewport = React.useCallback(() => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const w = panel.offsetWidth, h = panel.offsetHeight;
+    const maxRight = Math.max(PAD, window.innerWidth - w - PAD);
+    const maxBottom = Math.max(PAD, window.innerHeight - h - PAD);
+    offsetRef.current = {
+      x: Math.min(maxRight, Math.max(PAD, offsetRef.current.x)),
+      y: Math.min(maxBottom, Math.max(PAD, offsetRef.current.y)),
+    };
+    panel.style.right = offsetRef.current.x + 'px';
+    panel.style.bottom = offsetRef.current.y + 'px';
+  }, []);
+
+  React.useEffect(() => {
+    if (!open) return;
+    clampToViewport();
+    if (typeof ResizeObserver === 'undefined') {
+      window.addEventListener('resize', clampToViewport);
+      return () => window.removeEventListener('resize', clampToViewport);
+    }
+    const ro = new ResizeObserver(() => requestAnimationFrame(clampToViewport));
+    ro.observe(document.documentElement);
+    return () => ro.disconnect();
+  }, [open, clampToViewport]);
+
+  React.useEffect(() => {
+    const onMsg = (e) => {
+      const t = e?.data?.type;
+      if (t === '__activate_edit_mode') setOpen(true);
+      else if (t === '__deactivate_edit_mode') setOpen(false);
+    };
+    window.addEventListener('message', onMsg);
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+    return () => window.removeEventListener('message', onMsg);
+  }, []);
+
+  const dismiss = () => {
+    setOpen(false);
+    window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*');
+  };
+
+  const onDragStart = (e) => {
+    const panel = dragRef.current;
+    if (!panel) return;
+    const r = panel.getBoundingClientRect();
+    const sx = e.clientX, sy = e.clientY;
+    const startRight = window.innerWidth - r.right;
+    const startBottom = window.innerHeight - r.bottom;
+    const move = (ev) => {
+      offsetRef.current = {
+        x: startRight - (ev.clientX - sx),
+        y: startBottom - (ev.clientY - sy),
+      };
+      clampToViewport();
+    };
+    const up = () => {
+      window.removeEventListener('mousemove', move);
+      window.removeEventListener('mouseup', up);
+    };
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', up);
+  };
+
+  if (!open) return null;
+  return (
+    <>
+      <style>{__TWEAKS_STYLE}</style>
+      <div ref={dragRef} className="twk-panel" data-noncommentable=""
+           style={{ right: offsetRef.current.x, bottom: offsetRef.current.y }}>
+        <div className="twk-hd" onMouseDown={onDragStart}>
+          <b>{title}</b>
+          <button className="twk-x" aria-label="Close tweaks"
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={dismiss}>✕</button>
+        </div>
+        <div className="twk-body">
+          {children}
+          {hasDeckStage && railEnabled && !noDeckControls && (
+            <TweakSection label="Deck">
+              <TweakToggle label="Thumbnail rail" value={railVisible} onChange={toggleRail} />
+            </TweakSection>
+          )}
+        </div>
+      </div>
+    </>
+  );
+}
+
+// ── Layout helpers ──────────────────────────────────────────────────────────
+
+function TweakSection({ label, children }) {
+  return (
+    <>
+      <div className="twk-sect">{label}</div>
+      {children}
+    </>
+  );
+}
+
+function TweakRow({ label, value, children, inline = false }) {
+  return (
+    <div className={inline ? 'twk-row twk-row-h' : 'twk-row'}>
+      <div className="twk-lbl">
+        <span>{label}</span>
+        {value != null && <span className="twk-val">{value}</span>}
+      </div>
+      {children}
+    </div>
+  );
+}
+
+// ── Controls ────────────────────────────────────────────────────────────────
+
+function TweakSlider({ label, value, min = 0, max = 100, step = 1, unit = '', onChange }) {
+  return (
+    <TweakRow label={label} value={`${value}${unit}`}>
+      <input type="range" className="twk-slider" min={min} max={max} step={step}
+             value={value} onChange={(e) => onChange(Number(e.target.value))} />
+    </TweakRow>
+  );
+}
+
+function TweakToggle({ label, value, onChange }) {
+  return (
+    <div className="twk-row twk-row-h">
+      <div className="twk-lbl"><span>{label}</span></div>
+      <button type="button" className="twk-toggle" data-on={value ? '1' : '0'}
+              role="switch" aria-checked={!!value}
+              onClick={() => onChange(!value)}><i /></button>
+    </div>
+  );
+}
+
+function TweakRadio({ label, value, options, onChange }) {
+  const trackRef = React.useRef(null);
+  const [dragging, setDragging] = React.useState(false);
+  // The active value is read by pointer-move handlers attached for the lifetime
+  // of a drag — ref it so a stale closure doesn't fire onChange for every move.
+  const valueRef = React.useRef(value);
+  valueRef.current = value;
+
+  // Segments wrap mid-word once per-segment width runs out. The track is
+  // ~248px (280 panel − 28 body pad − 4 seg pad), each button loses 12px
+  // to its own padding, and 11.5px system-ui averages ~6.3px/char — so 2
+  // options fit ~16 chars each, 3 fit ~10. Past that (or >3 options), fall
+  // back to a dropdown rather than wrap.
+  const labelLen = (o) => String(typeof o === 'object' ? o.label : o).length;
+  const maxLen = options.reduce((m, o) => Math.max(m, labelLen(o)), 0);
+  const fitsAsSegments = maxLen <= ({ 2: 16, 3: 10 }[options.length] ?? 0);
+  if (!fitsAsSegments) {
+    // <select> emits strings — map back to the original option value so the
+    // fallback stays type-preserving (numbers, booleans) like the segment path.
+    const resolve = (s) => {
+      const m = options.find((o) => String(typeof o === 'object' ? o.value : o) === s);
+      return m === undefined ? s : typeof m === 'object' ? m.value : m;
+    };
+    return <TweakSelect label={label} value={value} options={options}
+                        onChange={(s) => onChange(resolve(s))} />;
+  }
+  const opts = options.map((o) => (typeof o === 'object' ? o : { value: o, label: o }));
+  const idx = Math.max(0, opts.findIndex((o) => o.value === value));
+  const n = opts.length;
+
+  const segAt = (clientX) => {
+    const r = trackRef.current.getBoundingClientRect();
+    const inner = r.width - 4;
+    const i = Math.floor(((clientX - r.left - 2) / inner) * n);
+    return opts[Math.max(0, Math.min(n - 1, i))].value;
+  };
+
+  const onPointerDown = (e) => {
+    setDragging(true);
+    const v0 = segAt(e.clientX);
+    if (v0 !== valueRef.current) onChange(v0);
+    const move = (ev) => {
+      if (!trackRef.current) return;
+      const v = segAt(ev.clientX);
+      if (v !== valueRef.current) onChange(v);
+    };
+    const up = () => {
+      setDragging(false);
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+
+  return (
+    <TweakRow label={label}>
+      <div ref={trackRef} role="radiogroup" onPointerDown={onPointerDown}
+           className={dragging ? 'twk-seg dragging' : 'twk-seg'}>
+        <div className="twk-seg-thumb"
+             style={{ left: `calc(2px + ${idx} * (100% - 4px) / ${n})`,
+                      width: `calc((100% - 4px) / ${n})` }} />
+        {opts.map((o) => (
+          <button key={o.value} type="button" role="radio" aria-checked={o.value === value}>
+            {o.label}
+          </button>
+        ))}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakSelect({ label, value, options, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <select className="twk-field" value={value} onChange={(e) => onChange(e.target.value)}>
+        {options.map((o) => {
+          const v = typeof o === 'object' ? o.value : o;
+          const l = typeof o === 'object' ? o.label : o;
+          return <option key={v} value={v}>{l}</option>;
+        })}
+      </select>
+    </TweakRow>
+  );
+}
+
+function TweakText({ label, value, placeholder, onChange }) {
+  return (
+    <TweakRow label={label}>
+      <input className="twk-field" type="text" value={value} placeholder={placeholder}
+             onChange={(e) => onChange(e.target.value)} />
+    </TweakRow>
+  );
+}
+
+function TweakNumber({ label, value, min, max, step = 1, unit = '', onChange }) {
+  const clamp = (n) => {
+    if (min != null && n < min) return min;
+    if (max != null && n > max) return max;
+    return n;
+  };
+  const startRef = React.useRef({ x: 0, val: 0 });
+  const onScrubStart = (e) => {
+    e.preventDefault();
+    startRef.current = { x: e.clientX, val: value };
+    const decimals = (String(step).split('.')[1] || '').length;
+    const move = (ev) => {
+      const dx = ev.clientX - startRef.current.x;
+      const raw = startRef.current.val + dx * step;
+      const snapped = Math.round(raw / step) * step;
+      onChange(clamp(Number(snapped.toFixed(decimals))));
+    };
+    const up = () => {
+      window.removeEventListener('pointermove', move);
+      window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move);
+    window.addEventListener('pointerup', up);
+  };
+  return (
+    <div className="twk-num">
+      <span className="twk-num-lbl" onPointerDown={onScrubStart}>{label}</span>
+      <input type="number" value={value} min={min} max={max} step={step}
+             onChange={(e) => onChange(clamp(Number(e.target.value)))} />
+      {unit && <span className="twk-num-unit">{unit}</span>}
+    </div>
+  );
+}
+
+// Relative-luminance contrast pick — checkmarks drawn over a swatch need to
+// read on both #111 and #fafafa without per-option configuration. Hex input
+// only (#rgb / #rrggbb); named or rgb()/hsl() colors fall through to "light".
+function __twkIsLight(hex) {
+  const h = String(hex).replace('#', '');
+  const x = h.length === 3 ? h.replace(/./g, (c) => c + c) : h.padEnd(6, '0');
+  const n = parseInt(x.slice(0, 6), 16);
+  if (Number.isNaN(n)) return true;
+  const r = (n >> 16) & 255, g = (n >> 8) & 255, b = n & 255;
+  return r * 299 + g * 587 + b * 114 > 148000;
+}
+
+const __TwkCheck = ({ light }) => (
+  <svg viewBox="0 0 14 14" aria-hidden="true">
+    <path d="M3 7.2 5.8 10 11 4.2" fill="none" strokeWidth="2.2"
+          strokeLinecap="round" strokeLinejoin="round"
+          stroke={light ? 'rgba(0,0,0,.78)' : '#fff'} />
+  </svg>
+);
+
+// TweakColor — curated color/palette picker. Each option is either a single
+// hex string or an array of 1-5 hex strings; the card adapts — a lone color
+// renders solid, a palette renders colors[0] as the hero (left ~2/3) with the
+// rest stacked in a sharp column on the right. onChange emits the
+// option in the shape it was passed (string stays string, array stays array).
+// Without options it falls back to the native color input for back-compat.
+function TweakColor({ label, value, options, onChange }) {
+  if (!options || !options.length) {
+    return (
+      <div className="twk-row twk-row-h">
+        <div className="twk-lbl"><span>{label}</span></div>
+        <input type="color" className="twk-swatch" value={value}
+               onChange={(e) => onChange(e.target.value)} />
+      </div>
+    );
+  }
+  // Native <input type=color> emits lowercase hex per the HTML spec, so
+  // compare case-insensitively. String() guards JSON.stringify(undefined),
+  // which returns the primitive undefined (no .toLowerCase).
+  const key = (o) => String(JSON.stringify(o)).toLowerCase();
+  const cur = key(value);
+  return (
+    <TweakRow label={label}>
+      <div className="twk-chips" role="radiogroup">
+        {options.map((o, i) => {
+          const colors = Array.isArray(o) ? o : [o];
+          const [hero, ...rest] = colors;
+          const sup = rest.slice(0, 4);
+          const on = key(o) === cur;
+          return (
+            <button key={i} type="button" className="twk-chip" role="radio"
+                    aria-checked={on} data-on={on ? '1' : '0'}
+                    aria-label={colors.join(', ')} title={colors.join(' · ')}
+                    style={{ background: hero }}
+                    onClick={() => onChange(o)}>
+              {sup.length > 0 && (
+                <span>
+                  {sup.map((c, j) => <i key={j} style={{ background: c }} />)}
+                </span>
+              )}
+              {on && <__TwkCheck light={__twkIsLight(hero)} />}
+            </button>
+          );
+        })}
+      </div>
+    </TweakRow>
+  );
+}
+
+function TweakButton({ label, onClick, secondary = false }) {
+  return (
+    <button type="button" className={secondary ? 'twk-btn secondary' : 'twk-btn'}
+            onClick={onClick}>{label}</button>
+  );
+}
+
+Object.assign(window, {
+  useTweaks, TweaksPanel, TweakSection, TweakRow,
+  TweakSlider, TweakToggle, TweakRadio, TweakSelect,
+  TweakText, TweakNumber, TweakColor, TweakButton,
+});
+
+
+/* ===== map-stack.jsx ===== */
+// Map-Your-Stack — interactive hero panel
+// Type or pick a SaaS tool; watch the 3-layer sovereignty breakdown unfold.
+
+const STACK_TOOLS = [
+  {
+    name: "Slack",
+    category: "Communications",
+    parent: { co: "Salesforce, Inc.", jur: "Delaware, USA", flag: "🇺🇸", cloud: "CLOUD Act subject" },
+    transfer: { region: "us-east-1 (Virginia)", residency: "Canadian residency add-on (paid tier)", route: "All traffic transits US backbone" },
+    sub: [
+      { name: "AWS", jur: "USA" },
+      { name: "Salesforce Hyperforce", jur: "USA" },
+      { name: "Google Workspace (SSO)", jur: "USA" },
+    ],
+    risk: "high",
+    note: "Foreign-jurisdiction SaaS. Section 70.1 Law 25 TIA required for any PI transfer.",
+  },
+  {
+    name: "Notion",
+    category: "Knowledge / docs",
+    parent: { co: "Notion Labs, Inc.", jur: "Delaware, USA", flag: "🇺🇸", cloud: "CLOUD Act subject" },
+    transfer: { region: "us-west-2 (Oregon)", residency: "No Canadian residency option", route: "Edge via Cloudflare US/EU PoPs" },
+    sub: [
+      { name: "AWS", jur: "USA" },
+      { name: "Cloudflare", jur: "USA" },
+      { name: "Stripe", jur: "USA (billing)" },
+    ],
+    risk: "high",
+    note: "No data residency commitment. Subpoena reach via 18 U.S.C. § 2713.",
+  },
+  {
+    name: "Microsoft 365",
+    category: "Productivity suite",
+    parent: { co: "Microsoft Corporation", jur: "Washington, USA", flag: "🇺🇸", cloud: "CLOUD Act subject" },
+    transfer: { region: "Canada Central (Toronto) / Canada East (Quebec City)", residency: "Canadian residency available — paid", route: "Tenant pinning required" },
+    sub: [
+      { name: "Azure Canada", jur: "Canada" },
+      { name: "Microsoft global support", jur: "USA / India / Ireland" },
+    ],
+    risk: "medium",
+    note: "Canadian regions reduce data location risk; CLOUD Act compulsion of parent remains. Document in TIA.",
+  },
+  {
+    name: "Hootsuite",
+    category: "Social media",
+    parent: { co: "Hootsuite Inc.", jur: "British Columbia, Canada", flag: "🇨🇦", cloud: "Not CLOUD Act subject (parent)" },
+    transfer: { region: "AWS Canada Central", residency: "Default Canadian residency", route: "Some metadata transits US for third-party integrations" },
+    sub: [
+      { name: "AWS Canada", jur: "Canada" },
+      { name: "Twilio (SMS)", jur: "USA" },
+      { name: "Various social platform APIs", jur: "USA" },
+    ],
+    risk: "low",
+    note: "Canadian-parented vendor. PIPEDA / Law 25 applicable; CLOUD Act not directly applicable to parent.",
+  },
+  {
+    name: "Shopify",
+    category: "Commerce",
+    parent: { co: "Shopify Inc.", jur: "Ontario, Canada", flag: "🇨🇦", cloud: "Not CLOUD Act subject (parent)" },
+    transfer: { region: "Google Cloud (multi-region incl. Canada)", residency: "Merchant data globally distributed", route: "Payment metadata to US/EU processors" },
+    sub: [
+      { name: "Google Cloud", jur: "USA" },
+      { name: "Stripe / Shopify Payments", jur: "USA / Canada" },
+      { name: "Fastly", jur: "USA" },
+    ],
+    risk: "medium",
+    note: "Canadian parent; significant US-subprocessor exposure. Document Layer 3 in TIA.",
+  },
+  {
+    name: "Zoom",
+    category: "Video conferencing",
+    parent: { co: "Zoom Communications, Inc.", jur: "Delaware, USA", flag: "🇺🇸", cloud: "CLOUD Act subject" },
+    transfer: { region: "Configurable; default US", residency: "Canada data center available", route: "Routing controls in admin console" },
+    sub: [
+      { name: "AWS / Oracle Cloud", jur: "USA" },
+      { name: "Zoom Phone PSTN partners", jur: "Various" },
+    ],
+    risk: "medium",
+    note: "Residency configurable; configure & document. CLOUD Act applies to parent.",
+  },
+  {
+    name: "Salesforce",
+    category: "CRM",
+    parent: { co: "Salesforce, Inc.", jur: "Delaware, USA", flag: "🇺🇸", cloud: "CLOUD Act subject" },
+    transfer: { region: "Hyperforce Canada (Montreal)", residency: "Canadian residency available", route: "Hyperforce isolates customer data by region" },
+    sub: [
+      { name: "AWS", jur: "USA" },
+      { name: "MuleSoft", jur: "USA" },
+      { name: "Heroku", jur: "USA" },
+    ],
+    risk: "medium",
+    note: "Hyperforce Canada reduces residency risk. Document TIA + subprocessor chain.",
+  },
+  {
+    name: "1Password",
+    category: "Secrets / identity",
+    parent: { co: "AgileBits Inc.", jur: "Ontario, Canada", flag: "🇨🇦", cloud: "Not CLOUD Act subject (parent)" },
+    transfer: { region: "AWS US / Canada (account-configurable)", residency: "Canadian region available", route: "Zero-knowledge encryption mitigates content access" },
+    sub: [
+      { name: "AWS", jur: "USA / Canada" },
+      { name: "Cloudflare", jur: "USA" },
+    ],
+    risk: "low",
+    note: "Canadian parent + zero-knowledge architecture. Strong sovereignty posture.",
+  },
+];
+
+function riskColor(level) {
+  if (level === "high") return "var(--red)";
+  if (level === "medium") return "var(--gold)";
+  return "var(--teal)";
+}
+function riskLabel(level) {
+  if (level === "high") return "HIGH EXPOSURE";
+  if (level === "medium") return "MIXED EXPOSURE";
+  return "LOW EXPOSURE";
+}
+
+const JS_ENTITIES = [
+  { role: "Primary controller", name: "Acme HR Inc.", flag: "CA", why: "Canadian-incorporated HR platform — the entity your contract is with, accountable under PIPEDA and Quebec Law 25 for everything that follows." },
+  { role: "Operational subprocessor", name: "Twilio", flag: "US", why: "Sends SMS notifications. Phone numbers, message content, and delivery metadata routed through Twilio's US infrastructure." },
+  { role: "Operational subprocessor", name: "Stripe", flag: "US", why: "Processes billing. Billing identifiers, transaction history, and partial PII for tax + fraud checks." },
+  { role: "Foundational hosting", name: "AWS us-east-1", flag: "US", why: "Everything above ultimately runs on AWS. CLOUD Act applies to AWS as the entity, regardless of the Montreal region option." },
+];
+const JS_STAMPS = [
+  { tier: "Domestic", law: "PIPEDA + Quebec Law 25", via: "via Acme HR — Canadian controller", kind: "ca" },
+  { tier: "Foreign", law: "US CLOUD Act", via: "via Twilio (SMS subprocessor)", kind: "us" },
+  { tier: "Foreign", law: "US CLOUD Act", via: "via Stripe (payments subprocessor)", kind: "us" },
+  { tier: "Foreign", law: "US CLOUD Act", via: "via AWS (foundational hosting)", kind: "us" },
+];
+
+function JurisdictionStack() {
+  const [step, setStep] = React.useState(0);
+  const [playing, setPlaying] = React.useState(false);
+  const rootRef = React.useRef(null);
+
+  React.useEffect(() => {
+    if (!rootRef.current) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && !playing && step === 0) setPlaying(true);
+      });
+    }, { threshold: 0.35 });
+    io.observe(rootRef.current);
+    return () => io.disconnect();
+  }, [playing, step]);
+
+  React.useEffect(() => {
+    if (!playing) return;
+    if (step >= JS_ENTITIES.length - 1) return;
+    const t = setTimeout(() => setStep((s) => s + 1), 1300);
+    return () => clearTimeout(t);
+  }, [playing, step]);
+
+  return (
+    <div className="js-stack" ref={rootRef}>
+      <div className="js-stack__col">
+        <h5>The stack — one HR tool, three subprocessors</h5>
+        <div className="js-flow">
+          {JS_ENTITIES.map((e, i) => (
+            <React.Fragment key={i}>
+              {i > 0 && <div className={"js-conn " + (i <= step ? "is-on" : "")}>{i === JS_ENTITIES.length - 1 ? "all sitting on top of" : "uses for operations"}</div>}
+              <div className={"js-entity " + (i === 0 ? "is-base " : "is-foreign ") + (i <= step ? "is-on" : "")}>
+                <div className="js-entity__role">{e.role}</div>
+                <div className="js-entity__name">
+                  <span>{e.name}</span>
+                  <span className={"js-flag js-flag--" + e.flag.toLowerCase()}>{e.flag}</span>
+                </div>
+                <div className="js-entity__why">{e.why}</div>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+
+      <div className="js-stack__col">
+        <h5>Who can compel disclosure of the same dataset</h5>
+        <div className="js-auth">
+          <div className={"js-counter " + (step === 0 ? "is-baseline" : "")}>
+            <div className="js-counter__num">{step + 1}</div>
+            <div className="js-counter__label">sovereign {step === 0 ? "authority" : "authorities"} can compel disclosure of the Canadian customer PII inside Acme HR.</div>
+          </div>
+          {JS_STAMPS.map((s, i) => (
+            <div key={i} className={"js-stamp is-" + s.kind + " " + (i <= step ? "is-on" : "")}>
+              <div className="js-stamp__head">{s.tier} · {s.law}</div>
+              <div className="js-stamp__via">{s.via}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="js-stack__col" style={{gridColumn: "1 / -1"}}>
+        <div className="js-controls">
+          {JS_ENTITIES.map((e, i) => (
+            <button key={i} className={"js-step-pill " + (i === step ? "is-current" : "")} onClick={() => { setPlaying(false); setStep(i); }}>
+              {i === 0 ? "Baseline" : "+ " + e.name}
+            </button>
+          ))}
+          <button className="js-step-pill" onClick={() => { setStep(0); setPlaying(true); }}>↻ Replay</button>
+        </div>
+        <div className="js-callout">
+          Each subprocessor adds its own jurisdiction <b>cumulatively, not by replacement</b>. Vendor TIAs that stop at Layer 1 document maybe <b>20% of the actual exposure</b>. The remaining 80% lives in the subprocessor chain.
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const VVP_EXAMPLES_PLACEHOLDER = null;
+function VerbatimVsParaphrase() {
+  const EXAMPLES = [
+    {
+      id: "s3.3",
+      label: "Law 25 · s. 3.3",
+      question: "What does Quebec Law 25 section 3.3 require?",
+      bad: "Section 3.3 requires organizations to establish and publish governance policies and practices concerning personal information.",
+      badMark: "Section 3.3 requires organizations to establish and publish governance policies and practices",
+      badRest: " concerning personal information.",
+      flags: [
+        "Conflated with s. 3.2 (governance policies)",
+        "Missing: PIA mandate for system overhauls",
+        "Missing: data-portability requirement",
+        "Missing: proportionality test",
+      ],
+      good: [
+        {text: "Any person carrying on an enterprise must conduct a privacy impact assessment for any project to acquire, develop or overhaul an information system or electronic service delivery system", cite: true},
+        {text: " involving the collection, use, communication, keeping or destruction of personal information.", cite: false},
+        {text: " For the purposes of such an assessment, the person must consult the person in charge of the protection of personal information within the enterprise from the outset of the project.", cite: true},
+        {text: " The conduct of a privacy impact assessment under this Act must be proportionate to the sensitivity of the information concerned, the purposes for which it is to be used, the quantity and distribution of the information and the medium on which it is stored.", cite: true},
+      ],
+      citeLabel: "§ 3.3",
+      sourceUrl: "https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1",
+      sourceLabel: "LégisQuébec · CQLR c P-39.1, s. 3.3",
+    },
+    {
+      id: "s20",
+      label: "Law 25 · s. 20",
+      question: "What does Quebec Law 25 section 20 require?",
+      bad: "Once the purpose for collecting personal information has been fulfilled, the organization must destroy the information or anonymize it. Organizations cannot keep data indefinitely because it might be useful later.",
+      badMark: "Once the purpose for collecting personal information has been fulfilled, the organization must destroy the information or anonymize it. Organizations cannot keep data indefinitely because it might be useful later.",
+      badRest: "",
+      flags: [
+        "Wrong section — this is s. 23, not s. 20",
+        "Missing: actual s. 20 internal-access rule",
+        "Missing: \"authorized employees or agents\" test",
+        "Missing: \"needed for performance of duties\" standard",
+      ],
+      good: [
+        {text: "In the carrying on of an enterprise, authorized employees or agents may have access to personal information without the consent of the person concerned", cite: true},
+        {text: " only if the information is needed for the performance of their duties.", cite: true},
+      ],
+      citeLabel: "§ 20",
+      sourceUrl: "https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1",
+      sourceLabel: "LégisQuébec · CQLR c P-39.1, s. 20",
+    },
+  ];
+  const [exIdx, setExIdx] = React.useState(0);
+  const ex = EXAMPLES[exIdx];
+  const FULL_GOOD = ex.good.map(p => p.text).join("");
+  const citeCount = ex.good.filter(g=>g.cite).length;
+
+  const [step, setStep] = React.useState(0);
+  const [badText, setBadText] = React.useState("");
+  const [goodText, setGoodText] = React.useState("");
+  const [cites, setCites] = React.useState(0);
+  const rootRef = React.useRef(null);
+  const startedRef = React.useRef(false);
+
+  const run = React.useCallback(() => { setStep(1); setBadText(""); setGoodText(""); setCites(0); }, []);
+
+  React.useEffect(() => {
+    if (!rootRef.current) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting && !startedRef.current) { startedRef.current = true; run(); } });
+    }, { threshold: 0.3 });
+    io.observe(rootRef.current);
+    return () => io.disconnect();
+  }, [run]);
+
+  React.useEffect(() => {
+    if (step !== 1) return;
+    if (badText.length >= ex.bad.length) { setStep(2); return; }
+    const t = setTimeout(() => setBadText(ex.bad.slice(0, badText.length + 2)), 18);
+    return () => clearTimeout(t);
+  }, [step, badText, ex.bad]);
+
+  React.useEffect(() => { if (step !== 2) return; const t = setTimeout(() => setStep(3), 1100); return () => clearTimeout(t); }, [step]);
+
+  React.useEffect(() => {
+    if (step !== 3) return;
+    if (goodText.length >= FULL_GOOD.length) { setStep(4); return; }
+    const t = setTimeout(() => setGoodText(FULL_GOOD.slice(0, goodText.length + 3)), 13);
+    return () => clearTimeout(t);
+  }, [step, goodText, FULL_GOOD]);
+
+  React.useEffect(() => {
+    if (step !== 4) return;
+    let i = 0;
+    const tick = () => { i++; setCites(i); if (i < citeCount) setTimeout(tick, 360); };
+    setTimeout(tick, 200);
+  }, [step, citeCount]);
+
+  const switchEx = (i) => { setExIdx(i); run(); };
+
+  let citeI = 0;
+  return (
+    <div ref={rootRef}>
+      <div className="vvp-switch">
+        {EXAMPLES.map((e, i) => (
+          <button key={e.id} className={"vvp-tab " + (i === exIdx ? "is-on" : "")} onClick={() => switchEx(i)}>{e.label}</button>
+        ))}
+      </div>
+      <div className="vvp">
+        <div className="vvp-panel is-bad">
+          <div className="vvp-chrome">
+            <div className="vvp-chrome-left"><span className="vvp-dot" />ChatGPT · GPT-5</div>
+            <div className={"vvp-badge is-bad " + (step >= 2 ? "is-on" : "")}>⚠ Paraphrase · Unverified</div>
+          </div>
+          <div className="vvp-prompt"><b>You:</b> {ex.question}</div>
+          <div className="vvp-body">
+            <div className="vvp-answer">
+              {step >= 2 ? (<><span className="vvp-mark">{ex.badMark}</span>{ex.badRest}</>) : (<>{badText}{step === 1 && <span className="vvp-cursor" />}</>)}
+            </div>
+            <div className="vvp-flags">
+              {ex.flags.map((f, i) => (
+                <div key={i} className={"vvp-flag " + (step >= 2 ? "is-on" : "")} style={{transitionDelay: (i*0.18+0.1)+"s"}}>{f}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="vvp-panel is-good">
+          <div className="vvp-chrome">
+            <div className="vvp-chrome-left"><span className="vvp-dot" />Upper Harbour · Verbatim source</div>
+            <div className={"vvp-badge is-good " + (step >= 4 ? "is-on" : "")}>✓ Verified · Statute-grounded</div>
+          </div>
+          <div className="vvp-prompt"><b>You:</b> {ex.question}</div>
+          <div className="vvp-body">
+            <div className="vvp-answer" style={{flex:1}}>
+              {step >= 4 ? (
+                ex.good.map((p, i) => {
+                  const showCite = p.cite && (citeI++ < cites);
+                  return (
+                    <React.Fragment key={i}>
+                      <span>{p.text}</span>
+                      {p.cite && <span className={"vvp-cite " + (showCite ? "is-on" : "")}>{ex.citeLabel}</span>}
+                    </React.Fragment>
+                  );
+                })
+              ) : (
+                <>{goodText}{step === 3 && <span className="vvp-cursor" />}</>
+              )}
+            </div>
+            <div className="vvp-source">
+              Source: <a href={ex.sourceUrl} target="_blank" rel="noopener">{ex.sourceLabel}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="vvp-foot">
+        <button className="vvp-replay" onClick={run}>↻ Replay comparison</button>
+      </div>
+    </div>
+  );
+}
+
+function __DELETED_DUP_VVP_AS_MAPSTACK() {
+  const _BAD = "Section 3.3 requires organizations to establish and publish governance policies and practices concerning personal information.";
+  const GOOD = [
+    {text: "Any person carrying on an enterprise must conduct a privacy impact assessment for any project to acquire, develop or overhaul an information system or electronic service delivery system", cite: true},
+    {text: " involving the collection, use, communication, keeping or destruction of personal information.", cite: false},
+    {text: " For the purposes of such an assessment, the person must consult the person in charge of the protection of personal information within the enterprise from the outset of the project.", cite: true},
+    {text: " The conduct of a privacy impact assessment under this Act must be proportionate to the sensitivity of the information concerned, the purposes for which it is to be used, the quantity and distribution of the information and the medium on which it is stored.", cite: true},
+  ];
+  const FULL_GOOD = GOOD.map(p => p.text).join("");
+
+  const run = React.useCallback(() => {
+    setStep(1); setBadText(""); setGoodText(""); setCites(0);
+  }, []);
+
+  React.useEffect(() => {
+    if (!rootRef.current) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting && !startedRef.current) { startedRef.current = true; run(); } });
+    }, { threshold: 0.3 });
+    io.observe(rootRef.current);
+    return () => io.disconnect();
+  }, [run]);
+
+  React.useEffect(() => {
+    if (step !== 1) return;
+    if (badText.length >= BAD.length) { setStep(2); return; }
+    const t = setTimeout(() => setBadText(BAD.slice(0, badText.length + 2)), 22);
+    return () => clearTimeout(t);
+  }, [step, badText]);
+
+  React.useEffect(() => {
+    if (step !== 2) return;
+    const t = setTimeout(() => setStep(3), 1200);
+    return () => clearTimeout(t);
+  }, [step]);
+
+  React.useEffect(() => {
+    if (step !== 3) return;
+    if (goodText.length >= FULL_GOOD.length) { setStep(4); return; }
+    const t = setTimeout(() => setGoodText(FULL_GOOD.slice(0, goodText.length + 3)), 14);
+    return () => clearTimeout(t);
+  }, [step, goodText, FULL_GOOD]);
+
+  React.useEffect(() => {
+    if (step !== 4) return;
+    let i = 0;
+    const tick = () => { i++; setCites(i); if (i < GOOD.filter(g=>g.cite).length) setTimeout(tick, 380); };
+    setTimeout(tick, 200);
+  }, [step]);
+
+  let citeI = 0;
+  return (
+    <div ref={rootRef}>
+      <div className="vvp">
+        <div className="vvp-panel is-bad">
+          <div className="vvp-chrome">
+            <div className="vvp-chrome-left"><span className="vvp-dot" />ChatGPT · GPT-5</div>
+            <div className={"vvp-badge is-bad " + (step >= 2 ? "is-on" : "")}>⚠ Paraphrase · Unverified</div>
+          </div>
+          <div className="vvp-prompt"><b>You:</b> What does Quebec Law 25 section 3.3 require?</div>
+          <div className="vvp-body">
+            <div className="vvp-answer">
+              {step >= 2 ? (<><span className="vvp-mark" title="Wrong section — this is s. 3.2">Section 3.3 requires organizations to establish and publish governance policies and practices</span> concerning personal information.</>) : (<>{badText}{step === 1 && <span className="vvp-cursor" />}</>)}
+            </div>
+            <div className="vvp-flags">
+              <div className={"vvp-flag " + (step >= 2 ? "is-on" : "")} style={{transitionDelay: ".1s"}}>Conflated with s. 3.2 (governance policies)</div>
+              <div className={"vvp-flag " + (step >= 2 ? "is-on" : "")} style={{transitionDelay: ".3s"}}>Missing: PIA mandate for system overhauls</div>
+              <div className={"vvp-flag " + (step >= 2 ? "is-on" : "")} style={{transitionDelay: ".5s"}}>Missing: data-portability requirement</div>
+              <div className={"vvp-flag " + (step >= 2 ? "is-on" : "")} style={{transitionDelay: ".7s"}}>Missing: proportionality test</div>
+            </div>
+          </div>
+        </div>
+
+        <div className="vvp-panel is-good">
+          <div className="vvp-chrome">
+            <div className="vvp-chrome-left"><span className="vvp-dot" />Upper Harbour · Verbatim source</div>
+            <div className={"vvp-badge is-good " + (step >= 4 ? "is-on" : "")}>✓ Verified · Statute-grounded</div>
+          </div>
+          <div className="vvp-prompt"><b>You:</b> What does Quebec Law 25 section 3.3 require?</div>
+          <div className="vvp-body">
+            <div className="vvp-answer" style={{flex:1}}>
+              {step >= 4 ? (
+                GOOD.map((p, i) => {
+                  const showCite = p.cite && (citeI++ < cites);
+                  return (
+                    <React.Fragment key={i}>
+                      <span>{p.text}</span>
+                      {p.cite && <span className={"vvp-cite " + (showCite ? "is-on" : "")}>§ 3.3</span>}
+                    </React.Fragment>
+                  );
+                })
+              ) : (
+                <>{goodText}{step === 3 && <span className="vvp-cursor" />}</>
+              )}
+            </div>
+            <div className="vvp-source">
+              Source: <a href="https://www.legisquebec.gouv.qc.ca/en/document/cs/p-39.1" target="_blank" rel="noopener">LégisQuébec · CQLR c P-39.1, s. 3.3</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="vvp-foot">
+        <button className="vvp-replay" onClick={() => { startedRef.current = true; run(); }}>↻ Replay comparison</button>
+      </div>
+    </div>
+  );
+}
+
+function MapYourStack() {
+  const [query, setQuery] = React.useState("");
+  const [selected, setSelected] = React.useState(STACK_TOOLS[0]);
+  const [focused, setFocused] = React.useState(false);
+  const [animKey, setAnimKey] = React.useState(0);
+  const [highlightedLayer, setHighlightedLayer] = React.useState(null);
+
+  const matches = React.useMemo(() => {
+    if (!query) return STACK_TOOLS.slice(0, 5);
+    const q = query.toLowerCase();
+    return STACK_TOOLS.filter((t) => t.name.toLowerCase().includes(q) || t.category.toLowerCase().includes(q)).slice(0, 6);
+  }, [query]);
+
+  function pick(t) {
+    setSelected(t);
+    setQuery("");
+    setFocused(false);
+    setAnimKey((k) => k + 1);
+  }
+
+  const risk = riskColor(selected.risk);
+
+  return (
+    <div className="mys" key={animKey}>
+      <div className="mys-head">
+        <div className="mys-eyebrow">
+          <span className="mys-dot" />
+          <span>LIVE · MAP YOUR STACK</span>
+        </div>
+        <div className="mys-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input
+            type="text"
+            placeholder="Type a SaaS tool — e.g. Slack, Notion, Shopify…"
+            value={query}
+            onChange={(e) => { setQuery(e.target.value); setFocused(true); }}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setTimeout(() => setFocused(false), 150)}
+          />
+          <kbd>{selected.name}</kbd>
+        </div>
+        {focused && matches.length > 0 && (
+          <div className="mys-suggestions">
+            {matches.map((t) => (
+              <button key={t.name} className="mys-suggest" onMouseDown={(e) => { e.preventDefault(); pick(t); }}>
+                <span className="mys-suggest-name">{t.name}</span>
+                <span className="mys-suggest-cat">{t.category}</span>
+                <span className="mys-suggest-flag">{t.parent.flag}</span>
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="mys-result">
+        <div className="mys-result-head">
+          <div className="mys-result-name">
+            <span className="mys-result-flag">{selected.parent.flag}</span>
+            <span>{selected.name}</span>
+            <span className="mys-result-cat">· {selected.category}</span>
+          </div>
+          <div className="mys-risk" style={{ color: risk, borderColor: risk, background: risk === "var(--red)" ? "rgba(224,96,80,0.08)" : risk === "var(--gold)" ? "rgba(201,168,76,0.08)" : "rgba(60,184,176,0.08)" }}>
+            <span className="mys-risk-dot" style={{ background: risk }} />
+            {riskLabel(selected.risk)}
+          </div>
+        </div>
+
+        <div className="mys-layers">
+          {/* Layer 1 — Parent */}
+          <div
+            className={`mys-layer mys-l1 ${highlightedLayer === 1 ? "is-hl" : ""}`}
+            onMouseEnter={() => setHighlightedLayer(1)}
+            onMouseLeave={() => setHighlightedLayer(null)}
+            style={{ animationDelay: "0ms" }}
+          >
+            <div className="mys-layer-tag">LAYER 1 · CORPORATE PARENT</div>
+            <div className="mys-layer-main">{selected.parent.co}</div>
+            <div className="mys-layer-meta">
+              <span>Incorp. {selected.parent.jur}</span>
+              <span className="dot-sep">·</span>
+              <span className={selected.parent.cloud.startsWith("CLOUD") ? "warn" : "ok"}>{selected.parent.cloud}</span>
+            </div>
+          </div>
+
+          {/* connector */}
+          <div className="mys-flow"><span /></div>
+
+          {/* Layer 2 — Transfer */}
+          <div
+            className={`mys-layer mys-l2 ${highlightedLayer === 2 ? "is-hl" : ""}`}
+            onMouseEnter={() => setHighlightedLayer(2)}
+            onMouseLeave={() => setHighlightedLayer(null)}
+            style={{ animationDelay: "140ms" }}
+          >
+            <div className="mys-layer-tag">LAYER 2 · DATA TRANSFER</div>
+            <div className="mys-layer-main">{selected.transfer.region}</div>
+            <div className="mys-layer-meta">
+              <span>{selected.transfer.residency}</span>
+            </div>
+            <div className="mys-layer-note">{selected.transfer.route}</div>
+          </div>
+
+          <div className="mys-flow"><span /></div>
+
+          {/* Layer 3 — Subprocessors */}
+          <div
+            className={`mys-layer mys-l3 ${highlightedLayer === 3 ? "is-hl" : ""}`}
+            onMouseEnter={() => setHighlightedLayer(3)}
+            onMouseLeave={() => setHighlightedLayer(null)}
+            style={{ animationDelay: "280ms" }}
+          >
+            <div className="mys-layer-tag">LAYER 3 · SUBPROCESSOR CHAIN</div>
+            <div className="mys-sub-list">
+              {selected.sub.map((s, i) => (
+                <div key={s.name + i} className="mys-sub-pill" style={{ animationDelay: `${340 + i * 80}ms` }}>
+                  <span className="mys-sub-name">{s.name}</span>
+                  <span className="mys-sub-jur">{s.jur}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mys-foot">
+          <div className="mys-foot-icon" style={{ color: risk }}>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+          </div>
+          <div className="mys-foot-text">{selected.note}</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { MapYourStack });
+
+
+/* ===== doc-simulator.jsx ===== */
+// Document Drafting Simulator
+// A PIA generating in real time with citation pills clicking into place beside each paragraph.
+
+const DOC_PARAS = [
+  {
+    section: "1.1 Identification of the assessment",
+    text: "This Privacy Impact Assessment evaluates the processing of personal information by Athena Collective in connection with its member relationship management system, operating in the province of Quebec.",
+    citations: [
+      { stat: "Law 25", prov: "s. 3.3" },
+    ],
+  },
+  {
+    section: "2.1 Description of the personal information",
+    text: "The system collects identifying information (name, email, postal address), behavioural data (engagement history), and, where members opt in, information regarding personal preferences. No sensitive information within the meaning of section 12 is processed.",
+    citations: [
+      { stat: "Law 25", prov: "s. 12" },
+      { stat: "PIPEDA", prov: "Sched. 1, 4.4" },
+    ],
+  },
+  {
+    section: "3.2 Communication outside Quebec",
+    text: "Personal information is communicated to a service provider whose ultimate parent is incorporated in Delaware (USA). The transfer is therefore a communication outside Quebec within the meaning of section 17.",
+    citations: [
+      { stat: "Law 25", prov: "s. 17" },
+      { stat: "CAI Guidance", prov: "2023-08" },
+    ],
+  },
+  {
+    section: "3.3 Assessment of legal regime",
+    text: "The receiving jurisdiction is subject to the U.S. CLOUD Act and the Foreign Intelligence Surveillance Act, which permit compelled disclosure of data held by U.S.-controlled providers regardless of physical data location. Mitigation measures are documented in section 5.",
+    citations: [
+      { stat: "18 U.S.C.", prov: "§ 2713" },
+      { stat: "FISA", prov: "§ 702" },
+      { stat: "Law 25", prov: "s. 17(1)" },
+    ],
+  },
+  {
+    section: "5.1 Mitigation measures",
+    text: "Contractual protections include data-processing addenda binding subprocessors to equivalent safeguards. Technical measures include tenant pinning to Canadian regions and customer-managed encryption keys held outside the receiving jurisdiction.",
+    citations: [
+      { stat: "Law 25", prov: "s. 8.1" },
+    ],
+  },
+];
+
+const STATUS_STEPS = [
+  "Initialising agent…",
+  "Identifying applicable statutes…",
+  "Retrieving verbatim provisions via Citations API…",
+  "Drafting Section 1 — Identification…",
+  "Drafting Section 2 — Personal information…",
+  "Drafting Section 3 — Communication outside Quebec…",
+  "Drafting Section 5 — Mitigation…",
+  "Validating citation integrity…",
+  "Compiling audit-ready PDF…",
+  "Ready for review.",
+];
+
+function useTyping(text, active, speed = 14, onDone) {
+  const [out, setOut] = React.useState("");
+  React.useEffect(() => {
+    if (!active) return;
+    setOut("");
+    let i = 0;
+    const id = setInterval(() => {
+      i += 2 + Math.floor(Math.random() * 3);
+      if (i >= text.length) {
+        setOut(text);
+        clearInterval(id);
+        if (onDone) onDone();
+      } else {
+        setOut(text.slice(0, i));
+      }
+    }, speed);
+    return () => clearInterval(id);
+  }, [text, active]);
+  return out;
+}
+
+function DocPara({ data, active, onDone, isDone }) {
+  const [phase, setPhase] = React.useState("idle"); // idle | typing | citing | done
+  React.useEffect(() => {
+    if (active && phase === "idle") setPhase("typing");
+  }, [active]);
+
+  const typed = useTyping(data.text, phase === "typing", 12, () => {
+    setPhase("citing");
+    setTimeout(() => { setPhase("done"); onDone && onDone(); }, 400 + data.citations.length * 220);
+  });
+
+  const showCitations = phase === "citing" || phase === "done" || isDone;
+  const showText = phase !== "idle" || isDone;
+
+  return (
+    <div className={`doc-para ${active || isDone ? "is-active" : ""}`}>
+      <div className="doc-section">{data.section}</div>
+      <div className="doc-body">
+        <p>
+          {showText ? (isDone ? data.text : typed) : <span className="doc-skel" />}
+          {phase === "typing" && <span className="doc-cursor" />}
+        </p>
+        {showCitations && (
+          <div className="doc-cites">
+            {data.citations.map((c, i) => (
+              <span key={i} className="doc-cite" style={{ animationDelay: `${i * 180}ms` }}>
+                <span className="doc-cite-stat">{c.stat}</span>
+                <span className="doc-cite-prov">{c.prov}</span>
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function DocSimulator() {
+  const [activeIdx, setActiveIdx] = React.useState(-1);
+  const [doneIdx, setDoneIdx] = React.useState(-1);
+  const [statusIdx, setStatusIdx] = React.useState(0);
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
+  const ref = React.useRef(null);
+
+  // Trigger when scrolled into view
+  React.useEffect(() => {
+    if (!ref.current) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting && !isPlaying && activeIdx === -1) {
+          setVisible(true);
+          setTimeout(() => start(), 500);
+        }
+      });
+    }, { threshold: 0.25 });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [isPlaying, activeIdx]);
+
+  function start() {
+    if (isPlaying) return;
+    setIsPlaying(true);
+    setActiveIdx(0);
+    setDoneIdx(-1);
+    setStatusIdx(2);
+  }
+
+  function replay() {
+    setActiveIdx(-1);
+    setDoneIdx(-1);
+    setStatusIdx(0);
+    setIsPlaying(false);
+    setTimeout(() => start(), 250);
+  }
+
+  function handleParaDone(i) {
+    setDoneIdx(i);
+    setStatusIdx(Math.min(STATUS_STEPS.length - 1, 3 + i));
+    if (i + 1 < DOC_PARAS.length) {
+      setTimeout(() => setActiveIdx(i + 1), 350);
+    } else {
+      setTimeout(() => setStatusIdx(STATUS_STEPS.length - 1), 500);
+    }
+  }
+
+  const progress = Math.min(100, ((doneIdx + 1) / DOC_PARAS.length) * 100);
+
+  return (
+    <div className="doc-sim" ref={ref}>
+      <div className="doc-sim-frame">
+        {/* Document chrome */}
+        <div className="doc-chrome">
+          <div className="doc-chrome-tabs">
+            <div className="doc-chrome-tab active">
+              <span className="doc-chrome-icon">PIA</span>
+              athena-collective-law25-pia.pdf
+            </div>
+            <div className="doc-chrome-tab">TIA · 1 vendor</div>
+            <div className="doc-chrome-tab">PMP draft</div>
+          </div>
+          <div className="doc-chrome-actions">
+            <button className="doc-chrome-btn" onClick={replay}>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"></path><path d="M3 3v5h5"></path></svg>
+              Re-run
+            </button>
+            <button className="doc-chrome-btn primary">Export</button>
+          </div>
+        </div>
+
+        <div className="doc-body-grid">
+          {/* Left: document */}
+          <div className="doc-canvas">
+            <div className="doc-canvas-meta">
+              <div className="doc-canvas-eyebrow">PIA · Law 25 · Quebec</div>
+              <div className="doc-canvas-title">Privacy Impact Assessment</div>
+              <div className="doc-canvas-sub">Athena Collective · Member Relationship System · v2.0</div>
+            </div>
+            <div className="doc-paras">
+              {DOC_PARAS.map((p, i) => (
+                <DocPara
+                  key={i}
+                  data={p}
+                  active={activeIdx === i}
+                  isDone={doneIdx >= i}
+                  onDone={() => handleParaDone(i)}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Right: agent panel */}
+          <div className="doc-agent">
+            <div className="doc-agent-head">
+              <div className="doc-agent-brand">
+                <span className="doc-agent-dot" />
+                AGENT
+              </div>
+              <div className="doc-agent-state">{isPlaying && doneIdx + 1 < DOC_PARAS.length ? "Drafting" : doneIdx + 1 === DOC_PARAS.length ? "Done" : "Standby"}</div>
+            </div>
+            <div className="doc-agent-progress">
+              <div className="doc-agent-progress-bar" style={{ width: `${progress}%` }} />
+            </div>
+            <div className="doc-agent-meta">
+              <span>{doneIdx + 1}/{DOC_PARAS.length} sections</span>
+              <span>{DOC_PARAS.slice(0, doneIdx + 1).reduce((acc, p) => acc + p.citations.length, 0)} citations</span>
+            </div>
+
+            <ul className="doc-agent-log">
+              {STATUS_STEPS.map((s, i) => (
+                <li key={i} className={i < statusIdx ? "done" : i === statusIdx ? "active" : ""}>
+                  <span className="doc-agent-bullet" />
+                  {s}
+                </li>
+              ))}
+            </ul>
+
+            <div className="doc-agent-foot">
+              <div className="doc-agent-foot-row">
+                <span>Source corpus</span><b>13 Cdn statutes · verbatim</b>
+              </div>
+              <div className="doc-agent-foot-row">
+                <span>Citation engine</span><b>Anthropic Citations API</b>
+              </div>
+              <div className="doc-agent-foot-row">
+                <span>Mode</span><b>Audit-ready</b>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+Object.assign(window, { DocSimulator });
+
+
+/* ===== constellation.jsx ===== */
+// Sovereignty Index Constellation
+// 768 tools as a starfield clustered by parent-country jurisdiction.
+
+const JURS = [
+  { code: "US", label: "United States", count: 412, color: "#E06050", angle: 0,   flag: "🇺🇸" },
+  { code: "CA", label: "Canada",        count: 187, color: "#3CB8B0", angle: 90,  flag: "🇨🇦" },
+  { code: "EU", label: "EU / EEA",      count:  84, color: "#C9A84C", angle: 180, flag: "🇪🇺" },
+  { code: "UK", label: "United Kingdom",count:  38, color: "#8FB7D9", angle: 220, flag: "🇬🇧" },
+  { code: "IL", label: "Israel",        count:  22, color: "#A98AE0", angle: 260, flag: "🇮🇱" },
+  { code: "OT", label: "Other",         count:  25, color: "#566778", angle: 310, flag: "🌐" },
+];
+
+const SAMPLE_TOOLS = {
+  US: ["Slack", "Notion", "Zoom", "Salesforce", "Stripe", "HubSpot", "Asana", "Figma", "Linear", "GitHub", "AWS", "Azure", "Google Workspace", "Snowflake", "Datadog", "Cloudflare", "Twilio", "Mailchimp"],
+  CA: ["Shopify", "Hootsuite", "1Password", "FreshBooks", "Wattpad", "Wave", "Lightspeed", "Jane App", "Ada", "Coveo", "Clio"],
+  EU: ["Hetzner", "OVHcloud", "Mistral", "Spotify", "Personio", "GitBook", "Doctolib"],
+  UK: ["Octopus Energy", "Monzo", "Revolut", "GoCardless", "Deliveroo"],
+  IL: ["monday.com", "Wix", "JFrog", "Lemonade"],
+  OT: ["Atlassian (AU)", "Canva (AU)", "Xero (NZ)", "Kakao (KR)"],
+};
+
+const PROPS = {
+  US: "CLOUD Act subject. Section 2713 reach into US-controlled providers regardless of physical data location.",
+  CA: "Not directly CLOUD Act subject at parent layer. Subject to PIPEDA & provincial regimes; subprocessor chain often US.",
+  EU: "GDPR-aligned. CLOUD Act exposure depends on US subprocessor presence. Strong contractual baseline.",
+  UK: "Post-Brexit UK regime. CLOUD Act bilateral executive agreement (UK-US CLOUD Act Agreement, 2019).",
+  IL: "Adequacy decision under GDPR. National security carve-outs documented.",
+  OT: "Mixed regimes; review by jurisdiction.",
+};
+
+function seedRandom(seed) {
+  let s = seed;
+  return () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+}
+
+function Constellation() {
+  const canvasRef = React.useRef(null);
+  const rafRef = React.useRef(0);
+  const starsRef = React.useRef([]);
+  const [hoveredJur, setHoveredJur] = React.useState(null);
+  const [activeJur, setActiveJur] = React.useState("US");
+  const [mouse, setMouse] = React.useState({ x: -999, y: -999 });
+  const [size, setSize] = React.useState({ w: 800, h: 560 });
+
+  // Build stars once
+  React.useEffect(() => {
+    const rand = seedRandom(7);
+    const stars = [];
+    const W = size.w, H = size.h;
+    const cx = W / 2, cy = H / 2;
+    JURS.forEach((j, ji) => {
+      // Cluster centre
+      const angleRad = (j.angle * Math.PI) / 180;
+      const dist = Math.min(W, H) * 0.30;
+      const ccx = cx + Math.cos(angleRad) * dist;
+      const ccy = cy + Math.sin(angleRad) * dist * 0.78;
+      // Spread radius proportional to count
+      const spreadR = 30 + Math.sqrt(j.count) * 7;
+      for (let i = 0; i < j.count; i++) {
+        // Polar with bias toward centre
+        const a = rand() * Math.PI * 2;
+        const r = Math.pow(rand(), 0.7) * spreadR;
+        stars.push({
+          jur: j.code,
+          color: j.color,
+          x: ccx + Math.cos(a) * r,
+          y: ccy + Math.sin(a) * r,
+          baseX: ccx + Math.cos(a) * r,
+          baseY: ccy + Math.sin(a) * r,
+          size: 0.8 + rand() * 1.8,
+          phase: rand() * Math.PI * 2,
+          twinkleSpeed: 0.3 + rand() * 0.6,
+        });
+      }
+    });
+    starsRef.current = stars;
+  }, [size.w, size.h]);
+
+  // Animation
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    let t = 0;
+
+    function draw() {
+      t += 0.012;
+      ctx.clearRect(0, 0, size.w, size.h);
+
+      // Cluster glows
+      JURS.forEach((j) => {
+        const angleRad = (j.angle * Math.PI) / 180;
+        const dist = Math.min(size.w, size.h) * 0.30;
+        const cx = size.w / 2 + Math.cos(angleRad) * dist;
+        const cy = size.h / 2 + Math.sin(angleRad) * dist * 0.78;
+        const isActive = activeJur === j.code || hoveredJur === j.code;
+        const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, 120 + Math.sqrt(j.count) * 6);
+        const alpha = isActive ? 0.32 : 0.08;
+        grad.addColorStop(0, hexA(j.color, alpha));
+        grad.addColorStop(1, hexA(j.color, 0));
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 120 + Math.sqrt(j.count) * 6, 0, Math.PI * 2);
+        ctx.fill();
+      });
+
+      // Stars
+      starsRef.current.forEach((s) => {
+        const tw = 0.5 + 0.5 * Math.sin(t * s.twinkleSpeed + s.phase);
+        const isActive = activeJur === s.jur || hoveredJur === s.jur;
+        const dx = mouse.x - s.baseX, dy = mouse.y - s.baseY;
+        const d2 = dx * dx + dy * dy;
+        const close = d2 < 1800;
+        const drift = 1.2 * Math.sin(t * 0.3 + s.phase);
+        s.x = s.baseX + drift;
+        s.y = s.baseY + drift * 0.6;
+
+        const baseAlpha = isActive ? 0.95 : 0.34;
+        const glow = isActive ? 6 : 2;
+        ctx.shadowColor = s.color;
+        ctx.shadowBlur = (close ? 12 : glow) * (0.5 + tw * 0.5);
+        ctx.fillStyle = hexA(s.color, baseAlpha * (0.65 + tw * 0.35));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size * (close ? 1.6 : 1), 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.shadowBlur = 0;
+
+      rafRef.current = requestAnimationFrame(draw);
+    }
+    draw();
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [size, hoveredJur, activeJur, mouse]);
+
+  // Sizing
+  React.useEffect(() => {
+    const el = canvasRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver((entries) => {
+      requestAnimationFrame(() => {
+        const r = el.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        el.width = r.width * dpr;
+        el.height = r.height * dpr;
+        el.getContext("2d").setTransform(dpr, 0, 0, dpr, 0, 0);
+        setSize({ w: r.width, h: r.height });
+      });
+    });
+    ro.observe(el.parentElement);
+    return () => ro.disconnect();
+  }, []);
+
+  function onMove(e) {
+    const r = canvasRef.current.getBoundingClientRect();
+    setMouse({ x: e.clientX - r.left, y: e.clientY - r.top });
+  }
+  function onLeave() {
+    setMouse({ x: -999, y: -999 });
+  }
+
+  const active = JURS.find((j) => j.code === activeJur);
+
+  return (
+    <div className="constellation">
+      <div className="constellation-canvas-wrap" onMouseMove={onMove} onMouseLeave={onLeave}>
+        <canvas ref={canvasRef} />
+        {/* Cluster labels overlay */}
+        <div className="constellation-labels">
+          {JURS.map((j) => {
+            const angleRad = (j.angle * Math.PI) / 180;
+            const dist = Math.min(size.w, size.h) * 0.30;
+            const cx = size.w / 2 + Math.cos(angleRad) * dist;
+            const cy = size.h / 2 + Math.sin(angleRad) * dist * 0.78;
+            const labelOff = 40 + Math.sqrt(j.count) * 5;
+            const lx = cx + Math.cos(angleRad) * labelOff;
+            const ly = cy + Math.sin(angleRad) * labelOff * 0.78;
+            const isActive = j.code === activeJur || j.code === hoveredJur;
+            return (
+              <button
+                key={j.code}
+                className={`constellation-label ${isActive ? "is-active" : ""}`}
+                style={{ left: lx, top: ly, color: j.color, borderColor: hexA(j.color, isActive ? 0.7 : 0.3), background: hexA(j.color, isActive ? 0.14 : 0.06) }}
+                onMouseEnter={() => setHoveredJur(j.code)}
+                onMouseLeave={() => setHoveredJur(null)}
+                onClick={() => setActiveJur(j.code)}
+              >
+                <span className="constellation-label-flag">{j.flag}</span>
+                <span className="constellation-label-count">{j.count}</span>
+                <span className="constellation-label-name">{j.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <div className="constellation-meta">
+          <div className="constellation-meta-eyebrow"><span className="constellation-live" /> LIVE · UPDATED HOURLY</div>
+          <div className="constellation-meta-count">768</div>
+          <div className="constellation-meta-label">SaaS tools mapped<br/>across 3 jurisdictional layers</div>
+        </div>
+      </div>
+
+      {/* detail panel removed — full-width constellation; lookup lives in Map-your-stack */}
+    </div>
+  );
+}
+
+function hexA(hex, a) {
+  const h = hex.replace("#", "");
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${a})`;
+}
+
+Object.assign(window, { Constellation });
+
+
+/* ===== app.jsx ===== */
+// App entry — mounts the three wow components into their slots,
+// and handles the "featured in hero" tweak.
+
+const DEFAULTS = /*EDITMODE-BEGIN*/{
+  "showMap": true,
+  "showDocSim": true,
+  "showConstellation": true
+}/*EDITMODE-END*/;
+
+function App() {
+  // Production: mount all widgets unconditionally. No tweaks panel.
+  React.useEffect(() => {
+    const mounts = [
+      ["map-slot", <MapYourStack />],
+      ["doc-slot", <DocSimulator />],
+      ["constellation-slot", <Constellation />],
+      ["jstack-slot", <JurisdictionStack />],
+      ["vvp-slot", <VerbatimVsParaphrase />],
+    ];
+    mounts.forEach(([id, el]) => {
+      const node = document.getElementById(id);
+      if (node) {
+        if (!node._root) node._root = ReactDOM.createRoot(node);
+        node._root.render(el);
+      }
+    });
+  }, []);
+
+  return null;
+}
+
+// Mount panel
+const tweaksRoot = ReactDOM.createRoot(document.getElementById("tweaks-root"));
+tweaksRoot.render(<App />);
+
+// Section visibility (driven by tweaks via re-render of CSS class on body)
+function applyVisibility() {
+  // No-op for now; sections are handled by App via mount/unmount above.
+}
+applyVisibility();
+
+
+</script>
+
+
+
+<!-- Cloudflare email decode (canonical site convention) -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<!-- Site analytics -->
+<script src="/assets/track.js" defer></script>
+
+</body></html>
