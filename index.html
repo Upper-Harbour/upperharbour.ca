@@ -523,6 +523,67 @@
     letter-spacing: 0.05em;
   }
 
+  /* BUILT FOR */
+  .built-for-section {
+    padding: 100px 20px;
+    background: var(--midnight);
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+  .built-for-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .built-for-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .built-for-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .built-for-card {
+    padding: 28px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .built-for-card:hover {
+    border-color: var(--teal);
+    background: rgba(60,184,176,0.03);
+  }
+  .built-for-card-title {
+    font-size: 18px;
+    color: var(--ice);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .built-for-card-body {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+  .built-for-not-for {
+    margin-top: 40px;
+    padding: 24px 28px;
+    background: rgba(255,255,255,0.02);
+    border-left: 2px solid var(--muted);
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+  .built-for-not-for strong {
+    color: var(--ice);
+    margin-right: 6px;
+  }
+
   /* MISSION */
   .mission-section {
     padding: 120px 20px;
@@ -774,6 +835,8 @@
     .press-strip-name { font-size: 15px; }
     .index-depth-section { padding: 64px 20px; }
     .index-depth-grid { grid-template-columns: 1fr; }
+    .built-for-section { padding: 64px 20px; }
+    .built-for-grid { grid-template-columns: 1fr; }
     .hero-trust-row { gap: 16px; padding-top: 24px; flex-direction: column; align-items: flex-start; text-align: left; }
     .hero-commercial-inner { text-align: left; }
     .hero-h1 { max-width: 100%; margin-left: 0; margin-right: 0; }
@@ -852,7 +915,7 @@
   <div class="athena-inner">
     <div class="athena-eyebrow">Customer outcome</div>
     <blockquote class="athena-quote">
-      &ldquo;We were quoted <span class="athena-quote-highlight">$20,000</span> by a privacy consultant. Upper Harbour delivered everything we needed at <span class="athena-quote-highlight">a fraction of the cost</span> &mdash; in <span class="athena-quote-highlight">80% less time</span>.&rdquo;
+      &ldquo;We had Law 25 obligations to meet and a <span class="athena-quote-highlight">$20,000</span> consultant quote we couldn&rsquo;t justify. Upper Harbour delivered everything we needed at <span class="athena-quote-highlight">a fraction of the cost</span>, in <span class="athena-quote-highlight">80% less time</span>.&rdquo;
     </blockquote>
     <div class="athena-attribution">
       <img src="/assets/mikayla-stewart.jpeg" alt="Mikayla Stewart" class="athena-avatar" />
@@ -965,7 +1028,7 @@
   <div class="index-depth-inner">
     <div class="index-depth-eyebrow">The Sovereignty Index</div>
     <h2 class="section-title">Three layers deep. Continuously monitored.</h2>
-    <p class="section-sub">Vendors tell you where they&rsquo;re headquartered. The Sovereignty Index tells you where your data actually goes &mdash; three layers of jurisdictional analysis, continuously updated as the SaaS landscape shifts. It&rsquo;s the data layer underneath every PIA, TIA, and breach assessment the agent produces.</p>
+    <p class="section-sub">Vendors tell you where the data is hosted. The Sovereignty Index tells you whose courts can compel its disclosure, whose subpoenas reach it, and whose terms of service govern it &mdash; three layers of legal authority analysis, continuously updated as the SaaS landscape shifts. It&rsquo;s the data layer underneath every PIA, TIA, and breach assessment the agent produces.</p>
     <div class="index-depth-grid">
       <div class="index-depth-card">
         <div class="index-depth-num">Layer 1</div>
@@ -1048,29 +1111,32 @@
   </div>
 </section>
 
-<!-- SOVEREIGNTY STACK -->
-<section class="stack-section">
-  <div class="stack-inner">
-    <h2 class="section-title">The Sovereignty Stack</h2>
-    <p class="section-sub">Jurisdictional risk operates at every layer of the technology stack &mdash; but the application layer is where exposure is most acute and most overlooked.</p>
-    <div class="stack-diagram">
-      <div class="stack-layer stack-layer-active">
-        <span class="stack-layer-name">Application layer (SaaS)</span>
-        <span class="stack-layer-desc">Payroll, HR, communications, EHR, CRM, analytics — where 82% of tools fall under foreign jurisdiction</span>
-        <span class="stack-layer-badge">FOCUS</span>
+<!-- BUILT FOR -->
+<section class="built-for-section">
+  <div class="built-for-inner">
+    <div class="built-for-eyebrow">Built for</div>
+    <h2 class="section-title">Anyone in Canada handling personal data.</h2>
+    <p class="section-sub">Upper Harbour is for the people doing privacy compliance work without a standing law-firm retainer attached. If that describes you, you&rsquo;re who we built this for.</p>
+    <div class="built-for-grid">
+      <div class="built-for-card">
+        <div class="built-for-card-title">Solo founders &amp; startups</div>
+        <div class="built-for-card-body">Building products that touch Canadian customer data and discovering Law 25, PIPEDA, or a provincial regime applies to you.</div>
       </div>
-      <div class="stack-layer">
-        <span class="stack-layer-name">Platform layer (PaaS)</span>
-        <span class="stack-layer-desc">Developer tools, APIs, identity providers, hosted databases</span>
+      <div class="built-for-card">
+        <div class="built-for-card-title">Privacy officers &amp; compliance teams</div>
+        <div class="built-for-card-body">Scaling your privacy program without scaling your consultant spend. Bring more work in-house and finish it faster.</div>
       </div>
-      <div class="stack-layer">
-        <span class="stack-layer-name">Infrastructure layer (IaaS)</span>
-        <span class="stack-layer-desc">Cloud compute, storage, networking — where the policy conversation has focused</span>
+      <div class="built-for-card">
+        <div class="built-for-card-title">Public bodies, health, education</div>
+        <div class="built-for-card-body">Subject to provincial regimes (POPA, PHIPA, FIPPA, Law 25 public sector) and accountable to a regulator that publishes specific templates.</div>
       </div>
-      <div class="stack-layer">
-        <span class="stack-layer-name">Physical layer</span>
-        <span class="stack-layer-desc">Data centres, undersea cables, the physical infrastructure of computing</span>
+      <div class="built-for-card">
+        <div class="built-for-card-title">Privacy &amp; compliance consultants</div>
+        <div class="built-for-card-body">Delivering client work faster and more thoroughly, with documentation grounded in statute rather than checklists.</div>
       </div>
+    </div>
+    <div class="built-for-not-for">
+      <strong>Probably not for:</strong> organizations with dedicated outside counsel already producing all of this documentation on a standing retainer. If your privacy work runs through a top-tier Canadian firm by default, you don&rsquo;t need us yet.
     </div>
   </div>
 </section>
