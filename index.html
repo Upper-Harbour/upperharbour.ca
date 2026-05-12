@@ -36,18 +36,16 @@
 </script>
 
 <style>
-  /* Lock horizontal overflow on body only (prevents mobile wobble
-     without affecting html-level scrollbar gutter calc, which would
-     otherwise shift nav layout vs. other pages) */
-  body { overflow-x: hidden; padding-top: 66px; }
-  /* Reserve scrollbar gutter so width stays identical to other pages */
-  html { scrollbar-gutter: stable; }
+  /* No body modifications — site.css already declares
+     overflow-x: hidden on body. Nav clearance handled via top padding
+     on the first section (.press-strip) below, matching how every
+     other page on the site handles it. */
 
-  /* PRESS STRIP */
+  /* PRESS STRIP — top padding includes 66px nav clearance */
   .press-strip {
     background: var(--midnight);
     border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 16px 20px;
+    padding: 82px 20px 16px;
   }
   .press-strip-inner {
     max-width: 1100px;
@@ -669,7 +667,7 @@
   <div class="athena-inner">
     <div class="athena-eyebrow">Customer outcome</div>
     <blockquote class="athena-quote">
-      &ldquo;We were quoted <span class="athena-quote-highlight">$20,000</span> by a privacy consultant. Upper Harbour delivered everything we needed &mdash; in <span class="athena-quote-highlight">80% less time</span>.&rdquo;
+      &ldquo;We were quoted <span class="athena-quote-highlight">$20,000</span> by a privacy consultant. Upper Harbour delivered everything we needed at <span class="athena-quote-highlight">a fraction of the cost</span> &mdash; in <span class="athena-quote-highlight">80% less time</span>.&rdquo;
     </blockquote>
     <div class="athena-attribution">
       <strong>Athena Collective</strong>
@@ -711,7 +709,7 @@
 <section class="how-section">
   <div class="how-inner">
     <h2 class="section-title">How it works</h2>
-    <p class="section-sub">Three steps from intake to audit-ready output. No legal degree required.</p>
+    <p class="section-sub">Three steps from intake to audit-ready output.</p>
     <div class="how-steps">
       <div class="how-step">
         <div class="how-step-num">01</div>
