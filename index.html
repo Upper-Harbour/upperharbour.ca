@@ -222,13 +222,35 @@
     font-weight: 700;
   }
   .athena-attribution {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
     color: var(--slate);
     font-size: 14px;
   }
-  .athena-attribution strong {
+  .athena-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(60,184,176,0.25);
+    flex-shrink: 0;
+  }
+  .athena-attribution-text {
+    text-align: left;
+    line-height: 1.4;
+  }
+  .athena-attribution-text strong {
+    display: block;
     color: var(--ice);
     font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+  .athena-attribution-text span {
+    color: var(--slate);
+    font-size: 13px;
   }
 
   /* WHAT IT PRODUCES */
@@ -737,13 +759,13 @@
     <h1 class="hero-h1">The AI privacy agent for Canadian organizations.</h1>
     <p class="hero-sub">Generate defensible PIAs, TIAs, breach assessments, and Quebec Law 25 documentation in hours, not weeks. Built for privacy officers, compliance teams, and anyone responsible for privacy at their organization.</p>
     <div class="hero-ctas">
-      <a href="/meet" class="cta-primary">Join the pilot cohort</a>
+      <a href="/pilot" class="cta-primary">Join the pilot cohort</a>
       <a href="/meet" class="cta-secondary">Book a 30-minute demo</a>
     </div>
     <div class="hero-trust-row">
       <span class="hero-trust-stat"><strong>768</strong> tools mapped</span>
       <span class="hero-trust-stat"><strong>All</strong> Canadian privacy regimes covered</span>
-      <span class="hero-trust-stat"><strong>Verbatim</strong> statute grounding</span>
+      <span class="hero-trust-stat"><strong>Grounded</strong> in Canadian statute law</span>
     </div>
   </div>
 </section>
@@ -756,7 +778,11 @@
       &ldquo;We were quoted <span class="athena-quote-highlight">$20,000</span> by a privacy consultant. Upper Harbour delivered everything we needed at <span class="athena-quote-highlight">a fraction of the cost</span> &mdash; in <span class="athena-quote-highlight">80% less time</span>.&rdquo;
     </blockquote>
     <div class="athena-attribution">
-      <strong>Athena Collective</strong>
+      <img src="/assets/mikayla-stewart.jpeg" alt="Mikayla Stewart" class="athena-avatar" />
+      <div class="athena-attribution-text">
+        <strong>Mikayla Stewart</strong>
+        <span>Co-Founder, Athena Collective</span>
+      </div>
     </div>
   </div>
 </section>
@@ -869,7 +895,7 @@
       </div>
     </div>
     <div class="pilot-cta-wrap">
-      <a href="/meet" class="cta-primary">Apply to the pilot cohort</a>
+      <a href="/pilot" class="cta-primary">Apply to the pilot cohort</a>
     </div>
   </div>
 </section>
@@ -944,7 +970,7 @@
     <h2 class="final-cta-title">Join the Upper Harbour pilot cohort.</h2>
     <p class="final-cta-sub">We're working with a small group of early customers to refine the platform. Book a call, bring a real project, and see Upper Harbour produce audit-ready documentation against your jurisdiction.</p>
     <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-      <a href="/meet" class="cta-primary">Apply to join the cohort</a>
+      <a href="/pilot" class="cta-primary">Apply to join the cohort</a>
       <a href="/research" class="cta-secondary">See the research</a>
     </div>
   </div>
