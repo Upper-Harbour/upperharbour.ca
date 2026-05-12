@@ -36,11 +36,12 @@
 </script>
 
 <style>
-  /* Lock horizontal overflow — prevents mobile pan/wobble when scrolling */
-  html, body { overflow-x: hidden; }
-
-  /* Body offset for fixed nav (66px from site.css) */
-  body { padding-top: 66px; }
+  /* Lock horizontal overflow on body only (prevents mobile wobble
+     without affecting html-level scrollbar gutter calc, which would
+     otherwise shift nav layout vs. other pages) */
+  body { overflow-x: hidden; padding-top: 66px; }
+  /* Reserve scrollbar gutter so width stays identical to other pages */
+  html { scrollbar-gutter: stable; }
 
   /* PILOT BANNER */
   .pilot-banner {
