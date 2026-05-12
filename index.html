@@ -44,43 +44,49 @@
      on the first section (.press-strip) below, matching how every
      other page on the site handles it. */
 
-  /* PRESS STRIP — top padding includes 66px nav clearance */
+  /* PRESS STRIP — now an editorial social-proof section, not a navbar lookalike */
   .press-strip {
     background: var(--midnight);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 82px 20px 16px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 56px 20px;
   }
   .press-strip-inner {
     max-width: 1100px;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
+    text-align: center;
   }
   .press-strip-label {
+    display: block;
     font-size: 10px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--muted);
-    font-weight: 600;
-    margin-right: 8px;
+    font-weight: 700;
+    margin-bottom: 24px;
+  }
+  .press-strip-names {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 44px;
+    flex-wrap: wrap;
   }
   .press-strip-name {
-    font-size: 13px;
+    font-family: var(--display);
+    font-size: 18px;
     color: var(--slate);
-    font-weight: 500;
-    opacity: 0.7;
+    font-weight: 600;
+    opacity: 0.55;
     transition: opacity 0.2s;
   }
   .press-strip-name:hover {
     opacity: 1;
   }
 
-  /* HERO */
+  /* HERO — top padding includes 66px nav clearance */
   .hero-commercial {
-    padding: 100px 20px 80px;
+    padding: 166px 20px 80px;
     background: var(--midnight);
     position: relative;
     overflow: hidden;
@@ -618,6 +624,70 @@
     margin-bottom: 40px;
   }
 
+  /* SOVEREIGNTY INDEX DEPTH */
+  .index-depth-section {
+    padding: 100px 20px;
+    background: #0e1620;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .index-depth-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .index-depth-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .index-depth-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 48px;
+  }
+  .index-depth-card {
+    padding: 28px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .index-depth-card:hover {
+    border-color: var(--teal);
+    background: rgba(60,184,176,0.03);
+  }
+  .index-depth-card-live {
+    background: rgba(60,184,176,0.05);
+    border-color: rgba(60,184,176,0.3);
+  }
+  .index-depth-num {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .index-depth-title {
+    font-size: 17px;
+    color: var(--ice);
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .index-depth-body {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--slate);
+  }
+  .index-depth-cta {
+    text-align: center;
+    margin-top: 48px;
+  }
+
   /* PILOT */
   .pilot-section {
     padding: 100px 20px;
@@ -698,7 +768,12 @@
     .mission-body { font-size: 16px; }
     .final-cta-section { padding: 80px 20px; }
     .final-cta-title { font-size: 30px; }
-    .hero-commercial { padding: 64px 20px 56px; }
+    .hero-commercial { padding: 110px 20px 56px; }
+    .press-strip { padding: 40px 20px; }
+    .press-strip-names { gap: 24px; }
+    .press-strip-name { font-size: 15px; }
+    .index-depth-section { padding: 64px 20px; }
+    .index-depth-grid { grid-template-columns: 1fr; }
     .hero-trust-row { gap: 16px; padding-top: 24px; flex-direction: column; align-items: flex-start; text-align: left; }
     .hero-commercial-inner { text-align: left; }
     .hero-h1 { max-width: 100%; margin-left: 0; margin-right: 0; }
@@ -739,19 +814,6 @@
   <a href="/research">Research</a><a href="/tools">Sovereignty Index</a><a href="/signals">Signals</a><a href="/resources">Compliance</a><a href="/harbourscan" class="mobile-cta">Map Your Stack</a>
 </div>
 
-<!-- PRESS STRIP -->
-<div class="press-strip">
-  <div class="press-strip-inner">
-    <span class="press-strip-label">As featured in</span>
-    <span class="press-strip-name">The Globe and Mail</span>
-    <span class="press-strip-name">The Logic</span>
-    <span class="press-strip-name">Maclean's</span>
-    <span class="press-strip-name">Policy Options</span>
-    <span class="press-strip-name">OpenCanada</span>
-    <span class="press-strip-name">BetaKit</span>
-  </div>
-</div>
-
 <!-- HERO -->
 <section class="hero-commercial">
   <div class="hero-commercial-inner">
@@ -766,6 +828,21 @@
       <span class="hero-trust-stat"><strong>768</strong> tools mapped</span>
       <span class="hero-trust-stat"><strong>All</strong> Canadian privacy regimes covered</span>
       <span class="hero-trust-stat"><strong>Grounded</strong> in Canadian statute law</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS STRIP -->
+<section class="press-strip">
+  <div class="press-strip-inner">
+    <div class="press-strip-label">As featured in</div>
+    <div class="press-strip-names">
+      <span class="press-strip-name">The Globe and Mail</span>
+      <span class="press-strip-name">The Logic</span>
+      <span class="press-strip-name">Maclean&rsquo;s</span>
+      <span class="press-strip-name">Policy Options</span>
+      <span class="press-strip-name">OpenCanada</span>
+      <span class="press-strip-name">BetaKit</span>
     </div>
   </div>
 </section>
@@ -867,6 +944,40 @@
         <div class="moat-pillar-label">Statute-grounded</div>
         <div class="moat-pillar-body">Every section of the output responds to a specific statutory requirement, with claims traced to the governing provision via the Anthropic Citations API. No paraphrase. No hallucination.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOVEREIGNTY INDEX DEPTH -->
+<section class="index-depth-section">
+  <div class="index-depth-inner">
+    <div class="index-depth-eyebrow">The Sovereignty Index</div>
+    <h2 class="section-title">Three layers deep. Continuously monitored.</h2>
+    <p class="section-sub">Other Canadian sovereignty databases stop at corporate headquarters. The Sovereignty Index &mdash; the data layer underneath every PIA, TIA, and breach assessment the agent produces &mdash; goes three layers deeper, and stays current as the SaaS landscape shifts.</p>
+    <div class="index-depth-grid">
+      <div class="index-depth-card">
+        <div class="index-depth-num">Layer 1</div>
+        <div class="index-depth-title">Corporate parent</div>
+        <div class="index-depth-body">Every tool traced to its ultimate beneficial owner, jurisdiction of incorporation, and CLOUD Act exposure.</div>
+      </div>
+      <div class="index-depth-card">
+        <div class="index-depth-num">Layer 2</div>
+        <div class="index-depth-title">Data transfer</div>
+        <div class="index-depth-body">Where data physically moves and is processed. Cross-border transfer routes, regional residency options, and actual processing geographies.</div>
+      </div>
+      <div class="index-depth-card">
+        <div class="index-depth-num">Layer 3</div>
+        <div class="index-depth-title">Subprocessor chain</div>
+        <div class="index-depth-body">The vendors your vendor relies on, and the jurisdictions they operate under. Most Canadian privacy assessments miss this layer entirely.</div>
+      </div>
+      <div class="index-depth-card index-depth-card-live">
+        <div class="index-depth-num">Live</div>
+        <div class="index-depth-title">Continuously monitored</div>
+        <div class="index-depth-body">When a tool&rsquo;s sovereignty posture changes &mdash; M&amp;A, infrastructure shifts, policy revisions &mdash; the index updates and you get alerts with the specific lines in your existing documentation that need to change.</div>
+      </div>
+    </div>
+    <div class="index-depth-cta">
+      <a href="/tools" class="cta-secondary">Search the Sovereignty Index &rarr;</a>
     </div>
   </div>
 </section>
