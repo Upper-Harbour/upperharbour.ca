@@ -646,7 +646,7 @@ const DISCLOSURES = {
     paras: [
       "Slack is a workplace communication platform operated by [Salesforce Inc.], a US-incorporated company subject to the United States CLOUD Act. Personal information transmitted to Slack — including employee identifiers, message content, attachments, and metadata — is processed in the United States and is potentially subject to disclosure under US legal process without notification to the Canadian controller or the affected individuals.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), a controller must conduct a privacy impact assessment before communicating personal information outside Quebec. The assessment must determine whether the personal information will receive adequate protection in light of, in particular, generally recognized principles regarding the protection of personal information and the legal framework applicable in the state in which the information would be communicated.",
-      "Recommended controls: complete a section 17 assessment naming Salesforce Inc. as the receiving party; document the CLOUD Act analysis; execute a data transfer agreement specifying purposes, retention, and subprocessor disclosure; restrict Slack channel use for sensitive personal information categories.",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming Salesforce Inc. as the receiving party; the documented CLOUD Act analysis; the controller-processor data transfer agreement specifying purposes, retention, and subprocessor disclosure; the records-of-processing entries for every Slack channel touching personal information; and the structured incident plan for compelled-disclosure scenarios. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'Salesforce Inc.': {
@@ -663,7 +663,7 @@ const DISCLOSURES = {
     paras: [
       "Amazon Web Services (AWS) is the cloud infrastructure platform operated by [Amazon.com, Inc.], a US-incorporated parent subject to the United States CLOUD Act. AWS provides Canadian regions (ca-central-1, ca-west-1) but the operating entity, AWS support personnel, and parent oversight remain under US legal jurisdiction. Personal information processed on AWS may be subject to US legal process even when stored exclusively in Canadian regions.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller's section 17 assessment must consider not only data residency but the legal framework applicable to the entity operating the infrastructure. AWS's Canadian-region election does not displace the CLOUD Act exposure created by the US operator.",
-      "Recommended controls: confirm region election (ca-central-1 or ca-west-1); document the controller-processor relationship under the AWS Data Processing Addendum; complete the section 17 assessment naming Amazon.com, Inc. as the controlling entity; encrypt at rest with customer-managed keys (KMS) where the sensitivity warrants it.",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming Amazon.com, Inc. as the controlling entity (regardless of region election); the region-election record (ca-central-1 / ca-west-1) and the rationale; the controller-processor relationship documentation under the AWS Data Processing Addendum; the encryption and key-management posture record (KMS customer-managed keys where sensitivity warrants); and the records-of-processing entries for every workload routed through AWS. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'Amazon.com, Inc.': {
@@ -680,7 +680,7 @@ const DISCLOSURES = {
     paras: [
       "Notion is a collaborative workspace operated by [Notion Labs, Inc.], a US-incorporated company subject to the United States CLOUD Act. Customer documents, pages, comments, attachments, and metadata are processed in the United States. AWS underlying infrastructure introduces a second-layer US jurisdictional dependency.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller's assessment must consider both Notion Labs as the operator and the underlying infrastructure provider. The chain of US-jurisdictional entities materially affects the legal framework analysis required by the section.",
-      "Recommended controls: complete a section 17 assessment for Notion Labs, Inc.; document the AWS subprocessor relationship; restrict workspace use for sensitive personal information; implement workspace-level retention and export policies aligned with PIPEDA Principle 4.5 (limiting retention).",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming Notion Labs, Inc.; the AWS subprocessor-chain documentation (with the two-layer US dependency disclosed); the workspace-level retention and export policy aligned to PIPEDA Principle 4.5; and the records-of-processing entries for content held in Notion. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'Notion Labs, Inc.': {
@@ -697,7 +697,7 @@ const DISCLOSURES = {
     paras: [
       "Salesforce is a customer relationship management platform operated by [Salesforce, Inc.], a US-incorporated public company subject to the United States CLOUD Act. Salesforce processes customer relationship records, contact data, support communications, and integration metadata. Canadian region election is available (Hyperforce CA) but does not displace the parent's US jurisdictional exposure.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller must assess the legal framework applicable to Salesforce, Inc. — not just the data centre location. CLOUD Act exposure persists regardless of data residency election.",
-      "Recommended controls: elect Hyperforce CA region; sign the Salesforce Data Processing Addendum; complete the section 17 assessment naming Salesforce, Inc.; document any Slack and Tableau cross-product data flows (both subsidiaries operate under the same parent jurisdiction).",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming Salesforce, Inc. as the receiving party; the Hyperforce CA region-election record; the Salesforce Data Processing Addendum review; the documentation of cross-product data flows across Slack, Tableau, and MuleSoft (same parent jurisdiction); and the records-of-processing entries that follow. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'Salesforce, Inc.': {
@@ -714,7 +714,7 @@ const DISCLOSURES = {
     paras: [
       "Stripe is a payment processing platform operated by [Stripe, Inc.], a US-incorporated company subject to the United States CLOUD Act and US financial regulatory framework. Payment metadata, customer identifiers, transaction records, and (where applicable) bank account details are processed in the United States.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller must conduct a section 17 assessment for payment-related personal information. The dual exposure — privacy law and financial law in the receiving jurisdiction — warrants particular attention to the legal framework analysis required by the section.",
-      "Recommended controls: complete the section 17 assessment naming Stripe, Inc.; document PCI-DSS scope and tokenization controls; sign the Stripe Data Processing Agreement; consider data-minimization through Stripe Elements (collecting payment data directly in Stripe's iframe rather than your servers).",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming Stripe, Inc.; the PCI-DSS scope statement and tokenization-controls record; the Stripe Data Processing Agreement review; the data-minimization analysis (Stripe Elements vs. server-side collection); and the records-of-processing entries for payment-related personal information. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'Stripe, Inc.': {
@@ -731,7 +731,7 @@ const DISCLOSURES = {
     paras: [
       "Microsoft Teams is a workplace collaboration platform operated by [Microsoft Corporation], a US-incorporated company subject to the United States CLOUD Act. Personal information including employee identifiers, messages, attachments, recording metadata, and (where enabled) call recordings is processed within Microsoft 365 infrastructure. Canadian datacentre regions are available but the parent jurisdiction remains US.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the section 17 assessment must consider Microsoft Corporation as the legal entity controlling the platform, regardless of customer-elected data residency. Microsoft has publicly committed to challenging US legal process, but the legal framework exposure persists.",
-      "Recommended controls: elect Canadian residency in Microsoft 365 admin; sign the Microsoft Products and Services Data Protection Addendum; complete the section 17 assessment naming Microsoft Corporation; document recording retention and access policies; consider Customer Lockbox for sensitive workloads.",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming Microsoft Corporation; the Canadian residency election record (Microsoft 365 admin); the Microsoft Products and Services Data Protection Addendum review; the recording-retention and access policy; the Customer Lockbox posture record for sensitive workloads; and the records-of-processing entries that follow. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'Microsoft Corporation': {
@@ -748,7 +748,7 @@ const DISCLOSURES = {
     paras: [
       "Zoom is a video conferencing platform operated by [Zoom Communications, Inc.], a US-incorporated public company subject to the United States CLOUD Act. Meeting metadata, participant identifiers, chat content, recordings, and transcripts are processed in the United States. Historical disclosures have raised additional concerns regarding subprocessor jurisdictions.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the section 17 assessment must consider both Zoom's primary jurisdiction and its subprocessor chain. The legal framework analysis required by the section extends to all entities materially involved in processing.",
-      "Recommended controls: complete the section 17 assessment naming Zoom Communications, Inc.; disable recordings for sensitive meetings; document the Zoom subprocessor list and review for jurisdictional dependencies; implement meeting-level retention controls; restrict use for personal-health or legally-privileged communications.",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming Zoom Communications, Inc.; the subprocessor-chain documentation with jurisdictional flags; the meeting-level retention policy; the recording and transcription controls record; the restricted-use registry (personal-health and legally-privileged communications); and the records-of-processing entries for video communication data. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'Zoom Communications, Inc.': {
@@ -765,7 +765,7 @@ const DISCLOSURES = {
     paras: [
       "HubSpot is a marketing, sales, and service platform operated by [HubSpot, Inc.], a US-incorporated public company subject to the United States CLOUD Act. Personal information including contact records, email engagement data, support ticket content, and marketing tracking events is processed in the United States and additional regional datacentres.",
       "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the section 17 assessment must consider HubSpot's processing for marketing communications — particularly consent records and tracking — which are also governed by [Law 25 section 8.1] (meaningful consent requirements for technological tools).",
-      "Recommended controls: complete the section 17 assessment naming HubSpot, Inc.; sign the HubSpot Data Processing Agreement; align HubSpot consent capture with Law 25 s. 8.1 (express opt-in for non-essential cookies and tracking); document marketing automation flows and retention.",
+      "From this disclosure, Upper Harbour generates: the full section 17 assessment naming HubSpot, Inc.; the controller-processor DPA review; the consent-capture documentation required by Law 25 s. 8.1 (express opt-in for non-essential cookies and tracking); the marketing-automation flow map and retention register; and the records-of-processing entries that follow. All cross-referenced into your privacy management program.",
     ],
     cites: {
       'HubSpot, Inc.': {
@@ -799,7 +799,7 @@ function getDisclosure(v) {
     paras: [
       `${v.name} is operated by [${parent}], a ${jurisdiction}-incorporated entity${cloudActLine}. Personal information transmitted to ${v.name} is processed outside Quebec, which triggers Quebec privacy obligations under Law 25.`,
       `Under [section 17 of the Act respecting the protection of personal information in the private sector] ("Law 25"), the controller must conduct a privacy impact assessment before communicating personal information outside Quebec. The assessment must consider the sensitivity of the information, the purposes of the communication, contractual protection measures, and the legal framework applicable in the receiving state.`,
-      `Recommended controls: complete a section 17 assessment naming ${parent}; document the legal framework analysis; sign a data transfer agreement; classify the data flow and apply purpose limitation; review the subprocessor chain for additional jurisdictional dependencies. Upper Harbour will produce the full assessment and supporting documentation as part of the customer onboarding.`,
+      `From this disclosure, Upper Harbour generates: the full section 17 assessment naming ${parent} as the receiving party; the legal framework analysis; the data transfer agreement; the records-of-processing entries; the subprocessor-chain documentation with jurisdictional flags; and the purpose-limitation classification. All cross-referenced into your privacy management program — produced in full as part of customer onboarding.`,
     ],
     cites: {
       [parent]: {
