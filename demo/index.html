@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Upper Harbour — Live Demo</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg: #06090E;
+  --surface: #0C1219;
+  --surface-2: #111A24;
+  --teal: #3CB8B0;
+  --teal-deep: #2A8A84;
+  --teal-bright: #47cec5;
+  --gold: #C9A84C;
+  --red: #E06050;
+  --ice: #EAF0F4;
+  --slate: #8A9DB0;
+  --muted: #566778;
+  --border: rgba(234,240,244,0.10);
+  --border-teal-low: rgba(60,184,176,0.20);
+  --border-teal: rgba(60,184,176,0.45);
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; height:100%; background: var(--bg); color: var(--ice); font-family: var(--sans); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+body { min-height:100vh; display:flex; flex-direction:column; overflow-x:hidden; }
+
+/* subtle grid backdrop */
+body::before {
+  content: ""; position: fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:
+    linear-gradient(rgba(234,240,244,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234,240,244,0.022) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 0%, transparent 75%);
+}
+
+/* radial glow behind hub */
+body::after {
+  content:""; position: fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 30%, rgba(60,184,176,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 90% 90%, rgba(201,168,76,0.025) 0%, transparent 60%);
+}
+
+main, header, footer { position:relative; z-index:1; }
+
+/* Header */
+header.top {
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 22px 36px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6,9,14,0.6);
+  backdrop-filter: blur(10px);
+}
+.wordmark { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.wordmark svg { width:24px; height:24px; }
+.wordmark .name { font-family: var(--sans); display:inline-flex; align-items:baseline; gap:0; }
+.wordmark .name .a { font-size:15px; font-weight:400; color: var(--slate); }
+.wordmark .name .b { font-size:15px; font-weight:800; color: var(--ice); letter-spacing:-0.4px; margin-left:4px; }
+
+.top-meta {
+  font-family: var(--mono); font-size: 10px; font-weight:600; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted);
+  display:flex; align-items:center; gap: 18px;
+}
+.top-meta .live-dot {
+  width:7px; height:7px; border-radius:50%; background: var(--teal);
+  box-shadow: 0 0 12px var(--teal); animation: pulse 2.2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.2); } }
+
+/* Main layout */
+main {
+  flex: 1;
+  display:flex; flex-direction:column;
+  max-width: 1280px; width: 100%;
+  margin: 0 auto; padding: 36px 36px 48px;
+}
+
+.hero-block { margin-bottom: 36px; }
+.eyebrow { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+.h1 { font-family: var(--serif); font-size: clamp(32px, 4.4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.5px; margin: 0 0 16px; color: var(--ice); }
+.h1 .em { color: var(--teal); font-style: italic; font-weight: 500; }
+.sub { font-family: var(--sans); font-size: 17px; line-height: 1.6; color: var(--slate); max-width: 760px; margin: 0; }
+
+/* Input + quick-pick */
+.input-block { margin-top: 28px; }
+.input-row {
+  display:flex; gap:12px; flex-wrap:wrap; align-items:stretch;
+  max-width: 760px;
+}
+.input-shell {
+  flex:1; min-width:260px; position:relative;
+  border: 1px solid var(--border-teal-low); border-radius: 6px;
+  background: rgba(60,184,176,0.04);
+  transition: border-color .2s, background .2s;
+}
+.input-shell:focus-within { border-color: var(--teal); background: rgba(60,184,176,0.08); }
+.input-shell input {
+  width:100%; padding: 18px 22px 18px 56px;
+  background: transparent; border: 0; outline: 0;
+  font-family: var(--sans); font-size: 17px; font-weight: 500; color: var(--ice);
+  letter-spacing: -0.1px;
+}
+.input-shell input::placeholder { color: var(--muted); font-weight: 400; }
+.input-shell .icon {
+  position:absolute; left:20px; top:50%; transform:translateY(-50%);
+  width:20px; height:20px; color: var(--teal); opacity: 0.7;
+}
+.btn-go {
+  font-family: var(--sans); font-weight: 700; font-size: 15px;
+  background: var(--teal); color: var(--bg);
+  border: 0; border-radius: 5px; padding: 0 28px; cursor: pointer;
+  box-shadow: 0 0 16px rgba(60,184,176,0.25), 0 1px 3px rgba(0,0,0,0.3);
+  letter-spacing: 0.01em; transition: background .15s;
+}
+.btn-go:hover { background: var(--teal-bright); }
+.btn-go:disabled { opacity: 0.4; cursor: not-allowed; box-shadow:none; }
+
+.quick-pick { margin-top: 14px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.quick-pick .label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.quick-pick button {
+  font-family: var(--sans); font-size: 13px; font-weight: 500;
+  background: transparent; color: var(--slate);
+  border: 1px solid var(--border); border-radius: 100px;
+  padding: 6px 14px; cursor: pointer; transition: all .15s;
+}
+.quick-pick button:hover { border-color: var(--teal); color: var(--ice); background: rgba(60,184,176,0.05); }
+
+/* Suggestions dropdown */
+.suggestions {
+  position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+  background: var(--surface); border: 1px solid var(--border-teal-low);
+  border-radius: 6px; max-height: 280px; overflow-y: auto; z-index: 10;
+  display: none;
+}
+.suggestions.open { display: block; }
+.suggestions .opt {
+  padding: 10px 20px; cursor: pointer; font-size: 14px; color: var(--ice);
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom: 1px solid var(--border);
+}
+.suggestions .opt:last-child { border-bottom: 0; }
+.suggestions .opt:hover, .suggestions .opt.focused { background: rgba(60,184,176,0.08); }
+.suggestions .opt .meta { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+/* Results section */
+.results { margin-top: 56px; display: none; }
+.results.show { display: block; animation: fadein .4s ease-out; }
+@keyframes fadein { from { opacity:0; transform: translateY(8px); } to { opacity:1; transform: translateY(0); } }
+
+.vendor-head {
+  display:flex; flex-wrap:wrap; align-items:baseline; gap: 18px;
+  padding-bottom: 22px; margin-bottom: 28px; border-bottom: 1px solid var(--border);
+}
+.vendor-name { font-family: var(--serif); font-size: 36px; font-weight: 700; color: var(--ice); margin: 0; letter-spacing: -0.4px; }
+.vendor-risk {
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 100px;
+  border: 1px solid currentColor;
+}
+.vendor-risk.exposed { color: var(--red); }
+.vendor-risk.canadian-residency, .vendor-risk.canadian, .vendor-risk.protected { color: var(--teal); }
+.vendor-risk.elevated { color: var(--gold); }
+
+/* Three-layer breakdown */
+.layers {
+  display:grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-bottom: 36px;
+}
+.layer {
+  border: 1px solid var(--border); border-radius: 6px; padding: 22px;
+  background: rgba(255,255,255,0.015);
+  position: relative; overflow:hidden;
+}
+.layer-tag { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 14px; }
+.layer-title { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--muted); margin: 0 0 6px; letter-spacing: 0.02em; text-transform: uppercase; }
+.layer-value { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--ice); margin: 0; letter-spacing: -0.2px; line-height: 1.25; }
+.layer-extra { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 13px; color: var(--slate); line-height: 1.5; }
+.layer-extra .flag {
+  display:inline-flex; align-items:center; gap:6px;
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--red);
+  margin-right: 8px;
+}
+.layer-extra .flag .dot { width:6px; height:6px; border-radius: 2px; background: var(--red); }
+.layer-extra .flag.ok { color: var(--teal); }
+.layer-extra .flag.ok .dot { background: var(--teal); }
+
+/* Generate row */
+.generate-row {
+  display:flex; flex-wrap:wrap; gap: 14px; align-items:center;
+  margin-bottom: 32px;
+}
+.generate-row .btn-secondary {
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  background: transparent; color: var(--teal);
+  border: 1px solid var(--teal); border-radius: 4px;
+  padding: 12px 22px; cursor: pointer; transition: background .15s;
+}
+.generate-row .btn-secondary:hover { background: rgba(60,184,176,0.08); }
+.generate-row .btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Disclosure document */
+.doc {
+  display: none;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--surface);
+  padding: 36px 40px;
+  position: relative; overflow: hidden;
+}
+.doc.show { display: block; animation: fadein .4s ease-out; }
+.doc-stamp {
+  position: absolute; top: 22px; right: 28px;
+  font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--teal); border: 1px solid var(--border-teal); padding: 4px 10px; border-radius: 4px;
+}
+.doc-meta { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.doc-title { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--ice); margin: 0 0 24px; letter-spacing: -0.3px; }
+.doc-body { font-family: var(--serif); font-size: 17px; line-height: 1.65; color: var(--ice); }
+.doc-body p { margin: 0 0 16px; }
+.doc-body .cite {
+  color: var(--teal); cursor: help; border-bottom: 1px dotted var(--teal-deep);
+  position: relative;
+}
+.doc-body .cite:hover { color: var(--teal-bright); border-bottom-color: var(--teal); }
+.doc-body .cite .tooltip {
+  display: none; position: absolute; top: 100%; left: 0; margin-top: 8px;
+  background: #0a121b; border: 1px solid var(--border-teal); border-radius: 6px;
+  padding: 14px 16px; min-width: 380px; max-width: 480px;
+  font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--slate);
+  line-height: 1.5; letter-spacing: 0;
+  z-index: 20; box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  text-align: left; font-style: normal;
+}
+.doc-body .cite .tooltip strong { color: var(--ice); display: block; margin-bottom: 6px; font-weight: 600; }
+.doc-body .cite:hover .tooltip, .doc-body .cite:focus .tooltip { display: block; }
+.doc-cursor { display: inline-block; width: 10px; height: 1.2em; background: var(--teal); margin-left: 2px; vertical-align: middle; animation: cursor 0.9s infinite; }
+@keyframes cursor { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+
+/* Monitoring callout */
+.monitor {
+  display: none;
+  margin-top: 32px;
+  border: 1px solid var(--border-teal-low); border-radius: 8px;
+  background: rgba(60,184,176,0.04);
+  padding: 24px 28px;
+  display: none;
+}
+.monitor.show { display: flex; gap: 18px; align-items: flex-start; animation: fadein .4s ease-out; }
+.monitor .pulse { flex-shrink: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 16px var(--teal); margin-top: 4px; animation: pulse 2.2s ease-in-out infinite; }
+.monitor .copy { flex: 1; }
+.monitor .copy .label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+.monitor .copy h3 { font-family: var(--serif); font-size: 20px; font-weight: 600; color: var(--ice); margin: 0 0 8px; letter-spacing: -0.2px; }
+.monitor .copy p { font-family: var(--sans); font-size: 14px; line-height: 1.6; color: var(--slate); margin: 0; }
+
+/* Capture form */
+.capture {
+  display: none;
+  margin-top: 36px;
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+}
+.capture.show { display: block; animation: fadein .4s ease-out; }
+.capture .label { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+.capture h3 { font-family: var(--serif); font-size: 24px; font-weight: 700; color: var(--ice); margin: 0 0 8px; letter-spacing: -0.3px; }
+.capture h3 .em { color: var(--teal); font-style: italic; font-weight: 500; }
+.capture p { font-family: var(--sans); font-size: 15px; line-height: 1.55; color: var(--slate); margin: 0 0 20px; max-width: 580px; }
+.capture-form { display: flex; gap: 12px; flex-wrap: wrap; max-width: 580px; }
+.capture-form input {
+  flex: 1; min-width: 260px;
+  padding: 14px 18px; border-radius: 5px;
+  background: rgba(255,255,255,0.02); border: 1px solid var(--border-teal-low);
+  color: var(--ice); font-family: var(--sans); font-size: 15px; outline: 0;
+  transition: border-color .15s, background .15s;
+}
+.capture-form input:focus { border-color: var(--teal); background: rgba(60,184,176,0.06); }
+.capture-form input::placeholder { color: var(--muted); }
+.capture-form button {
+  font-family: var(--sans); font-weight: 700; font-size: 14px;
+  background: var(--teal); color: var(--bg);
+  border: 0; border-radius: 5px; padding: 0 24px; cursor: pointer;
+  box-shadow: 0 0 16px rgba(60,184,176,0.25);
+}
+.capture-form button:hover { background: var(--teal-bright); }
+.capture-thanks {
+  display: none; margin-top: 18px;
+  font-family: var(--sans); font-size: 14px; color: var(--teal);
+  font-weight: 500;
+}
+.capture-thanks.show { display: block; }
+.capture-thanks::before { content: "✓ "; font-weight: 700; }
+
+/* Footer */
+footer.bottom {
+  border-top: 1px solid var(--border);
+  padding: 20px 36px;
+  display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center;
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--muted);
+}
+footer.bottom .reset {
+  background: transparent; border: 1px solid var(--border); color: var(--slate);
+  padding: 8px 14px; border-radius: 4px; cursor: pointer;
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: all .15s;
+}
+footer.bottom .reset:hover { border-color: var(--teal); color: var(--ice); }
+footer.bottom .links a { color: var(--slate); text-decoration: none; margin-right: 18px; }
+footer.bottom .links a:hover { color: var(--teal); }
+
+/* Idle hint */
+.idle-hint {
+  margin-top: 18px; max-width: 760px;
+  font-family: var(--sans); font-size: 14px; color: var(--muted); line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 880px) {
+  header.top { padding: 18px 22px; }
+  main { padding: 28px 22px 40px; }
+  .layers { grid-template-columns: 1fr; }
+  .vendor-name { font-size: 28px; }
+  .doc { padding: 26px 24px; }
+  .doc-title { font-size: 22px; }
+  .doc-body { font-size: 16px; }
+  .doc-body .cite .tooltip { min-width: 280px; left: -20px; }
+  footer.bottom { padding: 16px 22px; gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="wordmark" aria-label="Upper Harbour home">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hglogo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1C4F5E"/>
+          <stop offset="100%" stop-color="#32A8A4"/>
+        </linearGradient>
+      </defs>
+      <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+      <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hglogo)"/>
+    </svg>
+    <span class="name"><span class="a">Upper</span><span class="b">Harbour</span></span>
+  </a>
+  <div class="top-meta">
+    <span class="live-dot" aria-hidden="true"></span>
+    <span>Live Demo · Web Summit Vancouver</span>
+  </div>
+</header>
+
+<main>
+  <div class="hero-block">
+    <div class="eyebrow">The compliance graph · live demo</div>
+    <h1 class="h1">Type a SaaS your business uses. See <span class="em">your privacy posture</span>, grounded in Canadian statute.</h1>
+    <p class="sub">One vendor in, three layers of sovereignty exposure out — corporate parent, data transfer routes, and the specific Canadian privacy obligations that follow. Same structured graph underneath every PIA, TIA, and breach package Upper Harbour produces.</p>
+  </div>
+
+  <div class="input-block">
+    <div class="input-row">
+      <div class="input-shell">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="vendor-input" type="text" placeholder="e.g. Slack, AWS, Notion, Salesforce…" autocomplete="off" spellcheck="false" />
+        <div class="suggestions" id="suggestions" role="listbox"></div>
+      </div>
+      <button class="btn-go" id="go-btn" disabled>Run</button>
+    </div>
+    <div class="quick-pick">
+      <span class="label">Or try:</span>
+      <button data-q="Slack">Slack</button>
+      <button data-q="AWS">AWS</button>
+      <button data-q="Notion">Notion</button>
+      <button data-q="Salesforce">Salesforce</button>
+      <button data-q="Stripe">Stripe</button>
+      <button data-q="Microsoft Teams">Microsoft Teams</button>
+      <button data-q="Zoom">Zoom</button>
+      <button data-q="HubSpot">HubSpot</button>
+    </div>
+    <p class="idle-hint">Searches 768 SaaS vendors mapped across three sovereignty layers. Type anything — fallback to a generic Law 25 assessment if the vendor isn't in the index yet.</p>
+  </div>
+
+  <section class="results" id="results">
+    <div class="vendor-head">
+      <h2 class="vendor-name" id="rv-name">—</h2>
+      <span class="vendor-risk" id="rv-risk">—</span>
+    </div>
+
+    <div class="layers">
+      <div class="layer">
+        <div class="layer-tag">Layer 1 · Corporate parent</div>
+        <p class="layer-title">Ultimate beneficial owner</p>
+        <p class="layer-value" id="rv-parent">—</p>
+        <div class="layer-extra" id="rv-parent-extra"></div>
+      </div>
+      <div class="layer">
+        <div class="layer-tag">Layer 2 · Data transfer</div>
+        <p class="layer-title">Where data is processed</p>
+        <p class="layer-value" id="rv-residency">—</p>
+        <div class="layer-extra" id="rv-residency-extra"></div>
+      </div>
+      <div class="layer">
+        <div class="layer-tag">Layer 3 · Jurisdiction</div>
+        <p class="layer-title">Governing legal framework</p>
+        <p class="layer-value" id="rv-jurisdiction">—</p>
+        <div class="layer-extra" id="rv-jurisdiction-extra"></div>
+      </div>
+    </div>
+
+    <div class="generate-row">
+      <button class="btn-secondary" id="gen-btn">Generate Law 25 disclosure for this vendor →</button>
+    </div>
+
+    <div class="doc" id="doc">
+      <div class="doc-stamp">Law 25 · s. 17</div>
+      <div class="doc-meta" id="doc-meta">—</div>
+      <h3 class="doc-title">Disclosure of personal information outside Quebec</h3>
+      <div class="doc-body" id="doc-body"></div>
+    </div>
+
+    <div class="monitor" id="monitor">
+      <div class="pulse" aria-hidden="true"></div>
+      <div class="copy">
+        <div class="label">Continuous monitoring</div>
+        <h3>When this vendor's posture changes, your document updates itself.</h3>
+        <p>The day a vendor is acquired, restructures, or changes data-residency policy, the graph flags every dependent disclosure across every customer. The specific lines in your existing PIAs, TIAs, and breach packages that need to change come pre-highlighted. You review, you sign, you're back in compliance.</p>
+      </div>
+    </div>
+
+    <div class="capture" id="capture">
+      <div class="label">Take this with you</div>
+      <h3>Want this run against your <span class="em">full stack?</span></h3>
+      <p>Leave an email and we'll send back a real Sovereignty Index report covering every SaaS in your operation, plus the specific Canadian privacy obligations each one triggers. No call required.</p>
+      <form class="capture-form" id="capture-form">
+        <input type="email" id="email-input" placeholder="you@yourcompany.ca" required />
+        <input type="text" id="company-input" placeholder="Company (optional)" />
+        <button type="submit">Send report</button>
+      </form>
+      <div class="capture-thanks" id="capture-thanks">Captured. We'll be in touch within 48 hours.</div>
+    </div>
+  </section>
+</main>
+
+<footer class="bottom">
+  <div>Upper Harbour · Canadian privacy infrastructure</div>
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/tools">Sovereignty Index</a>
+    <a href="/research">Research</a>
+  </div>
+  <button class="reset" id="reset-btn">Reset</button>
+</footer>
+
+<script>
+const STATE = {
+  vendors: [],
+  current: null,
+  streaming: false,
+};
+
+const $ = id => document.getElementById(id);
+
+// ---------- Load vendor data ----------
+async function loadVendors() {
+  try {
+    const res = await fetch('/assets/saas-db-public.json', { cache: 'force-cache' });
+    const data = await res.json();
+    const arr = Array.isArray(data) ? data : (data.tools || []);
+    STATE.vendors = arr.filter(v => v && v.name);
+  } catch(e) {
+    console.error('vendor load failed', e);
+    STATE.vendors = [];
+  }
+}
+
+// ---------- Suggestions ----------
+const inputEl = $('vendor-input');
+const suggEl = $('suggestions');
+let suggIndex = -1;
+let suggMatches = [];
+
+function renderSuggestions() {
+  const q = inputEl.value.trim().toLowerCase();
+  if (!q) { suggEl.classList.remove('open'); suggMatches = []; return; }
+  suggMatches = STATE.vendors
+    .filter(v => v.name.toLowerCase().includes(q))
+    .slice(0, 6);
+  if (!suggMatches.length) { suggEl.classList.remove('open'); return; }
+  suggEl.innerHTML = suggMatches.map((v,i) =>
+    `<div class="opt${i===suggIndex?' focused':''}" data-i="${i}">
+      <span>${escapeHtml(v.name)}</span>
+      <span class="meta">${escapeHtml(v.jurisdiction || '—')}</span>
+    </div>`).join('');
+  suggEl.classList.add('open');
+  Array.from(suggEl.querySelectorAll('.opt')).forEach(el => {
+    el.addEventListener('click', () => {
+      const i = +el.dataset.i;
+      inputEl.value = suggMatches[i].name;
+      hideSuggestions();
+      run(suggMatches[i].name);
+    });
+  });
+}
+function hideSuggestions() { suggEl.classList.remove('open'); suggIndex = -1; }
+inputEl.addEventListener('input', () => {
+  suggIndex = -1;
+  renderSuggestions();
+  $('go-btn').disabled = !inputEl.value.trim();
+});
+inputEl.addEventListener('keydown', e => {
+  if (e.key === 'ArrowDown') { e.preventDefault(); suggIndex = Math.min(suggIndex+1, suggMatches.length-1); renderSuggestions(); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); suggIndex = Math.max(suggIndex-1, -1); renderSuggestions(); }
+  else if (e.key === 'Enter') {
+    e.preventDefault();
+    if (suggIndex >= 0 && suggMatches[suggIndex]) {
+      inputEl.value = suggMatches[suggIndex].name;
+      hideSuggestions();
+      run(suggMatches[suggIndex].name);
+    } else if (inputEl.value.trim()) {
+      hideSuggestions();
+      run(inputEl.value.trim());
+    }
+  } else if (e.key === 'Escape') { hideSuggestions(); }
+});
+document.addEventListener('click', e => {
+  if (!suggEl.contains(e.target) && e.target !== inputEl) hideSuggestions();
+});
+
+// ---------- Quick-pick buttons ----------
+document.querySelectorAll('.quick-pick button').forEach(b => {
+  b.addEventListener('click', () => {
+    const q = b.dataset.q;
+    inputEl.value = q;
+    $('go-btn').disabled = false;
+    run(q);
+  });
+});
+
+$('go-btn').addEventListener('click', () => {
+  if (inputEl.value.trim()) run(inputEl.value.trim());
+});
+
+// ---------- Vendor lookup ----------
+function findVendor(name) {
+  const q = name.toLowerCase().trim();
+  const exact = STATE.vendors.find(v => v.name.toLowerCase() === q);
+  if (exact) return exact;
+  const starts = STATE.vendors.find(v => v.name.toLowerCase().startsWith(q));
+  if (starts) return starts;
+  return STATE.vendors.find(v => v.name.toLowerCase().includes(q)) || null;
+}
+
+// ---------- Render breakdown ----------
+function run(name) {
+  const v = findVendor(name);
+  // For unknown vendors, synthesize a plausible record
+  const vendor = v || {
+    name: titleCase(name),
+    parent: 'Unknown / not yet indexed',
+    hq: '—',
+    jurisdiction: 'Pending classification',
+    cloudAct: null,
+    dataResidency: 'Unknown',
+    risk: 'pending',
+    inIndex: false,
+  };
+  vendor.inIndex = !!v;
+  STATE.current = vendor;
+  renderBreakdown(vendor);
+  $('results').classList.add('show');
+  $('doc').classList.remove('show');
+  $('monitor').classList.remove('show');
+  $('capture').classList.remove('show');
+  $('gen-btn').disabled = false;
+  $('gen-btn').textContent = 'Generate Law 25 disclosure for this vendor →';
+  setTimeout(() => $('results').scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+}
+
+function renderBreakdown(v) {
+  $('rv-name').textContent = v.name;
+  const riskEl = $('rv-risk');
+  riskEl.className = 'vendor-risk ' + classifyRisk(v);
+  riskEl.textContent = riskLabel(v);
+  $('rv-parent').textContent = v.parent || '—';
+  $('rv-parent-extra').innerHTML = v.parent && v.parent !== 'Unknown / not yet indexed'
+    ? `<span class="flag ${v.cloudAct === false ? 'ok' : ''}"><span class="dot"></span>${v.cloudAct === false ? 'No US legal exposure' : v.cloudAct ? 'CLOUD Act exposed' : 'Exposure under review'}</span>HQ: ${escapeHtml(v.hq || '—')}`
+    : 'Not in the public Sovereignty Index yet. Upper Harbour will classify this vendor as part of your customer onboarding.';
+  $('rv-residency').textContent = v.dataResidency || '—';
+  $('rv-residency-extra').innerHTML = v.inIndex
+    ? `Cross-border transfer of Canadian personal information triggers Quebec Law 25 s. 17 and PIPEDA accountability obligations.`
+    : `Data residency posture pending.`;
+  $('rv-jurisdiction').textContent = v.jurisdiction || '—';
+  $('rv-jurisdiction-extra').innerHTML = v.inIndex
+    ? legalNote(v)
+    : 'Legal framework analysis pending classification.';
+}
+
+function classifyRisk(v) {
+  if (!v.inIndex) return 'elevated';
+  if (v.risk === 'exposed' || v.cloudAct) return 'exposed';
+  if (v.risk === 'canadian' || v.risk === 'protected' || (v.jurisdiction || '').toLowerCase().includes('canad')) return 'canadian';
+  return 'elevated';
+}
+function riskLabel(v) {
+  if (!v.inIndex) return 'Pending classification';
+  if (v.cloudAct) return 'CLOUD Act exposed';
+  if ((v.jurisdiction || '').toLowerCase().includes('canad')) return 'Canadian residency';
+  return v.risk ? v.risk.replace(/_/g,' ') : 'Elevated';
+}
+function legalNote(v) {
+  const j = (v.jurisdiction || '').toLowerCase();
+  if (j.includes('united states') || j.includes('us')) return 'US-incorporated entity subject to CLOUD Act, FISA 702, and US legal process. Disclosure may occur without notice to the Canadian controller.';
+  if (j.includes('european') || j.includes('eu') || j.includes('ireland') || j.includes('netherlands') || j.includes('germany')) return 'EU/EEA jurisdiction. GDPR adequacy basis available; assessment still required under Law 25 s. 17 for cross-border transfer.';
+  if (j.includes('canad')) return 'Canadian jurisdiction. PIPEDA and applicable provincial regimes apply directly; cross-border analysis not triggered.';
+  if (j.includes('united kingdom') || j.includes('uk')) return 'UK jurisdiction (post-Brexit). Adequacy assessment required under Law 25 s. 17.';
+  return 'Cross-border transfer analysis required under Law 25 s. 17 and PIPEDA Principle 4.1.3.';
+}
+
+// ---------- Pre-curated disclosures ----------
+const DISCLOSURES = {
+  'slack': {
+    paras: [
+      "Slack is a workplace communication platform operated by [Salesforce Inc.], a US-incorporated company subject to the United States CLOUD Act. Personal information transmitted to Slack — including employee identifiers, message content, attachments, and metadata — is processed in the United States and is potentially subject to disclosure under US legal process without notification to the Canadian controller or the affected individuals.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), a controller must conduct a privacy impact assessment before communicating personal information outside Quebec. The assessment must determine whether the personal information will receive adequate protection in light of, in particular, generally recognized principles regarding the protection of personal information and the legal framework applicable in the state in which the information would be communicated.",
+      "Recommended controls: complete a section 17 assessment naming Salesforce Inc. as the receiving party; document the CLOUD Act analysis; execute a data transfer agreement specifying purposes, retention, and subprocessor disclosure; restrict Slack channel use for sensitive personal information categories.",
+    ],
+    cites: {
+      'Salesforce Inc.': {
+        title: 'Sovereignty Index entry · Slack',
+        body: "Slack Technologies LLC is a wholly-owned subsidiary of Salesforce Inc. (NYSE: CRM), incorporated in Delaware and headquartered in San Francisco. Acquired by Salesforce in July 2021 for USD 27.7 billion."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment. The person must in particular take into account: (1) the sensitivity of the information; (2) the purposes for which it is to be used; (3) the protection measures, including those that are contractual, that would apply to it; and (4) the legal framework applicable in the State in which the information would be communicated, including the personal information protection principles applicable in that State."'
+      },
+    }
+  },
+  'aws': {
+    paras: [
+      "Amazon Web Services (AWS) is the cloud infrastructure platform operated by [Amazon.com, Inc.], a US-incorporated parent subject to the United States CLOUD Act. AWS provides Canadian regions (ca-central-1, ca-west-1) but the operating entity, AWS support personnel, and parent oversight remain under US legal jurisdiction. Personal information processed on AWS may be subject to US legal process even when stored exclusively in Canadian regions.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller's section 17 assessment must consider not only data residency but the legal framework applicable to the entity operating the infrastructure. AWS's Canadian-region election does not displace the CLOUD Act exposure created by the US operator.",
+      "Recommended controls: confirm region election (ca-central-1 or ca-west-1); document the controller-processor relationship under the AWS Data Processing Addendum; complete the section 17 assessment naming Amazon.com, Inc. as the controlling entity; encrypt at rest with customer-managed keys (KMS) where the sensitivity warrants it.",
+    ],
+    cites: {
+      'Amazon.com, Inc.': {
+        title: 'Sovereignty Index entry · AWS',
+        body: "Amazon Web Services, Inc. is a wholly-owned subsidiary of Amazon.com, Inc. (NASDAQ: AMZN), incorporated in Delaware. AWS operates Canadian regions but does not change the parent's US-jurisdictional posture."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      },
+    }
+  },
+  'notion': {
+    paras: [
+      "Notion is a collaborative workspace operated by [Notion Labs, Inc.], a US-incorporated company subject to the United States CLOUD Act. Customer documents, pages, comments, attachments, and metadata are processed in the United States. AWS underlying infrastructure introduces a second-layer US jurisdictional dependency.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller's assessment must consider both Notion Labs as the operator and the underlying infrastructure provider. The chain of US-jurisdictional entities materially affects the legal framework analysis required by the section.",
+      "Recommended controls: complete a section 17 assessment for Notion Labs, Inc.; document the AWS subprocessor relationship; restrict workspace use for sensitive personal information; implement workspace-level retention and export policies aligned with PIPEDA Principle 4.5 (limiting retention).",
+    ],
+    cites: {
+      'Notion Labs, Inc.': {
+        title: 'Sovereignty Index entry · Notion',
+        body: "Notion Labs, Inc. is incorporated in Delaware and headquartered in San Francisco. Notion uses Amazon Web Services as its primary infrastructure provider, introducing a CLOUD Act exposure at both the operator and infrastructure layers."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      },
+    }
+  },
+  'salesforce': {
+    paras: [
+      "Salesforce is a customer relationship management platform operated by [Salesforce, Inc.], a US-incorporated public company subject to the United States CLOUD Act. Salesforce processes customer relationship records, contact data, support communications, and integration metadata. Canadian region election is available (Hyperforce CA) but does not displace the parent's US jurisdictional exposure.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller must assess the legal framework applicable to Salesforce, Inc. — not just the data centre location. CLOUD Act exposure persists regardless of data residency election.",
+      "Recommended controls: elect Hyperforce CA region; sign the Salesforce Data Processing Addendum; complete the section 17 assessment naming Salesforce, Inc.; document any Slack and Tableau cross-product data flows (both subsidiaries operate under the same parent jurisdiction).",
+    ],
+    cites: {
+      'Salesforce, Inc.': {
+        title: 'Sovereignty Index entry · Salesforce',
+        body: "Salesforce, Inc. (NYSE: CRM) is a US-incorporated public company headquartered in San Francisco. Owns Slack Technologies, Tableau, MuleSoft, and other subsidiaries — all sharing the same US jurisdictional posture."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      },
+    }
+  },
+  'stripe': {
+    paras: [
+      "Stripe is a payment processing platform operated by [Stripe, Inc.], a US-incorporated company subject to the United States CLOUD Act and US financial regulatory framework. Payment metadata, customer identifiers, transaction records, and (where applicable) bank account details are processed in the United States.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the controller must conduct a section 17 assessment for payment-related personal information. The dual exposure — privacy law and financial law in the receiving jurisdiction — warrants particular attention to the legal framework analysis required by the section.",
+      "Recommended controls: complete the section 17 assessment naming Stripe, Inc.; document PCI-DSS scope and tokenization controls; sign the Stripe Data Processing Agreement; consider data-minimization through Stripe Elements (collecting payment data directly in Stripe's iframe rather than your servers).",
+    ],
+    cites: {
+      'Stripe, Inc.': {
+        title: 'Sovereignty Index entry · Stripe',
+        body: "Stripe, Inc. is a privately-held US corporation, dual-headquartered in San Francisco and Dublin. Canadian operations route through Stripe Payments Canada Ltd., but the controlling entity for data and operations is the US parent."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      },
+    }
+  },
+  'microsoft teams': {
+    paras: [
+      "Microsoft Teams is a workplace collaboration platform operated by [Microsoft Corporation], a US-incorporated company subject to the United States CLOUD Act. Personal information including employee identifiers, messages, attachments, recording metadata, and (where enabled) call recordings is processed within Microsoft 365 infrastructure. Canadian datacentre regions are available but the parent jurisdiction remains US.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the section 17 assessment must consider Microsoft Corporation as the legal entity controlling the platform, regardless of customer-elected data residency. Microsoft has publicly committed to challenging US legal process, but the legal framework exposure persists.",
+      "Recommended controls: elect Canadian residency in Microsoft 365 admin; sign the Microsoft Products and Services Data Protection Addendum; complete the section 17 assessment naming Microsoft Corporation; document recording retention and access policies; consider Customer Lockbox for sensitive workloads.",
+    ],
+    cites: {
+      'Microsoft Corporation': {
+        title: 'Sovereignty Index entry · Microsoft Teams',
+        body: "Microsoft Corporation (NASDAQ: MSFT) is a US-incorporated public company headquartered in Redmond, Washington. Operates Canadian datacentres but parent jurisdictional posture remains US."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      },
+    }
+  },
+  'zoom': {
+    paras: [
+      "Zoom is a video conferencing platform operated by [Zoom Communications, Inc.], a US-incorporated public company subject to the United States CLOUD Act. Meeting metadata, participant identifiers, chat content, recordings, and transcripts are processed in the United States. Historical disclosures have raised additional concerns regarding subprocessor jurisdictions.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the section 17 assessment must consider both Zoom's primary jurisdiction and its subprocessor chain. The legal framework analysis required by the section extends to all entities materially involved in processing.",
+      "Recommended controls: complete the section 17 assessment naming Zoom Communications, Inc.; disable recordings for sensitive meetings; document the Zoom subprocessor list and review for jurisdictional dependencies; implement meeting-level retention controls; restrict use for personal-health or legally-privileged communications.",
+    ],
+    cites: {
+      'Zoom Communications, Inc.': {
+        title: 'Sovereignty Index entry · Zoom',
+        body: "Zoom Communications, Inc. (NASDAQ: ZM) is a US-incorporated public company headquartered in San Jose. Renamed from Zoom Video Communications in 2024. Maintains a notable subprocessor footprint that warrants chain analysis."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      },
+    }
+  },
+  'hubspot': {
+    paras: [
+      "HubSpot is a marketing, sales, and service platform operated by [HubSpot, Inc.], a US-incorporated public company subject to the United States CLOUD Act. Personal information including contact records, email engagement data, support ticket content, and marketing tracking events is processed in the United States and additional regional datacentres.",
+      "Under [section 17 of the Act respecting the protection of personal information in the private sector] (\"Law 25\"), the section 17 assessment must consider HubSpot's processing for marketing communications — particularly consent records and tracking — which are also governed by [Law 25 section 8.1] (meaningful consent requirements for technological tools).",
+      "Recommended controls: complete the section 17 assessment naming HubSpot, Inc.; sign the HubSpot Data Processing Agreement; align HubSpot consent capture with Law 25 s. 8.1 (express opt-in for non-essential cookies and tracking); document marketing automation flows and retention.",
+    ],
+    cites: {
+      'HubSpot, Inc.': {
+        title: 'Sovereignty Index entry · HubSpot',
+        body: "HubSpot, Inc. (NYSE: HUBS) is a US-incorporated public company headquartered in Cambridge, Massachusetts. Operates regional datacentres but parent jurisdictional posture remains US."
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      },
+      'Law 25 section 8.1': {
+        title: 'Law 25 · Section 8.1',
+        body: '"Any person collecting personal information from the person concerned using technology that includes functions allowing the person concerned to be identified, located or profiled must first inform the person concerned […] of the use of such technology and the means available to activate the functions."'
+      },
+    }
+  },
+};
+
+function getDisclosure(v) {
+  const key = (v.name || '').toLowerCase();
+  if (DISCLOSURES[key]) return DISCLOSURES[key];
+  // alias matching
+  const map = { 'amazon web services': 'aws', 'salesforce.com': 'salesforce', 'teams': 'microsoft teams', 'ms teams': 'microsoft teams' };
+  if (map[key]) return DISCLOSURES[map[key]];
+  // generic fallback
+  const parent = v.parent && v.parent !== 'Unknown / not yet indexed' ? v.parent : `${v.name} Inc.`;
+  const jurisdiction = v.jurisdiction || 'a foreign jurisdiction';
+  const isUS = /united states|us\b/i.test(jurisdiction);
+  const cloudActLine = isUS ? ' subject to the United States CLOUD Act' : '';
+  return {
+    paras: [
+      `${v.name} is operated by [${parent}], a ${jurisdiction}-incorporated entity${cloudActLine}. Personal information transmitted to ${v.name} is processed outside Quebec, which triggers Quebec privacy obligations under Law 25.`,
+      `Under [section 17 of the Act respecting the protection of personal information in the private sector] ("Law 25"), the controller must conduct a privacy impact assessment before communicating personal information outside Quebec. The assessment must consider the sensitivity of the information, the purposes of the communication, contractual protection measures, and the legal framework applicable in the receiving state.`,
+      `Recommended controls: complete a section 17 assessment naming ${parent}; document the legal framework analysis; sign a data transfer agreement; classify the data flow and apply purpose limitation; review the subprocessor chain for additional jurisdictional dependencies. Upper Harbour will produce the full assessment and supporting documentation as part of the customer onboarding.`,
+    ],
+    cites: {
+      [parent]: {
+        title: `Sovereignty Index entry · ${v.name}`,
+        body: `${parent} — jurisdiction: ${jurisdiction}. Full Sovereignty Index classification available on customer onboarding.`
+      },
+      'section 17 of the Act respecting the protection of personal information in the private sector': {
+        title: 'Law 25 · Section 17',
+        body: '"Before communicating personal information outside Québec, a person carrying on an enterprise must conduct a privacy impact assessment […] in particular take into account […] the legal framework applicable in the State in which the information would be communicated."'
+      }
+    }
+  };
+}
+
+// ---------- Streaming output ----------
+function renderDisclosure(v) {
+  const d = getDisclosure(v);
+  $('doc').classList.add('show');
+  $('doc-meta').textContent = `Disclosure · ${v.name.toUpperCase()} · Quebec / Law 25 / Section 17`;
+  const body = $('doc-body');
+  body.innerHTML = '';
+  // build HTML with citation markup
+  const html = d.paras.map(p => {
+    let out = escapeHtml(p);
+    for (const [phrase, info] of Object.entries(d.cites)) {
+      const safe = escapeHtml(phrase);
+      const tip = `<span class="tooltip"><strong>${escapeHtml(info.title)}</strong>${escapeHtml(info.body)}</span>`;
+      out = out.split(`[${safe}]`).join(`<span class="cite" tabindex="0">${safe}${tip}</span>`);
+    }
+    return `<p>${out}</p>`;
+  }).join('');
+  // type it out
+  body.innerHTML = '<span class="doc-cursor"></span>';
+  streamHTML(body, html, () => {
+    body.querySelector('.doc-cursor')?.remove();
+    setTimeout(() => $('monitor').classList.add('show'), 600);
+    setTimeout(() => $('capture').classList.add('show'), 1300);
+  });
+}
+
+function streamHTML(target, fullHTML, done) {
+  STATE.streaming = true;
+  // Strategy: render the full HTML invisible, then progressively reveal characters.
+  // Easier: split text content vs HTML tags and reveal text only.
+  const tmp = document.createElement('div'); tmp.innerHTML = fullHTML;
+  // Tokenize the HTML into [text, tag] pieces
+  let i = 0; const html = fullHTML;
+  const tokens = [];
+  while (i < html.length) {
+    if (html[i] === '<') {
+      const end = html.indexOf('>', i);
+      tokens.push({ tag: html.slice(i, end+1) });
+      i = end + 1;
+    } else {
+      const next = html.indexOf('<', i);
+      const text = html.slice(i, next === -1 ? html.length : next);
+      for (const ch of text) tokens.push({ ch });
+      i = next === -1 ? html.length : next;
+    }
+  }
+  let built = '';
+  let idx = 0;
+  const speed = 14; // ms per char
+  function step() {
+    if (!STATE.streaming) { done(); return; }
+    if (idx >= tokens.length) { target.innerHTML = built; done(); return; }
+    const tok = tokens[idx++];
+    if (tok.tag) built += tok.tag;
+    else built += tok.ch;
+    target.innerHTML = built + '<span class="doc-cursor"></span>';
+    // schedule next char
+    const delay = tok.tag ? 0 : (tok.ch === ' ' ? speed/2 : speed);
+    setTimeout(step, delay);
+  }
+  step();
+}
+
+$('gen-btn').addEventListener('click', () => {
+  if (!STATE.current) return;
+  $('gen-btn').disabled = true;
+  $('gen-btn').textContent = 'Drafting from the graph…';
+  setTimeout(() => renderDisclosure(STATE.current), 300);
+});
+
+// ---------- Email capture ----------
+$('capture-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const email = $('email-input').value.trim();
+  const company = $('company-input').value.trim();
+  if (!email) return;
+  const lead = {
+    email, company, vendor: STATE.current?.name || null,
+    ts: new Date().toISOString(),
+    source: 'web-summit-demo',
+  };
+  // localStorage
+  try {
+    const existing = JSON.parse(localStorage.getItem('uh-demo-leads') || '[]');
+    existing.push(lead);
+    localStorage.setItem('uh-demo-leads', JSON.stringify(existing));
+  } catch(e) { console.error('localStorage failed', e); }
+  console.log('[UH demo lead]', lead);
+  // fire-and-forget POST to optional endpoint
+  try {
+    fetch('/api/demo-lead', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(lead) }).catch(()=>{});
+  } catch(e) {}
+  // GA4 event
+  try { window.gtag && window.gtag('event', 'demo_lead_captured', { vendor: STATE.current?.name }); } catch(e) {}
+  $('capture-thanks').classList.add('show');
+  $('capture-form').style.opacity = '0.5';
+  $('capture-form').style.pointerEvents = 'none';
+});
+
+// ---------- Reset ----------
+$('reset-btn').addEventListener('click', resetAll);
+function resetAll() {
+  STATE.streaming = false;
+  STATE.current = null;
+  inputEl.value = '';
+  $('go-btn').disabled = true;
+  $('results').classList.remove('show');
+  $('doc').classList.remove('show');
+  $('monitor').classList.remove('show');
+  $('capture').classList.remove('show');
+  $('capture-thanks').classList.remove('show');
+  $('capture-form').style.opacity = '';
+  $('capture-form').style.pointerEvents = '';
+  $('capture-form').reset();
+  hideSuggestions();
+  inputEl.focus();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ---------- Utils ----------
+function escapeHtml(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function titleCase(s) {
+  return s.replace(/\b([a-z])([a-z]*)/gi, (_,a,b) => a.toUpperCase() + b.toLowerCase());
+}
+
+// ---------- Init ----------
+loadVendors().then(() => {
+  inputEl.focus();
+});
+
+// Keyboard shortcut: press / to focus input
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && document.activeElement !== inputEl) {
+    e.preventDefault();
+    inputEl.focus();
+  }
+});
+</script>
+</body>
+</html>
