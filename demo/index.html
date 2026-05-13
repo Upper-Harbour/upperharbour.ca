@@ -6,6 +6,15 @@
 <meta name="robots" content="noindex,nofollow" />
 <title>Upper Harbour — Live Demo</title>
 
+<!-- Google Analytics (matches the rest of upperharbour.ca) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -876,32 +885,79 @@ $('gen-btn').addEventListener('click', () => {
 });
 
 // ---------- Email capture ----------
+// Same Formspree endpoint as harbourscan.html (xjgepypp) so all marketing-site
+// leads land in the same inbox with consistent field naming. Differentiated
+// downstream by `type` and `_subject`.
 $('capture-form').addEventListener('submit', e => {
   e.preventDefault();
   const email = $('email-input').value.trim();
   const company = $('company-input').value.trim();
   if (!email) return;
+
+  const vendorName = STATE.current?.name || 'unknown';
+  const submitBtn = $('capture-form').querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending…';
+
+  // Always-on local backup so a network failure at the booth doesn't lose the lead.
   const lead = {
-    email, company, vendor: STATE.current?.name || null,
+    email,
+    organization: company || null,
+    vendor: vendorName,
     ts: new Date().toISOString(),
     source: 'web-summit-demo',
   };
-  // localStorage
   try {
     const existing = JSON.parse(localStorage.getItem('uh-demo-leads') || '[]');
     existing.push(lead);
     localStorage.setItem('uh-demo-leads', JSON.stringify(existing));
-  } catch(e) { console.error('localStorage failed', e); }
+  } catch(err) { console.error('localStorage failed', err); }
   console.log('[UH demo lead]', lead);
-  // fire-and-forget POST to optional endpoint
-  try {
-    fetch('/api/demo-lead', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(lead) }).catch(()=>{});
-  } catch(e) {}
-  // GA4 event
-  try { window.gtag && window.gtag('event', 'demo_lead_captured', { vendor: STATE.current?.name }); } catch(e) {}
-  $('capture-thanks').classList.add('show');
-  $('capture-form').style.opacity = '0.5';
-  $('capture-form').style.pointerEvents = 'none';
+
+  // POST to the same Formspree the rest of the marketing site uses.
+  fetch('https://formspree.io/f/xjgepypp', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      email: email,
+      organization: company || null,
+      _subject: 'Web Summit Demo Lead — ' + vendorName,
+      type: 'web_summit_demo',
+      scan_data: {
+        demo_vendor: vendorName,
+        vendor_parent: STATE.current?.parent || null,
+        vendor_jurisdiction: STATE.current?.jurisdiction || null,
+        vendor_in_index: !!STATE.current?.inIndex,
+        captured_at: new Date().toISOString(),
+        page: '/demo',
+      }
+    })
+  }).then(function(response) {
+    if (response.ok) {
+      try { window.gtag && window.gtag('event', 'demo_lead_captured', {
+        event_category: 'web_summit_demo',
+        demo_vendor: vendorName,
+      }); } catch(err) {}
+      $('capture-thanks').classList.add('show');
+      $('capture-form').style.opacity = '0.5';
+      $('capture-form').style.pointerEvents = 'none';
+    } else {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send report';
+      alert('Something went wrong. Please try again or email josh@upperharbour.ca directly.');
+    }
+  }).catch(function() {
+    // Network failure — localStorage already captured it. Show success
+    // anyway so the booth flow doesn't stall, and we'll reconcile from
+    // localStorage after the show.
+    try { window.gtag && window.gtag('event', 'demo_lead_captured_offline', {
+      event_category: 'web_summit_demo',
+      demo_vendor: vendorName,
+    }); } catch(err) {}
+    $('capture-thanks').classList.add('show');
+    $('capture-form').style.opacity = '0.5';
+    $('capture-form').style.pointerEvents = 'none';
+  });
 });
 
 // ---------- Reset ----------
