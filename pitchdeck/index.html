@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Upper Harbour — The Compliance Graph for Canadian Businesses</title>
+<meta name="description" content="Upper Harbour is the structured Canadian privacy data layer. 768 SaaS tools classified three layers deep, 13 Canadian privacy regimes indexed verbatim, queryable through the documents we generate and the API we expose. Built by Joshua van Es. BetaKit Most Ambitious 2026 honouree." />
+
+<meta property="og:title" content="Upper Harbour — The Compliance Graph for Canadian Businesses" />
+<meta property="og:description" content="The structured Canadian privacy data layer. 768 SaaS tools mapped, 13 privacy regimes indexed, every claim cited to verbatim statute." />
+<meta property="og:url" content="https://www.upperharbour.ca/pitchdeck" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png?v=3" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.upperharbour.ca/assets/og-image.png?v=3" />
+
+<link rel="canonical" href="https://www.upperharbour.ca/pitchdeck" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+<!-- GA -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<style>
+:root {
+  --bg: #06090E;
+  --surface: #0C1219;
+  --surface-2: #111A24;
+  --teal: #3CB8B0;
+  --teal-deep: #2A8A84;
+  --teal-bright: #47cec5;
+  --gold: #C9A84C;
+  --red: #E06050;
+  --ice: #EAF0F4;
+  --slate: #8A9DB0;
+  --muted: #566778;
+  --border: rgba(234,240,244,0.10);
+  --border-teal-low: rgba(60,184,176,0.20);
+  --border-teal: rgba(60,184,176,0.45);
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --container: 1120px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ice); font-family: var(--sans); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; scroll-behavior: smooth; }
+
+/* Background texture */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(234,240,244,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234,240,244,0.018) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at center top, black 0%, transparent 70%);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 30% 20%, rgba(60,184,176,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 90% 85%, rgba(201,168,76,0.025) 0%, transparent 55%);
+}
+header, main, footer, section { position: relative; z-index: 1; }
+
+.container { max-width: var(--container); margin: 0 auto; padding: 0 36px; }
+@media (max-width: 768px) { .container { padding: 0 20px; } }
+
+/* ============ Top navigation ============ */
+header.top {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 36px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6,9,14,0.92);
+  backdrop-filter: blur(10px);
+}
+.wordmark { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.wordmark svg { width: 24px; height: 24px; }
+.wordmark .name { font-family: var(--sans); display: inline-flex; align-items: baseline; gap: 0; }
+.wordmark .name .a { font-size: 15px; font-weight: 400; color: var(--slate); }
+.wordmark .name .b { font-size: 15px; font-weight: 800; color: var(--ice); letter-spacing: -0.4px; margin-left: 4px; }
+.nav-actions { display: flex; gap: 18px; align-items: center; }
+.nav-actions a { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--slate); text-decoration: none; }
+.nav-actions a:hover { color: var(--ice); }
+.nav-actions a.cta {
+  padding: 8px 18px;
+  border-radius: 4px;
+  background: var(--teal);
+  color: var(--bg);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 14px rgba(60,184,176,0.22);
+}
+.nav-actions a.cta:hover { background: var(--teal-bright); color: var(--bg); }
+@media (max-width: 640px) {
+  .nav-actions { gap: 10px; }
+  .nav-actions .hide-sm { display: none; }
+}
+
+/* ============ Section shared ============ */
+section { padding: 96px 0; }
+@media (max-width: 768px) { section { padding: 64px 0; } }
+
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 14px;
+  display: inline-block;
+}
+h1, h2, h3 { font-family: var(--serif); color: var(--ice); }
+h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 700;
+  letter-spacing: -1px;
+  line-height: 1.05;
+  margin: 0 0 24px;
+}
+h1 .em { color: var(--teal); font-style: italic; font-weight: 500; }
+h1 .gold { color: var(--gold); font-style: italic; font-weight: 500; }
+h2 {
+  font-size: clamp(30px, 4.4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  margin: 0 0 22px;
+}
+h2 .em { color: var(--teal); font-style: italic; font-weight: 500; }
+h2 .gold { color: var(--gold); font-style: italic; font-weight: 500; }
+h3 {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+.lead { font-family: var(--sans); font-size: 18px; line-height: 1.65; color: var(--slate); max-width: 760px; }
+p { color: var(--slate); line-height: 1.65; }
+
+/* ============ Hero ============ */
+section.hero { padding-top: 96px; padding-bottom: 56px; }
+.hero h1 { max-width: 920px; }
+.hero .lead { margin-top: 8px; font-size: 19px; max-width: 720px; }
+.hero-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 36px;
+  align-items: center;
+}
+.btn-primary, .btn-secondary {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 14px 26px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all .15s;
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--bg);
+  box-shadow: 0 0 16px rgba(60,184,176,0.25);
+}
+.btn-primary:hover { background: var(--teal-bright); }
+.btn-secondary {
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  background: transparent;
+}
+.btn-secondary:hover { background: rgba(60,184,176,0.08); }
+.hero-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-left: 6px;
+}
+
+/* ============ Stat row ============ */
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 64px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--border);
+}
+.stat-cell {
+  background: var(--bg);
+  padding: 26px 24px;
+}
+.stat-cell .v {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 700;
+  color: var(--ice);
+  letter-spacing: -0.5px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-cell .v .gold { color: var(--gold); font-style: italic; }
+.stat-cell .l {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 6px;
+}
+.stat-cell .d {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--slate);
+}
+@media (max-width: 880px) {
+  .stat-row { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .stat-row { grid-template-columns: 1fr; }
+}
+
+/* ============ Press strip ============ */
+.press-strip {
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+.press-strip .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.press-strip .logos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 36px;
+  font-family: var(--serif);
+  font-size: 17px;
+  font-style: italic;
+  color: var(--slate);
+}
+@media (max-width: 640px) {
+  .press-strip .logos { gap: 18px; font-size: 14px; }
+}
+
+/* ============ Two-column layout ============ */
+.cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 880px) {
+  .cols-2 { grid-template-columns: 1fr; gap: 28px; }
+}
+.cols-2 p { font-size: 16px; max-width: 540px; }
+.cols-2 p + p { margin-top: 14px; }
+
+/* ============ Card grid ============ */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 36px;
+}
+@media (max-width: 880px) { .card-grid { grid-template-columns: 1fr; } }
+.card {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 28px 26px;
+  background: rgba(255,255,255,0.015);
+  transition: border-color .15s, background .15s;
+}
+.card:hover { border-color: var(--border-teal-low); background: rgba(60,184,176,0.025); }
+.card .stamp {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 14px;
+}
+.card h3 { margin-bottom: 10px; }
+.card p { font-size: 14px; line-height: 1.6; margin: 0; color: var(--slate); }
+
+/* Featured card variant */
+.card.featured {
+  background: rgba(60,184,176,0.04);
+  border-color: var(--border-teal-low);
+}
+
+/* ============ Pull quote / customer outcome ============ */
+.pull-quote {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 0;
+  margin: 0;
+  text-align: left;
+}
+.pull-quote blockquote {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3.4vw, 34px);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ice);
+  margin: 0 0 24px;
+  letter-spacing: -0.3px;
+  max-width: 900px;
+}
+.pull-quote .em-teal { color: var(--teal); font-weight: 500; }
+.pull-quote cite {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-style: normal;
+  color: var(--slate);
+  display: block;
+}
+.pull-quote cite b { color: var(--ice); font-weight: 600; }
+
+/* ============ Numbered list (problem / why now) ============ */
+.numbered-list { margin-top: 32px; }
+.numbered-list .item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+}
+.numbered-list .item:last-child { border-bottom: 1px solid var(--border); }
+.numbered-list .num {
+  font-family: var(--mono);
+  font-size: 38px;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: var(--teal);
+  line-height: 1;
+}
+.numbered-list h3 { font-size: 21px; margin-bottom: 8px; }
+.numbered-list p { font-size: 15px; line-height: 1.65; margin: 0; max-width: 720px; }
+
+/* ============ Comparison table ============ */
+.comparison {
+  margin-top: 36px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+.comparison .row {
+  display: grid;
+  grid-template-columns: 220px 1fr 1fr 1fr;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.comparison .row:last-child { border-bottom: 0; }
+.comparison .cell {
+  padding: 14px 18px;
+  border-right: 1px solid var(--border);
+}
+.comparison .cell:last-child { border-right: 0; }
+.comparison .row.head .cell {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(60,184,176,0.04);
+}
+.comparison .row.head .cell.us {
+  color: var(--teal-bright);
+  background: rgba(60,184,176,0.1);
+}
+.comparison .cell.row-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(255,255,255,0.012);
+}
+.comparison .cell.us-col {
+  background: rgba(60,184,176,0.04);
+  color: var(--ice);
+  font-weight: 500;
+}
+.comparison .cell.gray { color: var(--muted); }
+@media (max-width: 880px) {
+  .comparison .row { grid-template-columns: 1fr; }
+  .comparison .cell { border-right: 0; border-bottom: 1px solid var(--border); }
+  .comparison .cell:last-child { border-bottom: 0; }
+}
+
+/* ============ Roadmap ============ */
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 32px;
+}
+@media (max-width: 880px) { .roadmap-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .roadmap-grid { grid-template-columns: 1fr; } }
+.roadmap-card {
+  border-left: 2px solid var(--teal);
+  padding: 8px 18px 18px;
+}
+.roadmap-card .when {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+.roadmap-card h3 { font-size: 19px; margin-bottom: 8px; }
+.roadmap-card p { font-size: 13px; line-height: 1.6; margin: 0; color: var(--slate); }
+
+/* ============ Team ============ */
+.team-grid {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 56px;
+  margin-top: 32px;
+  align-items: start;
+}
+@media (max-width: 880px) { .team-grid { grid-template-columns: 1fr; gap: 28px; } }
+.founder-photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, rgba(60,184,176,0.15), rgba(28,79,94,0.4));
+  border: 1px solid var(--border-teal-low);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--teal);
+  font-family: var(--serif);
+  font-size: 90px;
+  font-weight: 700;
+  font-style: italic;
+}
+.founder-info h3 { font-size: 26px; margin-bottom: 4px; }
+.founder-info .title { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal); margin-bottom: 18px; }
+.founder-info p { font-size: 15px; line-height: 1.7; }
+.founder-info .links { margin-top: 18px; display: flex; gap: 18px; flex-wrap: wrap; font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+.founder-info .links a { color: var(--teal); text-decoration: none; border-bottom: 1px dotted var(--teal-deep); padding-bottom: 1px; }
+.founder-info .links a:hover { color: var(--teal-bright); }
+
+/* ============ Final CTA ============ */
+section.final-cta { text-align: center; padding: 96px 0 96px; }
+section.final-cta h2 { max-width: 800px; margin-left: auto; margin-right: auto; }
+section.final-cta .lead { margin-left: auto; margin-right: auto; margin-bottom: 36px; }
+section.final-cta .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ============ Footer ============ */
+footer.bottom {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+footer.bottom .container { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; align-items: center; }
+footer.bottom a { color: var(--slate); text-decoration: none; margin-right: 24px; }
+footer.bottom a:hover { color: var(--teal); }
+
+/* ============ Section dividers ============ */
+.divider-section { border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="top">
+  <a href="/" class="wordmark" aria-label="Upper Harbour home">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hglogo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1C4F5E"/>
+          <stop offset="100%" stop-color="#32A8A4"/>
+        </linearGradient>
+      </defs>
+      <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+      <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hglogo)"/>
+    </svg>
+    <span class="name"><span class="a">Upper</span><span class="b">Harbour</span></span>
+  </a>
+  <div class="nav-actions">
+    <a href="/research" class="hide-sm">Research</a>
+    <a href="/demo" class="hide-sm">Demo</a>
+    <a href="/meet" class="cta">Book a 30-min call</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ========== HERO ========== -->
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">For investors, partners, and prospective customers</div>
+    <h1>The <span class="em">compliance graph</span> for Canadian businesses.</h1>
+    <p class="lead">Every Canadian privacy statute, every SaaS vendor's sovereignty posture, every obligation the law triggers — structured into a single queryable graph. The documents we generate are one product surface. The data infrastructure is the company.</p>
+    <div class="hero-row">
+      <a href="/meet" class="btn-primary">Book a 30-minute call →</a>
+      <a href="/demo" class="btn-secondary">Try the live demo</a>
+      <span class="hero-meta">BetaKit Most Ambitious · 2026</span>
+    </div>
+
+    <!-- Stat row -->
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="l">Tools mapped</div>
+        <div class="v">768</div>
+        <div class="d">SaaS vendors classified three layers deep: parent corporation, data-transfer jurisdiction, subprocessor chain.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="l">Regimes indexed</div>
+        <div class="v">13</div>
+        <div class="d">Canadian privacy jurisdictions covered, federal through territorial, with verbatim statute text and structured obligations.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="l">Statutory citations</div>
+        <div class="v">300+</div>
+        <div class="d">Per generated document, all traced to canonical King's Printer text through Anthropic's Citations API — verifiable, not paraphrased.</div>
+      </div>
+      <div class="stat-cell">
+        <div class="l">Years of work</div>
+        <div class="v"><span class="gold">2</span></div>
+        <div class="d">Of statute extraction, vendor classification, and published research — across Maclean's, The Logic, Policy Options, OpenCanada.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PRESS STRIP ========== -->
+<div class="press-strip">
+  <div class="container">
+    <div class="label">As featured in</div>
+    <div class="logos">
+      <span>The Globe and Mail</span>
+      <span>The Logic</span>
+      <span>Maclean's</span>
+      <span>Policy Options</span>
+      <span>OpenCanada</span>
+      <span>BetaKit</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== THE PROBLEM ========== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">The problem</div>
+    <h2>Canadian privacy compliance is broken at every price point.</h2>
+    <p class="lead">Quebec Law 25, Alberta POPA, BC PIPA, federal PIPEDA, eight more provincial regimes — and the tools to comply with them all assume the buyer is either a Bay Street firm or a Silicon Valley startup. Neither describes the Canadian businesses actually on the hook.</p>
+
+    <div class="numbered-list">
+      <div class="item">
+        <div class="num">01</div>
+        <div>
+          <h3>Generic AI paraphrases the statute.</h3>
+          <p>Ask ChatGPT or Claude to draft a PIA. The output reads plausibly but cites nothing. A regulator wants the words that appear in section 17 of the Act, not an LLM's summary of them. There's no audit trail, no provenance, no way to verify the citation against canonical source.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">02</div>
+        <div>
+          <h3>US tools don't understand Canadian regimes.</h3>
+          <p>Termly, iubenda, OneTrust, TrustArc — all built for GDPR and CCPA. They don't know that Alberta POPA replaces FOIP in June 2026, that Law 25 s. 17 has specific transfer-impact assessment requirements, or that the Plixer doctrine means data residency isn't data sovereignty. A school board in Calgary needs Alberta-specific compliance, not a templated US privacy policy.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">03</div>
+        <div>
+          <h3>Consultants cost $20,000 per PIA.</h3>
+          <p>For an SMB, a small public body, or a regulated mid-market organization, this isn't compliance — it's a tax that gets deferred until the regulator notices. The Athena Collective, our pilot, came to us with a $20,000 quote for a single Law 25 transfer impact assessment they couldn't justify spending.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">04</div>
+        <div>
+          <h3>Sovereignty is invisible in the existing tooling.</h3>
+          <p>Vendors disclose where data is hosted; almost none disclose the jurisdiction of their ultimate parent corporation or the legal regime under which compelled disclosure could occur. Of the SaaS tools surveyed in our Sovereignty Index, the majority are CLOUD Act exposed without their Canadian customers knowing it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== THE SOLUTION ========== -->
+<section class="divider-section">
+  <div class="container">
+    <div class="eyebrow">The solution</div>
+    <h2>A <span class="em">structured authority layer</span> for Canadian privacy law — and the document infrastructure built on top of it.</h2>
+    <p class="lead">Upper Harbour is not an AI tool. It is a structured Canadian privacy data graph, queryable through documents we generate and an API we expose to AI builders. The model is Claude. The intellectual property is two years of statute curation and 768 hand-classified SaaS vendors. The orchestration is what makes the output auditable instead of plausible.</p>
+
+    <div class="card-grid">
+      <div class="card featured">
+        <div class="stamp">Layer 1 · Authority</div>
+        <h3>Verbatim Canadian statute corpus.</h3>
+        <p>Every section of every Canadian privacy regime, extracted directly from canonical King's Printer PDFs, structured by jurisdiction → act → section, with provenance and in-force dates. Not training data. Not paraphrase. The actual statute text, audit-trail attached.</p>
+      </div>
+      <div class="card featured">
+        <div class="stamp">Layer 2 · Sovereignty Index</div>
+        <h3>768 SaaS tools, three layers deep.</h3>
+        <p>Each vendor classified against corporate parent, jurisdiction of incorporation, CLOUD Act exposure, data-residency posture, and subprocessor chain. Slack is "US" because Salesforce Inc. is its parent, not because the servers are in San Francisco. The Plixer doctrine, programmatically applied.</p>
+      </div>
+      <div class="card featured">
+        <div class="stamp">Layer 3 · Orchestration</div>
+        <h3>Documents that cite the law verbatim.</h3>
+        <p>When a customer says "we use Slack," our system knows Slack → Salesforce → US → CLOUD Act → Law 25 s. 17 applies → here are the verbatim words → here is the generated paragraph. Claude writes the prose; the graph supplies the facts. Every claim ties to canonical source through Anthropic's Citations API.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PULL QUOTE ========== -->
+<section class="pull-quote" style="padding-left: 0; padding-right: 0;">
+  <div class="container">
+    <div class="eyebrow">Customer outcome</div>
+    <blockquote>"We had Law 25 obligations to meet and a <span class="em-teal">$20,000 consultant quote</span> we couldn't justify. Upper Harbour delivered everything we needed at <span class="em-teal">a fraction of the cost</span>, in <span class="em-teal">80% less time</span>."</blockquote>
+    <cite><b>Mikayla Stewart</b> · Co-Founder, Athena Collective · Pilot customer, 2026</cite>
+  </div>
+</section>
+
+<!-- ========== WHY NOW ========== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Why now</div>
+    <h2>Three forces converged in the last 18 months.</h2>
+
+    <div class="numbered-list">
+      <div class="item">
+        <div class="num">01</div>
+        <div>
+          <h3>Canadian privacy regulators have teeth for the first time.</h3>
+          <p>Quebec Law 25 came fully into force in 2024 with maximum penalties of 4% of worldwide turnover. Alberta's Protection of Privacy Act (POPA) replaces FOIP for public bodies on June 11, 2026 — with the same level of enforcement infrastructure. BC PIPA, Ontario MFIPPA, federal PIPEDA reforms are queued behind. The era of treating Canadian privacy as a documentation exercise is ending; the era of treating it as enforceable law is beginning.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">02</div>
+        <div>
+          <h3>LLMs became technically capable of verbatim grounding.</h3>
+          <p>The Anthropic Citations API and equivalent retrieval-augmented architectures crossed the threshold where "every claim ties to a span in the source document" is a real product feature, not a research demo. Before this, AI legal tools could only paraphrase. Now they can cite.</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="num">03</div>
+        <div>
+          <h3>Sovereignty became a Canadian conversation.</h3>
+          <p>CLOUD Act exposure, federal Buy Canadian framework, the public-sector procurement debates around US cloud providers, the rising visibility of data-residency-is-not-data-sovereignty as a structural problem — all of this is happening now, in Canada, in 2025-2026. We've been publishing on this for two years in Maclean's, Policy Options, and OpenCanada. The discourse has caught up.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== COMPETITION ========== -->
+<section class="divider-section">
+  <div class="container">
+    <div class="eyebrow">Competitive landscape</div>
+    <h2>We are not in any existing category.</h2>
+    <p class="lead">The closest analogues are in adjacent verticals — Cala.ai for finance, Reducto for document parsing, Westlaw for case law research. No one is building structured Canadian privacy data infrastructure for AI agents. The competitive question is when, not whether, this category will exist.</p>
+
+    <div class="comparison">
+      <div class="row head">
+        <div class="cell">Capability</div>
+        <div class="cell">Generic AI (ChatGPT, Claude)</div>
+        <div class="cell">US privacy tools (Termly, OneTrust)</div>
+        <div class="cell us">Upper Harbour</div>
+      </div>
+      <div class="row">
+        <div class="cell row-label">Verbatim Canadian statute</div>
+        <div class="cell gray">Paraphrase from training</div>
+        <div class="cell gray">Not covered</div>
+        <div class="cell us-col">Curated from canonical PDFs</div>
+      </div>
+      <div class="row">
+        <div class="cell row-label">Statutory citation chain</div>
+        <div class="cell gray">No provenance</div>
+        <div class="cell gray">Limited / US-centric</div>
+        <div class="cell us-col">Citations API to source spans</div>
+      </div>
+      <div class="row">
+        <div class="cell row-label">SaaS sovereignty mapping</div>
+        <div class="cell gray">No</div>
+        <div class="cell gray">No</div>
+        <div class="cell us-col">768 tools, three layers deep</div>
+      </div>
+      <div class="row">
+        <div class="cell row-label">Continuous monitoring</div>
+        <div class="cell gray">No</div>
+        <div class="cell gray">Workflow alerts</div>
+        <div class="cell us-col">Vendor drift → flagged docs</div>
+      </div>
+      <div class="row">
+        <div class="cell row-label">Jurisdiction coverage</div>
+        <div class="cell gray">Generic</div>
+        <div class="cell gray">GDPR / CCPA primary</div>
+        <div class="cell us-col">13 Canadian regimes</div>
+      </div>
+      <div class="row">
+        <div class="cell row-label">Buyer fit</div>
+        <div class="cell gray">Anyone</div>
+        <div class="cell gray">Global SaaS</div>
+        <div class="cell us-col">Canadian privacy officers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== MARKET + VISION ========== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Market and trajectory</div>
+    <h2>Canadian privacy is the wedge. <span class="gold">Canadian legal data infrastructure</span> is the company.</h2>
+
+    <div class="cols-2" style="margin-top: 32px;">
+      <div>
+        <p><b style="color: var(--ice); font-weight: 600;">The immediate market.</b> Canadian SMBs and mid-market regulated organizations collectively spend an estimated $5-8 billion annually on legal and compliance services. Capturing 1% as a structured legal-data platform is a $50-80M ARR business — too small for Anthropic or Thomson Reuters to verticalize, but big enough for a focused company to dominate.</p>
+        <p><b style="color: var(--ice); font-weight: 600;">The expansion path.</b> The graph architecture extends naturally beyond privacy. Employment law (provincial ESAs, AODA, ACA, accommodation records) is the obvious year-two expansion — same buyer, same Canadian-jurisdictional structure, doubles ARPU per customer. Corporate records (BCBCA, OBCA, ABCA, QBCA), securities (NI 45-106), health regulation (PHIPA, HIA) follow on the same architectural primitives.</p>
+        <p><b style="color: var(--ice); font-weight: 600;">The endgame.</b> The same pattern as Bloomberg (financial data), Westlaw (legal research), S&P (ratings infrastructure): build the structured corpus, sell the platform, become synonymous with the underlying data. The brand becomes the moat.</p>
+      </div>
+      <div>
+        <p><b style="color: var(--ice); font-weight: 600;">Why this is hard to copy.</b> The 768-tool Sovereignty Index and 13-regime authority corpus took two years to build. A competitor would need both Canadian privacy domain expertise and the time to extract, structure, and verify the data. Anthropic, OneTrust, and Thomson Reuters have the engineering capacity but lack the domain motivation; Canadian law firms have the domain expertise but no track record building structured-data products.</p>
+        <p><b style="color: var(--ice); font-weight: 600;">Why this compounds.</b> Every new customer's documents become more valuable as the graph grows. Every new vendor classification improves every existing customer's PIA. Every statute amendment we capture means every customer's outdated documentation gets flagged. The data layer is the network effect.</p>
+        <p><b style="color: var(--ice); font-weight: 600;">Why now matters.</b> The 12-24 month window where this category doesn't exist yet is closing. Either we build it or someone else does. The press authority and BetaKit recognition we already have is meaningful head start; it isn't an indefinite moat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ROADMAP ========== -->
+<section class="divider-section">
+  <div class="container">
+    <div class="eyebrow">Roadmap</div>
+    <h2>Five-year build, in four phases.</h2>
+
+    <div class="roadmap-grid">
+      <div class="roadmap-card">
+        <div class="when">2026 · Now</div>
+        <h3>Privacy compliance</h3>
+        <p>PIA, TIA, breach package, privacy policy, ToS, cookie consent. Pilot customers. Sovereignty Index 1000+ tools. Authority registry verbatim verification.</p>
+      </div>
+      <div class="roadmap-card">
+        <div class="when">2026 · H2</div>
+        <h3>Data API + MCP</h3>
+        <p>Sovereignty Index as queryable API. Authority registry as citable structured law. MCP server exposing the graph to AI agents at Vanta, Vistera, OneTrust, Harvey, and internal compliance tooling.</p>
+      </div>
+      <div class="roadmap-card">
+        <div class="when">2027 · H1</div>
+        <h3>Employment law</h3>
+        <p>Provincial ESAs, federal Canada Labour Code, AODA, ACA. Employment contracts, accommodation policies, return-to-work plans. Same buyer; ~2x ARPU.</p>
+      </div>
+      <div class="roadmap-card">
+        <div class="when">2028+</div>
+        <h3>Corporate &amp; securities</h3>
+        <p>Provincial business corporations acts, minute books, shareholder agreements. Securities filings, NI 45-106 exemptions. Bloomberg-scale data infrastructure for Canadian legal compliance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TEAM ========== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">Team</div>
+    <h2>Built by a Canadian privacy lawyer with two years of dataset work.</h2>
+
+    <div class="team-grid">
+      <div>
+        <div class="founder-photo">J</div>
+      </div>
+      <div class="founder-info">
+        <h3>Joshua van Es</h3>
+        <div class="title">Founder · Privacy Officer</div>
+        <p>Stikeman-trained privacy and corporate lawyer. Two years building the Sovereignty Index dataset and Canadian authority registry. Published in Maclean's, Policy Options, OpenCanada, and The Logic on data sovereignty, CLOUD Act exposure, and the structural problems with Canadian privacy compliance tooling. BetaKit Most Ambitious 2026 honouree.</p>
+        <p style="margin-top: 14px;">Domain expertise is the moat. The agent is Claude — generic infrastructure any developer can call. What's hard is being the person who's already spent two years extracting Canadian statute text and classifying 768 SaaS vendors against the Plixer doctrine. That's the work that's already done.</p>
+        <div class="links">
+          <a href="https://joshuavanes.ca" target="_blank" rel="noopener">joshuavanes.ca</a>
+          <a href="https://www.linkedin.com/in/joshuavanes/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="/research">Research</a>
+        </div>
+        <p style="margin-top: 26px; font-size: 14px; color: var(--muted);">Currently evaluating a technical co-founder for the next phase of build-out. Open to advisors in Canadian privacy law, public-sector sales, and B2B data infrastructure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== TRACTION ========== -->
+<section class="divider-section">
+  <div class="container">
+    <div class="eyebrow">Where we are</div>
+    <h2>Pre-revenue, post-validation.</h2>
+
+    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="card">
+        <div class="stamp">Customer</div>
+        <h3>Athena Collective</h3>
+        <p>Active pilot. Generated their Law 25 transfer impact assessment for a fraction of the $20,000 consultant quote, in 80% less time. Reference customer, on the record.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">Recognition</div>
+        <h3>BetaKit Most Ambitious 2026</h3>
+        <p>Named to the second annual Most Ambitious cohort — a curated list of Canadian startups identified by BetaKit's editorial team as the most credibly building toward category leadership.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">Press</div>
+        <h3>Major media coverage</h3>
+        <p>Original reporting and commentary in The Globe and Mail, The Logic, Maclean's, Policy Options, OpenCanada, and BetaKit — all on Canadian data sovereignty and the structural problems Upper Harbour addresses.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">Product</div>
+        <h3>Working platform in production</h3>
+        <p>Marketing site, live document demo, production app at app.upperharbour.ca, full Sovereignty Index and Authority Registry in service. Anyone visiting can run the live demo end-to-end in under a minute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ASK ========== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">The ask</div>
+    <h2>We're looking for three things.</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="stamp">01 · Pilot customers</div>
+        <h3>Canadian regulated organizations.</h3>
+        <p>School boards, healthcare providers, municipal governments, mid-market SaaS startups, and any organization carrying real Canadian privacy obligations without a standing law-firm retainer. Pilot cohort pricing locks in well below the public rate.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">02 · Advisors</div>
+        <h3>Domain credibility, public-sector sales, infrastructure GTM.</h3>
+        <p>Practicing Canadian privacy lawyers, former privacy commissioners, public-sector procurement leaders, and operators who've taken B2B data infrastructure to scale. Equity-light advisory roles available.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">03 · Conversations</div>
+        <h3>Investors, partners, technical co-founders.</h3>
+        <p>We're not actively fundraising and aren't taking a generic seed round, but specific conversations about strategic infrastructure plays — Bloomberg-style trajectories, multi-vertical data platforms, AI-agent infrastructure — are welcome.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="final-cta divider-section">
+  <div class="container">
+    <div class="eyebrow">Get in touch</div>
+    <h2>Same graph, two products, one founder building toward a third.</h2>
+    <p class="lead">Drop a half-hour on the calendar. Bring a real project, a real organization, or a real strategic question. We'll show you what's built and where it's going.</p>
+    <div class="actions">
+      <a href="/meet" class="btn-primary">Book a 30-minute call →</a>
+      <a href="/demo" class="btn-secondary">Try the live demo</a>
+      <a href="mailto:josh@upperharbour.ca" class="btn-secondary">Email josh@upperharbour.ca</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="bottom">
+  <div class="container">
+    <div>Upper Harbour · Canadian privacy infrastructure</div>
+    <div>
+      <a href="/">Home</a>
+      <a href="/research">Research</a>
+      <a href="/demo">Demo</a>
+      <a href="/meet">Book a call</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
