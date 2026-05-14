@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Sample PIA — Upper Harbour</title>
+
+<!-- Google Analytics (matches the rest of upperharbour.ca) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3KSW0FVBL1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3KSW0FVBL1');
+</script>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=DM+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<!-- Markdown parser (CDN). Renders booth-fallback-pia.md client-side. -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+
+<style>
+:root {
+  --bg: #06090E;
+  --surface: #0C1219;
+  --surface-2: #111A24;
+  --teal: #3CB8B0;
+  --teal-deep: #2A8A84;
+  --teal-bright: #47cec5;
+  --gold: #C9A84C;
+  --ice: #EAF0F4;
+  --slate: #8A9DB0;
+  --muted: #566778;
+  --border: rgba(234,240,244,0.10);
+  --border-teal-low: rgba(60,184,176,0.20);
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "DM Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin:0; padding:0; background: var(--bg); color: var(--ice); font-family: var(--sans); -webkit-font-smoothing:antialiased; }
+
+body { min-height:100vh; padding-bottom: 64px; }
+
+/* Top bar */
+header.top {
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 18px 36px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(6,9,14,0.92);
+  backdrop-filter: blur(10px);
+  position: sticky; top: 0; z-index: 10;
+}
+.wordmark { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.wordmark svg { width:22px; height:22px; }
+.wordmark .name { font-family: var(--sans); display:inline-flex; align-items:baseline; gap:0; }
+.wordmark .name .a { font-size:14px; font-weight:400; color: var(--slate); }
+.wordmark .name .b { font-size:14px; font-weight:800; color: var(--ice); letter-spacing:-0.4px; margin-left:4px; }
+.top-actions { display:flex; gap: 14px; align-items:center; }
+.top-actions a {
+  font-family: var(--sans); font-size: 13px; font-weight: 600;
+  color: var(--slate); text-decoration: none; padding: 8px 14px; border-radius: 4px;
+}
+.top-actions a:hover { color: var(--ice); }
+.top-actions .back {
+  border: 1px solid var(--border); color: var(--ice);
+}
+.top-actions .back:hover { border-color: var(--teal); }
+
+/* Eyebrow banner */
+.banner {
+  max-width: 1120px; margin: 36px auto 16px; padding: 0 36px;
+}
+.banner .eyebrow {
+  font-family: var(--mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal);
+  margin-bottom: 12px;
+}
+.banner h1 {
+  font-family: var(--serif); font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700; letter-spacing: -0.5px; line-height: 1.1; color: var(--ice);
+  margin: 0 0 12px;
+}
+.banner h1 .em { color: var(--teal); font-style: italic; font-weight: 500; }
+.banner .sub {
+  font-family: var(--sans); font-size: 15px; line-height: 1.6;
+  color: var(--slate); max-width: 760px;
+}
+.banner .meta {
+  margin-top: 18px; padding: 14px 18px;
+  border: 1px solid var(--border-teal-low);
+  border-radius: 6px;
+  background: rgba(60,184,176,0.04);
+  display:flex; flex-wrap: wrap; gap: 18px;
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted);
+}
+.banner .meta b { color: var(--ice); font-weight: 700; }
+
+/* Document body — institutional serif-paper feel */
+.doc-frame {
+  max-width: 1120px; margin: 24px auto 0; padding: 0 36px;
+}
+.doc {
+  background: #0a121b;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 56px 64px;
+  font-family: var(--serif);
+  font-size: 16px; line-height: 1.7; color: var(--ice);
+  position: relative;
+}
+.doc-header {
+  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted);
+  display: flex; justify-content: space-between; align-items: baseline;
+  border-bottom: 2px solid var(--teal); padding-bottom: 14px; margin-bottom: 28px;
+}
+.doc-header .file-id { color: var(--teal); }
+
+/* Markdown-rendered content */
+#md-output h1 {
+  font-family: var(--serif); font-size: 32px; font-weight: 700; letter-spacing: -0.4px;
+  color: var(--ice); margin: 0 0 24px;
+}
+#md-output h2 {
+  font-family: var(--serif); font-size: 24px; font-weight: 700; letter-spacing: -0.3px;
+  color: var(--ice); margin: 48px 0 16px; padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+#md-output h3 {
+  font-family: var(--serif); font-size: 19px; font-weight: 600; letter-spacing: -0.2px;
+  color: var(--ice); margin: 32px 0 12px;
+}
+#md-output h4 {
+  font-family: var(--sans); font-size: 14px; font-weight: 700; letter-spacing: 0.02em;
+  text-transform: uppercase; color: var(--teal); margin: 24px 0 10px;
+}
+#md-output p { margin: 0 0 16px; color: var(--ice); }
+#md-output ul, #md-output ol { margin: 0 0 16px; padding-left: 24px; }
+#md-output li { margin-bottom: 6px; }
+#md-output strong { color: var(--ice); font-weight: 600; }
+#md-output em { color: var(--slate); font-style: italic; }
+#md-output hr { border: 0; border-top: 1px solid var(--border); margin: 32px 0; }
+#md-output blockquote {
+  margin: 0 0 16px; padding: 14px 20px;
+  border-left: 3px solid var(--teal);
+  background: rgba(60,184,176,0.05);
+  font-style: italic; color: var(--slate);
+}
+#md-output code {
+  font-family: var(--mono); font-size: 13px;
+  background: rgba(234,240,244,0.06); padding: 2px 6px; border-radius: 3px;
+  color: var(--teal);
+}
+#md-output a {
+  color: var(--teal); text-decoration: none;
+  border-bottom: 1px dotted var(--teal-deep);
+}
+#md-output a:hover { color: var(--teal-bright); }
+
+#md-output table {
+  width: 100%; border-collapse: collapse; margin: 20px 0;
+  font-family: var(--sans); font-size: 13px;
+}
+#md-output th, #md-output td {
+  text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+#md-output th {
+  background: rgba(60,184,176,0.06);
+  font-family: var(--mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--teal);
+}
+#md-output tr:last-child td { border-bottom: 0; }
+
+/* Footer call to action */
+.cta-foot {
+  max-width: 1120px; margin: 48px auto 0; padding: 0 36px;
+}
+.cta-foot .card {
+  border: 1px solid var(--border-teal-low);
+  border-radius: 8px;
+  padding: 28px 32px;
+  background: rgba(60,184,176,0.04);
+  display:flex; flex-wrap: wrap; gap: 24px; align-items: center; justify-content: space-between;
+}
+.cta-foot h3 {
+  font-family: var(--serif); font-size: 22px; font-weight: 600;
+  color: var(--ice); margin: 0 0 4px;
+}
+.cta-foot p {
+  font-family: var(--sans); font-size: 14px; line-height: 1.55;
+  color: var(--slate); margin: 0;
+}
+.cta-foot .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.cta-foot .btn {
+  font-family: var(--sans); font-weight: 700; font-size: 13px;
+  padding: 12px 22px; border-radius: 5px; text-decoration: none;
+  transition: all .15s;
+}
+.cta-foot .btn-primary {
+  background: var(--teal); color: var(--bg);
+}
+.cta-foot .btn-primary:hover { background: var(--teal-bright); }
+.cta-foot .btn-secondary {
+  border: 1px solid var(--teal); color: var(--teal);
+}
+.cta-foot .btn-secondary:hover { background: rgba(60,184,176,0.08); }
+
+/* Loading */
+.loading {
+  text-align: center; padding: 80px 20px;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  header.top { padding: 14px 20px; }
+  .banner { padding: 0 20px; }
+  .doc-frame { padding: 0 20px; }
+  .doc { padding: 28px 24px; }
+  #md-output h1 { font-size: 24px; }
+  #md-output h2 { font-size: 20px; }
+  .cta-foot { padding: 0 20px; }
+  .cta-foot .card { padding: 22px; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a href="/" class="wordmark" aria-label="Upper Harbour home">
+    <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="hglogo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1C4F5E"/>
+          <stop offset="100%" stop-color="#32A8A4"/>
+        </linearGradient>
+      </defs>
+      <path d="M 0,0 L 80,0 L 80,54 Q 80,80 54,80 L 26,80 Q 0,80 0,54 Z M 20,0 L 60,0 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="#EAF0F4" fill-rule="evenodd"/>
+      <path d="M 20,17 L 33,28 L 60,10 L 60,48 Q 60,64 40,64 Q 20,64 20,48 Z" fill="url(#hglogo)"/>
+    </svg>
+    <span class="name"><span class="a">Upper</span><span class="b">Harbour</span></span>
+  </a>
+  <div class="top-actions">
+    <a href="/demo" class="back">← Back to demo</a>
+    <a href="/meet">Book a 30-min call</a>
+  </div>
+</header>
+
+<div class="banner">
+  <div class="eyebrow">Sample output · live customer document</div>
+  <h1>What a finalized <span class="em">Alberta POPA PIA</span> looks like.</h1>
+  <p class="sub">Generated for Calgary Board of Education's adoption of Microsoft Teams. 1,100+ lines, every claim cited to verbatim Canadian statute, full POPA / M-Reg coverage with submission-ready cover letter and checklist. This is the same artifact a real customer would have in their privacy library, rendered through the same pipeline that powers <a href="/demo" style="color:var(--teal);">the live demo</a>.</p>
+  <div class="meta">
+    <span><b>Customer:</b> Calgary Board of Education</span>
+    <span><b>Project:</b> Microsoft Teams adoption</span>
+    <span><b>Length:</b> 1,102 lines</span>
+    <span><b>Citations:</b> 311 statutory references</span>
+    <span><b>Status:</b> Finalized</span>
+  </div>
+</div>
+
+<div class="doc-frame">
+  <div class="doc">
+    <div class="doc-header">
+      <span>Privacy Impact Assessment · POPA · M-Reg</span>
+      <span class="file-id">UH-2026-0420-0019</span>
+    </div>
+    <div id="md-output">
+      <div class="loading">Rendering document…</div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-foot">
+  <div class="card">
+    <div>
+      <h3>Want this for your stack?</h3>
+      <p>Drop us your SaaS inventory and we'll produce a real one for your organization, grounded in the Canadian privacy regimes that apply to you.</p>
+    </div>
+    <div class="actions">
+      <a href="/demo" class="btn btn-secondary">← Try the live demo</a>
+      <a href="/meet" class="btn btn-primary">Book a 30-min call →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(async function() {
+  try {
+    const res = await fetch('/demo/sample-pia.md', { cache: 'force-cache' });
+    if (!res.ok) {
+      document.getElementById('md-output').innerHTML =
+        '<p style="color:#E06050">Failed to load document.</p>';
+      return;
+    }
+    const md = await res.text();
+    // Marked v12 — pass options inline.
+    marked.setOptions({ gfm: true, breaks: false });
+    document.getElementById('md-output').innerHTML = marked.parse(md);
+    if (typeof gtag === 'function') {
+      gtag('event', 'sample_pia_view', { event_category: 'demo' });
+    }
+  } catch (err) {
+    console.error(err);
+    document.getElementById('md-output').innerHTML =
+      '<p style="color:#E06050">Error rendering document.</p>';
+  }
+})();
+</script>
+
+</body>
+</html>
