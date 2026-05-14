@@ -544,7 +544,7 @@ footer.bottom a:hover { color: var(--teal); }
   <div class="container">
     <div class="eyebrow">For investors, partners, and prospective customers</div>
     <h1>The <span class="em">compliance graph</span> for Canadian businesses.</h1>
-    <p class="lead">Every Canadian privacy statute, every SaaS vendor's sovereignty posture, every obligation the law triggers — structured into a single queryable graph. The documents we generate are one product surface. The data infrastructure is the company.</p>
+    <p class="lead">Every Canadian privacy statute, every SaaS vendor's sovereignty posture, every obligation the law triggers — structured into the Canadian privacy system of record. Documents are one product surface; the API is another. The data infrastructure is the company.</p>
     <div class="hero-row">
       <a href="/meet" class="btn-primary">Book a 30-minute call →</a>
       <a href="/demo" class="btn-secondary">Try the live demo</a>
@@ -658,6 +658,38 @@ footer.bottom a:hover { color: var(--teal); }
   </div>
 </section>
 
+<!-- ========== PRIVACY SYSTEM OF RECORD ========== -->
+<section>
+  <div class="container">
+    <div class="eyebrow">What customers actually buy</div>
+    <h2>The Canadian <span class="em">privacy system of record</span>.</h2>
+    <p class="lead">The data layer is the moat. The documents are the artifact. The system of record is what an organization holds between document generations — the canonical ledger of vendors, obligations, generated documents, and the change events that connect them. A privacy officer opens Upper Harbour to answer "what is the privacy posture of this organization, today" and the answer is current.</p>
+
+    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 32px;">
+      <div class="card">
+        <div class="stamp">Vendor inventory</div>
+        <h3>The org's slice of the Sovereignty Index.</h3>
+        <p>Every SaaS tool the organization uses, classified three layers deep against parent corporation, jurisdiction, and subprocessor chain. Updated continuously as parent companies are acquired, jurisdictions change, and new vendors enter the stack.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">Obligations map</div>
+        <h3>Which statutes apply, which sections trigger.</h3>
+        <p>Based on jurisdiction, sector, and data flows: a structured map of every Canadian privacy obligation that applies — federal PIPEDA, provincial regimes, sector-specific overlays — with the verbatim section text attached to each.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">Document graph</div>
+        <h3>Versioned PIAs, TIAs, policies — with citations.</h3>
+        <p>Every generated document is a node tied back to specific vendors and specific statutory sections. When a vendor changes or a statute amends, the documents that cite them are surfaced automatically. Audit trail is built in, not bolted on.</p>
+      </div>
+      <div class="card">
+        <div class="stamp">Change monitoring</div>
+        <h3>Vendor drift and statutory amendments, flagged.</h3>
+        <p>A vendor's parent is acquired by a US holding company → CLOUD Act exposure flips → every dependent document is flagged for re-review. A regulator publishes new guidance on s. 17 transfers → every TIA citing that section is flagged. The system of record stays current automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ========== PULL QUOTE ========== -->
 <section class="pull-quote" style="padding-left: 0; padding-right: 0;">
   <div class="container">
@@ -761,8 +793,8 @@ footer.bottom a:hover { color: var(--teal); }
 
     <div class="cols-2" style="margin-top: 32px;">
       <div>
-        <p><b style="color: var(--ice); font-weight: 600;">The immediate market.</b> Canadian SMBs and mid-market regulated organizations collectively spend an estimated $5-8 billion annually on legal and compliance services. Capturing 1% as a structured legal-data platform is a $50-80M ARR business — too small for Anthropic or Thomson Reuters to verticalize, but big enough for a focused company to dominate.</p>
-        <p><b style="color: var(--ice); font-weight: 600;">The expansion path.</b> The graph architecture extends naturally beyond privacy. Employment law (provincial ESAs, AODA, ACA, accommodation records) is the obvious year-two expansion — same buyer, same Canadian-jurisdictional structure, doubles ARPU per customer. Corporate records (BCBCA, OBCA, ABCA, QBCA), securities (NI 45-106), health regulation (PHIPA, HIA) follow on the same architectural primitives.</p>
+        <p><b style="color: var(--ice); font-weight: 600;">The immediate market.</b> Canadian SMBs and mid-market regulated organizations collectively spend an estimated $5-8 billion annually on legal and compliance services. Capturing 1% as the Canadian privacy system of record — sold per-organization, expanded through adjacent modules — is a $50-80M ARR business. Too small for Anthropic or Thomson Reuters to verticalize, big enough for a focused company to dominate.</p>
+        <p><b style="color: var(--ice); font-weight: 600;">The expansion path.</b> Every Canadian regulated organization needs an employment system of record, a corporate-records system of record, a securities-filings system of record. The graph architecture extends naturally — same buyer, same jurisdictional structure, same SoR pattern. Employment law (provincial ESAs, AODA, ACA, accommodation records) is the obvious year-two expansion; corporate records (BCBCA, OBCA, ABCA, QBCA), securities (NI 45-106), and health regulation (PHIPA, HIA) follow on the same primitives.</p>
       </div>
       <div>
         <p><b style="color: var(--ice); font-weight: 600;">Why this is hard to copy.</b> The 768-tool Sovereignty Index and 13-regime authority corpus took two years to build. A competitor would need both Canadian privacy domain expertise and the time to extract, structure, and verify the data. Anthropic, OneTrust, and Thomson Reuters have the engineering capacity but lack the domain motivation; Canadian law firms have the domain expertise but no track record building structured-data products.</p>
