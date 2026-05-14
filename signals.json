@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "May 10, 2026 — 13:54 ET",
+    "lastUpdated": "May 14, 2026 — 14:52 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian-founded Opennote acquired by San Francisco-based Reducto",
+      "summary": "Opennote, a Canadian-founded software company (Y Combinator alum), has been acquired by Reducto, a San Francisco-based firm. This acquisition shifts control of a Canadian technology company to US jurisdiction, with potential implications for Canadian customers regarding data residency, service continuity, and governance.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/canadian-founded-opennote-acquired-by-san-francisco-based-reducto/",
+      "date": "2026-05-12",
+      "impact": "Canadian organizations currently using Opennote should clarify data residency commitments and service terms with Reducto, particularly for sensitive business data.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "TELUS selected for federal large-scale AI data-centre cluster in British Columbia",
+      "summary": "TELUS has been selected under Ottawa's large-scale AI data-centre initiative to build a major AI data-centre cluster in British Columbia. This procurement decision addresses Canadian AI infrastructure sovereignty, though questions remain about the degree of data control and whether the initiative fully achieves data sovereignty objectives.",
+      "type": "procurement",
+      "source": "Canada's National Observer",
+      "sourceUrl": "https://www.nationalobserver.com/2026/05/13/news/bcs-new-data-centre-cluster-sparks-new-discussion-sovereign-ai-push",
+      "date": "2026-05-13",
+      "impact": "Federal departments and Crown corporations planning to procure AI computing resources should clarify data residency and sovereignty requirements for workloads using the TELUS cluster.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian federal and provincial privacy authorities find OpenAI violated privacy laws in joint investigation of ChatGPT",
       "summary": "Federal and provincial privacy commissioners, including OIPC Alberta, issued a joint report finding that OpenAI violated Canadian privacy laws through data handling practices in ChatGPT, with recommendations to improve privacy provisions. This represents a significant enforcement finding against a US-based vendor affecting Canadian users and organizations.",

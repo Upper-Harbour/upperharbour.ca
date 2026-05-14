@@ -47,7 +47,19 @@
       "source_url": "https://oipc.ab.ca/joint-report-openai-chatgpt/",
       "flagged_at": "2026-05-10T13:54:14.279273",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Opennote",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Reducto\", \"jurisdiction\": \"United States\", \"category\": \"productivity\", \"rationale\": \"Canadian-founded tool now under US ownership; Canadian organizations using it need to understand post-acquisition governance, data handling, and potential residency changes.\"}",
+      "reason": "Canadian-founded tool now under US ownership; Canadian organizations using it need to understand post-acquisition governance, data handling, and potential residency changes.",
+      "signal_headline": "Canadian-founded Opennote acquired by San Francisco-based Reducto",
+      "signal_date": "2026-05-12",
+      "source_url": "https://betakit.com/canadian-founded-opennote-acquired-by-san-francisco-based-reducto/",
+      "flagged_at": "2026-05-14T14:52:00.031367",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-05-10T13:54:14.280883"
+  "updated": "2026-05-14T14:52:00.033258"
 }
