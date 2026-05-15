@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "May 14, 2026 — 14:52 ET",
+    "lastUpdated": "May 15, 2026 — 14:43 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Goldman Sachs acquires Canadian data centre platform QScale; Quebec headquarters retained",
+      "summary": "Goldman Sachs has acquired QScale, a Canadian data centre platform headquartered in Quebec. The founders will continue to operate the business and maintain its Quebec base. This acquisition represents a change in control of a Canadian data infrastructure asset to a US financial services parent, with implications for organizations relying on QScale for data residency assurances.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/goldman-sachs-to-acquire-canadian-data-centre-platform-qscale/",
+      "date": "2026-05-14",
+      "impact": "Organizations using QScale for data centre services should review their contracts and assess whether the change in parent company (from Canadian to US ownership) affects their data sovereignty or compliance obligations.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Survey documents Canadian data sovereignty compliance gaps despite regulatory acceleration",
+      "summary": "A 2026 Kiteworks survey found that 23% of Canadian respondents experienced a data sovereignty incident, reflecting awareness gaps in an environment where nearly 80% of Canadian organizations scale with cloud platforms and formal privacy programs become mandatory June 11, 2026. The findings indicate widespread vulnerability among MSPs and enterprise organizations to sovereignty compliance failures.",
+      "type": "enforcement",
+      "source": "Pax8",
+      "sourceUrl": "https://www.pax8.com/blog/data-residency-vs-data-sovereignty-in-canada/",
+      "date": "2026-05-13",
+      "impact": "Canadian organizations and MSPs should immediately audit their cloud platform deployments and data residency practices; those without formal privacy programs must establish them before the June 11, 2026 deadline.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian-founded Opennote acquired by San Francisco-based Reducto",
       "summary": "Opennote, a Canadian-founded software company (Y Combinator alum), has been acquired by Reducto, a San Francisco-based firm. This acquisition shifts control of a Canadian technology company to US jurisdiction, with potential implications for Canadian customers regarding data residency, service continuity, and governance.",

@@ -59,7 +59,31 @@
       "source_url": "https://betakit.com/canadian-founded-opennote-acquired-by-san-francisco-based-reducto/",
       "flagged_at": "2026-05-14T14:52:00.031367",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "QScale",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Goldman Sachs\", \"jurisdiction\": \"United States\", \"category\": \"storage\", \"rationale\": \"QScale is a Canadian data centre platform now under US ownership. Canadian organizations using it for data residency or sovereignty purposes need to track this change in control and jurisdictional risk.\"}",
+      "reason": "QScale is a Canadian data centre platform now under US ownership. Canadian organizations using it for data residency or sovereignty purposes need to track this change in control and jurisdictional risk.",
+      "signal_headline": "Goldman Sachs acquires Canadian data centre platform QScale; Quebec headquarters retained",
+      "signal_date": "2026-05-14",
+      "source_url": "https://betakit.com/goldman-sachs-to-acquire-canadian-data-centre-platform-qscale/",
+      "flagged_at": "2026-05-15T14:43:30.215928",
+      "status": "pending_review"
+    },
+    {
+      "tool_name": "Kiteworks",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"\", \"jurisdiction\": \"\", \"category\": \"data_governance\", \"rationale\": \"The Kiteworks survey is cited as documenting Canadian data sovereignty incidents and compliance awareness gaps. Kiteworks appears to be a data governance platform used by Canadian organizations to track sovereignty compliance.\"}",
+      "reason": "The Kiteworks survey is cited as documenting Canadian data sovereignty incidents and compliance awareness gaps. Kiteworks appears to be a data governance platform used by Canadian organizations to track sovereignty compliance.",
+      "signal_headline": "Survey documents Canadian data sovereignty compliance gaps despite regulatory acceleration",
+      "signal_date": "2026-05-13",
+      "source_url": "https://www.pax8.com/blog/data-residency-vs-data-sovereignty-in-canada/",
+      "flagged_at": "2026-05-15T14:43:30.215962",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-05-14T14:52:00.033258"
+  "updated": "2026-05-15T14:43:30.217651"
 }
