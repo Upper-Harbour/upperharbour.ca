@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "May 15, 2026 — 14:43 ET",
+    "lastUpdated": "May 16, 2026 — 14:07 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Privacy Commissioner reports 42,000+ confirmed breaches of CRA taxpayer accounts since 2020",
+      "summary": "The Privacy Commissioner tabled a special report in Parliament documenting over 42,000 confirmed breaches of taxpayer accounts at the Canada Revenue Agency since 2020. This finding raises significant concerns about the federal government's capacity to protect sensitive financial data and may influence assessments of data security practices across Canadian public institutions.",
+      "type": "enforcement",
+      "source": "IAPP",
+      "sourceUrl": "https://iapp.org/news/a/notes-from-the-iapp-canada-special-report-on-cra-breaches-raises-fresh-privacy-concerns",
+      "date": "2026-05-15",
+      "impact": "Federal departments and Crown corporations should audit their data protection frameworks and incident response protocols; organizations sharing data with CRA should reassess third-party data governance agreements.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Bill C-22 mandates encryption backdoors and metadata retention, raising data sovereignty concerns",
+      "summary": "Bill C-22, now facing opposition from major technology companies including Meta and Apple, would require encryption backdoors and mandatory metadata retention by Canadian service providers. The legislation raises direct concerns about data sovereignty, as it could increase exposure of Canadian user data to law enforcement access and create security vulnerabilities in systems relied upon by Canadian organizations.",
+      "type": "legislation",
+      "source": "CP24",
+      "sourceUrl": "https://www.cp24.com/news/canada/2026/05/10/bill-to-help-authorities-probe-online-activities-raises-widespread-privacy-fears/",
+      "date": "2026-05-10",
+      "impact": "Canadian organizations using encrypted communication and storage tools should monitor Bill C-22's progress and prepare for potential compliance obligations; legal and security teams should document current encryption architectures and assess feasibility of backdoor implementation if the bill passes.",
+      "dbUpdate": false
+    },
     {
       "headline": "Goldman Sachs acquires Canadian data centre platform QScale; Quebec headquarters retained",
       "summary": "Goldman Sachs has acquired QScale, a Canadian data centre platform headquartered in Quebec. The founders will continue to operate the business and maintain its Quebec base. This acquisition represents a change in control of a Canadian data infrastructure asset to a US financial services parent, with implications for organizations relying on QScale for data residency assurances.",
