@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 16, 2026 — 14:07 ET",
+    "lastUpdated": "May 17, 2026 — 14:06 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Reform legislation moving through Parliament introduces enhanced data privacy penalties up to C$25 million or 5% of gross global revenue",
+      "summary": "Reform legislation under parliamentary consideration in 2026 introduces significantly higher privacy enforcement penalties, including fines up to C$25 million or 5% of gross global revenue, reflecting tightened Canadian data protection requirements. The regulatory landscape is becoming materially more stringent than it was five years prior.",
+      "type": "legislation",
+      "source": "Concentric AI",
+      "sourceUrl": "https://concentric.ai/canadian-data-privacy-laws/",
+      "date": "2026-05-16",
+      "impact": "All organizations processing Canadian personal data should conduct immediate compliance audits and update data handling practices to align with anticipated legislative requirements, particularly regarding penalty exposure at scale.",
+      "dbUpdate": false
+    },
     {
       "headline": "Privacy Commissioner reports 42,000+ confirmed breaches of CRA taxpayer accounts since 2020",
       "summary": "The Privacy Commissioner tabled a special report in Parliament documenting over 42,000 confirmed breaches of taxpayer accounts at the Canada Revenue Agency since 2020. This finding raises significant concerns about the federal government's capacity to protect sensitive financial data and may influence assessments of data security practices across Canadian public institutions.",
