@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 17, 2026 — 14:06 ET",
+    "lastUpdated": "May 18, 2026 — 16:08 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Local resistance to hyper-scale data centres grows over utility demand and Canadian benefit concerns",
+      "summary": "The Canadian federal government allocated $700 million of a $2 billion Canadian Sovereign AI Compute Strategy to mobilize private sector investment in hyper-scale data centres, but faces growing local opposition over electricity demand, environmental impact, and questions about whether such infrastructure genuinely serves Canadian economic and regulatory interests.",
+      "type": "policy",
+      "source": "ConstructConnect",
+      "sourceUrl": "https://canada.constructconnect.com/dcn/news/technology/2026/05/resistance-to-hyper-scale-data-centres-on-the-rise",
+      "date": "2026-05-13",
+      "impact": "Canadian organizations with operations in communities hosting or proposed for hyper-scale data centre development should engage with local stakeholders and government to understand zoning, environmental, and utility constraints that may affect infrastructure availability and cost.",
+      "dbUpdate": false
+    },
     {
       "headline": "Reform legislation moving through Parliament introduces enhanced data privacy penalties up to C$25 million or 5% of gross global revenue",
       "summary": "Reform legislation under parliamentary consideration in 2026 introduces significantly higher privacy enforcement penalties, including fines up to C$25 million or 5% of gross global revenue, reflecting tightened Canadian data protection requirements. The regulatory landscape is becoming materially more stringent than it was five years prior.",
