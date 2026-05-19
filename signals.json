@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 18, 2026 — 16:08 ET",
+    "lastUpdated": "May 19, 2026 — 16:01 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Cohere acquires Montreal-based Reliant AI",
+      "summary": "Canadian AI company Cohere has acquired Reliant AI, a Montreal-based firm with pharmaceutical sector focus. The acquisition keeps IP and talent within Canada but consolidates the vendor landscape for Canadian organizations using or considering these AI platforms.",
+      "type": "acquisition",
+      "source": "BetaKit / The Logic",
+      "sourceUrl": "https://betakit.com/cohere-acquires-second-company-with-german-ties-in-reliant-ai/",
+      "date": "2026-05-19",
+      "impact": "Canadian pharmaceutical and life sciences organizations using Reliant AI should review their vendor agreements and confirm data residency and support continuity under Cohere's ownership.",
+      "dbUpdate": false
+    },
     {
       "headline": "Local resistance to hyper-scale data centres grows over utility demand and Canadian benefit concerns",
       "summary": "The Canadian federal government allocated $700 million of a $2 billion Canadian Sovereign AI Compute Strategy to mobilize private sector investment in hyper-scale data centres, but faces growing local opposition over electricity demand, environmental impact, and questions about whether such infrastructure genuinely serves Canadian economic and regulatory interests.",

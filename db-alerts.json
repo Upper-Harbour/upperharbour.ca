@@ -83,7 +83,19 @@
       "source_url": "https://www.pax8.com/blog/data-residency-vs-data-sovereignty-in-canada/",
       "flagged_at": "2026-05-15T14:43:30.215962",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Reliant AI",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Cohere\", \"jurisdiction\": \"Canada\", \"category\": \"ai\", \"rationale\": \"Montreal-based pharmaceutical AI platform acquired by Canadian parent; relevant to track post-acquisition data sovereignty and support continuity for Canadian life sciences users.\"}",
+      "reason": "Montreal-based pharmaceutical AI platform acquired by Canadian parent; relevant to track post-acquisition data sovereignty and support continuity for Canadian life sciences users.",
+      "signal_headline": "Cohere acquires Montreal-based Reliant AI",
+      "signal_date": "2026-05-19",
+      "source_url": "https://betakit.com/cohere-acquires-second-company-with-german-ties-in-reliant-ai/",
+      "flagged_at": "2026-05-19T16:01:14.086441",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-05-15T14:43:30.217651"
+  "updated": "2026-05-19T16:01:14.088152"
 }
