@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 20, 2026 — 15:59 ET",
+    "lastUpdated": "May 21, 2026 — 16:04 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Federal procurement gaps highlight gaps in Canadian data sovereignty oversight",
+      "summary": "Analysis of Ottawa's government procurement practices reveals significant blind spots in vendor and tool tracking across federal departments, hindering effective state capacity and data sovereignty governance. The reporting suggests systemic gaps in how federal procurement manages risk assessment and oversight of software and cloud service vendors. Federal procurement teams and Treasury Board officials should urgently conduct a comprehensive audit of cloud and SaaS vendor usage across departments to establish baseline visibility.",
+      "type": "policy",
+      "source": "The Hub",
+      "sourceUrl": "https://thehub.ca/2026/05/18/ottawas-90-percent-procurement-blind-spot-reveals-why-state-capacity-reform-keeps-failing/",
+      "date": "2026-05-18",
+      "impact": "Federal government departments and Treasury Board must implement mandatory SaaS and cloud vendor registries to establish baseline data sovereignty risk assessment capabilities.",
+      "dbUpdate": false
+    },
     {
       "headline": "Cohere acquires Montreal-based Reliant AI",
       "summary": "Canadian AI company Cohere has acquired Reliant AI, a Montreal-based firm with pharmaceutical sector focus. The acquisition keeps IP and talent within Canada but consolidates the vendor landscape for Canadian organizations using or considering these AI platforms.",
