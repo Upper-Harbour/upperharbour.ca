@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 21, 2026 — 16:04 ET",
+    "lastUpdated": "May 22, 2026 — 15:14 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "CAI Issues First Law 25 Enforcement Decision: Facial Recognition Compliance Violation at Quebec Printing Company",
+      "summary": "The Commission d'accès à l'information (CAI) issued its first enforcement decision under Quebec's Law 25 penalty framework, ordering a Quebec printing company to cease facial recognition use for employee access control due to failure to meet mandatory 60-day advance notification and express consent requirements. This sets precedent for Law 25 enforcement and signals active regulatory scrutiny of biometric data practices in Quebec organizations.",
+      "type": "enforcement",
+      "source": "Recording Law",
+      "sourceUrl": "https://www.recordinglaw.com/world-laws/world-data-privacy-laws/canada-data-privacy-laws/",
+      "date": "2026-05-19",
+      "impact": "Quebec organizations using facial recognition or biometric access control systems must immediately review compliance with Law 25 notification and consent requirements and audit their current implementations.",
+      "dbUpdate": false
+    },
     {
       "headline": "Federal procurement gaps highlight gaps in Canadian data sovereignty oversight",
       "summary": "Analysis of Ottawa's government procurement practices reveals significant blind spots in vendor and tool tracking across federal departments, hindering effective state capacity and data sovereignty governance. The reporting suggests systemic gaps in how federal procurement manages risk assessment and oversight of software and cloud service vendors. Federal procurement teams and Treasury Board officials should urgently conduct a comprehensive audit of cloud and SaaS vendor usage across departments to establish baseline visibility.",
