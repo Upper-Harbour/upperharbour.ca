@@ -95,7 +95,19 @@
       "source_url": "https://betakit.com/cohere-acquires-second-company-with-german-ties-in-reliant-ai/",
       "flagged_at": "2026-05-19T16:01:14.086441",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "ThinkOn Inc.",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"\", \"jurisdiction\": \"Canada\", \"category\": \"storage\", \"rationale\": \"ThinkOn Inc. is identified as the only Canadian company on federal government procurement vehicles for cloud services. This is directly relevant to Canadian data sovereignty tracking, as it represents a domestic cloud infrastructure provider available to public-sector organizations.\"}",
+      "reason": "ThinkOn Inc. is identified as the only Canadian company on federal government procurement vehicles for cloud services. This is directly relevant to Canadian data sovereignty tracking, as it represents a domestic cloud infrastructure provider available to public-sector organizations.",
+      "signal_headline": "Canadian cloud services provider ThinkOn Inc. highlighted as key domestic sovereignty solution",
+      "signal_date": "2026-05-20",
+      "source_url": "https://www.cp24.com/news/canada/2026/05/20/experts-say-canadian-solutions-needed-to-maintain-data-sovereignty/",
+      "flagged_at": "2026-05-24T14:11:04.016319",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-05-19T16:01:14.088152"
+  "updated": "2026-05-24T14:11:04.017922"
 }

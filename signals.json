@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 22, 2026 — 15:14 ET",
+    "lastUpdated": "May 24, 2026 — 14:11 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian cloud services provider ThinkOn Inc. highlighted as key domestic sovereignty solution",
+      "summary": "CTV News reported on the importance of Canadian data sovereignty, noting that ThinkOn Inc., a Canadian cloud services company, is the only Canadian company on the federal government's procurement vehicle for cloud services. This reflects the current gap in domestic cloud infrastructure options available to Canadian public-sector organizations.",
+      "type": "policy",
+      "source": "CTV/CP24",
+      "sourceUrl": "https://www.cp24.com/news/canada/2026/05/20/experts-say-canadian-solutions-needed-to-maintain-data-sovereignty/",
+      "date": "2026-05-20",
+      "impact": "Federal departments and Canadian public-sector organizations should review their cloud procurement practices and evaluate ThinkOn Inc. as a domestic alternative for workloads with sovereignty requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "CAI Issues First Law 25 Enforcement Decision: Facial Recognition Compliance Violation at Quebec Printing Company",
       "summary": "The Commission d'accès à l'information (CAI) issued its first enforcement decision under Quebec's Law 25 penalty framework, ordering a Quebec printing company to cease facial recognition use for employee access control due to failure to meet mandatory 60-day advance notification and express consent requirements. This sets precedent for Law 25 enforcement and signals active regulatory scrutiny of biometric data practices in Quebec organizations.",
