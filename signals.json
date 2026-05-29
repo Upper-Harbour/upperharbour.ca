@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "May 24, 2026 — 14:11 ET",
+    "lastUpdated": "May 29, 2026 — 16:14 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canada renews Palantir military contract despite data sovereignty commitments",
+      "summary": "Canada's Department of National Defence renewed a $3.7 million contract with Palantir for the period June 2025–June 2026, continuing government use of a foreign-owned intelligence platform. This procurement decision raises questions about alignment between stated commitments to domestic technology and data control and actual government contracting practices.",
+      "type": "procurement",
+      "source": "B2BNN",
+      "sourceUrl": "https://www.b2bnn.com/2026/05/canadian-ai-sovereignty-paper-13-moving-forward-is-the-decision/",
+      "date": "2026-05-29",
+      "impact": "Federal departments and agencies should review their reliance on foreign intelligence and analytics platforms and assess whether sensitive military and government data should be migrated to domestic or allied alternatives.",
+      "dbUpdate": true
+    },
     {
       "headline": "Canadian cloud services provider ThinkOn Inc. highlighted as key domestic sovereignty solution",
       "summary": "CTV News reported on the importance of Canadian data sovereignty, noting that ThinkOn Inc., a Canadian cloud services company, is the only Canadian company on the federal government's procurement vehicle for cloud services. This reflects the current gap in domestic cloud infrastructure options available to Canadian public-sector organizations.",

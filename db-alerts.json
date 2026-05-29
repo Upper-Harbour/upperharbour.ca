@@ -107,7 +107,19 @@
       "source_url": "https://www.cp24.com/news/canada/2026/05/20/experts-say-canadian-solutions-needed-to-maintain-data-sovereignty/",
       "flagged_at": "2026-05-24T14:11:04.016319",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Palantir",
+      "change": "government_contract_status",
+      "old_value": "Active contract (June 2024–June 2025)",
+      "new_value": "Renewed contract (June 2025–June 2026)",
+      "reason": "Continued Department of National Defence procurement reinforces Palantir's access to Canadian military and intelligence data; document notes contradiction with stated data sovereignty goals",
+      "signal_headline": "Canada renews Palantir military contract despite data sovereignty commitments",
+      "signal_date": "2026-05-29",
+      "source_url": "https://www.b2bnn.com/2026/05/canadian-ai-sovereignty-paper-13-moving-forward-is-the-decision/",
+      "flagged_at": "2026-05-29T16:14:16.926631",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-05-24T14:11:04.017922"
+  "updated": "2026-05-29T16:14:16.928590"
 }
