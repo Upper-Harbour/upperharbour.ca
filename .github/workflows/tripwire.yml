@@ -31,6 +31,7 @@ jobs:
           SMTP_PASS: ${{ secrets.SMTP_PASS }}
           APPROVAL_EMAIL: ${{ secrets.APPROVAL_EMAIL }}
           SIGNALS_JSON_PATH: signals.json
+          SAAS_DB_PATH: assets/saas-db-public.json
         run: python acquisition_tripwire.py
 
       - name: Commit results

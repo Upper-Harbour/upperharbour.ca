@@ -43,7 +43,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s [%(levelname)s] %(me
 log = logging.getLogger(__name__)
 
 ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
-SAAS_DB_PATH = os.environ.get("SAAS_DB_PATH", "saas-db.js")
+SAAS_DB_PATH = os.environ.get("SAAS_DB_PATH", "assets/saas-db-public.json")
 TRIPWIRE_CACHE_PATH = os.environ.get("TRIPWIRE_CACHE_PATH", "tripwire-cache.json")
 
 # SEC EDGAR free API — no key required, 10 req/sec max
@@ -97,53 +97,77 @@ ACQUISITION_KEYWORDS = [
 
 def extract_parents(db_path: str = SAAS_DB_PATH) -> dict:
     """
-    Parse saas-db.js and extract all unique parent companies
+    Parse the Sovereignty Index and extract all unique parent companies
     with their jurisdiction and associated tools.
-    
+
+    Supports both JSON (assets/saas-db-public.json — canonical post-2026-05)
+    and the legacy JS-object format (saas-db.js) for backwards compatibility.
+
     Returns: {
         "Salesforce Inc.": {
             "jurisdiction": "United States",
             "tools": ["Slack", "Salesforce", "Tableau", ...],
-            "ticker": "CRM",  # if extractable
         },
         ...
     }
     """
-    with open(db_path, 'r') as f:
-        src = f.read()
-
     parents = {}
-    
-    # Parse each tool entry
-    # Pattern: { name:"...", parent:"...", hq:"...", jurisdiction:"...", ... }
-    entries = re.findall(
-        r'\{\s*name:"([^"]+)"[^}]*parent:"([^"]+)"[^}]*jurisdiction:"([^"]+)"',
-        src
-    )
-    
-    for tool_name, parent_name, jurisdiction in entries:
-        if parent_name not in parents:
-            parents[parent_name] = {
-                "jurisdiction": jurisdiction,
-                "tools": [],
-            }
-        parents[parent_name]["tools"].append(tool_name)
-    
+
+    if db_path.endswith(".json"):
+        with open(db_path, "r") as f:
+            data = json.load(f)
+        # Public-snapshot wraps the list under "tools"; canonical
+        # saas-db.json is a flat list at the top level. Accept both.
+        tools_list = data["tools"] if isinstance(data, dict) and "tools" in data else data
+        for entry in tools_list:
+            tool_name = entry.get("name")
+            parent_name = entry.get("parent")
+            jurisdiction = entry.get("jurisdiction")
+            if not (tool_name and parent_name and jurisdiction):
+                continue
+            if parent_name not in parents:
+                parents[parent_name] = {
+                    "jurisdiction": jurisdiction,
+                    "tools": [],
+                }
+            parents[parent_name]["tools"].append(tool_name)
+    else:
+        # Legacy JS-object format
+        with open(db_path, "r") as f:
+            src = f.read()
+        entries = re.findall(
+            r'\{\s*name:"([^"]+)"[^}]*parent:"([^"]+)"[^}]*jurisdiction:"([^"]+)"',
+            src,
+        )
+        for tool_name, parent_name, jurisdiction in entries:
+            if parent_name not in parents:
+                parents[parent_name] = {
+                    "jurisdiction": jurisdiction,
+                    "tools": [],
+                }
+            parents[parent_name]["tools"].append(tool_name)
+
     log.info(f"Extracted {len(parents)} unique parent companies from {db_path}")
     return parents
 
 
 def extract_all_tool_names(db_path: str = SAAS_DB_PATH) -> set:
     """
-    Return the flat set of all tool names in saas-db.js.
+    Return the flat set of all tool names in the Sovereignty Index.
 
-    Used by assess_sovereignty_impact to give Claude the "already tracked"
-    list so it can reliably identify NEW tools mentioned in filings that
-    Upper Harbour should probably be tracking.
+    Supports both JSON and legacy JS-object formats. Used by
+    assess_sovereignty_impact to give Claude the "already tracked"
+    list so it can reliably identify NEW tools mentioned in filings.
     """
-    with open(db_path, 'r') as f:
-        src = f.read()
-    names = re.findall(r'\{\s*name:"([^"]+)"', src)
+    if db_path.endswith(".json"):
+        with open(db_path, "r") as f:
+            data = json.load(f)
+        tools_list = data["tools"] if isinstance(data, dict) and "tools" in data else data
+        names = [entry.get("name", "") for entry in tools_list]
+    else:
+        with open(db_path, "r") as f:
+            src = f.read()
+        names = re.findall(r'\{\s*name:"([^"]+)"', src)
     result = set(n.strip() for n in names if n.strip())
     log.info(f"Indexed {len(result)} tool names for new-tool suggestions")
     return result
