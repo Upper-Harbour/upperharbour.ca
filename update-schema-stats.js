@@ -1,25 +1,46 @@
 #!/usr/bin/env node
 /**
  * Upper Harbour — Schema Stats Updater
- * 
- * Run after any change to saas-db.js. Updates all hardcoded numbers
- * inside JSON-LD schema blocks across the site.
- * 
+ *
+ * Run after any change to the Sovereignty Index. Updates the hardcoded
+ * numbers inside JSON-LD schema blocks + meta tags across the site
+ * (the crawler/no-JS SEO fallbacks; live visitors get numbers from the
+ * Railway /api/stats endpoint via uh-stats.js).
+ *
+ * DATA SOURCE (changed 2026-06): reads assets/saas-db-public.json — the
+ * stripped public snapshot built by upperharbour-server's
+ * build-public-snapshot.py. The legacy saas-db.js (a `var saasDB = [...]`
+ * file) never existed in this repo; the canonical master is
+ * upperharbour-server/saas-db.json and the snapshot is its public view.
+ * The SEO stats need only counts/percentages, none of which touch the
+ * private `note` field, so the public snapshot is a safe, same-repo
+ * source with zero cross-repo coupling.
+ *
  * Usage:  node update-schema-stats.js
- * 
- * Add to GitHub Actions after saas-db.js changes:
- *   - name: Update schema stats
- *     run: node update-schema-stats.js
+ *
+ * Wired into build.sh (upperharbour-server) after the snapshot is
+ * regenerated, and runnable standalone.
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = process.cwd(); // Run from repo root
+const ROOT = process.cwd(); // Run from repo root (upperharbour.ca)
 
-// ── Load the database ──────────────────────────────────────
-const dbCode = fs.readFileSync(path.join(ROOT, 'saas-db.js'), 'utf-8');
-eval(dbCode);
+// ── Load the database (public snapshot, same repo) ─────────
+const SNAPSHOT_PATH = process.env.UH_SNAPSHOT_PATH ||
+  path.join(ROOT, 'assets', 'saas-db-public.json');
+let saasDB;
+try {
+  const snap = JSON.parse(fs.readFileSync(SNAPSHOT_PATH, 'utf-8'));
+  saasDB = Array.isArray(snap) ? snap : snap.tools;
+  if (!Array.isArray(saasDB)) {
+    throw new Error('snapshot has no tools array');
+  }
+} catch (e) {
+  console.error(`FATAL: could not load snapshot at ${SNAPSHOT_PATH}: ${e.message}`);
+  process.exit(1);
+}
 
 // ── Compute stats ──────────────────────────────────────────
 const total = saasDB.length;

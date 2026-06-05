@@ -1,6 +1,6 @@
 {
   "_note": "Current values in schema blocks. Used by update-schema-stats.js to know what to find-and-replace. Auto-generated — do not edit.",
-  "_updated": "2026-04-10T01:33:59.997Z",
+  "_updated": "2026-06-05T06:42:17.973Z",
   "total": 768,
   "catCount": 40,
   "usCount": 453,
