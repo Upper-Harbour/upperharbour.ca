@@ -11,11 +11,11 @@
  * aggregate values, none of them tool-detail.
  *
  * Usage in HTML (unchanged from the legacy version):
- *   <span class="uh-stat" data-stat="totalTools">715</span>
+ *   <span class="uh-stat" data-stat="totalTools">768</span>
  *   <span class="uh-stat" data-stat="cloudActPct">89</span>%
  *   <span class="uh-stat" data-stat="foreignPct">63</span>%
  *
- * The hardcoded fallback value (715, 89, etc.) is shown if the fetch
+ * The hardcoded fallback value (768, 89, etc.) is shown if the fetch
  * fails or for search engine crawlers that don't execute JS. Once the
  * fetch resolves, it's replaced with the live computed value.
  *

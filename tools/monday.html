@@ -382,7 +382,7 @@
         <p>Quebec organizations using Monday.com must complete a <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Transfer Impact Assessment</a>. The TIA must document: data is hosted in the US (or EU if configured), Monday.com is Israeli-incorporated (not directly CLOUD Act exposed), but data sits on US infrastructure operated by a CLOUD Act-subject company (AWS). The Israeli incorporation should be documented as a meaningful jurisdictional mitigation. Upper Harbour provides <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">compliance-ready TIA documentation</a> starting at $99.</p>
 
         <h3>Alberta POPA</h3>
-        <p>Alberta public bodies deploying Monday.com must complete a PIA using the mandatory OIPC template. Section G should document Monday.com's Israeli incorporation and the indirect nature of the CLOUD Act exposure — this is genuinely different from documenting a US-incorporated tool. Section H2, Risk 7 should note that the parent company is not directly subject to the CLOUD Act, while the hosting infrastructure is. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 753-tool database.</p>
+        <p>Alberta public bodies deploying Monday.com must complete a PIA using the mandatory OIPC template. Section G should document Monday.com's Israeli incorporation and the indirect nature of the CLOUD Act exposure — this is genuinely different from documenting a US-incorporated tool. Section H2, Risk 7 should note that the parent company is not directly subject to the CLOUD Act, while the hosting infrastructure is. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 768-tool database.</p>
 
         <h3>BC FIPPA</h3>
         <p>BC public bodies should note that Monday.com's Israeli incorporation provides better jurisdictional positioning than US-incorporated alternatives. However, data is still hosted on US infrastructure with no Canadian data residency option. <a href="/resources/fippa-saas-compliance-bc-public-bodies" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Full FIPPA SaaS compliance guide →</a></p>
@@ -393,7 +393,7 @@
     </div>
 
     <!-- ═══ URGENCY BRIDGE ═══ -->
-    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Monday.com is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. It has the best jurisdictional positioning of any major PM tool — but your stack doesn't stop at project management. If you use Monday.com alongside Microsoft 365, Slack, Zoom, or Salesforce, those tools are all US-incorporated and fully CLOUD Act exposed. <strong>Sovereignty compliance requires assessing every tool, not just the one with the best story.</strong></p>
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Monday.com is one of <span id="counter-768">768</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. It has the best jurisdictional positioning of any major PM tool — but your stack doesn't stop at project management. If you use Monday.com alongside Microsoft 365, Slack, Zoom, or Salesforce, those tools are all US-incorporated and fully CLOUD Act exposed. <strong>Sovereignty compliance requires assessing every tool, not just the one with the best story.</strong></p>
 
     <!-- ═══ MID-PAGE CTA ═══ -->
     <div class="mid-cta reveal">
@@ -561,26 +561,26 @@
     },delay);
   } else if(scoreEl){scoreEl.textContent='4.5 / 10';}
 
-  // Counter animation — "753" counts up on scroll
+  // Counter animation — "768" counts up on scroll
   var counted=false;
   var counterObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting&&!counted){
         counted=true;
-        var el=e.target,target=753,start=0,dur=1600,t0=null;
+        var el=e.target,target=768,start=0,dur=1600,t0=null;
         function step(ts){
           if(!t0)t0=ts;
           var p=Math.min((ts-t0)/dur,1);
           var ease=1-Math.pow(1-p,3);
           el.textContent=Math.floor(start+(target-start)*ease);
-          if(p<1)requestAnimationFrame(step);else el.textContent='753';
+          if(p<1)requestAnimationFrame(step);else el.textContent='768';
         }
         requestAnimationFrame(step);
         counterObs.unobserve(e.target);
       }
     });
   },{threshold:0.3});
-  var c=document.getElementById('counter-753');
+  var c=document.getElementById('counter-768');
   if(c)counterObs.observe(c);
 
   // ── Theatrical Scan Effect — runs on load, activates gauge on completion ──

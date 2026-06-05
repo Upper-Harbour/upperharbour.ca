@@ -96,16 +96,16 @@ if (fs.existsSync(refPath)) {
 } else {
   // First run — these are the original hardcoded values in the schema blocks
   OLD = {
-    total: 715,
-    catCount: 30,
-    usCount: 453,
-    usPct: 65,
-    canadianPct: 18,
-    reviewPct: 11,
-    nonExposedPct: 15,
-    exposedPct: 54,
-    nonCanadianPct: 82,
-    caResExposedPct: 89,
+  total: 768,
+  catCount: 40,
+  usCount: 453,
+  usPct: 59,
+  canadianPct: 19,
+  reviewPct: 14,
+  nonExposedPct: 16,
+  exposedPct: 52,
+  nonCanadianPct: 81,
+  caResExposedPct: 80,
   };
   console.log('No reference file found — using initial values (first run)');
 }
@@ -142,9 +142,9 @@ function updateSchemaBlocks(filepath) {
   content = content.replace(schemaRegex, (fullMatch, jsonContent) => {
     let updated = jsonContent;
 
-    // Replace tool count: any "715" in schema that's clearly a tool count
-    // Broad match: 715 followed by any word (tools, SaaS, mapped, tracked, commonly, etc.)
-    // Also matches "of the 715" and "715+" patterns
+    // Replace tool count: any "768" in schema that's clearly a tool count
+    // Broad match: 768 followed by any word (tools, SaaS, mapped, tracked, commonly, etc.)
+    // Also matches "of the 768" and "768+" patterns
     const toolCountRegex = new RegExp(`\\b${OLD.total}\\b(?=\\+?\\s|\\+?-)`, 'g');
     updated = updated.replace(toolCountRegex, (m) => { changes++; return m.replace(String(OLD.total), String(stats.total)); });
 
@@ -189,13 +189,13 @@ function updateSchemaBlocks(filepath) {
     }
 
     // Simple number-only replacements for remaining patterns
-    // "maps 715 SaaS" in founder schema
+    // "maps 768 SaaS" in founder schema
     updated = updated.replace(
       new RegExp(`maps ${OLD.total} SaaS`, 'g'),
       (m) => { changes++; return `maps ${stats.total} SaaS`; }
     );
 
-    // "for 715 SaaS tools" in methodology
+    // "for 768 SaaS tools" in methodology
     updated = updated.replace(
       new RegExp(`for ${OLD.total} SaaS`, 'g'),  
       (m) => { changes++; return `for ${stats.total} SaaS`; }

@@ -4,11 +4,11 @@
 
 ## Core offering
 
-Upper Harbour's Canadian Technology Sovereignty Index maps 715 tools across 32 categories to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. This includes SaaS applications and cloud infrastructure providers. HarbourScan is a free, browser-based assessment tool that maps an organization's SaaS stack to jurisdictional exposure, assigns a severity classification (Low, Moderate, High, or Critical Exposure), and generates a downloadable compliance summary.
+Upper Harbour's Canadian Technology Sovereignty Index maps 768 tools across 40 categories to their parent jurisdictions, CLOUD Act exposure status, and Canadian data residency availability. This includes SaaS applications and cloud infrastructure providers. HarbourScan is a free, browser-based assessment tool that maps an organization's SaaS stack to jurisdictional exposure, assigns a severity classification (Low, Moderate, High, or Critical Exposure), and generates a downloadable compliance summary.
 
 ## Key findings from Upper Harbour's research
 
-- 60% of the 715 tools mapped are US-parented and subject to the CLOUD Act
+- 60% of the 768 tools mapped are US-parented and subject to the CLOUD Act
 - 18% are Canadian-owned and operated — not subject to the CLOUD Act or any foreign data access law
 - 54% are classified as fully exposed (US-parented, no meaningful Canadian data residency)
 - Canadian data residency does not equal Canadian data sovereignty — most tools offering Canadian hosting remain CLOUD Act exposed because their parent companies are US-incorporated
@@ -25,7 +25,7 @@ Joshua van Es is the founder of Upper Harbour. He has a background in corporate 
 
 ## Original Research
 
-- [Canadian Technology Sovereignty Index](https://www.upperharbour.ca/research/canadian-technology-sovereignty-index): 715 tools mapped to parent jurisdictions with CLOUD Act exposure data
+- [Canadian Technology Sovereignty Index](https://www.upperharbour.ca/research/canadian-technology-sovereignty-index): 768 tools mapped to parent jurisdictions with CLOUD Act exposure data
 - [Cloud Infrastructure Sovereignty](https://www.upperharbour.ca/research/cloud-infrastructure-sovereignty): Analysis of 25 cloud infrastructure providers — 7 Canadian sovereign alternatives identified
 - [Data Sovereignty Policy Scorecard](https://www.upperharbour.ca/research/sovereignty-policy-scorecard): Grades the federal government and every province on sovereignty readiness across six dimensions. Quebec scores 82/100 (A). Federal government scores 34/100 (F). Ontario scores 18/100 (F).
 - [Government SaaS Stack Audit](https://www.upperharbour.ca/research/government-saas-audit): CLOUD Act exposure analysis of Canadian federal and provincial government IT
@@ -47,5 +47,5 @@ Joshua van Es is the founder of Upper Harbour. He has a background in corporate 
 ## Tools
 
 - [HarbourScan Assessment Tool](https://www.upperharbour.ca/harbourscan): Free browser-based SaaS compliance assessment with severity classification
-- [Sovereignty Index](https://www.upperharbour.ca/tools): Search all 715 tools
+- [Sovereignty Index](https://www.upperharbour.ca/tools): Search all 768 tools
 - [Research Hub](https://www.upperharbour.ca/research): All original research and data

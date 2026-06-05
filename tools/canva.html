@@ -387,7 +387,7 @@
     </div>
 
     <!-- URGENCY BRIDGE -->
-    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Canva is one of <span id="counter-753">753</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. Design tools may seem lower risk than tools processing customer records or employee data — but if your compliance obligations cover Canva, they cover every tool in your stack. Most Canadian organizations use 15–30 SaaS products, and the majority are US-incorporated with higher sovereignty exposure than Canva.</p>
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Canva is one of <span id="counter-768">768</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. Design tools may seem lower risk than tools processing customer records or employee data — but if your compliance obligations cover Canva, they cover every tool in your stack. Most Canadian organizations use 15–30 SaaS products, and the majority are US-incorporated with higher sovereignty exposure than Canva.</p>
 
     <!-- MID-PAGE CTA -->
     <div class="mid-cta reveal">
@@ -540,26 +540,26 @@
     },delay);
   } else if(scoreEl){scoreEl.textContent='5.0 / 10';}
 
-  // Counter animation — "753" counts up on scroll
+  // Counter animation — "768" counts up on scroll
   var counted=false;
   var counterObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting&&!counted){
         counted=true;
-        var el=e.target,target=753,start=0,dur=1600,t0=null;
+        var el=e.target,target=768,start=0,dur=1600,t0=null;
         function step(ts){
           if(!t0)t0=ts;
           var p=Math.min((ts-t0)/dur,1);
           var ease=1-Math.pow(1-p,3);
           el.textContent=Math.floor(start+(target-start)*ease);
-          if(p<1)requestAnimationFrame(step);else el.textContent='753';
+          if(p<1)requestAnimationFrame(step);else el.textContent='768';
         }
         requestAnimationFrame(step);
         counterObs.unobserve(e.target);
       }
     });
   },{threshold:0.3});
-  var c=document.getElementById('counter-753');
+  var c=document.getElementById('counter-768');
   if(c)counterObs.observe(c);
 
   // ── Theatrical Scan Effect — runs on load, activates gauge on completion ──
