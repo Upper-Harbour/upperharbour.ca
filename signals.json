@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jun 04, 2026 — 16:01 ET",
+    "lastUpdated": "Jun 08, 2026 — 16:27 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Alberta OIPC developing guidance on driver's licence and ID card data protection",
+      "summary": "Alberta's Office of the Information and Privacy Commissioner is developing guidance to help Albertans and entities collecting information from new driver's licences and ID cards protect personal data. This reflects provincial-level privacy governance responses to changes in identity document standards and data collection practices.",
+      "type": "policy",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/office-of-the-information-and-privacy-commissioner-developing-guidance-to-assist-albertans-after-changes-to-drivers-licences-and-id-cards-come-into-effect/",
+      "date": "2026-06-04",
+      "impact": "Alberta public and private sector organizations collecting or storing driver's licence and ID card data should monitor the OIPC guidance when published and review their data handling practices for compliance.",
+      "dbUpdate": false
+    },
     {
       "headline": "Alberta Information and Privacy Commissioner reports public support for enhanced voter data safeguards by political parties",
       "summary": "Alberta's OIPC released polling data showing public support for stronger safeguards around voter information held by political parties, aligning with a longstanding position of the Commissioner. This reflects growing provincial concern over the handling of personal information by political organizations and may inform future Alberta privacy legislation.",
