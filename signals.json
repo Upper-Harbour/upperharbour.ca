@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Jun 08, 2026 — 16:27 ET",
+    "lastUpdated": "Jun 09, 2026 — 15:54 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canada launches AI strategy to advance digital sovereignty and adoption",
+      "summary": "Prime Minister Mark Carney announced the AI for All national strategy, which aims to accelerate AI adoption while strengthening critical AI infrastructure and ensuring personal data protection as part of Canada's digital sovereignty efforts. This represents a federal policy commitment to balancing AI capability development with data residency and sovereignty safeguards.",
+      "type": "policy",
+      "source": "IAPP",
+      "sourceUrl": "https://iapp.org/news/a/canada-launches-ai-strategy-to-advance-digital-sovereignty-adoption",
+      "date": "2026-06-05",
+      "impact": "Canadian organizations developing or deploying AI systems should monitor implementation details of this strategy and assess how new infrastructure commitments and data protection requirements will affect procurement and vendor selection decisions.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Conservative MPs seek division of Bill C-22 lawful access legislation over data retention and encryption concerns",
+      "summary": "Conservative MPs proposed splitting Bill C-22 into separate legislation, raising concerns about mandatory data retention requirements and encryption access provisions. The bill remains under parliamentary consideration ahead of the June 19 summer recess. This development affects how Canadian law enforcement access to communications data will be regulated and what compliance obligations apply to Canadian telecommunications and technology service providers.",
+      "type": "legislation",
+      "source": "CBC News",
+      "sourceUrl": "https://www.cbc.ca/news/politics/bill-c-22-surveillance-privacy-law-enforcement-9.7220814",
+      "date": "2026-06-02",
+      "impact": "Canadian telecommunications providers, ISPs, and technology companies should monitor Bill C-22's parliamentary progress and prepare for potential data retention and disclosure obligations under whatever final legislative form emerges.",
+      "dbUpdate": false
+    },
     {
       "headline": "Alberta OIPC developing guidance on driver's licence and ID card data protection",
       "summary": "Alberta's Office of the Information and Privacy Commissioner is developing guidance to help Albertans and entities collecting information from new driver's licences and ID cards protect personal data. This reflects provincial-level privacy governance responses to changes in identity document standards and data collection practices.",
