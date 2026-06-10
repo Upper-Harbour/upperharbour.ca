@@ -119,7 +119,31 @@
       "source_url": "https://www.b2bnn.com/2026/05/canadian-ai-sovereignty-paper-13-moving-forward-is-the-decision/",
       "flagged_at": "2026-05-29T16:14:16.926631",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Kneat Solutions",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Thoma Bravo\", \"jurisdiction\": \"United States\", \"category\": \"unknown\", \"rationale\": \"Canadian SaaS vendor acquired by US PE firm; organizations using this platform should be tracked for sovereignty implications related to new US ownership and potential policy or data handling changes.\"}",
+      "reason": "Canadian SaaS vendor acquired by US PE firm; organizations using this platform should be tracked for sovereignty implications related to new US ownership and potential policy or data handling changes.",
+      "signal_headline": "Kneat Solutions acquired by Thoma Bravo in $650-million all-cash deal",
+      "signal_date": "2026-06-10",
+      "source_url": "https://www.cantechletter.com/2026/06/kneat-shareholders-should-take-the-deal-stifel-says/",
+      "flagged_at": "2026-06-10T16:12:31.524552",
+      "status": "pending_review"
+    },
+    {
+      "tool_name": "Carrier Connect Data Solutions",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Carrier Connect Data Solutions\", \"jurisdiction\": \"Canada\", \"category\": \"storage\", \"rationale\": \"Canadian data centre operator with expanding US footprint; relevant to organizations seeking Canadian data residency and sovereignty compliance, particularly in light of recent US expansion.\"}",
+      "reason": "Canadian data centre operator with expanding US footprint; relevant to organizations seeking Canadian data residency and sovereignty compliance, particularly in light of recent US expansion.",
+      "signal_headline": "Carrier Connect Data Solutions acquires Rochester Colo, expands US data centre footprint",
+      "signal_date": "2026-06-10",
+      "source_url": "https://www.cantechletter.com/2026/06/buy-carrier-connect-data-for-150-upside-this-analyst-says/",
+      "flagged_at": "2026-06-10T16:12:31.524570",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-05-29T16:14:16.928590"
+  "updated": "2026-06-10T16:12:31.525624"
 }

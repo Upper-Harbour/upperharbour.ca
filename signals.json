@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Jun 09, 2026 — 15:54 ET",
+    "lastUpdated": "Jun 10, 2026 — 16:12 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Kneat Solutions acquired by Thoma Bravo in $650-million all-cash deal",
+      "summary": "Canadian SaaS company Kneat Solutions has agreed to be acquired by US-based private equity firm Thoma Bravo in an all-cash transaction valued at approximately $650 million. This acquisition represents a change in control of a software platform used by Canadian organizations, with implications for data residency, support continuity, and vendor dependency under US PE ownership.",
+      "type": "acquisition",
+      "source": "Cantech Letter",
+      "sourceUrl": "https://www.cantechletter.com/2026/06/kneat-shareholders-should-take-the-deal-stifel-says/",
+      "date": "2026-06-10",
+      "impact": "Canadian organizations using Kneat Solutions should review their vendor agreements and data processing terms in light of the change in control to a US private equity firm, and assess any impacts on data residency, support, or pricing.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Carrier Connect Data Solutions acquires Rochester Colo, expands US data centre footprint",
+      "summary": "Canadian data centre operator Carrier Connect Data Solutions has acquired Rochester Colo, marking its entry into the US data centre market. This expansion may affect the company's domestic data sovereignty positioning and its ability to offer Canadian-only data residency guarantees to clients.",
+      "type": "acquisition",
+      "source": "Cantech Letter",
+      "sourceUrl": "https://www.cantechletter.com/2026/06/buy-carrier-connect-data-for-150-upside-this-analyst-says/",
+      "date": "2026-06-10",
+      "impact": "Canadian organizations relying on Carrier Connect Data Solutions for domestic data residency should clarify whether their data may now be stored or processed at the newly acquired US facility, and review their service agreements accordingly.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canada launches AI strategy to advance digital sovereignty and adoption",
       "summary": "Prime Minister Mark Carney announced the AI for All national strategy, which aims to accelerate AI adoption while strengthening critical AI infrastructure and ensuring personal data protection as part of Canada's digital sovereignty efforts. This represents a federal policy commitment to balancing AI capability development with data residency and sovereignty safeguards.",
