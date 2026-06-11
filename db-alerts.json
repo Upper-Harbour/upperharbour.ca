@@ -143,7 +143,19 @@
       "source_url": "https://www.cantechletter.com/2026/06/buy-carrier-connect-data-for-150-upside-this-analyst-says/",
       "flagged_at": "2026-06-10T16:12:31.524570",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Grok",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"xAI\", \"jurisdiction\": \"United States\", \"category\": \"ai\", \"rationale\": \"Grok, xAI's generative AI tool, has been subject to Canadian privacy enforcement for violations involving deepfake generation. Canadian organizations should track this tool's compliance status and data handling practices.\"}",
+      "reason": "Grok, xAI's generative AI tool, has been subject to Canadian privacy enforcement for violations involving deepfake generation. Canadian organizations should track this tool's compliance status and data handling practices.",
+      "signal_headline": "Canadian Privacy Regulator Finds X Violated Privacy Law with Grok Deepfakes; Enforcement Order Issued",
+      "signal_date": "2026-06-11",
+      "source_url": "https://betakit.com/elon-musks-x-violated-canadian-privacy-law-with-grok-deepfakes-watchdog-finds/",
+      "flagged_at": "2026-06-11T16:37:17.049353",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-06-10T16:12:31.525624"
+  "updated": "2026-06-11T16:37:17.051202"
 }

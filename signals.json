@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jun 10, 2026 — 16:12 ET",
+    "lastUpdated": "Jun 11, 2026 — 16:37 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian Privacy Regulator Finds X Violated Privacy Law with Grok Deepfakes; Enforcement Order Issued",
+      "summary": "Canada's privacy watchdog determined that X (formerly Twitter) and its parent company xAI violated Canadian privacy law by using Grok to generate deepfake images. X and xAI have been ordered to submit quarterly compliance reports and engage third-party audits. This enforcement action establishes regulatory precedent for AI-generated synthetic media under Canadian privacy law.",
+      "type": "enforcement",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/elon-musks-x-violated-canadian-privacy-law-with-grok-deepfakes-watchdog-finds/",
+      "date": "2026-06-11",
+      "impact": "Canadian organizations using X/Grok services should review their data handling practices and deepfake detection policies in light of this enforcement decision. Public-sector organizations may need to reassess use of X as a communications platform.",
+      "dbUpdate": false
+    },
     {
       "headline": "Kneat Solutions acquired by Thoma Bravo in $650-million all-cash deal",
       "summary": "Canadian SaaS company Kneat Solutions has agreed to be acquired by US-based private equity firm Thoma Bravo in an all-cash transaction valued at approximately $650 million. This acquisition represents a change in control of a software platform used by Canadian organizations, with implications for data residency, support continuity, and vendor dependency under US PE ownership.",
