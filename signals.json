@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jun 11, 2026 — 16:37 ET",
+    "lastUpdated": "Jun 18, 2026 — 16:01 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Government of Canada Tables Bill C-36: Protecting Privacy and Consumer Data Act with Cross-Border Data Transfer Requirements",
+      "summary": "The federal government introduced Bill C-36, the Protecting Privacy and Consumer Data Act (PPCDA), which modernizes Canada's private-sector privacy framework and explicitly promotes data sovereignty by requiring organizations to assess and mitigate privacy risks before transferring personal information outside Canada. The legislation establishes a new Digital Safety and Data Protection Commission with enforcement authority, including penalties up to $25 million or 5% of global revenue, and transfers private-sector privacy enforcement away from the Privacy Commissioner.",
+      "type": "legislation",
+      "source": "Government of Canada",
+      "sourceUrl": "https://www.canada.ca/en/innovation-science-economic-development/news/2026/06/government-of-canada-introduces-legislation-to-protect-canadians-privacy-in-the-digital-age.html",
+      "date": "2026-06-16",
+      "impact": "All Canadian organizations handling personal information must begin assessing cross-border data transfer risks and documenting privacy impact mitigation strategies, as Bill C-36 will require explicit compliance with data residency and sovereignty requirements before passage into law.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian Privacy Regulator Finds X Violated Privacy Law with Grok Deepfakes; Enforcement Order Issued",
       "summary": "Canada's privacy watchdog determined that X (formerly Twitter) and its parent company xAI violated Canadian privacy law by using Grok to generate deepfake images. X and xAI have been ordered to submit quarterly compliance reports and engage third-party audits. This enforcement action establishes regulatory precedent for AI-generated synthetic media under Canadian privacy law.",
