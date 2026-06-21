@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Jun 18, 2026 — 16:01 ET",
+    "lastUpdated": "Jun 21, 2026 — 14:46 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Bill C-8 receives royal assent: Cybersecurity framework establishes breach reporting and data residency requirements for critical infrastructure",
+      "summary": "Bill C-8 received royal assent on June 16, 2026, establishing mandatory cybersecurity requirements for critical infrastructure operators and telecommunications service providers in Canada. The legislation mandates 72-hour breach reporting and includes data residency requirements that directly support Canadian data sovereignty objectives. These requirements create binding compliance obligations for operators of essential services.",
+      "type": "legislation",
+      "source": "Osler, Hoskin & Harcourt LLP",
+      "sourceUrl": "https://www.osler.com/en/insights/updates/canadas-bill-c-8-what-businesses-need-to-know-about-the-new-cybersecurity-framework/",
+      "date": "2026-06-17",
+      "impact": "Critical infrastructure operators and telecommunications service providers must implement 72-hour breach reporting procedures and ensure compliance with data residency requirements outlined in Bill C-8.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Bill C-22 raises data sovereignty concerns regarding U.S. law enforcement access through potential CLOUD Act agreements",
+      "summary": "Policy Options published analysis on June 16, 2026, identifying provisions in Bill C-22 that could enable U.S. law enforcement to access Canadian data through CLOUD Act mechanisms. The analysis highlights risks to Canadian data sovereignty from cross-border data access frameworks without explicit safeguards.",
+      "type": "legislation",
+      "source": "Policy Options",
+      "sourceUrl": "https://policyoptions.irpp.org/2026/06/bill-c22-us-access-canadian-data/",
+      "date": "2026-06-16",
+      "impact": "Canadian organizations storing data in U.S.-based systems should review Bill C-22's implications for cross-border data access and assess whether additional contractual protections are needed to mitigate U.S. government access risks.",
+      "dbUpdate": false
+    },
     {
       "headline": "Government of Canada Tables Bill C-36: Protecting Privacy and Consumer Data Act with Cross-Border Data Transfer Requirements",
       "summary": "The federal government introduced Bill C-36, the Protecting Privacy and Consumer Data Act (PPCDA), which modernizes Canada's private-sector privacy framework and explicitly promotes data sovereignty by requiring organizations to assess and mitigate privacy risks before transferring personal information outside Canada. The legislation establishes a new Digital Safety and Data Protection Commission with enforcement authority, including penalties up to $25 million or 5% of global revenue, and transfers private-sector privacy enforcement away from the Privacy Commissioner.",
