@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jun 21, 2026 — 14:46 ET",
+    "lastUpdated": "Jun 24, 2026 — 15:06 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "MDA Space acquires Raytheon Technologies' satellite operations for $620 million USD",
+      "summary": "MDA Space, a Canadian space technology company, acquired Raytheon Technologies' satellite manufacturing operations. This acquisition consolidates satellite capabilities under Canadian ownership and may affect data residency and control arrangements for Canadian government and commercial satellite programs.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/mda-space-to-buy-raytheons-satellite-maker-for-620-million-usd/",
+      "date": "2026-06-19",
+      "impact": "Canadian federal agencies and private organizations using satellite data services should assess whether this acquisition affects their data residency commitments, security certifications, or supply chain dependencies for critical space infrastructure.",
+      "dbUpdate": false
+    },
     {
       "headline": "Bill C-8 receives royal assent: Cybersecurity framework establishes breach reporting and data residency requirements for critical infrastructure",
       "summary": "Bill C-8 received royal assent on June 16, 2026, establishing mandatory cybersecurity requirements for critical infrastructure operators and telecommunications service providers in Canada. The legislation mandates 72-hour breach reporting and includes data residency requirements that directly support Canadian data sovereignty objectives. These requirements create binding compliance obligations for operators of essential services.",
