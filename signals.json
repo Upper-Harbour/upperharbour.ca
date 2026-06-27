@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jun 25, 2026 — 15:07 ET",
+    "lastUpdated": "Jun 27, 2026 — 14:17 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Saskatchewan Information and Privacy Commissioner Tables 2025-2026 Annual Report",
+      "summary": "Saskatchewan's Information and Privacy Commissioner has tabled the office's 2025-2026 Annual Report with the Legislative Assembly, highlighting ongoing work with rural municipalities on access to information legislation and requests. This report documents provincial compliance and guidance activities relevant to Saskatchewan organizations handling personal information.",
+      "type": "policy",
+      "source": "OIPC Saskatchewan",
+      "sourceUrl": "https://oipc.sk.ca/saskatchewan-information-and-privacy-commissioner-tables-2025-2026-annual-report/",
+      "date": "2026-06-25",
+      "impact": "Saskatchewan public-sector organizations and rural municipalities should review the annual report for updated guidance on access to information compliance and privacy practices.",
+      "dbUpdate": false
+    },
     {
       "headline": "Policy Options analysis identifies Canadian defence procurement ambiguity on software sourcing and CLOUD Act exposure",
       "summary": "A Policy Options analysis argues that Canada's defence procurement strategy lacks clear definitions for what qualifies as 'Canadian' software, creating a vulnerability where US-jurisdiction technology can be presented as domestic while remaining subject to the US CLOUD Act. This gap exposes Canadian defence institutions to unintended foreign legal claims over sensitive data.",
