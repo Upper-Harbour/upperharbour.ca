@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jun 27, 2026 — 14:17 ET",
+    "lastUpdated": "Jul 01, 2026 — 15:13 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "US Finance App SoFi Acquires Toronto FinTech Composer",
+      "summary": "SoFi, a US-based financial services platform, has acquired Composer, a Toronto-based FinTech company specializing in AI investing strategies. This acquisition places a Canadian software asset under US ownership and regulatory jurisdiction.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/us-finance-app-sofi-acquires-composer-to-add-ai-investing-strategies/",
+      "date": "2026-06-30",
+      "impact": "Canadian financial institutions and investors using Composer should verify data residency and compliance obligations under US parent company ownership and assess any changes to service terms or data handling practices.",
+      "dbUpdate": false
+    },
     {
       "headline": "Saskatchewan Information and Privacy Commissioner Tables 2025-2026 Annual Report",
       "summary": "Saskatchewan's Information and Privacy Commissioner has tabled the office's 2025-2026 Annual Report with the Legislative Assembly, highlighting ongoing work with rural municipalities on access to information legislation and requests. This report documents provincial compliance and guidance activities relevant to Saskatchewan organizations handling personal information.",

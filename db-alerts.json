@@ -155,7 +155,19 @@
       "source_url": "https://betakit.com/elon-musks-x-violated-canadian-privacy-law-with-grok-deepfakes-watchdog-finds/",
       "flagged_at": "2026-06-11T16:37:17.049353",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Composer",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"SoFi (US)\", \"jurisdiction\": \"United States\", \"category\": \"finance\", \"rationale\": \"Composer is a Canadian FinTech platform now under US ownership following acquisition by SoFi. Canadian financial organizations should track this tool due to changed jurisdictional control and potential implications for data residency and cross-border compliance.\"}",
+      "reason": "Composer is a Canadian FinTech platform now under US ownership following acquisition by SoFi. Canadian financial organizations should track this tool due to changed jurisdictional control and potential implications for data residency and cross-border compliance.",
+      "signal_headline": "US Finance App SoFi Acquires Toronto FinTech Composer",
+      "signal_date": "2026-06-30",
+      "source_url": "https://betakit.com/us-finance-app-sofi-acquires-composer-to-add-ai-investing-strategies/",
+      "flagged_at": "2026-07-01T15:13:24.912435",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-06-11T16:37:17.051202"
+  "updated": "2026-07-01T15:13:24.915420"
 }
