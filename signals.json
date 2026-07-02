@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 01, 2026 — 15:13 ET",
+    "lastUpdated": "Jul 02, 2026 — 14:37 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Calian Group Acquires Galaxy Broadband Communications, Expanding Canadian Defence Capabilities",
+      "summary": "Canadian defence contractor Calian Group has entered a definitive agreement to acquire Galaxy Broadband Communications, expanding its defence and connectivity capabilities amid increased Canadian defence spending. The acquisition strengthens a Canadian-controlled company's position in critical defence and communications infrastructure.",
+      "type": "acquisition",
+      "source": "Cantech Letter",
+      "sourceUrl": "https://www.cantechletter.com/2026/06/this-analyst-likes-calian-group-right-now-2/",
+      "date": "2026-06-29",
+      "impact": "Federal procurement officials should monitor Calian's expanded capabilities for Canadian defence and critical infrastructure projects, as the acquisition consolidates Canadian control of sensitive broadband and connectivity assets.",
+      "dbUpdate": false
+    },
     {
       "headline": "US Finance App SoFi Acquires Toronto FinTech Composer",
       "summary": "SoFi, a US-based financial services platform, has acquired Composer, a Toronto-based FinTech company specializing in AI investing strategies. This acquisition places a Canadian software asset under US ownership and regulatory jurisdiction.",
