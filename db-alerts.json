@@ -167,7 +167,19 @@
       "source_url": "https://betakit.com/us-finance-app-sofi-acquires-composer-to-add-ai-investing-strategies/",
       "flagged_at": "2026-07-01T15:13:24.912435",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Paystone",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Paystone (UK-based)\", \"jurisdiction\": \"United Kingdom\", \"category\": \"finance\", \"rationale\": \"Paystone provides payment processing services to Canadian organizations and is currently undergoing creditor protection proceedings, creating operational and ownership continuity risks that warrant tracking for Canadian data sovereignty purposes.\"}",
+      "reason": "Paystone provides payment processing services to Canadian organizations and is currently undergoing creditor protection proceedings, creating operational and ownership continuity risks that warrant tracking for Canadian data sovereignty purposes.",
+      "signal_headline": "Paystone enters creditor protection and pursues debt restructuring and sale",
+      "signal_date": "2026-07-03",
+      "source_url": "https://betakit.com/paystone-enters-creditor-protection-pursues-debt-restructuring-sale/",
+      "flagged_at": "2026-07-03T14:53:37.750921",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-01T15:13:24.915420"
+  "updated": "2026-07-03T14:53:37.753064"
 }

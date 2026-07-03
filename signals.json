@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 02, 2026 — 14:37 ET",
+    "lastUpdated": "Jul 03, 2026 — 14:53 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Paystone enters creditor protection and pursues debt restructuring and sale",
+      "summary": "Paystone, a London-based fintech firm, has entered creditor protection proceedings and is pursuing debt restructuring and asset sale. The company's distress follows a debt-fuelled acquisition spree and internal billing errors. The outcome of the restructuring process and potential change of ownership creates uncertainty for Canadian organizations using Paystone's payment processing services.",
+      "type": "vendor",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/paystone-enters-creditor-protection-pursues-debt-restructuring-sale/",
+      "date": "2026-07-03",
+      "impact": "Canadian organizations using Paystone for payment processing should monitor the restructuring process and prepare contingency plans for potential service discontinuation or change of ownership.",
+      "dbUpdate": false
+    },
     {
       "headline": "Calian Group Acquires Galaxy Broadband Communications, Expanding Canadian Defence Capabilities",
       "summary": "Canadian defence contractor Calian Group has entered a definitive agreement to acquire Galaxy Broadband Communications, expanding its defence and connectivity capabilities amid increased Canadian defence spending. The acquisition strengthens a Canadian-controlled company's position in critical defence and communications infrastructure.",
