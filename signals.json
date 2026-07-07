@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 03, 2026 — 14:53 ET",
+    "lastUpdated": "Jul 07, 2026 — 15:12 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Federal government revamps procurement rules to prioritize Canadian small businesses",
+      "summary": "The Government of Canada has implemented a revamped procurement framework, including a new Small Business Procurement Program, designed to make it easier for federal departments to procure from Canadian small businesses. This policy change affects federal procurement standards and vendor eligibility.",
+      "type": "procurement",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/feds-revamp-procurement-rules-to-make-it-easier-to-buy-from-canadian-small-businesses/",
+      "date": "2026-07-06",
+      "impact": "Canadian small businesses and technology vendors should review updated federal procurement eligibility criteria and processes. Federal departments must update procurement documentation to reflect the new Small Business Procurement Program rules.",
+      "dbUpdate": false
+    },
     {
       "headline": "Paystone enters creditor protection and pursues debt restructuring and sale",
       "summary": "Paystone, a London-based fintech firm, has entered creditor protection proceedings and is pursuing debt restructuring and asset sale. The company's distress follows a debt-fuelled acquisition spree and internal billing errors. The outcome of the restructuring process and potential change of ownership creates uncertainty for Canadian organizations using Paystone's payment processing services.",
