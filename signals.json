@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 07, 2026 — 15:12 ET",
+    "lastUpdated": "Jul 08, 2026 — 14:50 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "AWS and Wiz offer IRAP readiness acceleration for Canadian public sector",
+      "summary": "AWS and Wiz have published guidance on preparing infrastructure for IRAP (Information Security Evaluation and Authorization Program) compliance, the Canadian government's security authorization framework. This targets Canadian public sector organizations using AWS services seeking to meet federal security requirements.",
+      "type": "vendor",
+      "source": "AWS Public Sector",
+      "sourceUrl": "https://aws.amazon.com/blogs/publicsector/accelerate-irap-readiness-with-aws-and-wiz/",
+      "date": "2026-07-06",
+      "impact": "Canadian federal departments and public sector organizations using AWS should review this guidance to ensure their infrastructure configurations align with IRAP security requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "Federal government revamps procurement rules to prioritize Canadian small businesses",
       "summary": "The Government of Canada has implemented a revamped procurement framework, including a new Small Business Procurement Program, designed to make it easier for federal departments to procure from Canadian small businesses. This policy change affects federal procurement standards and vendor eligibility.",

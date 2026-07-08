@@ -179,7 +179,19 @@
       "source_url": "https://betakit.com/paystone-enters-creditor-protection-pursues-debt-restructuring-sale/",
       "flagged_at": "2026-07-03T14:53:37.750921",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Wiz",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Wiz Inc.\", \"jurisdiction\": \"United States\", \"category\": \"devtools\", \"rationale\": \"Wiz is a cloud security platform being promoted for IRAP compliance acceleration in Canada's public sector. Canadian government organizations may be evaluating or adopting this tool for infrastructure security validation.\"}",
+      "reason": "Wiz is a cloud security platform being promoted for IRAP compliance acceleration in Canada's public sector. Canadian government organizations may be evaluating or adopting this tool for infrastructure security validation.",
+      "signal_headline": "AWS and Wiz offer IRAP readiness acceleration for Canadian public sector",
+      "signal_date": "2026-07-06",
+      "source_url": "https://aws.amazon.com/blogs/publicsector/accelerate-irap-readiness-with-aws-and-wiz/",
+      "flagged_at": "2026-07-08T14:50:32.514190",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-03T14:53:37.753064"
+  "updated": "2026-07-08T14:50:32.516267"
 }
