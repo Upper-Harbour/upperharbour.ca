@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 08, 2026 — 14:50 ET",
+    "lastUpdated": "Jul 09, 2026 — 15:56 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Alberta OIPC publishes guidance on provincial driver's licence and ID card data handling changes",
+      "summary": "Alberta's Office of the Information and Privacy Commissioner has published three guidance documents addressing privacy implications of provincial changes to driver's licences and ID cards. The guidance is directed at private sector organizations, public bodies, and the public, indicating material changes to how personal identification data is collected, stored, or used within Alberta's jurisdiction.",
+      "type": "policy",
+      "source": "OIPC Alberta",
+      "sourceUrl": "https://oipc.ab.ca/guidance-published-by-the-office-of-the-information-and-privacy-commissioner-for-private-sector-organizations-public-bodies-and-the-public-regarding-provincial-government-changes-to-drivers/",
+      "date": "2026-07-02",
+      "impact": "Alberta-based organizations handling driver's licence or ID card data—particularly financial institutions, retailers, and government agencies—should review the OIPC guidance documents to ensure compliance with updated privacy obligations.",
+      "dbUpdate": false
+    },
     {
       "headline": "AWS and Wiz offer IRAP readiness acceleration for Canadian public sector",
       "summary": "AWS and Wiz have published guidance on preparing infrastructure for IRAP (Information Security Evaluation and Authorization Program) compliance, the Canadian government's security authorization framework. This targets Canadian public sector organizations using AWS services seeking to meet federal security requirements.",
