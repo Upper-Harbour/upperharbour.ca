@@ -191,7 +191,19 @@
       "source_url": "https://aws.amazon.com/blogs/publicsector/accelerate-irap-readiness-with-aws-and-wiz/",
       "flagged_at": "2026-07-08T14:50:32.514190",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Assent",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Assent (privately held)\", \"jurisdiction\": \"Canada\", \"category\": \"compliance\", \"rationale\": \"Assent is a Canadian supply chain compliance platform now expanding through European acquisition; Canadian enterprises may use it for supply chain governance and should track its jurisdictional footprint and data handling practices.\"}",
+      "reason": "Assent is a Canadian supply chain compliance platform now expanding through European acquisition; Canadian enterprises may use it for supply chain governance and should track its jurisdictional footprint and data handling practices.",
+      "signal_headline": "Canadian firm Assent acquires German compliance platform IPoint",
+      "signal_date": "2026-07-09",
+      "source_url": "https://betakit.com/assent-makes-first-acquisition-deal-with-purchase-of-german-firm-ipoint/",
+      "flagged_at": "2026-07-10T15:14:18.936850",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-08T14:50:32.516267"
+  "updated": "2026-07-10T15:14:18.939006"
 }

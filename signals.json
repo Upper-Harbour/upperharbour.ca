@@ -1,9 +1,39 @@
 {
   "meta": {
-    "lastUpdated": "Jul 09, 2026 — 15:56 ET",
+    "lastUpdated": "Jul 10, 2026 — 15:14 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Canadian firm Assent acquires German compliance platform IPoint",
+      "summary": "Assent, an Ottawa-based supply chain compliance company, has acquired IPoint, a German firm. This acquisition expands Assent's capabilities in a sector relevant to Canadian organizations managing supply chain data and compliance obligations. The move may affect how Canadian enterprises evaluate Assent's data residency and operational jurisdiction.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/assent-makes-first-acquisition-deal-with-purchase-of-german-firm-ipoint/",
+      "date": "2026-07-09",
+      "impact": "Canadian organizations using or evaluating Assent should confirm whether this acquisition affects data residency commitments or introduces EU-based processing.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "MDA Space to acquire majority stake in French satellite company",
+      "summary": "MDA Space, a Canadian space technology firm, is acquiring a majority stake in a French satellite company for €567 million. This transaction consolidates space-based geospatial intelligence capabilities under Canadian ownership and may affect data residency and processing jurisdiction for satellite imagery and related services used by Canadian government and enterprise customers.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/mda-space-will-buy-567-million-euro-majority-stake-in-french-satellite-company/",
+      "date": "2026-07-09",
+      "impact": "Canadian federal and provincial agencies using MDA Space satellite services or data should assess whether this acquisition alters data residency terms or processing jurisdiction for sensitive geospatial intelligence.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Canadian digital sovereignty vendors face procurement approval barriers",
+      "summary": "Canadian firms offering digital sovereignty solutions report difficulties gaining approval for use in government and enterprise procurement processes. This policy-level friction indicates a potential gap between supply-side readiness and demand-side institutional readiness for domestically-sourced sovereignty tools.",
+      "type": "policy",
+      "source": "The Logic",
+      "sourceUrl": "https://thelogic.co/news/canadian-firms-digital-sovereignty-challenge/",
+      "date": "2026-07-09",
+      "impact": "Federal and provincial procurement teams should review vendor approval criteria to ensure they do not unnecessarily exclude Canadian digital sovereignty vendors from consideration.",
+      "dbUpdate": false
+    },
     {
       "headline": "Alberta OIPC publishes guidance on provincial driver's licence and ID card data handling changes",
       "summary": "Alberta's Office of the Information and Privacy Commissioner has published three guidance documents addressing privacy implications of provincial changes to driver's licences and ID cards. The guidance is directed at private sector organizations, public bodies, and the public, indicating material changes to how personal identification data is collected, stored, or used within Alberta's jurisdiction.",
