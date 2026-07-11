@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-06-05T06:42:17.867318+00:00",
-  "count": 768,
+  "generated_at": "2026-07-11T02:00:36.046933+00:00",
+  "count": 769,
   "fields": [
     "name",
     "parent",
@@ -11593,6 +11593,20 @@
         "healthcare"
       ],
       "slug": "augure"
+    },
+    {
+      "name": "Coherix-Cloud",
+      "parent": "Systèmes de cohérence Coherix inc.",
+      "hq": "Quebec, Canada",
+      "jurisdiction": "Canada",
+      "cloudAct": false,
+      "dataResidency": "AWS Canada (vendor-claimed client-side E2EE, client-held keys)",
+      "risk": "review",
+      "category": "security",
+      "industries": [
+        "technology"
+      ],
+      "slug": "coherix-cloud"
     }
   ]
 }
