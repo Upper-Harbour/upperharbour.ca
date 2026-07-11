@@ -203,7 +203,19 @@
       "source_url": "https://betakit.com/assent-makes-first-acquisition-deal-with-purchase-of-german-firm-ipoint/",
       "flagged_at": "2026-07-10T15:14:18.936850",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "ConsentPixel",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"\", \"jurisdiction\": \"\", \"category\": \"compliance\", \"rationale\": \"ConsentPixel is a consent management platform addressing PIPEDA, CASL, and Quebec Law 25 compliance. Canadian organizations using this tool for cookie and tracking consent should be monitored for jurisdiction of parent company and data residency practices.\"}",
+      "reason": "ConsentPixel is a consent management platform addressing PIPEDA, CASL, and Quebec Law 25 compliance. Canadian organizations using this tool for cookie and tracking consent should be monitored for jurisdiction of parent company and data residency practices.",
+      "signal_headline": "ConsentPixel guidance on Canada Cookie Compliance 2026: PIPEDA, CASL & Quebec Law 25",
+      "signal_date": "2026-07-06",
+      "source_url": "https://consentpixel.com/blogs/canada-cookie-compliance-law-25-pipeda/",
+      "flagged_at": "2026-07-11T13:54:25.196172",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-10T15:14:18.939006"
+  "updated": "2026-07-11T13:54:25.198295"
 }

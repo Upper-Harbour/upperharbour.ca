@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 10, 2026 — 15:14 ET",
+    "lastUpdated": "Jul 11, 2026 — 13:54 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "ConsentPixel guidance on Canada Cookie Compliance 2026: PIPEDA, CASL & Quebec Law 25",
+      "summary": "ConsentPixel has published compliance guidance addressing Law 25's explicit opt-in tracking requirements and the cross-border enforcement authority of Quebec's Commission d'accès à l'information. Law 25 is identified as North America's strictest privacy standard with penalties up to CAD $25 million or 4% of worldwide turnover, creating material compliance obligations for Canadian and international organizations processing Quebec resident data.",
+      "type": "policy",
+      "source": "ConsentPixel",
+      "sourceUrl": "https://consentpixel.com/blogs/canada-cookie-compliance-law-25-pipeda/",
+      "date": "2026-07-06",
+      "impact": "All Canadian organizations and international companies collecting data from Quebec residents must review their consent management and tracking practices against Law 25 requirements and ensure compliance with explicit opt-in mandates.",
+      "dbUpdate": false
+    },
     {
       "headline": "Canadian firm Assent acquires German compliance platform IPoint",
       "summary": "Assent, an Ottawa-based supply chain compliance company, has acquired IPoint, a German firm. This acquisition expands Assent's capabilities in a sector relevant to Canadian organizations managing supply chain data and compliance obligations. The move may affect how Canadian enterprises evaluate Assent's data residency and operational jurisdiction.",
