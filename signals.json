@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 11, 2026 — 13:54 ET",
+    "lastUpdated": "Jul 14, 2026 — 14:19 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "TouchBistro acquired by Constellation Software subsidiary Harris Computer",
+      "summary": "Harris Computer, a subsidiary of Canadian firm Constellation Software, acquired Toronto-based restaurant technology company TouchBistro for $100 million. This acquisition consolidates a Canadian-developed SaaS tool under Canadian ownership, with potential implications for data residency and control of Canadian point-of-sale systems used by restaurant operators.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/touchbistro-acquired-by-subsidiary-of-constellation-software/",
+      "date": "2026-07-13",
+      "impact": "Canadian restaurant operators using TouchBistro should confirm data residency and privacy terms under Constellation Software ownership to ensure compliance with Canadian data sovereignty requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "ConsentPixel guidance on Canada Cookie Compliance 2026: PIPEDA, CASL & Quebec Law 25",
       "summary": "ConsentPixel has published compliance guidance addressing Law 25's explicit opt-in tracking requirements and the cross-border enforcement authority of Quebec's Commission d'accès à l'information. Law 25 is identified as North America's strictest privacy standard with penalties up to CAD $25 million or 4% of worldwide turnover, creating material compliance obligations for Canadian and international organizations processing Quebec resident data.",

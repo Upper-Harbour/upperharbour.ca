@@ -215,7 +215,19 @@
       "source_url": "https://consentpixel.com/blogs/canada-cookie-compliance-law-25-pipeda/",
       "flagged_at": "2026-07-11T13:54:25.196172",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "TouchBistro",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Constellation Software\", \"jurisdiction\": \"Canada\", \"category\": \"productivity\", \"rationale\": \"TouchBistro is a Canadian-origin SaaS tool now owned by Canadian parent Constellation Software. Its use in Canadian restaurants and hospitality operations makes it relevant for sovereignty tracking, particularly given its role in managing customer and operational data.\"}",
+      "reason": "TouchBistro is a Canadian-origin SaaS tool now owned by Canadian parent Constellation Software. Its use in Canadian restaurants and hospitality operations makes it relevant for sovereignty tracking, particularly given its role in managing customer and operational data.",
+      "signal_headline": "TouchBistro acquired by Constellation Software subsidiary Harris Computer",
+      "signal_date": "2026-07-13",
+      "source_url": "https://betakit.com/touchbistro-acquired-by-subsidiary-of-constellation-software/",
+      "flagged_at": "2026-07-14T14:19:29.945658",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-11T13:54:25.198295"
+  "updated": "2026-07-14T14:19:29.947819"
 }
