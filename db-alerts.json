@@ -227,7 +227,19 @@
       "source_url": "https://betakit.com/touchbistro-acquired-by-subsidiary-of-constellation-software/",
       "flagged_at": "2026-07-14T14:19:29.945658",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "DeepInfra",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"DeepInfra (US-incorporated)\", \"jurisdiction\": \"United States\", \"category\": \"ai\", \"rationale\": \"US-based AI inference platform with new Canadian data center operations. CLOUD Act jurisdiction despite Canadian data residency creates direct sovereignty implications for Canadian organizations evaluating this vendor.\"}",
+      "reason": "US-based AI inference platform with new Canadian data center operations. CLOUD Act jurisdiction despite Canadian data residency creates direct sovereignty implications for Canadian organizations evaluating this vendor.",
+      "signal_headline": "DeepInfra launches Toronto data center for AI inference; US jurisdiction creates sovereignty gap despite Canadian data residency",
+      "signal_date": "2026-07-11",
+      "source_url": "https://www.techtimes.com/articles/320156/20260711/deepinfra-brings-blackwell-inference-canada-data-residency-gain-sovereignty-gap.htm",
+      "flagged_at": "2026-07-18T13:50:50.950232",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-14T14:19:29.947819"
+  "updated": "2026-07-18T13:50:50.952538"
 }

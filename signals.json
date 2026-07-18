@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Jul 14, 2026 — 14:19 ET",
+    "lastUpdated": "Jul 18, 2026 — 13:50 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "DeepInfra launches Toronto data center for AI inference; US jurisdiction creates sovereignty gap despite Canadian data residency",
+      "summary": "DeepInfra, a US-incorporated AI inference startup, opened its first international data center in Toronto on July 8, 2026, offering Canadian developers access to Blackwell-generation GPU inference on Canadian soil. While the physical data residency in Canada is a gain, Canadian organizations must account for CLOUD Act jurisdiction over the US parent company when assessing sovereignty compliance and data security.",
+      "type": "vendor",
+      "source": "TechTimes",
+      "sourceUrl": "https://www.techtimes.com/articles/320156/20260711/deepinfra-brings-blackwell-inference-canada-data-residency-gain-sovereignty-gap.htm",
+      "date": "2026-07-11",
+      "impact": "Canadian AI development teams and public-sector organizations considering DeepInfra for inference workloads should conduct CLOUD Act risk assessments and verify whether US legal process authority over the parent company is acceptable under their data governance frameworks.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Foreign-owned firms dominate Buy Canadian procurement contracts to date",
+      "summary": "An analysis published July 14, 2026 found that foreign-owned companies have captured the majority of contracts under Canada's Buy Canadian procurement policy to date. This indicates a potential gap between procurement intent and execution outcomes in supporting Canadian technology vendors and data sovereignty objectives.",
+      "type": "policy",
+      "source": "The Logic",
+      "sourceUrl": "https://thelogic.co/news/buy-canadian-contracts-procurement/",
+      "date": "2026-07-14",
+      "impact": "Federal and provincial procurement teams should audit their Buy Canadian contract awards to identify barriers to awarding work to Canadian-owned vendors and assess whether foreign ownership in awarded contracts creates data residency or sovereignty risks.",
+      "dbUpdate": false
+    },
     {
       "headline": "TouchBistro acquired by Constellation Software subsidiary Harris Computer",
       "summary": "Harris Computer, a subsidiary of Canadian firm Constellation Software, acquired Toronto-based restaurant technology company TouchBistro for $100 million. This acquisition consolidates a Canadian-developed SaaS tool under Canadian ownership, with potential implications for data residency and control of Canadian point-of-sale systems used by restaurant operators.",
