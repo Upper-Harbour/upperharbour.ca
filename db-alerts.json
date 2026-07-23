@@ -239,7 +239,19 @@
       "source_url": "https://www.techtimes.com/articles/320156/20260711/deepinfra-brings-blackwell-inference-canada-data-residency-gain-sovereignty-gap.htm",
       "flagged_at": "2026-07-18T13:50:50.950232",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Ginger Desk",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"Jane App\", \"jurisdiction\": \"Canada\", \"category\": \"healthcare\", \"rationale\": \"Now owned by Canadian healthcare software vendor Jane App; Canadian clinics may use this tool and should understand its new parent company control and data residency implications.\"}",
+      "reason": "Now owned by Canadian healthcare software vendor Jane App; Canadian clinics may use this tool and should understand its new parent company control and data residency implications.",
+      "signal_headline": "Jane App acquires clinic software startup Ginger Desk",
+      "signal_date": "2026-07-22",
+      "source_url": "https://betakit.com/jane-app-acquires-clinic-software-startup-ginger-desk/",
+      "flagged_at": "2026-07-23T14:37:10.211507",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-18T13:50:50.952538"
+  "updated": "2026-07-23T14:37:10.213798"
 }
