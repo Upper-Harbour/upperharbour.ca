@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 23, 2026 — 14:37 ET",
+    "lastUpdated": "Jul 24, 2026 — 14:18 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Clio launches AI legal workspace in Canada using domestically-built model",
+      "summary": "Clio, a Canadian legal software company, has released an AI-powered legal workspace built on Canadian case law data from its Jurisage acquisition. The product is positioned as purpose-built for the Canadian legal market, with implications for data residency and domestic AI model development within the legal tech sector.",
+      "type": "vendor",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/clios-ai-assistant-for-legal-work-comes-to-canada/",
+      "date": "2026-07-23",
+      "impact": "Canadian law firms and legal service providers should evaluate Clio's AI workspace as a sovereignty-aligned alternative to foreign-built legal AI tools, particularly where client data residency is a compliance requirement.",
+      "dbUpdate": false
+    },
     {
       "headline": "Jane App acquires clinic software startup Ginger Desk",
       "summary": "Jane App, a Canadian healthcare software unicorn, has acquired Ginger Desk, a clinic management software startup. This is Jane App's first public acquisition and consolidates clinic workflow tools under a single Canadian-controlled vendor. Canadian healthcare organizations using either platform should monitor for integration timelines and any changes to data handling practices.",
