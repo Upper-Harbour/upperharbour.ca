@@ -379,7 +379,7 @@
         <p>Quebec organizations using Asana must complete a <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Transfer Impact Assessment</a>. The TIA is straightforward but unfavorable: US-incorporated company, no Canadian data residency, data stored in the US by default. The only partial mitigation available is EKM (Enterprise+ only). <strong>Penalties for non-compliance with Law 25 can reach $25 million or 4% of worldwide turnover.</strong> Upper Harbour provides <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">compliance-ready TIA documentation</a> starting at $99.</p>
 
         <h3>Alberta POPA</h3>
-        <p>Alberta public bodies deploying Asana must complete a PIA using the mandatory OIPC template. Section G requires documentation of Asana's US incorporation and CLOUD Act status. Section H2, Risk 7 requires explicit assessment of CLOUD Act exposure. Since no Canadian data residency is available, the risk assessment must document acceptance of full US jurisdictional exposure with no technical mitigation. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 768-tool database.</p>
+        <p>Alberta public bodies deploying Asana must complete a PIA using the mandatory OIPC template. Section G requires documentation of Asana's US incorporation and CLOUD Act status. Section H2, Risk 7 requires explicit assessment of CLOUD Act exposure. Since no Canadian data residency is available, the risk assessment must document acceptance of full US jurisdictional exposure with no technical mitigation. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 780-tool database.</p>
 
         <h3>BC FIPPA</h3>
         <p>BC public bodies using Asana for personal information must complete a <a href="/resources/fippa-pia-template" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Privacy Impact Assessment</a>. The absence of Canadian data residency means both jurisdictional and residency risk are elevated. <a href="/resources/fippa-saas-compliance-bc-public-bodies" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Full FIPPA SaaS compliance guide →</a></p>
@@ -390,7 +390,7 @@
     </div>
 
     <!-- ═══ URGENCY BRIDGE ═══ -->
-    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Asana is one of <span id="counter-768">768</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. Most Canadian organizations use 15–30 SaaS products. If your compliance obligations require documenting Asana's jurisdictional exposure, they extend to every tool in your stack that processes personal information. <strong>For organizations handling personal information in project management, the recommended approach is to evaluate tools with Canadian data residency</strong> — and document your determination in your compliance records.</p>
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Asana is one of <span id="counter-768">780</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. Most Canadian organizations use 15–30 SaaS products. If your compliance obligations require documenting Asana's jurisdictional exposure, they extend to every tool in your stack that processes personal information. <strong>For organizations handling personal information in project management, the recommended approach is to evaluate tools with Canadian data residency</strong> — and document your determination in your compliance records.</p>
 
     <!-- ═══ MID-PAGE CTA ═══ -->
     <div class="mid-cta reveal">
@@ -556,19 +556,19 @@
     },delay);
   } else if(scoreEl){scoreEl.textContent='7.8 / 10';}
 
-  // Counter animation — "768" counts up on scroll
+  // Counter animation — "780" counts up on scroll
   var counted=false;
   var counterObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting&&!counted){
         counted=true;
-        var el=e.target,target=768,start=0,dur=1600,t0=null;
+        var el=e.target,target=780,start=0,dur=1600,t0=null;
         function step(ts){
           if(!t0)t0=ts;
           var p=Math.min((ts-t0)/dur,1);
           var ease=1-Math.pow(1-p,3);
           el.textContent=Math.floor(start+(target-start)*ease);
-          if(p<1)requestAnimationFrame(step);else el.textContent='768';
+          if(p<1)requestAnimationFrame(step);else el.textContent='780';
         }
         requestAnimationFrame(step);
         counterObs.unobserve(e.target);

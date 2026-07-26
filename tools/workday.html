@@ -360,7 +360,7 @@
       </div>
     </div>
 
-    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Workday is one of <span id="counter-768">768</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. If your HR system is CLOUD Act exposed, your other sensitive tools likely are too. <strong>Map the full stack.</strong></p>
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Workday is one of <span id="counter-768">780</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. If your HR system is CLOUD Act exposed, your other sensitive tools likely are too. <strong>Map the full stack.</strong></p>
 
     <div class="mid-cta reveal">
       <div class="mid-cta-text">Map your entire SaaS stack to parent jurisdictions and CLOUD Act exposure in 10 minutes.</div>
@@ -477,19 +477,19 @@
     },delay);
   } else if(scoreEl){scoreEl.textContent='7.8 / 10';}
 
-  // Counter animation — "768" counts up on scroll
+  // Counter animation — "780" counts up on scroll
   var counted=false;
   var counterObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting&&!counted){
         counted=true;
-        var el=e.target,target=768,start=0,dur=1600,t0=null;
+        var el=e.target,target=780,start=0,dur=1600,t0=null;
         function step(ts){
           if(!t0)t0=ts;
           var p=Math.min((ts-t0)/dur,1);
           var ease=1-Math.pow(1-p,3);
           el.textContent=Math.floor(start+(target-start)*ease);
-          if(p<1)requestAnimationFrame(step);else el.textContent='768';
+          if(p<1)requestAnimationFrame(step);else el.textContent='780';
         }
         requestAnimationFrame(step);
         counterObs.unobserve(e.target);

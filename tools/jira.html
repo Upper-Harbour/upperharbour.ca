@@ -390,7 +390,7 @@
         <p>Quebec organizations using Jira must complete a <a href="/resources/transfer-impact-assessments-law-25" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Transfer Impact Assessment</a>. The TIA should document: Atlassian's US incorporation and CLOUD Act status, the availability and configuration of Canadian data residency as a partial mitigation, whether CMK or BYOK encryption is enabled, and the data residency status of each Marketplace app in use. Upper Harbour provides <a href="/comply" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">compliance-ready TIA documentation</a> starting at $99.</p>
 
         <h3>Alberta POPA</h3>
-        <p>Alberta public bodies deploying Jira must complete a PIA using the mandatory OIPC template. Section G requires documentation of Atlassian's corporate jurisdiction and CLOUD Act status. Section H2, Risk 7 explicitly asks about CLOUD Act and USA PATRIOT Act exposure. The availability of Canadian data residency should be documented as a mitigation, along with its limitations. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 768-tool database.</p>
+        <p>Alberta public bodies deploying Jira must complete a PIA using the mandatory OIPC template. Section G requires documentation of Atlassian's corporate jurisdiction and CLOUD Act status. Section H2, Risk 7 explicitly asks about CLOUD Act and USA PATRIOT Act exposure. The availability of Canadian data residency should be documented as a mitigation, along with its limitations. The <a href="/alberta-pia" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">PIA Research Tool</a> generates these answers automatically from our 780-tool database.</p>
 
         <h3>BC FIPPA</h3>
         <p>BC public bodies using Jira for personal information must complete a <a href="/resources/fippa-pia-template" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Privacy Impact Assessment</a>. The availability of Canadian data residency in Jira is a meaningful factor — it reduces data residency risk but does not eliminate jurisdictional risk. <a href="/resources/fippa-saas-compliance-bc-public-bodies" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Full FIPPA SaaS compliance guide →</a></p>
@@ -398,7 +398,7 @@
     </div>
 
     <!-- ═══ URGENCY BRIDGE ═══ -->
-    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Jira is one of <span id="counter-768">768</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. If you use Jira, you almost certainly use other Atlassian products (Confluence, Jira Service Management, Trello, Bitbucket) — all under the same US parent. And your stack likely includes another 15–30 SaaS tools from other vendors. Each one carries its own jurisdictional exposure.</p>
+    <p class="reveal" style="font-size:15px;color:var(--slate);line-height:1.8;margin-top:20px;">Jira is one of <span id="counter-768">780</span> tools in the <a href="/tools" style="color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(60,184,176,0.3);">Upper Harbour Sovereignty Index</a>. If you use Jira, you almost certainly use other Atlassian products (Confluence, Jira Service Management, Trello, Bitbucket) — all under the same US parent. And your stack likely includes another 15–30 SaaS tools from other vendors. Each one carries its own jurisdictional exposure.</p>
 
     <!-- ═══ MID-PAGE CTA ═══ -->
     <div class="mid-cta reveal">
@@ -568,19 +568,19 @@
     },delay);
   } else if(scoreEl){scoreEl.textContent='6.2 / 10';}
 
-  // Counter animation — "768" counts up on scroll
+  // Counter animation — "780" counts up on scroll
   var counted=false;
   var counterObs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
       if(e.isIntersecting&&!counted){
         counted=true;
-        var el=e.target,target=768,start=0,dur=1600,t0=null;
+        var el=e.target,target=780,start=0,dur=1600,t0=null;
         function step(ts){
           if(!t0)t0=ts;
           var p=Math.min((ts-t0)/dur,1);
           var ease=1-Math.pow(1-p,3);
           el.textContent=Math.floor(start+(target-start)*ease);
-          if(p<1)requestAnimationFrame(step);else el.textContent='768';
+          if(p<1)requestAnimationFrame(step);else el.textContent='780';
         }
         requestAnimationFrame(step);
         counterObs.unobserve(e.target);

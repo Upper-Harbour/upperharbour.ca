@@ -11,13 +11,13 @@
   gtag('config', 'G-3KSW0FVBL1');
 </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Canadian Technology Sovereignty Index — 768 Tools Mapped by Jurisdiction | Upper Harbour</title>
-  <meta name="description" content="Search 768 SaaS and cloud infrastructure tools mapped to parent jurisdiction, CLOUD Act exposure, and Canadian data residency. The definitive sovereignty lookup for Law 25 and PIPEDA compliance." />
+  <title>Canadian Technology Sovereignty Index — 780 Tools Mapped by Jurisdiction | Upper Harbour</title>
+  <meta name="description" content="Search 780 SaaS and cloud infrastructure tools mapped to parent jurisdiction, CLOUD Act exposure, and Canadian data residency. The definitive sovereignty lookup for Law 25 and PIPEDA compliance." />
   <link rel="canonical" href="https://www.upperharbour.ca/tools" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
-  <meta property="og:title" content="Canadian Technology Sovereignty Index — 768 Tools Mapped by Jurisdiction" />
-  <meta property="og:description" content="Search 768 SaaS and cloud infrastructure tools mapped to parent jurisdiction, CLOUD Act exposure, and Canadian data residency. Free sovereignty lookup." />
+  <meta property="og:title" content="Canadian Technology Sovereignty Index — 780 Tools Mapped by Jurisdiction" />
+  <meta property="og:description" content="Search 780 SaaS and cloud infrastructure tools mapped to parent jurisdiction, CLOUD Act exposure, and Canadian data residency. Free sovereignty lookup." />
   <meta property="og:image" content="https://www.upperharbour.ca/assets/og-image.png" />
   <meta property="og:url" content="https://www.upperharbour.ca/tools" />
   <meta property="og:type" content="website" />
@@ -218,7 +218,7 @@
   <div class="hero">
     <div class="hero-eyebrow">Canadian Technology Sovereignty Index</div>
     <h1>Every tool. Every jurisdiction. <em>Every risk.</em></h1>
-    <p class="hero-sub"><span id="heroTotal">768</span> SaaS and infrastructure tools mapped to ownership, jurisdiction, and CLOUD Act exposure. The sovereignty reference for Canadian organizations.</p>
+    <p class="hero-sub"><span id="heroTotal">780</span> SaaS and infrastructure tools mapped to ownership, jurisdiction, and CLOUD Act exposure. The sovereignty reference for Canadian organizations.</p>
     <div class="hero-meta">
       <div class="hero-meta-item">Tools tracked: <strong id="metaTotal">—</strong></div>
       <div class="hero-meta-item">Last updated: <strong id="metaUpdated">—</strong></div>
@@ -238,7 +238,7 @@
     <div style="background:var(--surface);border:1px solid var(--border-md);border-top:none;border-radius:0 0 8px 8px;padding:24px;">
       <div class="search-wrap" style="max-width:100%;margin-bottom:14px;">
         <svg class="search-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="left:20px;"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" id="toolSearch" aria-label="Search tools" placeholder="Search 768 tools — try Slack, Salesforce, Clio, Zoom…" autocomplete="off" style="font-size:18px;padding:20px 24px 20px 56px;background:var(--midnight);border:1px solid rgba(60,184,176,0.2);border-radius:8px;width:100%;" />
+        <input type="text" id="toolSearch" aria-label="Search tools" placeholder="Search 780 tools — try Slack, Salesforce, Clio, Zoom…" autocomplete="off" style="font-size:18px;padding:20px 24px 20px 56px;background:var(--midnight);border:1px solid rgba(60,184,176,0.2);border-radius:8px;width:100%;" />
       </div>
       <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;">
         <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
@@ -291,7 +291,7 @@
         <div class="lookup-gate-eyebrow">5 / 5 tools previewed</div>
         <h2 class="lookup-gate-title">Unlock the full Sovereignty Index.</h2>
         <p class="lookup-gate-body">
-          Enter your email and we'll send you a one-time link to unlock the full database — <strong style="color:var(--ice);font-weight:600;">768 tools</strong>, hand-classified against CLOUD Act exposure, parent jurisdiction, and Canadian data residency — on this browser. No password, no account.
+          Enter your email and we'll send you a one-time link to unlock the full database — <strong style="color:var(--ice);font-weight:600;">780 tools</strong>, hand-classified against CLOUD Act exposure, parent jurisdiction, and Canadian data residency — on this browser. No password, no account.
         </p>
         <form class="lookup-gate-form" id="lookupGateForm" onsubmit="submitLookupGate(event)">
           <input type="email" id="lookupGateEmail" placeholder="you@yourorg.ca" required autocomplete="email" />
@@ -527,7 +527,7 @@
     // view; users see vendor + parent + jurisdiction + CLOUD-Act
     // boolean, but not Upper Harbour's editorial risk call.
     //
-    // Public snapshot at /assets/saas-db-public.json: all 768 tools
+    // Public snapshot at /assets/saas-db-public.json: all 780 tools
     // with the `risk` classification visible. The `note` field
     // (research methodology + classification reasoning — the actual
     // editorial layer) is stripped from this snapshot and only
@@ -730,7 +730,7 @@
       t.classList.add('visible');
       setTimeout(function() { t.classList.remove('visible'); }, 3200);
     }
-    // Fetch the full 768-tool snapshot from /api/snapshot using the
+    // Fetch the full 780-tool snapshot from /api/snapshot using the
     // access_token in localStorage as Bearer credentials. Replaces
     // the in-memory saasDB and re-renders. No-op if no access_token
     // (anonymous visitors stay on the 8-tool featured slice).
@@ -759,7 +759,7 @@
           if (!data || !Array.isArray(data.tools)) return false;
           window.saasDB = data.tools;
           // Re-render with the full dataset so search, filters, and
-          // featured cards now resolve against all 768 tools.
+          // featured cards now resolve against all 780 tools.
           if (typeof renderFeatured === 'function') renderFeatured();
           if (typeof render === 'function') render();
           return true;
@@ -795,7 +795,7 @@
             _setUnlocked();
             // Store the long-lived access_token returned by the
             // server. Used as Bearer on /api/snapshot calls so this
-            // browser can fetch the full 768-tool dataset on every
+            // browser can fetch the full 780-tool dataset on every
             // future visit without re-prompting the visitor.
             if (res.access_token) {
               try {
@@ -813,7 +813,7 @@
             } catch (e) {}
             // Auto-expand the tool the visitor was originally
             // trying to open via the email link. saasDB is already
-            // loaded with all 768 + classifications (public
+            // loaded with all 780 + classifications (public
             // snapshot), so there's nothing to re-fetch.
             if (pendingTool && saasDB && saasDB.length) {
               var match = saasDB.find(function(t) {
