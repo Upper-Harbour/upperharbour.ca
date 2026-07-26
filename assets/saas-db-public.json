@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-07-11T02:00:36.046933+00:00",
-  "count": 769,
+  "generated_at": "2026-07-26T09:20:11.365773+00:00",
+  "count": 780,
   "fields": [
     "name",
     "parent",
@@ -3655,7 +3655,7 @@
     },
     {
       "name": "TouchBistro",
-      "parent": "TouchBistro Inc.",
+      "parent": "Harris Computer (Constellation Software)",
       "hq": "Toronto, ON",
       "jurisdiction": "Canada",
       "cloudAct": false,
@@ -6193,13 +6193,13 @@
     },
     {
       "name": "Paystone",
-      "parent": "Paystone Inc.",
+      "parent": "Paystone Holdings Inc.",
       "hq": "London, ON",
       "jurisdiction": "Canada",
       "cloudAct": false,
       "dataResidency": "Canada",
       "risk": "canadian",
-      "category": "ecommerce",
+      "category": "finance",
       "industries": [
         "technology",
         "hospitality"
@@ -6847,7 +6847,7 @@
     },
     {
       "name": "Wiz",
-      "parent": "Wiz Inc.",
+      "parent": "Google LLC (Alphabet Inc.)",
       "hq": "New York, NY",
       "jurisdiction": "United States",
       "cloudAct": true,
@@ -10784,8 +10784,8 @@
     },
     {
       "name": "ThinkOn",
-      "parent": "Think On Inc.",
-      "hq": "Etobicoke, ON",
+      "parent": "ThinkOn Inc.",
+      "hq": "Etobicoke, Ontario, Canada",
       "jurisdiction": "Canada",
       "cloudAct": false,
       "dataResidency": "Canada",
@@ -11607,6 +11607,184 @@
         "technology"
       ],
       "slug": "coherix-cloud"
+    },
+    {
+      "name": "Libro",
+      "parent": "OpenTable (Booking Holdings, Inc. — NASDAQ: BKNG)",
+      "hq": "Montreal, QC, Canada",
+      "jurisdiction": "Canada / United States",
+      "cloudAct": true,
+      "dataResidency": "Not disclosed in acquisition announcements; OpenTable announced integration of the two platforms' inventory, infrastructure, and security capabilities — presume US-accessible pending verification",
+      "risk": "exposed",
+      "category": "hospitality",
+      "industries": [
+        "hospitality",
+        "restaurants",
+        "food_service"
+      ],
+      "slug": "libro"
+    },
+    {
+      "name": "Plum",
+      "parent": "Phenom",
+      "hq": "Kitchener-Waterloo, ON, Canada",
+      "jurisdiction": "Canada / United States",
+      "cloudAct": true,
+      "dataResidency": "Unverified — no public Canadian data-residency commitment found in reviewed sources",
+      "risk": "exposed",
+      "category": "hr",
+      "industries": [
+        "cross_industry",
+        "enterprise_hiring",
+        "staffing"
+      ],
+      "slug": "plum"
+    },
+    {
+      "name": "QScale",
+      "parent": "Goldman Sachs (Infrastructure at Goldman Sachs Alternatives)",
+      "hq": "Lévis, Quebec, Canada",
+      "jurisdiction": "Canada / United States",
+      "cloudAct": true,
+      "dataResidency": "Canada (Quebec — Q01 campus in Lévis; expansion planned at Saint-Bruno-de-Montarville and near Toronto)",
+      "risk": "exposed",
+      "category": "cloud_infrastructure",
+      "industries": [
+        "ai",
+        "technology",
+        "enterprise"
+      ],
+      "slug": "qscale"
+    },
+    {
+      "name": "Kiteworks",
+      "parent": "Independent (minority investors: Insight Partners, Sixth Street Growth)",
+      "hq": "San Mateo, California, United States",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "Canadian residency offered via on-premises, private-cloud, and hosted deployments with customer-owned encryption keys; vendor-hosted deployments remain under US jurisdiction",
+      "risk": "exposed",
+      "category": "security",
+      "industries": [
+        "government",
+        "healthcare",
+        "finance",
+        "legal"
+      ],
+      "slug": "kiteworks"
+    },
+    {
+      "name": "Reliant AI",
+      "parent": "Cohere",
+      "hq": "Montreal, Canada (offices in Berlin, Germany and Denver, US)",
+      "jurisdiction": "Canada",
+      "cloudAct": false,
+      "dataResidency": "Unverified — no public disclosure of hosting provider or data residency; Cohere markets sovereign deployment but no Reliant-specific residency commitment found",
+      "risk": "review",
+      "category": "ai",
+      "industries": [
+        "healthcare",
+        "pharmaceutical",
+        "life_sciences"
+      ],
+      "slug": "reliant-ai"
+    },
+    {
+      "name": "Kneat Solutions",
+      "parent": "kneat.com, inc. (public, TSX: KSI / OTCQX: KSIOF) — definitive agreement to be acquired by Thoma Bravo affiliate, pending, expected close Q3 2026",
+      "hq": "Limerick, Ireland",
+      "jurisdiction": "Canada / Ireland",
+      "cloudAct": false,
+      "dataResidency": "Hosted on AWS; US and EU SaaS platforms only — no Canadian region advertised",
+      "risk": "review",
+      "category": "compliance",
+      "industries": [
+        "healthcare",
+        "pharmaceuticals",
+        "biotechnology",
+        "medical devices"
+      ],
+      "slug": "kneat-solutions"
+    },
+    {
+      "name": "Carrier Connect Data Solutions",
+      "parent": "Independent (publicly listed — TSXV: CCDS; OTCQB: CCDSF)",
+      "hq": "Vancouver, British Columbia, Canada",
+      "jurisdiction": "Canada",
+      "cloudAct": false,
+      "dataResidency": "Canadian colocation facilities in Vancouver, Ottawa, and Saint John (NB); Perth, Australia; Rochester, NY facility PENDING (definitive asset purchase agreement signed 2026-06-09, expected close 2026-08-15, subject to TSXV acceptance)",
+      "risk": "canadian",
+      "category": "cloud_infrastructure",
+      "industries": [
+        "technology",
+        "ai",
+        "managed_services",
+        "cross_industry"
+      ],
+      "slug": "carrier-connect-data-solutions"
+    },
+    {
+      "name": "Grok",
+      "parent": "xAI (wholly owned by SpaceX since Feb 2, 2026; Musk-controlled)",
+      "hq": "San Francisco Bay Area, California, United States",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "No Canadian data residency identified; US-based processing",
+      "risk": "exposed",
+      "category": "ai",
+      "industries": [
+        "general",
+        "technology",
+        "media"
+      ],
+      "slug": "grok"
+    },
+    {
+      "name": "Assent",
+      "parent": "Assent Inc. (privately held; significant US private-equity ownership — Vista Equity Partners and Blackstone bought out other institutional investors March 2025; post-deal control undisclosed)",
+      "hq": "Ottawa, Ontario, Canada",
+      "jurisdiction": "Canada / United States",
+      "cloudAct": false,
+      "dataResidency": "US (AWS US East N. Virginia; DR AWS US-West Oregon) or EU (AWS Frankfurt; DR AWS Ireland) — no Canadian hosting region",
+      "risk": "review",
+      "category": "compliance",
+      "industries": [
+        "manufacturing",
+        "automotive"
+      ],
+      "slug": "assent"
+    },
+    {
+      "name": "DeepInfra",
+      "parent": "Independent (DeepInfra Inc., US-incorporated; VC-backed — investors include NVIDIA, Felicis, 500 Global)",
+      "hq": "Palo Alto, California, United States",
+      "jurisdiction": "United States",
+      "cloudAct": true,
+      "dataResidency": "Canada (Toronto) region available since 2026-07-08; all other regions US; no explicit contractual residency guarantee published",
+      "risk": "exposed",
+      "category": "ai",
+      "industries": [
+        "technology",
+        "software",
+        "ai"
+      ],
+      "slug": "deepinfra"
+    },
+    {
+      "name": "Ginger Desk",
+      "parent": "Jane Software Inc. (Jane App)",
+      "hq": "Vancouver, BC, Canada",
+      "jurisdiction": "Canada",
+      "cloudAct": false,
+      "dataResidency": "Operates inside client EMRs (Jane, SimplePractice, Charm EHR); parent Jane App hosts on AWS with data stored in the clinic's 'home region' (region not publicly specified) and uses a US-based processor for AI Scribe; Ginger Desk VAs are located across Canadian provinces AND US states, so US-based personnel may access Canadian patient data",
+      "risk": "review",
+      "category": "healthcare",
+      "industries": [
+        "healthcare",
+        "wellness",
+        "clinics"
+      ],
+      "slug": "ginger-desk"
     }
   ]
 }

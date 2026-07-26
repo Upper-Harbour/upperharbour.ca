@@ -10,7 +10,8 @@
       "signal_date": "2026-04-22",
       "source_url": "https://betakit.com/opentable-gobbles-up-canadian-market-share-with-libro-acquisition/",
       "flagged_at": "2026-04-27T13:12:27.368549",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Cohere",
@@ -22,7 +23,8 @@
       "signal_date": "2026-04-24",
       "source_url": "https://thelogic.co/news/cohere-aleph-alpha-merger-sovereign-ai/",
       "flagged_at": "2026-04-27T13:12:27.368586",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Plum",
@@ -34,7 +36,8 @@
       "signal_date": "2026-05-04",
       "source_url": "https://betakit.com/plum-acquired-by-us-based-phenom-to-reduce-bad-hires-in-the-age-of-ai/",
       "flagged_at": "2026-05-04T13:11:42.750111",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "ChatGPT",
@@ -46,7 +49,8 @@
       "signal_date": "2026-05-06",
       "source_url": "https://oipc.ab.ca/joint-report-openai-chatgpt/",
       "flagged_at": "2026-05-10T13:54:14.279273",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Opennote",
@@ -58,7 +62,8 @@
       "signal_date": "2026-05-12",
       "source_url": "https://betakit.com/canadian-founded-opennote-acquired-by-san-francisco-based-reducto/",
       "flagged_at": "2026-05-14T14:52:00.031367",
-      "status": "pending_review"
+      "status": "dismissed",
+      "triage": "2026-07-26: dismissed after verification (see triage sheet)"
     },
     {
       "tool_name": "QScale",
@@ -70,7 +75,8 @@
       "signal_date": "2026-05-14",
       "source_url": "https://betakit.com/goldman-sachs-to-acquire-canadian-data-centre-platform-qscale/",
       "flagged_at": "2026-05-15T14:43:30.215928",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Kiteworks",
@@ -82,7 +88,8 @@
       "signal_date": "2026-05-13",
       "source_url": "https://www.pax8.com/blog/data-residency-vs-data-sovereignty-in-canada/",
       "flagged_at": "2026-05-15T14:43:30.215962",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Reliant AI",
@@ -94,7 +101,8 @@
       "signal_date": "2026-05-19",
       "source_url": "https://betakit.com/cohere-acquires-second-company-with-german-ties-in-reliant-ai/",
       "flagged_at": "2026-05-19T16:01:14.086441",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "ThinkOn Inc.",
@@ -106,7 +114,8 @@
       "signal_date": "2026-05-20",
       "source_url": "https://www.cp24.com/news/canada/2026/05/20/experts-say-canadian-solutions-needed-to-maintain-data-sovereignty/",
       "flagged_at": "2026-05-24T14:11:04.016319",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Palantir",
@@ -118,7 +127,8 @@
       "signal_date": "2026-05-29",
       "source_url": "https://www.b2bnn.com/2026/05/canadian-ai-sovereignty-paper-13-moving-forward-is-the-decision/",
       "flagged_at": "2026-05-29T16:14:16.926631",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Kneat Solutions",
@@ -130,7 +140,8 @@
       "signal_date": "2026-06-10",
       "source_url": "https://www.cantechletter.com/2026/06/kneat-shareholders-should-take-the-deal-stifel-says/",
       "flagged_at": "2026-06-10T16:12:31.524552",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Carrier Connect Data Solutions",
@@ -142,7 +153,8 @@
       "signal_date": "2026-06-10",
       "source_url": "https://www.cantechletter.com/2026/06/buy-carrier-connect-data-for-150-upside-this-analyst-says/",
       "flagged_at": "2026-06-10T16:12:31.524570",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Grok",
@@ -154,7 +166,8 @@
       "signal_date": "2026-06-11",
       "source_url": "https://betakit.com/elon-musks-x-violated-canadian-privacy-law-with-grok-deepfakes-watchdog-finds/",
       "flagged_at": "2026-06-11T16:37:17.049353",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Composer",
@@ -166,7 +179,8 @@
       "signal_date": "2026-06-30",
       "source_url": "https://betakit.com/us-finance-app-sofi-acquires-composer-to-add-ai-investing-strategies/",
       "flagged_at": "2026-07-01T15:13:24.912435",
-      "status": "pending_review"
+      "status": "dismissed",
+      "triage": "2026-07-26: dismissed after verification (see triage sheet)"
     },
     {
       "tool_name": "Paystone",
@@ -178,7 +192,8 @@
       "signal_date": "2026-07-03",
       "source_url": "https://betakit.com/paystone-enters-creditor-protection-pursues-debt-restructuring-sale/",
       "flagged_at": "2026-07-03T14:53:37.750921",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Wiz",
@@ -190,7 +205,8 @@
       "signal_date": "2026-07-06",
       "source_url": "https://aws.amazon.com/blogs/publicsector/accelerate-irap-readiness-with-aws-and-wiz/",
       "flagged_at": "2026-07-08T14:50:32.514190",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Assent",
@@ -202,7 +218,8 @@
       "signal_date": "2026-07-09",
       "source_url": "https://betakit.com/assent-makes-first-acquisition-deal-with-purchase-of-german-firm-ipoint/",
       "flagged_at": "2026-07-10T15:14:18.936850",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "ConsentPixel",
@@ -214,7 +231,8 @@
       "signal_date": "2026-07-06",
       "source_url": "https://consentpixel.com/blogs/canada-cookie-compliance-law-25-pipeda/",
       "flagged_at": "2026-07-11T13:54:25.196172",
-      "status": "pending_review"
+      "status": "dismissed",
+      "triage": "2026-07-26: dismissed after verification (see triage sheet)"
     },
     {
       "tool_name": "TouchBistro",
@@ -226,7 +244,8 @@
       "signal_date": "2026-07-13",
       "source_url": "https://betakit.com/touchbistro-acquired-by-subsidiary-of-constellation-software/",
       "flagged_at": "2026-07-14T14:19:29.945658",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "DeepInfra",
@@ -238,7 +257,8 @@
       "signal_date": "2026-07-11",
       "source_url": "https://www.techtimes.com/articles/320156/20260711/deepinfra-brings-blackwell-inference-canada-data-residency-gain-sovereignty-gap.htm",
       "flagged_at": "2026-07-18T13:50:50.950232",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     },
     {
       "tool_name": "Ginger Desk",
@@ -250,7 +270,8 @@
       "signal_date": "2026-07-22",
       "source_url": "https://betakit.com/jane-app-acquires-clinic-software-startup-ginger-desk/",
       "flagged_at": "2026-07-23T14:37:10.211507",
-      "status": "pending_review"
+      "status": "applied",
+      "triage": "2026-07-26: verified, amended, applied directly to master (batch triage)"
     }
   ],
   "updated": "2026-07-23T14:37:10.213798"
