@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 24, 2026 — 14:18 ET",
+    "lastUpdated": "Jul 28, 2026 — 14:42 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Vena Solutions acquires Morpheo AI to enhance financial planning capabilities",
+      "summary": "Toronto-based Vena Solutions has announced a definitive acquisition agreement for Morpheo AI, introducing Vena Omega, a cumulative context engine for financial and operational planning. The acquisition strengthens Vena's Microsoft-native platform and positions it as a Canadian-controlled financial planning solution.",
+      "type": "acquisition",
+      "source": "Financial Post",
+      "sourceUrl": "https://financialpost.com/pmn/business-wire-news-releases-pmn/vena-to-acquire-morpheo-ai-advancing-vena-ai-through-vena-omega-the-industrys-only-cumulative-context-engine-built-for-finance-2",
+      "date": "2026-07-28",
+      "impact": "Canadian organizations using Vena Solutions for financial planning should review the acquisition details to confirm continued data residency and Canadian governance structures post-acquisition.",
+      "dbUpdate": false
+    },
     {
       "headline": "Clio launches AI legal workspace in Canada using domestically-built model",
       "summary": "Clio, a Canadian legal software company, has released an AI-powered legal workspace built on Canadian case law data from its Jurisage acquisition. The product is positioned as purpose-built for the Canadian legal market, with implications for data residency and domestic AI model development within the legal tech sector.",
