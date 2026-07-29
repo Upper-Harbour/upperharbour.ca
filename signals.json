@@ -1,9 +1,39 @@
 {
   "meta": {
-    "lastUpdated": "Jul 28, 2026 — 14:42 ET",
+    "lastUpdated": "Jul 29, 2026 — 14:45 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "AWS publishes guidance on agentic AI for Canadian public sector procurement",
+      "summary": "Amazon Web Services has published a technical article describing how agentic AI architectures on AWS can support Canadian public sector procurement workflows while maintaining compliance with PSPC and SSC frameworks. This represents vendor positioning around Canadian government procurement tooling.",
+      "type": "vendor",
+      "source": "AWS Public Sector",
+      "sourceUrl": "https://aws.amazon.com/blogs/publicsector/transforming-public-sector-procurement-with-agentic-ai-on-aws/",
+      "date": "2026-07-28",
+      "impact": "Canadian federal procurement teams and departments using or evaluating AWS for AI-assisted procurement should review this guidance against their data residency and sovereignty requirements.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "CIRA 2026 Internet Trends Report: 74% of Canadians take data protection action; digital sovereignty identified as key driver",
+      "summary": "CIRA's 2026 Canadian Internet Trends Report documents that 74% of Canadians have taken active steps to protect their data, with digital sovereignty explicitly identified as a factor shaping internet behaviours and technology choices. This represents quantified market demand for sovereignty-aware tools and services in Canada.",
+      "type": "policy",
+      "source": "GlobeNewswire",
+      "sourceUrl": "https://www.globenewswire.com/news-release/2026/07/28/3334159/0/en/New-CIRA-Internet-Trends-Report-reveals-Canadians-are-putting-trust-before-convenience.html",
+      "date": "2026-07-28",
+      "impact": "Organizations marketing or procuring digital services in Canada should recognize that digital sovereignty is now a documented decision factor for the majority of Canadian internet users and should align product offerings and procurement criteria accordingly.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "PSPC 2026-2027 Departmental Plan: Buy Canadian Policy procurement thresholds lowering to $5 million",
+      "summary": "Public Services and Procurement Canada's 2026-2027 plan details implementation of the Buy Canadian Procurement Policy, including mandatory Canadian materials requirements and a reduction of applicable thresholds to $5 million by spring 2026. This expands the scope of government procurement subject to domestic content and data sovereignty requirements.",
+      "type": "legislation",
+      "source": "Canada.ca",
+      "sourceUrl": "https://www.canada.ca/en/public-services-procurement/corporate/transparency/departmental-plan/2026-2027-plan.html",
+      "date": "2026-07-24",
+      "impact": "Canadian software, cloud, and IT service vendors should review the $5 million threshold reduction to assess eligibility for federal procurement opportunities; federal departments should update procurement documentation and vendor evaluation criteria to reflect the expanded Buy Canadian Policy scope.",
+      "dbUpdate": false
+    },
     {
       "headline": "Vena Solutions acquires Morpheo AI to enhance financial planning capabilities",
       "summary": "Toronto-based Vena Solutions has announced a definitive acquisition agreement for Morpheo AI, introducing Vena Omega, a cumulative context engine for financial and operational planning. The acquisition strengthens Vena's Microsoft-native platform and positions it as a Canadian-controlled financial planning solution.",
