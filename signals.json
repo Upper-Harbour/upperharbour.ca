@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Jul 29, 2026 — 14:45 ET",
+    "lastUpdated": "Aug 08, 2026 — 13:22 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "AWS publishes SaaS design patterns for Canadian data sovereignty on its platform",
+      "summary": "AWS Public Sector published guidance on designing SaaS applications on AWS infrastructure with sovereignty as a tunable design parameter rather than requiring complete infrastructure rebuild. This is relevant to Canadian organizations evaluating AWS for sovereign data handling, as it outlines practical architectural approaches to meet Canadian data residency and control requirements within the AWS ecosystem.",
+      "type": "vendor",
+      "source": "AWS Public Sector",
+      "sourceUrl": "https://aws.amazon.com/blogs/publicsector/saas-design-levers-for-sovereignty-on-aws/",
+      "date": "2026-08-06",
+      "impact": "Canadian federal and public-sector organizations using or evaluating AWS should review this guidance when assessing whether AWS can meet their data sovereignty requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "AWS publishes guidance on agentic AI for Canadian public sector procurement",
       "summary": "Amazon Web Services has published a technical article describing how agentic AI architectures on AWS can support Canadian public sector procurement workflows while maintaining compliance with PSPC and SSC frameworks. This represents vendor positioning around Canadian government procurement tooling.",
