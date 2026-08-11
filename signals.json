@@ -1,9 +1,29 @@
 {
   "meta": {
-    "lastUpdated": "Aug 08, 2026 — 13:22 ET",
+    "lastUpdated": "Aug 11, 2026 — 13:39 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Shared Services Canada launches sovereign cloud procurement prioritizing Canadian-owned providers",
+      "summary": "Shared Services Canada initiated a federal cloud procurement process explicitly designed to prioritize Canadian-owned and controlled providers, with stated goals of reducing vendor concentration and strengthening domestic cloud capacity. This represents a formal shift in federal procurement policy toward data sovereignty and domestic vendor development.",
+      "type": "procurement",
+      "source": "The Drop Times",
+      "sourceUrl": "https://www.thedroptimes.com/70834/canada-federal-cloud-procurement",
+      "date": "2026-08-11",
+      "impact": "Federal departments and their service providers should review this procurement framework and assess whether their current cloud infrastructure aligns with the sovereignty criteria being established by Shared Services Canada.",
+      "dbUpdate": false
+    },
+    {
+      "headline": "Privacy Commissioner submits recommendations on Privacy Act modernization to Treasury Board",
+      "summary": "Privacy Commissioner Philippe Dufresne formally submitted recommendations to the Treasury Board on modernizing the Privacy Act, including strengthened enforcement mechanisms, mandatory breach notification requirements, and enhanced transparency requirements for automated decision systems. This input will inform federal privacy legislation updates.",
+      "type": "policy",
+      "source": "Office of the Privacy Commissioner of Canada",
+      "sourceUrl": "https://www.priv.gc.ca/en/opc-news/news-and-announcements/2026/nr-c_260806",
+      "date": "2026-08-06",
+      "impact": "Canadian organizations handling personal data should monitor Privacy Act modernization developments and begin assessing their automated decision systems and breach notification procedures against anticipated new requirements.",
+      "dbUpdate": false
+    },
     {
       "headline": "AWS publishes SaaS design patterns for Canadian data sovereignty on its platform",
       "summary": "AWS Public Sector published guidance on designing SaaS applications on AWS infrastructure with sovereignty as a tunable design parameter rather than requiring complete infrastructure rebuild. This is relevant to Canadian organizations evaluating AWS for sovereign data handling, as it outlines practical architectural approaches to meet Canadian data residency and control requirements within the AWS ecosystem.",
