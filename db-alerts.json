@@ -11,7 +11,19 @@
       "source_url": "https://financialpost.com/pmn/business-wire-news-releases-pmn/vena-to-acquire-morpheo-ai-advancing-vena-ai-through-vena-omega-the-industrys-only-cumulative-context-engine-built-for-finance-2",
       "flagged_at": "2026-07-28T14:42:27.495031",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Moneris",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"US-based private equity firm (name not fully disclosed)\", \"jurisdiction\": \"United States\", \"category\": \"finance\", \"rationale\": \"Moneris is Canada's largest payments processor with critical infrastructure role; now under US private equity control, making it a high-priority sovereignty tracking candidate for Canadian financial organizations.\"}",
+      "reason": "Moneris is Canada's largest payments processor with critical infrastructure role; now under US private equity control, making it a high-priority sovereignty tracking candidate for Canadian financial organizations.",
+      "signal_headline": "RBC and BMO divest Canadian payments processor Moneris to US private equity firm",
+      "signal_date": "2026-08-11",
+      "source_url": "https://betakit.com/rbc-and-bmo-to-sell-off-canadian-payment-giant-moneris-in-2-billion-deal/",
+      "flagged_at": "2026-08-12T13:43:51.768109",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-07-28T14:42:27.497361"
+  "updated": "2026-08-12T13:43:51.770220"
 }

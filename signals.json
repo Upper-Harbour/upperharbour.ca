@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Aug 11, 2026 — 13:39 ET",
+    "lastUpdated": "Aug 12, 2026 — 13:43 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "RBC and BMO divest Canadian payments processor Moneris to US private equity firm",
+      "summary": "RBC and BMO are selling Moneris, Canada's largest payments processor, to a US-based private equity firm in a $2-billion transaction. The sale raises data sovereignty concerns given Moneris's critical role in processing Canadian payment infrastructure and the shift of control to a foreign entity.",
+      "type": "acquisition",
+      "source": "BetaKit",
+      "sourceUrl": "https://betakit.com/rbc-and-bmo-to-sell-off-canadian-payment-giant-moneris-in-2-billion-deal/",
+      "date": "2026-08-11",
+      "impact": "Canadian financial institutions and retailers using Moneris should conduct urgent due diligence on data residency, access controls, and compliance obligations under the new US-controlled ownership structure.",
+      "dbUpdate": false
+    },
     {
       "headline": "Shared Services Canada launches sovereign cloud procurement prioritizing Canadian-owned providers",
       "summary": "Shared Services Canada initiated a federal cloud procurement process explicitly designed to prioritize Canadian-owned and controlled providers, with stated goals of reducing vendor concentration and strengthening domestic cloud capacity. This represents a formal shift in federal procurement policy toward data sovereignty and domestic vendor development.",
