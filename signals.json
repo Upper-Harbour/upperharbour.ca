@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Aug 12, 2026 — 13:43 ET",
+    "lastUpdated": "Aug 13, 2026 — 13:45 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "ThinkOn and AVSS establish Canadian sovereign cloud partnership for sensitive government drone operations",
+      "summary": "ThinkOn (Toronto-based sovereign cloud provider) and AVSS (New Brunswick drone manufacturer) announced a partnership enabling Canadian police and defense agencies to operate Team Awareness Kit (TAK) on Canadian cloud infrastructure instead of foreign hyperscalers. The arrangement addresses data sovereignty requirements for sensitive government operations.",
+      "type": "vendor",
+      "source": "DroneXL",
+      "sourceUrl": "https://dronexl.co/2026/08/10/thinkon-avss-sovereign-tak-canada/",
+      "date": "2026-08-10",
+      "impact": "Canadian defense and law enforcement agencies should evaluate this TAK deployment option as part of sovereign cloud migration strategies for operational technology systems.",
+      "dbUpdate": false
+    },
     {
       "headline": "RBC and BMO divest Canadian payments processor Moneris to US private equity firm",
       "summary": "RBC and BMO are selling Moneris, Canada's largest payments processor, to a US-based private equity firm in a $2-billion transaction. The sale raises data sovereignty concerns given Moneris's critical role in processing Canadian payment infrastructure and the shift of control to a foreign entity.",

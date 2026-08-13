@@ -23,7 +23,31 @@
       "source_url": "https://betakit.com/rbc-and-bmo-to-sell-off-canadian-payment-giant-moneris-in-2-billion-deal/",
       "flagged_at": "2026-08-12T13:43:51.768109",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "ThinkOn",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"ThinkOn Inc.\", \"jurisdiction\": \"Canada\", \"category\": \"storage\", \"rationale\": \"ThinkOn is a Toronto-based sovereign cloud provider explicitly positioned as an alternative to US hyperscalers for Canadian government and sensitive operations. This news confirms active use in defense/law enforcement contexts, making it relevant for Upper Harbour's sovereignty tracking.\"}",
+      "reason": "ThinkOn is a Toronto-based sovereign cloud provider explicitly positioned as an alternative to US hyperscalers for Canadian government and sensitive operations. This news confirms active use in defense/law enforcement contexts, making it relevant for Upper Harbour's sovereignty tracking.",
+      "signal_headline": "ThinkOn and AVSS establish Canadian sovereign cloud partnership for sensitive government drone operations",
+      "signal_date": "2026-08-10",
+      "source_url": "https://dronexl.co/2026/08/10/thinkon-avss-sovereign-tak-canada/",
+      "flagged_at": "2026-08-13T13:45:53.509896",
+      "status": "pending_review"
+    },
+    {
+      "tool_name": "Team Awareness Kit (TAK)",
+      "change": "suggest_new_tool",
+      "old_value": null,
+      "new_value": "{\"parent\": \"\", \"jurisdiction\": \"\", \"category\": \"unknown\", \"rationale\": \"TAK is mentioned as a government tool for police and defense agencies with data sovereignty implications, but insufficient information is provided in the news item to confirm parent organization, jurisdiction, or full category. Recommend further research before adding to tracked list.\"}",
+      "reason": "TAK is mentioned as a government tool for police and defense agencies with data sovereignty implications, but insufficient information is provided in the news item to confirm parent organization, jurisdiction, or full category. Recommend further research before adding to tracked list.",
+      "signal_headline": "ThinkOn and AVSS establish Canadian sovereign cloud partnership for sensitive government drone operations",
+      "signal_date": "2026-08-10",
+      "source_url": "https://dronexl.co/2026/08/10/thinkon-avss-sovereign-tak-canada/",
+      "flagged_at": "2026-08-13T13:45:53.509916",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-08-12T13:43:51.770220"
+  "updated": "2026-08-13T13:45:53.512058"
 }
