@@ -47,7 +47,19 @@
       "source_url": "https://dronexl.co/2026/08/10/thinkon-avss-sovereign-tak-canada/",
       "flagged_at": "2026-08-13T13:45:53.509916",
       "status": "pending_review"
+    },
+    {
+      "tool_name": "Infobip",
+      "change": "data_residency",
+      "old_value": "No confirmed Canadian data residency",
+      "new_value": "Canadian data residency available as of 2026-07-29",
+      "reason": "Infobip announced Canadian data residency capability supporting private-sector compliance requirements",
+      "signal_headline": "Infobip launches Canadian data residency capability",
+      "signal_date": "2026-08-13",
+      "source_url": "https://www.shashi.co/2026/08/infobips-canada-data-residency-lands-in.html",
+      "flagged_at": "2026-08-15T13:09:33.395012",
+      "status": "pending_review"
     }
   ],
-  "updated": "2026-08-13T13:45:53.512058"
+  "updated": "2026-08-15T13:09:33.399090"
 }

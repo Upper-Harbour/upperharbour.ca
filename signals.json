@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Aug 13, 2026 — 13:45 ET",
+    "lastUpdated": "Aug 15, 2026 — 13:09 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Infobip launches Canadian data residency capability",
+      "summary": "Infobip enabled Canadian data residency and compliance support as of July 29, 2026, addressing private-sector regulatory requirements within Canada's dual compliance framework. This development allows Canadian organizations using Infobip to maintain data within Canadian jurisdiction.",
+      "type": "vendor",
+      "source": "Shashi.co",
+      "sourceUrl": "https://www.shashi.co/2026/08/infobips-canada-data-residency-lands-in.html",
+      "date": "2026-08-13",
+      "impact": "Canadian organizations currently using Infobip should review whether this new Canadian data residency capability aligns with their compliance obligations or internal data governance policies.",
+      "dbUpdate": true
+    },
     {
       "headline": "ThinkOn and AVSS establish Canadian sovereign cloud partnership for sensitive government drone operations",
       "summary": "ThinkOn (Toronto-based sovereign cloud provider) and AVSS (New Brunswick drone manufacturer) announced a partnership enabling Canadian police and defense agencies to operate Team Awareness Kit (TAK) on Canadian cloud infrastructure instead of foreign hyperscalers. The arrangement addresses data sovereignty requirements for sensitive government operations.",
