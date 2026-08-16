@@ -1,9 +1,19 @@
 {
   "meta": {
-    "lastUpdated": "Aug 15, 2026 — 13:09 ET",
+    "lastUpdated": "Aug 16, 2026 — 13:11 ET",
     "sourceCount": "59+"
   },
   "signals": [
+    {
+      "headline": "Council of Canadian Innovators documents strategic control loss in foreign acquisitions",
+      "summary": "The Council of Canadian Innovators released a report finding that Canadian tech companies acquired by foreign buyers lose strategic control and decision-making authority in 28 of 30 cases studied, with leadership relocating outside Canada. This reflects a broader pattern of Canadian tech value migrating post-acquisition.",
+      "type": "policy",
+      "source": "Digital Journal",
+      "sourceUrl": "https://www.digitaljournal.com/article/why-canadian-tech-has-to-prove-itself-somewhere-else/",
+      "date": "2026-08-12",
+      "impact": "Federal and provincial innovation agencies should review acquisition approval frameworks and consider data sovereignty implications when Canadian tech vendors are acquired by foreign entities, particularly in critical sectors.",
+      "dbUpdate": false
+    },
     {
       "headline": "Infobip launches Canadian data residency capability",
       "summary": "Infobip enabled Canadian data residency and compliance support as of July 29, 2026, addressing private-sector regulatory requirements within Canada's dual compliance framework. This development allows Canadian organizations using Infobip to maintain data within Canadian jurisdiction.",
